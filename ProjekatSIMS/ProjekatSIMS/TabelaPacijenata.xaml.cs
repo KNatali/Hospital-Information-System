@@ -14,15 +14,19 @@ using System.Windows.Shapes;
 
 namespace ProjekatSIMS
 {
-    public partial class PregledPacijenata : Window
+    public partial class TabelaPacijenata : Window
     {
-        public CuvanjePacijenta fajl { get; set; }
-        public PregledPacijenata()
+        //public CuvanjePacijenta fajl { get; set; }
+        public List<Pacijent> Pacijenti { get; set; }
+        public TabelaPacijenata()
         {
             InitializeComponent();
             this.DataContext = this;
-            fajl = new CuvanjePacijenata(@"C:\Users\mrvic\Projekat\ProjekatSIMS\Pacijent.txt");
-            /*DateTime datum1 = new DateTime(1999,02,17);
+            Pacijenti = new List<Pacijent>();
+            CuvanjePacijenta fajl = new CuvanjePacijenta();
+            Pacijenti = fajl.DobaviPacijente();
+            /*fajl = new CuvanjePacijenata(@"C:\Users\mrvic\Projekat\ProjekatSIMS\Pacijent.txt");
+            DateTime datum1 = new DateTime(1999,02,17);
             Pacijent p = new Pacijent
             {
                 Jmbg = "152",
@@ -35,6 +39,5 @@ namespace ProjekatSIMS
             };
             fajl.Sacuvaj(p);*/
         }
-        
     }
 }

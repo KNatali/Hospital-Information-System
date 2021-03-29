@@ -25,7 +25,7 @@ namespace ProjekatSIMS
         }
         private void Pretrazivanje(object sender, RoutedEventArgs e)
         {
-            PregledPacijenata pp = new PregledPacijenata();
+            TabelaPacijenata pp = new TabelaPacijenata();
             pp.Show();
         }
         private void Izmena_profila(object sender, RoutedEventArgs e)
