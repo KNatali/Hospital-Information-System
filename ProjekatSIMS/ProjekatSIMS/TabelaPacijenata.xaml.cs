@@ -16,16 +16,16 @@ namespace ProjekatSIMS
 {
     public partial class TabelaPacijenata : Window
     {
-        //public CuvanjePacijenta fajl { get; set; }
+        public CuvanjePacijenta fajl { get; set; }
         public List<Pacijent> Pacijenti { get; set; }
         public TabelaPacijenata()
         {
             InitializeComponent();
-            this.DataContext = this;
+            /*this.DataContext = this;
             Pacijenti = new List<Pacijent>();
             CuvanjePacijenta fajl = new CuvanjePacijenta();
             Pacijenti = fajl.DobaviPacijente();
-            /*fajl = new CuvanjePacijenata(@"C:\Users\mrvic\Projekat\ProjekatSIMS\Pacijent.txt");
+            fajl = new CuvanjePacijenata(@"C:\Users\mrvic\Projekat\ProjekatSIMS\Pacijent.txt");
             DateTime datum1 = new DateTime(1999,02,17);
             Pacijent p = new Pacijent
             {
@@ -38,6 +38,18 @@ namespace ProjekatSIMS
                 Email = "scsc"
             };
             fajl.Sacuvaj(p);*/
+        }
+        private void Brisanje(object sender, RoutedEventArgs e)
+        {
+            // selektuje nekog pacijenta u tabeli i onda klikne na brisanje
+            if (dataGridPacijenti.SelectedItems.Count > 0)
+            {
+                for (int i = 0; i < dataGridPacijenti.SelectedItems.Count; i++)
+                {
+                    System.Data.DataRowView selektovani = (System.Data.DataRowView)dataGridPacijenti.SelectedItems[i];
+                    String str = Convert.ToString(selektovani.Row.ItemArray[10]);
+                }
+            }
         }
     }
 }

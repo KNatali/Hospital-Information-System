@@ -11,19 +11,19 @@
         <Button Content="Kreiraj" Click="Potvrdi" HorizontalAlignment="Left" Height="40" Margin="630,350,0,0" VerticalAlignment="Top" Width="90" Background="#FFA6B1D6"/>
         <Label Content="Unesite podatke pacijenta" HorizontalAlignment="Left" Height="30" Margin="80,30,0,0" VerticalAlignment="Top" Width="230" />
         <Label Content="JMBG" HorizontalAlignment="Left" Height="25" Margin="80,80,0,0" VerticalAlignment="Top" Width="145"/>
-        <TextBox HorizontalAlignment="Left" Margin="265,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Name="Jmbg" Margin="265,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Ime" HorizontalAlignment="Left" Height="25" Margin="80,120,0,0" VerticalAlignment="Top" Width="145"/>
-        <TextBox HorizontalAlignment="Left" Margin="265,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Name="Ime" Margin="265,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Prezime" HorizontalAlignment="Left" Height="25" Margin="80,160,0,0" VerticalAlignment="Top" Width="145"/>
-        <TextBox HorizontalAlignment="Left" Margin="265,160,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Name="Prezime" Margin="265,160,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Broj telefona" HorizontalAlignment="Left" Height="25" Margin="80,200,0,0" VerticalAlignment="Top" Width="145"/>
-        <TextBox HorizontalAlignment="Left" Margin="265,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Name="Telefon" Margin="265,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="E-mail" HorizontalAlignment="Left" Height="25" Margin="80,240,0,0" VerticalAlignment="Top" Width="145"/>
-        <TextBox HorizontalAlignment="Left" Margin="265,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Name="Mail" Margin="265,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Adresa" HorizontalAlignment="Left" Height="25" Margin="80,280,0,0" VerticalAlignment="Top" Width="145"/>
-        <TextBox HorizontalAlignment="Left" Margin="265,280,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Name="Adresa" Margin="265,280,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Datum rodjenja" HorizontalAlignment="Left" Height="25" Margin="440,80,0,0" VerticalAlignment="Top" Width="145"/>
-        <DatePicker HorizontalAlignment="Left" Margin="560,80,0,0" VerticalAlignment="Top"/>
+        <DatePicker Name="Datum" HorizontalAlignment="Left" Margin="560,80,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
