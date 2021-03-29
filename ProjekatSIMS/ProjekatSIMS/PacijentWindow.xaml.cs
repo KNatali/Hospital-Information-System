@@ -21,5 +21,10 @@ namespace ProjekatSIMS
         {
             InitializeComponent();
         }
+        private void Click_zakazi(object sender, RoutedEventArgs e)
+        {
+            Window zakazi = new Window();
+            zakazi.Show();
+        }
     }
 }
