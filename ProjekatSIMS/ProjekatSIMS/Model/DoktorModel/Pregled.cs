@@ -64,7 +64,7 @@ namespace Model.DoktorModel
       public int Id;
       public DateTime Pocetak;
       public int Trajanje;
-      public TipPregleda Tip;
+      public TipPregleda  Tip;
       public Model.PacijentModel.StatusPregleda StatusPergleda;
       
       public Model.UpravnikModel.Prostorija prostorija;

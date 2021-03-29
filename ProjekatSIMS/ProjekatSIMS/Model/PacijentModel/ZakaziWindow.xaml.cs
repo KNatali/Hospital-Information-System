@@ -1,17 +1,7 @@
-﻿using Model;
-using Model.DoktorModel;
+﻿using Model.DoktorModel;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ProjekatSIMS.Model.PacijentModel
 {
@@ -26,12 +16,12 @@ namespace ProjekatSIMS.Model.PacijentModel
             this.DataContext = this;
         }
 
-        private void ZakaziPregled (object sender, RoutedEventArgs e)
+        private void ZakaziPregled(object sender, RoutedEventArgs e)
         {
             string line;
 
             //uzimanje polja iz forme
- 
+
             String ime = Ime.Text;
             String prezime = Prezime.Text;
             String jmbg = Jmbg.Text;
@@ -46,7 +36,7 @@ namespace ProjekatSIMS.Model.PacijentModel
             int trajanje = 30;
             DateTime datum2 = datum1.AddMinutes(trajanje);
 
-             
+
             Pregled p = new Pregled();
             p.Tip = TipPregleda.Standardni;
             String tip = p.Tip.ToString();
@@ -54,12 +44,12 @@ namespace ProjekatSIMS.Model.PacijentModel
             int brojac = 0;
             using (StreamReader file = new StreamReader(@"C:\Users\Home\Dropbox\My PC (DESKTOP-TI6DNK1)\Desktop\ProjekatSIMSdva\Projekat\ProjekatSIMS\Doktor.txt"))
             {
-                while((linija = file.ReadLine()) != null)
+                while ((linija = file.ReadLine()) != null)
                 {
                     string[] parts = linija.Split(",");
-                    if(parts[1] == imedoktora)
+                    if (parts[1] == imedoktora)
                     {
-                        if(parts[2] == prezimedoktora)
+                        if (parts[2] == prezimedoktora)
                         {
                             brojac++;
                             break;
@@ -83,8 +73,10 @@ namespace ProjekatSIMS.Model.PacijentModel
             }
             else
             {
-                MessageBox.Show("Ne postoji doktor sa tim imenom, unesite ime postojece ime doktora!");            
+                MessageBox.Show("Ne postoji doktor sa tim imenom, unesite ime postojece ime doktora!");
             }
+
+            p.ZakaziPregledePacijent();
 
 
 
@@ -97,6 +89,6 @@ namespace ProjekatSIMS.Model.PacijentModel
 
         }
     }
-    
+
 
 }
