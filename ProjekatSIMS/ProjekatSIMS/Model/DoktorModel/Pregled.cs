@@ -8,120 +8,120 @@ using System;
 
 namespace Model.DoktorModel
 {
-   public class Pregled
-   {
-      public Boolean ZakaziPregled()
-      {
+    public class Pregled
+    {
+        public Boolean ZakaziPregled()
+        {
             // TODO: implement
             return true;
         }
-      
-      public Boolean OtkaziPregledDoktor()
-      {
+
+        public Boolean OtkaziPregledDoktor()
+        {
             // TODO: implement
             return true;
         }
-      
-      public Boolean PomjeriPregledDoktor()
-      {
+
+        public Boolean PomjeriPregledDoktor()
+        {
             // TODO: implement
             return true;
         }
-      
-      public void ZapocniPregledDoktor()
-      {
-         // TODO: implement
-      }
-      
-      public void ZavrsiPregledDoktor()
-      {
-         // TODO: implement
-      }
-      
-      public Boolean OtkaziPregledPacijent()
-      {
+
+        public void ZapocniPregledDoktor()
+        {
+            // TODO: implement
+        }
+
+        public void ZavrsiPregledDoktor()
+        {
+            // TODO: implement
+        }
+
+        public Boolean OtkaziPregledPacijent()
+        {
             // TODO: implement
             return true;
         }
-      
-      public Boolean IzmeniPregledPacijent(DateTime datumPregleda, Model.Doktor doktor)
-      {
+
+        public Boolean IzmeniPregledPacijent(DateTime datumPregleda, Model.Doktor doktor)
+        {
             // TODO: implement
             return true;
         }
-      
-      public void PrikaziPregledePacijent()
-      {
-         // TODO: implement
-      }
-      
-      public Pregled ZakaziPregledePacijent()
-      {
-         // TODO: implement
-         return null;
-      }
-   
-      public int Id;
-      public DateTime Pocetak;
-      public int Trajanje;
-      public TipPregleda Tip;
-      public Model.PacijentModel.StatusPregleda StatusPergleda;
-      
-      public Model.UpravnikModel.Prostorija prostorija;
-      public Model.Doktor doktor;
-      
-      /// <pdGenerated>default parent getter</pdGenerated>
-      public Model.Doktor GetDoktor()
-      {
-         return doktor;
-      }
-      
-      /// <pdGenerated>default parent setter</pdGenerated>
-      /// <param>newDoktor</param>
-      public void SetDoktor(Model.Doktor newDoktor)
-      {
-         if (this.doktor != newDoktor)
-         {
-            if (this.doktor != null)
+
+        public void PrikaziPregledePacijent()
+        {
+            // TODO: implement
+        }
+
+        public Pregled ZakaziPregledePacijent()
+        {
+            // TODO: implement
+            return null;
+        }
+
+        public int Id { get; set; }
+        public DateTime Pocetak { get; set; }
+        public int Trajanje { get; set; }
+        public TipPregleda Tip { get; set; }
+        public Model.PacijentModel.StatusPregleda StatusPergleda { get; set; }
+
+        public Model.UpravnikModel.Prostorija prostorija { get; set; }
+        public Model.Doktor doktor { get; set; }
+
+        /// <pdGenerated>default parent getter</pdGenerated>
+        public Model.Doktor GetDoktor()
+        {
+            return doktor;
+        }
+
+        /// <pdGenerated>default parent setter</pdGenerated>
+        /// <param>newDoktor</param>
+        public void SetDoktor(Model.Doktor newDoktor)
+        {
+            if (this.doktor != newDoktor)
             {
-               Model.Doktor oldDoktor = this.doktor;
-               this.doktor = null;
-               oldDoktor.RemovePregled(this);
+                if (this.doktor != null)
+                {
+                    Model.Doktor oldDoktor = this.doktor;
+                    this.doktor = null;
+                    oldDoktor.RemovePregled(this);
+                }
+                if (newDoktor != null)
+                {
+                    this.doktor = newDoktor;
+                    this.doktor.AddPregled(this);
+                }
             }
-            if (newDoktor != null)
+        }
+        public Model.Pacijent pacijent;
+
+        /// <pdGenerated>default parent getter</pdGenerated>
+        public Model.Pacijent GetPacijent()
+        {
+            return pacijent;
+        }
+
+        /// <pdGenerated>default parent setter</pdGenerated>
+        /// <param>newPacijent</param>
+        public void SetPacijent(Model.Pacijent newPacijent)
+        {
+            if (this.pacijent != newPacijent)
             {
-               this.doktor = newDoktor;
-               this.doktor.AddPregled(this);
+                if (this.pacijent != null)
+                {
+                    Model.Pacijent oldPacijent = this.pacijent;
+                    this.pacijent = null;
+                    oldPacijent.RemovePregled(this);
+                }
+                if (newPacijent != null)
+                {
+                    this.pacijent = newPacijent;
+                    this.pacijent.AddPregled(this);
+                }
             }
-         }
-      }
-      public Model.Pacijent pacijent;
-      
-      /// <pdGenerated>default parent getter</pdGenerated>
-      public Model.Pacijent GetPacijent()
-      {
-         return pacijent;
-      }
-      
-      /// <pdGenerated>default parent setter</pdGenerated>
-      /// <param>newPacijent</param>
-      public void SetPacijent(Model.Pacijent newPacijent)
-      {
-         if (this.pacijent != newPacijent)
-         {
-            if (this.pacijent != null)
-            {
-               Model.Pacijent oldPacijent = this.pacijent;
-               this.pacijent = null;
-               oldPacijent.RemovePregled(this);
-            }
-            if (newPacijent != null)
-            {
-               this.pacijent = newPacijent;
-               this.pacijent.AddPregled(this);
-            }
-         }
-      }
-   
-   }
+        }
+
+    }
 }

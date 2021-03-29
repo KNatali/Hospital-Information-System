@@ -7,6 +7,10 @@
         mc:Ignorable="d"
         Title="DoktorWindow" Height="450" Width="800">
     <Grid>
-        
+        <Label Content="Doktor" HorizontalAlignment="Left" Margin="80,63,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
+        <Button Content="Zakazi pregled" Click="ZakaziPregled" HorizontalAlignment="Left" Margin="371,98,0,0" VerticalAlignment="Top" Height="41" Width="139" Background="#FFD0CBF5"/>
+        <Button Content="Prikaz zakazanih pregleda" Click="PrikazPregleda" HorizontalAlignment="Left" Margin="371,176,0,0" VerticalAlignment="Top" Height="41" Width="139" Background="#FFD0CBF5"/>
+
+
     </Grid>
 </Window>

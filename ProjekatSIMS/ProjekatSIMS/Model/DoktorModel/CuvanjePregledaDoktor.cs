@@ -1,15 +1,31 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Model.DoktorModel
 {
-   public class CuvanjePregledaDoktor
-   {
-      public void Sacuvaj(Pregled zakazanPregled)
+   public class CuvanjePregledaDoktor 
+    { 
+
+        private String lokacijaFajla;
+   
+
+        public CuvanjePregledaDoktor(String lokacija)
+        {
+            lokacijaFajla = lokacija;
+        }
+      public void Sacuvaj(String pregled,Boolean znak)
       {
-         // TODO: implement
-      }
+
+            
+            using StreamWriter file = new StreamWriter(lokacijaFajla,znak);
+
+
+
+            file.WriteLineAsync(pregled);
+
+        }
       
       public List<Pregled> UcitajSvePregled()
       {
@@ -29,7 +45,7 @@ namespace Model.DoktorModel
          return null;
       }
    
-      private String LokacijaFajla;
+      
    
    }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjekatSIMS.Model.DoktorModel;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -20,6 +21,20 @@ namespace ProjekatSIMS
         public DoktorWindow()
         {
             InitializeComponent();
+        }
+
+        private void ZakaziPregled(object sender, RoutedEventArgs e)
+        {
+            ZakaziPregled z = new ZakaziPregled();
+            z.Show();
+
+        }
+
+        private void PrikazPregleda(object sender, RoutedEventArgs e)
+        {
+            PrikazPregleda p = new PrikazPregleda();
+            p.Show();
+
         }
     }
 }
