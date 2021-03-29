@@ -1,0 +1,23 @@
+﻿<Window x:Class="ProjekatSIMS.Model.UpravnikModel.PregledajWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjekatSIMS.Model.UpravnikModel"
+        mc:Ignorable="d"
+        Title="PregledajWindow" Height="450" Width="800">
+    <Grid>
+
+        <ListView Margin="10" Name="lvProstorije">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Id" Width="120" DisplayMemberBinding="{Binding id}" />
+                    <GridViewColumn Header="Sprat" Width="50" DisplayMemberBinding="{Binding sprat}" />
+                    <GridViewColumn Header="Vrsta" Width="150" DisplayMemberBinding="{Binding vrsta}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+
+    </Grid>
+</Window>

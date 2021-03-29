@@ -1,7 +1,3 @@
-// File:    Upravnik.cs
-// Author:  mzari
-// Created: 26 March 2021 18:16:13
-// Purpose: Definition of Class Upravnik
 
 using Model.UpravnikModel;
 using System;
@@ -10,17 +6,17 @@ namespace Model
 {
    public class Upravnik
    {
-      public String id;
-      public String ime;
-      public String prezime;
-      public DateTime datumRodjenja;
-      public String email;
-      public String telefon;
+      public String id { get; set; }
+        public String ime { get; set; }
+        public String prezime { get; set; }
+        public DateTime datumRodjenja { get; set; }
+        public String email { get; set; }
+        public String telefon { get; set; }
+
+        public RegistrovaniKorisnik registrovaniKorisnik { get; set; }
+        public System.Collections.ArrayList prostorija;
       
-      public RegistrovaniKorisnik registrovaniKorisnik;
-      public System.Collections.ArrayList prostorija;
       
-      /// <pdGenerated>default getter</pdGenerated>
       public System.Collections.ArrayList GetProstorija()
       {
          if (prostorija == null)
@@ -28,7 +24,6 @@ namespace Model
          return prostorija;
       }
       
-      /// <pdGenerated>default setter</pdGenerated>
       public void SetProstorija(System.Collections.ArrayList newProstorija)
       {
          RemoveAllProstorija();
@@ -36,7 +31,6 @@ namespace Model
             AddProstorija(oProstorija);
       }
       
-      /// <pdGenerated>default Add</pdGenerated>
       public void AddProstorija(Prostorija newProstorija)
       {
          if (newProstorija == null)
@@ -47,7 +41,7 @@ namespace Model
             this.prostorija.Add(newProstorija);
       }
       
-      /// <pdGenerated>default Remove</pdGenerated>
+     
       public void RemoveProstorija(Prostorija oldProstorija)
       {
          if (oldProstorija == null)
@@ -57,7 +51,7 @@ namespace Model
                this.prostorija.Remove(oldProstorija);
       }
       
-      /// <pdGenerated>default removeAll</pdGenerated>
+     
       public void RemoveAllProstorija()
       {
          if (prostorija != null)

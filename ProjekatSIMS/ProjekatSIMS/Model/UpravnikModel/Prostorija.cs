@@ -1,6 +1,8 @@
 
 using Model.DoktorModel;
+using ProjekatSIMS.Model.UpravnikModel;
 using System;
+using System.Collections;
 
 namespace Model.UpravnikModel
 {
@@ -12,21 +14,35 @@ namespace Model.UpravnikModel
             return true;
       }
    
-      public String id;
-      public int sprat;
-      public VrstaProstorije vrsta;
-      
-      public System.Collections.ArrayList inventar;
-      
-      /// <pdGenerated>default getter</pdGenerated>
-      public System.Collections.ArrayList GetInventar()
+      public String id { get; set; }
+      public int sprat { get; set; }
+        public EnumProstorija vrsta { get; set; }
+
+        public System.Collections.ArrayList inventar;
+        public Prostorija(String id, int sprat, EnumProstorija vrsta, ArrayList inventar)
+        {
+            this.id = id;
+            this.sprat = sprat;
+            this.vrsta = vrsta;
+            this.inventar = inventar;
+        }
+        public Prostorija(String id, int sprat, EnumProstorija vrsta)
+        {
+            this.id = id;
+            this.sprat = sprat;
+            this.vrsta = vrsta;
+            
+        }
+
+
+        public System.Collections.ArrayList GetInventar()
       {
          if (inventar == null)
             inventar = new System.Collections.ArrayList();
          return inventar;
       }
       
-      /// <pdGenerated>default setter</pdGenerated>
+      
       public void SetInventar(System.Collections.ArrayList newInventar)
       {
          RemoveAllInventar();
@@ -34,7 +50,7 @@ namespace Model.UpravnikModel
             AddInventar(oInventar);
       }
       
-      /// <pdGenerated>default Add</pdGenerated>
+      
       public void AddInventar(Inventar newInventar)
       {
          if (newInventar == null)
@@ -45,7 +61,7 @@ namespace Model.UpravnikModel
             this.inventar.Add(newInventar);
       }
       
-      /// <pdGenerated>default Remove</pdGenerated>
+      
       public void RemoveInventar(Inventar oldInventar)
       {
          if (oldInventar == null)
@@ -55,7 +71,7 @@ namespace Model.UpravnikModel
                this.inventar.Remove(oldInventar);
       }
       
-      /// <pdGenerated>default removeAll</pdGenerated>
+      
       public void RemoveAllInventar()
       {
          if (inventar != null)
