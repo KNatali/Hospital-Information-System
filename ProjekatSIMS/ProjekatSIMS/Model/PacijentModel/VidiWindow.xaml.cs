@@ -4,6 +4,7 @@ using Model.PacijentModel;
 using Model.UpravnikModel;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,24 +17,25 @@ using System.Windows.Shapes;
 
 namespace ProjekatSIMS.Model.PacijentModel
 {
-    /// <summary>
-    /// Interaction logic for VidiWindow.xaml
-    /// </summary>
+    
     public partial class VidiWindow : Window
     {
-        public CuvanjePregledaPacijent fajl { get; set; }
+       public List<Pregled> Pregledi 
+        { 
+            get; 
+            set;
+        }
         public VidiWindow()
         {
             InitializeComponent();
-
             this.DataContext = this;
-            fajl = new CuvanjePregledaPacijent(@"C:\Users\Home\Dropbox\My PC (DESKTOP-TI6DNK1)\Desktop\ProjekatSIMSdva\Projekat\ProjekatSIMS\PregledPacijent.txt");
-            DateTime pocetak = new DateTime(2020, 10, 11);
-            Pacijent pa = new Pacijent { jmbg = "152", ime = "Milan", prezime = "anic", adresa = "dd", brojTelefona = "065", datumRodjenja = pocetak, email = "scsc" };
-            Doktor d = new Doktor { Jmbg = "153", Ime = "Milos", Prezime = "anissc", Adresa = "dd", BrojTelefona = "065", DatumRodjenja = pocetak, Email = "scscghg" };
 
-            Pregled p = new Pregled { Id = 1, Pocetak = pocetak, Trajanje = 30, pacijent = pa, doktor = d };
-            fajl.Sacuvaj(p);
+            Pregledi = new List<Pregled>();
+            CuvanjePregledaPacijent fajl = new CuvanjePregledaPacijent();
+            Pregledi = fajl.DobaviSve();
+            
+            
         }
+
     }
 }

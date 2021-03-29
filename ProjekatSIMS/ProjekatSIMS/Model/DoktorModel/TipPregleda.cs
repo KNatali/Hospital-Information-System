@@ -3,10 +3,10 @@ using System;
 
 namespace Model.DoktorModel
 {
-   public class TipPregleda
+   public enum TipPregleda
    {
-      private EnumConstant Standardni;
-      private EnumConstant Operacija;
+       Standardni,
+       Operacija
    
    }
 }

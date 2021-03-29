@@ -7,6 +7,16 @@
         mc:Ignorable="d"
         Title="Otkazi pregled" Height="450" Width="800">
     <Grid>
-        
+        <DataGrid x:Name="dataGridPregledi" ItemsSource="{Binding Pregledi}" IsReadOnly="True"
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="43,61,54,0" Height="229" VerticalAlignment="Top">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id pregleda" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Vreme pocetka" Binding="{Binding Pocetak}"/>
+                <DataGridTextColumn Header="Trajanje" Binding="{Binding Trajanje}"/>
+                <DataGridTextColumn Header="Ime pacijenta" Binding="{Binding pacijent.Ime}"/>
+                <DataGridTextColumn Header="Prezime pacijenta" Binding="{Binding pacijent.Prezime}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Otkazi pregled" HorizontalAlignment="Left" Margin="621,362,0,0" VerticalAlignment="Top" Click="Button_Click"/>
     </Grid>
 </Window>
