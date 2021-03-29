@@ -42,14 +42,32 @@ namespace ProjekatSIMS
         private void Brisanje(object sender, RoutedEventArgs e)
         {
             // selektuje nekog pacijenta u tabeli i onda klikne na brisanje
-            if (dataGridPacijenti.SelectedItems.Count > 0)
+            /*if (dataGridPacijenti.SelectedItems.Count > 0)
             {
                 for (int i = 0; i < dataGridPacijenti.SelectedItems.Count; i++)
                 {
                     System.Data.DataRowView selektovani = (System.Data.DataRowView)dataGridPacijenti.SelectedItems[i];
                     String str = Convert.ToString(selektovani.Row.ItemArray[10]);
                 }
+            }*/
+            MessageBoxResult ret = MessageBox.Show("Da li ste sigurni?", "Provera", MessageBoxButton.YesNo);
+            switch (ret)
+            {
+                case MessageBoxResult.Yes:
+                    for (int i = 0; i < dataGridPacijenti.SelectedItems.Count; i++)
+                    {
+                        System.Data.DataRowView selektovani = (System.Data.DataRowView)dataGridPacijenti.SelectedItems[i];
+                        String str = Convert.ToString(selektovani.Row.ItemArray[10]);
+                    }
+                    break;
+                case MessageBoxResult.No:
+                    break;
             }
+        }
+        private void Izmena_profila(object sender, RoutedEventArgs e)
+        {
+            IzmenaProfilaWindow ip = new IzmenaProfilaWindow();
+            ip.Show();
         }
     }
 }
