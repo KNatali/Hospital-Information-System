@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjekatSIMS.Model.PacijentModel;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -23,8 +24,26 @@ namespace ProjekatSIMS
         }
         private void Click_zakazi(object sender, RoutedEventArgs e)
         {
-            Window zakazi = new Window();
-            zakazi.Show();
+            ZakaziWindow zw = new ZakaziWindow();
+            zw.Show();
+        }
+
+        private void Click_otkazi(object sender, RoutedEventArgs e)
+        {
+            OtkaziWindow ow = new OtkaziWindow();
+            ow.Show();
+        }
+
+        private void Click_izmeni(object sender, RoutedEventArgs e)
+        {
+            IzmeniWindow iw = new IzmeniWindow();
+            iw.Show();
+        }
+
+        private void Click_vidi(object sender, RoutedEventArgs e)
+        {
+            VidiWindow vw = new VidiWindow();
+            vw.Show();
         }
     }
 }
