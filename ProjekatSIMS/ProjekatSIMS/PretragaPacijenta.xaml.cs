@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Model;
+using Model.SekretarModel;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -17,9 +19,24 @@ namespace ProjekatSIMS
     /// </summary>
     public partial class PretragaPacijenta : Window
     {
+        public CuvanjePacijenta fajl { get; set; }
         public PretragaPacijenta()
         {
             InitializeComponent();
+            this.DataContext = this;
+            fajl = new CuvanjePacijenata(@"C:\Users\mrvic\Projekat\ProjekatSIMS\Pacijent.txt");
+            DateTime datum1 = new DateTime(1999,02,17);
+            /*Pacijent p = new Pacijent
+            {
+                Jmbg = "152",
+                Ime = "Milan",
+                Prezime = "anic",
+                Adresa = "dd",
+                BrojTelefona = "065",
+                DatumRodjenja = datum1,
+                Email = "scsc"
+            };*/
+            //fajl.Sacuvaj(p);
         }
     }
 }

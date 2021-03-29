@@ -21,5 +21,12 @@ namespace ProjekatSIMS
         {
             InitializeComponent();
         }
+        private void Odustani(object sender, RoutedEventArgs e)
+        {
+        }
+        private void Potvrdi(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }

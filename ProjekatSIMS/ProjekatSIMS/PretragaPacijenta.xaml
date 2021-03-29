@@ -7,6 +7,17 @@
         mc:Ignorable="d"
         Title="PretragaPacijenta" Height="450" Width="800">
     <Grid>
-        
+        <DataGrid x:Name="dataGridPacijenti" ItemsSource="{Binding Pacijenti}" IsReadOnly="True"
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="40,60,40,100">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="JMBG" Binding="{Binding Jmbg}" Width="100"/>
+                <DataGridTextColumn Header="Ime" Binding="{Binding Ime}" Width="100"/>
+                <DataGridTextColumn Header="Prezime" Binding="{Binding Prezime}" Width="100"/>
+                <DataGridTextColumn Header="Broj telefona" Binding="{Binding BrojTelefona}" Width="100"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="100"/>
+                <DataGridTextColumn Header="Datum rodjenja" Binding="{Binding DatumRodjenja}" Width="100"/>
+                <DataGridTextColumn Header="Adresa" Binding="{Binding Adresa}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>

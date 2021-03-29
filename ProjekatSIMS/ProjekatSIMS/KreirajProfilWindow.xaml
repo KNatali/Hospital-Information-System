@@ -7,6 +7,23 @@
         mc:Ignorable="d"
         Title="KreirajProfilWindow" Height="450" Width="800">
     <Grid>
-        
+        <Button Content="Odustani" Click="Odustani" HorizontalAlignment="Left" Margin="80,350,0,0" VerticalAlignment="Top" Height="40" Width="90" Background="#FFA6B1D6"/>
+        <Button Content="Kreiraj" Click="Potvrdi" HorizontalAlignment="Left" Height="40" Margin="630,350,0,0" VerticalAlignment="Top" Width="90" Background="#FFA6B1D6"/>
+        <Label Content="Unesite podatke pacijenta" HorizontalAlignment="Left" Height="30" Margin="80,30,0,0" VerticalAlignment="Top" Width="230" />
+        <Label Content="JMBG" HorizontalAlignment="Left" Height="25" Margin="80,80,0,0" VerticalAlignment="Top" Width="145"/>
+        <TextBox HorizontalAlignment="Left" Margin="265,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Ime" HorizontalAlignment="Left" Height="25" Margin="80,120,0,0" VerticalAlignment="Top" Width="145"/>
+        <TextBox HorizontalAlignment="Left" Margin="265,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Prezime" HorizontalAlignment="Left" Height="25" Margin="80,160,0,0" VerticalAlignment="Top" Width="145"/>
+        <TextBox HorizontalAlignment="Left" Margin="265,160,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Broj telefona" HorizontalAlignment="Left" Height="25" Margin="80,200,0,0" VerticalAlignment="Top" Width="145"/>
+        <TextBox HorizontalAlignment="Left" Margin="265,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="E-mail" HorizontalAlignment="Left" Height="25" Margin="80,240,0,0" VerticalAlignment="Top" Width="145"/>
+        <TextBox HorizontalAlignment="Left" Margin="265,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Adresa" HorizontalAlignment="Left" Height="25" Margin="80,280,0,0" VerticalAlignment="Top" Width="145"/>
+        <TextBox HorizontalAlignment="Left" Margin="265,280,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Datum rodjenja" HorizontalAlignment="Left" Height="25" Margin="440,80,0,0" VerticalAlignment="Top" Width="145"/>
+        <DatePicker HorizontalAlignment="Left" Margin="560,80,0,0" VerticalAlignment="Top"/>
+
     </Grid>
 </Window>
