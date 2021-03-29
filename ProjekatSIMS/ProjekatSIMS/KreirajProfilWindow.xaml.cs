@@ -23,6 +23,16 @@ namespace ProjekatSIMS
         }
         private void Odustani(object sender, RoutedEventArgs e)
         {
+            MessageBoxResult ret = MessageBox.Show("Da li ste sigurni?", "Provera", MessageBoxButton.YesNo);
+            switch (ret)
+            {
+                case MessageBoxResult.Yes:
+                    SekretarWindow s = new SekretarWindow();
+                    s.Show();
+                    break;
+                case MessageBoxResult.No:
+                    break;
+            }
         }
         private void Potvrdi(object sender, RoutedEventArgs e)
         {

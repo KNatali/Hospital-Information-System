@@ -12,9 +12,6 @@ using System.Windows.Shapes;
 
 namespace ProjekatSIMS
 {
-    /// <summary>
-    /// Interaction logic for SekretarWindow.xaml
-    /// </summary>
     public partial class SekretarWindow : Window
     {
         public SekretarWindow()
@@ -28,8 +25,16 @@ namespace ProjekatSIMS
         }
         private void Pretrazivanje(object sender, RoutedEventArgs e)
         {
-            PretragaPacijenta pp = new PretragaPacijenta();
+            PregledPacijenata pp = new PregledPacijenata();
             pp.Show();
+        }
+        private void Izmena_profila(object sender, RoutedEventArgs e)
+        {
+            
+        }
+        private void Brisanje(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
