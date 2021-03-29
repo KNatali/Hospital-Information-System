@@ -27,10 +27,10 @@ namespace ProjekatSIMS.Model.PacijentModel
             InitializeComponent();
 
             this.DataContext = this;
-            fajl = new CuvanjePregledaPacijent(@"C:\Users\Home\Dropbox\My PC (DESKTOP-TI6DNK1)\Desktop\ProjekatSIMSdva\Projekat\PregledPacijent.txt");
+            fajl = new CuvanjePregledaPacijent(@"C:\Users\Home\Dropbox\My PC (DESKTOP-TI6DNK1)\Desktop\ProjekatSIMSdva\Projekat\ProjekatSIMS\PregledPacijent.txt");
             DateTime pocetak = new DateTime(2020, 10, 11);
             Pacijent pa = new Pacijent { jmbg = "152", ime = "Milan", prezime = "anic", adresa = "dd", brojTelefona = "065", datumRodjenja = pocetak, email = "scsc" };
-            Doktor d = new Doktor { Jmbg = "152", Ime = "Milos", Prezime = "anissc", Adresa = "dd", BrojTelefona = "065", DatumRodjenja = pocetak, Email = "scscghg" };
+            Doktor d = new Doktor { Jmbg = "153", Ime = "Milos", Prezime = "anissc", Adresa = "dd", BrojTelefona = "065", DatumRodjenja = pocetak, Email = "scscghg" };
 
             Pregled p = new Pregled { Id = 1, Pocetak = pocetak, Trajanje = 30, pacijent = pa, doktor = d };
             fajl.Sacuvaj(p);
