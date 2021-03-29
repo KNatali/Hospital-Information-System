@@ -21,5 +21,9 @@ namespace ProjekatSIMS.Model.PacijentModel
         {
             InitializeComponent();
         }
+
+       
     }
+    
+
 }

@@ -5,8 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjekatSIMS.Model.PacijentModel"
         mc:Ignorable="d"
-        Title="ZakaziWindow" Height="450" Width="800">
+        Title="Zakazi pregled" Height="450" Width="800">
     <Grid>
+        <Label Content="Zakazivanje pregleda" HorizontalAlignment="Left" Margin="34,33,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <Label Content="Odaberite datum:" HorizontalAlignment="Left" Margin="32,67,0,0" VerticalAlignment="Top" FontStyle="Italic"/>
+        <DatePicker HorizontalAlignment="Left" Margin="156,68,0,0" VerticalAlignment="Top"/>
+        <Label Content="Odaberite doktora:" HorizontalAlignment="Left" Margin="23,239,0,0" VerticalAlignment="Top" FontStyle="Italic"/>
         
+        <Button Content="Zakazi" Width="100" Height="40" HorizontalAlignment="Left" Margin="666,353,0,0" VerticalAlignment="Top"/>
+        <Label Content="Upisite svoje ime: " HorizontalAlignment="Left" Margin="28,98,0,0" VerticalAlignment="Top" FontStyle="Italic"/>
+        <TextBox HorizontalAlignment="Left" Margin="156,106,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Upisite svoje prezime: " HorizontalAlignment="Left" Margin="20,129,0,0" VerticalAlignment="Top" FontStyle="Italic"/>
+        <TextBox HorizontalAlignment="Left" Margin="156,142,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Upisite svoj JMBG: " HorizontalAlignment="Left" Margin="20,173,0,0" VerticalAlignment="Top" FontStyle="Italic"/>
+        <TextBox HorizontalAlignment="Left" Margin="156,181,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <ListBox Name="lbTodoList" HorizontalContentAlignment="Stretch" Margin="156,252,431,80">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="0,2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="100" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding Title}" />
+                        <ProgressBar Grid.Column="1" Minimum="0" Maximum="100" Value="{Binding Completion}" />
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
     </Grid>
 </Window>

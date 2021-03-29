@@ -33,15 +33,15 @@ namespace Model
             return true; 
       }
    
-      public String jmbg;
-      public String ime;
-      public String prezime;
-      public String brojTelefona;
-      public String email;
-      public DateTime datumRodjenja;
-      public String adresa;
-      
-      public RegistrovaniKorisnik registrovaniKorisnik;
+      public String jmbg { get; set; }
+        public String ime { get; set; }
+        public String prezime { get; set; }
+        public String brojTelefona { get; set; }
+        public String email { get; set; }
+        public DateTime datumRodjenja { get; set; }
+        public String adresa { get; set; }
+
+        public RegistrovaniKorisnik registrovaniKorisnik;
       public System.Collections.ArrayList pregled;
       
       /// <pdGenerated>default getter</pdGenerated>
