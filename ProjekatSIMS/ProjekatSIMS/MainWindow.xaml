@@ -1,0 +1,16 @@
+﻿<Window x:Class="ProjekatSIMS.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjekatSIMS"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+
+        <Button Content="Upravnik" Click="Upravnik_Click" HorizontalAlignment="Left" Margin="94,85,0,0" VerticalAlignment="Top" Height="62" Width="236"/>
+        <Button Content="Sekretar" Click="Sekretar_Click" HorizontalAlignment="Left" Margin="450,85,0,0" VerticalAlignment="Top" Height="62" Width="236"/>
+        <Button Content="Doktor" Click="Doktor_Click" HorizontalAlignment="Left" Margin="94,230,0,0" VerticalAlignment="Top" Height="67" Width="236"/>
+        <Button Content="Pacijent" Click="Pacijent_Click" HorizontalAlignment="Left" Margin="450,230,0,0" VerticalAlignment="Top" Height="67" Width="236"/>
+    </Grid>
+</Window>
