@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="SekretarWindow" Height="450" Width="800">
     <Grid>
-        
+        <Button Content="Kreiraj novi profil" Click="Kreiranje_profila" HorizontalAlignment="Left" Margin="175,120,0,0" VerticalAlignment="Top" Height="52" Width="161" Background="#FFA6B1D6"/>
+        <Button Content="Pretraga pacijenata" Click="Pretrazivanje" HorizontalAlignment="Left" Margin="448,120,0,0" VerticalAlignment="Top" Height="52" Width="161" Background="#FFA6B1D6"/>
     </Grid>
 </Window>

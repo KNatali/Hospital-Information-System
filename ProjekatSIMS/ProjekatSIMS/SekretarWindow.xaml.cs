@@ -21,5 +21,15 @@ namespace ProjekatSIMS
         {
             InitializeComponent();
         }
+        private void Kreiranje_profila(object sender, RoutedEventArgs e)
+        {
+            KreirajProfilWindow kp = new KreirajProfilWindow();
+            kp.Show();
+        }
+        private void Pretrazivanje(object sender, RoutedEventArgs e)
+        {
+            PretragaPacijenta pp = new PretragaPacijenta();
+            pp.Show();
+        }
     }
 }
