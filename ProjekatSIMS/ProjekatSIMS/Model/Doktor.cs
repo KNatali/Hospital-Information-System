@@ -5,15 +5,15 @@ namespace Model
 {
    public class Doktor
    {
-      public String Jmbg;
-      public String Ime;
-      public String Prezime;
-      public String BrojTelefona;
-      public String Email;
-      public DateTime DatumRodjenja;
-      public String Adresa;
-      
-      public RegistrovaniKorisnik registrovaniKorisnik;
+      public String Jmbg { get; set; }
+      public String Ime { get; set; }
+        public String Prezime { get; set; }
+        public String BrojTelefona { get; set; }
+        public String Email { get; set; }
+        public DateTime DatumRodjenja { get; set; }
+        public String Adresa { get; set; }
+
+        public RegistrovaniKorisnik registrovaniKorisnik;
       public System.Collections.ArrayList pregled;
       
       /// <pdGenerated>default getter</pdGenerated>
