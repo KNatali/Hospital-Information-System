@@ -15,12 +15,35 @@ namespace ProjekatSIMS.Model.UpravnikModel
 {
     public partial class PregledajWindow : Window
     {
+        public List<Prostorija> prostorije { get; set; }
         public PregledajWindow()
         {
             InitializeComponent();
-            List<Prostorija> prostorije = new List<Prostorija>();
-            lvProstorije.ItemsSource = prostorije;
+            this.DataContext = this;
+
+            prostorije = new List<Prostorija>();
+            CuvanjeProstorija file = new CuvanjeProstorija(@"C:\Users\mzari\Desktop\Projekat\Projekat\ProjekatSIMS\Prostorije.txt");
+            prostorije = file.UcitajProstorije();
+        }
+        private void Izmeni(object sender, RoutedEventArgs e)
+        {
+
+            Prostorija p = (Prostorija)dataGridProstorije.SelectedItems[0];
+            IzmeniWindow  izmeni = new IzmeniWindow(izmeni);
+            izmeni.Show();
 
         }
+        private void Obrisi(object sender, RoutedEventArgs e)
+        {
+
+            Prostorija p = (Prostorija)dataGridProstorije.SelectedItems[0];
+            ObrisiWindow o = new ObrisiWindow(o);
+            o.Show();
+
+        }
+
+
+
+
     }
 }

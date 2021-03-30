@@ -8,15 +8,17 @@
         Title="PregledajWindow" Height="450" Width="800">
     <Grid>
 
-        <ListView Margin="10" Name="lvProstorije">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Id" Width="120" DisplayMemberBinding="{Binding id}" />
-                    <GridViewColumn Header="Sprat" Width="50" DisplayMemberBinding="{Binding sprat}" />
-                    <GridViewColumn Header="Vrsta" Width="150" DisplayMemberBinding="{Binding vrsta}" />
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <DataGrid x:Name="dataGridProstorije" ItemsSource="{Binding Pregledi}" IsReadOnly="True"
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="48,53,49,152">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Width="150" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Sprat" Width="150" Binding="{Binding Pocetak}"/>
+                <DataGridTextColumn Header="Vrsta" Width="150" Binding="{Binding Trajanje}"/>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Izmeni" Click="Izmeni"  HorizontalAlignment="Left" Margin="170,337,0,0" VerticalAlignment="Top" Height="39" Width="132" Background="#FFB5CDE2"/>
+        <Button Content="Obrisi" Click="Obrisi"  HorizontalAlignment="Left" Margin="516,337,0,0" VerticalAlignment="Top" Height="39" Width="132" Background="#FFB5CDE2"/>
 
 
     </Grid>
