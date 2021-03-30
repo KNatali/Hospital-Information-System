@@ -38,7 +38,7 @@ namespace Model.PacijentModel
                     if (parts[5] == "Operacija")
                         pregled.Tip = TipPregleda.Operacija;
                     
-                    pregled.StatusPergleda = StatusPregleda.Zakazan;
+                    pregled.StatusPregleda = StatusPregleda.Zakazan;
                     pregledi.Add(pregled);
                 }
                 file.Close();
