@@ -13,16 +13,13 @@ using System.Windows.Shapes;
 namespace ProjekatSIMS.Model.PacijentModel
 {
     /// <summary>
-    /// Interaction logic for IzmeniWindow.xaml
+    /// Interaction logic for VidiDoktorsWindow.xaml
     /// </summary>
-    public partial class IzmeniWindow : Window
+    public partial class VidiDoktorsWindow : Window
     {
-        public IzmeniWindow()
+        public VidiDoktorsWindow()
         {
             InitializeComponent();
-            this.DataContext = this;
         }
-
-
     }
 }
