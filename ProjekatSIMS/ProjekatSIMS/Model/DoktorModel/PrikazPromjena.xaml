@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="PrikazPromjena" Height="450" Width="800">
     <Grid>
-        <DataGrid x:Name="dataGridPregledi" ItemsSource="{Binding Pregledi}" IsReadOnly="True"
+        <DataGrid x:Name="dataGrid" ItemsSource="{Binding Pregledi}" IsReadOnly="True"
                   SelectionMode="Single" AutoGenerateColumns="False" Margin="43,61,54,251">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id pregleda" Binding="{Binding Id}"/>
@@ -21,18 +21,20 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Label Content="Datum pregleda:" HorizontalAlignment="Left" Margin="50,262,0,0" VerticalAlignment="Top" Height="27"/>
+        <Label Content="Datum pregleda:" HorizontalAlignment="Left" Margin="50,216,0,0" VerticalAlignment="Top" Height="29"/>
 
-        <DatePicker Name="Date" HorizontalAlignment="Left" Margin="210,262,0,0" VerticalAlignment="Top" Height="24" Width="120"/>
-        <Label Content="Vrijeme pocetka:" HorizontalAlignment="Left" Margin="51,320,0,0" VerticalAlignment="Top" Height="27"/>
-        <Label Content="Sati:" HorizontalAlignment="Left" Margin="210,315,0,0" VerticalAlignment="Top" Height="27" RenderTransformOrigin="-0.749,0.04"/>
-        <TextBox Name="Sati" HorizontalAlignment="Left" Margin="256,320,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Height="18"/>
+        <DatePicker Name="Date" HorizontalAlignment="Left" Margin="210,216,0,0" VerticalAlignment="Top" Height="26" Width="120"/>
+        <Label Content="Vrijeme pocetka:" HorizontalAlignment="Left" Margin="51,263,0,0" VerticalAlignment="Top" Height="29"/>
+        <Label Content="Sati:" HorizontalAlignment="Left" Margin="210,265,0,0" VerticalAlignment="Top" Height="29" RenderTransformOrigin="-0.749,0.04"/>
+        <TextBox Name="Sati" HorizontalAlignment="Left" Margin="256,271,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Height="19"/>
 
-        <Label Content="Minuti:" HorizontalAlignment="Left" Margin="337,316,0,0" VerticalAlignment="Top" Height="26" RenderTransformOrigin="-0.749,0.04"/>
-        <TextBox Name="Minuti" HorizontalAlignment="Left" Margin="400,320,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Height="18"/>
+        <Label Content="Minuti:" HorizontalAlignment="Left" Margin="337,266,0,0" VerticalAlignment="Top" Height="28" RenderTransformOrigin="-0.749,0.04"/>
+        <TextBox Name="Minuti" HorizontalAlignment="Left" Margin="400,271,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Height="19"/>
 
-        <Label Content="Trajanje(u minutama)" HorizontalAlignment="Left" Margin="51,365,0,0" VerticalAlignment="Top" Height="28"/>
-        <TextBox Name="Trajanje" HorizontalAlignment="Left" Margin="210,370,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18"/>
+        <Label Content="Trajanje(u minutama)" HorizontalAlignment="Left" Margin="51,319,0,0" VerticalAlignment="Top" Height="31"/>
+        <TextBox Name="Trajanje" HorizontalAlignment="Left" Margin="210,324,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="21"/>
+        <Button Content="Sacuvaj" Click="PotvrdiIzmjenu" HorizontalAlignment="Left" Margin="654,319,0,0" VerticalAlignment="Top" Height="35" Width="92" Background="#FFB5CDE2"/>
+        <Label Content="NAPOMENA:Obavezno selektovati red u tabeli prije klika na datu opciju" HorizontalAlignment="Left" Margin="394,359,0,0" VerticalAlignment="Top" Height="27"/>
 
     </Grid>
 </Window>
