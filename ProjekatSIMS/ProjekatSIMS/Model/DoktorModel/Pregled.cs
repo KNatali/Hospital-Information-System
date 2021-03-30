@@ -71,29 +71,6 @@ namespace Model.DoktorModel
 
        
 
-        public Boolean OtkaziPregledPacijent()
-        {
-            // TODO: implement
-            return true;
-        }
-
-        public Boolean IzmeniPregledPacijent(DateTime datumPregleda, Model.Doktor doktor)
-        {
-            // TODO: implement
-            return true;
-        }
-
-
-        public void PrikaziPregledePacijent()
-        {
-            // TODO: implement
-        }
-
-        public Pregled ZakaziPregledePacijent()
-        {
-            // TODO: implement
-            return null;
-        }
 
         public int Id { get; set; }
         public DateTime Pocetak { get; set; }
