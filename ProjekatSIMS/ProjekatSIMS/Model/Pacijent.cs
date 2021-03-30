@@ -1,35 +1,57 @@
-// File:    Pacijent.cs
-// Author:  mrvic
-// Created: 28 March 2021 09:56:35
-// Purpose: Definition of Class Pacijent
-
 using Model.DoktorModel;
 using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace Model
 {
     public class Pacijent
     {
-        /*public void PregledProfila()
+        public Boolean IzmeniInformacije(String i, String p, String m, String t, String a, String j, DateTime d)
         {
-            // TODO: implement
-        }
-
-        public Pacijent KreirajProfil()
-        {
-            // TODO: implement
-            return null;
-        }*/
-
-        public Boolean IzmeniInformacije()
-        {
-            // TODO: implement
+            string linija;
+            List<String> linije = new List<string>();
+            using (StreamReader fajl = new StreamReader(@"C:\Users\mrvic\Projekat\ProjekatSIMS\Pacijent.txt"))
+            {
+                while ((linija = fajl.ReadLine()) != null)
+                {
+                    string[] deo = linija.Split(",");
+                    if (deo[5] == this.Jmbg.ToString())
+                    {
+                        deo[0] = i.ToString();
+                        deo[1] = p.ToString();
+                        deo[2] = m.ToString();
+                        deo[3] = t.ToString();
+                        deo[4] = a.ToString();
+                        deo[5] = j.ToString();
+                        deo[6] = d.ToString();
+                        linija = deo[0] + "," + deo[1] + "," + deo[2] + "," + deo[3] + "," + deo[4] + "," + deo[5] + "," + deo[6];
+                    }
+                    linije.Add(linija);
+                }
+                fajl.Close();
+            }
+            File.WriteAllLinesAsync(@"C:\Users\mrvic\Projekat\ProjekatSIMS\Pacijent.txt", linije);
             return true;
         }
 
-        public Boolean ObrisiPacijent(int id)
+        public Boolean ObrisiPacijent()
         {
-            // TODO: implement
+            string linija;
+            List<String> linije = new List<string>();
+            using (StreamReader fajl = new StreamReader(@"C:\Users\mrvic\Projekat\ProjekatSIMS\Pacijent.txt"))
+            {
+                while ((linija = fajl.ReadLine()) != null)
+                {
+                    string[] deo = linija.Split(",");
+                    if (deo[5] != this.Jmbg.ToString())
+                    {
+                        linije.Add(linija);
+                    }
+                }
+                fajl.Close();
+            }
+            File.WriteAllLinesAsync(@"C:\Users\mrvic\Projekat\ProjekatSIMS\Pacijent.txt", linije);
             return true;
         }
 

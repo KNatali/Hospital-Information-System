@@ -95,18 +95,7 @@ namespace Model.DoktorModel
             return pregledi;
         }
       
-      public Pregled UcitajJedanPreglede(int id)
-      {
-         // TODO: implement
-         return null;
-      }
       
-      public Doktor UcitajDoktora()
-      {
-         // TODO: implement
-         return null;
-      }
-   
       
    
    }

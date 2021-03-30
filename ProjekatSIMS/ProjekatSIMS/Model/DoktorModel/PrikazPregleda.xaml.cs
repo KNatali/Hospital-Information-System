@@ -55,6 +55,7 @@ namespace ProjekatSIMS.Model.DoktorModel
             PrikazPromjena pr = new PrikazPromjena(p);
             pr.Show();
 
+
         }
     }
 }

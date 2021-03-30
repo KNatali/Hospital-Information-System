@@ -7,9 +7,28 @@
         mc:Ignorable="d"
         Title="Izmeni pregled" Height="450" Width="800">
     <Grid>
-        <Label Content="Unesite id pregleda: " HorizontalAlignment="Left" Margin="45,73,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="IdPregleda" HorizontalAlignment="Left" Margin="196,73,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <DataGrid x:Name="dataGridPregledi" ItemsSource="{Binding Pregledi}" IsReadOnly="True"
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="43,10,54,0" Height="229" VerticalAlignment="Top">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id pregleda" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Vreme pocetka" Binding="{Binding Pocetak}"/>
+                <DataGridTextColumn Header="Trajanje" Binding="{Binding Trajanje}"/>
+                <DataGridTextColumn Header="Ime pacijenta" Binding="{Binding pacijent.Ime}"/>
+                <DataGridTextColumn Header="Prezime pacijenta" Binding="{Binding pacijent.Prezime}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Izmeni" Width="100" Height="40"  Margin="673,368,0,0" VerticalAlignment="Top" Click="Izmeni_Click"/>
+        <StackPanel Margin="43,239,0,-39" HorizontalAlignment="Left">
+            <Label FontWeight="Bold" Content="Izaberite novi datum pregleda: "/>
+            <DatePicker Name="Datum"/>
+            <Label FontWeight="Bold" Content="Izaberite novo vreme pregleda: "/>
+            <Label Content="Sati: "  />
+            <TextBox  x:Name="Sati" Text="TextBox" TextWrapping="Wrap" Width="120"/>
+            <Label Content="Minuti: "  />
+            <TextBox  x:Name="Minuti" Text="TextBox" TextWrapping="Wrap" Width="120"/>
 
+
+        </StackPanel>
 
     </Grid>
 </Window>

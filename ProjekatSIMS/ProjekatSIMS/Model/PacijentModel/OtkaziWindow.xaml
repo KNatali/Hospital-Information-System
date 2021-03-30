@@ -17,6 +17,6 @@
                 <DataGridTextColumn Header="Prezime pacijenta" Binding="{Binding pacijent.Prezime}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Otkazi pregled" HorizontalAlignment="Left" Margin="621,362,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <Button Content="Otkazi pregled" HorizontalAlignment="Left" Margin="621,362,0,0" VerticalAlignment="Top" Click="Otkazi_Click"/>
     </Grid>
 </Window>
