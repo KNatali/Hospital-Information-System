@@ -7,7 +7,7 @@ namespace Model
 {
     public class Pacijent
     {
-        public Boolean IzmeniInformacije()
+        public Boolean IzmeniInformacije(String i, String p, String m, String t, String a, String j, DateTime d)
         {
             string linija;
             List<String> linije = new List<string>();
@@ -18,11 +18,13 @@ namespace Model
                     string[] deo = linija.Split(",");
                     if (deo[5] == this.Jmbg.ToString())
                     {
-                        deo[0] = Ime.ToString();
-                        deo[1] = Prezime.ToString();
-                        deo[2] = Email.ToString();
-                        deo[3] = BrojTelefona.ToString();
-                        deo[4] = Adresa.ToString();
+                        deo[0] = i.ToString();
+                        deo[1] = p.ToString();
+                        deo[2] = m.ToString();
+                        deo[3] = t.ToString();
+                        deo[4] = a.ToString();
+                        deo[5] = j.ToString();
+                        deo[6] = d.ToString();
                         linija = deo[0] + "," + deo[1] + "," + deo[2] + "," + deo[3] + "," + deo[4] + "," + deo[5] + "," + deo[6];
                     }
                     linije.Add(linija);

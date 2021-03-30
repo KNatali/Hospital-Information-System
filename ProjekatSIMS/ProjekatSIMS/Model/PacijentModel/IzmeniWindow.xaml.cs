@@ -35,6 +35,8 @@ namespace ProjekatSIMS.Model.PacijentModel
             DateTime datumNovi = new DateTime();
             datumNovi = datum.AddHours(sati);
             datumNovi = datumNovi.AddMinutes(minuti);
+            DateTime datumNoviTrajanje = new DateTime();
+            datumNoviTrajanje = datumNovi.AddMinutes(30);
             string jmbgNovi = "";
             string jmbgDoktorNovi = "";
             int idNovi;
@@ -66,6 +68,21 @@ namespace ProjekatSIMS.Model.PacijentModel
 
                         red = idNovi + "," + jmbgNovi + "," + jmbgDoktorNovi + "," + datumNovi.ToString() + "," + trajanjeNovo.ToString() + "," + tipNovi + "," + statusNovi + "," + salaNova;
                         lines.Add(red);
+                    }
+
+                    DateTime datum11 = Convert.ToDateTime(parts[3]);
+                    DateTime datum12 = datum11.AddMinutes(Convert.ToDouble(parts[4]));
+                    if (parts[6] == "Zakazan")
+                    {
+                        if (DateTime.Compare(datumNovi, datum11) > 0 && DateTime.Compare(datumNovi, datum12) < 0
+                            || DateTime.Compare(datumNoviTrajanje, datum11) > 0 && DateTime.Compare(datumNoviTrajanje, datum12) < 0
+                            || DateTime.Compare(datumNovi, datum11) == 0
+                            || DateTime.Compare(datumNovi, datum11) < 0 && DateTime.Compare(datumNoviTrajanje, datum12) > 0
+                            )
+                        {
+                            MessageBox.Show("Termin je zauzet. Izaberite drugi termin");
+                            return;
+                        }
                     }
                 }
 
