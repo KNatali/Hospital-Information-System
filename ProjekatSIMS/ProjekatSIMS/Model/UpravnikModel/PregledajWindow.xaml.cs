@@ -29,7 +29,7 @@ namespace ProjekatSIMS.Model.UpravnikModel
         {
 
             Prostorija p = (Prostorija)dataGridProstorije.SelectedItems[0];
-            IzmeniWindow  izmeni = new IzmeniWindow(izmeni);
+            IzmeniWindow  izmeni = new IzmeniWindow();
             izmeni.Show();
 
         }
@@ -37,8 +37,7 @@ namespace ProjekatSIMS.Model.UpravnikModel
         {
 
             Prostorija p = (Prostorija)dataGridProstorije.SelectedItems[0];
-            ObrisiWindow o = new ObrisiWindow(o);
-            o.Show();
+            //implementirati da sew nadje prostorija i obrise iz liste i obrise iz fajla
 
         }
 

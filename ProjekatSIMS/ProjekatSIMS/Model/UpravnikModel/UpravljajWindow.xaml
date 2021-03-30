@@ -8,8 +8,8 @@
         Title="UpravljajWindow" Height="450" Width="800">
     <Grid>
         <Button Content="Kreiraj Prostoriju" Click="Kreiraj_Click" HorizontalAlignment="Center" Margin="0,98,0,0" VerticalAlignment="Top" Height="62" Width="236"/>
-        <Button Content="Izmeni Prostoriju" Click="Izmeni_Click" HorizontalAlignment="Center" Margin="0,196,0,0" VerticalAlignment="Top" Height="62" Width="236"/>
-        <Button Content="Obrisi Prostoriju" Click="Obrisi_Click" HorizontalAlignment="Center" Margin="0,292,0,0" VerticalAlignment="Top" Height="62" Width="236" RenderTransformOrigin="1.243,0.836"/>
+        <Button Content="Izmeni ili obrisi prostoriju" Click="Izmeni_Click" HorizontalAlignment="Center" Margin="0,196,0,0" VerticalAlignment="Top" Height="62" Width="236"/>
+        
 
     </Grid>
 </Window>

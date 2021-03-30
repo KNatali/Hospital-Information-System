@@ -29,13 +29,9 @@ namespace ProjekatSIMS.Model.UpravnikModel
         }
         private void Izmeni_Click(object sender, RoutedEventArgs e)
         {
-           IzmeniWindow iw = new IzmeniWindow();
+           PregledajWindow iw = new PregledajWindow();
             iw.Show();
         }
-        private void Obrisi_Click(object sender, RoutedEventArgs e)
-        {
-            ObrisiWindow ow = new ObrisiWindow();
-            ow.Show();
-        }
+        
     }
 }
