@@ -21,11 +21,29 @@ namespace ProjekatSIMS.Model.UpravnikModel
         public KreirajWindow()
         {
             InitializeComponent();
+            this.DataContext = this;
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void Kreiraj(object sender, RoutedEventArgs e)
         {
-            
+            String id = Id.Text;
+            int sprat = Convert.ToInt32(Sprat.Text);
+            //EnumProstorija ep = new EnumProstorija();
+            Prostorija p = new Prostorija();
+            if (B1.IsChecked == true)
+                p.vrsta = EnumProstorija.Sala;
+            if (B2.IsChecked == true)
+                p.vrsta = EnumProstorija.Soba;
+            if (B3.IsChecked == true)
+                p.vrsta = EnumProstorija.Kancelarija;
+            if (B4.IsChecked == true)
+                p.vrsta = EnumProstorija.Magacin;
+            else
+                p.vrsta = EnumProstorija.Ordiracija;
+
+
+
         }
+        
     }
 }

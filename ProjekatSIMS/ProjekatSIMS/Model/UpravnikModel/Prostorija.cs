@@ -19,6 +19,10 @@ namespace Model.UpravnikModel
         public EnumProstorija vrsta { get; set; }
 
         public System.Collections.ArrayList inventar;
+        public Prostorija()
+        {
+
+        }
         public Prostorija(String id, int sprat, EnumProstorija vrsta, ArrayList inventar)
         {
             this.id = id;
