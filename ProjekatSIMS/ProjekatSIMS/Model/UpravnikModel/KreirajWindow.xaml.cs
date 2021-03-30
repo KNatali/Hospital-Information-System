@@ -24,6 +24,7 @@ namespace ProjekatSIMS.Model.UpravnikModel
             this.DataContext = this;
         }
 
+        
         private void Kreiraj(object sender, RoutedEventArgs e)
         {
             String id = Id.Text;

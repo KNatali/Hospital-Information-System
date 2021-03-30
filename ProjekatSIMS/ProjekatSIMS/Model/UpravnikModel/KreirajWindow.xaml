@@ -17,7 +17,8 @@
         <RadioButton Name ="B3"  Content="Kancelarija" HorizontalAlignment="Left" Margin="241,245,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.011,0.516"/>
         <RadioButton Name ="B4" Content="Magacin" HorizontalAlignment="Left" Margin="241,265,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.861,5.49"/>
         <RadioButton Name ="B5" Content="Ordinacija" HorizontalAlignment="Left" Margin="241,202,0,0" VerticalAlignment="Top"/>
-        <Label Content="Izaberite inventar " HorizontalAlignment="Left" Height="38" Margin="10,304,0,0" VerticalAlignment="Top" Width="195" FontSize="22" Background="White" Foreground="#FFF31010" RenderTransformOrigin="0.692,0.449"/>
+        <Button Content="Kreiraj"   HorizontalAlignment="Left" Margin="490,363,0,0" VerticalAlignment="Top"/>
+
 
 
     </Grid>

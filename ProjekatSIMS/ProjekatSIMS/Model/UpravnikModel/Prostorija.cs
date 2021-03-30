@@ -17,16 +17,16 @@ namespace Model.UpravnikModel
         public int sprat { get; set; }
         public EnumProstorija vrsta { get; set; }
         public List<Inventar> inventar;
-        Prostorija()
+        public Prostorija()
         { }
-        Prostorija(String id, int sprat, EnumProstorija vrsta)
+        public Prostorija(String id, int sprat, EnumProstorija vrsta)
         {
             this.id = id;
             this.sprat = sprat;
             this.vrsta = vrsta;
 
         }
-        Prostorija(String id, int sprat, EnumProstorija vrsta, List<Inventar> inventar)
+        public Prostorija(String id, int sprat, EnumProstorija vrsta, List<Inventar> inventar)
         {
             this.id = id;
             this.sprat = sprat;
