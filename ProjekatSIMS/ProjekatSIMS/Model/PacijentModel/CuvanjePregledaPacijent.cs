@@ -35,9 +35,10 @@ namespace Model.PacijentModel
                     pregled.Trajanje = Convert.ToInt32(parts[4]);
                     if (parts[5] == "Standardni")
                         pregled.Tip = TipPregleda.Standardni;
-                    if (parts[5] == "Operaija")
+                    if (parts[5] == "Operacija")
                         pregled.Tip = TipPregleda.Operacija;
-
+                    
+                    pregled.StatusPergleda = StatusPregleda.Zakazan;
                     pregledi.Add(pregled);
                 }
                 file.Close();
@@ -47,35 +48,23 @@ namespace Model.PacijentModel
 
         public void Sacuvaj(String pregled, Boolean znak)
         {
-            /* String linija = "";
-
-             String id = pregled.Id.ToString();
-             String pocetak = pregled.Pocetak.ToString();
-             String trajanje = pregled.Trajanje.ToString();
-             String idPacijenta = pregled.pacijent.jmbg.ToString();
-             String idDoktora = pregled.doktor.Jmbg.ToString();
-
-
-             linija += id + "," + pocetak + "," + trajanje + "," + idPacijenta + "," + idDoktora;
-             using StreamWriter file = new StreamWriter(LokacijaFajla);
-
-             file.WriteLineAsync(linija); */
+         
 
             using StreamWriter fajl = new StreamWriter(LokacijaFajla, znak);
             fajl.WriteLineAsync(pregled);
         }
 
-        public Pregled DobaviJedan(int id)
+       /* public Pregled DobaviJedan(int id)
         {
             // TODO: implement
             return null;
-        }
+        } */
 
-        public Pacijent DobaviPacijenta()
+       /* public Pacijent DobaviPacijenta()
         {
             // TODO: implement
             return null;
-        }
+        } */
 
 
 
