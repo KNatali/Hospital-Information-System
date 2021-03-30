@@ -138,7 +138,7 @@ namespace ProjekatSIMS.Model.PacijentModel
                 MessageBox.Show("Ne postoji doktor sa tim imenom, unesite postojece ime doktora!");
             }
 
-            p.ZakaziPregledePacijent();
+            
 
 
 
