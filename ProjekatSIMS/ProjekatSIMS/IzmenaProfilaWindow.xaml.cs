@@ -2,23 +2,20 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ProjekatSIMS
 {
     public partial class IzmenaProfilaWindow : Window
     {
-        public IzmenaProfilaWindow()
+        public List<Pacijent> Pacijenti { get; private set; }
+
+        public IzmenaProfilaWindow(Pacijent p)
         {
             InitializeComponent();
+            this.DataContext = this;
+            Pacijenti = new List<Pacijent>();
+            Pacijenti.Add(p);
         }
         private void Prekini_izmenu(object sender, RoutedEventArgs e)
         {
@@ -34,6 +31,7 @@ namespace ProjekatSIMS
         }
         private void Potvrdi_izmene(object sender, RoutedEventArgs e)
         {
+            Pacijent p = (Pacijent)dataGrid.SelectedItems[0];
             String jmbg = Jmbg.Text;
             String ime = Ime.Text;
             String prezime = Prezime.Text;
@@ -41,18 +39,25 @@ namespace ProjekatSIMS
             String mail = Mail.Text;
             String adresa = Adresa.Text;
             DateTime datum = (DateTime)Datum.SelectedDate;
-            Pacijent p = new Pacijent();
-            String red = System.Environment.NewLine + "" + ime + "," + prezime + "," + mail + "," + telefon + "," + adresa + "," + jmbg + "," + datum;
-
-            using StreamWriter fajl = new StreamWriter(@"C:\Users\mrvic\Projekat\ProjekatSIMS\Pacijent.txt", true);
-            fajl.WriteLineAsync(red);
-            MessageBoxResult ret = MessageBox.Show("Prikazi izmenjene podatke u tabeli?", "Uspesno izmenjeni podaci pacijenta", MessageBoxButton.YesNo);
+            String linija;
+            using (StreamReader fajl = new StreamReader(@"C:\Users\mrvic\Projekat\ProjekatSIMS\Pacijent.txt"))
+            {
+                while ((linija = fajl.ReadLine()) != null)
+                {
+                    string[] deo = linija.Split(",");
+                }
+                fajl.Close();
+            }
+        
+            MessageBoxResult ret = MessageBox.Show("Da li potvrdjujete unete izmene?", "Provera", MessageBoxButton.YesNo);
             switch (ret)
             {
                 case MessageBoxResult.Yes:
-                    this.Close();
-                    TabelaPacijenata tp = new TabelaPacijenata();
-                    tp.Show();
+                    if (p.IzmeniInformacije() == true)
+                    {
+                        MessageBox.Show("Pacijent je izmenjen.", "Obavestenje");
+                        this.Close();
+                    }
                     break;
                 case MessageBoxResult.No:
                     break;

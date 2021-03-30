@@ -1,32 +1,57 @@
 using Model.DoktorModel;
 using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace Model
 {
     public class Pacijent
     {
-        /*public void PregledProfila()
-        {
-            // TODO: implement
-        }
-
-        public Pacijent KreirajProfil()
-        {
-            // TODO: implement
-            return null;
-        }*/
-
         public Boolean IzmeniInformacije()
         {
-            // TODO: implement
+            string linija;
+            List<String> linije = new List<string>();
+            using (StreamReader fajl = new StreamReader(@"C:\Users\mrvic\Projekat\ProjekatSIMS\Pacijent.txt"))
+            {
+                while ((linija = fajl.ReadLine()) != null)
+                {
+                    string[] deo = linija.Split(",");
+                    if (deo[5] == this.Jmbg.ToString())
+                    {
+                        deo[0] = Ime.ToString();
+                        deo[1] = Prezime.ToString();
+                        deo[2] = Email.ToString();
+                        deo[3] = BrojTelefona.ToString();
+                        deo[4] = Adresa.ToString();
+                        linija = deo[0] + "," + deo[1] + "," + deo[2] + "," + deo[3] + "," + deo[4] + "," + deo[5] + "," + deo[6];
+                    }
+                    linije.Add(linija);
+                }
+                fajl.Close();
+            }
+            File.WriteAllLinesAsync(@"C:\Users\mrvic\Projekat\ProjekatSIMS\Pacijent.txt", linije);
             return true;
         }
 
-        /*public Boolean ObrisiPacijent(int id)
+        public Boolean ObrisiPacijent()
         {
-            // TODO: implement
+            string linija;
+            List<String> linije = new List<string>();
+            using (StreamReader fajl = new StreamReader(@"C:\Users\mrvic\Projekat\ProjekatSIMS\Pacijent.txt"))
+            {
+                while ((linija = fajl.ReadLine()) != null)
+                {
+                    string[] deo = linija.Split(",");
+                    if (deo[5] != this.Jmbg.ToString())
+                    {
+                        linije.Add(linija);
+                    }
+                }
+                fajl.Close();
+            }
+            File.WriteAllLinesAsync(@"C:\Users\mrvic\Projekat\ProjekatSIMS\Pacijent.txt", linije);
             return true;
-        }*/
+        }
 
         public String Jmbg { get; set; }
         public String Ime { get; set; }
