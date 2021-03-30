@@ -21,12 +21,12 @@ namespace ProjekatSIMS
         public TabelaPacijenata()
         {
             InitializeComponent();
-            /*this.DataContext = this;
+            this.DataContext = this;
             Pacijenti = new List<Pacijent>();
-            CuvanjePacijenta fajl = new CuvanjePacijenta();
+            //CuvanjePacijenta fajl = new CuvanjePacijenta(@"C:\Users\mrvic\Projekat\ProjekatSIMS\Pacijent.txt");
+            CuvanjePacijenta fajl = new CuvanjePacijenta(@"C:\Users\mrvic\Projekat\ProjekatSIMS\Pacijent.txt");
             Pacijenti = fajl.DobaviPacijente();
-            fajl = new CuvanjePacijenata(@"C:\Users\mrvic\Projekat\ProjekatSIMS\Pacijent.txt");
-            DateTime datum1 = new DateTime(1999,02,17);
+            /*DateTime datum1 = new DateTime(1999,02,17);
             Pacijent p = new Pacijent
             {
                 Jmbg = "152",
@@ -47,18 +47,14 @@ namespace ProjekatSIMS
                 for (int i = 0; i < dataGridPacijenti.SelectedItems.Count; i++)
                 {
                     System.Data.DataRowView selektovani = (System.Data.DataRowView)dataGridPacijenti.SelectedItems[i];
-                    String str = Convert.ToString(selektovani.Row.ItemArray[10]);
+                    //String str = Convert.ToString(selektovani.Row.ItemArray[10]);
                 }
             }*/
             MessageBoxResult ret = MessageBox.Show("Da li ste sigurni?", "Provera", MessageBoxButton.YesNo);
             switch (ret)
             {
                 case MessageBoxResult.Yes:
-                    for (int i = 0; i < dataGridPacijenti.SelectedItems.Count; i++)
-                    {
-                        System.Data.DataRowView selektovani = (System.Data.DataRowView)dataGridPacijenti.SelectedItems[i];
-                        String str = Convert.ToString(selektovani.Row.ItemArray[10]);
-                    }
+                    this.Close();
                     break;
                 case MessageBoxResult.No:
                     break;
@@ -68,6 +64,10 @@ namespace ProjekatSIMS
         {
             IzmenaProfilaWindow ip = new IzmenaProfilaWindow();
             ip.Show();
+        }
+        private void Nazad(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

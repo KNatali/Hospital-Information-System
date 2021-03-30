@@ -32,8 +32,6 @@ namespace ProjekatSIMS
                     /*IzmenaProfilaWindow ip = new IzmenaProfilaWindow();
                     ip.Close();*/
                     this.Close();
-                    TabelaPacijenata tp = new TabelaPacijenata();
-                    tp.Show();
                     break;
                 case MessageBoxResult.No:
                     break;

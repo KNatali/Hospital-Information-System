@@ -9,13 +9,14 @@ namespace Model.SekretarModel
     public class CuvanjePacijenta
     {
         //public CuvanjePacijenta() { }
-        /*public CuvanjePacijenta(String lokacije)
+        /*public CuvanjePacijenta(String l)
         {
-            lokacija = lokacije;
+            lokacija = l;
         }*/
-        public CuvanjePacijenta()
+        public CuvanjePacijenta(String l)
         {
-            pacijenti = new List<Pacijent>();
+            lokacija = l;
+            /*pacijenti = new List<Pacijent>();
             DateTime datum1 = new DateTime(1999, 10, 10);
             Pacijent p1 = new Pacijent
             {
@@ -27,24 +28,13 @@ namespace Model.SekretarModel
                 Ime = "aaaaaaa",
                 Prezime = "asadafas"
             };
-            pacijenti.Add(p1);
+            pacijenti.Add(p1);*/
         }
-        public void Sacuvaj(Pacijent pacijent)
+        public void Sacuvaj(String pacijent, Boolean znak)
         {
-            /*String linija = "";
-
-            String jmbg = pacijent.Jmbg.ToString();
-            String ime = pacijent.Ime.ToString();
-            String prezime = pacijent.Prezime.ToString();
-            String telefon = pacijent.BrojTelefona.ToString();
-            String email = pacijent.Email.ToString();
-            String datum = pacijent.DatumRodjenja.ToLongDateString();
-            String adresa = pacijent.Adresa.ToString();
-
-            linija += jmbg + "," + ime + "," + prezime + "," + telefon + "," + email + "," + datum + "," + adresa;
-            using StreamWriter file = new StreamWriter(lokacija);
-            file.WriteLineAsync(linija);*/
-            pacijenti.Add(pacijent);
+            using StreamWriter file = new StreamWriter(lokacija, znak);
+            // file.WriteLineAsync(pacijent);
+            file.WriteLineAsync(pacijent);
         }
 
         public List<Pacijent> DobaviPacijente()
@@ -65,6 +55,8 @@ namespace Model.SekretarModel
                     p.Adresa = Convert.ToString(deo[4]);
                     p.Jmbg = Convert.ToString(deo[5]);
                     p.DatumRodjenja = Convert.ToDateTime(deo[6]);
+
+                    pacijenti.Add(p);
                 }
                 file.Close();
             }

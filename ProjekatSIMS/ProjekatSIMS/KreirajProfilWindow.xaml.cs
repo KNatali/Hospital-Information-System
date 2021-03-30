@@ -26,8 +26,7 @@ namespace ProjekatSIMS
             switch (ret)
             {
                 case MessageBoxResult.Yes:
-                    SekretarWindow s = new SekretarWindow();
-                    s.Show();
+                    this.Close();
                     break;
                 case MessageBoxResult.No:
                     break;
@@ -43,11 +42,12 @@ namespace ProjekatSIMS
             String adresa = Adresa.Text;
             DateTime datum = (DateTime)Datum.SelectedDate;
             Pacijent p = new Pacijent();
-            String red = System.Environment.NewLine + "" + ime + "," + prezime + "," + mail + "," + telefon + "," + adresa + "," + jmbg + "," + datum;
+            String red = " " + ime + "," + prezime + "," + mail + "," + telefon + "," + adresa + "," + jmbg + "," + datum;
 
             using StreamWriter fajl = new StreamWriter(@"C:\Users\mrvic\Projekat\ProjekatSIMS\Pacijent.txt", true);
             fajl.WriteLineAsync(red);
             MessageBox.Show(red, "Novi pacijent");
+            this.Close();
         }
     }
 }

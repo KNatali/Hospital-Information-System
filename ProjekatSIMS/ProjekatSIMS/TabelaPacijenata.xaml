@@ -23,5 +23,6 @@
         </DataGrid>
         <Button Content="Obrisi pacijenta" Click="Brisanje" HorizontalAlignment="Left" Margin="40,350,0,0" VerticalAlignment="Top" Height="30" Width="100" Background="#FFA6B1D6"/>
         <Button Content="Izmeni profil" Click="Izmena_profila" HorizontalAlignment="Left" Margin="660,350,0,0" VerticalAlignment="Top" Height="30" Width="100" Background="#FFA6B1D6"/>
+        <Button Content="Nazad" Click="Nazad" HorizontalAlignment="Left" Margin="40,30,0,0" VerticalAlignment="Top" Height="20" Width="50" Background="#FFA6B1D6"/>
     </Grid>
 </Window>

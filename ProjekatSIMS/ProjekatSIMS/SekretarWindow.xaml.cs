@@ -28,13 +28,5 @@ namespace ProjekatSIMS
             TabelaPacijenata pp = new TabelaPacijenata();
             pp.Show();
         }
-        private void Izmena_profila(object sender, RoutedEventArgs e)
-        {
-            
-        }
-        private void Brisanje(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }
