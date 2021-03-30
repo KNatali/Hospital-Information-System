@@ -55,17 +55,7 @@ namespace Model.PacijentModel
             fajl.WriteLineAsync(pregled);
         }
 
-       /* public Pregled DobaviJedan(int id)
-        {
-            // TODO: implement
-            return null;
-        } */
 
-       /* public Pacijent DobaviPacijenta()
-        {
-            // TODO: implement
-            return null;
-        } */
 
 
 
