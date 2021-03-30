@@ -1,10 +1,11 @@
 namespace Model.PacijentModel
 {
-    public enum StatusPregleda
-    {
-        Zavrsen,
-        Zakazan,
-        Otkazan
+   public enum StatusPregleda
+   {
+      Zavrsen,
+      Zakazan,
+      Otkazan,
 
-    }
+   
+   }
 }
