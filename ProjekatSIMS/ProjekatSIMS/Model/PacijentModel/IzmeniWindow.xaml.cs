@@ -1,28 +1,80 @@
-﻿using System;
+﻿using Model.DoktorModel;
+using Model.PacijentModel;
+using System;
 using System.Collections.Generic;
-using System.Text;
+using System.IO;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ProjekatSIMS.Model.PacijentModel
 {
-    /// <summary>
-    /// Interaction logic for IzmeniWindow.xaml
-    /// </summary>
+
     public partial class IzmeniWindow : Window
     {
+        public List<Pregled> Pregledi { get; set; }
         public IzmeniWindow()
         {
             InitializeComponent();
             this.DataContext = this;
+
+            Pregledi = new List<Pregled>();
+            CuvanjePregledaPacijent fajl = new CuvanjePregledaPacijent(@"C:\Users\Home\Dropbox\My PC (DESKTOP-TI6DNK1)\Desktop\ProjekatSIMSdva\Projekat\ProjekatSIMS\Pregled.txt");
+            Pregledi = fajl.DobaviSve();
         }
 
+        private void Izmeni_Click(object sender, RoutedEventArgs e)
+        {
+            Pregled p = (Pregled)dataGridPregledi.SelectedItems[0]; //pregled koji je izabran za izmenu
 
+            string line;
+            List<String> lines = new List<string>();
+            //preuzimanje datuma i vremena iz forme
+
+            double sati = Convert.ToDouble(Sati.Text);
+            double minuti = Convert.ToDouble(Minuti.Text);
+            DateTime datum = (DateTime)Datum.SelectedDate;
+            DateTime datumNovi = new DateTime();
+            datumNovi = datum.AddHours(sati);
+            datumNovi = datumNovi.AddMinutes(minuti);
+            string jmbgNovi = "";
+            string jmbgDoktorNovi = "";
+            int idNovi;
+            double trajanjeNovo;
+            string tipNovi = "";
+            string statusNovi = "";
+            string salaNova = "";
+            string red = "";
+
+
+            using (StreamReader fajl = new StreamReader(@"C:\Users\Home\Dropbox\My PC (DESKTOP-TI6DNK1)\Desktop\ProjekatSIMSdva\Projekat\ProjekatSIMS\Pregled.txt"))
+            {
+                while((line = fajl.ReadLine()) != null)
+                {
+                    string[] parts = line.Split(",");
+                        if(parts[0] != p.Id.ToString())
+                    {
+                        lines.Add(line);
+                    }
+                    else
+                    {
+                        idNovi = Convert.ToInt32( parts[0]);
+                        jmbgNovi = parts[1];
+                        jmbgDoktorNovi = parts[2];
+                        trajanjeNovo = Convert.ToDouble(parts[4]);
+                        tipNovi = parts[5];
+                        statusNovi = parts[6];
+                        salaNova = parts[7];
+
+                        red = idNovi + "," + jmbgNovi + "," + jmbgDoktorNovi + "," + datumNovi.ToString() + "," + trajanjeNovo.ToString() + "," + tipNovi + "," + statusNovi + "," + salaNova;
+                        lines.Add(red);
+                    }
+                }
+
+                fajl.Close();
+            }
+            File.WriteAllLinesAsync(@"C:\Users\Home\Dropbox\My PC (DESKTOP-TI6DNK1)\Desktop\ProjekatSIMSdva\Projekat\ProjekatSIMS\Pregled.txt", lines);
+            MessageBox.Show("Pregled je uspesno izmenjen.");
+            this.Close();
+
+        }
     }
 }

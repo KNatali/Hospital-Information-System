@@ -5,9 +5,7 @@ using System.Windows;
 
 namespace ProjekatSIMS.Model.PacijentModel
 {
-    /// <summary>
-    /// Interaction logic for ZakaziWindow.xaml
-    /// </summary>
+
     public partial class ZakaziWindow : Window
     {
         public ZakaziWindow()
@@ -46,9 +44,9 @@ namespace ProjekatSIMS.Model.PacijentModel
             String jmbgdoktora = "";
             int id_counter = 150;
             String jedanRed;
-            String sala="";
+            String sala = "";
             String linijaRed;
-            
+
             using (StreamReader file = new StreamReader(@"C:\Users\Home\Dropbox\My PC (DESKTOP-TI6DNK1)\Desktop\ProjekatSIMSdva\Projekat\ProjekatSIMS\Doktor.txt"))
             {
                 while ((linija = file.ReadLine()) != null)
@@ -73,23 +71,23 @@ namespace ProjekatSIMS.Model.PacijentModel
                 while ((jednaLinija = fjl.ReadLine()) != null)
                 {
                     string[] delovi = jednaLinija.Split(",");
-                   
+
                     DateTime datum11 = Convert.ToDateTime(delovi[3]);
                     DateTime datum12 = datum11.AddMinutes(Convert.ToDouble(delovi[4]));
                     if (delovi[6] == "Zakazan")
                     {
                         if (DateTime.Compare(datum1, datum11) > 0 && DateTime.Compare(datum1, datum12) < 0
-                            || DateTime.Compare(datum2,datum11)>0 && DateTime.Compare(datum2,datum12) <0
-                            || DateTime.Compare(datum1,datum11) ==0
-                            || DateTime.Compare(datum1,datum11) <0 && DateTime.Compare(datum2,datum12) >0
+                            || DateTime.Compare(datum2, datum11) > 0 && DateTime.Compare(datum2, datum12) < 0
+                            || DateTime.Compare(datum1, datum11) == 0
+                            || DateTime.Compare(datum1, datum11) < 0 && DateTime.Compare(datum2, datum12) > 0
                             )
                         {
                             MessageBox.Show("Termin je zauzet. Izaberite drugi termin");
                             return;
                         }
-                    } 
-                    
-                } 
+                    }
+
+                }
                 fjl.Close();
             }
             using (StreamReader dokument = new StreamReader(@"C:\Users\Home\Dropbox\My PC (DESKTOP-TI6DNK1)\Desktop\ProjekatSIMSdva\Projekat\ProjekatSIMS\Pregled.txt"))
@@ -97,7 +95,7 @@ namespace ProjekatSIMS.Model.PacijentModel
                 while ((jedanRed = dokument.ReadLine()) != null)
                 {
                     id_counter++;
-                    
+
                 }
                 dokument.Close();
             }
@@ -108,12 +106,15 @@ namespace ProjekatSIMS.Model.PacijentModel
                 {
                     string[] deo = linijaRed.Split(",");
                     //zauzima prvu slobodnu salu
-                    if (deo[3] == "false")
+                    if (deo[2] == "sala")
                     {
-                        sala = deo[1];
-                        break;
-                    }
+                        if (deo[3] == "false")
+                        {
+                            sala = deo[1];
+                            break;
+                        }
 
+                    }
                 }
                 dok.Close();
             }
@@ -122,9 +123,9 @@ namespace ProjekatSIMS.Model.PacijentModel
             //ako je pronasao doktora upisuje termin
             if (brojac > 0)
             {
-                
-                String red = id_counter + ","  + jmbg + "," +jmbgdoktora +"," + datum1.ToString() + "," + trajanje.ToString() + "," + tip + "," + "Zakazan" + "," + sala;
- 
+
+                String red = id_counter + "," + jmbg + "," + jmbgdoktora + "," + datum1.ToString() + "," + trajanje.ToString() + "," + tip + "," + "Zakazan" + "," + sala;
+
 
                 using StreamWriter fajl = new StreamWriter(@"C:\Users\Home\Dropbox\My PC (DESKTOP-TI6DNK1)\Desktop\ProjekatSIMSdva\Projekat\ProjekatSIMS\Pregled.txt", true);
                 fajl.WriteLineAsync(red);
@@ -134,9 +135,7 @@ namespace ProjekatSIMS.Model.PacijentModel
             }
             else
             {
-
-
-                MessageBox.Show("Ne postoji doktor sa tim imenom, unesite postojece ime doktora!");            
+                MessageBox.Show("Ne postoji doktor sa tim imenom, unesite postojece ime doktora!");
             }
 
             p.ZakaziPregledePacijent();
