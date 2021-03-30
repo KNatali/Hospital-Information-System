@@ -31,28 +31,16 @@ namespace ProjekatSIMS
         {
             // selektuje nekog pacijenta u tabeli i onda klikne na brisanje
             Pacijent p = (Pacijent)dataGridPacijenti.SelectedItems[0];
-            string linija;
-            List<String> linije = new List<string>();
             
             MessageBoxResult ret = MessageBox.Show("Da li zelite da obrisete pacijenta?", "Provera", MessageBoxButton.YesNo);
             switch (ret)
             {
                 case MessageBoxResult.Yes:
-                    using (StreamReader fajl = new StreamReader(@"C:\Users\mrvic\Projekat\ProjekatSIMS\Pacijent.txt"))
+                    if(p.ObrisiPacijent()==true)
                     {
-                        while ((linija = fajl.ReadLine()) != null)
-                        {
-                            string[] deo = linija.Split(",");
-                            if (deo[5] != p.Jmbg.ToString())
-                            {
-                                linije.Add(linija);
-                            }
-                        }
-                        fajl.Close();
+                        MessageBox.Show("Pacijent je obrisan.", "Obavestenje");
+                        this.Close();
                     }
-                    File.WriteAllLinesAsync(@"C:\Users\mrvic\Projekat\ProjekatSIMS\Pacijent.txt", linije);
-                    MessageBox.Show("Pacijent je obrisan.", "Obavestenje");
-                    this.Close();
                     break;
                 case MessageBoxResult.No:
                     break;
@@ -60,7 +48,8 @@ namespace ProjekatSIMS
         }
         private void Izmena_profila(object sender, RoutedEventArgs e)
         {
-            IzmenaProfilaWindow ip = new IzmenaProfilaWindow();
+            Pacijent p = (Pacijent)dataGridPacijenti.SelectedItems[0];
+            IzmenaProfilaWindow ip = new IzmenaProfilaWindow(p);
             ip.Show();
         }
         private void Nazad(object sender, RoutedEventArgs e)
