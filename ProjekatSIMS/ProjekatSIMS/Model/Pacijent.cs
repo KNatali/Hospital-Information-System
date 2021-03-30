@@ -5,6 +5,17 @@ namespace Model
 {
     public class Pacijent
     {
+        /*public void PregledProfila()
+        {
+            // TODO: implement
+        }
+
+        public Pacijent KreirajProfil()
+        {
+            // TODO: implement
+            return null;
+        }*/
+
         public Boolean IzmeniInformacije()
         {
             // TODO: implement
