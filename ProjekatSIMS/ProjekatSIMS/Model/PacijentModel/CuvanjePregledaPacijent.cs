@@ -31,7 +31,7 @@ namespace Model.PacijentModel
 
                     Pregled pregled = new Pregled();
 
-                    pregled.Id = Convert.ToInt32(parts[0]);
+                    pregled.Id = Convert.ToInt32(parts[0]); 
                     pregled.Pocetak = Convert.ToDateTime(parts[3]);
                     pregled.Trajanje = Convert.ToInt32(parts[4]);
                     if (parts[5] == "Standardni")

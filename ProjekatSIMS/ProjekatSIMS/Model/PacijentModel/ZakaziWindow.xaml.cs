@@ -72,7 +72,7 @@ namespace ProjekatSIMS.Model.PacijentModel
                 {
                     string[] delovi = jednaLinija.Split(",");
 
-                    
+                    /*
                     DateTime datum11 = Convert.ToDateTime(delovi[3]);
                     DateTime datum12 = datum11.AddMinutes(Convert.ToDouble(delovi[4]));
                     if (delovi[6] == "Zakazan")
@@ -86,7 +86,7 @@ namespace ProjekatSIMS.Model.PacijentModel
                             MessageBox.Show("Termin je zauzet. Izaberite drugi termin");
                             return;
                         }
-                    }
+                    } */
 
                 }
                 fjl.Close();
