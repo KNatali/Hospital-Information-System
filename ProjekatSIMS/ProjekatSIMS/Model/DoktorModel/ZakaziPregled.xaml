@@ -1,0 +1,36 @@
+﻿<Window x:Class="ProjekatSIMS.Model.DoktorModel.ZakaziPregled"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+       
+        xmlns:local="clr-namespace:ProjekatSIMS.Model.DoktorModel"
+        mc:Ignorable="d"
+        Title="ZakaziPregled" Height="450" Width="800">
+    <Grid>
+        <Label Content="Jmbg pacijenta:" HorizontalAlignment="Left" Margin="60,40,0,0" VerticalAlignment="Top" Height="28"/>
+        <TextBox Name="Jmbg" HorizontalAlignment="Left" Margin="300,48,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20"/>
+        <Label Content="Datum pregleda" HorizontalAlignment="Left" Margin="60,94,0,0" VerticalAlignment="Top" Height="26"/>
+        <DatePicker Name="Date" HorizontalAlignment="Left" Margin="300,96,0,0" VerticalAlignment="Top" Height="24" Width="120"/>
+        <Label Content="Vrijeme pocetka:" HorizontalAlignment="Left" Margin="63,149,0,0" VerticalAlignment="Top" Height="27"/>
+        <Label Content="Sati:" HorizontalAlignment="Left" Margin="254,149,0,0" VerticalAlignment="Top" Height="27" RenderTransformOrigin="-0.749,0.04"/>
+        <TextBox Name="Sati" HorizontalAlignment="Left" Margin="300,156,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Height="18"/>
+
+        <Label Content="Minuti:" HorizontalAlignment="Left" Margin="373,149,0,0" VerticalAlignment="Top" Height="27" RenderTransformOrigin="-0.749,0.04"/>
+        <TextBox Name="Minuti" HorizontalAlignment="Left" Margin="428,156,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Height="18"/>
+
+        <Label Content="Trajanje(u minutama)" HorizontalAlignment="Left" Margin="60,0,0,0" VerticalAlignment="Center" Height="28"/>
+        <TextBox Name="Trajanje" HorizontalAlignment="Left" Margin="300,212,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="19"/>
+        <Label Content="Sala:" HorizontalAlignment="Left" Margin="60,252,0,0" VerticalAlignment="Top" Height="27"/>
+        <TextBox Name="Sala" HorizontalAlignment="Left" Margin="300,260,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="19"/>
+
+        <Label Content="Tip pregleda:" HorizontalAlignment="Left" Margin="60,304,0,0" VerticalAlignment="Top" Height="28"/>
+
+        <RadioButton Content="Standardni" Name="Btn1" HorizontalAlignment="Left" Margin="300,313,0,0" VerticalAlignment="Top" Height="15"/>
+        <RadioButton Content="Operacija" Name="Btn2" HorizontalAlignment="Left" Margin="443,313,0,0" VerticalAlignment="Top" Height="15"/>
+        <Button Content="Zakazi" Click="Zakazi" HorizontalAlignment="Left" Margin="630,345,0,0" VerticalAlignment="Top" Height="42" Width="92" Background="#FFB5CDE2"/>
+
+
+
+    </Grid>
+</Window>

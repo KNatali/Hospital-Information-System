@@ -1,0 +1,25 @@
+﻿<Window x:Class="ProjekatSIMS.Model.PacijentModel.VidiWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjekatSIMS.Model.PacijentModel"
+        mc:Ignorable="d"
+        Title="Vidi zakazane preglede" Height="450" Width="800">
+    <Grid>
+        <DataGrid x:Name="dataGridPregledi" ItemsSource="{Binding Pregledi}" IsReadOnly="True"
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="43,61,54,0" Height="229" VerticalAlignment="Top">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id pregleda" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Vreme pocetka" Binding="{Binding Pocetak}"/>
+                <DataGridTextColumn Header="Trajanje" Binding="{Binding Trajanje}"/>
+                <DataGridTextColumn Header="Ime pacijenta" Binding="{Binding pacijent.Ime}"/>
+                <DataGridTextColumn Header="Prezime pacijenta" Binding="{Binding pacijent.Prezime}"/>
+                <DataGridTextColumn Header="Tip pregleda" Binding="{Binding pacijent.Tip}"/>
+                <DataGridTextColumn Header="Status pregleda" Binding="{Binding pacijent.StatusPregleda}"/>
+                
+            </DataGrid.Columns>
+        </DataGrid>
+        
+    </Grid>
+</Window>

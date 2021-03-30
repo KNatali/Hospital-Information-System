@@ -1,12 +1,11 @@
-using System;
-
 namespace Model.PacijentModel
 {
-   public class StatusPregleda
+   public enum StatusPregleda
    {
-      private EnumConstant Zavrsen;
-      private EnumConstant NijeOdrzan;
-      private EnumConstant Otkazan;
+      Zavrsen,
+      Zakazan,
+      Otkazan,
+
    
    }
 }
