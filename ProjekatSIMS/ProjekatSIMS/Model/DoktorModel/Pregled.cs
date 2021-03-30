@@ -79,6 +79,34 @@ namespace Model.DoktorModel
 
 
       
+<<<<<<< HEAD
+=======
+      public void PrikaziPregledePacijent()
+      {
+         // TODO: implement
+      }
+      
+      public Pregled ZakaziPregledePacijent()
+      {
+         // TODO: implement
+         return null;
+      }
+   
+      public int Id;
+      public DateTime Pocetak;
+      public int Trajanje;
+      public TipPregleda  Tip;
+      public Model.PacijentModel.StatusPregleda StatusPergleda;
+      
+      public Model.UpravnikModel.Prostorija prostorija;
+      public Model.Doktor doktor;
+      
+      /// <pdGenerated>default parent getter</pdGenerated>
+      public Model.Doktor GetDoktor()
+      {
+         return doktor;
+      }
+>>>>>>> 3b47ec66049c6aa06ee5b2b1ed84c563cb6c8317
       
       /// <pdGenerated>default parent setter</pdGenerated>
       /// <param>newDoktor</param>
@@ -160,6 +188,9 @@ namespace Model.DoktorModel
       }
 
         
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3b47ec66049c6aa06ee5b2b1ed84c563cb6c8317
     }
 }

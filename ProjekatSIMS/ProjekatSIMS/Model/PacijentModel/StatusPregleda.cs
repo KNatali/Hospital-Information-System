@@ -7,6 +7,7 @@ namespace Model.PacijentModel
       Zavrsen,
       Zakazan,
       Otkazan,
+
    
    }
 }

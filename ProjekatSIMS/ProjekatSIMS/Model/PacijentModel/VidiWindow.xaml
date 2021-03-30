@@ -5,8 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjekatSIMS.Model.PacijentModel"
         mc:Ignorable="d"
-        Title="VidiWindow" Height="450" Width="800">
+        Title="Vidi zakazane preglede" Height="450" Width="800">
     <Grid>
+        <DataGrid x:Name="dataGridPregledi" ItemsSource="{Binding Pregledi}" IsReadOnly="True"
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="43,61,54,0" Height="229" VerticalAlignment="Top">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id pregleda" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Vreme pocetka" Binding="{Binding Pocetak}"/>
+                <DataGridTextColumn Header="Trajanje" Binding="{Binding Trajanje}"/>
+                <DataGridTextColumn Header="Ime pacijenta" Binding="{Binding pacijent.Ime}"/>
+                <DataGridTextColumn Header="Prezime pacijenta" Binding="{Binding pacijent.Prezime}"/>
+            </DataGrid.Columns>
+        </DataGrid>
         
     </Grid>
 </Window>

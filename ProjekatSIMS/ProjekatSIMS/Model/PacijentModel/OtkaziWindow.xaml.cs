@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Model.DoktorModel;
+using Model.PacijentModel;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -17,9 +19,22 @@ namespace ProjekatSIMS.Model.PacijentModel
     /// </summary>
     public partial class OtkaziWindow : Window
     {
+        public List<Pregled> Pregledi { get; set; }
         public OtkaziWindow()
         {
             InitializeComponent();
+            this.DataContext = this;
+
+            Pregledi = new List<Pregled>();
+            CuvanjePregledaPacijent fajl = new CuvanjePregledaPacijent();
+            Pregledi = fajl.DobaviSve();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Pregled p = (Pregled)dataGridPregledi.SelectedItems[0];
+            CuvanjePregledaPacijent fajl = new CuvanjePregledaPacijent();
+            List<Pregled> pregledi = fajl.DobaviSve();
         }
     }
 }

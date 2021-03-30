@@ -1,5 +1,10 @@
-﻿using System;
+﻿using Model;
+using Model.DoktorModel;
+using Model.PacijentModel;
+using Model.UpravnikModel;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,14 +17,25 @@ using System.Windows.Shapes;
 
 namespace ProjekatSIMS.Model.PacijentModel
 {
-    /// <summary>
-    /// Interaction logic for VidiWindow.xaml
-    /// </summary>
+    
     public partial class VidiWindow : Window
     {
+       public List<Pregled> Pregledi 
+        { 
+            get; 
+            set;
+        }
         public VidiWindow()
         {
             InitializeComponent();
+            this.DataContext = this;
+
+            Pregledi = new List<Pregled>();
+            CuvanjePregledaPacijent fajl = new CuvanjePregledaPacijent();
+            Pregledi = fajl.DobaviSve();
+            
+            
         }
+
     }
 }
