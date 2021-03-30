@@ -49,7 +49,7 @@ namespace ProjekatSIMS
                 fajl.Close();
             }
         
-            MessageBoxResult ret = MessageBox.Show("Da li ste sigurni?", "Provera", MessageBoxButton.YesNo);
+            MessageBoxResult ret = MessageBox.Show("Da li potvrdjujete unete izmene?", "Provera", MessageBoxButton.YesNo);
             switch (ret)
             {
                 case MessageBoxResult.Yes:
