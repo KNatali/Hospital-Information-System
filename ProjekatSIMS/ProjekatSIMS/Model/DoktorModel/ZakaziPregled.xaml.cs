@@ -15,9 +15,7 @@ using System.Windows.Shapes;
 
 namespace ProjekatSIMS.Model.DoktorModel
 {
-    /// <summary>
-    /// Interaction logic for ZakaziPregled.xaml
-    /// </summary>
+   
     public partial class ZakaziPregled : Window
     {
         public ZakaziPregled()
@@ -115,9 +113,35 @@ namespace ProjekatSIMS.Model.DoktorModel
                 file.Close();
             }
             int Idnovi = Convert.ToInt32(id)+1;
+            znak = 0;
+
+            //gledam da li postoji unijeta sala
+            using (StreamReader file = new StreamReader(@"C:\Users\nata1\Projekat\ProjekatSIMS\Prostorija.txt"))
+            {
+
+                while ((line = file.ReadLine()) != null)
+                {
+                    string[] parts = line.Split(",");
+
+                    if (parts[0] ==idSale)
+                    {
+                        znak++;
+                        break;
+                    }
+                }
+
+                file.Close();
+            }
+
+            if (znak == 0)
+            {
+                MessageBox.Show("Unijeta sala ne postoji");
+                return;
+            }
+
             //stavljam sve u red kako bi bilo u fajlu
             String red =Idnovi.ToString()+ "," + jmbg + "," + "1511990855023" + "," + datum1.ToString() + "," + trajanje.ToString() +
-                "," + tip + "," + "Zakazan";
+                "," + tip + "," + "Zakazan"+","+idSale;
 
 
 
