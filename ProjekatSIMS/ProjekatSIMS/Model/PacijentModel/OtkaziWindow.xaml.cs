@@ -17,7 +17,7 @@ namespace ProjekatSIMS.Model.PacijentModel
             this.DataContext = this;
 
             Pregledi = new List<Pregled>();
-            CuvanjePregledaPacijent fajl = new CuvanjePregledaPacijent(@"C:\Users\Home\Dropbox\My PC (DESKTOP-TI6DNK1)\Desktop\ProjekatSIMSdva\Projekat\ProjekatSIMS\Pregled.txt");
+            CuvanjePregledaPacijent fajl = new CuvanjePregledaPacijent(@"C:\Users\Home\Dropbox\My PC (DESKTOP-TI6DNK1)\Desktop\ProjekatSIMSdva\Projekat\ProjekatSIMS\PregledPacijent.txt");
             Pregledi = fajl.DobaviSve();
         }
 
@@ -28,7 +28,7 @@ namespace ProjekatSIMS.Model.PacijentModel
             string linija;
             List<String> linije = new List<string>();
 
-            using (StreamReader file = new StreamReader(@"C:\Users\Home\Dropbox\My PC (DESKTOP-TI6DNK1)\Desktop\ProjekatSIMSdva\Projekat\ProjekatSIMS\Pregled.txt"))
+            using (StreamReader file = new StreamReader(@"C:\Users\Home\Dropbox\My PC (DESKTOP-TI6DNK1)\Desktop\ProjekatSIMSdva\Projekat\ProjekatSIMS\PregledPacijent.txt"))
             {
                 while((linija = file.ReadLine()) != null)
                 {
@@ -38,7 +38,7 @@ namespace ProjekatSIMS.Model.PacijentModel
                 }
                 file.Close();
             }
-            File.WriteAllLinesAsync(@"C:\Users\Home\Dropbox\My PC (DESKTOP-TI6DNK1)\Desktop\ProjekatSIMSdva\Projekat\ProjekatSIMS\Pregled.txt", linije);
+            File.WriteAllLinesAsync(@"C:\Users\Home\Dropbox\My PC (DESKTOP-TI6DNK1)\Desktop\ProjekatSIMSdva\Projekat\ProjekatSIMS\PregledPacijent.txt", linije);
             MessageBox.Show("Vas pregled je otkazan.");
             this.Close();
            

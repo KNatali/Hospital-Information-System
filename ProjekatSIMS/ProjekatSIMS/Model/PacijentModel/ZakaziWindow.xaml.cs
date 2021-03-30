@@ -66,12 +66,13 @@ namespace ProjekatSIMS.Model.PacijentModel
                 file.Close();
             }
 
-            using (StreamReader fjl = new StreamReader(@"C:\Users\Home\Dropbox\My PC (DESKTOP-TI6DNK1)\Desktop\ProjekatSIMSdva\Projekat\ProjekatSIMS\Pregled.txt"))
+            using (StreamReader fjl = new StreamReader(@"C:\Users\Home\Dropbox\My PC (DESKTOP-TI6DNK1)\Desktop\ProjekatSIMSdva\Projekat\ProjekatSIMS\PregledPacijent.txt"))
             {
                 while ((jednaLinija = fjl.ReadLine()) != null)
                 {
                     string[] delovi = jednaLinija.Split(",");
 
+                    
                     DateTime datum11 = Convert.ToDateTime(delovi[3]);
                     DateTime datum12 = datum11.AddMinutes(Convert.ToDouble(delovi[4]));
                     if (delovi[6] == "Zakazan")
@@ -90,7 +91,7 @@ namespace ProjekatSIMS.Model.PacijentModel
                 }
                 fjl.Close();
             }
-            using (StreamReader dokument = new StreamReader(@"C:\Users\Home\Dropbox\My PC (DESKTOP-TI6DNK1)\Desktop\ProjekatSIMSdva\Projekat\ProjekatSIMS\Pregled.txt"))
+            using (StreamReader dokument = new StreamReader(@"C:\Users\Home\Dropbox\My PC (DESKTOP-TI6DNK1)\Desktop\ProjekatSIMSdva\Projekat\ProjekatSIMS\PregledPacijent.txt"))
             {
                 while ((jedanRed = dokument.ReadLine()) != null)
                 {
@@ -127,7 +128,7 @@ namespace ProjekatSIMS.Model.PacijentModel
                 String red = id_counter + "," + jmbg + "," + jmbgdoktora + "," + datum1.ToString() + "," + trajanje.ToString() + "," + tip + "," + "Zakazan" + "," + sala;
 
 
-                using StreamWriter fajl = new StreamWriter(@"C:\Users\Home\Dropbox\My PC (DESKTOP-TI6DNK1)\Desktop\ProjekatSIMSdva\Projekat\ProjekatSIMS\Pregled.txt", true);
+                using StreamWriter fajl = new StreamWriter(@"C:\Users\Home\Dropbox\My PC (DESKTOP-TI6DNK1)\Desktop\ProjekatSIMSdva\Projekat\ProjekatSIMS\PregledPacijent.txt", true);
                 fajl.WriteLineAsync(red);
                 ;
 
@@ -151,11 +152,7 @@ namespace ProjekatSIMS.Model.PacijentModel
 
         }
 
-        private void Doktori_Click(object sender, RoutedEventArgs e)
-        {
-            VidiDoktorsWindow vd = new VidiDoktorsWindow();
-            vd.Show();
-        }
+       
     }
 
 
