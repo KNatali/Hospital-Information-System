@@ -6,10 +6,10 @@ using System.IO;
 namespace Model.PacijentModel
 {
     public class CuvanjePregledaPacijent
-    {
-        private List<Pregled> pregledi = new List<Pregled>();
+    { 
 
         public String LokacijaFajla;
+        private List<Pregled> pregledi;
 
         public CuvanjePregledaPacijent(String lokacija)
         {
@@ -31,7 +31,7 @@ namespace Model.PacijentModel
             pregledi = new List<Pregled>();
             string line;
 
-            using (StreamReader file = new StreamReader(@"C:\Users\Home\Dropbox\My PC (DESKTOP-TI6DNK1)\Desktop\ProjekatSIMSdva\Projekat\ProjekatSIMS\PregledPacijent.txt"))
+            using (StreamReader file = new StreamReader(@"C:\Users\Home\Dropbox\My PC (DESKTOP-TI6DNK1)\Desktop\ProjekatSIMSdva\Projekat\ProjekatSIMS\Pregled.txt"))
             {
                 while ((line = file.ReadLine()) != null)
                 {
@@ -39,8 +39,12 @@ namespace Model.PacijentModel
 
                     Pregled pregled = new Pregled();
                     pregled.Id = Convert.ToInt32(parts[0]);
-                    pregled.Pocetak = Convert.ToDateTime(parts[1]);
-                    pregled.Trajanje = Convert.ToInt32(parts[2]);
+                    pregled.Pocetak = Convert.ToDateTime(parts[3]);
+                    pregled.Trajanje = Convert.ToInt32(parts[4]);
+                    if (parts[5] == "Standardni")
+                        pregled.Tip = TipPregleda.Standardni;
+                    if (parts[5] == "Operaija")
+                        pregled.Tip = TipPregleda.Operacija;
                     pregledi.Add(pregled);
                 }
                 file.Close();
@@ -48,21 +52,24 @@ namespace Model.PacijentModel
             return pregledi;
         }
 
-        public void Sacuvaj(Pregled pregled)
+        public void Sacuvaj(String pregled, Boolean znak)
         {
-            String linija = "";
+            /* String linija = "";
 
-            String id = pregled.Id.ToString();
-            String pocetak = pregled.Pocetak.ToString();
-            String trajanje = pregled.Trajanje.ToString();
-            String idPacijenta = pregled.pacijent.jmbg.ToString();
-            String idDoktora = pregled.doktor.Jmbg.ToString();
+             String id = pregled.Id.ToString();
+             String pocetak = pregled.Pocetak.ToString();
+             String trajanje = pregled.Trajanje.ToString();
+             String idPacijenta = pregled.pacijent.jmbg.ToString();
+             String idDoktora = pregled.doktor.Jmbg.ToString();
 
 
-            linija += id + "," + pocetak + "," + trajanje + "," + idPacijenta + "," + idDoktora;
-            using StreamWriter file = new StreamWriter(LokacijaFajla);
+             linija += id + "," + pocetak + "," + trajanje + "," + idPacijenta + "," + idDoktora;
+             using StreamWriter file = new StreamWriter(LokacijaFajla);
 
-            file.WriteLineAsync(linija);
+             file.WriteLineAsync(linija); */
+
+            using StreamWriter fajl = new StreamWriter(LokacijaFajla, znak);
+            fajl.WriteLineAsync(pregled);
         }
 
         public Pregled DobaviJedan(int id)

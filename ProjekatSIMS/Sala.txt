@@ -1,0 +1,2 @@
+1,2,sala,true
+2,4,sala,false

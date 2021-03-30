@@ -41,17 +41,26 @@ namespace ProjekatSIMS.Model.PacijentModel
             p.Tip = TipPregleda.Standardni;
             String tip = p.Tip.ToString();
             String linija;
+            String jednaLinija;
             int brojac = 0;
+            String jmbgdoktora = "";
+            int id_counter = 150;
+            String jedanRed;
+            String sala="";
+            String linijaRed;
+            
             using (StreamReader file = new StreamReader(@"C:\Users\Home\Dropbox\My PC (DESKTOP-TI6DNK1)\Desktop\ProjekatSIMSdva\Projekat\ProjekatSIMS\Doktor.txt"))
             {
                 while ((linija = file.ReadLine()) != null)
                 {
+
                     string[] parts = linija.Split(",");
                     if (parts[1] == imedoktora)
                     {
                         if (parts[2] == prezimedoktora)
                         {
                             brojac++;
+                            jmbgdoktora = parts[0];
                             break;
                         }
                     }
@@ -59,21 +68,75 @@ namespace ProjekatSIMS.Model.PacijentModel
                 file.Close();
             }
 
+            using (StreamReader fjl = new StreamReader(@"C:\Users\Home\Dropbox\My PC (DESKTOP-TI6DNK1)\Desktop\ProjekatSIMSdva\Projekat\ProjekatSIMS\Pregled.txt"))
+            {
+                while ((jednaLinija = fjl.ReadLine()) != null)
+                {
+                    string[] delovi = jednaLinija.Split(",");
+                   
+                    DateTime datum11 = Convert.ToDateTime(delovi[3]);
+                    DateTime datum12 = datum11.AddMinutes(Convert.ToDouble(delovi[4]));
+                    if (delovi[6] == "Zakazan")
+                    {
+                        if (DateTime.Compare(datum1, datum11) > 0 && DateTime.Compare(datum1, datum12) < 0
+                            || DateTime.Compare(datum2,datum11)>0 && DateTime.Compare(datum2,datum12) <0
+                            || DateTime.Compare(datum1,datum11) ==0
+                            || DateTime.Compare(datum1,datum11) <0 && DateTime.Compare(datum2,datum12) >0
+                            )
+                        {
+                            MessageBox.Show("Termin je zauzet. Izaberite drugi termin");
+                            return;
+                        }
+                    } 
+                    
+                } 
+                fjl.Close();
+            }
+            using (StreamReader dokument = new StreamReader(@"C:\Users\Home\Dropbox\My PC (DESKTOP-TI6DNK1)\Desktop\ProjekatSIMSdva\Projekat\ProjekatSIMS\Pregled.txt"))
+            {
+                while ((jedanRed = dokument.ReadLine()) != null)
+                {
+                    id_counter++;
+                    
+                }
+                dokument.Close();
+            }
+
+            using (StreamReader dok = new StreamReader(@"C:\Users\Home\Dropbox\My PC (DESKTOP-TI6DNK1)\Desktop\ProjekatSIMSdva\Projekat\ProjekatSIMS\Sala.txt"))
+            {
+                while ((linijaRed = dok.ReadLine()) != null)
+                {
+                    string[] deo = linijaRed.Split(",");
+                    //zauzima prvu slobodnu salu
+                    if (deo[3] == "false")
+                    {
+                        sala = deo[1];
+                        break;
+                    }
+
+                }
+                dok.Close();
+            }
 
 
             //ako je pronasao doktora upisuje termin
             if (brojac > 0)
             {
-                String red = "3" + "," + ime + "," + prezime + "," + jmbg + "," + datum1.ToString() + "," + trajanje.ToString() + "," + tip + "," + "Zakazan" + "," + imedoktora + "," + prezimedoktora;
+                
+                String red = id_counter + ","  + jmbg + "," +jmbgdoktora +"," + datum1.ToString() + "," + trajanje.ToString() + "," + tip + "," + "Zakazan" + "," + sala;
+ 
 
-                using StreamWriter fajl = new StreamWriter(@"C:\Users\Home\Dropbox\My PC (DESKTOP-TI6DNK1)\Desktop\ProjekatSIMSdva\Projekat\ProjekatSIMS\PregledPacijent.txt", true);
+                using StreamWriter fajl = new StreamWriter(@"C:\Users\Home\Dropbox\My PC (DESKTOP-TI6DNK1)\Desktop\ProjekatSIMSdva\Projekat\ProjekatSIMS\Pregled.txt", true);
                 fajl.WriteLineAsync(red);
+                ;
 
                 MessageBox.Show(red);
             }
             else
             {
-                MessageBox.Show("Ne postoji doktor sa tim imenom, unesite ime postojece ime doktora!");
+
+
+                MessageBox.Show("Ne postoji doktor sa tim imenom, unesite postojece ime doktora!");            
             }
 
             p.ZakaziPregledePacijent();
@@ -87,6 +150,12 @@ namespace ProjekatSIMS.Model.PacijentModel
 
 
 
+        }
+
+        private void Doktori_Click(object sender, RoutedEventArgs e)
+        {
+            VidiDoktorsWindow vd = new VidiDoktorsWindow();
+            vd.Show();
         }
     }
 
