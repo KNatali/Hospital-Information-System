@@ -8,7 +8,7 @@ namespace Model.PacijentModel
     public class CuvanjePregledaPacijent
     { 
 
-        public String LokacijaFajla;
+        private String LokacijaFajla;
         private List<Pregled> pregledi;
 
         public CuvanjePregledaPacijent(String lokacija)
@@ -16,7 +16,7 @@ namespace Model.PacijentModel
             LokacijaFajla = lokacija;
         }
 
-        public CuvanjePregledaPacijent()
+        /*public CuvanjePregledaPacijent()
         {
             pregledi = new List<Pregled>();
             DateTime pocetak = new DateTime(2020, 10, 25);
@@ -24,7 +24,7 @@ namespace Model.PacijentModel
             Pacijent pacijent1 = new Pacijent { ime = "hff", prezime = "hhhh", adresa = "hefhfei", brojTelefona = "4558494184", datumRodjenja = new DateTime(1986, 11, 1), email = "hfghf", jmbg = "12555" };
             Pregled pregled1 = new Pregled { Pocetak = pocetak, Trajanje = 30, pacijent = pacijent1, doktor = doktor1 };
             pregledi.Add(pregled1);
-        }
+        } */
 
         public List<Pregled> DobaviSve()
         {
@@ -45,6 +45,7 @@ namespace Model.PacijentModel
                         pregled.Tip = TipPregleda.Standardni;
                     if (parts[5] == "Operaija")
                         pregled.Tip = TipPregleda.Operacija;
+
                     pregledi.Add(pregled);
                 }
                 file.Close();
