@@ -50,6 +50,7 @@ namespace Model.DoktorModel
             return true;
         }
 
+
         public void PrikaziPregledePacijent()
         {
             // TODO: implement
@@ -76,11 +77,42 @@ namespace Model.DoktorModel
             return doktor;
         }
 
-        /// <pdGenerated>default parent setter</pdGenerated>
-        /// <param>newDoktor</param>
-        public void SetDoktor(Model.Doktor newDoktor)
-        {
-            if (this.doktor != newDoktor)
+
+      
+      
+      /// <pdGenerated>default parent setter</pdGenerated>
+      /// <param>newDoktor</param>
+      public void SetDoktor(Model.Doktor newDoktor)
+      {
+         if (this.doktor != newDoktor)
+         {
+            if (this.doktor != null)
+            {
+               Model.Doktor oldDoktor = this.doktor;
+               this.doktor = null;
+               oldDoktor.RemovePregled(this);
+            }
+            if (newDoktor != null)
+            {
+               this.doktor = newDoktor;
+               this.doktor.AddPregled(this);
+            }
+         }
+      }
+        public Model.Pacijent pacijent;
+      
+      /// <pdGenerated>default parent getter</pdGenerated>
+      public Model.Pacijent GetPacijent()
+      {
+         return pacijent;
+      }
+   
+      public void SetPacijent(Model.Pacijent newPacijent)
+      {
+         if (this.pacijent != newPacijent)
+         {
+            if (this.pacijent != null)
+
             {
                 if (this.doktor != null)
                 {
@@ -95,7 +127,7 @@ namespace Model.DoktorModel
                 }
             }
         }
-        public Model.Pacijent pacijent { get; set; }
+        
 
         /// <pdGenerated>default parent getter</pdGenerated>
         public Model.Pacijent GetPacijent()
@@ -103,9 +135,9 @@ namespace Model.DoktorModel
             return pacijent;
         }
 
-        /// <pdGenerated>default parent setter</pdGenerated>
-        /// <param>newPacijent</param>
-        public void SetPacijent(Model.Pacijent newPacijent)
+            /// <pdGenerated>default parent setter</pdGenerated>
+            /// <param>newPacijent</param>
+            public void SetPacijent(Model.Pacijent newPacijent)
         {
             if (this.pacijent != newPacijent)
             {
@@ -121,7 +153,13 @@ namespace Model.DoktorModel
                     this.pacijent.AddPregled(this);
                 }
             }
+
         }
+
+         }
+      }
+
+        
 
     }
 }
