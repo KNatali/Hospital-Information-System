@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Windows;
 
 namespace Model.DoktorModel
 {
@@ -17,6 +18,9 @@ namespace Model.DoktorModel
         {
             string line;
             List<String> lines = new List<string>();
+
+            
+           
 
             using (StreamReader file = new StreamReader(@"C:\Users\nata1\Projekat\ProjekatSIMS\Pregled.txt"))
             {

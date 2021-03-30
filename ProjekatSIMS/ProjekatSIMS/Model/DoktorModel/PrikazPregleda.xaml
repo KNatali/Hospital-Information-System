@@ -22,7 +22,7 @@
         </DataGrid>
         <Label Content="NAPOMENA:Obavezno selektovati red u tabeli prije klika na date opcije" HorizontalAlignment="Left" Margin="64,316,0,0" VerticalAlignment="Top"/>
         <Button Content="Otkazi Pregled" Click="OtkaziPregled"  HorizontalAlignment="Left" Margin="64,347,0,0" VerticalAlignment="Top" Height="39" Width="132" Background="#FFB5CDE2"/>
-        <Button Content="Izmijeni Pregled" Click="IzmijeniPregled"  HorizontalAlignment="Left" Margin="268,349,0,0" VerticalAlignment="Top" Height="37" Width="132" Background="#FFB5CDE2"/>
+        <Button Content="Pomjeri Pregled" Click="IzmijeniPregled"  HorizontalAlignment="Left" Margin="268,349,0,0" VerticalAlignment="Top" Height="37" Width="132" Background="#FFB5CDE2"/>
 
 
 
