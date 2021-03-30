@@ -77,39 +77,6 @@ namespace Model.DoktorModel
             return doktor;
         }
 
-
-      
-<<<<<<< HEAD
-=======
-      public void PrikaziPregledePacijent()
-      {
-         // TODO: implement
-      }
-      
-      public Pregled ZakaziPregledePacijent()
-      {
-         // TODO: implement
-         return null;
-      }
-   
-      public int Id;
-      public DateTime Pocetak;
-      public int Trajanje;
-      public TipPregleda  Tip;
-      public Model.PacijentModel.StatusPregleda StatusPergleda;
-      
-      public Model.UpravnikModel.Prostorija prostorija;
-      public Model.Doktor doktor;
-      
-      /// <pdGenerated>default parent getter</pdGenerated>
-      public Model.Doktor GetDoktor()
-      {
-         return doktor;
-      }
->>>>>>> 3b47ec66049c6aa06ee5b2b1ed84c563cb6c8317
-      
-      /// <pdGenerated>default parent setter</pdGenerated>
-      /// <param>newDoktor</param>
       public void SetDoktor(Model.Doktor newDoktor)
       {
          if (this.doktor != newDoktor)
@@ -134,63 +101,32 @@ namespace Model.DoktorModel
       {
          return pacijent;
       }
-   
-      public void SetPacijent(Model.Pacijent newPacijent)
-      {
-         if (this.pacijent != newPacijent)
-         {
-            if (this.pacijent != null)
 
-            {
-                if (this.doktor != null)
-                {
-                    Model.Doktor oldDoktor = this.doktor;
-                    this.doktor = null;
-                    oldDoktor.RemovePregled(this);
-                }
-                if (newDoktor != null)
-                {
-                    this.doktor = newDoktor;
-                    this.doktor.AddPregled(this);
-                }
-            }
-        }
-        
-
-        /// <pdGenerated>default parent getter</pdGenerated>
-        public Model.Pacijent GetPacijent()
-        {
-            return pacijent;
-        }
-
-            /// <pdGenerated>default parent setter</pdGenerated>
-            /// <param>newPacijent</param>
-            public void SetPacijent(Model.Pacijent newPacijent)
+        public void SetPacijent(Model.Pacijent newPacijent)
         {
             if (this.pacijent != newPacijent)
             {
                 if (this.pacijent != null)
+
                 {
-                    Model.Pacijent oldPacijent = this.pacijent;
-                    this.pacijent = null;
-                    oldPacijent.RemovePregled(this);
-                }
-                if (newPacijent != null)
-                {
-                    this.pacijent = newPacijent;
-                    this.pacijent.AddPregled(this);
+                    if (this.doktor != null)
+                    {
+                        Model.Doktor oldDoktor = this.doktor;
+                        this.doktor = null;
+                        oldDoktor.RemovePregled(this);
+                    }
+                   
                 }
             }
-
         }
+        
 
-         }
-      }
+       
+
+           
+
 
         
-<<<<<<< HEAD
 
-=======
->>>>>>> 3b47ec66049c6aa06ee5b2b1ed84c563cb6c8317
     }
 }
