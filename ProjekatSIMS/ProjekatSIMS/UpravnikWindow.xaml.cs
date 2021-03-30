@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjekatSIMS.Model.UpravnikModel;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -12,14 +13,24 @@ using System.Windows.Shapes;
 
 namespace ProjekatSIMS
 {
-    /// <summary>
-    /// Interaction logic for UpravnikWindow.xaml
-    /// </summary>
+   
     public partial class UpravnikWindow : Window
     {
         public UpravnikWindow()
         {
             InitializeComponent();
+        }
+
+        private void Upravljaj_Click(object sender, RoutedEventArgs e)
+        {
+           UpravljajWindow uw = new UpravljajWindow();
+           uw.Show();
+        }
+
+        private void Pregledaj_Click(object sender, RoutedEventArgs e)
+        {
+            PregledajWindow pw = new PregledajWindow();
+           pw.Show();
         }
     }
 }

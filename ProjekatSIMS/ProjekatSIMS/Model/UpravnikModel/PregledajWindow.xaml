@@ -1,0 +1,25 @@
+﻿<Window x:Class="ProjekatSIMS.Model.UpravnikModel.PregledajWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjekatSIMS.Model.UpravnikModel"
+        mc:Ignorable="d"
+        Title="PregledajWindow" Height="450" Width="800">
+    <Grid>
+
+        <DataGrid x:Name="dataGridProstorije" ItemsSource="{Binding Pregledi}" IsReadOnly="True"
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="48,53,49,152">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Width="150" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Sprat" Width="150" Binding="{Binding Pocetak}"/>
+                <DataGridTextColumn Header="Vrsta" Width="150" Binding="{Binding Trajanje}"/>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Izmeni" Click="Izmeni"  HorizontalAlignment="Left" Margin="170,337,0,0" VerticalAlignment="Top" Height="39" Width="132" Background="#FFB5CDE2"/>
+        <Button Content="Obrisi" Click="Obrisi"  HorizontalAlignment="Left" Margin="516,337,0,0" VerticalAlignment="Top" Height="39" Width="132" Background="#FFB5CDE2"/>
+
+
+    </Grid>
+</Window>

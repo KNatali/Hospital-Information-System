@@ -1,0 +1,25 @@
+﻿<Window x:Class="ProjekatSIMS.Model.UpravnikModel.KreirajWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjekatSIMS.Model.UpravnikModel"
+        mc:Ignorable="d"
+        Title="KreirajWindow" Height="450" Width="800">
+    <Grid>
+        <Label Content="Unesite id" HorizontalAlignment="Left" Height="38" Margin="0,32,0,0" VerticalAlignment="Top" Width="160" FontSize="22" Background="White" Foreground="#FFF31010" RenderTransformOrigin="0.692,0.449"/>
+        <TextBox Name ="Id" Text="" HorizontalAlignment="Left" Height="38" Margin="199,32,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="291" />
+        <Label Content="Unesite sprat" HorizontalAlignment="Left" Height="38" Margin="10,96,0,0" VerticalAlignment="Top" Width="160" FontSize="22" Foreground="#FFFC0000" />
+        <TextBox Name="Sprat" HorizontalAlignment="Left" Height="38" Margin="199,96,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="291"/>
+        <Label Content="Odaberite vrstu" HorizontalAlignment="Left" Height="38" Margin="10,179,0,0" VerticalAlignment="Top" Width="160" FontSize="22" Background="White" Foreground="#FFF31010" RenderTransformOrigin="0.692,0.449"/>
+        <RadioButton Name ="B1"  Content="Sala" HorizontalAlignment="Left" Margin="241,182,0,0" VerticalAlignment="Top"/>
+        <RadioButton Name ="B2" Content="Soba" HorizontalAlignment="Left" Margin="241,225,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.559,1.8"/>
+        <RadioButton Name ="B3"  Content="Kancelarija" HorizontalAlignment="Left" Margin="241,245,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.011,0.516"/>
+        <RadioButton Name ="B4" Content="Magacin" HorizontalAlignment="Left" Margin="241,265,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.861,5.49"/>
+        <RadioButton Name ="B5" Content="Ordinacija" HorizontalAlignment="Left" Margin="241,202,0,0" VerticalAlignment="Top"/>
+        <Button Content="Kreiraj"   HorizontalAlignment="Left" Margin="490,363,0,0" VerticalAlignment="Top"/>
+
+
+
+    </Grid>
+</Window>
