@@ -19,7 +19,7 @@ namespace ProjekatSIMS.Model.PacijentModel
             this.DataContext = this;
 
             Pregledi = new List<Pregled>();
-            CuvanjePregledaPacijent fajl = new CuvanjePregledaPacijent(@"C:\Users\Home\Dropbox\My PC (DESKTOP-TI6DNK1)\Desktop\ProjekatSIMSdva\Projekat\ProjekatSIMS\Pregled.txt");
+            CuvanjePregledaPacijent fajl = new CuvanjePregledaPacijent(@"C:\Users\Home\Dropbox\My PC (DESKTOP-TI6DNK1)\Desktop\ProjekatSIMSdva\Projekat\ProjekatSIMS\PregledPacijent.txt");
             Pregledi = fajl.DobaviSve();
 
 

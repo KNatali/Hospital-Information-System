@@ -23,14 +23,15 @@ namespace Model.PacijentModel
             pregledi = new List<Pregled>();
             string line;
 
-            using (StreamReader file = new StreamReader(@"C:\Users\Home\Dropbox\My PC (DESKTOP-TI6DNK1)\Desktop\ProjekatSIMSdva\Projekat\ProjekatSIMS\Pregled.txt"))
+            using (StreamReader file = new StreamReader(@"C:\Users\Home\Dropbox\My PC (DESKTOP-TI6DNK1)\Desktop\ProjekatSIMSdva\Projekat\ProjekatSIMS\PregledPacijent.txt"))
             {
                 while ((line = file.ReadLine()) != null)
                 {
                     string[] parts = line.Split(",");
 
                     Pregled pregled = new Pregled();
-                    pregled.Id = Convert.ToInt32(parts[0]);
+
+                    pregled.Id = Convert.ToInt32(parts[0]); 
                     pregled.Pocetak = Convert.ToDateTime(parts[3]);
                     pregled.Trajanje = Convert.ToInt32(parts[4]);
                     if (parts[5] == "Standardni")
@@ -54,17 +55,7 @@ namespace Model.PacijentModel
             fajl.WriteLineAsync(pregled);
         }
 
-       /* public Pregled DobaviJedan(int id)
-        {
-            // TODO: implement
-            return null;
-        } */
 
-       /* public Pacijent DobaviPacijenta()
-        {
-            // TODO: implement
-            return null;
-        } */
 
 
 
