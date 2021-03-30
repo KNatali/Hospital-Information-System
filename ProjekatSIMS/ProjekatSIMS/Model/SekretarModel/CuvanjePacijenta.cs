@@ -1,5 +1,3 @@
-
-
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,32 +6,13 @@ namespace Model.SekretarModel
 {
     public class CuvanjePacijenta
     {
-        //public CuvanjePacijenta() { }
-        /*public CuvanjePacijenta(String l)
-        {
-            lokacija = l;
-        }*/
         public CuvanjePacijenta(String l)
         {
             lokacija = l;
-            /*pacijenti = new List<Pacijent>();
-            DateTime datum1 = new DateTime(1999, 10, 10);
-            Pacijent p1 = new Pacijent
-            {
-                Jmbg = "123",
-                Adresa = "aaa",
-                BrojTelefona = "0123",
-                DatumRodjenja = datum1,
-                Email = "as@a",
-                Ime = "aaaaaaa",
-                Prezime = "asadafas"
-            };
-            pacijenti.Add(p1);*/
         }
         public void Sacuvaj(String pacijent, Boolean znak)
         {
             using StreamWriter file = new StreamWriter(lokacija, znak);
-            // file.WriteLineAsync(pacijent);
             file.WriteLineAsync(pacijent);
         }
 

@@ -28,5 +28,9 @@ namespace ProjekatSIMS
             TabelaPacijenata pp = new TabelaPacijenata();
             pp.Show();
         }
+        private void Nazad(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

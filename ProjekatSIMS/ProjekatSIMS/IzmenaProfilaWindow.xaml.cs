@@ -14,9 +14,6 @@ using System.Windows.Shapes;
 
 namespace ProjekatSIMS
 {
-    /// <summary>
-    /// Interaction logic for IzmenaProfilaWindow.xaml
-    /// </summary>
     public partial class IzmenaProfilaWindow : Window
     {
         public IzmenaProfilaWindow()
@@ -29,8 +26,6 @@ namespace ProjekatSIMS
             switch (ret)
             {
                 case MessageBoxResult.Yes:
-                    /*IzmenaProfilaWindow ip = new IzmenaProfilaWindow();
-                    ip.Close();*/
                     this.Close();
                     break;
                 case MessageBoxResult.No:

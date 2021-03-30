@@ -1,8 +1,3 @@
-// File:    Pacijent.cs
-// Author:  mrvic
-// Created: 28 March 2021 09:56:35
-// Purpose: Definition of Class Pacijent
-
 using Model.DoktorModel;
 using System;
 
@@ -27,11 +22,11 @@ namespace Model
             return true;
         }
 
-        public Boolean ObrisiPacijent(int id)
+        /*public Boolean ObrisiPacijent(int id)
         {
             // TODO: implement
             return true;
-        }
+        }*/
 
         public String Jmbg { get; set; }
         public String Ime { get; set; }

@@ -5,5 +5,3 @@ Anastasija,Popovic,popovica@gmail.com,0625489652, Dositejeva 18, 0502999855123,0
 Milica,Krstic,milica@gmail.com,065488523, Jagiceva 78, 1811996855222,18.11.1996
 Marko,Aleksic,markoal@gmail.com,0665260321, Latinke Tajkov 14, 0404995850213,04.04.1995
 Lazar,Markovic,lazar@gmail.com,0612564566, Strojsmajerova 45, 0101991850231,01.01.1991
-Snezana,Mijatovic,sneza@gmail.com,063789564, Sonje Marinkovic 5, 0202965855231,02.02.1965
- Anika,Anikic,a.p@gmail.com,0631234567,Mileticeva bb,0909999885002,7.3.2021. 00:00:00

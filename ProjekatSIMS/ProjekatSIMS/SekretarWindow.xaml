@@ -7,7 +7,9 @@
         mc:Ignorable="d"
         Title="SekretarWindow" Height="450" Width="800">
     <Grid>
+        <Label Content="Sekretar" HorizontalAlignment="Center" Margin="0,70,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
         <Button Content="Kreiraj novi profil" Click="Kreiranje_profila" HorizontalAlignment="Left" Margin="175,200,0,0" VerticalAlignment="Top" Height="52" Width="161" Background="#FFA6B1D6"/>
         <Button Content="Pregled svih pacijenata" Click="Pretrazivanje" HorizontalAlignment="Left" Margin="448,200,0,0" VerticalAlignment="Top" Height="52" Width="161" Background="#FFA6B1D6"/>
+        <Button Content="Nazad" Click="Nazad" HorizontalAlignment="Left" Margin="40,350,0,0" VerticalAlignment="Top" Height="20" Width="50" Background="#FFA6B1D6"/>
     </Grid>
 </Window>
