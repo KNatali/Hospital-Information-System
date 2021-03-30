@@ -10,7 +10,7 @@ namespace Model
 {
     public class Pacijent
     {
-        public void PregledProfila()
+        /*public void PregledProfila()
         {
             // TODO: implement
         }
@@ -19,7 +19,7 @@ namespace Model
         {
             // TODO: implement
             return null;
-        }
+        }*/
 
         public Boolean IzmeniInformacije()
         {
