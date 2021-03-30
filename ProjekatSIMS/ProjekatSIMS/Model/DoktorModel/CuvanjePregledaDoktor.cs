@@ -1,5 +1,6 @@
 
 using Model.PacijentModel;
+using Model.UpravnikModel;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -45,6 +46,9 @@ namespace Model.DoktorModel
                     pregled.Id = Convert.ToInt32(parts[0]);
                     pregled.Pocetak = Convert.ToDateTime(parts[3]);
                     pregled.Trajanje = Convert.ToInt32(parts[4]);
+                    Prostorija pr = new Prostorija();
+                    pr.id = parts[7];
+                    pregled.prostorija = pr;
 
                     //ide da nadje pacijenta sa ucitanim jmbg
                     String line1;

@@ -34,34 +34,26 @@ namespace ProjekatSIMS.Model.DoktorModel
 
         private void OtkaziPregled(object sender, RoutedEventArgs e)
         {
-            Pregled p = (Pregled)dataGridPregledi.SelectedItems[0];
+            Pregled p = (Pregled)dataGridPregledi.SelectedItems[0]; //selektovani red
 
-
-            string line;
-            List<String> lines = new List<string>();
-
-            using (StreamReader file = new StreamReader(@"C:\Users\nata1\Projekat\ProjekatSIMS\Pregled.txt"))
+            //pozivam metodu iz Pregleda za otkazivanje
+            if (p.OtkaziPregledDoktor() == true)
             {
-
-                while ((line = file.ReadLine()) != null)
-                {
-                    string[] parts = line.Split(",");
-                    if (parts[0] != p.Id.ToString())
-                    {
-                        lines.Add(line);
-                    }
-                }       
-
-                file.Close();
+               
+                MessageBox.Show("Pregled je uspjesno otkazan");
+                this.Close();
             }
 
-             File.WriteAllLinesAsync(@"C:\Users\nata1\Projekat\ProjekatSIMS\Pregled.txt", lines);
-            MessageBox.Show("Pregled je uspjesno otkazan");
+            
             this.Close();
         }
 
         private void IzmijeniPregled(object sender, RoutedEventArgs e)
         {
+           
+            Pregled p = (Pregled)dataGridPregledi.SelectedItems[0];
+            PrikazPromjena pr = new PrikazPromjena(p);
+            pr.Show();
 
         }
     }

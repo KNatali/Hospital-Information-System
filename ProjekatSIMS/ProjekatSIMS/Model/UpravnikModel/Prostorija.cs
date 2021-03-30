@@ -12,7 +12,7 @@ namespace Model.UpravnikModel
             return true;
       }
    
-      public String id;
+      public String id { get; set; }
       public int sprat;
       public VrstaProstorije vrsta;
       

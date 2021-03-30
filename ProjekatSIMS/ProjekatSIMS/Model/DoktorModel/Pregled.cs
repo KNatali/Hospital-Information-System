@@ -5,6 +5,8 @@
  ***********************************************************************/
 
 using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace Model.DoktorModel
 {
@@ -12,14 +14,32 @@ namespace Model.DoktorModel
     {
         public Boolean ZakaziPregled()
         {
-            // TODO: implement
+            
             return true;
         }
 
         public Boolean OtkaziPregledDoktor()
         {
-            // TODO: implement
+            string line;
+            List<String> lines = new List<string>();
+
+            using (StreamReader file = new StreamReader(@"C:\Users\nata1\Projekat\ProjekatSIMS\Pregled.txt"))
+            {
+
+                while ((line = file.ReadLine()) != null)
+                {
+                    string[] parts = line.Split(",");
+                    if (parts[0] != this.Id.ToString())  //svi redovi iz fajla se prepisuju sem onoga gdje se id poklapa
+                    {
+                        lines.Add(line);
+                    }
+                }
+
+                file.Close();
+            }
+            File.WriteAllLinesAsync(@"C:\Users\nata1\Projekat\ProjekatSIMS\Pregled.txt", lines);
             return true;
+
         }
 
         public Boolean PomjeriPregledDoktor()
