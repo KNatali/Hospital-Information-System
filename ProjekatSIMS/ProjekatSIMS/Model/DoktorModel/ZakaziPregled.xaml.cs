@@ -124,16 +124,8 @@ namespace ProjekatSIMS.Model.DoktorModel
             CuvanjePregledaDoktor fajl = new CuvanjePregledaDoktor(@"C:\Users\nata1\Projekat\ProjekatSIMS\Pregled.txt");
              fajl.Sacuvaj(red,true);
 
-            //using StreamWriter fajl = new StreamWriter(@"C:\Users\nata1\Projekat\ProjekatSIMS\Pregled.txt",true);
-
-
-
-            //fajl.WriteLineAsync(red);
-
-
-
-
-            MessageBox.Show(red);
+             MessageBox.Show("Uspjesno je zakazan termin");
+            this.Close();
         }
     }
 }

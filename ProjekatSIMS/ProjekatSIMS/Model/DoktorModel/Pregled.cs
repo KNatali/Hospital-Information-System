@@ -65,7 +65,7 @@ namespace Model.DoktorModel
         public DateTime Pocetak { get; set; }
         public int Trajanje { get; set; }
         public TipPregleda Tip { get; set; }
-        public Model.PacijentModel.StatusPregleda StatusPergleda { get; set; }
+        public Model.PacijentModel.StatusPregleda StatusPregleda { get; set; }
 
         public Model.UpravnikModel.Prostorija prostorija { get; set; }
         public Model.Doktor doktor { get; set; }
@@ -95,7 +95,7 @@ namespace Model.DoktorModel
                 }
             }
         }
-        public Model.Pacijent pacijent;
+        public Model.Pacijent pacijent { get; set; }
 
         /// <pdGenerated>default parent getter</pdGenerated>
         public Model.Pacijent GetPacijent()

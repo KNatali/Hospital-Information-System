@@ -33,19 +33,19 @@ namespace Model
             return true; 
       }
    
-      public String jmbg;
-      public String ime;
-      public String prezime;
-      public String brojTelefona;
-      public String email;
-      public DateTime datumRodjenja;
-      public String adresa;
-      
-      public RegistrovaniKorisnik registrovaniKorisnik;
-      public System.Collections.ArrayList pregled;
-      
-      /// <pdGenerated>default getter</pdGenerated>
-      public System.Collections.ArrayList GetPregled()
+      public String jmbg { set; get; }
+      public String Ime { set; get; }
+        public String Prezime { set; get; }
+        public String BrojTelefona { set; get; }
+        public String Email { set; get; }
+        public DateTime DatumRodjenja { set; get; }
+        public String Adresa { set; get; }
+
+        public RegistrovaniKorisnik registrovaniKorisnik;
+      public System.Collections.ArrayList pregled { set; get; }
+
+        /// <pdGenerated>default getter</pdGenerated>
+        public System.Collections.ArrayList GetPregled()
       {
          if (pregled == null)
             pregled = new System.Collections.ArrayList();
