@@ -53,7 +53,7 @@ namespace ProjekatSIMS
             switch (ret)
             {
                 case MessageBoxResult.Yes:
-                    if (p.IzmeniInformacije() == true)
+                    if (p.IzmeniInformacije(ime, prezime, mail, telefon, adresa, jmbg, datum) == true)
                     {
                         MessageBox.Show("Pacijent je izmenjen.", "Obavestenje");
                         this.Close();
