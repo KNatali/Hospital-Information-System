@@ -28,7 +28,7 @@
         <Label Content="Prezime doktora" HorizontalAlignment="Left" Margin="28,296,0,0" VerticalAlignment="Top" FontStyle="Italic"/>
         <Label Content="Upisite svoj JMBG: " HorizontalAlignment="Left" Margin="328,80,0,0" VerticalAlignment="Top" FontStyle="Italic"/>
         <TextBox Name="Jmbg" HorizontalAlignment="Left" Margin="460,84,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Vidi doktore" Name="Doktori" Width="100" Height="40" HorizontalAlignment="Left" Margin="400,269,0,0" VerticalAlignment="Top" Click="Doktori_Click" />
+       
 
     </Grid>
 </Window>

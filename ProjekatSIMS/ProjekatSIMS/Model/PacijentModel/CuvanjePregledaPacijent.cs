@@ -16,15 +16,7 @@ namespace Model.PacijentModel
             LokacijaFajla = lokacija;
         }
 
-        /*public CuvanjePregledaPacijent()
-        {
-            pregledi = new List<Pregled>();
-            DateTime pocetak = new DateTime(2020, 10, 25);
-            Doktor doktor1 = new Doktor { Ime = "Biljana", Prezime = "Marinkov", Adresa = "Marsala Tita 21", BrojTelefona = "063568845", DatumRodjenja = new DateTime(1990, 10, 12), Email = "nbhvuh", Jmbg = "123" };
-            Pacijent pacijent1 = new Pacijent { ime = "hff", prezime = "hhhh", adresa = "hefhfei", brojTelefona = "4558494184", datumRodjenja = new DateTime(1986, 11, 1), email = "hfghf", jmbg = "12555" };
-            Pregled pregled1 = new Pregled { Pocetak = pocetak, Trajanje = 30, pacijent = pacijent1, doktor = doktor1 };
-            pregledi.Add(pregled1);
-        } */
+       
 
         public List<Pregled> DobaviSve()
         {

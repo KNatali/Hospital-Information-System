@@ -106,12 +106,15 @@ namespace ProjekatSIMS.Model.PacijentModel
                 {
                     string[] deo = linijaRed.Split(",");
                     //zauzima prvu slobodnu salu
-                    if (deo[3] == "false")
+                    if (deo[2] == "sala")
                     {
-                        sala = deo[1];
-                        break;
-                    }
+                        if (deo[3] == "false")
+                        {
+                            sala = deo[1];
+                            break;
+                        }
 
+                    }
                 }
                 dok.Close();
             }

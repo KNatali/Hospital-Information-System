@@ -15,6 +15,7 @@ namespace Model.UpravnikModel
       public String id;
       public int sprat;
       public VrstaProstorije vrsta;
+      public Boolean Zauzeta = false;
       
       public System.Collections.ArrayList inventar;
       
