@@ -1,8 +1,3 @@
-// File:    Pacijent.cs
-// Author:  mrvic
-// Created: 28 March 2021 09:56:35
-// Purpose: Definition of Class Pacijent
-
 using Model.DoktorModel;
 using System;
 
@@ -10,28 +5,17 @@ namespace Model
 {
     public class Pacijent
     {
-        /*public void PregledProfila()
-        {
-            // TODO: implement
-        }
-
-        public Pacijent KreirajProfil()
-        {
-            // TODO: implement
-            return null;
-        }*/
-
         public Boolean IzmeniInformacije()
         {
             // TODO: implement
             return true;
         }
 
-        public Boolean ObrisiPacijent(int id)
+        /*public Boolean ObrisiPacijent(int id)
         {
             // TODO: implement
             return true;
-        }
+        }*/
 
         public String Jmbg { get; set; }
         public String Ime { get; set; }
