@@ -8,7 +8,7 @@
         Title="KreirajWindow" Height="450" Width="800">
     <Grid>
         <Label Content="Unesite id" HorizontalAlignment="Left" Height="38" Margin="0,32,0,0" VerticalAlignment="Top" Width="160" FontSize="22" Background="White" Foreground="#FFF31010" RenderTransformOrigin="0.692,0.449"/>
-        <TextBox Name ="Id" Text="" HorizontalAlignment="Left" Height="38" Margin="199,32,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="291" TextChanged="TextBox_TextChanged" FontSize="16" SelectionTextBrush="#FF000105"/>
+        <TextBox Name ="Id" Text="" HorizontalAlignment="Left" Height="38" Margin="199,32,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="291" />
         <Label Content="Unesite sprat" HorizontalAlignment="Left" Height="38" Margin="10,96,0,0" VerticalAlignment="Top" Width="160" FontSize="22" Foreground="#FFFC0000" />
         <TextBox Name="Sprat" HorizontalAlignment="Left" Height="38" Margin="199,96,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="291"/>
         <Label Content="Odaberite vrstu" HorizontalAlignment="Left" Height="38" Margin="10,179,0,0" VerticalAlignment="Top" Width="160" FontSize="22" Background="White" Foreground="#FFF31010" RenderTransformOrigin="0.692,0.449"/>
