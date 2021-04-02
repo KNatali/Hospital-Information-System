@@ -1,3 +1,1 @@
-1,1202998855654,1511990855023,2021/05/10 10:00,30,Standardni,Zakazan,A1
-3,0202965855231,1511990855023,15/04/2021 15:30:00,30,Operacija,Zakazan,C4
-4,1811996855222,1511990855023,01/04/2021 16:00:00,45,Standardni,Zakazan,A10
+[{"Id":5,"Pocetak":"2021-04-21T10:30:00","Trajanje":30,"Tip":0,"StatusPregleda":0,"prostorija":null,"doktor":null,"pacijent":null},{"Id":5,"Pocetak":"2021-03-29T09:09:00","Trajanje":30,"Tip":0,"StatusPregleda":0,"prostorija":null,"doktor":null,"pacijent":null},{"Id":5,"Pocetak":"2021-04-21T10:30:00","Trajanje":30,"Tip":0,"StatusPregleda":1,"prostorija":null,"doktor":null,"pacijent":null},{"Id":5,"Pocetak":"2021-04-01T08:00:00","Trajanje":45,"Tip":0,"StatusPregleda":1,"prostorija":null,"doktor":null,"pacijent":{"registrovaniKorisnik":null,"jmbg":null,"Ime":"Marko","Prezime":"Mrakic","BrojTelefona":null,"Email":null,"DatumRodjenja":"0001-01-01T00:00:00","Adresa":null,"pregled":null}}]

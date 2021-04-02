@@ -1,9 +1,13 @@
-﻿using Model.DoktorModel;
+﻿using Model;
+using Model.DoktorModel;
+using Model.PacijentModel;
 using Model.UpravnikModel;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Text.Json;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,12 +20,16 @@ using System.Windows.Shapes;
 namespace ProjekatSIMS.Model.DoktorModel
 {
    
-    public partial class ZakaziPregled : Window
+    public partial class ZakaziPregled : Window   
     {
+        public List<Prostorija> Sale { get; set; }
         public ZakaziPregled()
         {
             InitializeComponent();
             this.DataContext = this;
+            Prostorija Sala1 = new Prostorija { id = "D13" };
+            Sale = new List<Prostorija>();
+            Sale.Add(Sala1);
         }
 
         private void Zakazi(object sender, RoutedEventArgs e)
@@ -33,15 +41,14 @@ namespace ProjekatSIMS.Model.DoktorModel
             double sati = Convert.ToDouble(Sati.Text);
             double minuti = Convert.ToDouble(Minuti.Text);
             DateTime datum1 = new DateTime();
+            
             datum1=datum.AddHours(sati);
             datum1 = datum1.AddMinutes(minuti);
             int trajanje = Convert.ToInt32(Trajanje.Text);
             DateTime datum2 = datum1.AddMinutes(trajanje);
-        
-            String idSale = Sala.Text;  //!!!!!DODAJ
+            
             TipPregleda t = new TipPregleda();
             Pregled p = new Pregled();
-
             if (Btn1.IsChecked == true)
                 p.Tip = TipPregleda.Standardni;
             else
@@ -80,7 +87,7 @@ namespace ProjekatSIMS.Model.DoktorModel
                 
             }
 
-
+            /*
             //sada gledam da li je vrijeme okej tj da li se poklapa sa nekim
             String line1;
             String id=""; //id pregleda
@@ -142,13 +149,44 @@ namespace ProjekatSIMS.Model.DoktorModel
             //stavljam sve u red kako bi bilo u fajlu
             String red =Idnovi.ToString()+ "," + jmbg + "," + "1511990855023" + "," + datum1.ToString() + "," + trajanje.ToString() +
                 "," + tip + "," + "Zakazan"+","+idSale;
+            */
+
+            //***************************dio za probvanje jSON
+
+            Pacijent pacijent = new Pacijent{ Ime = "Marko", Prezime = "Mrakic" };
+
+            Pregled pregled = new Pregled { Id = 5, Pocetak = datum1, Trajanje = trajanje };
+            pregled.Tip = TipPregleda.Standardni;
+            pregled.pacijent = pacijent;
+
+            pregled.StatusPregleda = StatusPregleda.Zakazan;
+
+         
+
+            string newJson="";
+
+            using (StreamReader r = new StreamReader(@"C:\Users\nata1\Projekat\ProjekatSIMS\Pregled.txt"))
+            {
+                string json = r.ReadToEnd();
+                List<Pregled> pregledi = JsonConvert.DeserializeObject<List<Pregled>>(json);
+                if (pregledi == null)
+                {
+                    pregledi = new List<Pregled>();
+                   
+                }
+                pregledi.Add(pregled);
+                newJson = JsonConvert.SerializeObject(pregledi);
+            }
+
+            File.WriteAllText(@"C:\Users\nata1\Projekat\ProjekatSIMS\Pregled.txt", newJson);
+
+            //*********************************
 
 
+            /*CuvanjePregledaDoktor fajl = new CuvanjePregledaDoktor(@"C:\Users\nata1\Projekat\ProjekatSIMS\Pregled.txt");
+             fajl.Sacuvaj(red,true);*/
 
-            CuvanjePregledaDoktor fajl = new CuvanjePregledaDoktor(@"C:\Users\nata1\Projekat\ProjekatSIMS\Pregled.txt");
-             fajl.Sacuvaj(red,true);
-
-             MessageBox.Show("Uspjesno je zakazan termin");
+            MessageBox.Show("Uspjesno je zakazan termin");
             this.Close();
         }
     }

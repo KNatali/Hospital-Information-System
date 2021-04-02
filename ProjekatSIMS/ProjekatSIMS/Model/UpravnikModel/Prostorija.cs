@@ -12,11 +12,11 @@ namespace Model.UpravnikModel
             return true;
       }
    
-      public String id { get; set; }
-      public int sprat;
-      public VrstaProstorije vrsta;
-      
-      public System.Collections.ArrayList inventar;
+      public String Id { get; set; }
+      public int Sprat { get; set; }
+      public VrstaProstorije Vrsta { get; set; }
+
+        public System.Collections.ArrayList inventar;
       
       /// <pdGenerated>default getter</pdGenerated>
       public System.Collections.ArrayList GetInventar()

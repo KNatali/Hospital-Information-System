@@ -23,7 +23,13 @@
         <TextBox Name="Trajanje" HorizontalAlignment="Left" Margin="300,212,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="19"/>
         <Label Content="Sala:" HorizontalAlignment="Left" Margin="60,252,0,0" VerticalAlignment="Top" Height="27"/>
         <TextBox Name="Sala" HorizontalAlignment="Left" Margin="300,260,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="19"/>
-
+        <ComboBox HorizontalAlignment="Left"   
+                  Margin="588,54,0,0"   
+                  VerticalAlignment="Top"   
+                  Width="120"   
+                  ItemsSource="{Binding Path=Sale}"    
+                  SelectedItem="{Binding Path=Sala1}"  
+                  DisplayMemberPath="id"/>
         <Label Content="Tip pregleda:" HorizontalAlignment="Left" Margin="60,304,0,0" VerticalAlignment="Top" Height="28"/>
 
         <RadioButton Content="Standardni" Name="Btn1" HorizontalAlignment="Left" Margin="300,313,0,0" VerticalAlignment="Top" Height="15"/>
