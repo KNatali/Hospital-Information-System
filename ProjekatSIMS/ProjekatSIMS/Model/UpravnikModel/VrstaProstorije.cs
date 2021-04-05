@@ -8,12 +8,15 @@ using System;
 
 namespace Model.UpravnikModel
 {
-   public class VrstaProstorije
+   public enum VrstaProstorije
    {
-      private EnumConstant sala;
-      private EnumConstant soba;
-      private EnumConstant ordinacija;
-      private EnumConstant magacin;
-   
-   }
+      
+            Sala,
+            Soba,
+            Ordinacija,
+            Magacin,
+            Kancelarija
+        
+    }
+
 }

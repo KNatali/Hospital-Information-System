@@ -1,23 +1,14 @@
 ﻿using Model.DoktorModel;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ProjekatSIMS.Model.DoktorModel
 {
-  
+
     public partial class PrikazPromjena : Window
     {
-
+        public Pregled Pregled { get; set; }
         public List<Pregled> Pregledi
         {
             get;
@@ -32,17 +23,24 @@ namespace ProjekatSIMS.Model.DoktorModel
             Pregledi = new List<Pregled>();
 
             Pregledi.Add(pregled);
-            
+            Pregled = pregled;
+            Date.SelectedDate = Pregled.Pocetak;
+            Sati.Text = Pregled.Pocetak.Hour.ToString();
+            Minuti.Text = Pregled.Pocetak.Minute.ToString();
+            Trajanje.Text = Pregled.Trajanje.ToString();
+
+
+
         }
 
         private void PotvrdiIzmjenu(object sender, RoutedEventArgs e)
         {
-            Pregled p = (Pregled)dataGrid.SelectedItems[0];
-           
+           // Pregled p = (Pregled)dataGrid.SelectedItems[0];
+
 
             //prikupljam polja iz forme
 
-            
+
             DateTime datum = (DateTime)Date.SelectedDate;
             double sati = Convert.ToDouble(Sati.Text);
             double minuti = Convert.ToDouble(Minuti.Text);
@@ -54,7 +52,7 @@ namespace ProjekatSIMS.Model.DoktorModel
 
             //opet gledam da li je termin zauzet
 
-            String line1;
+            /*String line1;
             using (StreamReader file = new StreamReader(@"C:\Users\nata1\Projekat\ProjekatSIMS\Pregled.txt"))
             {
 
@@ -81,16 +79,26 @@ namespace ProjekatSIMS.Model.DoktorModel
                 }
 
                 file.Close();
-            }
+            }*/
 
-            if (p.PomjeriPregledDoktor(datum1,trajanje) == true)
+            CuvanjePregledaDoktor fajl = new CuvanjePregledaDoktor(@"..\..\Fajlovi\Pregled.txt");
+            List<Pregled> pregledi = fajl.UcitajSvePreglede();
+            foreach (Pregled pr in pregledi)
             {
-
-                MessageBox.Show("Pregled je uspjesno izmjenjen");
-                this.Close();
-                
-
+                if (pr.Id == Pregled.Id)
+                {
+                    pr.Pocetak = datum1;
+                    pr.Trajanje = trajanje;
+                    break;
+                }
             }
+            fajl.Sacuvaj(pregledi);
+
+
+            MessageBox.Show("Pregled je uspjesno izmjenjen");
+            this.Close();
+
+
 
 
         }

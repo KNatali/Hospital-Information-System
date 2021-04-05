@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      
        
         xmlns:local="clr-namespace:ProjekatSIMS.Model.DoktorModel"
         mc:Ignorable="d"
@@ -21,20 +22,27 @@
 
         <Label Content="Trajanje(u minutama)" HorizontalAlignment="Left" Margin="60,0,0,0" VerticalAlignment="Center" Height="28"/>
         <TextBox Name="Trajanje" HorizontalAlignment="Left" Margin="300,212,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="19"/>
-        <Label Content="Sala:" HorizontalAlignment="Left" Margin="60,252,0,0" VerticalAlignment="Top" Height="27"/>
-        <TextBox Name="Sala" HorizontalAlignment="Left" Margin="300,260,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="19"/>
-        <ComboBox HorizontalAlignment="Left"   
-                  Margin="588,54,0,0"   
+        <Label Content="Ordinacija:" HorizontalAlignment="Left" Margin="60,252,0,0" VerticalAlignment="Top" Height="27"/>
+
+        <Button Content="Zakazi" Click="Zakazi" HorizontalAlignment="Left" Margin="630,345,0,0" VerticalAlignment="Top" Height="42" Width="92" Background="#FFB5CDE2"/>
+        <ComboBox  Name="Ordinacija" HorizontalAlignment="Left"   
+                  Margin="300,257,0,0"   
                   VerticalAlignment="Top"   
                   Width="120"   
                   ItemsSource="{Binding Path=Sale}"    
-                  SelectedItem="{Binding Path=Sala1}"  
-                  DisplayMemberPath="id"/>
-        <Label Content="Tip pregleda:" HorizontalAlignment="Left" Margin="60,304,0,0" VerticalAlignment="Top" Height="28"/>
+                  SelectedItem="{Binding Path=Sala1}" >
 
-        <RadioButton Content="Standardni" Name="Btn1" HorizontalAlignment="Left" Margin="300,313,0,0" VerticalAlignment="Top" Height="15"/>
-        <RadioButton Content="Operacija" Name="Btn2" HorizontalAlignment="Left" Margin="443,313,0,0" VerticalAlignment="Top" Height="15"/>
-        <Button Content="Zakazi" Click="Zakazi" HorizontalAlignment="Left" Margin="630,345,0,0" VerticalAlignment="Top" Height="42" Width="92" Background="#FFB5CDE2"/>
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Path=Id}"/>
+                        <TextBlock Text=" - "/>
+                        <TextBlock Text="{Binding Path=Vrsta}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
 
 
 

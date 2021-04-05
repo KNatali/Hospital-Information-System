@@ -8,8 +8,11 @@
         Title="DoktorWindow" Height="450" Width="800">
     <Grid>
         <Label Content="Doktor" HorizontalAlignment="Center" Margin="0,46,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
-        <Button Content="Zakazi pregled" Click="ZakaziPregled" HorizontalAlignment="Left" Margin="129,158,0,0" VerticalAlignment="Top" Height="54" Width="168" Background="#FFB5CDE2"/>
-        <Button Content="Prikaz svih pregleda" Click="PrikazPregleda" HorizontalAlignment="Left" Margin="495,158,0,0" VerticalAlignment="Top" Height="54" Width="168" Background="#FFB5CDE2"/>
+        <Button Content="Zakazi pregled" Click="ZakaziPregled" HorizontalAlignment="Center" Margin="0,158,0,0" VerticalAlignment="Top" Height="54" Width="168" Background="#FFB5CDE2"/>
+        <Button Content="Prikaz svih pregleda" Click="PrikazPregleda" HorizontalAlignment="Left" Margin="86,158,0,0" VerticalAlignment="Top" Height="54" Width="168" Background="#FFB5CDE2"/>
+        <Button Content="Zakazi operaciju" Click="ZakaziOperaciju" HorizontalAlignment="Left" Margin="542,158,0,0" VerticalAlignment="Top" Height="54" Width="168" Background="#FFB5CDE2"/>
+
+        <Button Content="Sale" Click="Button_Click" HorizontalAlignment="Left" Margin="721,276,0,0" VerticalAlignment="Top"/>
 
 
     </Grid>

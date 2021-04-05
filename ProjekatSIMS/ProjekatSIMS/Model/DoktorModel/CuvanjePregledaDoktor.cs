@@ -19,94 +19,23 @@ namespace Model.DoktorModel
         {
             lokacijaFajla = lokacija;
         }
-      public void Sacuvaj(String pregled,Boolean znak)
+      public void Sacuvaj(List<Pregled> pregledi)
       {
 
-            
-            using StreamWriter file = new StreamWriter(lokacijaFajla,znak);
-
-
-
-            file.WriteLineAsync(pregled);
+            string newJson = JsonConvert.SerializeObject(pregledi);
+            File.WriteAllText(lokacijaFajla, newJson);
 
         }
       
       public List<Pregled> UcitajSvePreglede()
       {
-           
-            /* string line;
-
-             using (StreamReader file = new StreamReader(@"C:\Users\nata1\Projekat\ProjekatSIMS\Pregled.txt"))
-             {
-
-                 while ((line = file.ReadLine()) != null)
-                 {
-                     string[] parts = line.Split(",");
-
-                     Pregled pregled = new Pregled();
-                     pregled.Id = Convert.ToInt32(parts[0]);
-                     pregled.Pocetak = Convert.ToDateTime(parts[3]);
-                     pregled.Trajanje = Convert.ToInt32(parts[4]);
-                     Prostorija pr = new Prostorija();
-                     pr.id = parts[7];
-                     pregled.prostorija = pr;
-
-                     //ide da nadje pacijenta sa ucitanim jmbg
-                     String line1;
-                     using (StreamReader file1 = new StreamReader(@"C:\Users\nata1\Projekat\ProjekatSIMS\Pacijent.txt"))
-                     {
-
-                         while ((line1 = file1.ReadLine()) != null)
-                         {
-                             string[] parts1 = line1.Split(",");
-
-                             if (parts1[5] ==parts[1])
-                             { 
-                                 Pacijent p = new Pacijent();
-                                 p.Ime = parts1[0];
-                                 p.Prezime = parts1[1];
-                                 pregled.pacijent = p;
-                                 break;
-                             }
-                         }
-
-                         file1.Close();
-                     }
 
 
-                     if (parts[5] == "Standardni")
-                         pregled.Tip = TipPregleda.Standardni;
-                     if (parts[5] == "Operacija")
-                         pregled.Tip = TipPregleda.Operacija;
-                     if (parts[6] == "Zavrsen")
-                         pregled.StatusPregleda = StatusPregleda.Zavrsen;
-                     if (parts[6] == "Zakazan")
-                         pregled.StatusPregleda = StatusPregleda.Zakazan;
-                     if (parts[6] == "Otkazan")
-                         pregled.StatusPregleda = StatusPregleda.Otkazan;
-
-
-                  pregledi.Add(pregled);
-                 }
-
-                 file.Close();
-             }**/
-
-
-            //********************************NOVI DIO SA JSON
-            
-            Pregled pregled = new Pregled();
-            using (StreamReader r = new StreamReader(@"C:\Users\nata1\Projekat\ProjekatSIMS\Pregled.txt"))
+            using (StreamReader r = new StreamReader(lokacijaFajla))
             {
                 string json = r.ReadToEnd();
                 pregledi = JsonConvert.DeserializeObject<List<Pregled>>(json);
-               
-               
             }
-
-           
-            //***********************************************
-
             return pregledi;
         }
       

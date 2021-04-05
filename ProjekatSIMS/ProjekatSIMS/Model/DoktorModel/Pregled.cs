@@ -16,55 +16,13 @@ namespace Model.DoktorModel
 
         public Boolean OtkaziPregledDoktor()
         {
-            string line;
-            List<String> lines = new List<string>();
-
-            
-           
-
-            using (StreamReader file = new StreamReader(@"C:\Users\nata1\Projekat\ProjekatSIMS\Pregled.txt"))
-            {
-
-                while ((line = file.ReadLine()) != null)
-                {
-                    string[] parts = line.Split(",");
-                    if (parts[0] != this.Id.ToString())  //svi redovi iz fajla se prepisuju sem onoga gdje se id poklapa
-                    {
-                        lines.Add(line);
-                    }
-                }
-
-                file.Close();
-            }
-            File.WriteAllLinesAsync(@"C:\Users\nata1\Projekat\ProjekatSIMS\Pregled.txt", lines);
             return true;
 
         }
 
         public Boolean PomjeriPregledDoktor(DateTime datum,int trajanje)
         {
-            string line;
-            List<String> lines = new List<string>();
-
-            using (StreamReader file = new StreamReader(@"C:\Users\nata1\Projekat\ProjekatSIMS\Pregled.txt"))
-            {
-
-                while ((line = file.ReadLine()) != null)
-                {
-                    string[] parts = line.Split(",");
-                    if (parts[0] == this.Id.ToString())  //nadjem red koji mijenjam
-                    {
-                        parts[3] = datum.ToString();
-                        parts[4] = trajanje.ToString();
-                        line = parts[0] + "," + parts[1] + "," + parts[2] + "," + parts[3] +
-                            "," + parts[4] + "," + parts[5] + "," + parts[6] + "," + parts[7];
-                    }
-                    lines.Add(line);
-                }
-
-                file.Close();
-            }
-            File.WriteAllLinesAsync(@"C:\Users\nata1\Projekat\ProjekatSIMS\Pregled.txt", lines);
+            
             
             return true;
         }

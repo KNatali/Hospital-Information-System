@@ -1,0 +1,54 @@
+﻿<Window x:Class="ProjekatSIMS.Model.DoktorModel.ZakaziOperaciju"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjekatSIMS.Model.DoktorModel"
+        mc:Ignorable="d"
+        Title="ZakaziOperaciju" Height="450" Width="800">
+    <Grid>
+
+        <Label Content="Jmbg pacijenta:" HorizontalAlignment="Left" Margin="60,40,0,0" VerticalAlignment="Top" Height="28"/>
+        <TextBox Name="Jmbg" HorizontalAlignment="Left" Margin="300,48,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20"/>
+        <Label Content="Datum operacije:" HorizontalAlignment="Left" Margin="60,157,0,0" VerticalAlignment="Top" Height="26"/>
+        <DatePicker Name="Date" HorizontalAlignment="Left" Margin="300,159,0,0" VerticalAlignment="Top" Height="24" Width="120"/>
+
+        <Label Content="Sala:" HorizontalAlignment="Left" Margin="60,96,0,0" VerticalAlignment="Top" Height="28"/>
+
+        <Button Content="Zakazi" Click="ZakazivanjOperacije" HorizontalAlignment="Left" Margin="630,345,0,0" VerticalAlignment="Top" Height="42" Width="92" Background="#FFB5CDE2"/>
+        <ComboBox  Name="Sala" HorizontalAlignment="Left"   
+                  Margin="300,102,0,0"   
+                  VerticalAlignment="Top"   
+                  Width="120"   
+                  ItemsSource="{Binding Path=Sale}"    
+                  SelectedItem="{Binding Path=Sala1}"
+                   SelectionChanged="PrikazInventara">
+
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Path=Id}"/>
+                        <TextBlock Text=" - "/>
+                        <TextBlock Text="{Binding Path=Vrsta}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Button Content="Izabri slobodan termin:" Click="PrikazTermina" HorizontalAlignment="Left" Margin="60,243,0,0" VerticalAlignment="Top" Height="22" Width="142"/>
+
+        <ComboBox  Name="Termin" HorizontalAlignment="Left"   
+                  Margin="300,243,0,0"   
+                  VerticalAlignment="Top" 
+                 
+                  Width="120"   
+                   >
+
+
+        </ComboBox>
+        <Label Content="NAPOMENA:Selektovati salu i datum prije termina" HorizontalAlignment="Left" Margin="60,0,0,0" VerticalAlignment="Center"/>
+
+
+
+        <ListBox Margin="464,102,0,162" Name="RightListBox" HorizontalAlignment="Left" Width="309" />
+    </Grid>
+</Window>

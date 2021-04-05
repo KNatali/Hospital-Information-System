@@ -28,7 +28,7 @@ namespace ProjekatSIMS.Model.DoktorModel
             this.DataContext = this;
 
             Pregledi = new List<Pregled>();
-            CuvanjePregledaDoktor fajl = new CuvanjePregledaDoktor(@"C: \Users\nata1\Projekat\ProjekatSIMS\Pregled.txt");
+            CuvanjePregledaDoktor fajl = new CuvanjePregledaDoktor(@"..\..\Fajlovi\Pregled.txt");
             Pregledi = fajl.UcitajSvePreglede();
         }
 
@@ -36,16 +36,22 @@ namespace ProjekatSIMS.Model.DoktorModel
         {
             Pregled p = (Pregled)dataGridPregledi.SelectedItems[0]; //selektovani red
 
-            //pozivam metodu iz Pregleda za otkazivanje
-            if (p.OtkaziPregledDoktor() == true)
+            CuvanjePregledaDoktor fajl = new CuvanjePregledaDoktor(@"..\..\Fajlovi\Pregled.txt");
+            List<Pregled> pregledi = fajl.UcitajSvePreglede();
+            foreach (Pregled pr in pregledi)
             {
-               
-                MessageBox.Show("Pregled je uspjesno otkazan");
-                this.Close();
+                if (pr.Id == p.Id)
+                {
+                    pregledi.Remove(pr);
+                    break;
+                }
             }
-
+            fajl.Sacuvaj(pregledi);
             
-            this.Close();
+            
+               
+           MessageBox.Show("Pregled je uspjesno otkazan");
+           this.Close();
         }
 
         private void IzmijeniPregled(object sender, RoutedEventArgs e)

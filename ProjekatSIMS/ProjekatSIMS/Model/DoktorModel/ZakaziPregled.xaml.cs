@@ -27,15 +27,33 @@ namespace ProjekatSIMS.Model.DoktorModel
         {
             InitializeComponent();
             this.DataContext = this;
-            Prostorija Sala1 = new Prostorija { id = "D13" };
+
+            List<Prostorija> prostorije = new List<Prostorija>();
             Sale = new List<Prostorija>();
-            Sale.Add(Sala1);
+            //ucitavanje sala u combobox
+            using (StreamReader r = new StreamReader(@"..\..\Fajlovi\Prostorija.txt"))
+            {
+                string json = r.ReadToEnd();
+                prostorije = JsonConvert.DeserializeObject<List<Prostorija>>(json);
+                
+            }
+            foreach(Prostorija p in prostorije)
+            {
+                if (p.Vrsta == VrstaProstorije.Ordinacija || p.Vrsta == VrstaProstorije.Sala)
+                    Sale.Add(p);
+            }
+            
+           
+           
+               
+
         }
 
         private void Zakazi(object sender, RoutedEventArgs e)
         {
             //prikupljam polja iz forme
-           
+
+            Pregled p = new Pregled();
             String jmbg = Jmbg.Text;
             DateTime datum = (DateTime)Date.SelectedDate;
             double sati = Convert.ToDouble(Sati.Text);
@@ -46,22 +64,13 @@ namespace ProjekatSIMS.Model.DoktorModel
             datum1 = datum1.AddMinutes(minuti);
             int trajanje = Convert.ToInt32(Trajanje.Text);
             DateTime datum2 = datum1.AddMinutes(trajanje);
-            
-            TipPregleda t = new TipPregleda();
-            Pregled p = new Pregled();
-            if (Btn1.IsChecked == true)
-                p.Tip = TipPregleda.Standardni;
-            else
-                p.Tip = TipPregleda.Operacija;
-
-            String tip = p.Tip.ToString();
-
+            p.Tip = TipPregleda.Standardni;
+           
            
 
+     
             //gledam da li postoji dati pacijent
-
-            
-            int znak = 0;
+             int znak = 0;
             String line = "";
 
             using (StreamReader file = new StreamReader(@"C:\Users\nata1\Projekat\ProjekatSIMS\Pacijent.txt"))
@@ -120,71 +129,25 @@ namespace ProjekatSIMS.Model.DoktorModel
                 file.Close();
             }
             int Idnovi = Convert.ToInt32(id)+1;
-            znak = 0;
-
-            //gledam da li postoji unijeta sala
-            using (StreamReader file = new StreamReader(@"C:\Users\nata1\Projekat\ProjekatSIMS\Prostorija.txt"))
-            {
-
-                while ((line = file.ReadLine()) != null)
-                {
-                    string[] parts = line.Split(",");
-
-                    if (parts[0] ==idSale)
-                    {
-                        znak++;
-                        break;
-                    }
-                }
-
-                file.Close();
-            }
-
-            if (znak == 0)
-            {
-                MessageBox.Show("Unijeta sala ne postoji");
-                return;
-            }
-
-            //stavljam sve u red kako bi bilo u fajlu
-            String red =Idnovi.ToString()+ "," + jmbg + "," + "1511990855023" + "," + datum1.ToString() + "," + trajanje.ToString() +
-                "," + tip + "," + "Zakazan"+","+idSale;
-            */
-
-            //***************************dio za probvanje jSON
+            znak = 0;*/
 
             Pacijent pacijent = new Pacijent{ Ime = "Marko", Prezime = "Mrakic" };
 
-            Pregled pregled = new Pregled { Id = 5, Pocetak = datum1, Trajanje = trajanje };
-            pregled.Tip = TipPregleda.Standardni;
-            pregled.pacijent = pacijent;
+           
+            p.Pocetak = datum1;
+            p.Trajanje = trajanje;
+            p.pacijent = pacijent;
+            p.StatusPregleda = StatusPregleda.Zakazan;
+            p.prostorija = (Prostorija)Ordinacija.SelectedItem;
+           
+            //TREBA POSTAVITI DOKTORA
+            Doktor dr = new Doktor { Jmbg = "1511990855023", Ime = "Marijana", Prezime = "Peric" };
+            p.doktor = dr;
 
-            pregled.StatusPregleda = StatusPregleda.Zakazan;
-
-         
-
-            string newJson="";
-
-            using (StreamReader r = new StreamReader(@"C:\Users\nata1\Projekat\ProjekatSIMS\Pregled.txt"))
-            {
-                string json = r.ReadToEnd();
-                List<Pregled> pregledi = JsonConvert.DeserializeObject<List<Pregled>>(json);
-                if (pregledi == null)
-                {
-                    pregledi = new List<Pregled>();
-                   
-                }
-                pregledi.Add(pregled);
-                newJson = JsonConvert.SerializeObject(pregledi);
-            }
-
-            File.WriteAllText(@"C:\Users\nata1\Projekat\ProjekatSIMS\Pregled.txt", newJson);
-
-            //*********************************
-
-
-            /*CuvanjePregledaDoktor fajl = new CuvanjePregledaDoktor(@"C:\Users\nata1\Projekat\ProjekatSIMS\Pregled.txt");
-             fajl.Sacuvaj(red,true);*/
+            CuvanjePregledaDoktor fajl = new CuvanjePregledaDoktor(@"..\..\Fajlovi\Pregled.txt");
+            List<Pregled> pregledi = fajl.UcitajSvePreglede();
+            pregledi.Add(p);
+            fajl.Sacuvaj(pregledi);
 
             MessageBox.Show("Uspjesno je zakazan termin");
             this.Close();
