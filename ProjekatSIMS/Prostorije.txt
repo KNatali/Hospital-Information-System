@@ -1,0 +1,8 @@
+,sala1,3,Sala
+,kancelarija4,0,Kancelarija
+,mag45,0,Magacin
+,ord1,3,Ordinacija
+,sob34,2,Soba
+,ferf5,1,Soba
+,trg,2,Sala
+,gty6,1,Sala

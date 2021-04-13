@@ -1,68 +1,90 @@
-
 using Model.DoktorModel;
+using ProjekatSIMS.Model.UpravnikModel;
 using System;
+using System.Collections.Generic;
 
 namespace Model.UpravnikModel
 {
-   public class Prostorija
-   {
-      public Boolean Obrisi()
-      {
+    public class Prostorija
+    {
+        public Boolean Obrisi()
+        {
             // TODO: implement
             return true;
-      }
-   
-      public String id { get; set; }
-      public int sprat;
-      public VrstaProstorije vrsta;
-      public Boolean Zauzeta = false;
-      
-      public System.Collections.ArrayList inventar;
-      
-      /// <pdGenerated>default getter</pdGenerated>
-      public System.Collections.ArrayList GetInventar()
-      {
-         if (inventar == null)
-            inventar = new System.Collections.ArrayList();
-         return inventar;
-      }
-      
-      /// <pdGenerated>default setter</pdGenerated>
-      public void SetInventar(System.Collections.ArrayList newInventar)
-      {
-         RemoveAllInventar();
-         foreach (Inventar oInventar in newInventar)
-            AddInventar(oInventar);
-      }
-      
-      /// <pdGenerated>default Add</pdGenerated>
-      public void AddInventar(Inventar newInventar)
-      {
-         if (newInventar == null)
-            return;
-         if (this.inventar == null)
-            this.inventar = new System.Collections.ArrayList();
-         if (!this.inventar.Contains(newInventar))
-            this.inventar.Add(newInventar);
-      }
-      
-      /// <pdGenerated>default Remove</pdGenerated>
-      public void RemoveInventar(Inventar oldInventar)
-      {
-         if (oldInventar == null)
-            return;
-         if (this.inventar != null)
-            if (this.inventar.Contains(oldInventar))
-               this.inventar.Remove(oldInventar);
-      }
-      
-      /// <pdGenerated>default removeAll</pdGenerated>
-      public void RemoveAllInventar()
-      {
-         if (inventar != null)
-            inventar.Clear();
-      }
-      public Pregled[] pregled;
-   
-   }
+        }
+
+        public String id { get; set; }
+        public int sprat { get; set; }
+        public EnumProstorija vrsta { get; set; }
+        public List<Inventar> inventar;
+        public Prostorija()
+        { }
+        public Prostorija(String id, int sprat, EnumProstorija vrsta)
+        {
+            this.id = id;
+            this.sprat = sprat;
+            this.vrsta = vrsta;
+
+        }
+        public Prostorija(String id, int sprat, EnumProstorija vrsta, List<Inventar> inventar)
+        {
+            this.id = id;
+            this.sprat = sprat;
+            this.vrsta = vrsta;
+            this.inventar = inventar;
+
+        }
+        
+
+
+        public List<Inventar> GetInventar()
+        {
+            if (inventar == null)
+                inventar = new List<Inventar>();
+            return inventar;
+        }
+
+
+        public void SetInventar(List<Inventar> newInventar)
+        {
+            RemoveAllInventar();
+            foreach (Inventar oInventar in newInventar)
+                AddInventar(oInventar);
+        }
+
+
+        public void AddInventar(Inventar newInventar)
+        {
+            if (newInventar == null)
+                return;
+            if (this.inventar == null)
+                this.inventar = new List<Inventar>();
+            if (!this.inventar.Contains(newInventar))
+                this.inventar.Add(newInventar);
+        }
+
+
+        public void RemoveInventar(Inventar oldInventar)
+        {
+            if (oldInventar == null)
+                return;
+            if (this.inventar != null)
+                if (this.inventar.Contains(oldInventar))
+                    this.inventar.Remove(oldInventar);
+        }
+
+
+        public void RemoveAllInventar()
+        {
+            if (inventar != null)
+                inventar.Clear();
+        }
+        public Pregled[] pregled;
+
+    
+
+
+
+
+    }
 }
