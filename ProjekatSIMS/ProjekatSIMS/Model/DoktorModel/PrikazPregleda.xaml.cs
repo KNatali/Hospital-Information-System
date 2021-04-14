@@ -63,5 +63,25 @@ namespace ProjekatSIMS.Model.DoktorModel
 
 
         }
+
+        private void PrikazProfila(object sender, RoutedEventArgs e)
+        {
+          
+            Pregled p = (Pregled)dataGridPregledi.SelectedItems[0];
+
+           ZdravstveniKarton z = new ZdravstveniKarton(p.pacijent);
+            z.Show();
+
+
+        }
+
+        private void ZapocniPregled(object sender, RoutedEventArgs e)
+        {
+            Pregled p = (Pregled)dataGridPregledi.SelectedItems[0];
+            IzvrsavanjePregleda i = new IzvrsavanjePregleda(p.pacijent);
+            i.Show();
+
+
+        }
     }
 }

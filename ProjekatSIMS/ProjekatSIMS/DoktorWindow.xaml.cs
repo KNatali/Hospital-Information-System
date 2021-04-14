@@ -48,6 +48,13 @@ namespace ProjekatSIMS
 
         }
 
+        private void PretraziPacijenta(object sender, RoutedEventArgs e)
+        {
+            PretragaPacijenta p = new PretragaPacijenta();
+            p.Show();
+
+        }
+
         //za dodavanje sale
         private void Button_Click(object sender, RoutedEventArgs e)
         {

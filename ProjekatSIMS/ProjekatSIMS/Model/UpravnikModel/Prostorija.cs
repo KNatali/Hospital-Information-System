@@ -16,7 +16,7 @@ namespace Model.UpravnikModel
       public int Sprat { get; set; }
       public VrstaProstorije Vrsta { get; set; }
 
-        public System.Collections.ArrayList inventar;
+        public System.Collections.ArrayList inventar { get; set; }
       
       /// <pdGenerated>default getter</pdGenerated>
       public System.Collections.ArrayList GetInventar()

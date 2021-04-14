@@ -4,6 +4,7 @@ using Model.PacijentModel;
 using Model.UpravnikModel;
 using Newtonsoft.Json;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -63,39 +64,35 @@ namespace ProjekatSIMS.Model.DoktorModel
 
 
             //gledam da li postoji dati pacijent
+            List<Pacijent> pacijenti = new List<Pacijent>();
             int znak = 0;
-            String line = "";
 
-            using (StreamReader file = new StreamReader(@"C:\Users\nata1\Projekat\ProjekatSIMS\Pacijent.txt"))
+            using (StreamReader r = new StreamReader(@"..\..\Fajlovi\Pacijent.txt"))
             {
-
-                while ((line = file.ReadLine()) != null)
+                string json = r.ReadToEnd();
+                pacijenti = JsonConvert.DeserializeObject<List<Pacijent>>(json);
+            }
+            foreach(Pacijent pa in pacijenti)
+            {
+                if (pa.Jmbg == jmbg)
                 {
-                    string[] parts = line.Split(",");
-
-                    if (parts[5] == jmbg)
-                    {
-                        znak++;
-                        break;
-                    }
+                    znak++;
+                    p.pacijent = pa;
+                    break;
                 }
-
-                file.Close();
             }
             if (znak == 0)
             {
-                MessageBox.Show("Pacijent nije nadjen. Pokusajte ponovo!");
+                MessageBox.Show("Pacijent nije nadjen!");
                 return;
-
             }
+
 
           
 
-            Pacijent pacijent = new Pacijent { Ime = "Marko", Prezime = "Mrakic" };
-
             //FALI DA SE FINO NAMJESTI PACIJENT I DOKTOR I TRAJANJEE!!!!!!!!!
             p.Pocetak = datum1;
-            p.pacijent = pacijent;
+           
             p.Tip = TipPregleda.Operacija;
             p.StatusPregleda = StatusPregleda.Zakazan ;
             p.prostorija = (Prostorija)Sala.SelectedItem;
@@ -177,16 +174,24 @@ namespace ProjekatSIMS.Model.DoktorModel
 
         }
 
-        private void StackPanel_MouseEnter(object sender, MouseEventArgs e)
-        {
-            MessageBox.Show("Holaa");
-        }
+        
 
         private void PrikazInventara(object sender, RoutedEventArgs e)
         {
             RightListBox.Items.Clear();
             Prostorija s = (Prostorija)Sala.SelectedItem;
-            RightListBox.Items.Add(s.Id);
+            
+            ArrayList inventari = s.GetInventar();
+            if(inventari.Count==0)
+                RightListBox.Items.Add("Inventar jos nije unesen!");
+            else
+            {
+                foreach (var i in inventari)
+                    RightListBox.Items.Add(i.ToString());
+               
+
+            }
+          
         }
     }
 }

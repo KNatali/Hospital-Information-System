@@ -1,0 +1,42 @@
+﻿<Window x:Class="ProjekatSIMS.Model.DoktorModel.Recept"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjekatSIMS.Model.DoktorModel"
+        mc:Ignorable="d"
+        Title="Recept" Height="450" Width="800">
+    <Grid>
+        <Label Content="Recept" HorizontalAlignment="Center" Margin="0,26,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Rectangle HorizontalAlignment="Left" Height="138" Margin="46,76,0,0" Stroke="Black" VerticalAlignment="Top" Width="430"/>
+        <Label Content="Ime zdravstevene ustanove:" HorizontalAlignment="Left" Margin="64,90,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.171,0.117" FontSize="14"/>
+        <Label Content="Ime pacijenta:" HorizontalAlignment="Left" Margin="64,116,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.171,0.117" FontSize="14"/>
+        <Label Content="Prezime pacijenta:" HorizontalAlignment="Left" Margin="64,142,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.171,0.117" FontSize="14"/>
+        <Label Content="Datum rodjenja:" HorizontalAlignment="Left" Margin="64,170,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.171,0.117" FontSize="14"/>
+        <Label Content="ZDRAVO Korporacija" HorizontalAlignment="Left" Margin="310,90,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.171,0.117" FontSize="14" Width="138">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.265"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <TextBox HorizontalAlignment="Left" Name="Ime" IsReadOnly="True" Margin="310,122,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="148" Height="24"/>
+        <TextBox HorizontalAlignment="Left" Name="Prezime" IsReadOnly="True" Margin="310,150,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="148" Height="24"/>
+        <TextBox HorizontalAlignment="Left" Name="Datum" IsReadOnly="True" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="148" Height="24" Margin="310,180,0,0"/>
+        <Label Content="Datum propisivanja lijeka:" HorizontalAlignment="Left" Margin="45,269,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.171,0.117" FontSize="14"/>
+        <Label Content="Sifra propisanog lijeka:" HorizontalAlignment="Left" Margin="45,303,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.171,0.117" FontSize="14"/>
+        <Label Content="Kolicina:" HorizontalAlignment="Left" Margin="45,335,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.171,0.117" FontSize="14"/>
+        <DatePicker HorizontalAlignment="Left" Margin="292,274,0,0" VerticalAlignment="Top" Width="136"/>
+        <TextBox HorizontalAlignment="Left" Margin="292,310,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="136" Height="22"/>
+        <TextBox HorizontalAlignment="Left" Margin="292,344,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="137" Height="22"/>
+        <TextBox HorizontalAlignment="Left" Margin="509,122,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="256" Height="176"/>
+        <Label Content="Uputstvo:" HorizontalAlignment="Left" Margin="509,76,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.171,0.117" FontSize="14" Width="90"/>
+        <Button Content="Sacuvaj" HorizontalAlignment="Left" Margin="554,355,0,0" VerticalAlignment="Top" Height="31" Width="83"/>
+        <Button Content="Odustani" HorizontalAlignment="Left" Margin="682,355,0,0" VerticalAlignment="Top" Height="31" Width="83"/>
+
+
+    </Grid>
+</Window>

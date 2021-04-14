@@ -1,0 +1,52 @@
+﻿<Window x:Class="ProjekatSIMS.Model.DoktorModel.PretragaPacijenta"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjekatSIMS.Model.DoktorModel"
+        mc:Ignorable="d"
+        Title="PretragaPacijenta" Height="450" Width="800">
+    <Grid>
+
+        <TextBox Name="Filter" HorizontalAlignment="Left" Margin="448,94,0,0" TextChanged="txtFilter_TextChanged" TextWrapping="Wrap" VerticalAlignment="Top" Width="144"/>
+
+
+        <ListView Name="Pacijenti" Margin="181,140,181,123">
+            <ListView.View>
+                <GridView  ScrollViewer.VerticalScrollBarVisibility="Auto">
+                    <GridViewColumn Header="Jmbg pacijenta" Width="120" DisplayMemberBinding="{Binding Jmbg}" />
+                    <GridViewColumn Header="Ime pacijenta" Width="120" DisplayMemberBinding="{Binding Ime}" />
+                    <GridViewColumn Header="Prezime pacijenta" Width="200" DisplayMemberBinding="{Binding Prezime}" />
+
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label Content="Pretrazi pacijenta:" HorizontalAlignment="Left" Margin="277,90,0,0" VerticalAlignment="Top"/>
+
+        <Button Content="Prikaz zdravstevnog kartona" Click="PrikazZdravstvenogKartona" HorizontalAlignment="Left" Margin="520,343,0,0" VerticalAlignment="Top" Height="35" Width="166"/>
+
+
+        <DataGrid Name="Pacijenti1" AutoGenerateColumns="False" CanUserAddRows="False"
+Margin="43,140,322,74"
+RowBackground="#fff" FontWeight="Bold" Foreground="#525252"
+ScrollViewer.CanContentScroll="True" MaxHeight="390"
+AlternatingRowBackground="#f2f2f2" BorderBrush="#000" BorderThickness="1"
+ScrollViewer.HorizontalScrollBarVisibility="Visible"
+ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Path='Jmbg'}" IsReadOnly="True" />
+                <DataGridTextColumn Header="Product" Binding="{Binding Path='Ime'}" IsReadOnly="True" />
+                <DataGridTextColumn Header="Description" Binding="{Binding Path='Prezime'}" IsReadOnly="True" />
+              
+                <DataGridTemplateColumn Header="View">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="btnView" Content="View" Click="btnView_Click" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Window>

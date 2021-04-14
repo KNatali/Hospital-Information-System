@@ -33,7 +33,7 @@ namespace Model
             return true; 
       }
    
-      public String jmbg { set; get; }
+      public String Jmbg { set; get; }
       public String Ime { set; get; }
         public String Prezime { set; get; }
         public String BrojTelefona { set; get; }
