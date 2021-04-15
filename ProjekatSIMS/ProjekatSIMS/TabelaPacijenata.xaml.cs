@@ -24,7 +24,7 @@ namespace ProjekatSIMS
             InitializeComponent();
             this.DataContext = this;
             Pacijenti = new List<Pacijent>();
-            CuvanjePacijenta fajl = new CuvanjePacijenta(@"C:\Users\mrvic\Projekat\ProjekatSIMS\Pacijent.txt");
+            CuvanjePacijenta fajl = new CuvanjePacijenta(@"..\..\Fajlovi\Pacijent.txt");
             Pacijenti = fajl.DobaviPacijente();
         }
         private void Brisanje(object sender, RoutedEventArgs e)

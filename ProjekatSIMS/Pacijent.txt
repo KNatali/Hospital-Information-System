@@ -1,7 +1,6 @@
-Biljana,Marinkov,mbiljana99@gmail.com,065489562,Marsala Tita 12,0205999855231,02.05.1999
 Natalija,Krsmanovic,natalija@gmail.com,0652255889, Svetozara Markovica 16, 0101999855456, 01.01.1999
 Marija,Zaric,marijaz@gmail.com, 063854412, Aracka 7, 1202998855654, 12.02.1998
 Anastasija,Popovic,popovica@gmail.com,0625489652, Dositejeva 18, 0502999855123,05.02.1999
 Milica,Krstic,milica@gmail.com,065488523, Jagiceva 78, 1811996855222,18.11.1996
-Marko,Aleksic,markoal@gmail.com,0665260321, Latinke Tajkov 14, 0404995850213,04.04.1995
-Lazar,Markovic,l.m@gmail.com,0601234567,B.Oslobodjenja 14,1111999885002,11.11.1999. 00:00:00
+Stefan,Aleksic,aaaa,12345,bb,123456,7.3.2021. 00:00:00
+ afsa,saodj,mafl,121421,afnks,123,6.3.2021. 00:00:00

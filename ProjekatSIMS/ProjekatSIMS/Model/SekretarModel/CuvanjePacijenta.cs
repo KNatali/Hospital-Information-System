@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace Model.SekretarModel
 {
@@ -10,15 +11,15 @@ namespace Model.SekretarModel
         {
             lokacija = l;
         }
-        public void Sacuvaj(String pacijent, Boolean znak)
+        public void Sacuvaj(List<Pacijent> p)
         {
-            using StreamWriter file = new StreamWriter(lokacija, znak);
-            file.WriteLineAsync(pacijent);
+            string newJson = JsonConvert.SerializeObject(p);
+            File.WriteAllText(lokacija, newJson);
         }
 
         public List<Pacijent> DobaviPacijente()
         {
-            pacijenti = new List<Pacijent>();
+            /*pacijenti = new List<Pacijent>();
             String line;
             using (StreamReader file = new StreamReader(@"C:\Users\mrvic\Projekat\ProjekatSIMS\Pacijent.txt"))
             {
@@ -38,6 +39,11 @@ namespace Model.SekretarModel
                     pacijenti.Add(p);
                 }
                 file.Close();
+            }*/
+            using (StreamReader r = new StreamReader(lokacija))
+            {
+                string json = r.ReadToEnd();
+                pacijenti = JsonConvert.DeserializeObject<List<Pacijent>>(json);
             }
             return pacijenti;
         }
@@ -50,5 +56,7 @@ namespace Model.SekretarModel
 
         private String lokacija;
         private List<Pacijent> pacijenti;
+
+        public object JsonConvert { get; private set; }
     }
 }
