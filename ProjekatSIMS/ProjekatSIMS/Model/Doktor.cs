@@ -1,19 +1,12 @@
-using Model.DoktorModel;
 using System;
 
 namespace Model
 {
-   public class Doktor
+   public class Doktor : Osoba
    {
-      public String Jmbg { get; set; }
-      public String Ime { get; set; }
-        public String Prezime { get; set; }
-        public String BrojTelefona { get; set; }
-        public String Email { get; set; }
-        public DateTime DatumRodjenja { get; set; }
-        public String Adresa { get; set; }
-
-        public RegistrovaniKorisnik registrovaniKorisnik;
+      public int BrojSlobodnihDana;
+      public String RadnoVreme;
+      
       public System.Collections.ArrayList pregled;
       
       /// <pdGenerated>default getter</pdGenerated>
@@ -55,7 +48,7 @@ namespace Model
             if (this.pregled.Contains(oldPregled))
             {
                this.pregled.Remove(oldPregled);
-               oldPregled.SetDoktor((Model.Doktor)null);
+               oldPregled.SetDoktor((Doktor)null);
             }
       }
       
@@ -69,7 +62,7 @@ namespace Model
                tmpPregled.Add(oldPregled);
             pregled.Clear();
             foreach (Pregled oldPregled in tmpPregled)
-               oldPregled.SetDoktor((Model.Doktor)null);
+               oldPregled.SetDoktor((Doktor)null);
             tmpPregled.Clear();
          }
       }

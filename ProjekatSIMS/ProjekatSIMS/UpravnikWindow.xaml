@@ -8,11 +8,5 @@
         Title="UpravnikWindow" Height="450" Width="800">
     <Grid>
         
-
-        <Button Content="Upravljaj prostorijama" Click="Upravljaj_Click" HorizontalAlignment="Left" Margin="94,85,0,0" VerticalAlignment="Top" Height="62" Width="236" Grid.ColumnSpan="2"/>
-        <Button Content="Pregledaj prostorije" Click="Pregledaj_Click" HorizontalAlignment="Left" Margin="94,229,0,0" VerticalAlignment="Top" Height="62" Width="236" Grid.ColumnSpan="2"/>
-        
-
-
     </Grid>
 </Window>

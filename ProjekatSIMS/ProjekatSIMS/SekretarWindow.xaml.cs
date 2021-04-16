@@ -12,25 +12,14 @@ using System.Windows.Shapes;
 
 namespace ProjekatSIMS
 {
+    /// <summary>
+    /// Interaction logic for SekretarWindow.xaml
+    /// </summary>
     public partial class SekretarWindow : Window
     {
         public SekretarWindow()
         {
             InitializeComponent();
-        }
-        private void Kreiranje_profila(object sender, RoutedEventArgs e)
-        {
-            KreirajProfilWindow kp = new KreirajProfilWindow();
-            kp.Show();
-        }
-        private void Pretrazivanje(object sender, RoutedEventArgs e)
-        {
-            TabelaPacijenata pp = new TabelaPacijenata();
-            pp.Show();
-        }
-        private void Nazad(object sender, RoutedEventArgs e)
-        {
-            this.Close();
         }
     }
 }
