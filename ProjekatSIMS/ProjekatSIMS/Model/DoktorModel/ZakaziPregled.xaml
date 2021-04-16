@@ -11,26 +11,19 @@
     <Grid>
         <Label Content="Jmbg pacijenta:" HorizontalAlignment="Left" Margin="60,40,0,0" VerticalAlignment="Top" Height="28"/>
         <TextBox Name="Jmbg" HorizontalAlignment="Left" Margin="300,48,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20"/>
-        <Label Content="Datum pregleda" HorizontalAlignment="Left" Margin="60,94,0,0" VerticalAlignment="Top" Height="26"/>
-        <DatePicker Name="Date" HorizontalAlignment="Left" Margin="300,96,0,0" VerticalAlignment="Top" Height="24" Width="120"/>
-        <Label Content="Vrijeme pocetka:" HorizontalAlignment="Left" Margin="63,149,0,0" VerticalAlignment="Top" Height="27"/>
-        <Label Content="Sati:" HorizontalAlignment="Left" Margin="254,149,0,0" VerticalAlignment="Top" Height="27" RenderTransformOrigin="-0.749,0.04"/>
-        <TextBox Name="Sati" HorizontalAlignment="Left" Margin="300,156,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Height="18"/>
+        <Label Content="Datum operacije:" HorizontalAlignment="Left" Margin="60,157,0,0" VerticalAlignment="Top" Height="26"/>
+        <DatePicker Name="Date" HorizontalAlignment="Left" Margin="300,159,0,0" VerticalAlignment="Top" Height="24" Width="120"/>
 
-        <Label Content="Minuti:" HorizontalAlignment="Left" Margin="373,149,0,0" VerticalAlignment="Top" Height="27" RenderTransformOrigin="-0.749,0.04"/>
-        <TextBox Name="Minuti" HorizontalAlignment="Left" Margin="428,156,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Height="18"/>
+        <Label Content="Ordinacija:" HorizontalAlignment="Left" Margin="60,96,0,0" VerticalAlignment="Top" Height="28"/>
 
-        <Label Content="Trajanje(u minutama)" HorizontalAlignment="Left" Margin="60,0,0,0" VerticalAlignment="Center" Height="28"/>
-        <TextBox Name="Trajanje" HorizontalAlignment="Left" Margin="300,212,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="19"/>
-        <Label Content="Ordinacija:" HorizontalAlignment="Left" Margin="60,252,0,0" VerticalAlignment="Top" Height="27"/>
-
-        <Button Content="Zakazi" Click="Zakazi" HorizontalAlignment="Left" Margin="630,345,0,0" VerticalAlignment="Top" Height="42" Width="92" Background="#FFB5CDE2"/>
+        <Button Content="Zakazi" Click="ZakazivanjePregleda" HorizontalAlignment="Left" Margin="630,345,0,0" VerticalAlignment="Top" Height="42" Width="92" Background="#FFB5CDE2"/>
         <ComboBox  Name="Ordinacija" HorizontalAlignment="Left"   
-                  Margin="300,257,0,0"   
+                  Margin="300,102,0,0"   
                   VerticalAlignment="Top"   
                   Width="120"   
-                  ItemsSource="{Binding Path=Sale}"    
-                  SelectedItem="{Binding Path=Sala1}" >
+                  ItemsSource="{Binding Path=Ordinacije}"    
+                  SelectedItem="{Binding Path=Ordinacija1}"
+                  >
 
             <ComboBox.ItemTemplate>
                 <DataTemplate>
@@ -42,6 +35,22 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
+        <Label Content="Vrijeme(Sati i minuti):" HorizontalAlignment="Left" Margin="60,209,0,0" VerticalAlignment="Top" Height="26"/>
+        <TextBox Name="Sat" HorizontalAlignment="Left" Margin="300,217,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="66" Height="20"/>
+        <TextBox Name="Minut" HorizontalAlignment="Left" Margin="416,217,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Height="20"/>
+
+
+        
+        <ComboBox  Name="Termin" HorizontalAlignment="Left"   
+                  Margin="300,321,0,0"   
+                  VerticalAlignment="Top" 
+                 Visibility="Hidden"
+                  Width="120"   
+                   >
+
+
+        </ComboBox>
+        <Label Name="Izbor" Content="Izaberi jedan od ponudjenih termina:" Visibility="Hidden" HorizontalAlignment="Left" Margin="60,282,0,0" VerticalAlignment="Top"/>
 
 
 

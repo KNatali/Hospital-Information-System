@@ -1,4 +1,5 @@
 ﻿using Model;
+using Model.DoktorModel;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -18,23 +19,23 @@ namespace ProjekatSIMS.Model.DoktorModel
     /// </summary>
     public partial class IzvrsavanjePregleda : Window
     {
-        public IzvrsavanjePregleda(Pacijent pacijent)
+        public Pregled pregled;
+        public IzvrsavanjePregleda(Pregled p)
         {
             InitializeComponent();
-            InitializeComponent();
+            pregled = p;
             this.DataContext = this;
-            Ime.Text = pacijent.Ime;
-            Prezime.Text = pacijent.Prezime;
-            Jmbg.Text = pacijent.Jmbg;
-            Datum.Text = pacijent.DatumRodjenja.ToString();
-            Adresa.Text = pacijent.Adresa;
-            Broj.Text = pacijent.BrojTelefona;
+            Ime.Text = pregled.pacijent.Ime;
+            Prezime.Text = pregled.pacijent.Prezime;
+            Vrijeme.Text = pregled.Pocetak.ToString();
+            Trajanje.Text = pregled.Trajanje.ToString();
+
         }
 
-        private void IzdajRecept(object sender, RoutedEventArgs e)
+        private void ZdravstveniKarton(object sender, RoutedEventArgs e)
         {
-            Recept r = new Recept();
-            r.Show();
+            ZdravstveniKarton z = new ZdravstveniKarton(pregled.pacijent);
+            z.Show();
         }
     }
 }

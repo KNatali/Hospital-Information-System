@@ -78,7 +78,7 @@ namespace ProjekatSIMS.Model.DoktorModel
         private void ZapocniPregled(object sender, RoutedEventArgs e)
         {
             Pregled p = (Pregled)dataGridPregledi.SelectedItems[0];
-            IzvrsavanjePregleda i = new IzvrsavanjePregleda(p.pacijent);
+            IzvrsavanjePregleda i = new IzvrsavanjePregleda(p);
             i.Show();
 
 

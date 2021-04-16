@@ -51,19 +51,98 @@ namespace ProjekatSIMS.Model.DoktorModel
 
         private void ZakazivanjOperacije(object sender, RoutedEventArgs e)
         {
-            //prikupljam polja iz forme
+            /* //prikupljam polja iz forme
+
+             Pregled p = new Pregled();
+             String jmbg = Jmbg.Text;
+             DateTime datum = (DateTime)Date.SelectedDate;
+             double sati = Convert.ToDouble( Termin.Text.Split(":")[0]);
+             double minuti = Convert.ToDouble(Termin.Text.Split(":")[1]);
+             DateTime datum1 = new DateTime();
+             datum1 = datum.AddHours(sati);
+             datum1 = datum1.AddMinutes(minuti);
+
+
+             //gledam da li postoji dati pacijent
+             List<Pacijent> pacijenti = new List<Pacijent>();
+             int znak = 0;
+
+             using (StreamReader r = new StreamReader(@"..\..\Fajlovi\Pacijent.txt"))
+             {
+                 string json = r.ReadToEnd();
+                 pacijenti = JsonConvert.DeserializeObject<List<Pacijent>>(json);
+             }
+             foreach(Pacijent pa in pacijenti)
+             {
+                 if (pa.Jmbg == jmbg)
+                 {
+                     znak++;
+                     p.pacijent = pa;
+                     break;
+                 }
+             }
+             if (znak == 0)
+             {
+                 MessageBox.Show("Pacijent nije nadjen!");
+                 return;
+             }
+
+
+
+
+             //FALI DA SE FINO NAMJESTI PACIJENT I DOKTOR I TRAJANJEE!!!!!!!!!
+             p.Pocetak = datum1;
+
+             p.Tip = TipPregleda.Operacija;
+             p.StatusPregleda = StatusPregleda.Zakazan ;
+             p.prostorija = (Prostorija)Sala.SelectedItem;
+
+             Doktor dr = new Doktor { Jmbg = "1511990855023", Ime = "Marijana", Prezime = "Peric" };
+             p.doktor = dr;
+
+
+             CuvanjePregledaDoktor fajl = new CuvanjePregledaDoktor(@"..\..\Fajlovi\Pregled.txt");
+             List<Pregled> pregledi = fajl.UcitajSvePreglede();
+             if (pregledi.Count == 0)
+             {
+                 p.Id = 1;
+             }
+             else
+             {
+                 p.Id = pregledi[pregledi.Count - 1].Id+1;
+             }
+             pregledi.Add(p);
+             fajl.Sacuvaj(pregledi);
+
+             MessageBox.Show("Uspjesno je zakazan termin");
+             this.Close();*/
 
             Pregled p = new Pregled();
             String jmbg = Jmbg.Text;
             DateTime datum = (DateTime)Date.SelectedDate;
-            double sati = Convert.ToDouble( Termin.Text.Split(":")[0]);
-            double minuti = Convert.ToDouble(Termin.Text.Split(":")[1]);
+
+            double sat;
+            double minut;
+
+            if (Termin.Visibility == Visibility.Visible)
+            {
+                sat = Convert.ToDouble(Termin.Text.Split(":")[0]);
+                minut = Convert.ToDouble(Termin.Text.Split(":")[1]);
+            }
+            else
+            {
+                sat = Convert.ToDouble(Sat.Text);
+                minut = Convert.ToDouble(Minut.Text);
+            }
+            int trajanje = Convert.ToInt32(Trajanje.Text);
             DateTime datum1 = new DateTime();
-            datum1 = datum.AddHours(sati);
-            datum1 = datum1.AddMinutes(minuti);
+            datum1 = datum.AddHours(sat);
+            datum1 = datum1.AddMinutes(minut);
+            DateTime datum2 = datum1.AddMinutes(trajanje);
 
 
             //gledam da li postoji dati pacijent
+
             List<Pacijent> pacijenti = new List<Pacijent>();
             int znak = 0;
 
@@ -72,7 +151,7 @@ namespace ProjekatSIMS.Model.DoktorModel
                 string json = r.ReadToEnd();
                 pacijenti = JsonConvert.DeserializeObject<List<Pacijent>>(json);
             }
-            foreach(Pacijent pa in pacijenti)
+            foreach (Pacijent pa in pacijenti)
             {
                 if (pa.Jmbg == jmbg)
                 {
@@ -88,93 +167,99 @@ namespace ProjekatSIMS.Model.DoktorModel
             }
 
 
+            ///DATUM i VRIJEME
+            CuvanjePregledaDoktor fajl = new CuvanjePregledaDoktor(@"..\..\Fajlovi\Pregled.txt");
+            List<Pregled> pregledi = fajl.UcitajSvePreglede();
+
+            foreach (Pregled pr in pregledi)
+            {
+
+                if (pr.Pocetak.Year == datum1.Year && pr.Pocetak.Month == datum1.Month && pr.Pocetak.Day == datum1.Day)
+                {
+
+                    DateTime datum11 = pr.Pocetak;
+                    DateTime datum22 = pr.Pocetak.AddMinutes(pr.Trajanje);
+                    if (DateTime.Compare(datum1, datum11) >= 0 && DateTime.Compare(datum1, datum22) < 0 ||
+                        DateTime.Compare(datum2, datum11) > 0 && DateTime.Compare(datum2, datum22) <= 0)
+                    {
+                        MessageBox.Show("Dati termin je zauzet");
+                        PrikazTermina(pregledi, datum1, datum2,trajanje);
+                        return;
+                    }
+
+                }
+            }
+
+
+            p.Pocetak = datum1;
+            p.Trajanje = trajanje;
+
+            p.Tip = TipPregleda.Operacija;
+            p.StatusPregleda = StatusPregleda.Zakazan;
+            p.prostorija = (Prostorija)Sala.SelectedItem;
           
 
-            //FALI DA SE FINO NAMJESTI PACIJENT I DOKTOR I TRAJANJEE!!!!!!!!!
-            p.Pocetak = datum1;
-           
-            p.Tip = TipPregleda.Operacija;
-            p.StatusPregleda = StatusPregleda.Zakazan ;
-            p.prostorija = (Prostorija)Sala.SelectedItem;
-            
             Doktor dr = new Doktor { Jmbg = "1511990855023", Ime = "Marijana", Prezime = "Peric" };
             p.doktor = dr;
 
 
-            CuvanjePregledaDoktor fajl = new CuvanjePregledaDoktor(@"..\..\Fajlovi\Pregled.txt");
-            List<Pregled> pregledi = fajl.UcitajSvePreglede();
+
             if (pregledi.Count == 0)
             {
                 p.Id = 1;
             }
             else
             {
-                p.Id = pregledi[pregledi.Count - 1].Id+1;
+                p.Id = pregledi[pregledi.Count - 1].Id + 1;
             }
             pregledi.Add(p);
             fajl.Sacuvaj(pregledi);
 
-            MessageBox.Show("Uspjesno je zakazan termin");
+            MessageBox.Show("Uspjesno je zakazana operacija");
             this.Close();
         }
-
-        private void PrikazTermina(object sender, RoutedEventArgs e)
+         
+        private void PrikazTermina(List<Pregled> pregledi, DateTime datum1, DateTime datum2,int trajanje)
         {
+            Termin.Visibility = Visibility.Visible;
+            Izbor.Visibility = Visibility.Visible;
+            List<Pregled> isti = new List<Pregled>();
+            List<DateTime> termini = new List<DateTime>();
+            DateTime pocetni = new DateTime(datum1.Year, datum1.Month, datum1.Day, 8, 0, 0);
+            DateTime krajnji = new DateTime(datum2.Year, datum2.Month, datum2.Day, 20, 0, 0);
+            foreach (Pregled p in pregledi)
+            {
 
-            Termin.Items.Clear(); //cistim prethodno prikazane termine ako se predomisli pri izboru datuma
-           
-            DateTime datum = (DateTime)Date.SelectedDate;
-            Prostorija sala = (Prostorija)Sala.SelectedItem;
-            List<String> lista = new List<String>{ "9:0", "10:0", "11:0", "12:0","13:0","14:0","15:0"};
-            List<String> zauzeto = new List<String>();
-           
-            CuvanjePregledaDoktor fajl = new CuvanjePregledaDoktor(@"..\..\Fajlovi\Pregled.txt");
-            List<Pregled> pregledi = fajl.UcitajSvePreglede();
-           
-            foreach(Pregled p in pregledi)
-            {
-              
-                if (p.Pocetak.Year==datum.Year && p.Pocetak.Month == datum.Month && p.Pocetak.Day == datum.Day)
+                if (p.Pocetak.Year == datum1.Year && p.Pocetak.Month == datum1.Month && p.Pocetak.Day == datum1.Day)
                 {
-                    if(p.doktor.Jmbg== "1511990855023")
+                    isti.Add(p);
+                }
+
+            }
+            for (DateTime i1 = pocetni; i1 < krajnji; i1 = i1.AddMinutes(trajanje))
+            {
+                int znak = 0;
+                DateTime i2 = i1.AddMinutes(20);
+                foreach (Pregled p in isti)
+                {
+                    DateTime datum11 = p.Pocetak;
+                    DateTime datum22 = p.Pocetak.AddMinutes(p.Trajanje);
+                    if (DateTime.Compare(i1, datum11) >= 0 && DateTime.Compare(i1, datum22) < 0 ||
+                        DateTime.Compare(i2, datum11) > 0 && DateTime.Compare(i2, datum22) <= 0)
                     {
-                        zauzeto.Add(p.Pocetak.Hour.ToString() + ":" + p.Pocetak.Minute.ToString());
+                        znak++;
                     }
-                    else
-                    {
-                        if (sala.Id == p.prostorija.Id)
-                        {
-                            zauzeto.Add(p.Pocetak.Hour.ToString() + ":" + p.Pocetak.Minute.ToString());
-                        }
-                    }
-                    
-                   
+                }
+                if (znak == 0)
+                {
+                    Termin.Items.Add(i1.Hour.ToString() + ":" + i1.Minute.ToString());
+
                 }
             }
-            /*idem kroz sve preglede,gledam da li se slaze sa datumom,ako je doktor isti,zauzet je taj
-             * termin tog pregleda, ako nije isti doktor onda se gleda da li je ista sala kao odabrana,
-             * ako jeste i taj termin se zauzima jer je sala zauzeta*/
-            
-            
-            foreach(String i in lista)
-            {
-                if (zauzeto.Count==0)
-                {
-                    Termin.Items.Add(i);
-                    
-                }
-                else
-                {
-                   
-                    if (!zauzeto.Contains(i))
-                        Termin.Items.Add(i);
-                }
-            }
-           
 
         }
 
-        
+
 
         private void PrikazInventara(object sender, RoutedEventArgs e)
         {

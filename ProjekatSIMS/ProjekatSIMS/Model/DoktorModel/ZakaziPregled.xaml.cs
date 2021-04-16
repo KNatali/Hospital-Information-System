@@ -22,15 +22,15 @@ namespace ProjekatSIMS.Model.DoktorModel
    
     public partial class ZakaziPregled : Window   
     {
-        public List<Prostorija> Sale { get; set; }
+        public List<Prostorija> Ordinacije { get; set; }
         public ZakaziPregled()
         {
             InitializeComponent();
             this.DataContext = this;
 
             List<Prostorija> prostorije = new List<Prostorija>();
-            Sale = new List<Prostorija>();
-            //ucitavanje sala u combobox
+            Ordinacije = new List<Prostorija>();
+            //ucitavanje ordinacija u combobox
             using (StreamReader r = new StreamReader(@"..\..\Fajlovi\Prostorija.txt"))
             {
                 string json = r.ReadToEnd();
@@ -39,118 +39,157 @@ namespace ProjekatSIMS.Model.DoktorModel
             }
             foreach(Prostorija p in prostorije)
             {
-                if (p.Vrsta == VrstaProstorije.Ordinacija || p.Vrsta == VrstaProstorije.Sala)
-                    Sale.Add(p);
+                if (p.Vrsta == VrstaProstorije.Ordinacija)
+                    Ordinacije.Add(p);
             }
-            
-           
-           
-               
 
         }
 
-        private void Zakazi(object sender, RoutedEventArgs e)
+        private void ZakazivanjePregleda(object sender, RoutedEventArgs e)
         {
             //prikupljam polja iz forme
 
             Pregled p = new Pregled();
             String jmbg = Jmbg.Text;
             DateTime datum = (DateTime)Date.SelectedDate;
-            double sati = Convert.ToDouble(Sati.Text);
-            double minuti = Convert.ToDouble(Minuti.Text);
-            DateTime datum1 = new DateTime();
-            
-            datum1=datum.AddHours(sati);
-            datum1 = datum1.AddMinutes(minuti);
-            int trajanje = Convert.ToInt32(Trajanje.Text);
-            DateTime datum2 = datum1.AddMinutes(trajanje);
-            p.Tip = TipPregleda.Standardni;
-           
-           
 
-     
-            //gledam da li postoji dati pacijent
-             int znak = 0;
-            String line = "";
+            double sat;
+            double minut;
 
-            using (StreamReader file = new StreamReader(@"C:\Users\nata1\Projekat\ProjekatSIMS\Pacijent.txt"))
+            if (Termin.Visibility == Visibility.Visible)
             {
+               sat = Convert.ToDouble(Termin.Text.Split(":")[0]);
+               minut = Convert.ToDouble(Termin.Text.Split(":")[1]);
+            }
+            else
+            {
+                sat = Convert.ToDouble(Sat.Text);
+                minut = Convert.ToDouble(Minut.Text);
+            }
+           
+            DateTime datum1 = new DateTime();
+            datum1 = datum.AddHours(sat);
+            datum1 = datum1.AddMinutes(minut);
+            DateTime datum2 = datum1.AddMinutes(20);
 
-                while ((line = file.ReadLine()) != null)
+
+            //gledam da li postoji dati pacijent
+  
+            List < Pacijent > pacijenti = new List<Pacijent>();
+            int znak = 0;
+
+            using (StreamReader r = new StreamReader(@"..\..\Fajlovi\Pacijent.txt"))
+            {
+                string json = r.ReadToEnd();
+                pacijenti = JsonConvert.DeserializeObject<List<Pacijent>>(json);
+            }
+            foreach (Pacijent pa in pacijenti)
+            {
+                if (pa.Jmbg == jmbg)
                 {
-                    string[] parts = line.Split(",");
-
-                    if (parts[5] == jmbg)
-                    {
-                        znak++;
-                        break;
-                    }
+                    znak++;
+                    p.pacijent = pa;
+                    break;
                 }
-
-                file.Close();
             }
             if (znak == 0)
             {
-                MessageBox.Show("Pacijent nije nadjen. Pokusajte ponovo!");
+                MessageBox.Show("Pacijent nije nadjen!");
                 return;
-                
             }
 
-            /*
-            //sada gledam da li je vrijeme okej tj da li se poklapa sa nekim
-            String line1;
-            String id=""; //id pregleda
-          
-            using (StreamReader file = new StreamReader(@"C:\Users\nata1\Projekat\ProjekatSIMS\Pregled.txt"))
+
+            ///DATUMMM i VRIJEMEE
+            CuvanjePregledaDoktor fajl = new CuvanjePregledaDoktor(@"..\..\Fajlovi\Pregled.txt");
+            List<Pregled> pregledi = fajl.UcitajSvePreglede();
+
+            foreach (Pregled pr in pregledi)
             {
-
-                while ((line1 = file.ReadLine()) != null)
+             
+                if (pr.Pocetak.Year == datum1.Year && pr.Pocetak.Month == datum1.Month && pr.Pocetak.Day == datum1.Day)
                 {
-                    string[] parts = line1.Split(",");
-                    DateTime datum11 = Convert.ToDateTime(parts[3]);
-                    DateTime datum22 = datum11.AddMinutes(Convert.ToDouble(parts[4]));
-                    id = parts[0];
-
-                    if (parts[6] =="Zakazan")
+            
+                    DateTime datum11 = pr.Pocetak;
+                    DateTime datum22 = pr.Pocetak.AddMinutes(pr.Trajanje);
+                    if (DateTime.Compare(datum1, datum11) >= 0 && DateTime.Compare(datum1, datum22) < 0 ||
+                        DateTime.Compare(datum2, datum11) > 0 && DateTime.Compare(datum2, datum22) <= 0)
                     {
-                        //ako je pocetk zakazanog termina unutar nekog drugog termina
-                        if (DateTime.Compare(datum1, datum11) > 0 && DateTime.Compare(datum1, datum22) < 0
-                            || DateTime.Compare(datum2, datum11) > 0 && DateTime.Compare(datum2, datum22) < 0
-                            || DateTime.Compare(datum1, datum11) == 0
-                            || DateTime.Compare(datum1, datum11) < 0 && DateTime.Compare(datum2, datum22) > 0)
-                        {
-
-                            MessageBox.Show("Termin je zauzet");
-                            return;
-                        }
+                        MessageBox.Show("Dati termin je zauzet");
+                        PrikazTermina(pregledi,datum1,datum2);
+                        return;
                     }
+                
                 }
-
-                file.Close();
             }
-            int Idnovi = Convert.ToInt32(id)+1;
-            znak = 0;*/
 
-            Pacijent pacijent = new Pacijent{ Ime = "Marko", Prezime = "Mrakic" };
 
-           
             p.Pocetak = datum1;
-            p.Trajanje = trajanje;
-            p.pacijent = pacijent;
+            p.Trajanje = 20;
+
+            p.Tip = TipPregleda.Standardni;
             p.StatusPregleda = StatusPregleda.Zakazan;
             p.prostorija = (Prostorija)Ordinacija.SelectedItem;
-           
-            //TREBA POSTAVITI DOKTORA
+
             Doktor dr = new Doktor { Jmbg = "1511990855023", Ime = "Marijana", Prezime = "Peric" };
             p.doktor = dr;
 
-            CuvanjePregledaDoktor fajl = new CuvanjePregledaDoktor(@"..\..\Fajlovi\Pregled.txt");
-            List<Pregled> pregledi = fajl.UcitajSvePreglede();
+
+         
+            if (pregledi.Count == 0)
+            {
+                p.Id = 1;
+            }
+            else
+            {
+                p.Id = pregledi[pregledi.Count - 1].Id + 1;
+            }
             pregledi.Add(p);
             fajl.Sacuvaj(pregledi);
 
-            MessageBox.Show("Uspjesno je zakazan termin");
+            MessageBox.Show("Uspjesno je zakazan pregled");
             this.Close();
         }
+
+            private void PrikazTermina(List<Pregled> pregledi,DateTime datum1,DateTime datum2)
+            {
+                 Termin.Visibility =Visibility.Visible;
+                Izbor.Visibility = Visibility.Visible;
+            List<Pregled> isti = new List<Pregled>();
+                List<DateTime> termini = new List<DateTime>();
+                DateTime pocetni = new DateTime(datum1.Year, datum1.Month, datum1.Day, 8, 0,0);
+                DateTime krajnji = new DateTime(datum2.Year, datum2.Month, datum2.Day, 20, 0, 0);
+                foreach (Pregled p in pregledi)
+                {
+
+                    if (p.Pocetak.Year == datum1.Year && p.Pocetak.Month == datum1.Month && p.Pocetak.Day == datum1.Day)
+                    {
+                    isti.Add(p);
+                    }
+
+                }
+                for(DateTime i1 = pocetni; i1 < krajnji; i1 = i1.AddMinutes(20))
+                {
+                    int znak = 0;
+                    DateTime i2 = i1.AddMinutes(20);
+                    foreach(Pregled p in isti)
+                    {
+                        DateTime datum11 = p.Pocetak;
+                        DateTime datum22 = p.Pocetak.AddMinutes(p.Trajanje);
+                        if (DateTime.Compare(i1, datum11) >= 0 && DateTime.Compare(i1, datum22) < 0 ||
+                            DateTime.Compare(i2, datum11) > 0 && DateTime.Compare(i2, datum22) <= 0)
+                        {
+                            znak++;
+                        }
+                    }
+                    if (znak == 0)
+                    {
+                    Termin.Items.Add(i1.Hour.ToString()+":"+ i1.Minute.ToString());
+                        
+                    }
+                }
+                
+            }
+
+        
     }
 }

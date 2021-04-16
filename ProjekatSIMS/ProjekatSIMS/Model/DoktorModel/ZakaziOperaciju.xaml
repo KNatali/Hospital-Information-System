@@ -15,7 +15,7 @@
 
         <Label Content="Sala:" HorizontalAlignment="Left" Margin="60,96,0,0" VerticalAlignment="Top" Height="28"/>
 
-        <Button Content="Zakazi" Click="ZakazivanjOperacije" HorizontalAlignment="Left" Margin="630,345,0,0" VerticalAlignment="Top" Height="42" Width="92" Background="#FFB5CDE2"/>
+        <Button Content="ZakaziOperaciju" Click="ZakazivanjOperacije" HorizontalAlignment="Left" Margin="630,345,0,0" VerticalAlignment="Top" Height="42" Width="92" Background="#FFB5CDE2"/>
         <ComboBox  Name="Sala" HorizontalAlignment="Left"   
                   Margin="300,102,0,0"   
                   VerticalAlignment="Top"   
@@ -34,21 +34,27 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        <Button Content="Izabri slobodan termin:" Click="PrikazTermina" HorizontalAlignment="Left" Margin="60,243,0,0" VerticalAlignment="Top" Height="22" Width="142"/>
+        <Label Content="Vrijeme(Sati i minuti):" HorizontalAlignment="Left" Margin="60,209,0,0" VerticalAlignment="Top" Height="26"/>
+        <TextBox Name="Sat" HorizontalAlignment="Left" Margin="300,217,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="66" Height="20"/>
+        <TextBox Name="Minut" HorizontalAlignment="Left" Margin="416,217,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Height="20"/>
+
+        <Label Content="Trajanje:" HorizontalAlignment="Left" Margin="68,264,0,0" VerticalAlignment="Top" Height="26"/>
+        <TextBox Name="Trajanje" HorizontalAlignment="Left" Margin="300,270,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="66" Height="20"/>
+
+
 
         <ComboBox  Name="Termin" HorizontalAlignment="Left"   
-                  Margin="300,243,0,0"   
+                  Margin="300,321,0,0"   
                   VerticalAlignment="Top" 
-                 
+                 Visibility="Hidden"
                   Width="120"   
                    >
 
 
         </ComboBox>
-        <Label Content="NAPOMENA:Selektovati salu i datum prije termina" HorizontalAlignment="Left" Margin="60,0,0,0" VerticalAlignment="Center"/>
+        <Label Name="Izbor" Content="Izaberi jedan od slobodnih termina:" Visibility="Hidden" HorizontalAlignment="Left" Margin="60,340,0,0" VerticalAlignment="Top"/>
 
 
-
-        <ListBox Margin="464,102,0,162" Name="RightListBox" HorizontalAlignment="Left" Width="309" />
+        <ListBox Margin="502,102,0,126" Name="RightListBox" HorizontalAlignment="Left" Width="271" />
     </Grid>
 </Window>
