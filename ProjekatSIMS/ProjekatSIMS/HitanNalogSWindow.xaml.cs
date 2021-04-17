@@ -12,26 +12,25 @@ using System.Windows.Shapes;
 
 namespace ProjekatSIMS
 {
-    public partial class SekretarWindow : Window
+    /// <summary>
+    /// Interaction logic for HitanNalogSWindow.xaml
+    /// </summary>
+    public partial class HitanNalogSWindow : Window
     {
-        public SekretarWindow()
+        public HitanNalogSWindow()
         {
             InitializeComponent();
         }
-        private void Kalendar(object sender, RoutedEventArgs e)
+        private void Otkazi(object sender, RoutedEventArgs e)
         {
-            KalendarPregledaSWindow kp = new KalendarPregledaSWindow();
-            kp.Show();
-        }
-        private void Zakazivanje(object sender, RoutedEventArgs e)
-        {
-            OdabirPrioritetaSWindow op = new OdabirPrioritetaSWindow();
-            op.Show();
+            this.Close();
         }
         private void Kreiraj(object sender, RoutedEventArgs e)
         {
-            HitanNalogSWindow hn = new HitanNalogSWindow();
-            hn.Show();
+            MessageBox.Show("Kreirali ste hitan nalog pacijentu. Sada morate da zakažete termin.", "OBAVEŠTENJE", MessageBoxButton.OK);
+            OdabirPrioritetaSWindow op = new OdabirPrioritetaSWindow();
+            op.Show();
+            this.Close();
         }
     }
 }

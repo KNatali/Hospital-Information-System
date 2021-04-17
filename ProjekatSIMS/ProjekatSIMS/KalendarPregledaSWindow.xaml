@@ -7,6 +7,21 @@
         mc:Ignorable="d"
         Title="KalendarPregledaSWindow" Height="450" Width="800">
     <Grid>
-        
+        <DataGrid x:Name="dataGridPregledi" ItemsSource="{Binding Pregledi}" IsReadOnly="True"
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="40,60,40,100">
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Header="Početak" Binding="{Binding Pocetak}" Width="150"/>
+                <DataGridTextColumn Header="Trajanje" Binding="{Binding Trajanje}" Width="100"/>
+                <DataGridTextColumn Header="Tip pregleda" Binding="{Binding Tip}" Width="120"/>
+                <DataGridTextColumn Header="Prostorija" Binding="{Binding Prostorija}" Width="100"/>
+                <DataGridTextColumn Header="Doktor" Binding="{Binding Doktor}" Width="110"/>
+                <DataGridTextColumn Header="Pacijent" Binding="{Binding Pacijent}" Width="*"/>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Početna stranica" Click="Nazad" HorizontalAlignment="Left" Margin="40,350,0,0" VerticalAlignment="Top" Height="30" Width="100" Background="#FFA6B1D6"/>
+        <Button Content="Izmeni pregled" Click="Izmeni" HorizontalAlignment="Left" Margin="660,350,0,0" VerticalAlignment="Top" Height="30" Width="100" Background="#FFA6B1D6"/>
+        <Button Content="Otkaži pregled" Click="Otkazi" HorizontalAlignment="Left" Margin="350,350,0,0" VerticalAlignment="Top" Height="30" Width="100" Background="#FFA6B1D6"/>
     </Grid>
 </Window>
