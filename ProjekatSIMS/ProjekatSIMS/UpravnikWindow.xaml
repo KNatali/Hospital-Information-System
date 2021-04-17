@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="UpravnikWindow" Height="450" Width="800">
     <Grid>
-        
+        <Button Content="Statička oprema" Click="staticka" HorizontalAlignment="Center" Margin="0,62,0,0" VerticalAlignment="Top" Width="210" Height="60"/>
+        <Button Content="Dinamička oprema" Click="dinamicka" HorizontalAlignment="Center" Margin="0,157,0,0" VerticalAlignment="Top" Height="60" Width="210"/>
+        <Button Content="Prostorije" Click="prostorije" HorizontalAlignment="Center" Margin="0,263,0,0" VerticalAlignment="Top" Height="60" Width="210"/>
+
     </Grid>
 </Window>
