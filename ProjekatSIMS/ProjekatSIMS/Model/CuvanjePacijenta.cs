@@ -1,24 +1,29 @@
-// File:    Fajl.cs
-// Author:  mrvic
-// Created: 28 March 2021 09:56:23
-// Purpose: Definition of Class Fajl
-
 using System;
 using System.Collections.Generic;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace Model
 {
    public class CuvanjePacijenta
    {
-      public void Sacuvaj(String pacijent, Boolean znak)
+      public CuvanjePacijenta(String l)
       {
-         // TODO: implement
+        lokacija = l;
       }
-      
-      public List<Pacijent> DobaviPacijente()
+      public void Sacuvaj(List<Pacijent> p)
       {
-         // TODO: implement
-         return null;
+        string newJson = JsonConvert.SerializeObject(p);
+        File.WriteAllText(lokacija, newJson);
+      }
+        public List<Pacijent> DobaviPacijente()
+      {
+            using (StreamReader r = new StreamReader(lokacija))
+            {
+                string json = r.ReadToEnd();
+                pacijenti = JsonConvert.DeserializeObject<List<Pacijent>>(json);
+            }
+            return pacijenti;
       }
    
       public System.Collections.ArrayList osoba;
@@ -68,6 +73,7 @@ namespace Model
       }
    
       private String lokacija;
-   
-   }
+      private List<Pacijent> pacijenti;
+
+    }
 }

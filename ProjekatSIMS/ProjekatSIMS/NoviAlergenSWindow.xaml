@@ -1,0 +1,16 @@
+﻿<Window x:Class="ProjekatSIMS.NoviAlergenSWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjekatSIMS"
+        mc:Ignorable="d"
+        Title="NoviAlergenSWindow" Height="450" Width="800">
+    <Grid>
+        <Button Content="Sačuvaj" Click="Dodavanje" HorizontalAlignment="Left" Margin="545,221,0,0" VerticalAlignment="Top" Height="40" Width="100" Background="#FFA6B1D6"/>
+        <Button Content="Otkaži" Click="Nazad" HorizontalAlignment="Left" Margin="175,221,0,0" VerticalAlignment="Top" Height="40" Width="100" Background="#FFA6B1D6"/>
+        <Label Content="Dodavanje novog alergena" HorizontalAlignment="Left" Height="30" Margin="80,66,0,0" VerticalAlignment="Top" Width="230" FontWeight="Bold"/>
+        <Label Content="Naziv alergena" HorizontalAlignment="Left" Height="25" Margin="80,116,0,0" VerticalAlignment="Top" Width="145"/>
+        <TextBox HorizontalAlignment="Left" Name="Naziv" Margin="265,116,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="430"/>
+    </Grid>
+</Window>

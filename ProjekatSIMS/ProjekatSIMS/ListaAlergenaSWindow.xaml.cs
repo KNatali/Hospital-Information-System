@@ -12,9 +12,9 @@ using System.Windows.Shapes;
 
 namespace ProjekatSIMS
 {
-    public partial class SekretarWindow : Window
+    public partial class ListaAlergenaSWindow : Window
     {
-        public SekretarWindow()
+        public ListaAlergenaSWindow()
         {
             InitializeComponent();
         }
@@ -22,15 +22,11 @@ namespace ProjekatSIMS
         {
             this.Close();
         }
-        private void Kreiranje_profila(object sender, RoutedEventArgs e)
+        private void Dodavanje(object sender, RoutedEventArgs e)
         {
-            KreirajProfilWindow kp = new KreirajProfilWindow();
-            kp.Show();
-        }
-        private void Pretrazi_pacijente(object sender, RoutedEventArgs e)
-        {
-            PretraziPacijenteSekretarWindow pp = new PretraziPacijenteSekretarWindow();
-            pp.Show();
+            this.Close();
+            NoviAlergenSWindow na = new NoviAlergenSWindow();
+            na.Show();
         }
     }
 }
