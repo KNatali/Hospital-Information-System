@@ -13,18 +13,13 @@ using System.Windows.Shapes;
 namespace ProjekatSIMS
 {
     /// <summary>
-    /// Interaction logic for SekretarWindow.xaml
+    /// Interaction logic for KalendarPregledaSWindow.xaml
     /// </summary>
-    public partial class SekretarWindow : Window
+    public partial class KalendarPregledaSWindow : Window
     {
-        public SekretarWindow()
+        public KalendarPregledaSWindow()
         {
             InitializeComponent();
-        }
-        private void Kalendar(object sender, RoutedEventArgs e)
-        {
-            KreirajProfilWindow kp = new KreirajProfilWindow();
-            kp.Show();
         }
     }
 }
