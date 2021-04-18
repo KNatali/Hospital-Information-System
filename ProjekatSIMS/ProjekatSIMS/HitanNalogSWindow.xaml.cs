@@ -23,14 +23,31 @@ namespace ProjekatSIMS
         }
         private void Otkazi(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            MessageBoxResult ret = MessageBox.Show("Da li želite da otkažete kreiranje hitnog naloga?", "PROVERA", MessageBoxButton.YesNo);
+            switch (ret)
+            {
+                case MessageBoxResult.Yes:
+                    this.Close();
+                    break;
+                case MessageBoxResult.No:
+                    break;
+            }
         }
         private void Kreiraj(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Kreirali ste hitan nalog pacijentu. Sada morate da zakažete termin.", "OBAVEŠTENJE", MessageBoxButton.OK);
-            OdabirPrioritetaSWindow op = new OdabirPrioritetaSWindow();
-            op.Show();
-            this.Close();
+            MessageBoxResult ret = MessageBox.Show("Kreirali ste hitan nalog pacijentu. Da li želite da zakažete termin.", "PROVERA", MessageBoxButton.YesNo);
+            switch (ret)
+            {
+                case MessageBoxResult.Yes:
+                    OdabirPrioritetaSWindow op = new OdabirPrioritetaSWindow();
+                    op.Show();
+                    this.Close();
+                    break;
+                case MessageBoxResult.No:
+                    this.Close();
+                    break;
+            }
+            
         }
     }
 }
