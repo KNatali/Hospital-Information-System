@@ -1,0 +1,37 @@
+﻿<Page x:Class="ProjekatSIMS.ZdravstveniKartonDoktor"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ProjekatSIMS"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ZdravstveniKartonDoktor">
+
+    <Grid>
+        <Label Content="Jmbg:" HorizontalAlignment="Left" Margin="20,117,0,0" VerticalAlignment="Top" Padding="10,5,5,5" Width="80"/>
+        <Label Content="Ime:" HorizontalAlignment="Left" Margin="20,159,0,0" VerticalAlignment="Top" Padding="10,5,5,5" Width="50"/>
+        <Label Content="Prezime:" HorizontalAlignment="Left" Margin="20,196,0,0" VerticalAlignment="Top" Padding="10,5,5,5" Width="80"/>
+        <Label Content="Datum rodjenja:" HorizontalAlignment="Left" Margin="20,234,0,0" VerticalAlignment="Top" Padding="10,5,5,5" Width="146"/>
+        <Label Content="Adresa stanovanja:" HorizontalAlignment="Left" Margin="20,315,0,0" VerticalAlignment="Top" Padding="10,5,5,5" Width="146"/>
+        <Label Content="Email:" HorizontalAlignment="Left" Margin="20,274,0,0" VerticalAlignment="Top" Padding="10,5,5,5" Width="80"/>
+        <Label Content="Broj telefona:" HorizontalAlignment="Left" Margin="20,358,0,0" VerticalAlignment="Top" Padding="10,5,5,5" Width="132"/>
+        <TextBox Name="Ime" IsReadOnly="True" HorizontalAlignment="Left" Margin="196,160,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" Height="24"/>
+        <TextBox Name="Jmbg" IsReadOnly="True" HorizontalAlignment="Left" Margin="196,120,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" Height="24"/>
+        <TextBox Name="Prezime" IsReadOnly="True" HorizontalAlignment="Left" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" Height="24" Margin="196,199,0,0"/>
+        <TextBox Name="Datum" IsReadOnly="True" HorizontalAlignment="Left" Margin="196,238,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" Height="24"/>
+        <TextBox Name="Email" IsReadOnly="True" HorizontalAlignment="Left" Margin="196,278,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" Height="24"/>
+        <TextBox Name="Adresa" IsReadOnly="True"  HorizontalAlignment="Left" Margin="196,320,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" Height="24"/>
+        <TextBox Name="Broj" IsReadOnly="True" HorizontalAlignment="Left" Margin="196,360,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" Height="24"/>
+        <Button Content="Pregled izdatih recepata" HorizontalAlignment="Left" Margin="584,341,0,0" VerticalAlignment="Top" Height="44" Width="168"/>
+
+        <Button Content="Kreiranje anamneze" HorizontalAlignment="Left" Margin="384,268,0,0" VerticalAlignment="Top" Height="44" Width="168"/>
+        <Button Content="Azuriranje anamneze" HorizontalAlignment="Left" Margin="584,268,0,0" VerticalAlignment="Top" Height="43" Width="168"/>
+        <Button Content="Izdavanje recepta" HorizontalAlignment="Left" Margin="384,341,0,0" VerticalAlignment="Top" Height="43" Width="168"/>
+
+        <Label Content="Zdravstveni karton" HorizontalAlignment="Center" Margin="0,22,0,0" VerticalAlignment="Top" FontSize="16"/>
+
+
+
+    </Grid>
+</Page>

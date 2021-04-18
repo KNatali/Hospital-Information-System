@@ -4,6 +4,7 @@
 // Purpose: Definition of Class Prostorija
 
 using System;
+using System.Collections;
 
 namespace Model
 {
@@ -15,12 +16,13 @@ namespace Model
          return true;
       }
    
-      public String id;
-      public int sprat;
-      public VrstaProstorije vrsta;
+      public String Id { get; set; }
+      public int Sprat { get; set; }
+      public VrstaProstorije Vrsta { get; set; }
       
       public Pregled[] pregled;
-      public Inventar[] inventar;
-   
-   }
+        public Inventar[] Inventar { get; set; }
+
+        
+    }
 }
