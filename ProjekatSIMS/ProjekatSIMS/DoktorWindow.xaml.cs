@@ -42,6 +42,11 @@ namespace ProjekatSIMS
             DoktorFrame.Content = new PrikazPregledaDoktor();
 
         }
+        private void PrikazZavrsenihPregleda(object sender, RoutedEventArgs e)
+        {
+            DoktorFrame.Content = new PrikazZavrsenihPregleda();
+
+        }
 
         private void PretraziPacijenta(object sender, RoutedEventArgs e)
         {

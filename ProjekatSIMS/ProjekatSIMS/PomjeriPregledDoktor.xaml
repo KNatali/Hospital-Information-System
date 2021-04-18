@@ -37,5 +37,18 @@
         <Button Content="Sacuvaj" Click="PotvrdiIzmjenu" HorizontalAlignment="Left" Margin="654,319,0,0" VerticalAlignment="Top" Height="35" Width="92" Background="#FFB5CDE2"/>
 
 
+        <ComboBox  Name="Termin" HorizontalAlignment="Left"   
+                  Margin="300,386,0,0"   
+                  VerticalAlignment="Top" 
+                  Visibility="Hidden" 
+                  Width="120"   
+                   >
+
+
+        </ComboBox>
+        <Label Name="Izbor" Content="Izaberi jedan od slobodnih termina:"   Visibility="Hidden"  HorizontalAlignment="Left" Margin="50,376,0,0" VerticalAlignment="Top"/>
+
+
+
     </Grid>
 </Page>

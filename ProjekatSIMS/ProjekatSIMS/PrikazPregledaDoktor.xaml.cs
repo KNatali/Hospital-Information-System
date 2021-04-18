@@ -34,11 +34,21 @@ namespace ProjekatSIMS
             InitializeComponent();
             this.DataContext = this;
 
+
+
             List<Pregled> pregledi = new List<Pregled>();
+            Pregledi = new List<Pregled>();
             using (StreamReader r = new StreamReader(@"..\..\Fajlovi\Pregled.txt"))
             {
                 string json = r.ReadToEnd();
-               Pregledi = JsonConvert.DeserializeObject<List<Pregled>>(json);
+                 pregledi = JsonConvert.DeserializeObject<List<Pregled>>(json);
+            }
+            foreach(Pregled p in pregledi)
+            {
+                if (p.doktor.Jmbg== "1511990855023" && p.StatusPregleda==StatusPregleda.Zakazan)
+                {
+                    Pregledi.Add(p);
+                }
             }
             
 
@@ -55,7 +65,8 @@ namespace ProjekatSIMS
             else
                 MessageBox.Show("Neuspjesno otkazvanje pregleda");
 
-            this.NavigationService.Navigate(new Uri("PrikazPregledaDoktor.xaml", UriKind.Relative));
+            PrikazPregledaDoktor pd = new PrikazPregledaDoktor();
+            this.NavigationService.Navigate(pd);
 
         }
 

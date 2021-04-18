@@ -75,6 +75,8 @@ namespace ProjekatSIMS
             datum1 = datum.AddHours(sat);
             datum1 = datum1.AddMinutes(minut);
             DateTime datum2 = datum1.AddMinutes(trajanje);
+            Doktor dr = new Doktor { Jmbg = "1511990855023", Ime = "Marijana", Prezime = "Peric" };
+
 
 
             //gledam da li postoji dati pacijent
@@ -111,20 +113,25 @@ namespace ProjekatSIMS
 
             foreach (Pregled pr in pregledi)
             {
-
-                if (pr.Pocetak.Year == datum1.Year && pr.Pocetak.Month == datum1.Month && pr.Pocetak.Day == datum1.Day)
+                if (pr.StatusPregleda == StatusPregleda.Zakazan)
                 {
-
-                    DateTime datum11 = pr.Pocetak;
-                    DateTime datum22 = pr.Pocetak.AddMinutes(pr.Trajanje);
-                    if (DateTime.Compare(datum1, datum11) >= 0 && DateTime.Compare(datum1, datum22) < 0 ||
-                        DateTime.Compare(datum2, datum11) > 0 && DateTime.Compare(datum2, datum22) <= 0)
+                    if (dr.Jmbg == pr.doktor.Jmbg || pr.prostorija == (Prostorija)Sala.SelectedItem)
                     {
-                        MessageBox.Show("Dati termin je zauzet");
-                        PrikazTermina(pregledi, datum1, datum2, trajanje);
-                        return;
-                    }
+                        if (pr.Pocetak.Year == datum1.Year && pr.Pocetak.Month == datum1.Month && pr.Pocetak.Day == datum1.Day)
+                        {
 
+                            DateTime datum11 = pr.Pocetak;
+                            DateTime datum22 = pr.Pocetak.AddMinutes(pr.Trajanje);
+                            if (DateTime.Compare(datum1, datum11) >= 0 && DateTime.Compare(datum1, datum22) < 0 ||
+                                DateTime.Compare(datum2, datum11) > 0 && DateTime.Compare(datum2, datum22) <= 0)
+                            {
+                                MessageBox.Show("Dati termin je zauzet");
+                                PrikazTermina(pregledi, datum1, datum2, trajanje,dr);
+                                return;
+                            }
+
+                        }
+                    }
                 }
             }
 
@@ -136,9 +143,7 @@ namespace ProjekatSIMS
             p.StatusPregleda = StatusPregleda.Zakazan;
             p.prostorija = (Prostorija)Sala.SelectedItem;
 
-
-            Doktor dr = new Doktor { Jmbg = "1511990855023", Ime = "Marijana", Prezime = "Peric" };
-            p.doktor = dr;
+             p.doktor = dr;
 
 
 
@@ -154,29 +159,38 @@ namespace ProjekatSIMS
             prep.SacuvajPregledDoktor(pregledi);
 
             MessageBox.Show("Uspjesno je zakazana operacija");
+            this.NavigationService.Navigate(new Uri("PrikazPregledaDoktor.xaml", UriKind.Relative));
+
         }
 
-        private void PrikazTermina(List<Pregled> pregledi, DateTime datum1, DateTime datum2, int trajanje)
+        private void PrikazTermina(List<Pregled> pregledi, DateTime datum1, DateTime datum2, int trajanje,Doktor dr)
         {
             Termin.Visibility = Visibility.Visible;
             Izbor.Visibility = Visibility.Visible;
+          
             List<Pregled> isti = new List<Pregled>();
             List<DateTime> termini = new List<DateTime>();
             DateTime pocetni = new DateTime(datum1.Year, datum1.Month, datum1.Day, 8, 0, 0);
             DateTime krajnji = new DateTime(datum2.Year, datum2.Month, datum2.Day, 20, 0, 0);
             foreach (Pregled p in pregledi)
             {
-
-                if (p.Pocetak.Year == datum1.Year && p.Pocetak.Month == datum1.Month && p.Pocetak.Day == datum1.Day)
+                if (p.StatusPregleda == StatusPregleda.Zakazan)
                 {
-                    isti.Add(p);
+                    if (dr.Jmbg == p.doktor.Jmbg || p.prostorija == (Prostorija)Sala.SelectedItem)
+                    {
+
+                        if (p.Pocetak.Year == datum1.Year && p.Pocetak.Month == datum1.Month && p.Pocetak.Day == datum1.Day)
+                        {
+                            isti.Add(p);
+                        }
+                    }
                 }
 
             }
             for (DateTime i1 = pocetni; i1 < krajnji; i1 = i1.AddMinutes(trajanje))
             {
                 int znak = 0;
-                DateTime i2 = i1.AddMinutes(20);
+                DateTime i2 = i1.AddMinutes(trajanje);
                 foreach (Pregled p in isti)
                 {
                     DateTime datum11 = p.Pocetak;
@@ -189,9 +203,28 @@ namespace ProjekatSIMS
                 }
                 if (znak == 0)
                 {
-                    Termin.Items.Add(i1.Hour.ToString() + ":" + i1.Minute.ToString());
+                    termini.Add(i1);
 
                 }
+            }
+
+            //parovi rastojanje-termin
+            List<KeyValuePair<int, DateTime>> parovi = new List<KeyValuePair<int, DateTime>>();
+
+            foreach (DateTime t in termini)
+            {
+                int distanca = (int)((t - datum1).Duration()).TotalSeconds;
+
+                parovi.Add(new KeyValuePair<int, DateTime>(distanca, t));
+            }
+            parovi.Sort((x, y) => x.Key.CompareTo(y.Key));
+
+            //izlistavam 4 najbliza termina izabranom
+            for (int i = 1; i < 5; i++)
+            {
+                if (parovi.Count < i + 1)
+                    break;
+                Termin.Items.Add(parovi[i].Value.Hour + ":" + parovi[i].Value.Minute);
             }
 
         }

@@ -4,6 +4,7 @@ using Repository;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -56,7 +57,7 @@ namespace Service
                 {
                     pr.Pocetak = datum;
                    
-                    break;
+                    break; 
                 }
             }
             pregledRepository.SacuvajPregledDoktor(pregledi);
@@ -73,6 +74,9 @@ namespace Service
                 string json = r.ReadToEnd();
                 pacijenti = JsonConvert.DeserializeObject<List<Pacijent>>(json);
             }
+
+            Doktor dr = new Doktor { Jmbg = "1511990855023", Ime = "Marijana", Prezime = "Peric" };
+
 
             int znak = 0;
        
@@ -100,19 +104,24 @@ namespace Service
             foreach (Pregled pr in pregledi)
             {
 
-                if (pr.Pocetak.Year == datum1.Year && pr.Pocetak.Month == datum1.Month && pr.Pocetak.Day == datum1.Day)
-                {
-
-                    DateTime datum11 = pr.Pocetak;
-                    DateTime datum22 = pr.Pocetak.AddMinutes(pr.Trajanje);
-                    if (DateTime.Compare(datum1, datum11) >= 0 && DateTime.Compare(datum1, datum22) < 0 ||
-                        DateTime.Compare(datum2, datum11) > 0 && DateTime.Compare(datum2, datum22) <= 0)
+                if (pr.StatusPregleda == StatusPregleda.Zakazan) {
+                    if (dr.Jmbg == pr.doktor.Jmbg || pr.prostorija == prostorija)
                     {
-                        MessageBox.Show("Dati termin je zauzet");
-                        PrikazTermina(Termin,pregledi, datum1, datum2);
-                        return false;
-                    }
+                        if (pr.Pocetak.Year == datum1.Year && pr.Pocetak.Month == datum1.Month && pr.Pocetak.Day == datum1.Day)
+                        {
 
+                            DateTime datum11 = pr.Pocetak;
+                            DateTime datum22 = pr.Pocetak.AddMinutes(pr.Trajanje);
+                            if (DateTime.Compare(datum1, datum11) >= 0 && DateTime.Compare(datum1, datum22) < 0 ||
+                                DateTime.Compare(datum2, datum11) > 0 && DateTime.Compare(datum2, datum22) <= 0)
+                            {
+                                MessageBox.Show("Dati termin je zauzet");
+                                PrikazTermina(Termin, pregledi, datum1, datum2,dr);
+                                return false;
+                            }
+
+                        }
+                    }
                 }
             }
 
@@ -124,7 +133,6 @@ namespace Service
             p.StatusPregleda = StatusPregleda.Zakazan;
             p.prostorija = prostorija;
 
-            Doktor dr = new Doktor { Jmbg = "1511990855023", Ime = "Marijana", Prezime = "Peric" };
             p.doktor = dr;
 
 
@@ -144,7 +152,7 @@ namespace Service
             return true;
       }
 
-        private void PrikazTermina(ComboBox Termin,List<Pregled> pregledi, DateTime datum1, DateTime datum2)
+        private void PrikazTermina(ComboBox Termin,List<Pregled> pregledi, DateTime datum1, DateTime datum2,Doktor dr)
         {
 
             Termin.Visibility = Visibility.Visible;
@@ -154,10 +162,16 @@ namespace Service
             DateTime krajnji = new DateTime(datum2.Year, datum2.Month, datum2.Day, 20, 0, 0);
             foreach (Pregled p in pregledi)
             {
-
-                if (p.Pocetak.Year == datum1.Year && p.Pocetak.Month == datum1.Month && p.Pocetak.Day == datum1.Day)
+                if (p.StatusPregleda == StatusPregleda.Zakazan)
                 {
-                    isti.Add(p);
+                    // || p.prostorija == (Prostorija)Ordinacija.SelectedItem
+                    if (dr.Jmbg == p.doktor.Jmbg)
+                    {
+                        if (p.Pocetak.Year == datum1.Year && p.Pocetak.Month == datum1.Month && p.Pocetak.Day == datum1.Day)
+                        {
+                            isti.Add(p);
+                        }
+                    }
                 }
 
             }
@@ -177,11 +191,30 @@ namespace Service
                 }
                 if (znak == 0)
                 {
-                    Termin.Items.Add(i1.Hour.ToString() + ":" + i1.Minute.ToString());
+                    termini.Add(i1);
 
                 }
             }
 
+            //parovi rastojanje-termin
+            List<KeyValuePair< int, DateTime>> parovi = new List<KeyValuePair< int, DateTime>>();
+           
+            foreach(DateTime t in termini)
+            {
+                int distanca =(int) ((t - datum1).Duration()).TotalSeconds;
+               
+                parovi.Add(new KeyValuePair<int, DateTime>(distanca,t));
+            }
+            parovi.Sort((x, y) => x.Key.CompareTo(y.Key));
+           
+               //izlistavam 4 najbliza termina izabranom
+            for (int i = 1; i < 5; i++)
+            {
+                if (parovi.Count < i+1)
+                    break;
+                Termin.Items.Add(parovi[i].Value.Hour + ":" + parovi[i].Value.Minute);
+            }
+            
         }
 
 

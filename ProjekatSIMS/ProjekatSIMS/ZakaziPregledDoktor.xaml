@@ -31,7 +31,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="{Binding Path=Id}"/>
                         <TextBlock Text=" - "/>
-                        <TextBlock Text="{Binding Path=vrsta}"/>
+                        <TextBlock Text="{Binding Path=Vrsta}"/>
                     </StackPanel>
                 </DataTemplate>
             </ComboBox.ItemTemplate>
