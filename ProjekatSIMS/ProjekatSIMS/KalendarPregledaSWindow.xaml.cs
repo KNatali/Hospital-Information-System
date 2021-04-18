@@ -1,4 +1,5 @@
 ﻿using Model;
+using Repository;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -15,9 +16,14 @@ namespace ProjekatSIMS
 {
     public partial class KalendarPregledaSWindow : Window
     {
+        public List<Pregled> Pregledi { get; set; }
         public KalendarPregledaSWindow()
         {
             InitializeComponent();
+            this.DataContext = this;
+            Pregledi = new List<Pregled>();
+            PregledRepository fajl = new PregledRepository(@"..\..\Fajlovi\SviPregledi.txt");
+            Pregledi = fajl.GetListaPregledaSekretar();
         }
         private void Nazad(object sender, RoutedEventArgs e)
         {

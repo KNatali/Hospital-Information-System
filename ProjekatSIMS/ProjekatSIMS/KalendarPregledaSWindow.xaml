@@ -11,12 +11,12 @@
                   SelectionMode="Single" AutoGenerateColumns="False" Margin="40,60,40,100">
             <DataGrid.Columns>
 
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="50"/>
                 <DataGridTextColumn Header="Početak" Binding="{Binding Pocetak}" Width="150"/>
                 <DataGridTextColumn Header="Trajanje" Binding="{Binding Trajanje}" Width="100"/>
-                <DataGridTextColumn Header="Tip pregleda" Binding="{Binding Tip}" Width="120"/>
-                <DataGridTextColumn Header="Prostorija" Binding="{Binding Prostorija}" Width="100"/>
-                <DataGridTextColumn Header="Doktor" Binding="{Binding Doktor}" Width="110"/>
-                <DataGridTextColumn Header="Pacijent" Binding="{Binding Pacijent}" Width="*"/>
+                <DataGridTextColumn Header="Prostorija" Binding="{Binding prostorija.id}" Width="100"/>
+                <DataGridTextColumn Header="Doktor" Binding="{Binding doktor.Jmbg}" Width="110"/>
+                <DataGridTextColumn Header="Pacijent" Binding="{Binding pacijent.Jmbg}" Width="*"/>
 
             </DataGrid.Columns>
         </DataGrid>

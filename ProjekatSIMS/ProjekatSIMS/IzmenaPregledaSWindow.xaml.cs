@@ -13,9 +13,6 @@ using System.Windows.Shapes;
 
 namespace ProjekatSIMS
 {
-    /// <summary>
-    /// Interaction logic for IzmenaPregledaSWindow.xaml
-    /// </summary>
     public partial class IzmenaPregledaSWindow : Window
     {
         public IzmenaPregledaSWindow()

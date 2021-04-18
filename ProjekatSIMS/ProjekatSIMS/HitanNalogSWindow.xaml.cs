@@ -1,4 +1,5 @@
 ﻿using Model;
+using Repository;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -40,7 +41,7 @@ namespace ProjekatSIMS
             p.Jmbg = jmbg;
             p.Ime = ime;
             p.Prezime = prezime;
-            CuvanjePacijenta fajl = new CuvanjePacijenta(@"..\..\Fajlovi\Pacijent.txt");
+            OsobaRepository fajl = new OsobaRepository(@"..\..\Fajlovi\Pacijent.txt");
             List<Pacijent> pacijenti = fajl.DobaviPacijente();
             pacijenti.Add(p);
             fajl.Sacuvaj(pacijenti);

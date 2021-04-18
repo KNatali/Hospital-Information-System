@@ -1,12 +1,34 @@
 using Model;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace Repository
 {
    public class PregledRepository
    {
-      public Model.Pregled SacuvajGuestPregledRepository(DateTime datumPregleda, Model.Pacijent pacijent)
+        private String lokacija;
+        private List<Pregled> pregledi;
+        public PregledRepository(String l)
+        {
+            lokacija = l;
+        }
+        public void SacuvajPregledSekretar(List<Pregled> p)
+        {
+            string newJson = JsonConvert.SerializeObject(p);
+            File.WriteAllText(lokacija, newJson);
+        }
+        public List<Pregled> GetListaPregledaSekretar()
+        {
+            using (StreamReader r = new StreamReader(lokacija))
+            {
+                string json = r.ReadToEnd();
+                pregledi = JsonConvert.DeserializeObject<List<Pregled>>(json);
+            }
+            return pregledi;
+        }
+        public Model.Pregled SacuvajGuestPregledRepository(DateTime datumPregleda, Model.Pacijent pacijent)
       {
          // TODO: implement
          return null;
