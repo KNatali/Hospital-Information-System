@@ -13,9 +13,6 @@ using System.Windows.Shapes;
 
 namespace ProjekatSIMS
 {
-    /// <summary>
-    /// Interaction logic for ProfilPacijentaSWindow.xaml
-    /// </summary>
     public partial class ProfilPacijentaSWindow : Window
     {
         public CuvanjePacijenta fajl { get; set; }

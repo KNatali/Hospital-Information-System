@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -12,14 +13,20 @@ using System.Windows.Shapes;
 
 namespace ProjekatSIMS
 {
-    /// <summary>
-    /// Interaction logic for TabelaPacijenataSWindow.xaml
-    /// </summary>
     public partial class TabelaPacijenataSWindow : Window
     {
+        public List<Pacijent> Pacijenti { get; set; }
         public TabelaPacijenataSWindow()
         {
             InitializeComponent();
+            this.DataContext = this;
+            Pacijenti = new List<Pacijent>();
+            CuvanjePacijenta fajl = new CuvanjePacijenta(@"..\..\Fajlovi\Pacijent.txt");
+            Pacijenti = fajl.DobaviPacijente();
+        }
+        private void Nazad(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
