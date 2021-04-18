@@ -1,6 +1,9 @@
 ﻿using Model;
+using Newtonsoft.Json;
+using Repository;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,22 +19,22 @@ namespace ProjekatSIMS
     public partial class ListaAlergenaSWindow : Window
     {
         public List<ZdravsteniKarton> Karton { get; set; }
+        public List<String> Ale { get; set; }
         public ListaAlergenaSWindow(Pacijent p)
         {
             InitializeComponent();
-            /*this.DataContext = this;
-            Pacijenti = new List<Pacijent>();
-            List<Pacijent> ListaPacijenata = new List<Pacijent>();
-            CuvanjePacijenta fajl = new CuvanjePacijenta(@"..\..\Fajlovi\ZdravstveniKarton.txt");
-            ListaPacijenata = fajl.DobaviPacijente();
-            foreach (Pacijent p in ListaPacijenata)
+            this.DataContext = this;
+            List<String> al = new List<String>();
+            PregledRepository fajl = new PregledRepository(@"..\..\Fajlovi\ZdravstveniKarton.txt");
+            Karton = fajl.DobaviAlergene();
+            foreach (ZdravsteniKarton z in Karton)
             {
-                if (p.Jmbg == jmbg)
+                if (z.pacijent.Jmbg == p.Jmbg)
                 {
-                    Pacijenti.Add(p);
-                    pac = p;
+                    al = z.Alergeni;
                 }
-            }*/
+            }
+            MessageBox.Show(al.Count.ToString());
 
         }
         private void Nazad(object sender, RoutedEventArgs e)
@@ -40,9 +43,10 @@ namespace ProjekatSIMS
         }
         private void Dodavanje(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            
+            /*this.Close();
             NoviAlergenSWindow na = new NoviAlergenSWindow();
-            na.Show();
+            na.Show();*/
         }
     }
 }
