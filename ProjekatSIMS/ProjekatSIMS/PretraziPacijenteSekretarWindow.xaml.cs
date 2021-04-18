@@ -21,12 +21,20 @@ namespace ProjekatSIMS
         private void Pretraga(object sender, RoutedEventArgs e)
         {
             //kada unese ime i prezime pretrazice i izbaciti tabelu sa tim pacijentima u tabelapacijenata prozoru
+            String ime = Ime.Text;
+            String prezime = Prezime.Text;
             this.Close();
-            TabelaPacijenataSWindow tp = new TabelaPacijenataSWindow();
-            tp.Show();
+            ProfilPacijentaSWindow pp = new ProfilPacijentaSWindow(ime, prezime);
+            pp.Show();
         }
         private void Nazad(object sender, RoutedEventArgs e)
         {
+            this.Close();
+        }
+        private void Prikaz(object sender, RoutedEventArgs e)
+        {
+            TabelaPacijenataSWindow tp = new TabelaPacijenataSWindow();
+            tp.Show();
             this.Close();
         }
     }

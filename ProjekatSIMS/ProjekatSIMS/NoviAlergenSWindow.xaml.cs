@@ -22,14 +22,14 @@ namespace ProjekatSIMS
         {
             //mora sacuvati novi dodati alergen
             this.Close();
-            ListaAlergenaSWindow la = new ListaAlergenaSWindow();
-            la.Show();
+            /*ListaAlergenaSWindow la = new ListaAlergenaSWindow();
+            la.Show();*/
         }
         private void Nazad(object sender, RoutedEventArgs e)
         {
             this.Close();
-            ListaAlergenaSWindow la = new ListaAlergenaSWindow();
-            la.Show();
+            /*ListaAlergenaSWindow la = new ListaAlergenaSWindow();
+            la.Show();*/
         }
     }
 }

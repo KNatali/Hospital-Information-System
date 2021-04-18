@@ -8,7 +8,8 @@
         Title="PretraziPacijenteSekretarWindow" Height="450" Width="800">
     <Grid>
         <Button Content="Početna stranica" Click="Nazad" HorizontalAlignment="Left" Height="40" Margin="350,350,0,0" VerticalAlignment="Top" Width="100" Background="#FFA6B1D6"/>
-        <Button Content="Pretraži" Click="Pretraga" HorizontalAlignment="Left" Height="40" Margin="150,200,0,0" VerticalAlignment="Top" Width="100" Background="#FFA6B1D6"/>
+        <Button Content="Pretraži" Click="Pretraga" HorizontalAlignment="Left" Height="40" Margin="60,200,0,0" VerticalAlignment="Top" Width="100" Background="#FFA6B1D6"/>
+        <Button Content="Prikaži sve" Click="Prikaz" HorizontalAlignment="Left" Height="40" Margin="220,200,0,0" VerticalAlignment="Top" Width="100" Background="#FFA6B1D6"/>
         <Label Content="Pretražite listu pacijenata" HorizontalAlignment="Left" Height="30" Margin="34,44,0,0" VerticalAlignment="Top" Width="230" FontWeight="Bold"/>
         <Label Content="Ime" HorizontalAlignment="Left" Height="25" Margin="34,94,0,0" VerticalAlignment="Top" Width="145"/>
         <TextBox HorizontalAlignment="Left" Name="Ime" Margin="219,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>

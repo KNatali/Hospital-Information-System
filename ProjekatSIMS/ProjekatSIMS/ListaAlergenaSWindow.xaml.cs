@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -14,9 +15,24 @@ namespace ProjekatSIMS
 {
     public partial class ListaAlergenaSWindow : Window
     {
-        public ListaAlergenaSWindow()
+        public List<ZdravsteniKarton> Karton { get; set; }
+        public ListaAlergenaSWindow(Pacijent p)
         {
             InitializeComponent();
+            /*this.DataContext = this;
+            Pacijenti = new List<Pacijent>();
+            List<Pacijent> ListaPacijenata = new List<Pacijent>();
+            CuvanjePacijenta fajl = new CuvanjePacijenta(@"..\..\Fajlovi\ZdravstveniKarton.txt");
+            ListaPacijenata = fajl.DobaviPacijente();
+            foreach (Pacijent p in ListaPacijenata)
+            {
+                if (p.Jmbg == jmbg)
+                {
+                    Pacijenti.Add(p);
+                    pac = p;
+                }
+            }*/
+
         }
         private void Nazad(object sender, RoutedEventArgs e)
         {

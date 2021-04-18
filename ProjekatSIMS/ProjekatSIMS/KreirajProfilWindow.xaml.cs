@@ -41,6 +41,13 @@ namespace ProjekatSIMS
             String adresa = Adresa.Text;
             DateTime datum = (DateTime)Datum.SelectedDate;
             Pacijent p = new Pacijent();
+            p.Jmbg = jmbg;
+            p.Ime = ime;
+            p.Prezime = prezime;
+            p.BrojTelefona = telefon;
+            p.Email = mail;
+            p.Adresa = adresa;
+            p.DatumRodjenja = datum;
             
             CuvanjePacijenta fajl = new CuvanjePacijenta(@"..\..\Fajlovi\Pacijent.txt");
             List<Pacijent> pacijenti = fajl.DobaviPacijente();
@@ -51,7 +58,7 @@ namespace ProjekatSIMS
             switch (ret)
             {
                 case MessageBoxResult.Yes:
-                    ProfilPacijentaSWindow pp = new ProfilPacijentaSWindow(p);
+                    ProfilPacijentaSWindow pp = new ProfilPacijentaSWindow(ime, prezime);
                     this.Close();
                     pp.Show();
                     break;

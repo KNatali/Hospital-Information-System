@@ -8,34 +8,15 @@
         Title="TabelaPacijenataSWindow" Height="450" Width="800">
     <Grid>
         <DataGrid x:Name="dataGridPacijenti" ItemsSource="{Binding Path=Pacijenti}" IsReadOnly="True"
-                  SelectionMode="Single" AutoGenerateColumns="False" Margin="380,80,40,144">
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="40,80,40,100">
             <DataGrid.Columns>
 
-                <DataGridTextColumn Header="JMBG" Binding="{Binding Jmbg}" Width="150"/>
-                <DataGridTextColumn Header="Ime" Binding="{Binding Ime}" Width="100"/>
-                <DataGridTextColumn Header="Prezime" Binding="{Binding Prezime}" Width="*"/>
+                <DataGridTextColumn Header="JMBG" Binding="{Binding Jmbg}" Width="100"/>
+                <DataGridTextColumn Header="Ime" Binding="{Binding Ime}" Width="90"/>
+                <DataGridTextColumn Header="Prezime" Binding="{Binding Prezime}" Width="90"/>
+                <DataGridTextColumn Header="Datum rođenja" Binding="{Binding DatumRodjenja}" Width="*"/>
 
             </DataGrid.Columns>
         </DataGrid>
-        
-        <Button Content="Obriši pacijenta" Click="Obrisi" HorizontalAlignment="Left" Height="40" Margin="380,350,0,0" VerticalAlignment="Top" Width="100" Background="#FFA6B1D6"/>
-        <Label Content="Izmenite podatke pacijenta" HorizontalAlignment="Left" Height="30" Margin="92,44,0,0" VerticalAlignment="Top" Width="230" FontWeight="Bold"/>
-        <Button Content="Pogledaj profil" Click="Profil" HorizontalAlignment="Left" Height="40" Margin="660,350,0,0" VerticalAlignment="Top" Width="100" Background="#FFA6B1D6"/>
-        <Button Content="Početna stranica" Click="Nazad" HorizontalAlignment="Left" Height="40" Margin="34,350,0,0" VerticalAlignment="Top" Width="100" Background="#FFA6B1D6"/>
-        <Grid Grid.Column="0" Grid.Row="1" DataContext="{Binding ElementName=dataGridPacijenti,Path=SelectedItem}">
-            <Label Content="JMBG" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Height="25" Margin="38,80,0,0" VerticalAlignment="Top" Width="145"/>
-            <TextBox HorizontalAlignment="Left" Grid.Column="1" Grid.Row="0" x:Name="Jmbg" Text="{Binding Path=Jmbg}" Margin="223,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-            <Label Content="Ime" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" Height="25" Margin="38,120,0,0" VerticalAlignment="Top" Width="145"/>
-            <TextBox HorizontalAlignment="Left" Grid.Column="1" Grid.Row="1" x:Name="Ime_Copy" Text="{Binding Path=Ime}" Margin="223,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-            <Label Content="Prezime" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" Height="25" Margin="38,160,0,0" VerticalAlignment="Top" Width="145"/>
-            <TextBox HorizontalAlignment="Left" Grid.Column="1" Grid.Row="2" x:Name="Prezime_Copy" Text="{Binding Path=Prezime}" Margin="223,160,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-            <Label Content="Broj telefona" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Left" Height="25" Margin="38,200,0,0" VerticalAlignment="Top" Width="145"/>
-            <TextBox HorizontalAlignment="Left" Grid.Column="1" Grid.Row="3" x:Name="Telefon" Text="{Binding Path=BrojTelefona}" Margin="223,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-            <Label Content="E-mail" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Left" Height="25" Margin="38,240,0,0" VerticalAlignment="Top" Width="145"/>
-            <TextBox HorizontalAlignment="Left" Grid.Column="1" Grid.Row="4" x:Name="Mail" Text="{Binding Path=Email}" Margin="223,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-            <Label Content="Adresa" Grid.Column="0" Grid.Row="5" HorizontalAlignment="Left" Height="25" Margin="38,280,0,0" VerticalAlignment="Top" Width="145"/>
-            <TextBox HorizontalAlignment="Left" Grid.Column="1" Grid.Row="5" x:Name="Adresa" Text="{Binding Path=Adresa}" Margin="223,280,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        </Grid>
-        <Label Content="Lista pacijenata" HorizontalAlignment="Left" Height="30" Margin="510,44,0,0" VerticalAlignment="Top" Width="106" FontWeight="Bold"/>
     </Grid>
 </Window>

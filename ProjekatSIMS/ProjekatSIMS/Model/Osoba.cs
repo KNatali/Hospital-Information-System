@@ -4,15 +4,15 @@ namespace Model
 {
    public class Osoba
    {
-      public String Jmbg;
-      public String Ime;
-      public String Prezime;
-      public DateTime DatumRodjenja;
-      public String Email;
-      public String Adresa;
-      public String BrojTelefona;
-      
-      public RegistrovaniKorisnik registrovaniKorisnik;
+      public String Jmbg { get; set; }
+      public String Ime { get; set; }
+        public String Prezime { get; set; }
+        public DateTime DatumRodjenja { get; set; }
+        public String Email { get; set; }
+        public String Adresa { get; set; }
+        public String BrojTelefona { get; set; }
+
+        public RegistrovaniKorisnik registrovaniKorisnik;
       public Notifikacija notifikacija;
       
       /// <pdGenerated>default parent getter</pdGenerated>

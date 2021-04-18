@@ -67,7 +67,7 @@ namespace Model
       }
       public Pacijent pacijent;
    
-      private List<String> Alergeni;
+      private List<String> Alergeni { get; set; }
       private List<String> Terapija;
    
    }
