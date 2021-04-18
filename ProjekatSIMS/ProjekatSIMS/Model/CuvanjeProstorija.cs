@@ -21,7 +21,7 @@ namespace Model
 
       
       
-      public void Sacuvaj(String prostorija, Boolean znak)
+      public void Sacuvaj(List<Prostorija> prostorije)
       {
             string json = JsonConvert.SerializeObject(prostorije);
             File.WriteAllText(lokacijaFajla, json);
