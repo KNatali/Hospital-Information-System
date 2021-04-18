@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -12,14 +13,15 @@ using System.Windows.Shapes;
 
 namespace ProjekatSIMS
 {
-    /// <summary>
-    /// Interaction logic for ProfilPacijentaSWindow.xaml
-    /// </summary>
     public partial class ProfilPacijentaSWindow : Window
     {
-        public ProfilPacijentaSWindow()
+        public List<Pacijent> Pacijenti { get; set; }
+        public ProfilPacijentaSWindow(Pacijent p)
         {
             InitializeComponent();
+            this.DataContext = this;
+            Pacijenti = new List<Pacijent>();
+            Pacijenti.Add(p);
         }
         private void Nazad(object sender, RoutedEventArgs e)
         {
@@ -34,11 +36,6 @@ namespace ProjekatSIMS
         {
             ListaAlergenaSWindow la = new ListaAlergenaSWindow();
             la.Show();
-        }
-        private void Brisanje(object sender, RoutedEventArgs e)
-        {
-            //dodati da se obrise iz .txt pacijent na cijem sam profilu
-            this.Close();
         }
     }
 }

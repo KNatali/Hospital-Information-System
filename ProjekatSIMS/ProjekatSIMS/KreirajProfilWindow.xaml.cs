@@ -51,7 +51,7 @@ namespace ProjekatSIMS
             switch (ret)
             {
                 case MessageBoxResult.Yes:
-                    ProfilPacijentaSWindow pp = new ProfilPacijentaSWindow();
+                    ProfilPacijentaSWindow pp = new ProfilPacijentaSWindow(p);
                     this.Close();
                     pp.Show();
                     break;
