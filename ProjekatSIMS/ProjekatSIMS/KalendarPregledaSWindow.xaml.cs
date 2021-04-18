@@ -31,29 +31,37 @@ namespace ProjekatSIMS
         }
         private void Izmeni(object sender, RoutedEventArgs e)
         {
-            //Pregled p = (Pregled)dataGridPregledi.SelectedItems[0];
-            //IzmenaPregledaSWindow ip = new IzmenaPregledaSWindow(p);
-            IzmenaPregledaSWindow ip = new IzmenaPregledaSWindow();
+            Pregled p = (Pregled)dataGridPregledi.SelectedItems[0];
+            IzmenaPregledaSWindow ip = new IzmenaPregledaSWindow(p);
+            //IzmenaPregledaSWindow ip = new IzmenaPregledaSWindow();
             ip.Show();
         }
         private void Otkazi(object sender, RoutedEventArgs e)
         {
-            /*Pregled p = (Pregled)dataGridPregledi.SelectedItems[0];
-            CuvanjePregledaDoktor fajl = new CuvanjePregledaDoktor(@"..\..\Fajlovi\SviPregledi.txt");
-            List<Pregled> pregledi = fajl.UcitajSvePreglede();
-            foreach (Pregled pr in pregledi)
+            Pregled p = (Pregled)dataGridPregledi.SelectedItems[0];
+            MessageBoxResult ret = MessageBox.Show("Da li želite da otkažete pregled?", "PROVERA", MessageBoxButton.YesNo);
+            switch (ret)
             {
-                if(pr.Id == p.Id)
-                {
-                    pregledi.Remove(pr);
+                case MessageBoxResult.Yes:
+                    {
+                        PregledRepository fajl = new PregledRepository(@"..\..\Fajlovi\SviPregledi.txt");
+                        List<Pregled> pregled = fajl.GetListaPregledaSekretar();
+                        foreach (Pregled pr in pregled)
+                        {
+                            if (pr.Id == p.Id)
+                            {
+                                pregled.Remove(pr);
+                                break;
+                            }
+                        }
+                        fajl.SacuvajPregledSekretar(pregled);
+                        MessageBox.Show("Pregled je uspešno otkazan.", "OBAVEŠTENJE");
+                        this.Close();
+                        break;
+                    }
+                case MessageBoxResult.No:
                     break;
-                }
             }
-            fajl.Sacuvaj(pregledi);
-            */
-            MessageBox.Show("Pregled je uspešno otkazan. " +
-                "Poslato je obaveštenje pacijentu i doktoru.", "OBAVEŠTENJE", MessageBoxButton.OK);
-            this.Close();
         }
     }
 }

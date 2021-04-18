@@ -15,12 +15,11 @@ namespace ProjekatSIMS
 {
     public partial class IzmenaPregledaSWindow : Window
     {
-        public IzmenaPregledaSWindow()
+        public IzmenaPregledaSWindow(Pregled p)
         {
             InitializeComponent();
-            /*this.DataContext = this;
-
-            Pregledi = new List<Pregled>();
+            this.DataContext = this;
+            /*Pregledi = new List<Pregled>();
             Pregledi.Add(p);
             Pregled = p;
             Pocetak.SelectedDate = Pregled.Pocetak;
@@ -35,6 +34,7 @@ namespace ProjekatSIMS
         }
         private void Sacuvaj(object sender, RoutedEventArgs e)
         {
+            
             MessageBox.Show("Uspešno ste izmenili termin. " +
                 "Poslato je obaveštenje pacijentu i doktoru.", "OBAVEŠTENJE", MessageBoxButton.OK);
             this.Close();
