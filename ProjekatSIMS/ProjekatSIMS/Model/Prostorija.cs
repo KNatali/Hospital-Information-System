@@ -15,12 +15,12 @@ namespace Model
          return true;
       }
    
-      public String id;
-      public int sprat;
-      public VrstaProstorije vrsta;
-      
-      public Pregled[] pregled;
-      public Inventar[] inventar;
-   
-   }
+      public String id { get; set; }
+      public int sprat { get; set; }
+        public VrstaProstorije vrsta { get; set; }
+
+        public Pregled[] pregled { get; set; }
+        public Inventar[] inventar { get; set; }
+
+    }
 }

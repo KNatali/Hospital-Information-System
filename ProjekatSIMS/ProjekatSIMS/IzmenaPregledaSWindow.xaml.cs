@@ -1,4 +1,5 @@
 ﻿using Model;
+using Repository;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -15,18 +16,25 @@ namespace ProjekatSIMS
 {
     public partial class IzmenaPregledaSWindow : Window
     {
+        public PregledRepository fajl { get; set; }
+        public List<Pregled> Pregledi { get; set; }
+        public Pregled pre { get; set; }
         public IzmenaPregledaSWindow(Pregled p)
         {
             InitializeComponent();
             this.DataContext = this;
-            /*Pregledi = new List<Pregled>();
-            Pregledi.Add(p);
-            Pregled = p;
+            Pregledi = new List<Pregled>();
+            
+            /*List<Pregled> ListaPregleda = new List<Pregled>();
+            PregledRepository fajl = new PregledRepository(@"..\..\Fajlovi\SviPregledi");
+            ListaPregleda = fajl.GetListaPregledaSekretar();*/
+            
+            /*Pregledi.Add(p);
+            Pre = p;
             Pocetak.SelectedDate = Pregled.Pocetak;
             Trajanje.Text = Pregled.Pocetak.Hour.ToString();
             Tip.Text = Pregled.Pocetak.Minute.ToString();*/
         }
-        public List<Pregled> Pregledi { get; }
 
         private void Otkazi(object sender, RoutedEventArgs e)
         {

@@ -9,7 +9,8 @@
     <Grid>
         <Label Content="Označite šta vam je prioritet" HorizontalAlignment="Left" Height="30" Margin="310,100,0,0" VerticalAlignment="Top" Width="172" FontWeight="Bold"/>
         <ComboBox HorizontalAlignment="Center" x:Name="Tip" Margin="0,160,0,0" VerticalAlignment="Top" Width="180">
-            <ComboBoxItem IsSelected="True" Content="Kod određenog doktora"/>
+            <ComboBoxItem IsSelected="True" Content="-"/>
+            <ComboBoxItem Content="Kod određenog doktora"/>
             <ComboBoxItem Content="U određeno vreme"/>
         </ComboBox>
         <Button Content="Otkaži" Click="Otkazi" HorizontalAlignment="Left" Margin="80,350,0,0" VerticalAlignment="Top" Height="40" Width="90" Background="#FFA6B1D6"/>

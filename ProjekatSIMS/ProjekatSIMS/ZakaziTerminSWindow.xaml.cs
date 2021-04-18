@@ -12,9 +12,6 @@ using System.Windows.Shapes;
 
 namespace ProjekatSIMS
 {
-    /// <summary>
-    /// Interaction logic for ZakaziTerminSWindow.xaml
-    /// </summary>
     public partial class ZakaziTerminSWindow : Window
     {
         public ZakaziTerminSWindow()

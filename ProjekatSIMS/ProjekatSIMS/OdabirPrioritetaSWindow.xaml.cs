@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -12,9 +13,6 @@ using System.Windows.Shapes;
 
 namespace ProjekatSIMS
 {
-    /// <summary>
-    /// Interaction logic for OdabirPrioritetaSWindow.xaml
-    /// </summary>
     public partial class OdabirPrioritetaSWindow : Window
     {
         public OdabirPrioritetaSWindow()
@@ -27,8 +25,25 @@ namespace ProjekatSIMS
         }
         private void Zakazi(object sender, RoutedEventArgs e)
         {
-            ZakaziTerminSWindow zt = new ZakaziTerminSWindow();
-            zt.Show();
+            string str = Tip.Text;
+            ComboBoxItem cbi = (ComboBoxItem)Tip.SelectedItem;
+            string opcija = cbi.Content.ToString();
+            string val = Tip.SelectedValue.ToString();
+            if(opcija == "-")
+            {
+                ZakaziTerminSWindow zt = new ZakaziTerminSWindow();
+                zt.Show();
+            }
+            else if(opcija == "Kod određenog doktora")
+            {
+                PrioritetDoktorSWindow pd = new PrioritetDoktorSWindow();
+                pd.Show();
+            }
+            else if(opcija == "U određeno vreme")
+            {
+                PrioritetDatumSWindow pda = new PrioritetDatumSWindow();
+                pda.Show();
+            }
         }
     }
 }
