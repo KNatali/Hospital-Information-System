@@ -2,10 +2,10 @@ using System;
 
 namespace Model
 {
-   public class TipPregleda
-   {
-      private EnumConstant Standardni;
-      private EnumConstant Operacija;
-   
-   }
+    public enum TipPregleda
+    {
+        Standardni,
+        Operacija
+
+    }
 }

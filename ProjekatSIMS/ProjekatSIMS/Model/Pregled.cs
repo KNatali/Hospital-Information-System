@@ -28,14 +28,14 @@ namespace Model
          return true;
       }
    
-      public int Id;
-      public DateTime Pocetak;
-      public int Trajanje;
-      public TipPregleda Tip;
-      public StatusPregleda StatusPergleda;
+      public int Id { get; set; }
+      public DateTime Pocetak { get; set;}
+      public int Trajanje { get; set; }
+      public TipPregleda Tip { get; set; }
+      public StatusPregleda StatusPregleda { get; set; }
       
-      public Prostorija prostorija;
-      public Doktor doktor;
+      public Prostorija prostorija { get; set; }
+      public Doktor doktor { get; set; }
       
       /// <pdGenerated>default parent getter</pdGenerated>
       public Doktor GetDoktor()
@@ -62,7 +62,7 @@ namespace Model
             }
          }
       }
-      public Pacijent pacijent;
+        public Pacijent pacijent { get; set; }
       
       /// <pdGenerated>default parent getter</pdGenerated>
       public Pacijent GetPacijent()
