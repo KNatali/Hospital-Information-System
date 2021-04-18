@@ -24,7 +24,11 @@ namespace ProjekatSIMS
             InitializeComponent();
             this.DataContext = this;
             Pregledi = new List<Pregled>();
-            
+            Datum.SelectedDate = p.Pocetak;
+            Sat.Text = p.Pocetak.Hour.ToString();
+            Minut.Text = p.Pocetak.Minute.ToString();
+            Trajanje.Text = p.Trajanje.ToString();
+
             /*List<Pregled> ListaPregleda = new List<Pregled>();
             PregledRepository fajl = new PregledRepository(@"..\..\Fajlovi\SviPregledi");
             ListaPregleda = fajl.GetListaPregledaSekretar();*/

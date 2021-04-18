@@ -33,7 +33,6 @@ namespace ProjekatSIMS
         {
             Pregled p = (Pregled)dataGridPregledi.SelectedItems[0];
             IzmenaPregledaSWindow ip = new IzmenaPregledaSWindow(p);
-            //IzmenaPregledaSWindow ip = new IzmenaPregledaSWindow();
             ip.Show();
         }
         private void Otkazi(object sender, RoutedEventArgs e)

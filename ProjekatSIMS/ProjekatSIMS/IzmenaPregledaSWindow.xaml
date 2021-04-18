@@ -10,20 +10,14 @@
         <Button Content="Otkaži" Click="Otkazi" HorizontalAlignment="Left" Margin="80,350,0,0" VerticalAlignment="Top" Height="40" Width="90" Background="#FFA6B1D6"/>
         <Button Content="Sačuvaj izmene" Click="Sacuvaj" HorizontalAlignment="Left" Height="40" Margin="630,350,0,0" VerticalAlignment="Top" Width="90" Background="#FFA6B1D6"/>
         <Label Content="Izmenite zakazani termin" HorizontalAlignment="Left" Height="30" Margin="80,30,0,0" VerticalAlignment="Top" Width="230" FontWeight="Bold"/>
-        <Label Content="Početak" HorizontalAlignment="Left" Height="25" Margin="80,80,0,0" VerticalAlignment="Top" Width="145"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Pocetak" Text="{Binding Path=Pocetak}" Margin="265,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Trajanje" HorizontalAlignment="Left" Height="25" Margin="80,120,0,0" VerticalAlignment="Top" Width="145"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Trajanje" Text="{Binding Path=Trajanje}" Margin="265,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Tip pregleda" HorizontalAlignment="Left" Height="25" Margin="80,160,0,0" VerticalAlignment="Top" Width="145"/>
-        <ComboBox HorizontalAlignment="Left" x:Name="Tip" Text="{Binding Path=Tip}" Margin="265,160,0,0" VerticalAlignment="Top" Width="120">
-            <ComboBoxItem IsSelected="True">Standardni</ComboBoxItem>
-            <ComboBoxItem>Operacija</ComboBoxItem>
-        </ComboBox>
-        <Label Content="Naziv prostorije" HorizontalAlignment="Left" Height="25" Margin="80,200,0,0" VerticalAlignment="Top" Width="145"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Prostorija" Text="{Binding Path=Prostorija}" Margin="265,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Doktor" HorizontalAlignment="Left" Height="25" Margin="80,240,0,0" VerticalAlignment="Top" Width="145"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Doktor" Text="{Binding Path=Doktor}" Margin="265,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Pacijent" HorizontalAlignment="Left" Height="25" Margin="80,280,0,0" VerticalAlignment="Top" Width="145"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Pacijent" Text="{Binding Path=Pacijent}" Margin="265,280,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Datum termina" HorizontalAlignment="Left" Height="25" Margin="80,80,0,0" VerticalAlignment="Top" Width="145"/>
+        <Label Content="Trajanje" HorizontalAlignment="Left" Height="25" Margin="80,200,0,0" VerticalAlignment="Top" Width="145"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Trajanje" Margin="265,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <DatePicker HorizontalAlignment="Left" x:Name="Datum" Margin="265,80,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Vreme termina" HorizontalAlignment="Left" Height="25" Margin="80,120,0,0" VerticalAlignment="Top" Width="145"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Sat" Margin="265,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Minut" Margin="265,160,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Name="Izbor" Content="Izaberite termin" Visibility="Hidden" HorizontalAlignment="Left" Height="30" Margin="80,280,0,0" VerticalAlignment="Top" Width="135" FontWeight="Bold"/>
+        <ComboBox Name="Termin" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="165,280,0,0" Visibility="Hidden"></ComboBox>
     </Grid>
 </Window>
