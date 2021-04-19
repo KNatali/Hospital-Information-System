@@ -19,6 +19,7 @@ namespace Model
       public int id { get; set; }
       public int kolicina { get; set; }
         public String ime { get; set; }
+
         public Boolean Staticka { get; set; }
 
         public Prostorija prostorija { get; set; }
@@ -48,4 +49,5 @@ namespace Model
        
    
    }
+
 }

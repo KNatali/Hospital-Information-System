@@ -80,7 +80,7 @@ namespace Model
             tmpPregled.Clear();
          }
       }
-      public ZdravsteniKarton zdravsteniKarton;
-   
-   }
+      public ZdravsteniKarton zdravsteniKarton { get; set; }
+
+    }
 }

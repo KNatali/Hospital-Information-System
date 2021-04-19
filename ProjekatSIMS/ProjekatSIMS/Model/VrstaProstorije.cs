@@ -5,13 +5,16 @@ using System;
 
 namespace Model
 {
-   public enum VrstaProstorije
-   {
+
+    public enum VrstaProstorije
+    {
+
         Sala,
-      Soba ,
-     Ordinacija,
-     Magacin ,
-      Kancelarija
-   
-   }
+        Soba,
+        Ordinacija,
+        Magacin,
+        Kancelarija
+
+    }
+
 }
