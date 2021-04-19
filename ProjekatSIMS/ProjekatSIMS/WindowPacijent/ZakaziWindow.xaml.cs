@@ -43,10 +43,10 @@ namespace ProjekatSIMS.WindowPacijent
             p.StatusPregleda = StatusPregleda.Zakazan;
 
 
-            PregledRepository fajl = new PregledRepository(@"..\..\Fajlovi\Pregled.txt");
+            PregledRepository fajl = new PregledRepository(@"..\..\..\Fajlovi\Pregled.txt");
             List<Pregled> pregledi = fajl.DobaviSvePregledePacijent();
 
-            ProstorijaRepository file = new ProstorijaRepository(@"..\..\Fajlovi\Prostorija.txt");
+            ProstorijaRepository file = new ProstorijaRepository(@"..\..\..\Fajlovi\Prostorija.txt");
             List<Prostorija> prostorije = file.DobaviSveProstorije();
             foreach (Prostorija pr in prostorije)
             {

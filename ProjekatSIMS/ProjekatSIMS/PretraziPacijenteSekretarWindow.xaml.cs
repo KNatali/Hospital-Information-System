@@ -22,7 +22,7 @@ namespace ProjekatSIMS
             InitializeComponent();
             this.DataContext = this;
             Pacijenti = new List<Pacijent>();
-            OsobaRepository fajl = new OsobaRepository(@"..\..\Fajlovi\Pacijent.txt");
+            OsobaRepository fajl = new OsobaRepository(@"..\..\..\Fajlovi\Pacijent.txt");
             Pacijenti = fajl.DobaviPacijente();
         }
         private void Pretraga(object sender, RoutedEventArgs e)

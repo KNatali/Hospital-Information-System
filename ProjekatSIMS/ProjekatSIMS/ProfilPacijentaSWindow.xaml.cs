@@ -25,7 +25,7 @@ namespace ProjekatSIMS
             this.DataContext = this;
             Pacijenti = new List<Pacijent>();
             List<Pacijent> ListaPacijenata = new List<Pacijent>();
-            OsobaRepository fajl = new OsobaRepository(@"..\..\Fajlovi\Pacijent.txt");
+            OsobaRepository fajl = new OsobaRepository(@"..\..\..\Fajlovi\Pacijent.txt");
             ListaPacijenata = fajl.DobaviPacijente();
             foreach (Pacijent p in ListaPacijenata)
             {
@@ -44,7 +44,7 @@ namespace ProjekatSIMS
             pac.Email = Mail.Text;
             pac.Adresa = Adresa.Text;
             List<Pacijent> ListaPacijenata = new List<Pacijent>();
-            OsobaRepository fajl = new OsobaRepository(@"..\..\Fajlovi\Pacijent.txt");
+            OsobaRepository fajl = new OsobaRepository(@"..\..\..\Fajlovi\Pacijent.txt");
             ListaPacijenata = fajl.DobaviPacijente();
             foreach (Pacijent p in ListaPacijenata)
             {
@@ -75,7 +75,7 @@ namespace ProjekatSIMS
                 case MessageBoxResult.Yes:
                     if (p.ObrisiPacijent() == true)
                     {
-                        OsobaRepository fajl = new OsobaRepository(@"..\..\Fajlovi\Pacijent.txt");
+                        OsobaRepository fajl = new OsobaRepository(@"..\..\..\Fajlovi\Pacijent.txt");
                         List<Pacijent> pacijent = fajl.DobaviPacijente();
                         foreach (Pacijent pa in pacijent)
                         {
