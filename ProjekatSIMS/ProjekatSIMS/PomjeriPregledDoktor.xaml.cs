@@ -123,7 +123,7 @@ namespace ProjekatSIMS
             }
             pregledRepository.SacuvajPregledDoktor(pregledi);
 
-            MessageBox.Show("Uspjesno je zakazana operacija");
+            MessageBox.Show("Uspjesno je izmjenjen termin");
             this.NavigationService.Navigate(new Uri("PrikazPregledaDoktor.xaml", UriKind.Relative));
 
         }
