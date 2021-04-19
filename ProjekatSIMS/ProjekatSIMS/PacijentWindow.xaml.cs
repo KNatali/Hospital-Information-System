@@ -22,7 +22,7 @@ namespace ProjekatSIMS
             InitializeComponent();
             this.DataContext = this;
             Recepti = new List<Recept>();
-            ReceptRepository fajl = new ReceptRepository(@"..\..\Fajlovi\Recept.txt");
+            ReceptRepository fajl = new ReceptRepository(@"..\..\..\Fajlovi\Recept.txt");
             Recepti = fajl.DobaviSveRecepte();
 
             foreach (Recept r in Recepti)

@@ -9,10 +9,10 @@
     <Grid>
         <Label Content="Sekretar" HorizontalAlignment="Center" Margin="0,30,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
         <Button Content="Kreirajte profil pacijenta" Click="Kreiranje_profila" HorizontalAlignment="Left" Margin="448,100,0,0" VerticalAlignment="Top" Height="52" Width="161" Background="#FFA6B1D6"/>
-        <Button Content="Pretražite pacijente" Click="Pretrazi_pacijente" HorizontalAlignment="Left" Margin="190,180,0,0" VerticalAlignment="Top" Height="52" Width="161" Background="#FFA6B1D6"/>
+        <Button Content="Pretražite pacijente" Click="Pretrazi_pacijente" HorizontalAlignment="Center" Margin="0,180,0,0" VerticalAlignment="Top" Height="52" Width="160" Background="#FFA6B1D6"/>
         <Button Content="Nazad" Click="Nazad" HorizontalAlignment="Left" Margin="40,350,0,0" VerticalAlignment="Top" Height="30" Width="70" Background="#FFA6B1D6"/>
-        <Button Content="Kalendar pregleda i operacija" Click="Kalendar" HorizontalAlignment="Left" Margin="175,280,0,0" VerticalAlignment="Top" Height="52" Width="161" Background="#FFA6B1D6"/>
-        <Button Content="Zakažite termin" Click="Zakazivanje" HorizontalAlignment="Left" Margin="448,280,0,0" VerticalAlignment="Top" Height="52" Width="161" Background="#FFA6B1D6"/>
-        <Button Content="Kreirajte hitan nalog" Click="Kreiraj" HorizontalAlignment="Left" Margin="175,100,0,0" VerticalAlignment="Top" Height="52" Width="161" Background="#FFA6B1D6"/>
+        <Button Content="Kalendar pregleda i operacija" Click="Kalendar" HorizontalAlignment="Left" Margin="190,260,0,0" VerticalAlignment="Top" Height="52" Width="161" Background="#FFA6B1D6"/>
+        <Button Content="Zakažite termin" Click="Zakazivanje" HorizontalAlignment="Left" Margin="448,260,0,0" VerticalAlignment="Top" Height="52" Width="161" Background="#FFA6B1D6"/>
+        <Button Content="Kreirajte hitan nalog" Click="Kreiraj" HorizontalAlignment="Left" Margin="190,100,0,0" VerticalAlignment="Top" Height="52" Width="161" Background="#FFA6B1D6"/>
     </Grid>
 </Window>

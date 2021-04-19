@@ -26,7 +26,7 @@ namespace ProjekatSIMS
             InitializeComponent();
             this.DataContext = this;
             List<String> al = new List<String>();
-            PregledRepository fajl = new PregledRepository(@"..\..\Fajlovi\ZdravstveniKarton.txt");
+            PregledRepository fajl = new PregledRepository(@"..\..\..\Fajlovi\ZdravstveniKarton.txt");
             Karton = fajl.DobaviAlergene();
             foreach (ZdravsteniKarton z in Karton)
             {
