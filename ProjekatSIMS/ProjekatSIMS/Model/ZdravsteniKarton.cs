@@ -13,10 +13,26 @@ namespace Model
       
       /// <pdGenerated>default setter</pdGenerated>
       
-      public Pacijent pacijent;
+
+      /// <pdGenerated>default removeAll</pdGenerated>
+      public void RemoveAllAnamneza()
+      {
+         if (anamneza != null)
+         {
+            System.Collections.ArrayList tmpAnamneza = new System.Collections.ArrayList();
+            foreach (Anamneza oldAnamneza in anamneza)
+               tmpAnamneza.Add(oldAnamneza);
+            anamneza.Clear();
+            foreach (Anamneza oldAnamneza in tmpAnamneza)
+               oldAnamneza.SetZdravsteniKarton((ZdravsteniKarton)null);
+            tmpAnamneza.Clear();
+         }
+      }
+      public Pacijent pacijent { get; set; }
    
       public List<String> Alergeni { get; set; }
-     public List<String> Terapija { get; set; }
+      public List<String> Terapija { get; set; }
+
    
    }
 }

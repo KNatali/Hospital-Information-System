@@ -1,0 +1,28 @@
+﻿<Window x:Class="ProjekatSIMS.TabelaPacijenataSWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjekatSIMS"
+        mc:Ignorable="d"
+        Title="TabelaPacijenataSWindow" Height="450" Width="800">
+    <Grid>
+        <DataGrid x:Name="dataGridPacijenti" ItemsSource="{Binding Path=Pacijenti}" IsReadOnly="True"
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="30,80,30,100">
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Header="JMBG" Binding="{Binding Jmbg}" Width="100"/>
+                <DataGridTextColumn Header="Ime" Binding="{Binding Ime}" Width="90"/>
+                <DataGridTextColumn Header="Prezime" Binding="{Binding Prezime}" Width="90"/>
+                <DataGridTextColumn Header="Datum rođenja" Binding="{Binding DatumRodjenja}" Width="120"/>
+                <DataGridTextColumn Header="Telefon" Binding="{Binding BrojTelefona}" Width="100"/>
+                <DataGridTextColumn Header="Adresa" Binding="{Binding Adresa}" Width="120"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="*"/>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="Tabela sa svim pacijentima" HorizontalAlignment="Left" Height="30" Margin="320,45,0,0" VerticalAlignment="Top" Width="175" FontWeight="Bold"/>
+        <Button Content="Početna stranica" Click="Nazad" HorizontalAlignment="Left" Height="40" Margin="38,350,0,0" VerticalAlignment="Top" Width="100" Background="#FFA6B1D6"/>
+
+    </Grid>
+</Window>

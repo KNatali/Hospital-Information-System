@@ -58,6 +58,7 @@ namespace ProjekatSIMS
 
             prostorija.pregled = null;
             prostorija.inventar = null;
+            prostorija.slobodna = true;
 
             List<Prostorija> prostorije = new List<Prostorija>();
             if (cuvanje.UcitajProstorije() == null)
@@ -157,6 +158,20 @@ namespace ProjekatSIMS
             this.Close();
         }
 
-        
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Prostorija p = (Prostorija)dgrProstorije.SelectedItems[0];
+            if(Convert.ToInt32(p.id) == 0)
+            {
+                DinamickaOpremaWindow din = new DinamickaOpremaWindow();
+                din.ShowDialog();
+            }
+            else
+            {
+                StatickaOpremaWindow st = new StatickaOpremaWindow(p);
+                st.ShowDialog();
+            }
+            
+        }
     }
 }
