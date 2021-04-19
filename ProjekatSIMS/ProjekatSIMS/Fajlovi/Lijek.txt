@@ -1,0 +1,1 @@
+[{"NazivLeka":"Panadol","Alergeni":null},{"NazivLeka":"Brufen ","Alergeni":["laktoza hidrat","ibuprofen"]},{"NazivLeka":"Paracetamol Accord","Alergeni":["paracetamol"]},{"NazivLeka":"Trandolapril PharmaS","Alergeni":["trandolaprila"," laktoza hidrat"]},{"NazivLeka":"Acipan","Alergeni":["boja Ponceau"]}]
