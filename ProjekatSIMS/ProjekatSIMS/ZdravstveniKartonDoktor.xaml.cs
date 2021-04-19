@@ -49,5 +49,11 @@ namespace ProjekatSIMS
 
             this.NavigationService.Navigate(a);
         }
+        private void IzdavanjeRecepta(object sender, RoutedEventArgs e)
+        {
+           IzdajReceptDoktor a = new IzdajReceptDoktor(Pacijent);
+
+            this.NavigationService.Navigate(a);
+        }
     }
 }

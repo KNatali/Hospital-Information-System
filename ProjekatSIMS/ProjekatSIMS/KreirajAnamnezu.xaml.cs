@@ -30,18 +30,18 @@ namespace ProjekatSIMS
             this.DataContext = this;
 
             Datum.SelectedDate = DateTime.Now;
+           
             pacijent = p;
         }
 
         private void KreiranjeAnamneze(object sender, RoutedEventArgs e)
         {
             AnamnezaRepository anamnezaRepository = new AnamnezaRepository();
-            List<Anamneza> lista = new List<Anamneza>();
+          
             Anamneza a = new Anamneza();
             a.OpisAnamneze = Opis.Text;
             a.datum = (DateTime)Datum.SelectedDate;
-            a.zdravsteniKarton.pacijent = pacijent;
-
+           
             /* if (anamnezaRepository.DobaviSveAnamneze() == null)
                  lista.Add(a);
              else
@@ -49,20 +49,44 @@ namespace ProjekatSIMS
                  lista = anamnezaRepository.DobaviSveAnamneze();
                  lista.Add(a);
              }*/
+
+            List<ZdravsteniKarton> kartoni = new List<ZdravsteniKarton>();
             
-            using (StreamReader r = new StreamReader(@"..\..\..\Fajlovi\Anamneza.txt"))
+            using (StreamReader r = new StreamReader(@"..\..\..\Fajlovi\ZdravstveniKarton.txt"))
             {
                 string json = r.ReadToEnd();
-               lista = JsonConvert.DeserializeObject<List<Anamneza>>(json);
+                kartoni = JsonConvert.DeserializeObject<List<ZdravsteniKarton>>(json);
+            }
+            foreach(ZdravsteniKarton k in kartoni)
+            {
+                if (k.pacijent.Jmbg == pacijent.Jmbg)
+                {
+                    //a.zdravsteniKarton = k;
+                    if (k.anamneza == null)
+                    {
+                        k.anamneza = new List<Anamneza>();
+                        k.anamneza.Add(a);
+                    }
+                        
+                    else
+                    {
+                        k.anamneza.Add(a);
+                    }
+                  
+                }
             }
 
+            string newJson = JsonConvert.SerializeObject(kartoni);
+            File.WriteAllText(@"..\..\..\Fajlovi\ZdravstveniKarton.txt", newJson);
 
-            anamnezaRepository.SacuvajAnamnezu(lista);
+
             MessageBox.Show("Uspjesno je sacuvana anamneza");
             ZdravstveniKartonDoktor z = new ZdravstveniKartonDoktor(pacijent);
 
             this.NavigationService.Navigate(z);
 
         }
+
+        
     }
 }

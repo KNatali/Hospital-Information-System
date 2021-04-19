@@ -235,7 +235,9 @@ namespace ProjekatSIMS
             RightListBox.Items.Clear();
             Prostorija s = (Prostorija)Sala.SelectedItem;
 
-            Inventar[] inventari = s.inventar;
+
+            List<Inventar> inventari = s.inventar;
+
             if (inventari ==null)
                 RightListBox.Items.Add("Inventar jos nije unesen!");
             else

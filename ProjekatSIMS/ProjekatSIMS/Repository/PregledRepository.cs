@@ -13,6 +13,7 @@ namespace Repository
         private List<ZdravsteniKarton> zk;
 
         private List<Pregled> pregledi;
+
         private String LokacijaFajla;
         
         private const string putanja = @"..\..\..\Fajlovi\Pregled.txt";
@@ -44,6 +45,7 @@ namespace Repository
             return pregledi;
         }
      public List<ZdravsteniKarton> DobaviAlergene()
+
         {
             using (StreamReader r = new StreamReader(lokacija))
             {
