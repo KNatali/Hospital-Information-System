@@ -25,8 +25,8 @@
         <TextBox Name="Broj" IsReadOnly="True" HorizontalAlignment="Left" Margin="196,360,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" Height="24"/>
         <Button Content="Pregled izdatih recepata" HorizontalAlignment="Left" Margin="584,341,0,0" VerticalAlignment="Top" Height="44" Width="168"/>
 
-        <Button Content="Kreiranje anamneze" HorizontalAlignment="Left" Margin="384,268,0,0" VerticalAlignment="Top" Height="44" Width="168"/>
-        <Button Content="Azuriranje anamneze" HorizontalAlignment="Left" Margin="584,268,0,0" VerticalAlignment="Top" Height="43" Width="168"/>
+        <Button Content="Kreiranje anamneze" Click="KreiranjeAnamneze" HorizontalAlignment="Left" Margin="384,268,0,0" VerticalAlignment="Top" Height="44" Width="168"/>
+        <Button Content="Pregled anamneza" Click="PrikazAnamneza" HorizontalAlignment="Left" Margin="584,268,0,0" VerticalAlignment="Top" Height="43" Width="168"/>
         <Button Content="Izdavanje recepta" HorizontalAlignment="Left" Margin="384,341,0,0" VerticalAlignment="Top" Height="43" Width="168"/>
 
         <Label Content="Zdravstveni karton" HorizontalAlignment="Center" Margin="0,22,0,0" VerticalAlignment="Top" FontSize="16"/>
