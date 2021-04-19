@@ -19,10 +19,10 @@ namespace Model
          // TODO: implement
       }
    
-      public int Id { get; set; }
-      public int Kolicina { get; set; }
-        public String Ime { get; set; }
-        public Boolean Staticka { get; set; }
+      public int id { get; set; }
+      public int kolicina { get; set; }
+        public String ime { get; set; }
+        public Boolean staticka { get; set; }
 
         public Prostorija prostorija { get; set; }
 

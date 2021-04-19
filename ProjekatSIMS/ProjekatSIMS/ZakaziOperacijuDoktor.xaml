@@ -28,9 +28,9 @@
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Path=Id}"/>
+                        <TextBlock Text="{Binding Path=id}"/>
                         <TextBlock Text=" - "/>
-                        <TextBlock Text="{Binding Path=Vrsta}"/>
+                        <TextBlock Text="{Binding Path=vrsta}"/>
                     </StackPanel>
                 </DataTemplate>
             </ComboBox.ItemTemplate>

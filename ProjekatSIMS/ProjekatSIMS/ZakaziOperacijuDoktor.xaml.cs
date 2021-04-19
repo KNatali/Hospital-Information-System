@@ -42,7 +42,7 @@ namespace ProjekatSIMS
             //ubacujem samo sale za operaciju
             foreach (Prostorija p in prostorije)
             {
-                if (p.Vrsta == VrstaProstorije.Sala)
+                if (p.vrsta == VrstaProstorije.Sala)
                     Sale.Add(p);
 
             }
@@ -235,13 +235,13 @@ namespace ProjekatSIMS
             RightListBox.Items.Clear();
             Prostorija s = (Prostorija)Sala.SelectedItem;
 
-            Inventar[] inventari = s.Inventar;
+            Inventar[] inventari = s.inventar;
             if (inventari ==null)
                 RightListBox.Items.Add("Inventar jos nije unesen!");
             else
             {
                 foreach (Inventar i in inventari)
-                    RightListBox.Items.Add(i.Ime+" : "+i.Kolicina.ToString());
+                    RightListBox.Items.Add(i.ime+" : "+i.kolicina.ToString());
 
 
             }
