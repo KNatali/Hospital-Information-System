@@ -41,7 +41,7 @@ namespace ProjekatSIMS
             p.Jmbg = jmbg;
             p.Ime = ime;
             p.Prezime = prezime;
-            OsobaRepository fajl = new OsobaRepository(@"..\..\Fajlovi\Pacijent.txt");
+            OsobaRepository fajl = new OsobaRepository(@"..\..\..\Fajlovi\Pacijent.txt");
             List<Pacijent> pacijenti = fajl.DobaviPacijente();
             pacijenti.Add(p);
             fajl.Sacuvaj(pacijenti);

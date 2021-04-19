@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using Microsoft.Toolkit.Uwp.Notifications;
+using Model;
 using Repository;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace ProjekatSIMS
 {
     public partial class KalendarPregledaSWindow : Window
     {
+        public Boolean posalji = false;
         public List<Pregled> Pregledi { get; set; }
         public KalendarPregledaSWindow()
         {
@@ -23,16 +25,18 @@ namespace ProjekatSIMS
             this.DataContext = this;
             List<Pregled> pregledi = new List<Pregled>();
             Pregledi = new List<Pregled>();
-            PregledRepository fajl = new PregledRepository(@"..\..\Fajlovi\SviPregledi.txt");
+            PregledRepository fajl = new PregledRepository(@"..\..\..\Fajlovi\Pregled.txt");
             Pregledi = fajl.GetListaPregledaSekretar();
-            /*foreach (Pregled p in pregledi)
+            foreach (Pregled pobavestenje in Pregledi)
             {
-                if (p.StatusPregleda == StatusPregleda.Zakazan)
+                if (posalji == true)
                 {
-                    Pregledi.Add(p);
+                    new ToastContentBuilder()
+                   .AddArgument("action", "viewConversation")
+                   .AddText("Vaš zakazani pregled je otkazan.")
+                   .Show();
                 }
-            }*/
-
+            }
         }
         private void Nazad(object sender, RoutedEventArgs e)
         {
@@ -52,7 +56,7 @@ namespace ProjekatSIMS
             {
                 case MessageBoxResult.Yes:
                     {
-                        PregledRepository fajl = new PregledRepository(@"..\..\Fajlovi\SviPregledi.txt");
+                        PregledRepository fajl = new PregledRepository(@"..\..\..\Fajlovi\Pregled.txt");
                         List<Pregled> pregled = fajl.GetListaPregledaSekretar();
                         foreach (Pregled pr in pregled)
                         {
@@ -63,7 +67,12 @@ namespace ProjekatSIMS
                             }
                         }
                         fajl.SacuvajPregledSekretar(pregled);
-                        MessageBox.Show("Pregled je uspešno otkazan.", "OBAVEŠTENJE");
+                        MessageBox.Show("Pregled je uspešno otkazan. Poslato je obaveštenje.", "OBAVEŠTENJE");
+                        posalji = true;
+                        new ToastContentBuilder()
+                        .AddArgument("action", "viewConversation")
+                        .AddText("Vaš zakazani pregled je otkazan.")
+                        .Show();
                         this.Close();
                         break;
                     }

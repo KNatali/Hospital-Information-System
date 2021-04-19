@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using Microsoft.Toolkit.Uwp.Notifications;
+using Model;
 using Repository;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace ProjekatSIMS
 {
     public partial class IzmenaPregledaSWindow : Window
     {
+        public Boolean posalji = false;
         public PregledRepository fajl { get; set; }
         public List<Pregled> Pregledi { get; set; }
         public Pregled pre { get; set; }
@@ -27,17 +29,25 @@ namespace ProjekatSIMS
             Datum.SelectedDate = p.Pocetak;
             Sat.Text = p.Pocetak.Hour.ToString();
             Minut.Text = p.Pocetak.Minute.ToString();
-            Trajanje.Text = p.Trajanje.ToString();
 
-            /*List<Pregled> ListaPregleda = new List<Pregled>();
-            PregledRepository fajl = new PregledRepository(@"..\..\Fajlovi\SviPregledi");
-            ListaPregleda = fajl.GetListaPregledaSekretar();*/
-            
-            /*Pregledi.Add(p);
-            Pre = p;
-            Pocetak.SelectedDate = Pregled.Pocetak;
-            Trajanje.Text = Pregled.Pocetak.Hour.ToString();
-            Tip.Text = Pregled.Pocetak.Minute.ToString();*/
+            foreach (Pregled pobavestenje in Pregledi)
+            {
+                //int res = DateTime.Compare(pobavestenje.DatumPropisivanjaLeka.AddHours(-4), DateTime.UtcNow);
+
+                if (posalji == true)
+                {
+                    //if ((r.DatumPropisivanjaLeka.Month == DateTime.UtcNow.Month) && (r.DatumPropisivanjaLeka.Day == DateTime.UtcNow.Day) && (r.DatumPropisivanjaLeka.Year == DateTime.UtcNow.Year))
+
+                    //{
+                        new ToastContentBuilder()
+                       .AddArgument("action", "viewConversation")
+                       .AddText("Vaš zakazani pregled je izmenjen.")
+                       //.AddText(r.NazivLeka + " " + r.Kolicina + " " + r.Uputstvo)
+                       .Show();
+
+                    //}
+                }
+            }
         }
 
         private void Otkazi(object sender, RoutedEventArgs e)
@@ -47,7 +57,7 @@ namespace ProjekatSIMS
         private void Sacuvaj(object sender, RoutedEventArgs e)
         {
 
-            /*DateTime datum = (DateTime)Datum.SelectedDate;
+            DateTime datum = (DateTime)Datum.SelectedDate;
             DateTime datum1;
             double sat;
             double minut;
@@ -64,7 +74,7 @@ namespace ProjekatSIMS
             }
             datum1 = datum.AddHours(sat);
             datum1 = datum1.AddMinutes(minut);
-            DateTime datum2 = datum1.AddMinutes(pre.Trajanje);
+            //DateTime datum2 = datum1.AddMinutes(pre.Trajanje);
             /* if(pregledController.IzmjenaPregledaDoktor(pregled, datum1))
              {
                  MessageBox.Show("Uspjesno ste izmjenili termin pregleda");
@@ -72,12 +82,12 @@ namespace ProjekatSIMS
              else
                  MessageBox.Show("Neuspjesna promjena termina pregleda");*/
 
-            /*List<Pregled> pregledi = new List<Pregled>();
+            List<Pregled> pregledi = new List<Pregled>();
             Pregledi = new List<Pregled>();
-            PregledRepository fajl = new PregledRepository(@"..\..\Fajlovi\SviPregledi.txt");
+            PregledRepository fajl = new PregledRepository(@"..\..\..\Fajlovi\Pregled.txt");
             Pregledi = fajl.GetListaPregledaSekretar();
 
-            foreach (Pregled pr in pregledi)
+            /*foreach (Pregled pr in pregledi)
             {
                 if (pr.StatusPregleda == StatusPregleda.Zakazan)
                 {
@@ -115,11 +125,13 @@ namespace ProjekatSIMS
             MessageBox.Show("Uspjesno je zakazana operacija");
             this.NavigationService.Navigate(new Uri("PrikazPregledaDoktor.xaml", UriKind.Relative));*/
 
+            posalji = true;
+
             MessageBox.Show("Uspešno ste izmenili termin. " +
                 "Poslato je obaveštenje pacijentu i doktoru.", "OBAVEŠTENJE", MessageBoxButton.OK);
             this.Close();
         }
-        /*private void PrikazTermina(List<Pregled> pregledi, DateTime datum1, DateTime datum2, int trajanje, Doktor dr)
+        private void PrikazTermina(List<Pregled> pregledi, DateTime datum1, DateTime datum2, int trajanje, Doktor dr)
             {
                 Termin.Visibility = Visibility.Visible;
                 Izbor.Visibility = Visibility.Visible;
@@ -179,6 +191,6 @@ namespace ProjekatSIMS
                         break;
                     Termin.Items.Add(parovi[i].Value.Hour + ":" + parovi[i].Value.Minute);
                 }
-        }*/
+        }
     }
 }
