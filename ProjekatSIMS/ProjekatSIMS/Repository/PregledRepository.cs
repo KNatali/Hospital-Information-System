@@ -6,14 +6,40 @@ using System.IO;
 
 namespace Repository
 {
-   public class PregledRepository
-   {
+
+    public class PregledRepository
+    {
+        private String LokacijaFajla;
+        private List<Pregled> pregledi;
         private const string putanja = @"..\..\Fajlovi\Pregled.txt";
+        public Model.Pregled SacuvajGuestPregledRepository(DateTime datumPregleda, Model.Pacijent pacijent);
+
+
+        public PregledRepository(String lokacija)
+        {
+            LokacijaFajla = lokacija;
+        }
+
+
         public Model.Pregled SacuvajGuestPregledRepository(DateTime datumPregleda, Model.Pacijent pacijent)
-      {
-         // TODO: implement
-         return null;
-      }
+        {
+            // TODO: implement
+            return null;
+        }
+
+      
+
+        public List<Pregled> DobaviSvePregledePacijent()
+        {
+            using (StreamReader sr = new StreamReader(LokacijaFajla))
+            {
+                string json = sr.ReadToEnd();
+                pregledi = JsonConvert.DeserializeObject<List<Pregled>>(json);
+            }
+            return pregledi;
+        }
+
+   
       
       public List<Pregled> GetListaPregledaRepository(DateTime zaDan)
       {
@@ -33,16 +59,6 @@ namespace Repository
          return null;
       }
       
-      public List<Pregled> DobaviSvePregledePacijent()
-      {
-         // TODO: implement
-         return null;
-      }
-      
-      public void SacuvajPregledPacijent(List<Pregled> pregledi)
-      {
-         // TODO: implement
-      }
       
       public List<Pregled> DobaviSvePregledeDoktor()
       {
@@ -54,6 +70,17 @@ namespace Repository
             }
             return pregledi;
         }
+
+
+        public void SacuvajPregledPacijent(List<Pregled> pregledi)
+        {
+            string newJson = JsonConvert.SerializeObject(pregledi);
+            File.WriteAllText(LokacijaFajla, newJson);
+
+        }
+
+    
+
       
       public void SacuvajPregledDoktor(List<Pregled> pregledi)
       {
@@ -62,5 +89,6 @@ namespace Repository
             File.WriteAllText(putanja, newJson);
         }
    
-   }
+}
+
 }

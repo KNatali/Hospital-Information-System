@@ -5,7 +5,9 @@ namespace Model
    public class Osoba
    {
       public String Jmbg { get; set; }
+
       public String Ime { get; set; }
+
         public String Prezime { get; set; }
         public DateTime DatumRodjenja { get; set; }
         public String Email { get; set; }
@@ -14,15 +16,12 @@ namespace Model
 
         public RegistrovaniKorisnik registrovaniKorisnik { get; set; }
         public Notifikacija notifikacija { get; set; }
-
-        /// <pdGenerated>default parent getter</pdGenerated>
         public Notifikacija GetNotifikacija()
+
       {
          return notifikacija;
       }
-      
-      /// <pdGenerated>default parent setter</pdGenerated>
-      /// <param>newNotifikacija</param>
+    
       public void SetNotifikacija(Notifikacija newNotifikacija)
       {
          if (this.notifikacija != newNotifikacija)

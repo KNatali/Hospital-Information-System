@@ -19,10 +19,13 @@ namespace Model
       public String id { get; set; }
       public int sprat { get; set; }
       public VrstaProstorije vrsta { get; set; }
+        public bool slobodna { get; set; }
       
-      public Pregled[] pregled;
-        public Inventar[] inventar { get; set; }
+      public Pregled[] pregled { get; set; }
+      public Inventar[] inventar { get; set; }
+   
+   }
 
-        
-    }
+     
+
 }

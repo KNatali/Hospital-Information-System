@@ -1,21 +1,35 @@
 using Model;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Repository
 {
    public class ReceptRepository
    {
-      public void SacuvajRecept()
+        private String LokacijaFajla;
+        private List<Recept> recepti;
+
+        public ReceptRepository(String lokacija)
+        {
+            LokacijaFajla = lokacija;
+        }
+        public void SacuvajRecept(List<Recept> recepti)
       {
-         // TODO: implement
-      }
+            string newJson = JsonConvert.SerializeObject(recepti);
+            File.WriteAllText(LokacijaFajla, newJson);
+        }
       
       public List<Recept> DobaviSveRecepte()
       {
-         // TODO: implement
-         return null;
-      }
+            using (StreamReader sr = new StreamReader(LokacijaFajla))
+            {
+                string json = sr.ReadToEnd();
+                recepti = JsonConvert.DeserializeObject<List<Recept>>(json);
+            }
+            return recepti;
+        }
    
    }
 }
