@@ -5,52 +5,15 @@ namespace Model
 {
    public class ZdravsteniKarton
    {
-      public Recept[] recept;
-      public System.Collections.ArrayList anamneza;
+      public Recept[] recept { get; set; }
+      public List<Anamneza> anamneza { get; set;}
       
       /// <pdGenerated>default getter</pdGenerated>
-      public System.Collections.ArrayList GetAnamneza()
-      {
-         if (anamneza == null)
-            anamneza = new System.Collections.ArrayList();
-         return anamneza;
-      }
+      
       
       /// <pdGenerated>default setter</pdGenerated>
-      public void SetAnamneza(System.Collections.ArrayList newAnamneza)
-      {
-         RemoveAllAnamneza();
-         foreach (Anamneza oAnamneza in newAnamneza)
-            AddAnamneza(oAnamneza);
-      }
       
-      /// <pdGenerated>default Add</pdGenerated>
-      public void AddAnamneza(Anamneza newAnamneza)
-      {
-         if (newAnamneza == null)
-            return;
-         if (this.anamneza == null)
-            this.anamneza = new System.Collections.ArrayList();
-         if (!this.anamneza.Contains(newAnamneza))
-         {
-            this.anamneza.Add(newAnamneza);
-            newAnamneza.SetZdravsteniKarton(this);      
-         }
-      }
-      
-      /// <pdGenerated>default Remove</pdGenerated>
-      public void RemoveAnamneza(Anamneza oldAnamneza)
-      {
-         if (oldAnamneza == null)
-            return;
-         if (this.anamneza != null)
-            if (this.anamneza.Contains(oldAnamneza))
-            {
-               this.anamneza.Remove(oldAnamneza);
-               oldAnamneza.SetZdravsteniKarton((ZdravsteniKarton)null);
-            }
-      }
-      
+
       /// <pdGenerated>default removeAll</pdGenerated>
       public void RemoveAllAnamneza()
       {
@@ -69,6 +32,7 @@ namespace Model
    
       public List<String> Alergeni { get; set; }
       public List<String> Terapija { get; set; }
+
    
    }
 }

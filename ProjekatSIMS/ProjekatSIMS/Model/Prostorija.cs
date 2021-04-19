@@ -27,7 +27,9 @@ namespace Model
             this.vrsta = prostorija;
         }
         public Prostorija() { }
+
         public Prostorija(String id, int sprat, VrstaProstorije prostorija, Pregled[] pregledi, List<Inventar> inventar, bool sl)
+
         {
             this.id = id;
             this.sprat = sprat;

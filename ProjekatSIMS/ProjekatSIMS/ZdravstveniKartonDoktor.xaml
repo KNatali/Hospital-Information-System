@@ -27,7 +27,7 @@
 
         <Button Content="Kreiranje anamneze" Click="KreiranjeAnamneze" HorizontalAlignment="Left" Margin="384,268,0,0" VerticalAlignment="Top" Height="44" Width="168"/>
         <Button Content="Pregled anamneza" Click="PrikazAnamneza" HorizontalAlignment="Left" Margin="584,268,0,0" VerticalAlignment="Top" Height="43" Width="168"/>
-        <Button Content="Izdavanje recepta" HorizontalAlignment="Left" Margin="384,341,0,0" VerticalAlignment="Top" Height="43" Width="168"/>
+        <Button Content="Izdavanje recepta" Click="IzdavanjeRecepta" HorizontalAlignment="Left" Margin="384,341,0,0" VerticalAlignment="Top" Height="43" Width="168"/>
 
         <Label Content="Zdravstveni karton" HorizontalAlignment="Center" Margin="0,22,0,0" VerticalAlignment="Top" FontSize="16"/>
 

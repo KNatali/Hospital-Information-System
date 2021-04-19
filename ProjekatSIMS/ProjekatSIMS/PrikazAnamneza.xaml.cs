@@ -21,30 +21,45 @@ namespace ProjekatSIMS
     /// </summary>
     public partial class PrikazAnamneza : Page
     {
-        public List<Anamneza> Anamneze {get; set;  } 
+        public List<Anamneza> Anamneze { get; set; }
+        public Pacijent pacijent {get; set;}
         public PrikazAnamneza(Pacijent p)
         {
             InitializeComponent();
    
             this.DataContext = this;
+            pacijent = p;
 
 
-
-            List<Anamneza> anamneze = new List<Anamneza>();
+            List<ZdravsteniKarton> kartoni= new List<ZdravsteniKarton>();
             Anamneze = new List<Anamneza>();
-            using (StreamReader r = new StreamReader(@"..\..\..\Fajlovi\Anamneza.txt"))
+            using (StreamReader r = new StreamReader(@"..\..\..\Fajlovi\ZdravstveniKarton.txt"))
             {
                 string json = r.ReadToEnd();
-                anamneze = JsonConvert.DeserializeObject<List<Anamneza>>(json);
+                kartoni = JsonConvert.DeserializeObject<List<ZdravsteniKarton>>(json);
             }
-            foreach (Anamneza a in anamneze)
+            foreach (ZdravsteniKarton k in kartoni)
             {
-                if (a.zdravsteniKarton.pacijent.Jmbg==p.Jmbg)
+                if (k.pacijent.Jmbg==p.Jmbg)
                 {
-                    Anamneze.Add(a);
+                    if (k.anamneza != null)
+                    {
+                        foreach (Anamneza a in k.anamneza)
+                        
+                            Anamneze.Add(a);
+                        
+                    }
+                   
                 }
             }
 
+        }
+
+        private void ZdravstveniKarton(object sender, RoutedEventArgs e)
+        {
+            ZdravstveniKartonDoktor z = new ZdravstveniKartonDoktor(pacijent);
+            // this.NavigationService.Navigate(new Uri("ZdravstveniKartonDoktor.xaml", UriKind.Relative));
+            this.NavigationService.Navigate(z);
         }
     }
 }
