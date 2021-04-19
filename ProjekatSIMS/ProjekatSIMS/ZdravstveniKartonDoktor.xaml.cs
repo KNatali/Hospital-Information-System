@@ -33,13 +33,14 @@ namespace ProjekatSIMS
             Email.Text = Pacijent.Email;
             Broj.Text = Pacijent.BrojTelefona;
             Adresa.Text = Pacijent.Adresa;
+            
         }
 
         private void KreiranjeAnamneze(object sender, RoutedEventArgs e)
         {
-            AnamnezaDoktor a = new AnamnezaDoktor(Pacijent);
+            KreirajAnamnezu an = new KreirajAnamnezu(Pacijent);
            
-            this.NavigationService.Navigate(a);
+            this.NavigationService.Navigate(an);
         }
 
         private void PrikazAnamneza(object sender, RoutedEventArgs e)

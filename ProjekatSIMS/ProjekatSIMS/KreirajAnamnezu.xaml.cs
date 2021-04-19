@@ -18,42 +18,49 @@ using System.Windows.Shapes;
 namespace ProjekatSIMS
 {
     /// <summary>
-    /// Interaction logic for AnamnezaDoktor.xaml
+    /// Interaction logic for KreirajAnamnezu.xaml
     /// </summary>
-    public partial class AnamnezaDoktor : Page
+    public partial class KreirajAnamnezu : Page
     {
         public Pacijent pacijent { get; set; }
-       
-        public AnamnezaDoktor(Pacijent p)
+
+        public KreirajAnamnezu(Pacijent p)
         {
             InitializeComponent();
             this.DataContext = this;
-           
+
             Datum.SelectedDate = DateTime.Now;
             pacijent = p;
         }
 
-        private void KreirajAnamnezu(object sender, RoutedEventArgs e)
+        private void KreiranjeAnamneze(object sender, RoutedEventArgs e)
         {
             AnamnezaRepository anamnezaRepository = new AnamnezaRepository();
             List<Anamneza> lista = new List<Anamneza>();
             Anamneza a = new Anamneza();
             a.OpisAnamneze = Opis.Text;
-            a.datum =(DateTime) Datum.SelectedDate;
+            a.datum = (DateTime)Datum.SelectedDate;
             a.zdravsteniKarton.pacijent = pacijent;
-           
-            if (anamnezaRepository.DobaviSveAnamneze() == null)
-                lista.Add(a);
-            else
+
+            /* if (anamnezaRepository.DobaviSveAnamneze() == null)
+                 lista.Add(a);
+             else
+             {
+                 lista = anamnezaRepository.DobaviSveAnamneze();
+                 lista.Add(a);
+             }*/
+            
+            using (StreamReader r = new StreamReader(@"..\..\Fajlovi\Anamneza.txt"))
             {
-                lista = anamnezaRepository.DobaviSveAnamneze();
-                lista.Add(a);
+                string json = r.ReadToEnd();
+               lista = JsonConvert.DeserializeObject<List<Anamneza>>(json);
             }
+
 
             anamnezaRepository.SacuvajAnamnezu(lista);
             MessageBox.Show("Uspjesno je sacuvana anamneza");
             ZdravstveniKartonDoktor z = new ZdravstveniKartonDoktor(pacijent);
-        
+
             this.NavigationService.Navigate(z);
 
         }

@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Windows;
 
 namespace Repository
 {
@@ -26,6 +27,7 @@ namespace Repository
                 string json = r.ReadToEnd();
                 anamneze = JsonConvert.DeserializeObject<List<Anamneza>>(json);
             }
+           
             return anamneze;
         }
    
