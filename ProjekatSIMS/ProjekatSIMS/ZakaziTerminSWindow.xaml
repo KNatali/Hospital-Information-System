@@ -10,37 +10,31 @@
         <Button Content="Otkaži" Click="Otkazi" HorizontalAlignment="Left" Margin="80,350,0,0" VerticalAlignment="Top" Height="40" Width="90" Background="#FFA6B1D6"/>
         <Button Content="Zakaži termin" Click="Zakazi" HorizontalAlignment="Left" Height="40" Margin="630,350,0,0" VerticalAlignment="Top" Width="90" Background="#FFA6B1D6"/>
         <Label Content="Unesite podatke da zakažete termin" HorizontalAlignment="Left" Height="30" Margin="80,30,0,0" VerticalAlignment="Top" Width="230" FontWeight="Bold"/>
-        <Label Content="Datum termina" HorizontalAlignment="Left" Height="25" Margin="80,80,0,0" VerticalAlignment="Top" Width="145"/>
-        <Label Content="Trajanje" HorizontalAlignment="Left" Height="25" Margin="80,200,0,0" VerticalAlignment="Top" Width="145"/>
-        <TextBox HorizontalAlignment="Left" Name="Trajanje" Margin="265,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Tip pregleda" HorizontalAlignment="Left" Height="25" Margin="80,241,0,0" VerticalAlignment="Top" Width="145"/>
-        <ComboBox HorizontalAlignment="Left" Name="Tip" Margin="265,240,0,0" VerticalAlignment="Top" Width="120">
-            <ComboBoxItem IsSelected="True">Standardni</ComboBoxItem>
-            <ComboBoxItem>Operacija</ComboBoxItem>
-        </ComboBox>
-        <Label Content="Sala" HorizontalAlignment="Left" Height="25" Margin="458,240,0,0" VerticalAlignment="Top" Width="111"/>
-        <DatePicker HorizontalAlignment="Left" Name="Datum" Margin="265,80,0,0" VerticalAlignment="Top" Width="120"/>
-        <Label Content="JMBG" HorizontalAlignment="Left" Height="25" Margin="458,80,0,0" VerticalAlignment="Top" Width="145"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Jmbg_pacijent" Margin="600,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Podaci o pacijentu" HorizontalAlignment="Left" Height="30" Margin="540,40,0,0" VerticalAlignment="Top" Width="135" FontWeight="Bold"/>
-        <Label Content="JMBG" HorizontalAlignment="Left" Height="25" Margin="458,160,0,0" VerticalAlignment="Top" Width="145"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Jmbg_doktor" Margin="600,160,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Podaci o doktoru" HorizontalAlignment="Left" Height="30" Margin="544,120,0,0" VerticalAlignment="Top" Width="135" FontWeight="Bold"/>
         <Label Name="Izbor" Content="Izaberite termin" Visibility="Hidden" HorizontalAlignment="Left" Height="30" Margin="80,280,0,0" VerticalAlignment="Top" Width="135" FontWeight="Bold"/>
-        <Label Content="Vreme termina" HorizontalAlignment="Left" Height="25" Margin="80,120,0,0" VerticalAlignment="Top" Width="145"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Sat" Text="Sati" Margin="265,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Minut" Text="Minuta" Margin="265,160,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <ComboBox Name="Termin" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="165,280,0,0" Visibility="Hidden"></ComboBox>
-        <ComboBox HorizontalAlignment="Left" x:Name="Sala" Margin="600,240,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding Path=Sale}" SelectedItem="{Binding Path=Sala1}">
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="-"/>
-                        <TextBlock Text="{Binding Path=Id}"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
-        <Label Content="Podaci o sali" HorizontalAlignment="Left" Height="30" Margin="552,200,0,0" VerticalAlignment="Top" Width="136" FontWeight="Bold"/>
+
+
+
+        <Label Content="Zakazivanje pregleda" HorizontalAlignment="Left" Margin="34,33,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <Label Content="Odaberite datum:" HorizontalAlignment="Left" Margin="34,149,0,0" VerticalAlignment="Top" FontStyle="Italic"/>
+        <DatePicker Name="Date" HorizontalAlignment="Left" Margin="156,151,0,0" VerticalAlignment="Top"/>
+        <Label Content="Vreme pregleda: " HorizontalAlignment="Left" Margin="31,0,0,0" VerticalAlignment="Center" FontWeight="Normal"/>
+
+        <Label Content="Ime doktora:" HorizontalAlignment="Left" Margin="28,239,0,0" VerticalAlignment="Top" FontStyle="Italic"/>
+        <Label Content="Sati: " HorizontalAlignment="Left" Margin="156,202,0,0" VerticalAlignment="Top" FontWeight="Normal"/>
+        <Label Content="Minuti: " HorizontalAlignment="Center" Margin="0,202,0,0" VerticalAlignment="Top" FontWeight="Normal"/>
+        <Label Content="Upisite svoje ime: " HorizontalAlignment="Left" Margin="28,67,0,0" VerticalAlignment="Top" FontStyle="Italic"/>
+        <TextBox Name="Ime" HorizontalAlignment="Left" Margin="156,71,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Upisite svoje prezime: " HorizontalAlignment="Left" Margin="22,98,0,0" VerticalAlignment="Top" FontStyle="Italic"/>
+        <TextBox Name="Prezime" HorizontalAlignment="Left" Margin="156,106,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+
+        <TextBox  Name="Sati" HorizontalAlignment="Left" Margin="216,207,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="Minuti" HorizontalAlignment="Left" Margin="460,207,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="ImeDoktora" HorizontalAlignment="Left" Margin="207,247,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="PrezimeDoktora" HorizontalAlignment="Left" Margin="216,309,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Prezime doktora" HorizontalAlignment="Left" Margin="28,296,0,0" VerticalAlignment="Top" FontStyle="Italic"/>
+        <Label Content="Upisite svoj JMBG: " HorizontalAlignment="Left" Margin="328,80,0,0" VerticalAlignment="Top" FontStyle="Italic"/>
+        <TextBox Name="Jmbg" HorizontalAlignment="Left" Margin="460,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+
     </Grid>
 </Window>
