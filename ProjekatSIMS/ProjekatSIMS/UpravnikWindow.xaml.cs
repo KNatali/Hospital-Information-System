@@ -12,14 +12,30 @@ using System.Windows.Shapes;
 
 namespace ProjekatSIMS
 {
-    /// <summary>
-    /// Interaction logic for UpravnikWindow.xaml
-    /// </summary>
+    
     public partial class UpravnikWindow : Window
     {
         public UpravnikWindow()
         {
             InitializeComponent();
+        }
+
+        private void dinamicka(object sender, RoutedEventArgs e)
+        {
+            DinamickaOpremaWindow d = new DinamickaOpremaWindow();
+            d.Show();
+        }
+
+        private void staticka(object sender, RoutedEventArgs e)
+        {
+            StatickaOpremaWindow s = new StatickaOpremaWindow();
+            s.Show();
+        }
+
+        private void prostorije(object sender, RoutedEventArgs e)
+        {
+            ProstorijeWindow p = new ProstorijeWindow();
+            p.Show();
         }
     }
 }
