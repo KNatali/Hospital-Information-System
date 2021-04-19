@@ -20,19 +20,26 @@ namespace ProjekatSIMS
     {
         public ZdravsteniKarton zdrkarton { get; set; }
         public List<ZdravsteniKarton> Karton { get; set; }
-        public List<String> Ale { get; set; }
+        public List<String> Alergeni { get; set; }
         public ListaAlergenaSWindow(Pacijent p)
         {
             InitializeComponent();
             this.DataContext = this;
             List<String> al = new List<String>();
             PregledRepository fajl = new PregledRepository(@"..\..\..\Fajlovi\ZdravstveniKarton.txt");
+            
+            
+            
+            
             Karton = fajl.DobaviAlergene();
             foreach (ZdravsteniKarton z in Karton)
             {
                 if (z.pacijent.Jmbg == p.Jmbg)
                 {
-                    al = z.Alergeni;
+                    foreach (String s in z.Alergeni)
+                    {
+                        Alergeni.Add(s);
+                    }
                 }
             }
             MessageBox.Show(al.Count.ToString());
