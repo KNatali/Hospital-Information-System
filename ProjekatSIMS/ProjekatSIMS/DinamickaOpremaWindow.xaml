@@ -34,7 +34,7 @@
         <TextBox Text="{Binding Path=kolicina}" Name ="Kolicina" DataContext="{Binding ElementName=dgrDinamickaOprema, Path=SelectedItem}" Margin="174,109,462,73" Width="165" Height="35" Grid.Row="1"/>
 
 
-        <Button Content="Izmeni" Click="izmeni"  HorizontalAlignment="Left" Margin="73,175,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="0.328,-0.165" Height="29" Width="77"/>
+        <Button Content="Rasporedi" Click="izmeni"  HorizontalAlignment="Left" Margin="73,175,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="0.328,-0.165" Height="29" Width="77"/>
         <Button Content="Dodaj" Click="dodaj" HorizontalAlignment="Left" Margin="323,175,0,0" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="29"/>
         <Button Content="Obrisi" Click="obrisi" HorizontalAlignment="Left" Margin="547,175,0,0" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="29"/>
 
