@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Repository;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -20,16 +21,22 @@ namespace ProjekatSIMS
         }
         private void Dodavanje(object sender, RoutedEventArgs e)
         {
-            //mora sacuvati novi dodati alergen
+            String alergen = Naziv.Text;
+            ZdravstveniKarton zk = new ZdravstveniKarton();
+            List<String> lista = new List<String>();
+            lista.Add(alergen);
+            /*foreach (string item in lista)
+            {
+                ListBoxItem itm = new ListBoxItem();
+                itm.Content = item;
+                zk.Add(itm);
+            }
+            PregledRepository fajl = new PregledRepository(@"..\..\..\Fajlovi\ZdravstveniKarton.txt");*/
             this.Close();
-            /*ListaAlergenaSWindow la = new ListaAlergenaSWindow();
-            la.Show();*/
         }
         private void Nazad(object sender, RoutedEventArgs e)
         {
             this.Close();
-            /*ListaAlergenaSWindow la = new ListaAlergenaSWindow();
-            la.Show();*/
         }
     }
 }

@@ -68,16 +68,12 @@ namespace ProjekatSIMS
                             }
                         }
                         fajl.SacuvajPregledSekretar(pregled);
-                        MessageBox.Show("Pregled je uspešno otkazan. Poslato je obaveštenje.", "OBAVEŠTENJE");
                         posalji = true;
-                        /*new ToastContentBuilder()
-                        .AddArgument("action", "viewConversation")
-                        .AddText("Vaš zakazani pregled je otkazan.")
-                        .Show();*/
                         PopupNotifier popup = new PopupNotifier();
                         popup.Image = Properties.Resources.informacija;
                         popup.TitleText = "OBAVEŠTENJE";
-                        popup.ContentText = "Poslato je obaveštenje pacijentu i doktoru da je pregled otkazan.";
+                        popup.ContentText = "Pregled je uspešno otkazan. " +
+                            "Poslato je obaveštenje pacijentu i doktoru da je pregled otkazan.";
                         popup.Popup();
                         this.Close();
                         break;
