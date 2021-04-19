@@ -1,12 +1,18 @@
 using Model;
+using Service;
 using System;
 using System.Collections.Generic;
+using System.Windows.Controls;
 
 namespace Controller
 {
    public class PregledController
+
+      
    {
-      public Model.Pregled ZakaziGuestPregledController(DateTime datumPregleda, Model.Pacijent pacijent)
+
+        public Service.PregledService pregledService = new PregledService();
+        public Model.Pregled ZakaziGuestPregledController(DateTime datumPregleda, Model.Pacijent pacijent)
       {
          // TODO: implement
          return null;
@@ -18,11 +24,39 @@ namespace Controller
          return null;
       }
       
-      public Model.Pregled ZakazivanjePregleda()
+      public Boolean ZakazivanjePregleda(ComboBox Termin,String jmbg,Prostorija prostorija,DateTime datum1,DateTime datum2)
       {
-         // TODO: implement
-         return null;
+           
+            if (pregledService.ZakazivanjePregleda(Termin,jmbg, prostorija, datum1, datum2))
+                return true;
+
+            return false;
+
       }
+
+        public Boolean OtkazivanjePregledaDoktor(Pregled p)
+        {
+            if (pregledService.OtkazivanjePregledaDoktor(p))
+                return true;
+
+            return false;
+
+        }
+
+        public Boolean IzmjenaPregledaDoktor(Pregled p,DateTime datum)
+        {
+            if (pregledService.IzmjenaPregledaDoktor(p,datum))
+                return true;
+
+            return false;
+
+        }
+
+        public List<Pregled> DobaviSvePreglede()
+        {
+           return pregledService.DobaviSvePreglede();
+
+        }
       
       public List<Pregled> GetListaPregledaController(DateTime zaDan)
       {
@@ -54,7 +88,7 @@ namespace Controller
          return true;
       }
    
-      public Service.PregledService pregledService;
+      
    
    }
 }

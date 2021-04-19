@@ -4,10 +4,12 @@ namespace Model
 {
    public class Anamneza
    {
-      public ZdravsteniKarton zdravsteniKarton;
-      
-      /// <pdGenerated>default parent getter</pdGenerated>
-      public ZdravsteniKarton GetZdravsteniKarton()
+      public ZdravsteniKarton zdravsteniKarton { get; set; }
+        public String OpisAnamneze { get; set; }
+        public DateTime datum { get; set; }
+
+        /// <pdGenerated>default parent getter</pdGenerated>
+        public ZdravsteniKarton GetZdravsteniKarton()
       {
          return zdravsteniKarton;
       }
@@ -32,7 +34,7 @@ namespace Model
          }
       }
    
-      private String OpisAnamneze;
+     
    
    }
 }
