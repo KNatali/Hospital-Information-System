@@ -24,6 +24,9 @@
 
 
             </DataGrid.Columns>
+
         </DataGrid>
+        <Button Content="Nazad" Click="ZdravstveniKarton" HorizontalAlignment="Left" Margin="616,380,0,0" VerticalAlignment="Top" Height="37" Width="92" Background="#FFB5CDE2"/>
+
     </Grid>
 </Page>

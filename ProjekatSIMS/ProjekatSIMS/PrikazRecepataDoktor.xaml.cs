@@ -21,6 +21,7 @@ namespace ProjekatSIMS
     public partial class PrikazRecepataDoktor : Page {
 
         public List<Recept> Recepti { get; set; }
+        public Pacijent pacijent { get; set; }
     
         
         public PrikazRecepataDoktor(Pacijent p)
@@ -30,6 +31,7 @@ namespace ProjekatSIMS
             InitializeComponent();
             this.DataContext = this;
             Recepti = new List<Recept>();
+            pacijent = p;
             List<Recept> recepti = new List<Recept>();
             ReceptRepository receptRepository = new ReceptRepository(@"..\..\..\Fajlovi\Recept.txt");
             if (receptRepository.DobaviSveRecepte() != null)
@@ -42,6 +44,15 @@ namespace ProjekatSIMS
                     Recepti.Add(r);
             }
 
+
+
+        }
+
+        private void ZdravstveniKarton(object sender, RoutedEventArgs e)
+        {
+            ZdravstveniKartonDoktor z = new ZdravstveniKartonDoktor(pacijent);
+            // this.NavigationService.Navigate(new Uri("ZdravstveniKartonDoktor.xaml", UriKind.Relative));
+            this.NavigationService.Navigate(z);
         }
     }
 }

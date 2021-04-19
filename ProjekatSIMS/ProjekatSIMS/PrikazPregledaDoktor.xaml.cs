@@ -38,12 +38,16 @@ namespace ProjekatSIMS
 
             List<Pregled> pregledi = new List<Pregled>();
             Pregledi = new List<Pregled>();
-            using (StreamReader r = new StreamReader(@"..\..\..\Fajlovi\Pregled.txt"))
+            pregledController = (Application.Current as App).PregledController;
+
+            /*using (StreamReader r = new StreamReader(@"..\..\..\Fajlovi\Pregled.txt"))
             {
                 string json = r.ReadToEnd();
                  pregledi = JsonConvert.DeserializeObject<List<Pregled>>(json);
-            }
-            foreach(Pregled p in pregledi)
+            }*/
+            if (pregledController.DobaviSvePreglede() != null)
+                pregledi = pregledController.DobaviSvePreglede();
+            foreach (Pregled p in pregledi)
             {
                 if (p.doktor.Jmbg== "1511990855023" && p.StatusPregleda==StatusPregleda.Zakazan)
                 {
@@ -52,7 +56,7 @@ namespace ProjekatSIMS
             }
             
 
-            pregledController = (Application.Current as App).PregledController;
+           
         }
 
         private void OtkaziPregled(object sender, RoutedEventArgs e)
