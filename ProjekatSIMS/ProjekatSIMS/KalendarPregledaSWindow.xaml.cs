@@ -21,9 +21,18 @@ namespace ProjekatSIMS
         {
             InitializeComponent();
             this.DataContext = this;
+            List<Pregled> pregledi = new List<Pregled>();
             Pregledi = new List<Pregled>();
             PregledRepository fajl = new PregledRepository(@"..\..\Fajlovi\SviPregledi.txt");
             Pregledi = fajl.GetListaPregledaSekretar();
+            /*foreach (Pregled p in pregledi)
+            {
+                if (p.StatusPregleda == StatusPregleda.Zakazan)
+                {
+                    Pregledi.Add(p);
+                }
+            }*/
+
         }
         private void Nazad(object sender, RoutedEventArgs e)
         {

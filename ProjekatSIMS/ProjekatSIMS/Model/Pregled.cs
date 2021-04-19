@@ -36,9 +36,9 @@ namespace Model
       
       public Prostorija prostorija { get; set; }
       public Doktor doktor { get; set; }
-      
-      /// <pdGenerated>default parent getter</pdGenerated>
-      public Doktor GetDoktor()
+
+        /// <pdGenerated>default parent getter</pdGenerated>
+        public Doktor GetDoktor()
       {
          return doktor;
       }
