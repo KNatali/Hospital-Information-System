@@ -14,17 +14,14 @@ using System.Windows.Shapes;
 
 namespace ProjekatSIMS
 {
-    /// <summary>
-    /// Interaction logic for DinamickaOpremaWindow.xaml
-    /// </summary>
+    
     public partial class DinamickaOpremaWindow : Window
     {
         public DinamickaOpremaWindow()
         {
             InitializeComponent();
             this.DataContext = this;
-            //ObservableCollection<Inventar> oprema = new ObservableCollection<Inventar>();
-            Inventar[] oprema = null;
+            List<Inventar> oprema = new List<Inventar>();
             
 
 
@@ -49,6 +46,8 @@ namespace ProjekatSIMS
             inventar.id = Convert.ToInt32(Id.Text);
             inventar.ime = Ime.Text;
             inventar.kolicina = Convert.ToInt32(Kolicina.Text);
+            inventar.Staticka = true;
+            
             CuvanjeProstorija cuvanje = new CuvanjeProstorija(@"..\..\Fajlovi\Prostorije.txt");
             List<Prostorija> prostorije = new List<Prostorija>();
             prostorije = cuvanje.UcitajProstorije();
@@ -57,22 +56,17 @@ namespace ProjekatSIMS
 
                 if (Convert.ToInt32(p.id) == 0)
                 {
-                    Inventar[] array = p.inventar;
-                    foreach (Inventar i in array)
+                    foreach(Inventar i in p.inventar)
                     {
-                        if(i.ime == Ime.Text || i.id == Convert.ToInt32(Id.Text))
+                        if (Convert.ToInt32(Id.Text) == i.id || Ime.Text == i.ime)
                         {
+                            MessageBox.Show("Vec postoji inventar sa tim parametrima!");
                             break;
                         }
                     }
-                        var duzina = p.inventar.Length;
-                    if(array == null)
-                    {
-                        break;
-                    }
-                    Array.Resize(ref array, duzina + 1);
-                    array[duzina] = inventar;
-                    p.inventar = array;
+                    
+                    p.inventar.Add(inventar);
+                    
                 }
             }
             cuvanje.Sacuvaj(prostorije);
@@ -82,11 +76,69 @@ namespace ProjekatSIMS
         }
         private void izmeni(object sender, RoutedEventArgs e)
         {
-          
+
+            Inventar inventar = new Inventar();
+            inventar = (Inventar)dgrDinamickaOprema.SelectedItems[0];
+
+
+            CuvanjeProstorija cuvanje = new CuvanjeProstorija(@"..\..\Fajlovi\Prostorije.txt");
+            List<Prostorija> prostorije = cuvanje.UcitajProstorije();
+            foreach (Prostorija pros in prostorije)
+
+            {
+                if (Convert.ToInt32(pros.id) == 0)
+                {
+                    foreach (Inventar i in pros.inventar)
+                    {
+                        if (i.id == inventar.id) //pronasli smo trazeni inventar
+                        {
+                            i.kolicina = Convert.ToInt32(Kolicina.Text);
+
+                        }
+                    }
+                }
+            }
+
+
+
+            cuvanje.Sacuvaj(prostorije);
+
+            MessageBox.Show("Inventar je rasporedjen!");
+            this.Close();
+
         }
         private void obrisi(object sender, RoutedEventArgs e)
         {
-           
+            Inventar inventar = new Inventar();
+            inventar = (Inventar)dgrDinamickaOprema.SelectedItems[0];
+
+
+            CuvanjeProstorija cuvanje = new CuvanjeProstorija(@"..\..\Fajlovi\Prostorije.txt");
+            List<Prostorija> prostorije = cuvanje.UcitajProstorije();
+            foreach (Prostorija pros in prostorije)
+
+            {
+                if (Convert.ToInt32(pros.id) == 0) //pronasli smo magacin
+                {
+                    foreach (Inventar i in pros.inventar)
+                    {
+                        if(i.id == inventar.id) //pronasli smo trazeni inventar
+                        {
+                            pros.inventar.Remove(i); //brisemo iz liste 
+                            break;
+
+                        }
+                    }
+                }
+            }
+               
+
+            
+            cuvanje.Sacuvaj(prostorije); //cuvamo izmenjenu listu 
+
+            MessageBox.Show("Inventar je rasporedjen!");
+            this.Close();
+
         }
     }
 }
