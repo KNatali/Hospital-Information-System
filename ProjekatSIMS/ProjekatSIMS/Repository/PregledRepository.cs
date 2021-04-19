@@ -6,29 +6,44 @@ using System.IO;
 
 namespace Repository
 {
-
-    public class PregledRepository
-    {
-        private String LokacijaFajla;
+   public class PregledRepository
+   {
+        private String lokacija;
         private List<Pregled> pregledi;
+        private String LokacijaFajla;
+        
         private const string putanja = @"..\..\..\Fajlovi\Pregled.txt";
-       // public Model.Pregled SacuvajGuestPregledRepository(DateTime datumPregleda, Model.Pacijent pacijent);
+       
+        public PregledRepository(String l)
+        {
+            lokacija = l;
+        }
+        public void SacuvajPregledSekretar(List<Pregled> p)
+        {
+            string newJson = JsonConvert.SerializeObject(p);
+            File.WriteAllText(lokacija, newJson);
+        }
+       public List<Pregled> GetListaPregledaSekretar()
+        {
+            using (StreamReader r = new StreamReader(lokacija))
+            {
+                string json = r.ReadToEnd();
+                pregledi = JsonConvert.DeserializeObject<List<Pregled>>(json);
+            }
+            return pregledi;
+        }
+
+
+
+
+   
+        
 
         public PregledRepository()
         {
             
         }
-        public PregledRepository(String lokacija)
-        {
-            LokacijaFajla = lokacija;
-        }
-
-
-       /* public Model.Pregled SacuvajGuestPregledRepository(DateTime datumPregleda, Model.Pacijent pacijent)
-        {
-            // TODO: implement
-            return null;
-        }*/
+        
 
       
 
@@ -37,12 +52,21 @@ namespace Repository
             using (StreamReader sr = new StreamReader(LokacijaFajla))
             {
                 string json = sr.ReadToEnd();
+
                 pregledi = JsonConvert.DeserializeObject<List<Pregled>>(json);
             }
             return pregledi;
         }
 
+        public Model.Pregled SacuvajGuestPregledRepository(DateTime datumPregleda, Model.Pacijent pacijent)
+      {
+         // TODO: implement
+         return null;
+      }
+
+
    
+
       
       public List<Pregled> GetListaPregledaRepository(DateTime zaDan)
       {

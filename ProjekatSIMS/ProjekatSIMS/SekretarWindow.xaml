@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="SekretarWindow" Height="450" Width="800">
     <Grid>
-        
+        <Button Content="Kalendar pregleda i operacija" Click="Kalendar" HorizontalAlignment="Left" Margin="175,280,0,0" VerticalAlignment="Top" Height="52" Width="161" Background="#FFA6B1D6"/>
+        <Button Content="Zakažite termin" Click="Zakazivanje" HorizontalAlignment="Left" Margin="448,280,0,0" VerticalAlignment="Top" Height="52" Width="161" Background="#FFA6B1D6"/>
+        <Label Content="Sekretar" HorizontalAlignment="Center" Margin="0,30,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
+        <Button Content="Kreirajte hitan nalog" Click="Kreiraj" HorizontalAlignment="Left" Margin="175,100,0,0" VerticalAlignment="Top" Height="52" Width="161" Background="#FFA6B1D6"/>
     </Grid>
 </Window>
