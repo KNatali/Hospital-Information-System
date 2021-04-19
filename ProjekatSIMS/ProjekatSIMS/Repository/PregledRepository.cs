@@ -12,9 +12,9 @@ namespace Repository
         private String LokacijaFajla;
         private List<Pregled> pregledi;
         private const string putanja = @"..\..\Fajlovi\Pregled.txt";
-        public Model.Pregled SacuvajGuestPregledRepository(DateTime datumPregleda, Model.Pacijent pacijent);
+        //public Model.Pregled SacuvajGuestPregledRepository(DateTime datumPregleda, Model.Pacijent pacijent);
 
-
+        public PregledRepository() { }
         public PregledRepository(String lokacija)
         {
             LokacijaFajla = lokacija;

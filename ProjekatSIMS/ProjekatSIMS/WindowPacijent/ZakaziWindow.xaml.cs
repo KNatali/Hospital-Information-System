@@ -33,7 +33,7 @@ namespace ProjekatSIMS.WindowPacijent
             int trajanje = 30;
             DateTime datum2 = datum1.AddMinutes(trajanje);
 
-            p.Tip = TipPregleda.Standrardni;
+            p.Tip = TipPregleda.Standardni;
             p.Pocetak = datum1;
             p.Trajanje = trajanje;
             Pacijent pac = new Pacijent { Jmbg = jmbg, Ime = ime, Prezime = prezime };

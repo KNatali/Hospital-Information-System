@@ -58,6 +58,7 @@ namespace ProjekatSIMS
 
             prostorija.pregled = null;
             prostorija.inventar = null;
+            prostorija.slobodna = true;
 
             List<Prostorija> prostorije = new List<Prostorija>();
             if (cuvanje.UcitajProstorije() == null)
