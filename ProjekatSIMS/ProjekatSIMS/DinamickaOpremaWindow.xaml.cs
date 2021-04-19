@@ -51,6 +51,20 @@ namespace ProjekatSIMS
             CuvanjeProstorija cuvanje = new CuvanjeProstorija(@"..\..\Fajlovi\Prostorije.txt");
             List<Prostorija> prostorije = new List<Prostorija>();
             prostorije = cuvanje.UcitajProstorije();
+
+            foreach (Prostorija p in prostorije)
+            {
+                foreach (Inventar i in p.inventar)
+                {
+                    if (i.id == inventar.id)
+                    {
+                        MessageBox.Show("Vec postoji inventar sa tom sifrom!");
+                        break;
+
+                    }
+                }
+            }
+
             foreach (Prostorija p in prostorije)
             {
 

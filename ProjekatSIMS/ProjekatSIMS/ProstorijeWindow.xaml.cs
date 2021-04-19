@@ -158,6 +158,20 @@ namespace ProjekatSIMS
             this.Close();
         }
 
-        
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Prostorija p = (Prostorija)dgrProstorije.SelectedItems[0];
+            if(Convert.ToInt32(p.id) == 0)
+            {
+                DinamickaOpremaWindow din = new DinamickaOpremaWindow();
+                din.ShowDialog();
+            }
+            else
+            {
+                StatickaOpremaWindow st = new StatickaOpremaWindow(p);
+                st.ShowDialog();
+            }
+            
+        }
     }
 }
