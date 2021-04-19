@@ -24,7 +24,7 @@
                  Margin="86,17,550,160" Width="165" Height="35" />
         <TextBox Grid.Row="1" Name="Sprat" Text="{Binding Path=sprat}" 
          DataContext="{Binding ElementName=dgrProstorije, Path=SelectedItem}"
-                 Margin="86,74,549,108" Width="165" Height="35"/>
+  Margin="86,74,549,108" Width="165" Height="35"/>
 
         <Button Content="Izmeni" Click="izmeni"  HorizontalAlignment="Left" Margin="73,175,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="0.328,-0.165" Height="29" Width="77"/>
         <Button Content="Dodaj" Click="dodaj" HorizontalAlignment="Left" Margin="323,175,0,0" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="29"/>

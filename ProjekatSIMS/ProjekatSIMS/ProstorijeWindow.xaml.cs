@@ -94,6 +94,11 @@ namespace ProjekatSIMS
             prostorije = cuvanje.UcitajProstorije();
             foreach (Prostorija prostorija in prostorije)
             {
+                if(Convert.ToInt32(Id.Text) == 0 )
+                {
+                    MessageBox.Show("Nemoguce izmeniti magacin!");
+                    break;
+                }
                 if (Id.Text == prostorija.id)
                 {
                     prostorija.sprat = Convert.ToInt32(Sprat.Text);
@@ -132,8 +137,14 @@ namespace ProjekatSIMS
             CuvanjeProstorija cuvanje = new CuvanjeProstorija(@"..\..\Fajlovi\Prostorije.txt");
             List<Prostorija> prostorije = cuvanje.UcitajProstorije();
             foreach(Prostorija pros in prostorije)
+
             {
-                if(p.id == pros.id)
+                if (Convert.ToInt32(Id.Text) == 0)
+                {
+                    MessageBox.Show("Nemoguce je obrisati magacin!");
+                    break;
+                }
+                if (p.id == pros.id)
                 {
                     prostorije.Remove(pros);
                     break;
