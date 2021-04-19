@@ -25,6 +25,7 @@ namespace Model
    
       public int Id { get; set; }
 
+
       public DateTime Pocetak { get; set;}
       public int Trajanje { get; set; }
       public TipPregleda Tip { get; set; }
@@ -35,6 +36,7 @@ namespace Model
       
      
       public Doktor GetDoktor()
+
       {
          return doktor;
       }

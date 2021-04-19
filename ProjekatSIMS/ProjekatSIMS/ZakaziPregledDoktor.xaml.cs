@@ -32,7 +32,7 @@ namespace ProjekatSIMS
             List<Prostorija> prostorije = new List<Prostorija>();
             Ordinacije = new List<Prostorija>();
             //ucitavanje ordinacija u combobox
-            using (StreamReader r = new StreamReader(@"..\..\Fajlovi\Prostorija.txt"))
+            using (StreamReader r = new StreamReader(@"..\..\..\Fajlovi\Prostorija.txt"))
             {
 
                 string json = r.ReadToEnd();

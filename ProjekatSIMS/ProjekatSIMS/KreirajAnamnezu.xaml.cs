@@ -50,7 +50,7 @@ namespace ProjekatSIMS
                  lista.Add(a);
              }*/
             
-            using (StreamReader r = new StreamReader(@"..\..\Fajlovi\Anamneza.txt"))
+            using (StreamReader r = new StreamReader(@"..\..\..\Fajlovi\Anamneza.txt"))
             {
                 string json = r.ReadToEnd();
                lista = JsonConvert.DeserializeObject<List<Anamneza>>(json);

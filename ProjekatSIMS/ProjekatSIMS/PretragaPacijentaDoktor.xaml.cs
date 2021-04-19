@@ -26,7 +26,7 @@ namespace ProjekatSIMS
             InitializeComponent();
 
             List<Pacijent> items = new List<Pacijent>();
-            using (StreamReader r = new StreamReader(@"..\..\Fajlovi\Pacijent.txt"))
+            using (StreamReader r = new StreamReader(@"..\..\..\Fajlovi\Pacijent.txt"))
             {
                 string json = r.ReadToEnd();
                 items = JsonConvert.DeserializeObject<List<Pacijent>>(json);

@@ -16,7 +16,9 @@ namespace Model
         public VrstaProstorije vrsta { get; set; }
 
         public Pregled[] pregled { get; set; }
+
         public List<Inventar> inventar { get; set; }
+
         public bool slobodna { get; set; }
 
         public Prostorija(String id, int sprat, VrstaProstorije prostorija) {
@@ -43,6 +45,7 @@ namespace Model
    }
 
      
+
 
 
 }

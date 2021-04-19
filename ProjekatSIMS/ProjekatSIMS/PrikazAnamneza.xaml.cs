@@ -32,7 +32,7 @@ namespace ProjekatSIMS
 
             List<Anamneza> anamneze = new List<Anamneza>();
             Anamneze = new List<Anamneza>();
-            using (StreamReader r = new StreamReader(@"..\..\Fajlovi\Anamneza.txt"))
+            using (StreamReader r = new StreamReader(@"..\..\..\Fajlovi\Anamneza.txt"))
             {
                 string json = r.ReadToEnd();
                 anamneze = JsonConvert.DeserializeObject<List<Anamneza>>(json);
