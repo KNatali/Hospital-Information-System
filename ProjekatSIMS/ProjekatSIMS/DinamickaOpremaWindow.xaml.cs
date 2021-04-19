@@ -76,7 +76,35 @@ namespace ProjekatSIMS
         }
         private void izmeni(object sender, RoutedEventArgs e)
         {
-           
+
+            Inventar inventar = new Inventar();
+            inventar = (Inventar)dgrDinamickaOprema.SelectedItems[0];
+
+
+            CuvanjeProstorija cuvanje = new CuvanjeProstorija(@"..\..\Fajlovi\Prostorije.txt");
+            List<Prostorija> prostorije = cuvanje.UcitajProstorije();
+            foreach (Prostorija pros in prostorije)
+
+            {
+                if (Convert.ToInt32(pros.id) == 0)
+                {
+                    foreach (Inventar i in pros.inventar)
+                    {
+                        if (i.id == inventar.id) //pronasli smo trazeni inventar
+                        {
+                            i.kolicina = Convert.ToInt32(Kolicina.Text);
+
+                        }
+                    }
+                }
+            }
+
+
+
+            cuvanje.Sacuvaj(prostorije);
+
+            MessageBox.Show("Inventar je rasporedjen!");
+            this.Close();
 
         }
         private void obrisi(object sender, RoutedEventArgs e)
