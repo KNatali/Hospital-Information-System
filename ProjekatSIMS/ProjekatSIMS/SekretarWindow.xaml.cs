@@ -18,6 +18,20 @@ namespace ProjekatSIMS
         {
             InitializeComponent();
         }
+        private void Nazad(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+        private void Kreiranje_profila(object sender, RoutedEventArgs e)
+        {
+            KreirajProfilWindow kp = new KreirajProfilWindow();
+            kp.Show();
+        }
+        private void Pretrazi_pacijente(object sender, RoutedEventArgs e)
+        {
+            PretraziPacijenteSekretarWindow pp = new PretraziPacijenteSekretarWindow();
+            pp.Show();
+        }
         private void Kalendar(object sender, RoutedEventArgs e)
         {
             KalendarPregledaSWindow kp = new KalendarPregledaSWindow();

@@ -4,6 +4,7 @@
 // Purpose: Definition of Class Pacijent
 
 using System;
+using System.Collections.Generic;
 
 namespace Model
 {
@@ -17,9 +18,9 @@ namespace Model
       
       public Boolean ObrisiPacijent()
       {
-         // TODO: implement
-         return true;
-      }
+            // TODO: implement
+            return true;
+        }
    
       public System.Collections.ArrayList pregled;
       
@@ -82,5 +83,7 @@ namespace Model
       }
       public ZdravsteniKarton zdravsteniKarton { get; set; }
 
+
     }
+
 }

@@ -1,0 +1,33 @@
+﻿<Window x:Class="ProjekatSIMS.PretraziPacijenteSekretarWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjekatSIMS"
+        mc:Ignorable="d"
+        Title="PretraziPacijenteSekretarWindow" Height="450" Width="800">
+    <Grid>
+        <Button Content="Početna stranica" Click="Nazad" HorizontalAlignment="Left" Height="40" Margin="90,360,0,0" VerticalAlignment="Top" Width="100" Background="#FFA6B1D6"/>
+        <Button Content="Pretraži" Click="Pretraga" HorizontalAlignment="Left" Height="40" Margin="90,200,0,0" VerticalAlignment="Top" Width="100" Background="#FFA6B1D6"/>
+        <Button Content="Prikaži sve" Click="Prikaz" HorizontalAlignment="Left" Height="40" Margin="90,280,0,0" VerticalAlignment="Top" Width="100" Background="#FFA6B1D6"/>
+        <Label Content="Pretražite listu pacijenata" HorizontalAlignment="Left" Height="30" Margin="60,40,0,0" VerticalAlignment="Top" Width="156" FontWeight="Bold"/>
+        <Label Content="Ime" HorizontalAlignment="Left" Height="25" Margin="30,94,0,0" VerticalAlignment="Top" Width="145"/>
+        <TextBox HorizontalAlignment="Left" Name="Ime" Margin="140,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Prezime" HorizontalAlignment="Left" Height="25" Margin="30,134,0,0" VerticalAlignment="Top" Width="145"/>
+        <TextBox HorizontalAlignment="Left" Name="Prezime" Margin="140,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+
+        <DataGrid x:Name="dataGridPacijenti" ItemsSource="{Binding Path=Pacijenti}" IsReadOnly="True"
+                  SelectionMode="Single" Visibility="Hidden" AutoGenerateColumns="False" Margin="300,40,30,42">
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Header="JMBG" Binding="{Binding Jmbg}" Width="100"/>
+                <DataGridTextColumn Header="Ime" Binding="{Binding Ime}" Width="80"/>
+                <DataGridTextColumn Header="Prezime" Binding="{Binding Prezime}" Width="80"/>
+                <DataGridTextColumn Header="Datum rođenja" Binding="{Binding DatumRodjenja}" Width="105"/>
+                <DataGridTextColumn Header="Telefon" Binding="{Binding BrojTelefona}" Width="*"/>
+
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Window>

@@ -7,6 +7,7 @@ namespace Model
       public String Jmbg { get; set; }
 
 
+
       public String Ime { get; set; }
 
 
@@ -17,9 +18,11 @@ namespace Model
         public String BrojTelefona { get; set; }
 
 
+
         public RegistrovaniKorisnik registrovaniKorisnik { get; set; }
         public Notifikacija notifikacija { get; set; }
         public Notifikacija GetNotifikacija()
+
 
 
       {

@@ -9,15 +9,26 @@ namespace Repository
    public class PregledRepository
    {
         private String lokacija;
+
+        private List<ZdravsteniKarton> zk;
+
         private List<Pregled> pregledi;
         private String LokacijaFajla;
         
         private const string putanja = @"..\..\..\Fajlovi\Pregled.txt";
        
+
         public PregledRepository(String l)
         {
             lokacija = l;
         }
+
+        public void SacuvajAlergen(List<ZdravsteniKarton> karton)
+        {
+            string newJson = JsonConvert.SerializeObject(karton);
+            File.WriteAllText(lokacija, newJson);
+        }
+
         public void SacuvajPregledSekretar(List<Pregled> p)
         {
             string newJson = JsonConvert.SerializeObject(p);
@@ -31,6 +42,15 @@ namespace Repository
                 pregledi = JsonConvert.DeserializeObject<List<Pregled>>(json);
             }
             return pregledi;
+        }
+     public List<ZdravsteniKarton> DobaviAlergene()
+        {
+            using (StreamReader r = new StreamReader(lokacija))
+            {
+                string json = r.ReadToEnd();
+                zk = JsonConvert.DeserializeObject<List<ZdravsteniKarton>>(json);
+            }
+            return zk;
         }
 
 

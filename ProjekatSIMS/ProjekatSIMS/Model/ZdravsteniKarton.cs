@@ -65,10 +65,10 @@ namespace Model
             tmpAnamneza.Clear();
          }
       }
-      public Pacijent pacijent;
+      public Pacijent pacijent { get; set; }
    
-      private List<String> Alergeni;
-      private List<String> Terapija;
+      public List<String> Alergeni { get; set; }
+      public List<String> Terapija { get; set; }
    
    }
 }
