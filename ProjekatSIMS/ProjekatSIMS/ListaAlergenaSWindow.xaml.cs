@@ -18,6 +18,7 @@ namespace ProjekatSIMS
 {
     public partial class ListaAlergenaSWindow : Window
     {
+        public ZdravsteniKarton zdrkarton { get; set; }
         public List<ZdravsteniKarton> Karton { get; set; }
         public List<String> Ale { get; set; }
         public ListaAlergenaSWindow(Pacijent p)
@@ -37,16 +38,24 @@ namespace ProjekatSIMS
             MessageBox.Show(al.Count.ToString());
 
         }
+        private void Sacuvaj(object sender, RoutedEventArgs e)
+        {
+            //zdrkarton.Alergeni = Naziv.Text;
+            this.Close();
+        }
         private void Nazad(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
         private void Dodavanje(object sender, RoutedEventArgs e)
         {
-            
-            /*this.Close();
+            /*List<String> a = Naziv.ToString();
+            Pacijent p = new Pacijent();
+            ZdravsteniKarton z = new ZdravsteniKarton();
+            z.Alergeni = a;*/
+            this.Close();
             NoviAlergenSWindow na = new NoviAlergenSWindow();
-            na.Show();*/
+            na.Show();
         }
     }
 }

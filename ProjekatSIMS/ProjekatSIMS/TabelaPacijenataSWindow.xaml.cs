@@ -1,4 +1,5 @@
 ﻿using Model;
+using Repository;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -21,7 +22,7 @@ namespace ProjekatSIMS
             InitializeComponent();
             this.DataContext = this;
             Pacijenti = new List<Pacijent>();
-            CuvanjePacijenta fajl = new CuvanjePacijenta(@"..\..\Fajlovi\Pacijent.txt");
+            OsobaRepository fajl = new OsobaRepository(@"..\..\Fajlovi\Pacijent.txt");
             Pacijenti = fajl.DobaviPacijente();
         }
         private void Nazad(object sender, RoutedEventArgs e)

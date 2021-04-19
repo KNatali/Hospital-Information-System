@@ -1,4 +1,8 @@
+using Model;
+using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace Repository
 {
@@ -9,6 +13,26 @@ namespace Repository
          // TODO: implement
          return null;
       }
-   
-   }
+        private String lokacija;
+        private List<Pacijent> pacijenti;
+        public OsobaRepository(String l)
+        {
+            lokacija = l;
+        }
+        public void Sacuvaj(List<Pacijent> p)
+        {
+            string newJson = JsonConvert.SerializeObject(p);
+            File.WriteAllText(lokacija, newJson);
+        }
+        public List<Pacijent> DobaviPacijente()
+        {
+            using (StreamReader r = new StreamReader(lokacija))
+            {
+                string json = r.ReadToEnd();
+                pacijenti = JsonConvert.DeserializeObject<List<Pacijent>>(json);
+            }
+            return pacijenti;
+        }
+
+    }
 }

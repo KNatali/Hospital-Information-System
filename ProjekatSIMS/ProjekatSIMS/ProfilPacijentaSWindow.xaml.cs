@@ -1,4 +1,5 @@
 ﻿using Model;
+using Repository;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -15,7 +16,7 @@ namespace ProjekatSIMS
 {
     public partial class ProfilPacijentaSWindow : Window
     {
-        public CuvanjePacijenta fajl { get; set; }
+        public OsobaRepository fajl { get; set; }
         public List<Pacijent> Pacijenti { get; set; }
         public Pacijent pac { get; set; }
         public ProfilPacijentaSWindow(String ime, String prezime)
@@ -24,7 +25,7 @@ namespace ProjekatSIMS
             this.DataContext = this;
             Pacijenti = new List<Pacijent>();
             List<Pacijent> ListaPacijenata = new List<Pacijent>();
-            CuvanjePacijenta fajl = new CuvanjePacijenta(@"..\..\Fajlovi\Pacijent.txt");
+            OsobaRepository fajl = new OsobaRepository(@"..\..\Fajlovi\Pacijent.txt");
             ListaPacijenata = fajl.DobaviPacijente();
             foreach (Pacijent p in ListaPacijenata)
             {
@@ -43,7 +44,7 @@ namespace ProjekatSIMS
             pac.Email = Mail.Text;
             pac.Adresa = Adresa.Text;
             List<Pacijent> ListaPacijenata = new List<Pacijent>();
-            CuvanjePacijenta fajl = new CuvanjePacijenta(@"..\..\Fajlovi\Pacijent.txt");
+            OsobaRepository fajl = new OsobaRepository(@"..\..\Fajlovi\Pacijent.txt");
             ListaPacijenata = fajl.DobaviPacijente();
             foreach (Pacijent p in ListaPacijenata)
             {
@@ -74,7 +75,7 @@ namespace ProjekatSIMS
                 case MessageBoxResult.Yes:
                     if (p.ObrisiPacijent() == true)
                     {
-                        CuvanjePacijenta fajl = new CuvanjePacijenta(@"..\..\Fajlovi\Pacijent.txt");
+                        OsobaRepository fajl = new OsobaRepository(@"..\..\Fajlovi\Pacijent.txt");
                         List<Pacijent> pacijent = fajl.DobaviPacijente();
                         foreach (Pacijent pa in pacijent)
                         {

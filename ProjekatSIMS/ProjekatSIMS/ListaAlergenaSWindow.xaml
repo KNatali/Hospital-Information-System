@@ -7,22 +7,19 @@
         mc:Ignorable="d"
         Title="ListaAlergenaSWindow" Height="450" Width="800">
     <Grid>
-        <DataGrid x:Name="dataGridAlergeni" ItemsSource="{Binding Path=Alergeni}" IsReadOnly="True"
+        <DataGrid x:Name="dataGridAlergeni" ItemsSource="{Binding Path=ZdravsteniKarton}" IsReadOnly="True"
                   SelectionMode="Single" AutoGenerateColumns="False" Margin="40,60,40,180">
             <DataGrid.Columns>
 
-                <DataGridTextColumn Header="Alergen" Binding="{Binding Alergen}" Width="*"/>
+                <DataGridTextColumn Header="Svi alergeni iz zdravstvenog kartona" Binding="{Binding Alergeni}" Width="*"/>
 
             </DataGrid.Columns>
-            <Grid Grid.Column="0" Grid.Row="1" DataContext="{Binding ElementName=dataGridAlergeni,Path=SelectedItem}">
-                <TextBlock Grid.Column="0" Grid.Row="0">Naziv alergena</TextBlock>
-                <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Path=Alergen}"></TextBox>
-            </Grid>
         </DataGrid>
-        
+
         <Label Content="Naziv alergena" HorizontalAlignment="Left" Height="25" Margin="40,290,0,0" VerticalAlignment="Top" Width="145"/>
         <TextBox HorizontalAlignment="Left" Name="Naziv" Margin="170,290,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="480"/>
         <Button Content="Nazad na profil" Click="Nazad" HorizontalAlignment="Left" Margin="40,350,0,0" VerticalAlignment="Top" Height="40" Width="100" Background="#FFA6B1D6"/>
         <Button Content="Dodaj novi" Click="Dodavanje" HorizontalAlignment="Left" Margin="660,350,0,0" VerticalAlignment="Top" Height="40" Width="100" Background="#FFA6B1D6"/>
+        <Button Content="Sačuvaj izmene" Click="Sacuvaj" HorizontalAlignment="Left" Margin="660,283,0,0" VerticalAlignment="Top" Height="40" Width="100" Background="#FFA6B1D6"/>
     </Grid>
 </Window>
