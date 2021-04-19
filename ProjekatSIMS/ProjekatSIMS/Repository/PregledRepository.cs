@@ -6,10 +6,13 @@ using System.IO;
 
 namespace Repository
 {
+
     public class PregledRepository
     {
         private String LokacijaFajla;
         private List<Pregled> pregledi;
+        private const string putanja = @"..\..\Fajlovi\Pregled.txt";
+        public Model.Pregled SacuvajGuestPregledRepository(DateTime datumPregleda, Model.Pacijent pacijent);
 
 
         public PregledRepository(String lokacija)
@@ -24,23 +27,7 @@ namespace Repository
             return null;
         }
 
-        public List<Pregled> GetListaPregledaRepository(DateTime zaDan)
-        {
-            // TODO: implement
-            return null;
-        }
-
-        public List<Pregled> GetListaPregledaRepository(String jmbg)
-        {
-            // TODO: implement
-            return null;
-        }
-
-        public Model.Pregled GetDatumRepository(DateTime datum)
-        {
-            // TODO: implement
-            return null;
-        }
+      
 
         public List<Pregled> DobaviSvePregledePacijent()
         {
@@ -52,6 +39,39 @@ namespace Repository
             return pregledi;
         }
 
+   
+      
+      public List<Pregled> GetListaPregledaRepository(DateTime zaDan)
+      {
+         // TODO: implement
+         return null;
+      }
+      
+      public List<Pregled> GetListaPregledaRepository(String jmbg)
+      {
+         // TODO: implement
+         return null;
+      }
+      
+      public Model.Pregled GetDatumRepository(DateTime datum)
+      {
+         // TODO: implement
+         return null;
+      }
+      
+      
+      public List<Pregled> DobaviSvePregledeDoktor()
+      {
+            List < Pregled > pregledi=new List<Pregled>();
+            using (StreamReader r = new StreamReader(putanja))
+            {
+                string json = r.ReadToEnd();
+                pregledi = JsonConvert.DeserializeObject<List<Pregled>>(json);
+            }
+            return pregledi;
+        }
+
+
         public void SacuvajPregledPacijent(List<Pregled> pregledi)
         {
             string newJson = JsonConvert.SerializeObject(pregledi);
@@ -59,17 +79,16 @@ namespace Repository
 
         }
 
+    
 
-        public List<Pregled> DobaviSvePregledeDoktor()
-        {
-            // TODO: implement
-            return null;
+      
+      public void SacuvajPregledDoktor(List<Pregled> pregledi)
+      {
+
+            string newJson = JsonConvert.SerializeObject(pregledi);
+            File.WriteAllText(putanja, newJson);
         }
+   
+}
 
-        public void SacuvajPregledDoktor()
-        {
-            // TODO: implement
-        }
-
-    }
 }

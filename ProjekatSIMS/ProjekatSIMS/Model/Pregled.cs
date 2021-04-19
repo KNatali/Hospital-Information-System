@@ -24,16 +24,17 @@ namespace Model
       }
    
       public int Id { get; set; }
-      public DateTime Pocetak { get; set; }
-        public int Trajanje { get; set; }
-        public TipPregleda Tip { get; set; }
-        public StatusPregleda StatusPregleda { get; set; }
 
-        public Prostorija prostorija { get; set; }
-        public Doktor doktor { get; set; }
-
-
-        public Doktor GetDoktor()
+      public DateTime Pocetak { get; set;}
+      public int Trajanje { get; set; }
+      public TipPregleda Tip { get; set; }
+      public StatusPregleda StatusPregleda { get; set; }
+      
+      public Prostorija prostorija { get; set; }
+      public Doktor doktor { get; set; }
+      
+     
+      public Doktor GetDoktor()
       {
          return doktor;
       }
@@ -55,16 +56,13 @@ namespace Model
             }
          }
       }
-      public Pacijent pacijent;
-      
-      /// <pdGenerated>default parent getter</pdGenerated>
+        public Pacijent pacijent { get; set; }
+    
       public Pacijent GetPacijent()
       {
          return pacijent;
       }
-      
-      /// <pdGenerated>default parent setter</pdGenerated>
-      /// <param>newPacijent</param>
+     
       public void SetPacijent(Pacijent newPacijent)
       {
          if (this.pacijent != newPacijent)

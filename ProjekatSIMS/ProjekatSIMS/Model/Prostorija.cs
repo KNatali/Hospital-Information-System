@@ -4,6 +4,7 @@
 // Purpose: Definition of Class Prostorija
 
 using System;
+using System.Collections;
 
 namespace Model
 {
@@ -24,4 +25,7 @@ namespace Model
       public Inventar[] inventar { get; set; }
    
    }
+
+     
+
 }

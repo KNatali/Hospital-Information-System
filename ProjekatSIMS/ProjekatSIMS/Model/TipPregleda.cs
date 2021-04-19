@@ -2,11 +2,12 @@ using System;
 
 namespace Model
 {
-   public enum TipPregleda
-   {
-      Standrardni,
-      Operacija
-   
-   }
-    
+
+    public enum TipPregleda
+    {
+        Standardni,
+        Operacija
+
+    }
+
 }

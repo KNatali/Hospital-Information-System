@@ -7,13 +7,14 @@ using System;
 
 namespace Model
 {
-   public class VrstaProstorije
-   {
-      private EnumConstant sala;
-      private EnumConstant soba;
-      private EnumConstant ordinacija;
-      private EnumConstant magacin;
-      private EnumConstant kancelarija;
-   
-   }
+    public enum VrstaProstorije
+    {
+
+        Sala,
+        Soba,
+        Ordinacija,
+        Magacin,
+        Kancelarija
+
+    }
 }
