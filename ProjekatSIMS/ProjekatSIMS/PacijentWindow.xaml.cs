@@ -28,16 +28,11 @@ namespace ProjekatSIMS
             foreach (Recept r in Recepti)
             {
                 int res = DateTime.Compare(r.DatumPropisivanjaLeka.AddHours(-4), DateTime.UtcNow);
-                int res2 = DateTime.Compare(DateTime.UtcNow, r.DatumPropisivanjaLeka.AddHours(6));
                 
-
-                
-                //if (r.DatumPropisivanjaLeka.AddHours(4) >= Now /*&& (r.DatumPropisivanjaLeka.AddHours(4) <= Now.AddDays(1)) */)
                 if(res>0)
                 {
                     if((r.DatumPropisivanjaLeka.Month == DateTime.UtcNow.Month) && (r.DatumPropisivanjaLeka.Day == DateTime.UtcNow.Day) && (r.DatumPropisivanjaLeka.Year == DateTime.UtcNow.Year))
-                    //if (r.DatumPropisivanjaLeka.AddHours(6) <= Now)
-                    
+                   
                     {
                     new ToastContentBuilder()
                    .AddArgument("action", "viewConversation")

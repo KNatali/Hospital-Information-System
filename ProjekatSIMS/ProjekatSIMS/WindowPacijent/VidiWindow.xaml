@@ -8,7 +8,7 @@
         Title="VidiWindow" Height="450" Width="800">
     <Grid>
         <DataGrid x:Name="dataGridPregledi" ItemsSource="{Binding Pregledi}" IsReadOnly="True"
-                  SelectionMode="Single" AutoGenerateColumns="False" Margin="32,0,287,0" Height="317" VerticalAlignment="Center">
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="32,0,245,0" Height="317" VerticalAlignment="Center">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Pocetak" Binding="{Binding Pocetak}"/>
                 <DataGridTextColumn Header="Trajanje" Binding="{Binding Trajanje}"/>
@@ -20,6 +20,7 @@
 
             </DataGrid.Columns>
         </DataGrid>
+        <Button Content="Zatvori" HorizontalAlignment="Left" Margin="664,377,0,0" VerticalAlignment="Top" Height="33" Width="78" Click="Button_Click"/>
 
     </Grid>
 

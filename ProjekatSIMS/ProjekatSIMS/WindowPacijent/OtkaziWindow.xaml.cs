@@ -38,6 +38,8 @@ namespace ProjekatSIMS
             File.WriteAllText(@"..\..\Fajlovi\Pregled.txt", newJson);
             MessageBox.Show("Vas pregled je otkazan.");
             this.Close();
+            VidiWindow vw = new VidiWindow();
+            vw.Show();
 
 
 

@@ -22,5 +22,10 @@ namespace ProjekatSIMS
             PregledRepository fajl = new PregledRepository(@"..\..\Fajlovi\Pregled.txt");
             Pregledi = fajl.DobaviSvePregledePacijent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
