@@ -60,7 +60,10 @@ namespace ProjekatSIMS
                     Inventar[] array = p.inventar;
                     foreach (Inventar i in array)
                     {
-                        //proveri da li postoji inventar sa tom sifrom ili imenom 
+                        if(i.ime == Ime.Text || i.id == Convert.ToInt32(Id.Text))
+                        {
+                            break;
+                        }
                     }
                         var duzina = p.inventar.Length;
                     if(array == null)
