@@ -6,9 +6,7 @@ using System.Windows;
 
 namespace ProjekatSIMS.WindowPacijent
 {
-    /// <summary>
-    /// Interaction logic for ZakaziWindow.xaml
-    /// </summary>
+
     public partial class ZakaziWindow : Window
     {
         public ZakaziWindow()
@@ -42,15 +40,27 @@ namespace ProjekatSIMS.WindowPacijent
             p.pacijent = pac;
             Doktor dr = new Doktor { Ime = imeDoktora, Prezime = prezimeDoktora };
             p.doktor = dr;
-            p.StatusPergleda = StatusPregleda.Zakazan;
+            p.StatusPregleda = StatusPregleda.Zakazan;
 
 
             PregledRepository fajl = new PregledRepository(@"..\..\Fajlovi\Pregled.txt");
             List<Pregled> pregledi = fajl.DobaviSvePregledePacijent();
+
+            ProstorijaRepository file = new ProstorijaRepository(@"..\..\Fajlovi\Prostorija.txt");
+            List<Prostorija> prostorije = file.DobaviSveProstorije();
+            foreach (Prostorija pr in prostorije)
+            {
+                if (pr.slobodna == true)
+                {
+                    p.prostorija = pr;
+                    pr.slobodna = false;
+                    break;
+                }
+            }
+
             pregledi.Add(p);
+
             fajl.SacuvajPregledPacijent(pregledi);
-
-
 
             MessageBox.Show("Pregled je uspesno zakazan.");
             this.Close();

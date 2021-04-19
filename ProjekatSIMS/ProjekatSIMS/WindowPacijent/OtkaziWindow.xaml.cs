@@ -33,7 +33,6 @@ namespace ProjekatSIMS
 
                 Pregledi.Remove(p);
 
-
             }
             string newJson = JsonConvert.SerializeObject(Pregledi);
             File.WriteAllText(@"..\..\Fajlovi\Pregled.txt", newJson);

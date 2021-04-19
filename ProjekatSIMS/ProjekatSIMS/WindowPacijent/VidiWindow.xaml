@@ -8,18 +8,19 @@
         Title="VidiWindow" Height="450" Width="800">
     <Grid>
         <DataGrid x:Name="dataGridPregledi" ItemsSource="{Binding Pregledi}" IsReadOnly="True"
-                  SelectionMode="Single" AutoGenerateColumns="False" Margin="43,61,54,0" Height="229" VerticalAlignment="Top">
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="32,0,287,0" Height="317" VerticalAlignment="Center">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id pregleda" Binding="{Binding Id}"/>
-                <DataGridTextColumn Header="Vreme pocetka" Binding="{Binding Pocetak}"/>
+                <DataGridTextColumn Header="Pocetak" Binding="{Binding Pocetak}"/>
                 <DataGridTextColumn Header="Trajanje" Binding="{Binding Trajanje}"/>
-                <DataGridTextColumn Header="Ime pacijenta" Binding="{Binding pacijent.Ime}"/>
-                <DataGridTextColumn Header="Prezime pacijenta" Binding="{Binding pacijent.Prezime}"/>
-                <DataGridTextColumn Header="Tip pregleda" Binding="{Binding pacijent.Tip}"/>
-                <DataGridTextColumn Header="Status pregleda" Binding="{Binding pacijent.StatusPregleda}"/>
+                <DataGridTextColumn Header="Tip pregleda" Binding="{Binding Tip}"/>
+                <DataGridTextColumn Header="Ime doktora" Binding="{Binding doktor.Ime}"/>
+                <DataGridTextColumn Header="Prezime doktora" Binding="{Binding doktor.Prezime}"/>
+                <DataGridTextColumn Header="Prostorija" Binding="{Binding prostorija.id}"/>
+                <DataGridTextColumn Header="Sprat" Binding="{Binding prostorija.sprat}"/>
 
             </DataGrid.Columns>
         </DataGrid>
 
     </Grid>
+
 </Window>

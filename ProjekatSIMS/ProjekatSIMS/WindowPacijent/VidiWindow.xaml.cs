@@ -1,12 +1,11 @@
 ﻿using Model;
 using Repository;
-using System;
 using System.Collections.Generic;
 using System.Windows;
 
 namespace ProjekatSIMS
 {
-   
+
     public partial class VidiWindow : Window
     {
         public List<Pregled> Pregledi

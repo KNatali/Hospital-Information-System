@@ -16,6 +16,17 @@
         <Button Content="Vidi preglede" Click="Click_vidi" Width="100" Height="40" HorizontalAlignment="Left" Margin="220,317,0,0" VerticalAlignment="Top"/>
 
 
+        <DataGrid x:Name="dataGridRecepti" ItemsSource="{Binding Recepti}" IsReadOnly="True"
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="380,125,41,0" Height="229" VerticalAlignment="Top">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Naziv leka" Binding="{Binding NazivLeka}"/>
+                <DataGridTextColumn Header="Kolicina" Binding="{Binding Kolicina}"/>
+                <DataGridTextColumn Header="DatumPropisivanjaLeka" Binding="{Binding DatumPropisivanjaLeka}"/>
+                <DataGridTextColumn Header="Uputstvo" Binding="{Binding Uputstvo}"/>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        
 
 
     </Grid>

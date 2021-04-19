@@ -1,27 +1,58 @@
-﻿using ProjekatSIMS.WindowPacijent;
+﻿ using Microsoft.Toolkit.Uwp.Notifications;
+using Model;
+using ProjekatSIMS.WindowPacijent;
+using Repository;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ProjekatSIMS
 {
-    /// <summary>
-    /// Interaction logic for PacijentWindow.xaml
-    /// </summary>
+
     public partial class PacijentWindow : Window
     {
+        public List<Recept> Recepti
+        {
+            get;
+            set;
+        }
+        
         public PacijentWindow()
         {
             InitializeComponent();
             this.DataContext = this;
+            Recepti = new List<Recept>();
+            ReceptRepository fajl = new ReceptRepository(@"..\..\Fajlovi\Recept.txt");
+            Recepti = fajl.DobaviSveRecepte();
+
+            foreach (Recept r in Recepti)
+            {
+                int res = DateTime.Compare(r.DatumPropisivanjaLeka.AddHours(-4), DateTime.UtcNow);
+                int res2 = DateTime.Compare(DateTime.UtcNow, r.DatumPropisivanjaLeka.AddHours(6));
+                
+
+                
+                //if (r.DatumPropisivanjaLeka.AddHours(4) >= Now /*&& (r.DatumPropisivanjaLeka.AddHours(4) <= Now.AddDays(1)) */)
+                if(res>0)
+                {
+                    if((r.DatumPropisivanjaLeka.Month == DateTime.UtcNow.Month) && (r.DatumPropisivanjaLeka.Day == DateTime.UtcNow.Day) && (r.DatumPropisivanjaLeka.Year == DateTime.UtcNow.Year))
+                    //if (r.DatumPropisivanjaLeka.AddHours(6) <= Now)
+                    
+                    {
+                    new ToastContentBuilder()
+                   .AddArgument("action", "viewConversation")
+                   .AddText("Vreme je da uzmete svoju terapiju")
+                   .AddText(r.NazivLeka + " " + r.Kolicina + " " + r.Uputstvo)
+                   .Show();
+
+                    }
+                }
+
+            }
+
+
+
+
         }
 
         private void Click_zakazi(object sender, RoutedEventArgs e)
@@ -47,5 +78,7 @@ namespace ProjekatSIMS
             VidiWindow vw = new VidiWindow();
             vw.Show();
         }
+
+        
     }
 }
