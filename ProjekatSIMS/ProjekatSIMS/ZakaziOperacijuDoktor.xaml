@@ -16,7 +16,7 @@
 
         <Label Content="Sala:" HorizontalAlignment="Left" Margin="60,96,0,0" VerticalAlignment="Top" Height="28"/>
 
-        <Button Content="ZakaziOperaciju" Click="ZakazivanjeOperacije" HorizontalAlignment="Left" Margin="630,345,0,0" VerticalAlignment="Top" Height="42" Width="92" Background="#FFB5CDE2"/>
+        <Button Content="ZakaziOperaciju" Click="ZakazivanjeOperacije" HorizontalAlignment="Left" Margin="606,345,0,0" VerticalAlignment="Top" Height="42" Width="116" Background="#FFB5CDE2"/>
         <ComboBox  Name="Sala" HorizontalAlignment="Left"   
                   Margin="300,102,0,0"   
                   VerticalAlignment="Top"   

@@ -19,18 +19,34 @@ namespace ProjekatSIMS
     /// </summary>
     public partial class ZdravstveniKartonDoktor : Page
     {
-        public ZdravstveniKartonDoktor(Pacijent pacijent)
+        public Pacijent Pacijent { get; set; }
+        public ZdravstveniKartonDoktor(Pacijent p)
         {
             InitializeComponent();
           
             this.DataContext = this;
-            Jmbg.Text = pacijent.Jmbg;
-            Ime.Text = pacijent.Ime;
-            Prezime.Text = pacijent.Prezime;
-            Datum.Text = pacijent.DatumRodjenja.ToString();
-            Email.Text = pacijent.Email;
-            Broj.Text = pacijent.BrojTelefona;
-            Adresa.Text = pacijent.Adresa;
+            Pacijent = p;
+            Jmbg.Text = Pacijent.Jmbg;
+            Ime.Text = Pacijent.Ime;
+            Prezime.Text = Pacijent.Prezime;
+            Datum.Text = Pacijent.DatumRodjenja.ToString();
+            Email.Text = Pacijent.Email;
+            Broj.Text = Pacijent.BrojTelefona;
+            Adresa.Text = Pacijent.Adresa;
+        }
+
+        private void KreiranjeAnamneze(object sender, RoutedEventArgs e)
+        {
+            AnamnezaDoktor a = new AnamnezaDoktor(Pacijent);
+           
+            this.NavigationService.Navigate(a);
+        }
+
+        private void PrikazAnamneza(object sender, RoutedEventArgs e)
+        {
+            PrikazAnamneza a = new PrikazAnamneza(Pacijent);
+
+            this.NavigationService.Navigate(a);
         }
     }
 }
