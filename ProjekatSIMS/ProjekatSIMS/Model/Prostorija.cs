@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace Model
 {
@@ -24,7 +25,7 @@ namespace Model
             this.vrsta = prostorija;
         }
         public Prostorija() { }
-        public Prostorija(String id, int sprat, VrstaProstorije prostorija, Pregled[] pregledi, Inventar[] inventar, bool sl)
+        public Prostorija(String id, int sprat, VrstaProstorije prostorija, Pregled[] pregledi,Inventar[] inventar, bool sl)
         {
             this.id = id;
             this.sprat = sprat;
