@@ -38,7 +38,7 @@ namespace ProjekatSIMS
 
             List<Pregled> pregledi = new List<Pregled>();
             Pregledi = new List<Pregled>();
-            using (StreamReader r = new StreamReader(@"..\..\Fajlovi\Pregled.txt"))
+            using (StreamReader r = new StreamReader(@"..\..\..\Fajlovi\Pregled.txt"))
             {
                 string json = r.ReadToEnd();
                  pregledi = JsonConvert.DeserializeObject<List<Pregled>>(json);

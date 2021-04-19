@@ -33,7 +33,7 @@ namespace ProjekatSIMS
             List<Prostorija> prostorije = new List<Prostorija>();
             Sale = new List<Prostorija>();
             //ucitavanje sala u combobox
-            using (StreamReader r = new StreamReader(@"..\..\Fajlovi\Prostorija.txt"))
+            using (StreamReader r = new StreamReader(@"..\..\..\Fajlovi\Prostorija.txt"))
             {
                 string json = r.ReadToEnd();
                 prostorije = JsonConvert.DeserializeObject<List<Prostorija>>(json);
@@ -84,7 +84,7 @@ namespace ProjekatSIMS
             List<Pacijent> pacijenti = new List<Pacijent>();
             int znak = 0;
 
-            using (StreamReader r = new StreamReader(@"..\..\Fajlovi\Pacijent.txt"))
+            using (StreamReader r = new StreamReader(@"..\..\..\Fajlovi\Pacijent.txt"))
             {
                 string json = r.ReadToEnd();
                 pacijenti = JsonConvert.DeserializeObject<List<Pacijent>>(json);
