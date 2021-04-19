@@ -9,7 +9,7 @@ namespace Model
         public DateTime DatumPropisivanjaLeka { get; set; }
         public String Uputstvo { get; set; }
 
-        public ZdravsteniKarton zdravsteniKarton;
+        public ZdravsteniKarton zdravsteniKarton { get; set; }
 
     }
 }
