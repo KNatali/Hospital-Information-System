@@ -1,12 +1,14 @@
+using Model;
 using System;
 
 namespace Service
 {
    public class InventarService
    {
-      public void RasporediDinamickuOpremu(DateTime datum, Model.Inventar oprema)
+      public void RasporediDinamickuOpremu(DateTime datum, Inventar oprema, Prostorija prostorija)
       {
-         // TODO: implement
+            oprema.prostorija = prostorija;
+
       }
    
       public Repository.InventarRepository inventarRepository;

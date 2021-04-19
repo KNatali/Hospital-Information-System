@@ -82,6 +82,8 @@ namespace Model
          }
       }
       public ZdravsteniKarton zdravsteniKarton { get; set; }
-   
-   }
+
+
+    }
+
 }

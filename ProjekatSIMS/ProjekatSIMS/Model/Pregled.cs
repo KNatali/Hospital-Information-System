@@ -1,8 +1,3 @@
-/***********************************************************************
- * Module:  Pregled.cs
- * Author:  nata1
- * Purpose: Definition of the Class Pregled
- ***********************************************************************/
 
 using System;
 
@@ -28,23 +23,24 @@ namespace Model
          return true;
       }
    
-      public int Id;
-      public DateTime Pocetak;
-      public int Trajanje;
-      public TipPregleda Tip;
-      public StatusPregleda StatusPergleda;
+      public int Id { get; set; }
+
+
+      public DateTime Pocetak { get; set;}
+      public int Trajanje { get; set; }
+      public TipPregleda Tip { get; set; }
+      public StatusPregleda StatusPregleda { get; set; }
       
-      public Prostorija prostorija;
-      public Doktor doktor;
+      public Prostorija prostorija { get; set; }
+      public Doktor doktor { get; set; }
       
-      /// <pdGenerated>default parent getter</pdGenerated>
+     
       public Doktor GetDoktor()
+
       {
          return doktor;
       }
       
-      /// <pdGenerated>default parent setter</pdGenerated>
-      /// <param>newDoktor</param>
       public void SetDoktor(Doktor newDoktor)
       {
          if (this.doktor != newDoktor)
@@ -62,16 +58,13 @@ namespace Model
             }
          }
       }
-      public Pacijent pacijent;
-      
-      /// <pdGenerated>default parent getter</pdGenerated>
+        public Pacijent pacijent { get; set; }
+    
       public Pacijent GetPacijent()
       {
          return pacijent;
       }
-      
-      /// <pdGenerated>default parent setter</pdGenerated>
-      /// <param>newPacijent</param>
+     
       public void SetPacijent(Pacijent newPacijent)
       {
          if (this.pacijent != newPacijent)

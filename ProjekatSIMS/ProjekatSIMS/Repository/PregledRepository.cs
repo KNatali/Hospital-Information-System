@@ -9,17 +9,41 @@ namespace Repository
    public class PregledRepository
    {
         private String lokacija;
+
         private List<ZdravsteniKarton> zk;
+
+        private List<Pregled> pregledi;
+        private String LokacijaFajla;
+        
+        private const string putanja = @"..\..\..\Fajlovi\Pregled.txt";
+       
+
         public PregledRepository(String l)
         {
             lokacija = l;
         }
+
         public void SacuvajAlergen(List<ZdravsteniKarton> karton)
         {
             string newJson = JsonConvert.SerializeObject(karton);
             File.WriteAllText(lokacija, newJson);
         }
-        public List<ZdravsteniKarton> DobaviAlergene()
+
+        public void SacuvajPregledSekretar(List<Pregled> p)
+        {
+            string newJson = JsonConvert.SerializeObject(p);
+            File.WriteAllText(lokacija, newJson);
+        }
+       public List<Pregled> GetListaPregledaSekretar()
+        {
+            using (StreamReader r = new StreamReader(lokacija))
+            {
+                string json = r.ReadToEnd();
+                pregledi = JsonConvert.DeserializeObject<List<Pregled>>(json);
+            }
+            return pregledi;
+        }
+     public List<ZdravsteniKarton> DobaviAlergene()
         {
             using (StreamReader r = new StreamReader(lokacija))
             {
@@ -28,11 +52,41 @@ namespace Repository
             }
             return zk;
         }
+
+
+
+
+   
+        
+
+        public PregledRepository()
+        {
+            
+        }
+        
+
+      
+
+        public List<Pregled> DobaviSvePregledePacijent()
+        {
+            using (StreamReader sr = new StreamReader(LokacijaFajla))
+            {
+                string json = sr.ReadToEnd();
+
+                pregledi = JsonConvert.DeserializeObject<List<Pregled>>(json);
+            }
+            return pregledi;
+        }
+
         public Model.Pregled SacuvajGuestPregledRepository(DateTime datumPregleda, Model.Pacijent pacijent)
       {
          // TODO: implement
          return null;
       }
+
+
+   
+
       
       public List<Pregled> GetListaPregledaRepository(DateTime zaDan)
       {
@@ -52,27 +106,36 @@ namespace Repository
          return null;
       }
       
-      public List<Pregled> DobaviSvePregledePacijent()
-      {
-         // TODO: implement
-         return null;
-      }
-      
-      public void SacuvajPregledPacijent(List<Pregled> pregledi)
-      {
-         // TODO: implement
-      }
       
       public List<Pregled> DobaviSvePregledeDoktor()
       {
-         // TODO: implement
-         return null;
-      }
+            List < Pregled > pregledi=new List<Pregled>();
+            using (StreamReader r = new StreamReader(putanja))
+            {
+                string json = r.ReadToEnd();
+                pregledi = JsonConvert.DeserializeObject<List<Pregled>>(json);
+            }
+            return pregledi;
+        }
+
+
+        public void SacuvajPregledPacijent(List<Pregled> pregledi)
+        {
+            string newJson = JsonConvert.SerializeObject(pregledi);
+            File.WriteAllText(LokacijaFajla, newJson);
+
+        }
+
+    
+
       
-      public void SacuvajPregledDoktor()
+      public void SacuvajPregledDoktor(List<Pregled> pregledi)
       {
-         // TODO: implement
-      }
+
+            string newJson = JsonConvert.SerializeObject(pregledi);
+            File.WriteAllText(putanja, newJson);
+        }
    
-   }
+}
+
 }
