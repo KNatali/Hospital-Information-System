@@ -76,12 +76,12 @@ namespace ProjekatSIMS.Repository
                 string json = sr.ReadToEnd();
                 termini = JsonConvert.DeserializeObject<List<SlobodanTermin>>(json);
                 terminiTmp = JsonConvert.DeserializeObject<List<SlobodanTermin>>(json);
-
+                
 
 
                 foreach (SlobodanTermin t in termini)
                 {
-                    if ((t.PrezimeDoktora == prezimeDoktora) && (t.ImeDoktora == imeDoktora))
+                    if ((t.PrezimeDoktora.Equals(prezimeDoktora)) && (t.ImeDoktora.Equals(imeDoktora)))
                     {
                         terminiTmp.Clear();
                         terminiTmp.Add(t);
@@ -92,17 +92,10 @@ namespace ProjekatSIMS.Repository
                 
             }
             
-            termini.Remove(st);
-            if (terminiFlag == 1)
-            {
-                return terminiTmp;
-            }
-            else
-            {
-                terminiTmp.Clear();
-                return terminiTmp;
-            }
-            
+
+            //termini.Remove(st);
+            return terminiTmp;
+
         }
     }
 }
