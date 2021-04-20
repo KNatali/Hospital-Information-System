@@ -17,7 +17,6 @@
         </DataGrid>
         <Button Content="Nazad na profil" Click="Nazad" HorizontalAlignment="Left" Margin="40,350,0,0" VerticalAlignment="Top" Height="40" Width="100" Background="#FFA6B1D6"/>
         <Button Content="Dodaj novi" Click="Dodavanje" HorizontalAlignment="Left" Margin="660,350,0,0" VerticalAlignment="Top" Height="40" Width="100" Background="#FFA6B1D6"/>
-        <Button Content="Izmeni alergen" Click="Izmeni" HorizontalAlignment="Center" Margin="0,350,0,0" VerticalAlignment="Top" Height="40" Width="100" Background="#FFA6B1D6"/>
 
     </Grid>
 
