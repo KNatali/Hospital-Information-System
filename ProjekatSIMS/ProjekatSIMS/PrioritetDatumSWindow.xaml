@@ -7,6 +7,15 @@
         mc:Ignorable="d"
         Title="PrioritetDatumSWindow" Height="450" Width="800">
     <Grid>
-        
+        <DataGrid x:Name="dataGridSlobodniTermini" ItemsSource="{Binding Termini}" IsReadOnly="True"
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="32,0,514,0" Height="317" VerticalAlignment="Center">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Termin" Binding="{Binding Termin}"/>
+                <DataGridTextColumn Header="Ime doktora" Binding="{Binding ImeDoktora}"/>
+                <DataGridTextColumn Header="Prezime doktora" Binding="{Binding PrezimeDoktora}"/>
+
+            </DataGrid.Columns>
+        </DataGrid>
+
     </Grid>
 </Window>

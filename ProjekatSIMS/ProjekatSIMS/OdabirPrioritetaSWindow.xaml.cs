@@ -44,6 +44,7 @@ namespace ProjekatSIMS
                 PrioritetDatumSWindow pda = new PrioritetDatumSWindow();
                 pda.Show();
             }
+            this.Close();
         }
     }
 }
