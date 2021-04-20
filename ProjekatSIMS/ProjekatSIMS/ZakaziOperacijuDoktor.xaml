@@ -9,8 +9,28 @@
       Title="ZakaziOperacijuDoktor">
 
     <Grid>
-        <Label Content="Jmbg pacijenta:" HorizontalAlignment="Left" Margin="60,40,0,0" VerticalAlignment="Top" Height="28"/>
-        <TextBox Name="Jmbg" HorizontalAlignment="Left" Margin="300,48,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20"/>
+
+        <ComboBox  Name="Pacijent" HorizontalAlignment="Left"   
+                  Margin="300,46,0,0"   
+                  VerticalAlignment="Top"   
+                  Width="120"   
+                  ItemsSource="{Binding Path=Pacijenti}"    
+                >
+
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Path=Jmbg}"/>
+                        <TextBlock Text=" "/>
+                        <TextBlock Text="{Binding Path=Ime}"/>
+                        <TextBlock Text=" "/>
+                        <TextBlock Text="{Binding Path=Prezime}"/>
+
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Label Content="Pacijent:" HorizontalAlignment="Left" Margin="60,40,0,0" VerticalAlignment="Top" Height="28"/>
         <Label Content="Datum operacije:" HorizontalAlignment="Left" Margin="60,157,0,0" VerticalAlignment="Top" Height="26"/>
         <DatePicker Name="Date" HorizontalAlignment="Left" Margin="300,159,0,0" VerticalAlignment="Top" Height="24" Width="120"/>
 
@@ -18,7 +38,7 @@
 
         <Button Content="ZakaziOperaciju" Click="ZakazivanjeOperacije" HorizontalAlignment="Left" Margin="606,345,0,0" VerticalAlignment="Top" Height="42" Width="116" Background="#FFB5CDE2"/>
         <ComboBox  Name="Sala" HorizontalAlignment="Left"   
-                  Margin="300,102,0,0"   
+                  Margin="300,99,0,0"   
                   VerticalAlignment="Top"   
                   Width="120"   
                   ItemsSource="{Binding Path=Sale}"    

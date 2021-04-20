@@ -25,6 +25,7 @@ namespace ProjekatSIMS
     public partial class ZakaziOperacijuDoktor : Page
     {
         public List<Prostorija> Sale { get; set; }
+        public List<Pacijent> Pacijenti { get; set; }
         public ZakaziOperacijuDoktor()
         {
             InitializeComponent();
@@ -32,6 +33,7 @@ namespace ProjekatSIMS
 
             List<Prostorija> prostorije = new List<Prostorija>();
             Sale = new List<Prostorija>();
+            Pacijenti = new List<Pacijent>();
             //ucitavanje sala u combobox
             using (StreamReader r = new StreamReader(@"..\..\..\Fajlovi\Prostorija.txt"))
             {
@@ -46,6 +48,20 @@ namespace ProjekatSIMS
                     Sale.Add(p);
 
             }
+
+            List<Pacijent> pacijenti = new List<Pacijent>();
+            int znak = 0;
+
+            using (StreamReader r = new StreamReader(@"..\..\..\Fajlovi\Pacijent.txt"))
+            {
+                string json = r.ReadToEnd();
+                pacijenti = JsonConvert.DeserializeObject<List<Pacijent>>(json);
+            }
+
+            foreach(Pacijent p in pacijenti)
+            {
+                Pacijenti.Add(p);
+            }
         }
 
         private void ZakazivanjeOperacije(object sender, RoutedEventArgs e)
@@ -54,7 +70,8 @@ namespace ProjekatSIMS
             PregledRepository prep = new PregledRepository();
 
             Pregled p = new Pregled();
-            String jmbg = Jmbg.Text;
+            //String jmbg = Jmbg.Text;
+            p.pacijent =(Pacijent) Pacijent.SelectedItem;
             DateTime datum = (DateTime)Date.SelectedDate;
 
             double sat;
@@ -81,7 +98,7 @@ namespace ProjekatSIMS
 
             //gledam da li postoji dati pacijent
 
-            List<Pacijent> pacijenti = new List<Pacijent>();
+            /*List<Pacijent> pacijenti = new List<Pacijent>();
             int znak = 0;
 
             using (StreamReader r = new StreamReader(@"..\..\..\Fajlovi\Pacijent.txt"))
@@ -103,7 +120,7 @@ namespace ProjekatSIMS
                 MessageBox.Show("Pacijent nije nadjen!");
                 return;
             }
-
+            */
 
             ///DATUM i VRIJEME
             List<Pregled> pregledi;
