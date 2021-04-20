@@ -32,12 +32,12 @@ namespace ProjekatSIMS
             String jmbgp = Jmbg_pacijent.Text;
             String jmbgd = Jmbg_doktor.Text;
             DateTime datum = (DateTime)Datum.SelectedDate;
-            double sati = Convert.ToDouble(Sat.Text);
-            double minuti = Convert.ToDouble(Minut.Text);
+            //double sati = Convert.ToDouble(Sat.Text);
+            //double minuti = Convert.ToDouble(Minut.Text);
             DateTime datum1 = new DateTime();
 
-            datum1 = datum.AddHours(sati);
-            datum1 = datum1.AddMinutes(minuti);
+            //datum1 = datum.AddHours(sati);
+            //datum1 = datum1.AddMinutes(minuti);
             int trajanje = 30;
             DateTime datum2 = datum1.AddMinutes(trajanje);
 
