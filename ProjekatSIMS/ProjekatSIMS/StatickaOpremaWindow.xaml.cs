@@ -13,7 +13,7 @@ using System.Windows.Shapes;
 
 namespace ProjekatSIMS
 {
-    
+
     public partial class StatickaOpremaWindow : Window
     {
         public Prostorija prostorija { get; set; }
@@ -38,11 +38,29 @@ namespace ProjekatSIMS
             prostorija = pros;
             Prostorije.ItemsSource = prostorije;
         }
-    
+
 
         private void rasporedi1(object sender, RoutedEventArgs e)
         {
+            Inventar inventar = (Inventar)dgrStatickaOprema.SelectedItems[0];
+            Prostorija p = (Prostorija)Prostorije.SelectedItem;
+            DateTime datum = (DateTime)Datum.SelectedDate;
+            Double sati = Convert.ToDouble(Sati.Text);
+            Double minuti = Convert.ToDouble(Minuti.Text);
 
+            DateTime date = datum.AddHours(sati);
+            date = date.AddMinutes(minuti);
+
+            DateTime now = DateTime.Now;
+
+            int res = DateTime.Compare(now, date);
+            if (res < 0)
+            {
+                while (now != date)
+                {
+
+                }
+            }
 
         }
 
@@ -52,7 +70,7 @@ namespace ProjekatSIMS
             inventar.id = Convert.ToInt32(Id.Text);
             inventar.ime = Ime.Text;
             inventar.kolicina = Convert.ToInt32(Kolicina.Text);
-            
+
             CuvanjeProstorija cuvanje = new CuvanjeProstorija(@"..\..\Fajlovi\Prostorije.txt");
             List<Prostorija> prostorije = new List<Prostorija>();
             prostorije = cuvanje.UcitajProstorije();
@@ -60,13 +78,13 @@ namespace ProjekatSIMS
             foreach (Prostorija p in prostorije)
             {
 
-                foreach(Inventar i in p.inventar)
+                foreach (Inventar i in p.inventar)
                 {
-                    if(i.id == inventar.id)
+                    if (i.id == inventar.id)
                     {
                         MessageBox.Show("Vec postoji inventar sa tom sifrom!");
                         break;
-                            
+
                     }
                 }
             }
@@ -89,7 +107,36 @@ namespace ProjekatSIMS
 
         private void obrisi1(object sender, RoutedEventArgs e)
         {
+            Inventar inventar = (Inventar)dgrStatickaOprema.SelectedItems[0];
+            CuvanjeProstorija cuvanje = new CuvanjeProstorija(@"..\..\Fajlovi\Prostorije.txt");
+            List<Prostorija> prostorije = new List<Prostorija>();
+            prostorije = cuvanje.UcitajProstorije();
 
+            foreach (Prostorija p in prostorije)
+            {
+                if (p.id == prostorija.id)
+                {
+                    foreach (Inventar i in p.inventar)
+                    {
+                        if (i.id == inventar.id) //pronasli smo trazeni inventar
+                        {
+                            p.inventar.Remove(i); //brisemo iz liste 
+                            break;
+
+
+                        }
+
+
+                    }
+                }
+
+            }
+            cuvanje.Sacuvaj(prostorije);
+            MessageBox.Show("Inventar je obrisan!");
+            this.Close();
         }
+
     }
 }
+    
+
