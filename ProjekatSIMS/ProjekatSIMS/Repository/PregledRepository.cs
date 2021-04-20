@@ -68,7 +68,7 @@ namespace Repository
 
         public List<Pregled> DobaviSvePregledePacijent()
         {
-            using (StreamReader sr = new StreamReader(LokacijaFajla))
+            using (StreamReader sr = new StreamReader(lokacija))
             {
                 string json = sr.ReadToEnd();
 
@@ -121,7 +121,7 @@ namespace Repository
         public void SacuvajPregledPacijent(List<Pregled> pregledi)
         {
             string newJson = JsonConvert.SerializeObject(pregledi);
-            File.WriteAllText(LokacijaFajla, newJson);
+            File.WriteAllText(lokacija, newJson);
 
         }
 

@@ -19,7 +19,7 @@ namespace ProjekatSIMS
             this.DataContext = this;
 
             Pregledi = new List<Pregled>();
-            PregledRepository fajl = new PregledRepository(@"..\..\Fajlovi\Pregled.txt");
+            PregledRepository fajl = new PregledRepository(@"..\..\..\Fajlovi\Pregled.txt");
             Pregledi = fajl.DobaviSvePregledePacijent();
         }
 

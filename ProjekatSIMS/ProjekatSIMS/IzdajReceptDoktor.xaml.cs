@@ -22,6 +22,9 @@ namespace ProjekatSIMS
     public partial class IzdajReceptDoktor : Page
     {
         public List<Lijek> Lijekovi { get; set; }
+        public ZdravsteniKarton zk { get; set; }
+        public Lijek l { get; set; }
+
         public Pacijent Pacijent { get; set; }
         public IzdajReceptDoktor(Pacijent p)
         {
@@ -63,48 +66,7 @@ namespace ProjekatSIMS
             datum1 = datum1.AddMinutes(minut);
             r.DatumPropisivanjaLeka = datum1;
             r.Kolicina = Kolicina.Text;
-            Lijek l = new Lijek();
-            l=(Lijek) Lijek.SelectedItem;
-
-            List<String> alergeni = new List<String>();
-            //provjera da li je pacijent alergican na to
-            List<ZdravsteniKarton> kartoni = new List<ZdravsteniKarton>();
-
-            using (StreamReader sr = new StreamReader(@"..\..\..\Fajlovi\ZdravstveniKarton.txt"))
-            {
-                string json =sr.ReadToEnd();
-                kartoni = JsonConvert.DeserializeObject<List<ZdravsteniKarton>>(json);
-            }
-            ZdravsteniKarton zk = new ZdravsteniKarton();
-            foreach (ZdravsteniKarton k in kartoni)
-            {
-                if (k.pacijent.Jmbg == Pacijent.Jmbg)
-                {
-                    zk = k;
-                    //a.zdravsteniKarton = k;
-                    if (k.Alergeni == null)
-                    
-                        alergeni = new List<String>();
-                    else
-                    
-                        alergeni = k.Alergeni;
-                    
-                }
-            }
-            if (l.Alergeni != null)
-            {
-                foreach (String s in l.Alergeni)
-                {
-                    if (alergeni.Contains(s))
-                    {
-                        MessageBox.Show("Pacijent je alergican na izabrani lijek. Izaberi novi!");
-                        return;
-                    }
-
-
-                }
-            }
-
+            
 
 
 
@@ -149,6 +111,54 @@ namespace ProjekatSIMS
             ZdravstveniKartonDoktor z = new ZdravstveniKartonDoktor(Pacijent);
 
             this.NavigationService.Navigate(z);
+
+        }
+
+        private void Alergican(object sender, SelectionChangedEventArgs e)
+        {
+            
+            l = (Lijek)Lijek.SelectedItem;
+
+            List<String> alergeni = new List<String>();
+            //provjera da li je pacijent alergican na to
+            List<ZdravsteniKarton> kartoni = new List<ZdravsteniKarton>();
+
+            using (StreamReader sr = new StreamReader(@"..\..\..\Fajlovi\ZdravstveniKarton.txt"))
+            {
+                string json = sr.ReadToEnd();
+                kartoni = JsonConvert.DeserializeObject<List<ZdravsteniKarton>>(json);
+            }
+            
+            foreach (ZdravsteniKarton k in kartoni)
+            {
+                if (k.pacijent.Jmbg == Pacijent.Jmbg)
+                {
+                    zk = k;
+                    //a.zdravsteniKarton = k;
+                    if (k.Alergeni == null)
+
+                        alergeni = new List<String>();
+                    else
+
+                        alergeni = k.Alergeni;
+
+                }
+            }
+            if (l.Alergeni != null)
+            {
+                foreach (String s in l.Alergeni)
+                {
+                    if (alergeni.Contains(s))
+                    {
+                        MessageBox.Show("Pacijent je alergican na izabrani lijek. Izaberi novi!");
+                        return;
+                    }
+
+
+                }
+            }
+
+           
 
         }
 

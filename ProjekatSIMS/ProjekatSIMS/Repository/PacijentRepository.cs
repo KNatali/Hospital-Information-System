@@ -9,11 +9,11 @@ namespace Repository
 {
     class PacijentRepository
     {
-        private const string putanja = @"..\..\Fajlovi\Pacijent.txt";
+        private const string putanja = @"..\..\..\Fajlovi\Pacijent.txt";
         public List<Pacijent> UcitajSvePacijente()
         {
             List<Pacijent> pacijenti = new List<Pacijent>();
-            using (StreamReader r = new StreamReader(@"..\..\Fajlovi\Pacijent.txt"))
+            using (StreamReader r = new StreamReader(@"..\..\..\Fajlovi\Pacijent.txt"))
             {
                 string json = r.ReadToEnd();
                 pacijenti = JsonConvert.DeserializeObject<List<Pacijent>>(json);

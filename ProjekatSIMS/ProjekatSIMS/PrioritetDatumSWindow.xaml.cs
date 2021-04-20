@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ProjekatSIMS.Model;
+using ProjekatSIMS.Repository;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -12,14 +14,16 @@ using System.Windows.Shapes;
 
 namespace ProjekatSIMS
 {
-    /// <summary>
-    /// Interaction logic for PrioritetDatumSWindow.xaml
-    /// </summary>
+    //public List<SlobodanTermin> Termini { get; set; }
     public partial class PrioritetDatumSWindow : Window
     {
         public PrioritetDatumSWindow()
         {
             InitializeComponent();
+            this.DataContext = this;
+            /*Termini = new List<SlobodanTermin>();
+            SlobodanTerminRepository fajl = new SlobodanTerminRepository(@"..\..\..\Fajlovi\SlobodniTermini.txt");
+            Termini = fajl.DobaviSveSlobodneTermine();*/
         }
     }
 }
