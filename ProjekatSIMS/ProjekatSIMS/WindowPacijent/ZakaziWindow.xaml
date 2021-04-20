@@ -29,5 +29,9 @@
         <Label Content="Upisite svoj JMBG: " HorizontalAlignment="Left" Margin="328,80,0,0" VerticalAlignment="Top" FontStyle="Italic"/>
         <TextBox Name="Jmbg" HorizontalAlignment="Left" Margin="460,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
+        <Label FontWeight="Bold" Content="Izaberite prioritet:" HorizontalAlignment="Left" Margin="461,292,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="DoktorPrioritet" Margin="0,0,253,39" GroupName="Prioritet" HorizontalAlignment="Right" VerticalAlignment="Bottom" Checked="Btn1_Checked" Click="button1_Click" >Doktor</RadioButton>
+        <RadioButton x:Name="VremePrioritet" Margin="0,0,256,70" GroupName="Prioritet" HorizontalAlignment="Right" VerticalAlignment="Bottom" Checked="Btn1_Checked" Click="button1_Click" >Vreme</RadioButton>
+
     </Grid>
 </Window>
