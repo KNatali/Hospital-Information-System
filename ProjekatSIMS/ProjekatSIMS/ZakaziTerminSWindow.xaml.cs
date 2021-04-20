@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Tulpep.NotificationWindow;
 
 namespace ProjekatSIMS
 {
@@ -67,9 +68,14 @@ namespace ProjekatSIMS
             pregledi.Add(p);
 
             fajl.SacuvajPregledSekretar(pregledi);
+            PopupNotifier popup = new PopupNotifier();
+            //popup.Image = Properties.Resources.informacija;
+            popup.TitleText = "OBAVEŠTENJE";
+            popup.ContentText = "Pregled je uspešno zakazan. " +
+                "Poslato je obaveštenje pacijentu i doktoru o predstojećem pregledu.";
+            popup.Popup();
 
-            MessageBox.Show("Termin je uspešno zakazan. Poslato je obaveštenje pacijentu i doktoru.", "OBAVEŠTENJE", MessageBoxButton.OK);
-            this.Close();
+           this.Close();
         }
     }
 }
