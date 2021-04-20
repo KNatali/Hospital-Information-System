@@ -11,17 +11,20 @@
     <Grid Background="white">
         <Label Content="Istorija pregleda" HorizontalAlignment="Center" Margin="0,42,0,0" VerticalAlignment="Top" FontSize="18"/>
 
-        <DataGrid x:Name="dataGridPregledi" ItemsSource="{Binding Anamneze}" IsReadOnly="True"
-                  SelectionMode="Single" AutoGenerateColumns="False" Margin="43,30,54,163"
+        <DataGrid x:Name="dataGridAnamneze" ItemsSource="{Binding Anamneze}" IsReadOnly="True"
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="48,96,48,96"
                   ScrollViewer.CanContentScroll="True" 
                   ScrollViewer.VerticalScrollBarVisibility="Auto">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Datum" Binding="{Binding Datum}"/>
-                <DataGridTextColumn Header="Opis" Binding="{Binding Opis}" Width="*"/>
-               
-             
+                <DataGridTextColumn Header="Datum" Binding="{Binding datum}"/>
+                <DataGridTextColumn Header="Opis" Binding="{Binding OpisAnamneze}" Width="*"/>
+
+
 
             </DataGrid.Columns>
         </DataGrid>
+        <Button Content="Nazad" Click="ZdravstveniKarton" HorizontalAlignment="Left" Margin="524,383,0,0" VerticalAlignment="Top" Height="37" Width="92" Background="#FFB5CDE2"/>
+        <Button Content="Azuriraj" Click="AzuriranjeAnamneze" HorizontalAlignment="Left" Margin="660,383,0,0" VerticalAlignment="Top" Height="37" Width="92" Background="#FFB5CDE2"/>
+
     </Grid>
 </Page>

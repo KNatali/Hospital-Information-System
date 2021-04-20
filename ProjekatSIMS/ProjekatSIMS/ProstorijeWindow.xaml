@@ -15,8 +15,8 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <DataGrid x:Name="dgrProstorije" ItemsSource="{Binding Path=prostorije}" IsReadOnly="True">
-            
-            
+
+
         </DataGrid>
 
         <TextBox Grid.Row="1" Name="Id" Text="{Binding Path=id}" 
@@ -27,8 +27,8 @@
   Margin="86,74,549,108" Width="165" Height="35"/>
 
         <Button Content="Izmeni" Click="izmeni"  HorizontalAlignment="Left" Margin="73,175,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="0.328,-0.165" Height="29" Width="77"/>
-        <Button Content="Dodaj" Click="dodaj" HorizontalAlignment="Left" Margin="323,175,0,0" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="29"/>
-        <Button Content="Obrisi" Click="obrisi" HorizontalAlignment="Left" Margin="547,175,0,0" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="29"/>
+        <Button Content="Dodaj" Click="dodaj" HorizontalAlignment="Left" Margin="239,175,0,0" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="29"/>
+        <Button Content="Obrisi" Click="obrisi" HorizontalAlignment="Left" Margin="432,175,0,0" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="29"/>
         <Label Content="Id" HorizontalAlignment="Left" Margin="10,19,0,0" Grid.Row="1" VerticalAlignment="Top" Width="57" FontSize="20"/>
         <Label Content="Sprat" HorizontalAlignment="Left" Margin="10,73,0,0" Grid.Row="1" VerticalAlignment="Top" Width="57" FontSize="20"/>
         <Label Content="Vrsta" HorizontalAlignment="Left" Margin="387,20,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="20" RenderTransformOrigin="0.515,-0.081"/>
@@ -36,6 +36,7 @@
         <RadioButton DataContext="{Binding ElementName=dgrProstorije, Path=SelectedItem}" Content="Soba" Name="Soba" GroupName="vrsta" HorizontalAlignment="Left" Margin="526,61,0,0" Grid.Row="1" VerticalAlignment="Top"/>
         <RadioButton DataContext="{Binding ElementName=dgrProstorije, Path=SelectedItem}" Content="Ordinacija" Name="Ordinacija" GroupName="vrsta" HorizontalAlignment="Left" Margin="526,94,0,0" Grid.Row="1" VerticalAlignment="Top"/>
         <RadioButton DataContext="{Binding ElementName=dgrProstorije, Path=SelectedItem}" Content="Kancelarija" Name="Kancelarija" GroupName="vrsta"  HorizontalAlignment="Left" Margin="526,132,0,0" Grid.Row="1" VerticalAlignment="Top" />
+        <Button Content="Pregledaj inventar" Click="Button_Click"  HorizontalAlignment="Left" Margin="603,175,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="0.328,-0.165" Height="29" Width="125"/>
 
 
 

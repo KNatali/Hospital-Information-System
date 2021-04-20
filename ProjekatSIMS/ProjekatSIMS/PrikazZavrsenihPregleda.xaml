@@ -19,7 +19,7 @@
                 <DataGridTextColumn Header="Trajanje" Binding="{Binding Trajanje}"/>
                 <DataGridTextColumn Header="Ime pacijenta" Binding="{Binding pacijent.Ime}"/>
                 <DataGridTextColumn Header="Prezime pacijenta" Binding="{Binding pacijent.Prezime}"/>
-                <DataGridTextColumn Header="Sala" Binding="{Binding prostorija.Id}"/>
+                <DataGridTextColumn Header="Sala" Binding="{Binding prostorija.id}"/>
                 <DataGridTextColumn Header="Tip pregleda" Binding="{Binding Tip}"/>
                 <DataGridTextColumn Header="Status pregleda" Binding="{Binding StatusPregleda}" Width="*"/>
 

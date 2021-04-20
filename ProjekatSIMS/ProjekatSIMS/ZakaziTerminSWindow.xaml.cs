@@ -20,6 +20,7 @@ namespace ProjekatSIMS
         public ZakaziTerminSWindow()
         {
             InitializeComponent();
+            this.DataContext = this;
         }
         private void Otkazi(object sender, RoutedEventArgs e)
         {
@@ -39,6 +40,8 @@ namespace ProjekatSIMS
             datum1 = datum1.AddMinutes(minuti);
             int trajanje = 30;
             DateTime datum2 = datum1.AddMinutes(trajanje);
+
+            
 
             p.Tip = TipPregleda.Standardni;
             p.Pocetak = datum1;
@@ -64,12 +67,11 @@ namespace ProjekatSIMS
                     break;
                 }
             }
-
             pregledi.Add(p);
 
             fajl.SacuvajPregledSekretar(pregledi);
             PopupNotifier popup = new PopupNotifier();
-            //popup.Image = Properties.Resources.informacija;
+            popup.Image = Properties.Resources.informacija;
             popup.TitleText = "OBAVEŠTENJE";
             popup.ContentText = "Pregled je uspešno zakazan. " +
                 "Poslato je obaveštenje pacijentu i doktoru o predstojećem pregledu.";

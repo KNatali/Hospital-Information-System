@@ -49,5 +49,18 @@ namespace ProjekatSIMS
 
             this.NavigationService.Navigate(a);
         }
+        private void IzdavanjeRecepta(object sender, RoutedEventArgs e)
+        {
+           IzdajReceptDoktor a = new IzdajReceptDoktor(Pacijent);
+
+            this.NavigationService.Navigate(a);
+        }
+
+        private void PrikazRecepata(object sender, RoutedEventArgs e)
+        {
+            PrikazRecepataDoktor a = new PrikazRecepataDoktor(Pacijent);
+
+            this.NavigationService.Navigate(a);
+        }
     }
 }

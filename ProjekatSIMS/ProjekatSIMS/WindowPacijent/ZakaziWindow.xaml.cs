@@ -3,12 +3,15 @@ using Repository;
 using System;
 using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Media;
 
 namespace ProjekatSIMS.WindowPacijent
 {
 
     public partial class ZakaziWindow : Window
     {
+        public int prioritetVreme = 0;
+        public int prioritetDoktor = 0;
         public ZakaziWindow()
         {
             InitializeComponent();
@@ -33,42 +36,89 @@ namespace ProjekatSIMS.WindowPacijent
             int trajanje = 30;
             DateTime datum2 = datum1.AddMinutes(trajanje);
 
-            p.Tip = TipPregleda.Standardni;
-            p.Pocetak = datum1;
-            p.Trajanje = trajanje;
-            Pacijent pac = new Pacijent { Jmbg = jmbg, Ime = ime, Prezime = prezime };
-            p.pacijent = pac;
-            Doktor dr = new Doktor { Ime = imeDoktora, Prezime = prezimeDoktora };
-            p.doktor = dr;
-            p.StatusPregleda = StatusPregleda.Zakazan;
-
-
-            PregledRepository fajl = new PregledRepository(@"..\..\Fajlovi\Pregled.txt");
+            PregledRepository fajl = new PregledRepository(@"..\..\..\Fajlovi\Pregled.txt");
             List<Pregled> pregledi = fajl.DobaviSvePregledePacijent();
 
-            ProstorijaRepository file = new ProstorijaRepository(@"..\..\Fajlovi\Prostorija.txt");
-            List<Prostorija> prostorije = file.DobaviSveProstorije();
-            foreach (Prostorija pr in prostorije)
+            int zauzetPregledFlag = 0;
+
+            foreach (Pregled preg in pregledi)
             {
-                if (pr.slobodna == true)
+                if ((preg.Pocetak) == datum1)
                 {
-                    p.prostorija = pr;
-                    pr.slobodna = false;
+                    MessageBox.Show("Odabrali ste termin koji je zauzet, na osnovu Vaseg prioriteta cemo Vam predloziti slobodne termine.");
+                    zauzetPregledFlag = 1;
                     break;
                 }
             }
+            if (zauzetPregledFlag == 0)
+            {
+                p.Tip = TipPregleda.Standardni;
+                p.Pocetak = datum1;
+                p.Trajanje = trajanje;
+                Pacijent pac = new Pacijent { Jmbg = jmbg, Ime = ime, Prezime = prezime };
+                p.pacijent = pac;
+                Doktor dr = new Doktor { Ime = imeDoktora, Prezime = prezimeDoktora };
+                p.doktor = dr;
+                p.StatusPregleda = StatusPregleda.Zakazan;
 
-            pregledi.Add(p);
+                ProstorijaRepository file = new ProstorijaRepository(@"..\..\Fajlovi\Prostorija.txt");
+                List<Prostorija> prostorije = file.DobaviSveProstorije();
+                foreach (Prostorija pr in prostorije)
+                {
+                    if (pr.slobodna == true)
+                    {
+                        p.prostorija = pr;
+                        pr.slobodna = false;
+                        break;
+                    }
+                }
 
-            fajl.SacuvajPregledPacijent(pregledi);
 
-            MessageBox.Show("Pregled je uspesno zakazan.");
-            this.Close();
+
+                pregledi.Add(p);
+
+                fajl.SacuvajPregledPacijent(pregledi);
+
+                MessageBox.Show("Pregled je uspesno zakazan.");
+
+                this.Close();
+            }
+            else if (zauzetPregledFlag == 1)
+            {
+                if (DoktorPrioritet.IsChecked == true)
+                {
+                    DoktorPrioritetWindow dpw = new DoktorPrioritetWindow(imeDoktora, prezimeDoktora, ime, prezime);
+                    dpw.Show();
+                }
+                else
+                {
+                    VremePrioritetWindow vpw = new VremePrioritetWindow(datum1, ime, prezime);
+                    vpw.Show();
+                }
+            }
+
+
 
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            if (DoktorPrioritet.IsChecked == true)
+            {
+                MessageBox.Show("Odabrali ste doktora kao prioritet u slucaju da Vas termin nije slobodan.");
+                prioritetDoktor = 1;
+            }
+            else if (VremePrioritet.IsChecked == true)
+            {
+                MessageBox.Show("Odabrali ste vreme kao prioritet u slucaju da Vas doktor nije slobodan.");
+                prioritetVreme = 1;
+            }
+
+        }
+        private void Btn1_Checked(object sender, RoutedEventArgs e)
+        {
+            DoktorPrioritet.Foreground = Brushes.Blue;
+            VremePrioritet.Foreground = Brushes.Blue;
 
         }
     }

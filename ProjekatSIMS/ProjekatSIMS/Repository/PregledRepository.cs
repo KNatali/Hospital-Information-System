@@ -13,6 +13,7 @@ namespace Repository
         private List<ZdravsteniKarton> zk;
 
         private List<Pregled> pregledi;
+
         private String LokacijaFajla;
         
         private const string putanja = @"..\..\..\Fajlovi\Pregled.txt";
@@ -44,6 +45,7 @@ namespace Repository
             return pregledi;
         }
      public List<ZdravsteniKarton> DobaviAlergene()
+
         {
             using (StreamReader r = new StreamReader(lokacija))
             {
@@ -69,7 +71,7 @@ namespace Repository
 
         public List<Pregled> DobaviSvePregledePacijent()
         {
-            using (StreamReader sr = new StreamReader(LokacijaFajla))
+            using (StreamReader sr = new StreamReader(lokacija))
             {
                 string json = sr.ReadToEnd();
 
@@ -122,7 +124,7 @@ namespace Repository
         public void SacuvajPregledPacijent(List<Pregled> pregledi)
         {
             string newJson = JsonConvert.SerializeObject(pregledi);
-            File.WriteAllText(LokacijaFajla, newJson);
+            File.WriteAllText(lokacija, newJson);
 
         }
 

@@ -50,7 +50,7 @@ namespace ProjekatSIMS
             p.Adresa = adresa;
             p.DatumRodjenja = datum;
             
-            OsobaRepository fajl = new OsobaRepository(@"..\..\Fajlovi\Pacijent.txt");
+            OsobaRepository fajl = new OsobaRepository(@"..\..\..\Fajlovi\Pacijent.txt");
             List<Pacijent> pacijenti = fajl.DobaviPacijente();
             pacijenti.Add(p);
             fajl.Sacuvaj(pacijenti);

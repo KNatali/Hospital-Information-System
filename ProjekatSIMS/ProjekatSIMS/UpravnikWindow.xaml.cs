@@ -26,12 +26,7 @@ namespace ProjekatSIMS
             d.Show();
         }
 
-        private void staticka(object sender, RoutedEventArgs e)
-        {
-            StatickaOpremaWindow s = new StatickaOpremaWindow();
-            s.Show();
-        }
-
+        
         private void prostorije(object sender, RoutedEventArgs e)
         {
             ProstorijeWindow p = new ProstorijeWindow();

@@ -24,9 +24,6 @@
         <TextBox HorizontalAlignment="Left" x:Name="Jmbg_doktor" Margin="596,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Podaci o doktoru" HorizontalAlignment="Left" Height="30" Margin="540,161,0,0" VerticalAlignment="Top" Width="135" FontWeight="Bold"/>
         <Label Name="Izbor" Content="Izaberite termin" Visibility="Hidden" HorizontalAlignment="Left" Height="30" Margin="80,280,0,0" VerticalAlignment="Top" Width="135" FontWeight="Bold"/>
-        <Label Content="Vreme termina" HorizontalAlignment="Left" Height="25" Margin="80,120,0,0" VerticalAlignment="Top" Width="145"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Sat" Text="Sati" Margin="265,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Minut" Text="Minuta" Margin="265,160,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <ComboBox Name="Termin" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="165,280,0,0" Visibility="Hidden"></ComboBox>
     </Grid>
 </Window>
