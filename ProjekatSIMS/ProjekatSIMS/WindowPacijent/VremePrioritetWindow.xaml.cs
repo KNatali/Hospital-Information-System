@@ -15,7 +15,7 @@ namespace ProjekatSIMS.WindowPacijent
         private String prezime;
 
         public List<SlobodanTermin> Termini { get; set; }
-        public List<Pregled> Pregledi { get; private set; }
+        public List<Pregled> Pregledi { get; set; }
 
         
     
@@ -52,6 +52,8 @@ namespace ProjekatSIMS.WindowPacijent
             p.Pocetak = st.Termin;
             Pacijent pac = new Pacijent { Ime = ime, Prezime = prezime };
             p.pacijent = pac;
+            int trajanje = 30;
+            p.Trajanje = trajanje;
             ProstorijaRepository file = new ProstorijaRepository(@"..\..\..\Fajlovi\Prostorija.txt");
             List<Prostorija> prostorije = file.DobaviSveProstorije();
             foreach (Prostorija pr in prostorije)
@@ -65,6 +67,11 @@ namespace ProjekatSIMS.WindowPacijent
             }
 
             Pregledi.Add(p);
+            fajl.SacuvajPregledPacijent(Pregledi);
+
+            MessageBox.Show("Pregled je uspesno zakazan.");
+
+            this.Close();
 
 
 

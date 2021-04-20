@@ -12,6 +12,8 @@ namespace ProjekatSIMS.Repository
     {
         private String LokacijaFajla;
         private List<SlobodanTermin> termini;
+        private List<SlobodanTermin> terminiTmp;
+        private SlobodanTermin st = new SlobodanTermin();
 
         public SlobodanTerminRepository(String lokacija)
         {
@@ -40,38 +42,47 @@ namespace ProjekatSIMS.Repository
             {
                 string json = sr.ReadToEnd();
                 termini = JsonConvert.DeserializeObject<List<SlobodanTermin>>(json);
+                terminiTmp = JsonConvert.DeserializeObject<List<SlobodanTermin>>(json);
 
 
                 foreach (SlobodanTermin t in termini)
                 {
-                    if (t.Termin.Date != datum.Date)
+                    if (t.Termin.Date == datum.Date)
                     {
-
-                        termini.Remove(t);
+                        terminiTmp.Clear();
+                        terminiTmp.Add(t);
+                        st = t;
                     }
                 }
             }
-            return termini;
+            termini.Remove(st);
+            return terminiTmp;
         }
 
-        public List<SlobodanTermin> DobaviSveSlobodneTermineZaDoktora(String ime, String prezime)
+        public List<SlobodanTermin> DobaviSveSlobodneTermineZaDoktora(String imeDoktora, String prezimeDoktora)
         {
             using (StreamReader sr = new StreamReader(LokacijaFajla))
             {
                 string json = sr.ReadToEnd();
                 termini = JsonConvert.DeserializeObject<List<SlobodanTermin>>(json);
+                terminiTmp = JsonConvert.DeserializeObject<List<SlobodanTermin>>(json);
+
 
 
                 foreach (SlobodanTermin t in termini)
                 {
-                    if ((t.PrezimeDoktora != prezime))
+                    if ((t.PrezimeDoktora == prezimeDoktora) && (t.ImeDoktora == imeDoktora))
                     {
-                        termini.Remove(t);
+                        terminiTmp.Clear();
+                        terminiTmp.Add(t);
+                        st = t;
                     }
                 }
+                
             }
-
-            return termini;
+            
+            termini.Remove(st);
+            return terminiTmp;
         }
     }
 }
