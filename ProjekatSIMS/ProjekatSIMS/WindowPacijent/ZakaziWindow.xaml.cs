@@ -61,7 +61,7 @@ namespace ProjekatSIMS.WindowPacijent
                 p.doktor = dr;
                 p.StatusPregleda = StatusPregleda.Zakazan;
 
-                ProstorijaRepository file = new ProstorijaRepository(@"..\..\Fajlovi\Prostorija.txt");
+                ProstorijaRepository file = new ProstorijaRepository(@"..\..\..\Fajlovi\Prostorija.txt");
                 List<Prostorija> prostorije = file.DobaviSveProstorije();
                 foreach (Prostorija pr in prostorije)
                 {

@@ -18,19 +18,7 @@ namespace ProjekatSIMS.WindowPacijent
         public List<Pregled> Pregledi { get; private set; }
 
         
-        public VremePrioritetWindow(DateTime datum1)
-        {
-            this.datum1 = datum1;
-            InitializeComponent();
-            this.DataContext = this;
-
-
-            Termini = new List<SlobodanTermin>();
-            SlobodanTerminRepository file = new SlobodanTerminRepository(@"..\..\Fajlovi\SlobodniTermini.txt");
-            Termini = file.DobaviSveSlobodneTermineZaDatum(datum1);
-
-
-        }
+    
 
         public VremePrioritetWindow(DateTime datum1, String ime, String prezime)
         {
@@ -43,7 +31,7 @@ namespace ProjekatSIMS.WindowPacijent
 
 
             Termini = new List<SlobodanTermin>();
-            SlobodanTerminRepository file = new SlobodanTerminRepository(@"..\..\Fajlovi\SlobodniTermini.txt");
+            SlobodanTerminRepository file = new SlobodanTerminRepository(@"..\..\..\Fajlovi\SlobodniTermini.txt");
             Termini = file.DobaviSveSlobodneTermineZaDatum(datum1);
 
 
@@ -55,7 +43,7 @@ namespace ProjekatSIMS.WindowPacijent
 
             //preuzimam sve zakazane preglede
             Pregledi = new List<Pregled>();
-            PregledRepository fajl = new PregledRepository(@"..\..\Fajlovi\Pregled.txt");
+            PregledRepository fajl = new PregledRepository(@"..\..\..\Fajlovi\Pregled.txt");
             Pregledi = fajl.DobaviSvePregledePacijent();
 
             Pregled p = new Pregled();
@@ -64,6 +52,17 @@ namespace ProjekatSIMS.WindowPacijent
             p.Pocetak = st.Termin;
             Pacijent pac = new Pacijent { Ime = ime, Prezime = prezime };
             p.pacijent = pac;
+            ProstorijaRepository file = new ProstorijaRepository(@"..\..\..\Fajlovi\Prostorija.txt");
+            List<Prostorija> prostorije = file.DobaviSveProstorije();
+            foreach (Prostorija pr in prostorije)
+            {
+                if (pr.slobodna == true)
+                {
+                    p.prostorija = pr;
+                    pr.slobodna = false;
+                    break;
+                }
+            }
 
             Pregledi.Add(p);
 

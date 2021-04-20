@@ -30,24 +30,14 @@ namespace ProjekatSIMS.WindowPacijent
             SlobodanTerminRepository fajl = new SlobodanTerminRepository(@"..\..\..\Fajlovi\SlobodniTermini.txt");
             Termini = fajl.DobaviSveSlobodneTermineZaDoktora(imeDoktora, prezimeDoktora);
         }
-        public DoktorPrioritetWindow(String imeDoktora, String prezimeDoktora)
-        {
-
-            InitializeComponent();
-            this.imeDoktora = imeDoktora;
-            this.prezimeDoktora = prezimeDoktora;
-            Termini = new List<SlobodanTermin>();
-            SlobodanTerminRepository fajl = new SlobodanTerminRepository(@"..\..\..\Fajlovi\SlobodniTermini.txt");
-            Termini = fajl.DobaviSveSlobodneTermineZaDoktora(imeDoktora, prezimeDoktora);
-
-        }
+        
         private void Odaberi_Click(object sender, RoutedEventArgs e)
         {
             SlobodanTermin st = (SlobodanTermin)dataGridSlobodniTermini.SelectedItems[0]; //pregled koji je odabran kao alternativan
 
             //preuzimam sve zakazane preglede
             Pregledi = new List<Pregled>();
-            PregledRepository fajl = new PregledRepository(@"..\..\Fajlovi\Pregled.txt");
+            PregledRepository fajl = new PregledRepository(@"..\..\..\FajloviFajlovi\Pregled.txt");
             Pregledi = fajl.DobaviSvePregledePacijent();
 
             Pregled p = new Pregled();
@@ -56,6 +46,18 @@ namespace ProjekatSIMS.WindowPacijent
             p.Pocetak = st.Termin;
             Pacijent pac = new Pacijent { Ime = ime, Prezime = prezime };
             p.pacijent = pac;
+            ProstorijaRepository file = new ProstorijaRepository(@"..\..\..\Fajlovi\Prostorija.txt");
+            List<Prostorija> prostorije = file.DobaviSveProstorije();
+
+            foreach (Prostorija pr in prostorije)
+            {
+                if (pr.slobodna == true)
+                {
+                    p.prostorija = pr;
+                    pr.slobodna = false;
+                    break;
+                }
+            }
 
             Pregledi.Add(p);
 
