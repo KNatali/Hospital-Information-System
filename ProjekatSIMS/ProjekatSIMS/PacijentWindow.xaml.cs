@@ -36,9 +36,14 @@ namespace ProjekatSIMS
                     {
                     new ToastContentBuilder()
                    .AddArgument("action", "viewConversation")
-                   .AddText("Vreme je da uzmete svoju terapiju")
-                   .AddText(r.NazivLeka + " " + r.Kolicina + " " + r.Uputstvo)
-                   .Show();
+                   .AddText("Danas treba da uzmete svoju terapiju")
+                   .AddText(r.NazivLeka + " " + r.Kolicina + " " + r.Uputstvo + ", uzeti u " + r.DatumPropisivanjaLeka.TimeOfDay.ToString())
+                   .Show( toast =>
+                   {
+                       toast.ExpirationTime = DateTime.UtcNow.AddDays(2);
+                   }
+                        
+                        );
 
                     }
                 }

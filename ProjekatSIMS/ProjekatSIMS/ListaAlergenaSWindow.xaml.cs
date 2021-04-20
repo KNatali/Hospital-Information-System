@@ -54,11 +54,6 @@ namespace ProjekatSIMS
             }
 
         }
-        private void Izmeni(object sender, RoutedEventArgs e)
-        {
-            IzmenaAlergenaSWindow ia = new IzmenaAlergenaSWindow();
-            ia.Show();
-        }
         private void Nazad(object sender, RoutedEventArgs e)
         {
             this.Close();

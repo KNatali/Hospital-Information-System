@@ -26,9 +26,8 @@
         <Label Content="Pretrazi pacijenta:" HorizontalAlignment="Left" Margin="277,90,0,0" VerticalAlignment="Top"/>
 
         <Button Content="Prikaz zdravstevnog kartona" Click="PrikazZdravstvenogKartona" HorizontalAlignment="Left" Margin="520,343,0,0" VerticalAlignment="Top" Height="35" Width="166"/>
+        
 
-
-       
 
     </Grid>
 </Page>
