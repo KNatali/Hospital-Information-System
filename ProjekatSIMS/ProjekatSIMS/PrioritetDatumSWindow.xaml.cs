@@ -69,11 +69,40 @@ namespace ProjekatSIMS
             PregledRepository fajl = new PregledRepository(@"..\..\..\Fajlovi\Pregled.txt");
             Pregledi = fajl.GetListaPregledaSekretar(); 
             Pregled p = new Pregled();
-            Doktor dr = new Doktor { Ime = st.ImeDoktora, Prezime = st.PrezimeDoktora };
+            //Doktor dr = new Doktor { Ime = st.ImeDoktora, Prezime = st.PrezimeDoktora };
+            //p.doktor = dr;
+            Doktor dr = new Doktor();
+            List<Doktor> postojeci = new List<Doktor>();
+            OsobaRepository fajldok = new OsobaRepository(@"..\..\..\Fajlovi\Doktor.txt");
+            postojeci = fajldok.DobaviDoktore();
+            foreach (Doktor t in postojeci)
+            {
+
+                if (t.Ime == st.ImeDoktora && t.Prezime==st.PrezimeDoktora)
+                {
+                    dr = t;
+                    break;
+                }
+            }
             p.doktor = dr;
             p.Pocetak = st.Termin;
             String jmbgp = Jmbg_pacijent.Text;
-            Pacijent pac = new Pacijent { Jmbg = jmbgp };
+            //Pacijent pac = new Pacijent { Jmbg = jmbgp };
+            //p.pacijent = pac;
+            Pacijent pac = new Pacijent();
+            List<Pacijent> postojecipac = new List<Pacijent>();
+            PacijentRepository fajlpac = new PacijentRepository();
+            postojecipac = fajlpac.UcitajSvePacijente();
+
+            foreach (Pacijent f in postojecipac)
+            {
+
+                if (f.Jmbg == jmbgp)
+                {
+                    pac = f;
+                    break;
+                }
+            }
             p.pacijent = pac;
             Pregledi.Add(p);
             fajl.SacuvajPregledSekretar(Pregledi);

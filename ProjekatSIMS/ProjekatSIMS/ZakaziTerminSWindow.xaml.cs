@@ -46,12 +46,26 @@ namespace ProjekatSIMS
             p.Tip = TipPregleda.Standardni;
             p.Pocetak = datum1;
             p.Trajanje = trajanje;
-            Pacijent pac = new Pacijent { Jmbg = jmbgp };
-            p.pacijent = pac;
+            //Pacijent pac = new Pacijent { Jmbg = jmbgp };
+            //p.pacijent = pac;
+            Pacijent pac = new Pacijent();
             Doktor dr = new Doktor { Jmbg = jmbgd };
             p.doktor = dr;
             p.StatusPregleda = StatusPregleda.Zakazan;
+            List<Pacijent> postojeci = new List<Pacijent>();
+            PacijentRepository fajlpac = new PacijentRepository();
+            postojeci = fajlpac.UcitajSvePacijente();
 
+            foreach (Pacijent t in postojeci)
+            {
+
+                if (t.Jmbg == jmbgp)
+                {
+                    pac = t;
+                    break;
+                }
+            }
+            p.pacijent = pac;
 
             PregledRepository fajl = new PregledRepository(@"..\..\..\Fajlovi\Pregled.txt");
             List<Pregled> pregledi = fajl.GetListaPregledaSekretar();
