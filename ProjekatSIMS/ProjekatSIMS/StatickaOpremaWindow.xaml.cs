@@ -42,7 +42,7 @@ namespace ProjekatSIMS
 
         private void rasporedi1(object sender, RoutedEventArgs e)
         {
-            Inventar inventar = (Inventar)dgrStatickaOprema.SelectedItems[0];
+         /*  Inventar inventar = (Inventar)dgrStatickaOprema.SelectedItems[0];
             Prostorija p = (Prostorija)Prostorije.SelectedItem;
             DateTime datum = (DateTime)Datum.SelectedDate;
             Double sati = Convert.ToDouble(Sati.Text);
@@ -52,15 +52,60 @@ namespace ProjekatSIMS
             date = date.AddMinutes(minuti);
 
             DateTime now = DateTime.Now;
+            CuvanjeProstorija cuvanje = new CuvanjeProstorija(@"..\..\Fajlovi\Prostorije.txt");
+            List<Prostorija> prostorije = new List<Prostorija>();
+            prostorije = cuvanje.UcitajProstorije();
 
             int res = DateTime.Compare(now, date);
             if (res < 0)
             {
-                while (now != date)
+                while (true)
                 {
+                    if (now == date)
+                    {
+                        foreach (Prostorija pros in prostorije)
+                        {
+                            if (pros.id == prostorija.id)
+                            {
+                                foreach (Inventar i in pros.inventar)
+                                {
+                                    if (i.id == inventar.id)
+                                    {
+                                        pros.inventar.Remove(i);
+                                        break;
+                                    }
 
+                                }
+                                break;
+                            }
+                        }
+                        foreach (Prostorija pros in prostorije)
+                        {
+
+                            if (p.id == pros.id)
+
+                            {
+                                pros.inventar.Add(inventar);
+                                break;
+
+                            }
+                        }
+                        break;
+
+
+                    }
                 }
+                cuvanje.Sacuvaj(prostorije);
+                MessageBox.Show("Inventar je rasporedjen po zakazanom terminu!");
+                this.Close();
+
             }
+            else
+            { 
+                MessageBox.Show("Izabrali ste pogresan datum!");
+                
+            }*/
+            
 
         }
 
