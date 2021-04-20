@@ -30,7 +30,7 @@ namespace ProjekatSIMS
             this.DataContext = this;
             pacijent = p;
 
-
+            //FALIII U REPOZIOTRIJUMU
             List<ZdravsteniKarton> kartoni= new List<ZdravsteniKarton>();
             Anamneze = new List<Anamneza>();
             using (StreamReader r = new StreamReader(@"..\..\..\Fajlovi\ZdravstveniKarton.txt"))
@@ -60,6 +60,14 @@ namespace ProjekatSIMS
             ZdravstveniKartonDoktor z = new ZdravstveniKartonDoktor(pacijent);
             // this.NavigationService.Navigate(new Uri("ZdravstveniKartonDoktor.xaml", UriKind.Relative));
             this.NavigationService.Navigate(z);
+        }
+
+        private void AzuriranjeAnamneze(object sender, RoutedEventArgs e)
+        {
+            Anamneza an =(Anamneza)dataGridAnamneze.SelectedItem;
+            AzuriranjeAnamnezeDoktor a = new AzuriranjeAnamnezeDoktor(pacijent,an);
+            // this.NavigationService.Navigate(new Uri("ZdravstveniKartonDoktor.xaml", UriKind.Relative));
+            this.NavigationService.Navigate(a);
         }
     }
 }
