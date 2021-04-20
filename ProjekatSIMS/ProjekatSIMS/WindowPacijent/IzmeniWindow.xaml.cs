@@ -81,11 +81,11 @@ namespace ProjekatSIMS
                         slobodanTerminFlag = 1;
                         if(prioritetVreme == 1)
                         {
-                            VremePrioritetWindow vpw = new VremePrioritetWindow();
+                            VremePrioritetWindow vpw = new VremePrioritetWindow(datumNovi);
                             vpw.Show();
                         }else if(prioritetDoktor == 1)
                         {
-                            DoktorPrioritetWindow dpw = new DoktorPrioritetWindow();
+                            DoktorPrioritetWindow dpw = new DoktorPrioritetWindow(imeDoktora,prezimeDoktora);
                             dpw.Show();
                         }
                         

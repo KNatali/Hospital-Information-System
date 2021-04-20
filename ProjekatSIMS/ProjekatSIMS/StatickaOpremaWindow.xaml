@@ -40,7 +40,7 @@
         <Button Content="Dodaj" Click="dodaj1" HorizontalAlignment="Left" Margin="323,175,0,0" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="29"/>
         <Button Content="Obrisi" Click="obrisi1" HorizontalAlignment="Left" Margin="547,175,0,0" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="29"/>
 
-        <DatePicker HorizontalAlignment="Left" Margin="674,28,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <DatePicker Name="Datum"   HorizontalAlignment="Left" Margin="674,28,0,0" Grid.Row="1" VerticalAlignment="Top"/>
         <ComboBox Name="Prostorije" ItemsSource="{Binding Path=prostorije}" SelectedItem="{Binding Path=prostorija}" HorizontalAlignment="Left" Margin="526,29,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
@@ -52,6 +52,11 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
+        <Label Content="Vreme" HorizontalAlignment="Left" Margin="381,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="75" FontSize="20" Height="36"/>
+        <TextBox Grid.Row="1" Name="Sati" Text=""  Margin="496,91,237,91" Height="36" RenderTransformOrigin="0.418,0.682" Width="75" />
+        <TextBox Grid.Row="1" Name="Minuti" Text=""  Margin="586,91,139,90" Height="36" RenderTransformOrigin="0.418,0.682" Width="75" />
+
+
 
     </Grid>
 </Window>

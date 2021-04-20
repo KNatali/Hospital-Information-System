@@ -18,7 +18,6 @@ namespace ProjekatSIMS
 {
     public partial class KalendarPregledaSWindow : Window
     {
-        public Boolean posalji = false;
         public List<Pregled> Pregledi { get; set; }
         public KalendarPregledaSWindow()
         {
@@ -28,16 +27,6 @@ namespace ProjekatSIMS
             Pregledi = new List<Pregled>();
             PregledRepository fajl = new PregledRepository(@"..\..\..\Fajlovi\Pregled.txt");
             Pregledi = fajl.GetListaPregledaSekretar();
-            /*foreach (Pregled pobavestenje in Pregledi)
-            {
-                if (posalji == true)
-                {
-                    new ToastContentBuilder()
-                   .AddArgument("action", "viewConversation")
-                   .AddText("Vaš zakazani pregled je otkazan.")
-                   .Show();
-                }
-            }*/
         }
         private void Nazad(object sender, RoutedEventArgs e)
         {
@@ -68,16 +57,11 @@ namespace ProjekatSIMS
                             }
                         }
                         fajl.SacuvajPregledSekretar(pregled);
-                        MessageBox.Show("Pregled je uspešno otkazan. Poslato je obaveštenje.", "OBAVEŠTENJE");
-                        posalji = true;
-                        /*new ToastContentBuilder()
-                        .AddArgument("action", "viewConversation")
-                        .AddText("Vaš zakazani pregled je otkazan.")
-                        .Show();*/
                         PopupNotifier popup = new PopupNotifier();
                         popup.Image = Properties.Resources.informacija;
                         popup.TitleText = "OBAVEŠTENJE";
-                        popup.ContentText = "Poslato je obaveštenje pacijentu i doktoru da je pregled otkazan.";
+                        popup.ContentText = "Pregled je uspešno otkazan. " +
+                            "Poslato je obaveštenje pacijentu i doktoru da je pregled otkazan.";
                         popup.Popup();
                         this.Close();
                         break;
