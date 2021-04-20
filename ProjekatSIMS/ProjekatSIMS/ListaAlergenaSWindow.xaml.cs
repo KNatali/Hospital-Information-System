@@ -20,28 +20,44 @@ namespace ProjekatSIMS
     {
         public ZdravsteniKarton zdrkarton { get; set; }
         public List<ZdravsteniKarton> Karton { get; set; }
-        public List<String> Ale { get; set; }
+        public List<String> Alergeni1 { get; set; }
         public ListaAlergenaSWindow(Pacijent p)
         {
             InitializeComponent();
             this.DataContext = this;
-            List<String> al = new List<String>();
-            PregledRepository fajl = new PregledRepository(@"..\..\..\Fajlovi\ZdravstveniKarton.txt");
-            Karton = fajl.DobaviAlergene();
-            foreach (ZdravsteniKarton z in Karton)
+            List<String> alergeni = new List<String>();
+            List<ZdravsteniKarton> kartoni = new List<ZdravsteniKarton>();
+            Alergeni1 = new List<String>();
+
+            using (StreamReader sr = new StreamReader(@"..\..\..\Fajlovi\ZdravstveniKarton.txt"))
             {
-                if (z.pacijent.Jmbg == p.Jmbg)
+                string json = sr.ReadToEnd();
+                kartoni = JsonConvert.DeserializeObject<List<ZdravsteniKarton>>(json);
+            }
+            ZdravsteniKarton zk = new ZdravsteniKarton();
+            foreach (ZdravsteniKarton k in kartoni)
+            {
+                if (k.pacijent.Jmbg == p.Jmbg)
                 {
-                    al = z.Alergeni;
+                    zk = k;
+                    if (k.Alergeni == null)
+
+                        alergeni = new List<String>();
+                    else
+
+                        alergeni = k.Alergeni;
                 }
             }
-            MessageBox.Show(al.Count.ToString());
+            foreach (String a in alergeni)
+            {
+                Alergeni1.Add(a);
+            }
 
         }
-        private void Sacuvaj(object sender, RoutedEventArgs e)
+        private void Izmeni(object sender, RoutedEventArgs e)
         {
-            //zdrkarton.Alergeni = Naziv.Text;
-            this.Close();
+            IzmenaAlergenaSWindow ia = new IzmenaAlergenaSWindow();
+            ia.Show();
         }
         private void Nazad(object sender, RoutedEventArgs e)
         {

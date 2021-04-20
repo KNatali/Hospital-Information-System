@@ -7,6 +7,24 @@
         mc:Ignorable="d"
         Title="PrioritetDoktorSWindow" Height="450" Width="800">
     <Grid>
+        <DataGrid x:Name="dataGridDoktori" ItemsSource="{Binding Doktori}" IsReadOnly="True"
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="31,60,369,0" Height="180" VerticalAlignment="Top">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Jmbg" Binding="{Binding Jmbg}" Width="120"/>
+                <DataGridTextColumn Header="Ime doktora" Binding="{Binding Ime}" Width="120"/>
+                <DataGridTextColumn Header="Prezime doktora" Binding="{Binding Prezime}" Width="*"/>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Zakaži termin" Click="Zakazi" HorizontalAlignment="Left" Margin="331,370,0,0" VerticalAlignment="Top" Height="30" Width="100" Background="#FFA6B1D6"/>
+        <Button Content="Otkaži" Click="Nazad" HorizontalAlignment="Left" Margin="31,370,0,0" VerticalAlignment="Top" Height="30" Width="100" Background="#FFA6B1D6"/>
+        <Label Content="JMBG pacijenta" HorizontalAlignment="Left" Height="25" Margin="448,86,0,0" VerticalAlignment="Top" Width="145"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Jmbg_pacijent" Margin="630,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Datum termina" HorizontalAlignment="Left" Height="25" Margin="446,125,0,0" VerticalAlignment="Top" Width="145"/>
+        <DatePicker HorizontalAlignment="Left" x:Name="Datum" Margin="631,125,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Vreme termina" HorizontalAlignment="Left" Height="25" Margin="446,165,0,0" VerticalAlignment="Top" Width="145"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Sat" Text="Sati" Margin="631,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Minut" Text="Minuta" Margin="631,204,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         
     </Grid>
 </Window>

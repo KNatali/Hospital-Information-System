@@ -9,6 +9,16 @@
       Title="ZakaziPregledDoktor">
 
     <Grid>
+       <!-- <ComboBox  Name="Pacijenti" HorizontalAlignment="Left"   
+                  Margin="477,48,0,0"   
+                  VerticalAlignment="Top"   
+                  Width="120"   
+                  ItemsSource="{Binding Path=Pacijenti}"    
+                 DisplayMemberPath="Ime"
+                   
+                   IsTextSearchEnabled="True" 
+                   IsEditable="True"
+                  />-->
 
         <Label Content="Jmbg pacijenta:" HorizontalAlignment="Left" Margin="60,40,0,0" VerticalAlignment="Top" Height="28"/>
         <TextBox Name="Jmbg" HorizontalAlignment="Left" Margin="300,48,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20"/>
@@ -19,11 +29,12 @@
 
         <Button Content="Zakazi" Click="ZakazivanjePregleda" HorizontalAlignment="Left" Margin="630,345,0,0" VerticalAlignment="Top" Height="42" Width="92" Background="#FFB5CDE2"/>
         <ComboBox  Name="Ordinacija" HorizontalAlignment="Left"   
-                  Margin="300,102,0,0"   
+                  Margin="300,110,0,0"   
                   VerticalAlignment="Top"   
                   Width="120"   
                   ItemsSource="{Binding Path=Ordinacije}"    
-                  SelectedItem="{Binding Path=Ordinacija1}"
+                 
+                 
                   >
 
             <ComboBox.ItemTemplate>
