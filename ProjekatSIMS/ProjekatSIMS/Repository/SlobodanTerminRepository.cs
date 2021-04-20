@@ -14,6 +14,7 @@ namespace ProjekatSIMS.Repository
         private List<SlobodanTermin> termini;
         private List<SlobodanTermin> terminiTmp;
         private SlobodanTermin st = new SlobodanTermin();
+        private int terminiFlag = 0;
 
         public SlobodanTerminRepository(String lokacija)
         {
@@ -52,11 +53,20 @@ namespace ProjekatSIMS.Repository
                         terminiTmp.Clear();
                         terminiTmp.Add(t);
                         st = t;
+                        terminiFlag = 1;
                     }
                 }
             }
             termini.Remove(st);
-            return terminiTmp;
+            if (terminiFlag == 1)
+            {
+                return terminiTmp;
+            }
+            else
+            {
+                terminiTmp.Clear();
+                return terminiTmp;
+            }
         }
 
         public List<SlobodanTermin> DobaviSveSlobodneTermineZaDoktora(String imeDoktora, String prezimeDoktora)
@@ -75,6 +85,7 @@ namespace ProjekatSIMS.Repository
                     {
                         terminiTmp.Clear();
                         terminiTmp.Add(t);
+                        terminiFlag = 1;
                         st = t;
                     }
                 }
@@ -82,7 +93,16 @@ namespace ProjekatSIMS.Repository
             }
             
             termini.Remove(st);
-            return terminiTmp;
+            if (terminiFlag == 1)
+            {
+                return terminiTmp;
+            }
+            else
+            {
+                terminiTmp.Clear();
+                return terminiTmp;
+            }
+            
         }
     }
 }
