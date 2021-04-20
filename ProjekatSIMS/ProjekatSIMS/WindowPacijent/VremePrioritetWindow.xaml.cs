@@ -1,6 +1,7 @@
 ﻿using Model;
 using ProjekatSIMS.Model;
 using ProjekatSIMS.Repository;
+using Repository;
 using System;
 using System.Collections.Generic;
 using System.Windows;
@@ -47,6 +48,29 @@ namespace ProjekatSIMS.WindowPacijent
 
 
         }
+
+        private void Odaberi_Click(object sender, RoutedEventArgs e)
+        {
+            SlobodanTermin st = (SlobodanTermin)dataGridSlobodniTermini.SelectedItems[0]; //pregled koji je odabran kao alternativan
+
+            //preuzimam sve zakazane preglede
+            Pregledi = new List<Pregled>();
+            PregledRepository fajl = new PregledRepository(@"..\..\Fajlovi\Pregled.txt");
+            Pregledi = fajl.DobaviSvePregledePacijent();
+
+            Pregled p = new Pregled();
+            Doktor dr = new Doktor { Ime = st.ImeDoktora, Prezime = st.PrezimeDoktora };
+            p.doktor = dr;
+            p.Pocetak = st.Termin;
+            Pacijent pac = new Pacijent { Ime = ime, Prezime = prezime };
+            p.pacijent = pac;
+
+            Pregledi.Add(p);
+
+
+
+        }
+
 
 
     }

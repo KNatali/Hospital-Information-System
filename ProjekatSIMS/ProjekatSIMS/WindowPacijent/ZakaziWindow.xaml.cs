@@ -3,6 +3,7 @@ using Repository;
 using System;
 using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Media;
 
 namespace ProjekatSIMS.WindowPacijent
 {
@@ -100,6 +101,20 @@ namespace ProjekatSIMS.WindowPacijent
 
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (DoktorPrioritet.IsChecked == true)
+            {
+                MessageBox.Show("Odabrali ste doktora kao prioritet u slucaju da Vas termin nije slobodan.");
+                prioritetDoktor = 1;
+            }
+            else if (VremePrioritet.IsChecked == true)
+            {
+                MessageBox.Show("Odabrali ste vreme kao prioritet u slucaju da Vas doktor nije slobodan.");
+                prioritetVreme = 1;
+            }
+
+        }
         private void Btn1_Checked(object sender, RoutedEventArgs e)
         {
             DoktorPrioritet.Foreground = Brushes.Blue;
