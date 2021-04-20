@@ -72,7 +72,7 @@ namespace ProjekatSIMS
 
             fajl.SacuvajPregledSekretar(pregledi);
             PopupNotifier popup = new PopupNotifier();
-            //popup.Image = Properties.Resources.informacija;
+            popup.Image = Properties.Resources.informacija;
             popup.TitleText = "OBAVEŠTENJE";
             popup.ContentText = "Pregled je uspešno zakazan. " +
                 "Poslato je obaveštenje pacijentu i doktoru o predstojećem pregledu.";
