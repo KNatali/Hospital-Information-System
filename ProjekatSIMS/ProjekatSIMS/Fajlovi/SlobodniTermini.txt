@@ -1,0 +1,1 @@
+[{"Termin":"2021-07-18T20:30:00","ImeDoktora":"Marijana","PrezimeDoktora":"Peric","Slobodan":"true"},{"Termin":"2021-05-03T08:30:00","ImeDoktora":"Marijana","PrezimeDoktora":"Peric","Slobodan":"true"}]

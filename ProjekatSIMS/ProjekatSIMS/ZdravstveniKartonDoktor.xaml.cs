@@ -55,5 +55,12 @@ namespace ProjekatSIMS
 
             this.NavigationService.Navigate(a);
         }
+
+        private void PrikazRecepata(object sender, RoutedEventArgs e)
+        {
+            PrikazRecepataDoktor a = new PrikazRecepataDoktor(Pacijent);
+
+            this.NavigationService.Navigate(a);
+        }
     }
 }

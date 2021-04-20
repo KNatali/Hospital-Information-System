@@ -10,6 +10,7 @@ namespace Repository
    {
         private String lokacija;
         private List<Pacijent> pacijenti;
+        private List<Doktor> doktori;
         public OsobaRepository(String l)
         {
             lokacija = l;
@@ -27,6 +28,20 @@ namespace Repository
                 pacijenti = JsonConvert.DeserializeObject<List<Pacijent>>(json);
             }
             return pacijenti;
+        }
+        public void SacuvajDoktora(List<Doktor> d)
+        {
+            string newJson = JsonConvert.SerializeObject(d);
+            File.WriteAllText(lokacija, newJson);
+        }
+        public List<Doktor> DobaviDoktore()
+        {
+            using (StreamReader r = new StreamReader(lokacija))
+            {
+                string json = r.ReadToEnd();
+                doktori = JsonConvert.DeserializeObject<List<Doktor>>(json);
+            }
+            return doktori;
         }
         public Model.Pacijent SacuvajHitniNalogRepository(String jmbg, String ime, String prezime)
       {
