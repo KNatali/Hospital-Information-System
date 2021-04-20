@@ -69,7 +69,7 @@ namespace Service
       {
             Pregled p = new Pregled();
             List<Pacijent> pacijenti = new List<Pacijent>();
-            using (StreamReader r = new StreamReader(@"..\..\Fajlovi\Pacijent.txt"))
+            using (StreamReader r = new StreamReader(@"..\..\..\Fajlovi\Pacijent.txt"))
             {
                 string json = r.ReadToEnd();
                 pacijenti = JsonConvert.DeserializeObject<List<Pacijent>>(json);
