@@ -51,11 +51,24 @@ namespace ProjekatSIMS
             p.Tip = TipPregleda.Standardni;
             p.Pocetak = st.Termin;
             p.Trajanje = trajanje;
-            Pacijent pac = new Pacijent { Jmbg = jmbgp };
-            p.pacijent = pac;
+            Pacijent pac = new Pacijent();
             p.doktor = selektovani;
             p.StatusPregleda = StatusPregleda.Zakazan;
 
+            List<Pacijent> postojeci = new List<Pacijent>();
+            PacijentRepository fajlpac = new PacijentRepository();
+            postojeci = fajlpac.UcitajSvePacijente();
+
+            foreach (Pacijent t in postojeci)
+            {
+
+                if (t.Jmbg==jmbgp)
+                {
+                    pac = t;
+                    break;
+                }
+            }
+            p.pacijent = pac;
 
             PregledRepository fajl = new PregledRepository(@"..\..\..\Fajlovi\Pregled.txt");
             List<Pregled> pregledi = fajl.GetListaPregledaSekretar();
@@ -80,8 +93,21 @@ namespace ProjekatSIMS
         {
             Doktor selektovani = (Doktor)dataGridDoktori.SelectedItems[0];
             Termini = new List<SlobodanTermin>();
+            List<SlobodanTermin> termini = new List<SlobodanTermin>();
             SlobodanTerminRepository fajl = new SlobodanTerminRepository(@"..\..\..\Fajlovi\SlobodniTermini.txt");
-            Termini = fajl.DobaviSveSlobodneTermineZaDoktora(selektovani.Ime, selektovani.Prezime);
+            termini = fajl.DobaviSveSlobodneTermine();
+
+            foreach (SlobodanTermin t in termini)
+            {
+                
+                if (t.ImeDoktora==selektovani.Ime && t.PrezimeDoktora==selektovani.Prezime)
+                {
+                    Termini.Add(t);
+                }
+                
+            }
+            dataGridSlobodniTermini.ItemsSource = null;
+            dataGridSlobodniTermini.ItemsSource = Termini;
         }
     }
 }
