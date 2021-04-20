@@ -33,5 +33,45 @@ namespace ProjekatSIMS.Repository
             File.WriteAllText(LokacijaFajla, newJson);
 
         }
+
+        public List<SlobodanTermin> DobaviSveSlobodneTermineZaDatum(DateTime datum)
+        {
+            using (StreamReader sr = new StreamReader(LokacijaFajla))
+            {
+                string json = sr.ReadToEnd();
+                termini = JsonConvert.DeserializeObject<List<SlobodanTermin>>(json);
+
+
+                foreach (SlobodanTermin t in termini)
+                {
+                    if (t.Termin.Date != datum.Date)
+                    {
+
+                        termini.Remove(t);
+                    }
+                }
+            }
+            return termini;
+        }
+
+        public List<SlobodanTermin> DobaviSveSlobodneTermineZaDoktora(String ime, String prezime)
+        {
+            using (StreamReader sr = new StreamReader(LokacijaFajla))
+            {
+                string json = sr.ReadToEnd();
+                termini = JsonConvert.DeserializeObject<List<SlobodanTermin>>(json);
+
+
+                foreach (SlobodanTermin t in termini)
+                {
+                    if ((t.PrezimeDoktora != prezime))
+                    {
+                        termini.Remove(t);
+                    }
+                }
+            }
+
+            return termini;
+        }
     }
 }

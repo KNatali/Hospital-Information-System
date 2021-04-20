@@ -13,9 +13,10 @@
                 <DataGridTextColumn Header="Termin" Binding="{Binding Termin}"/>
                 <DataGridTextColumn Header="Ime doktora" Binding="{Binding ImeDoktora}"/>
                 <DataGridTextColumn Header="Prezime doktora" Binding="{Binding PrezimeDoktora}"/>
-                
+
             </DataGrid.Columns>
         </DataGrid>
+        <Button Content="Odaberi termin" HorizontalAlignment="Left" Margin="595,342,0,0" VerticalAlignment="Top" Height="34" Width="91" Click="Odaberi_Click"/>
 
     </Grid>
 </Window>
