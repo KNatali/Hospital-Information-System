@@ -65,9 +65,6 @@ namespace Repository
         {
             
         }
-        
-
-      
 
         public List<Pregled> DobaviSvePregledePacijent()
         {
