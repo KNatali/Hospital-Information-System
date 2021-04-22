@@ -9,11 +9,11 @@
     <Grid>
         <Label Content="PACIJENT" HorizontalAlignment="Left" Margin="46,30,0,0" VerticalAlignment="Top" FontWeight="Bold" FontStyle="Italic" FontSize="16"/>
         <Label Content="Opcije:" HorizontalAlignment="Left" Margin="46,92,0,0" VerticalAlignment="Top" FontWeight="Normal" FontStyle="Italic"/>
-        <Button Content="Zakazi pregled" Click="Click_zakazi" Width="100" Height="40" HorizontalAlignment="Left" Margin="220,105,0,0" VerticalAlignment="Top"/>
-        <Button Content="Otkazi pregled" Click="Click_otkazi" Width="100" Height="40" HorizontalAlignment="Left" Margin="220,177,0,0" VerticalAlignment="Top"/>
-        <Button Content="Izmeni pregled" Click="Click_izmeni" Width="100" Height="40"  HorizontalAlignment="Left" Margin="220,245,0,0" VerticalAlignment="Top"/>
+        <Button Content="Zakazi pregled" IsDefault="True" Click="Click_zakazi" Width="100" Height="40" HorizontalAlignment="Left" Margin="220,105,0,0" VerticalAlignment="Top"/>
+        <Button Content="Otkazi pregled" IsDefault="True" Click="Click_otkazi" Width="100" Height="40" HorizontalAlignment="Left" Margin="220,177,0,0" VerticalAlignment="Top"/>
+        <Button Content="Izmeni pregled" IsDefault="True" Click="Click_izmeni" Width="100" Height="40"  HorizontalAlignment="Left" Margin="220,245,0,0" VerticalAlignment="Top"/>
 
-        <Button Content="Vidi preglede" Click="Click_vidi" Width="100" Height="40" HorizontalAlignment="Left" Margin="220,317,0,0" VerticalAlignment="Top"/>
+        <Button Content="Vidi preglede" IsDefault="True" Click="Click_vidi" Width="100" Height="40" HorizontalAlignment="Left" Margin="220,317,0,0" VerticalAlignment="Top"/>
 
 
         <DataGrid x:Name="dataGridRecepti" ItemsSource="{Binding Recepti}" IsReadOnly="True"
