@@ -11,18 +11,13 @@
         <Button Content="Zakaži termin" Click="Zakazi" HorizontalAlignment="Left" Height="40" Margin="630,350,0,0" VerticalAlignment="Top" Width="90" Background="#FFA6B1D6"/>
         <Label Content="Unesite podatke da zakažete termin" HorizontalAlignment="Left" Height="30" Margin="80,30,0,0" VerticalAlignment="Top" Width="230" FontWeight="Bold"/>
         <Label Content="Datum termina" HorizontalAlignment="Left" Height="25" Margin="80,80,0,0" VerticalAlignment="Top" Width="145"/>
-        <Label Content="Tip pregleda" HorizontalAlignment="Left" Height="25" Margin="80,201,0,0" VerticalAlignment="Top" Width="145"/>
-        <ComboBox HorizontalAlignment="Left" Name="Tip" Margin="265,200,0,0" VerticalAlignment="Top" Width="120">
-            <ComboBoxItem IsSelected="True">Standardni</ComboBoxItem>
-            <ComboBoxItem>Operacija</ComboBoxItem>
-        </ComboBox>
         <DatePicker HorizontalAlignment="Left" Name="Datum" Margin="265,80,0,0" VerticalAlignment="Top" Width="120"/>
-        <Label Content="JMBG" HorizontalAlignment="Left" Height="25" Margin="454,121,0,0" VerticalAlignment="Top" Width="145"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Jmbg_pacijent" Margin="596,121,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Podaci o pacijentu" HorizontalAlignment="Left" Height="30" Margin="536,81,0,0" VerticalAlignment="Top" Width="135" FontWeight="Bold"/>
-        <Label Content="JMBG" HorizontalAlignment="Left" Height="25" Margin="454,201,0,0" VerticalAlignment="Top" Width="145"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Jmbg_doktor" Margin="596,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Podaci o doktoru" HorizontalAlignment="Left" Height="30" Margin="540,161,0,0" VerticalAlignment="Top" Width="135" FontWeight="Bold"/>
+        <Label Content="JMBG" HorizontalAlignment="Left" Height="25" Margin="454,70,0,0" VerticalAlignment="Top" Width="145"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Jmbg_pacijent" Margin="596,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Podaci o pacijentu" HorizontalAlignment="Left" Height="30" Margin="536,30,0,0" VerticalAlignment="Top" Width="135" FontWeight="Bold"/>
+        <Label Content="JMBG" HorizontalAlignment="Left" Height="25" Margin="454,150,0,0" VerticalAlignment="Top" Width="145"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Jmbg_doktor" Margin="596,149,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Podaci o doktoru" HorizontalAlignment="Left" Height="30" Margin="540,110,0,0" VerticalAlignment="Top" Width="135" FontWeight="Bold"/>
         <Label Name="Izbor" Content="Izaberite termin" Visibility="Hidden" HorizontalAlignment="Left" Height="30" Margin="80,280,0,0" VerticalAlignment="Top" Width="135" FontWeight="Bold"/>
         <ComboBox Name="Termin" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="165,280,0,0" Visibility="Hidden"></ComboBox>
         <Label Content="Vreme termina" HorizontalAlignment="Left" Height="25" Margin="80,120,0,0" VerticalAlignment="Top" Width="145"/>

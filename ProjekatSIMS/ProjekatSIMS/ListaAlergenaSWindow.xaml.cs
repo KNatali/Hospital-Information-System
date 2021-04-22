@@ -21,10 +21,12 @@ namespace ProjekatSIMS
         public ZdravsteniKarton zdrkarton { get; set; }
         public List<ZdravsteniKarton> Karton { get; set; }
         public List<String> Alergeni1 { get; set; }
+        public Pacijent pac { get; set; }
         public ListaAlergenaSWindow(Pacijent p)
         {
             InitializeComponent();
             this.DataContext = this;
+            pac = p;
             List<String> alergeni = new List<String>();
             List<ZdravsteniKarton> kartoni = new List<ZdravsteniKarton>();
             Alergeni1 = new List<String>();
@@ -60,12 +62,8 @@ namespace ProjekatSIMS
         }
         private void Dodavanje(object sender, RoutedEventArgs e)
         {
-            /*List<String> a = Naziv.ToString();
-            Pacijent p = new Pacijent();
-            ZdravsteniKarton z = new ZdravsteniKarton();
-            z.Alergeni = a;*/
             this.Close();
-            NoviAlergenSWindow na = new NoviAlergenSWindow();
+            NoviAlergenSWindow na = new NoviAlergenSWindow(pac);
             na.Show();
         }
     }
