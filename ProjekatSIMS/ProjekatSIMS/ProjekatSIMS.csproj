@@ -11,6 +11,11 @@
 
 
 
+    <PackageReference Include="FontAwesome.WPF" Version="4.7.0.9" />
+
+
+
+
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" Version="7.0.1" />
     <PackageReference Include="Tulpep.NotificationWindow" Version="1.1.38" />
