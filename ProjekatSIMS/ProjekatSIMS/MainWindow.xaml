@@ -8,9 +8,9 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
 
-        <Button Content="Upravnik" Click="Upravnik_Click" HorizontalAlignment="Left" Margin="94,85,0,0" VerticalAlignment="Top" Height="62" Width="236"/>
-        <Button Content="Sekretar" Click="Sekretar_Click" HorizontalAlignment="Left" Margin="450,85,0,0" VerticalAlignment="Top" Height="62" Width="236"/>
-        <Button Content="Doktor" Click="Doktor_Click" HorizontalAlignment="Left" Margin="94,230,0,0" VerticalAlignment="Top" Height="67" Width="236"/>
-        <Button Content="Pacijent" Click="Pacijent_Click" HorizontalAlignment="Left" Margin="450,230,0,0" VerticalAlignment="Top" Height="67" Width="236"/>
+        <Button Content="Upravnik" Click="Upravnik_Click" IsDefault="True" HorizontalAlignment="Left" Margin="94,85,0,0" VerticalAlignment="Top" Height="62" Width="236"/>
+        <Button Content="Sekretar" Click="Sekretar_Click" IsDefault="True" HorizontalAlignment="Left" Margin="450,85,0,0" VerticalAlignment="Top" Height="62" Width="236"/>
+        <Button Content="Doktor" Click="Doktor_Click" IsDefault="True" HorizontalAlignment="Left" Margin="94,230,0,0" VerticalAlignment="Top" Height="67" Width="236"/>
+        <Button Content="Pacijent" Click="Pacijent_Click" IsDefault="True" HorizontalAlignment="Left" Margin="450,230,0,0" VerticalAlignment="Top" Height="67" Width="236"/>
     </Grid>
 </Window>

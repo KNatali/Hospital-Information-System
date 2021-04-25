@@ -53,7 +53,7 @@ namespace ProjekatSIMS
             Pregledi = new List<Pregled>();
             PregledRepository fajl = new PregledRepository(@"..\..\..\Fajlovi\Pregled.txt");
             Pregledi = fajl.GetListaPregledaSekretar();
-            foreach (Pregled pregled in Pregledi)
+            /*foreach (Pregled pregled in Pregledi)
             {
                 if (pregled.Pocetak == datumNovi)
                 {
@@ -62,19 +62,19 @@ namespace ProjekatSIMS
                 }
 
                 if (slobodanTerminFlag == 0)
-                {
+                {*/
                     Pregledi.Add(pre);
                     //string newJson = JsonConvert.SerializeObject(Pregledi);
                     //File.WriteAllText(@"..\..\..\Fajlovi\Pregled.txt", newJson);
                     PopupNotifier popup = new PopupNotifier();
                     popup.Image = Properties.Resources.informacija;
                     popup.TitleText = "OBAVEŠTENJE";
-                    popup.ContentText = "Pregled je uspešno otkazan. " +
-                       "Poslato je obaveštenje pacijentu i doktoru da je pregled otkazan.";
+                    popup.ContentText = "Pregled je uspešno izmenjen. " +
+                       "Poslato je obaveštenje pacijentu i doktoru da je pregled izmenjen.";
                     popup.Popup();
                     this.Close();
-                }
-            }
+                //}
+            //}
             fajl.SacuvajPregledSekretar(Pregledi);
         }
     }

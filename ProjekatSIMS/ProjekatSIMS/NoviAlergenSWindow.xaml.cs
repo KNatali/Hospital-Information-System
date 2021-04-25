@@ -1,8 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using Model;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Repository;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,14 +19,40 @@ namespace ProjekatSIMS
 {
     public partial class NoviAlergenSWindow : Window
     {
-        public NoviAlergenSWindow()
+        public Pacijent p { get; set; }
+        public NoviAlergenSWindow(Pacijent pac)
         {
             InitializeComponent();
+            this.DataContext = this;
+            p = pac;
         }
         private void Dodavanje(object sender, RoutedEventArgs e)
         {
             String alergen = Naziv.Text;
-            ZdravstveniKarton zk = new ZdravstveniKarton();
+            List<String> alergeni = new List<String>();
+            List<ZdravsteniKarton> kartoni = new List<ZdravsteniKarton>();
+
+            using (StreamReader sr = new StreamReader(@"..\..\..\Fajlovi\ZdravstveniKarton.txt"))
+            {
+                string json = sr.ReadToEnd();
+                kartoni = JsonConvert.DeserializeObject<List<ZdravsteniKarton>>(json);
+            }
+            
+            foreach (ZdravsteniKarton k in kartoni)
+            {
+                if (k.pacijent.Jmbg == p.Jmbg)
+                {
+                    if (k.Alergeni == null)
+                        k.Alergeni.Add(alergen);
+                    else
+                        k.Alergeni.Add(alergen);
+                }
+            }
+            PregledRepository pr = new PregledRepository(@"..\..\..\Fajlovi\ZdravstveniKarton.txt");
+            pr.SacuvajAlergen(kartoni);
+            
+
+            /*ZdravstveniKarton zk = new ZdravstveniKarton();
             List<String> lista = new List<String>();
             lista.Add(alergen);
             foreach (string item in lista)
@@ -33,18 +61,8 @@ namespace ProjekatSIMS
                 itm.Content = item;
                 //zk.Add(itm);
             }
-            PregledRepository fajl = new PregledRepository(@"..\..\..\Fajlovi\ZdravstveniKarton.txt");
-            /*List<string> lista = new List<string>();
-            lista.Add(alergen);
+            PregledRepository fajl = new PregledRepository(@"..\..\..\Fajlovi\ZdravstveniKarton.txt");*/
 
-            JArray newEventJsonItem = new JArray(lista);//Convert newEvent to JArray.
-
-            PregledRepository fajl = new PregledRepository(@"..\..\..\Fajlovi\ZdravstveniKarton.txt");
-            JObject jsonObject = JObject.Parse(fajl.ReadAllText(@"..\..\..\Fajlovi\ZdravstveniKarton.txt"));
-            JArray incomingEvents = jsonObject.Value<JArray>();
-            incomingEvents.Add(newEventJsonItem);//Insert new JArray object.
-
-            Console.WriteLine(JsonConvert.SerializeObject(incomingEvents, Formatting.Indented));*/
             this.Close();
         }
         private void Nazad(object sender, RoutedEventArgs e)
