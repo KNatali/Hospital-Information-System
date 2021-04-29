@@ -106,6 +106,9 @@ namespace ProjekatSIMS
 
             string newJson = JsonConvert.SerializeObject(recepti);
             File.WriteAllText(@"..\..\..\Fajlovi\Recept.txt", newJson);
+          
+
+            
 
             MessageBox.Show("Uspjesno je izdat recept");
             ZdravstveniKartonDoktor z = new ZdravstveniKartonDoktor(Pacijent);
