@@ -20,7 +20,7 @@
 
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Zatvori" HorizontalAlignment="Left" Margin="664,377,0,0" VerticalAlignment="Top" Height="33" Width="78" Click="Button_Click"/>
+        <Button Content="Zatvori" IsDefault="True" HorizontalAlignment="Left" Margin="664,377,0,0" VerticalAlignment="Top" Height="33" Width="78" Click="Button_Click"/>
 
     </Grid>
 

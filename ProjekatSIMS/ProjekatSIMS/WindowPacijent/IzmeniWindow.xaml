@@ -18,7 +18,7 @@
                 <DataGridTextColumn Header="Sprat" Binding="{Binding prostorija.sprat}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Izmeni" Width="100" Height="40"  Margin="673,368,0,0" VerticalAlignment="Top" Click="Izmeni_Click"/>
+        <Button Content="Izmeni" IsDefault="True" Width="100" Height="40"  Margin="673,368,0,0" VerticalAlignment="Top" Click="Izmeni_Click"/>
         <StackPanel Margin="43,239,0,-39" HorizontalAlignment="Left">
             <Label FontWeight="Bold" Content="Izaberite novi datum pregleda: "/>
             <DatePicker Name="Datum"/>
