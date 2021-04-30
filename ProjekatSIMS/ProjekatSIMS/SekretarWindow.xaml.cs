@@ -50,7 +50,8 @@ namespace ProjekatSIMS
 
         private void Pretrazi_doktore(object sender, RoutedEventArgs e)
         {
-
+            PretraziDoktoreSekretarWindow pd = new PretraziDoktoreSekretarWindow();
+            pd.Show();
         }
 
         private void Naplata(object sender, RoutedEventArgs e)
@@ -63,9 +64,10 @@ namespace ProjekatSIMS
 
         }
 
-        private void Komunikacija(object sender, RoutedEventArgs e)
+        private void Oglasi(object sender, RoutedEventArgs e)
         {
-
+            OglasnaTablaSWindow ot = new OglasnaTablaSWindow();
+            ot.Show();
         }
 
         private void Hitna(object sender, RoutedEventArgs e)

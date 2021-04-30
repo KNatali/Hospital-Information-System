@@ -59,11 +59,11 @@
                 </StackPanel>
             </Button.Content>
         </Button>
-        <Button Click="Komunikacija" HorizontalAlignment="Left" Margin="40,354,0,0" VerticalAlignment="Top" Height="60" Width="320" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf">
+        <Button Click="Oglasi" HorizontalAlignment="Left" Margin="40,354,0,0" VerticalAlignment="Top" Height="60" Width="320" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf">
             <Button.Content>
                 <StackPanel Orientation="Horizontal">
                     <fa:ImageAwesome Icon="Commenting" Width="30"/>
-                    <TextBlock Text=" Kanal za komunikaciju"/>
+                    <TextBlock Text=" Vesti na oglasnoj tabli"/>
                 </StackPanel>
             </Button.Content>
         </Button>
