@@ -47,5 +47,32 @@ namespace ProjekatSIMS
             HitanNalogSWindow hn = new HitanNalogSWindow();
             hn.Show();
         }
+
+        private void Pretrazi_doktore(object sender, RoutedEventArgs e)
+        {
+            PretraziDoktoreSekretarWindow pd = new PretraziDoktoreSekretarWindow();
+            pd.Show();
+        }
+
+        private void Naplata(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Zauzetost(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Oglasi(object sender, RoutedEventArgs e)
+        {
+            OglasnaTablaSWindow ot = new OglasnaTablaSWindow();
+            ot.Show();
+        }
+
+        private void Hitna(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
