@@ -23,8 +23,17 @@ namespace Controller
          // TODO: implement
          return null;
       }
-      
-      public Boolean ZakazivanjePregleda(ComboBox Termin,String jmbg,Prostorija prostorija,DateTime datum1,DateTime datum2)
+
+        public Boolean ZakazivanjePregledaSekretar(ComboBox Termin, String jmbg, String jmbgdoktor,Prostorija prostorija, DateTime datum1, DateTime datum2)
+        {
+
+            if (pregledService.ZakazivanjePregledaSekretar(Termin, jmbg, jmbgdoktor, prostorija, datum1, datum2))
+                return true;
+
+            return false;
+
+        }
+        public Boolean ZakazivanjePregleda(ComboBox Termin,String jmbg,Prostorija prostorija,DateTime datum1,DateTime datum2)
       {
            
             if (pregledService.ZakazivanjePregleda(Termin,jmbg, prostorija, datum1, datum2))
