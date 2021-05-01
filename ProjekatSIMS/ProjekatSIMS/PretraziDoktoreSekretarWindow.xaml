@@ -31,7 +31,7 @@
             </StackPanel>
         </Label>
         <Label Content="ZDRAVO KORPORACIJA" FontSize="25" Margin="324,24,172,380" Foreground="#1963bf" FontWeight="Bold"/>
-        <Label Content="Kliknite dva puta na pacijenta u tabeli da biste videli njegov profil" x:Name="Labela" Visibility="Hidden" HorizontalAlignment="Left" Margin="330,109,0,0" VerticalAlignment="Top" FontSize="15" Foreground="#1963bf" Height="39" Width="440"/>
+        <Label Content="Kliknite dva puta na doktora u tabeli da biste videli njegov profil" x:Name="Labela" Visibility="Hidden" HorizontalAlignment="Left" Margin="330,109,0,0" VerticalAlignment="Top" FontSize="15" Foreground="#1963bf" Height="39" Width="440"/>
         <DataGrid x:Name="dataGridDoktori" ItemsSource="{Binding Doktori}" IsReadOnly="True"
                   SelectionMode="Single" Visibility="Hidden" AutoGenerateColumns="False" Margin="350,142,30,100" FontSize="20">
             <DataGrid.Columns>
