@@ -109,7 +109,8 @@ namespace ProjekatSIMS
 
         private void Zakazi(object sender, RoutedEventArgs e)
         {
-
+            OdabirPrioritetaSWindow op = new OdabirPrioritetaSWindow(pac);
+            op.Show();
         }
 
         private void Kalendar(object sender, RoutedEventArgs e)

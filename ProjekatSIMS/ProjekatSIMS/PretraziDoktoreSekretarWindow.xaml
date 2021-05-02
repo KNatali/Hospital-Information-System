@@ -38,7 +38,7 @@
 
                 <DataGridTextColumn Header="Ime" Binding="{Binding Ime}" Width="110"/>
                 <DataGridTextColumn Header="Prezime" Binding="{Binding Prezime}" Width="110"/>
-                <DataGridTextColumn Header="Stručnost" Binding="{Binding Jmbg}" Width="*"/>
+                <DataGridTextColumn Header="Specijalizacija" Binding="{Binding Specijalizacija}" Width="*"/>
 
             </DataGrid.Columns>
             <DataGrid.ItemContainerStyle>

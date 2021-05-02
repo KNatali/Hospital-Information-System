@@ -75,9 +75,9 @@ namespace ProjekatSIMS
 
         private void Zakazi(object sender, RoutedEventArgs e)
         {
-            OdabirPrioritetaSWindow op = new OdabirPrioritetaSWindow();
+            /*OdabirPrioritetaSWindow op = new OdabirPrioritetaSWindow();
             op.Show();
-            this.Close();
+            this.Close();*/
         }
     }
 }

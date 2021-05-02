@@ -19,12 +19,14 @@ namespace ProjekatSIMS
 {
     public partial class PrioritetDoktorSWindow : Window
     {
+        public Pacijent pac { get; set; }
         public List<Doktor> Doktori { get; set; }
         public List<SlobodanTermin> Termini { get; set; }
-        public PrioritetDoktorSWindow()
+        public PrioritetDoktorSWindow(Pacijent p)
         {
             InitializeComponent();
             this.DataContext = this;
+            pac = p;
             List<Doktor> doktori = new List<Doktor>();
             Doktori = new List<Doktor>();
             OsobaRepository fajl = new OsobaRepository(@"..\..\..\Fajlovi\Doktor.txt");
