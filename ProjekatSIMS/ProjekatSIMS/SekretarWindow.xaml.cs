@@ -67,7 +67,8 @@ namespace ProjekatSIMS
 
         private void Hitna(object sender, RoutedEventArgs e)
         {
-
+            DoktorPacijentHitnoSWindow dp = new DoktorPacijentHitnoSWindow();
+            dp.Show();
         }
     }
 }
