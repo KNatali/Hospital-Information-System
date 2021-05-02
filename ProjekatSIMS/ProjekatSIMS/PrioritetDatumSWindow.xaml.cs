@@ -19,16 +19,18 @@ namespace ProjekatSIMS
 {
     public partial class PrioritetDatumSWindow : Window
     {
+        public Pacijent pac { get; set; }
         public List<Doktor> Doktori { get; set; }
         public List<SlobodanTermin> Termini { get; set; }
         public List<Pregled> Pregledi { get; set; }
         private DateTime datum1;
         private String ime;
         private String prezime;
-        public PrioritetDatumSWindow()
+        public PrioritetDatumSWindow(Pacijent p)
         {
             InitializeComponent();
             this.DataContext = this;
+            pac = p;
             List<SlobodanTermin> termini = new List<SlobodanTermin>();
             Termini = new List<SlobodanTermin>();
             SlobodanTerminRepository fajl = new SlobodanTerminRepository(@"..\..\..\Fajlovi\Doktor.txt");
