@@ -9,7 +9,7 @@
         Title="ZakaziTerminSWindow" Height="450" Width="800">
     <Grid>
         <Label Content="Kod doktora:" HorizontalAlignment="Left" FontSize="20" Height="35" Margin="134,121,0,0" VerticalAlignment="Top" Width="160"/>
-        <ComboBox  Name="Doktor" HorizontalAlignment="Left"   
+        <ComboBox  Name="Doktor" HorizontalAlignment="Left" 
                   Margin="346,124,0,0"   
                   VerticalAlignment="Top"   
                   Width="354" FontSize="20"  
@@ -53,12 +53,12 @@
                   Margin="346,254,0,0"   
                   VerticalAlignment="Top"   
                   Width="155" FontSize="20"  
-                  ItemsSource="{Binding Path=Tipovi}">
+                  ItemsSource="{Binding Path=Pregledi}">
 
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Path=TipPregleda}"/>
+                        <TextBlock Text="{Binding Path=Tip}"/>
                     </StackPanel>
                 </DataTemplate>
             </ComboBox.ItemTemplate>

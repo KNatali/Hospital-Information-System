@@ -23,7 +23,7 @@ namespace ProjekatSIMS
         public Pacijent pac { get; set; }
         public List<Doktor> Doktori { get; set; }
         public List<Prostorija> Ordinacije { get; set; }
-        public List<TipPregleda> Tipovi { get; set; }
+        //public List<Pregled> Pregledi { get; set; }
         public ZakaziTerminSWindow(Pacijent p)
         {
             InitializeComponent();
@@ -54,15 +54,23 @@ namespace ProjekatSIMS
                 if (pr.vrsta == VrstaProstorije.Ordinacija)
                     Ordinacije.Add(pr);
             }
-            List<TipPregleda> tipovi = new List<TipPregleda>();
-            Tipovi = new List<TipPregleda>();
+            /*List<Pregled> pregledi = new List<Pregled>();
+            Pregledi = new List<Pregled>();
             //ucitavanje tipova pregleda u combobox
-            foreach (TipPregleda t in tipovi)
-                Tipovi.Add(t);
+            foreach (Pregled pre in pregledi)
+                Pregledi.Add(pre);*/
         }
         private void Otkazi(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            MessageBoxResult ret = MessageBox.Show("Da li želite da otkažete zakazivanje pregleda pacijenta?", "PROVERA", MessageBoxButton.YesNo);
+            switch(ret)
+            {
+                case MessageBoxResult.Yes:
+                    this.Close();
+                    break;
+                case MessageBoxResult.No:
+                    break;
+            }
         }
         private void Zakazi(object sender, RoutedEventArgs e)
         {
@@ -89,7 +97,7 @@ namespace ProjekatSIMS
             datum1 = datum1.AddMinutes(minut);
             DateTime datum2 = datum1.AddMinutes(20);
             PregledController pc = new PregledController();
-            if (pc.ZakazivanjePregledaSekretar(Termin, pac.Jmbg, p.doktor.Jmbg,prostorija, datum1, datum2) == true)
+            if (pc.ZakazivanjePregledaSekretar(Termin, pac.Jmbg, p.doktor.Jmbg, prostorija, datum1, datum2) == true)
             {
                 PopupNotifier popup = new PopupNotifier();
                 popup.Image = Properties.Resources.informacija;

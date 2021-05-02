@@ -1,9 +1,11 @@
 ﻿using Model;
+using Newtonsoft.Json;
 using ProjekatSIMS.Model;
 using ProjekatSIMS.Repository;
 using Repository;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -22,21 +24,31 @@ namespace ProjekatSIMS
         public Pacijent pac { get; set; }
         public List<Doktor> Doktori { get; set; }
         public List<SlobodanTermin> Termini { get; set; }
+        public List<Prostorija> Ordinacije { get; set; }
         public List<Pregled> Pregledi { get; set; }
-        private DateTime datum1;
-        private String ime;
-        private String prezime;
         public PrioritetDatumSWindow(Pacijent p)
         {
             InitializeComponent();
             this.DataContext = this;
             pac = p;
-            List<SlobodanTermin> termini = new List<SlobodanTermin>();
-            Termini = new List<SlobodanTermin>();
-            SlobodanTerminRepository fajl = new SlobodanTerminRepository(@"..\..\..\Fajlovi\Doktor.txt");
-            Termini = fajl.DobaviSveSlobodneTermine();
+            List<Prostorija> prostorije = new List<Prostorija>();
+            Ordinacije = new List<Prostorija>();
+            //ucitavanje ordinacija u combobox
+            using (StreamReader r = new StreamReader(@"..\..\..\Fajlovi\Prostorija.txt"))
+            {
+
+                string json = r.ReadToEnd();
+                prostorije = JsonConvert.DeserializeObject<List<Prostorija>>(json);
+
+            }
+            foreach (Prostorija pr in prostorije)
+            {
+                if (pr.vrsta == VrstaProstorije.Ordinacija)
+                    Ordinacije.Add(pr);
+            }
+
         }
-        public PrioritetDatumSWindow(DateTime datum1)
+        /*public PrioritetDatumSWindow(DateTime datum1)
         {
             this.datum1 = datum1;
             InitializeComponent();
@@ -56,7 +68,7 @@ namespace ProjekatSIMS
             Termini = new List<SlobodanTermin>();
             SlobodanTerminRepository file = new SlobodanTerminRepository(@"..\..\..\Fajlovi\SlobodniTermini.txt");
             Termini = file.DobaviSveSlobodneTermineZaDatum(datum1);
-        }
+        }*/
 
         private void Nazad(object sender, RoutedEventArgs e)
         {
@@ -88,23 +100,6 @@ namespace ProjekatSIMS
             }
             p.doktor = dr;
             p.Pocetak = st.Termin;
-            String jmbgp = Jmbg_pacijent.Text;
-            //Pacijent pac = new Pacijent { Jmbg = jmbgp };
-            //p.pacijent = pac;
-            Pacijent pac = new Pacijent();
-            List<Pacijent> postojecipac = new List<Pacijent>();
-            PacijentRepository fajlpac = new PacijentRepository();
-            postojecipac = fajlpac.UcitajSvePacijente();
-
-            foreach (Pacijent f in postojecipac)
-            {
-
-                if (f.Jmbg == jmbgp)
-                {
-                    pac = f;
-                    break;
-                }
-            }
             p.pacijent = pac;
             Pregledi.Add(p);
             fajl.SacuvajPregledSekretar(Pregledi);
@@ -115,6 +110,27 @@ namespace ProjekatSIMS
                 "Poslato je obaveštenje pacijentu i doktoru o predstojećem pregledu.";
             popup.Popup();
             this.Close();
+        }
+
+        private void Prikaz(object sender, RoutedEventArgs e)
+        {
+            DateTime datum = (DateTime)Datum.SelectedDate;
+            dataGridSlobodniTermini.Visibility = Visibility.Visible;
+            Labela.Visibility = Visibility.Visible;
+            List<SlobodanTermin> termini = new List<SlobodanTermin>();
+            Termini = new List<SlobodanTermin>();
+            SlobodanTerminRepository fajl = new SlobodanTerminRepository(@"..\..\..\Fajlovi\SlobodniTermini.txt");
+            Termini = fajl.DobaviSveSlobodneTermineZaDatum(datum);
+            
+            /*foreach (SlobodanTermin t in termini)
+            {
+
+                if (t.Termin == datum)
+                {
+                    Termini.Add(t);
+                }
+
+            }*/
         }
     }
 }
