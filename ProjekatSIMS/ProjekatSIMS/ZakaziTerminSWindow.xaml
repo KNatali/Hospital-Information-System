@@ -49,11 +49,10 @@
         <Button Content="Otkaži" Click="Otkazi" HorizontalAlignment="Left" Margin="134,364,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
         <Button Content="Zakaži" Click="Zakazi" HorizontalAlignment="Left" Margin="520,364,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
         <Label Content="Tip pregleda" HorizontalAlignment="Left" FontSize="20" Height="40" Margin="134,247,0,0" VerticalAlignment="Top" Width="144"/>
-        <ComboBox  Name="Pregled" HorizontalAlignment="Left"   
+        <ComboBox x:Name="Pregledi" HorizontalAlignment="Left"   
                   Margin="346,254,0,0"   
                   VerticalAlignment="Top"   
-                  Width="155" FontSize="20"  
-                  ItemsSource="{Binding Path=Pregledi}">
+                  Width="155" FontSize="20">
 
             <ComboBox.ItemTemplate>
                 <DataTemplate>

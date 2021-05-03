@@ -54,6 +54,7 @@ namespace ProjekatSIMS
                 if (pr.vrsta == VrstaProstorije.Ordinacija)
                     Ordinacije.Add(pr);
             }
+            Pregledi.ItemsSource = Enum.GetValues(typeof(TipPregleda));
             /*List<Pregled> pregledi = new List<Pregled>();
             Pregledi = new List<Pregled>();
             //ucitavanje tipova pregleda u combobox
@@ -111,7 +112,6 @@ namespace ProjekatSIMS
             {
                 MessageBox.Show("Niste uspeli da zakažete pregled.");
             }
-           
         }
     }
 }
