@@ -11,14 +11,27 @@
     <Grid Background="White">
         <Label Content="Izdavanje uputa" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontSize="18"/>
         <Label Content="Izaberi spacijalizaciju:" HorizontalAlignment="Left" Margin="96,123,0,0" VerticalAlignment="Top"/>
-        <ComboBox   SelectionChanged="DoktoriSpecijalizacija" Name="Specijalizacija" HorizontalAlignment="Left" Margin="312,127,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox   SelectionChanged="DoktoriOdabraneSpecijalizacije" Name="Specijalizacije" HorizontalAlignment="Left" Margin="312,127,0,0" VerticalAlignment="Top" Width="120"/>
         <Label Content="Izaberi doktora:" HorizontalAlignment="Left" Margin="96,178,0,0" VerticalAlignment="Top"/>
-        <ComboBox  Name="Doktor" HorizontalAlignment="Left" Margin="312,182,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox  Name="Doktori" HorizontalAlignment="Left" Margin="312,182,0,0" VerticalAlignment="Top" Width="120"  ItemsSource="{Binding Path=doktoriPrikaz}">
+
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Path=Ime}"/>
+                        <TextBlock Text=" "/>
+                        <TextBlock Text="{Binding Path=Prezime}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
         <Label Content="Pocetno vrijeme:" HorizontalAlignment="Left" Margin="96,243,0,0" VerticalAlignment="Top"/>
         <DatePicker Name="DatumPocetak" HorizontalAlignment="Left" Margin="332,242,0,0" VerticalAlignment="Top"/>
         <Label Content="Krajnje vrijeme:" HorizontalAlignment="Left" Margin="96,292,0,0" VerticalAlignment="Top"/>
         <DatePicker Name="DatumKraj" HorizontalAlignment="Left" Margin="332,295,0,0" VerticalAlignment="Top"/>
-        <Button Content="Potvrdi" Click="IzdavanjeUputa" HorizontalAlignment="Left" Margin="612,330,0,0" VerticalAlignment="Top" Height="32" Width="82"/>
+        <Button Content="Potvrdi" Click="IzdavanjeUputa" HorizontalAlignment="Left" Margin="653,341,0,0" VerticalAlignment="Top" Height="32" Width="82"/>
+        <ComboBox Name="Termini" HorizontalAlignment="Left" Margin="593,127,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Prikazi slobodne termine" Click="PrikazSlobodnihTermina" HorizontalAlignment="Left" Margin="292,341,0,0" VerticalAlignment="Top" Height="32" Width="140"/>
 
 
 

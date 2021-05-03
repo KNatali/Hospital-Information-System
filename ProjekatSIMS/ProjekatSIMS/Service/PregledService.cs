@@ -8,13 +8,15 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
+
 namespace Service
 {
    public class PregledService
    {
-        public Doktor dok { get; set; }
+        private const int TRAJANJE_PREGLEDA= 20;
         public Repository.PregledRepository pregledRepository =new PregledRepository();
         public Repository.ReceptRepository receptRepository;
+        public ProstorijaRepository prostorijaRepository = new ProstorijaRepository(@"..\..\..\Fajlovi\Prostorija.txt");
         public Model.Pregled ZakaziGuestPregledService(DateTime datumPregleda, Model.Pacijent pacijent)
       {
          // TODO: implement
@@ -31,6 +33,11 @@ namespace Service
         {
             return pregledRepository.DobaviSvePregledeDoktor();
         }
+
+       
+
+
+
 
         public Boolean OtkazivanjePregledaDoktor(Pregled p)
         {
@@ -64,6 +71,137 @@ namespace Service
             return true;
 
         }
+
+        public Boolean IzdavanjeUputa(Pacijent pacijent,Doktor doktor,DateTime izabraniTermin)
+        {
+            if (NadjiSlobodnuOrdinaciju(izabraniTermin) == null)
+                return false;
+            return true;
+        }
+
+        public Prostorija NadjiSlobodnuOrdinaciju(DateTime terminPocetak)
+        {
+            DateTime terminKraj = terminPocetak.AddMinutes(TRAJANJE_PREGLEDA);
+            List<Pregled> zakazaniPregledi = pregledRepository.DobaviZakazanePreglede();
+            List<Prostorija> ordinacije = prostorijaRepository.DobaviOrdinacije();
+            List<Prostorija> slobodneOrdinacije = ordinacije;
+            
+            foreach(Pregled p in zakazaniPregledi)
+            {
+                    if (DateTime.Compare(terminPocetak, p.Pocetak) >= 0 && DateTime.Compare(terminPocetak, p.Pocetak.AddMinutes(p.Trajanje)) < 0 ||
+                    DateTime.Compare(terminKraj, p.Pocetak) > 0 && DateTime.Compare(terminKraj, p.Pocetak.AddMinutes(p.Trajanje)) <= 0)
+                {
+                    if (slobodneOrdinacije.Contains(p.prostorija))
+                    {
+                        slobodneOrdinacije.Remove(p.prostorija);
+                    }
+                }
+            }
+
+
+            if (slobodneOrdinacije.Count == 0)
+            {
+                MessageBox.Show("Nema slbodnih ordinacija u izabranom terminu");
+                return null;
+            }
+            MessageBox.Show(slobodneOrdinacije.Count.ToString());
+            foreach(Prostorija pr in slobodneOrdinacije)
+            {
+                if (pr != null)
+                    return pr;
+            }
+            return null;
+            
+               
+            
+        }
+
+        public List<DateTime> PrikazSlobodnihTermina(Pacijent pacijent, Doktor doktor, DateTime pocetnoVrijeme, DateTime krajnjeVrijeme)
+        {
+            return ProvjeraZauzetostiTermina(pacijent, doktor, pocetnoVrijeme,krajnjeVrijeme);
+
+
+
+                
+        }
+
+        public List<DateTime> ProvjeraZauzetostiTermina(Pacijent pacijent, Doktor doktor, DateTime pocetnoVrijeme, DateTime krajnjeVrijeme)
+        {
+            List<DateTime> slobodniTermini = new List<DateTime>();
+         
+            slobodniTermini = getSlobodniTermini(doktor, pocetnoVrijeme, krajnjeVrijeme);
+            if (slobodniTermini.Count != 0)
+                return slobodniTermini;
+            else
+                return PronadjiNoveTermine(doktor, pocetnoVrijeme, krajnjeVrijeme);
+        }
+
+        public List<DateTime> getSlobodniTermini(Doktor doktor,DateTime pocetnoVrijeme,DateTime krajnjeVrijeme)
+        {
+            List<Pregled> ZakazaniPreglediDoktora = DobaviZakazanePregledeDoktora(doktor);
+            List<Pregled> zauzetiPregledi = new List<Pregled>();
+            List<DateTime> slobodniTermini = new List<DateTime>();
+           
+            foreach(Pregled p in ZakazaniPreglediDoktora)
+            {
+                if (p.Pocetak.Date >= pocetnoVrijeme.Date && p.Pocetak.Date <= krajnjeVrijeme.Date)
+                    zauzetiPregledi.Add(p);
+            }
+
+            DateTime pocetakRadnoVrijeme = new DateTime(pocetnoVrijeme.Year, pocetnoVrijeme.Month, pocetnoVrijeme.Day, 8, 0, 0);
+            DateTime krajnjeRadnoVrijeme= new DateTime(krajnjeVrijeme.Year, krajnjeVrijeme.Month, krajnjeVrijeme.Day, 20, 0, 0);
+            for (DateTime t=pocetakRadnoVrijeme;t<krajnjeRadnoVrijeme; t = t.AddMinutes(TRAJANJE_PREGLEDA))
+            {
+                int slobodan = 0;
+                DateTime terminKraj = pocetakRadnoVrijeme.AddMinutes(TRAJANJE_PREGLEDA);
+                foreach(Pregled p in zauzetiPregledi)
+                {
+                    
+                    if (DateTime.Compare(t, p.Pocetak) >= 0 && DateTime.Compare(t,p.Pocetak.AddMinutes(p.Trajanje)) < 0 ||
+                        DateTime.Compare(terminKraj, p.Pocetak) > 0 && DateTime.Compare(terminKraj, p.Pocetak.AddMinutes(p.Trajanje)) <= 0)
+                    {
+                        slobodan++;
+                    }
+                }
+
+                if (slobodan == 0)
+                {
+                    slobodniTermini.Add(t);
+                    MessageBox.Show(t.ToString());
+                }
+
+                if (t.Hour == 19 && t.Minute==40)
+                {
+                    t = t.AddHours(12);
+                }
+               
+            }
+
+            return slobodniTermini;
+          
+        }
+
+        public List<DateTime> PronadjiNoveTermine(Doktor doktor, DateTime pocetnoVrijeme, DateTime krajnjeVrijeme)
+        {
+            return null;
+        }
+
+        public List<Pregled> DobaviZakazanePregledeDoktora(Doktor doktor)
+        {
+          
+            List<Pregled> zakazaniPregledi =pregledRepository.DobaviZakazanePreglede();
+            List<Pregled> zakazaniPreglediDoktora = new List<Pregled>();
+            foreach (Pregled p in zakazaniPregledi)
+            {
+                if (p.doktor.Jmbg == doktor.Jmbg)
+                    zakazaniPreglediDoktora.Add(p);
+            }
+            return zakazaniPreglediDoktora;
+
+        }
+
+
+
         public Boolean ZakazivanjePregledaSekretar(ComboBox Termin, String jmbg, String jmbgdoktor, Prostorija prostorija, DateTime datum1, DateTime datum2)
         {
             Pregled p = new Pregled();

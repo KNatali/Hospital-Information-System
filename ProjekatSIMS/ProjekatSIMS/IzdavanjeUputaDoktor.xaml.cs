@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using Controller;
+using Model;
 using Repository;
 using System;
 using System.Collections.Generic;
@@ -15,48 +16,60 @@ using System.Windows.Shapes;
 
 namespace ProjekatSIMS
 {
-    /// <summary>
-    /// Interaction logic for IzdavanjeUputaDoktor.xaml
-    /// </summary>
+
     public partial class IzdavanjeUputaDoktor : Page
     {
-        OsobaRepository osobaRepository = new OsobaRepository((@"..\..\..\Fajlovi\Doktor.txt"));
-        Doktor odabraniDoktor = new Doktor();
+        private OsobaRepository osobaRepository = new OsobaRepository((@"..\..\..\Fajlovi\Doktor.txt"));
+        private PregledController pregledController = new PregledController();
+        private Doktor odabraniDoktor = new Doktor();
         private List<Doktor> sviDoktori = new List<Doktor>();
-        public IzdavanjeUputaDoktor()
+        private List<Doktor> doktoriPrikaz;
+        private Pacijent izabraniPacijent;
+
+        public IzdavanjeUputaDoktor(Pacijent pacijent )
         {
             InitializeComponent();
             this.DataContext = this;
-            //ono sto ide u combo box za specijalizaciju
-            List<Doktor> doktori = new List<Doktor>();
+            izabraniPacijent = pacijent;
             sviDoktori = osobaRepository.DobaviDoktore();
-            //rucno pravim
-            List<String> specijalizacije = new List<String>();
-            specijalizacije.Add("Opsta praksa");
-            specijalizacije.Add("Pedijatar");
-            Specijalizacija.ItemsSource = specijalizacije;
-
-
+            var specijalizacije = Enum.GetValues(typeof(Specijalizacija));
+            Specijalizacije.ItemsSource = specijalizacije;
+           
         }
 
-        private void DoktoriSpecijalizacija(object sender, RoutedEventArgs e)
+        private void DoktoriOdabraneSpecijalizacije(object sender, RoutedEventArgs e)
         {
-            String s =(String) Specijalizacija.SelectedItem;
-            List<String> doktoriIzabraneSpecijalizacije = new List<String>();
+            Specijalizacija odabranaSpecijalizacija =(Specijalizacija) Specijalizacije.SelectedItem;
+            doktoriPrikaz = new List<Doktor>();
             foreach(Doktor d in sviDoktori)
             {
-                // if (s == d.Specijalizacija)
-                s = "kdkjk";
-                     doktoriIzabraneSpecijalizacije.Add(s);
-
-                Doktor.ItemsSource = doktoriIzabraneSpecijalizacije;
+                if (odabranaSpecijalizacija == d.Specijalizacija)
+               
+                     doktoriPrikaz.Add(d);
             }
-        
+           Doktori.ItemsSource =doktoriPrikaz;
+        }
+
+        private void PrikazSlobodnihTermina(object sender, RoutedEventArgs e)
+        {
+            Doktor izabraniDoktor = (Doktor)Doktori.SelectedItem;
+            DateTime pocetnoVrijeme = (DateTime)DatumPocetak.SelectedDate;
+            DateTime krajnjeVrijeme = (DateTime)DatumKraj.SelectedDate;
+
+            List<DateTime> slobodniTermini = new List<DateTime>();
+            slobodniTermini=pregledController.PrikazSlobodnihTermina(izabraniPacijent, izabraniDoktor, pocetnoVrijeme, krajnjeVrijeme);
+            Termini.ItemsSource = slobodniTermini;
         }
 
         private void IzdavanjeUputa(object sender, RoutedEventArgs e)
         {
+            Doktor izabraniDoktor = (Doktor)Doktori.SelectedItem;
+            DateTime izabranTermin = (DateTime)Termini.SelectedItem;
+           
 
+           
+            pregledController.IzdavanjeUputa(izabraniPacijent, izabraniDoktor,izabranTermin );
+           
         }
     }
 }
