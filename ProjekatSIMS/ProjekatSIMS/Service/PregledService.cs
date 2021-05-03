@@ -17,6 +17,7 @@ namespace Service
         public Repository.PregledRepository pregledRepository =new PregledRepository();
         public Repository.ReceptRepository receptRepository;
         public ProstorijaRepository prostorijaRepository = new ProstorijaRepository(@"..\..\..\Fajlovi\Prostorija.txt");
+        public UputRepository uputRepository = new UputRepository();
         public Model.Pregled ZakaziGuestPregledService(DateTime datumPregleda, Model.Pacijent pacijent)
       {
          // TODO: implement
@@ -74,8 +75,39 @@ namespace Service
 
         public Boolean IzdavanjeUputa(Pacijent pacijent,Doktor doktor,DateTime izabraniTermin)
         {
-            if (NadjiSlobodnuOrdinaciju(izabraniTermin) == null)
+            Prostorija slobodnaOrdinacija = NadjiSlobodnuOrdinaciju(izabraniTermin);
+            if (slobodnaOrdinacija == null)
                 return false;
+
+            Pregled p = new Pregled();
+            p.pacijent = pacijent;
+            p.doktor = doktor;
+            p.Pocetak = izabraniTermin;
+            p.Trajanje = TRAJANJE_PREGLEDA;
+            p.prostorija = slobodnaOrdinacija;
+            p.StatusPregleda = StatusPregleda.Zakazan;
+            p.Tip = TipPregleda.Standardni;
+            List<Pregled> sviPregledi = pregledRepository.DobaviSvePregledeDoktor();
+            if (sviPregledi.Count == 0)
+            {
+                p.Id = 1;
+            }
+            else
+            {
+                p.Id = sviPregledi[sviPregledi.Count - 1].Id + 1;
+            }
+            sviPregledi.Add(p);
+            pregledRepository.SacuvajPregledDoktor(sviPregledi);
+
+            DateTime vrijemeIzadavanja = DateTime.Now;
+            Uput uput = new Uput(p, vrijemeIzadavanja);
+            List<Uput> uputi = new List<Uput>();
+            if (uputRepository.DobaviUpute() == null)
+                uputi = new List<Uput>();
+            
+            uputi.Add(uput);
+            uputRepository.SacuvajUput(uputi);
+
             return true;
         }
 
@@ -85,15 +117,19 @@ namespace Service
             List<Pregled> zakazaniPregledi = pregledRepository.DobaviZakazanePreglede();
             List<Prostorija> ordinacije = prostorijaRepository.DobaviOrdinacije();
             List<Prostorija> slobodneOrdinacije = ordinacije;
+          
             
             foreach(Pregled p in zakazaniPregledi)
             {
                     if (DateTime.Compare(terminPocetak, p.Pocetak) >= 0 && DateTime.Compare(terminPocetak, p.Pocetak.AddMinutes(p.Trajanje)) < 0 ||
-                    DateTime.Compare(terminKraj, p.Pocetak) > 0 && DateTime.Compare(terminKraj, p.Pocetak.AddMinutes(p.Trajanje)) <= 0)
+                    DateTime.Compare(terminKraj, p.Pocetak) > 0 && DateTime.Compare(terminKraj, p.Pocetak.AddMinutes(p.Trajanje)) <= 0 ||
+                    DateTime.Compare(terminKraj, p.Pocetak) == 0 && DateTime.Compare(terminKraj, p.Pocetak.AddMinutes(p.Trajanje)) == 0)
                 {
-                    if (slobodneOrdinacije.Contains(p.prostorija))
+
+                   for(int i = 0; i < ordinacije.Count; i++)
                     {
-                        slobodneOrdinacije.Remove(p.prostorija);
+                        if (ordinacije[i].id == p.prostorija.id)
+                            slobodneOrdinacije.Remove (ordinacije[i]);
                     }
                 }
             }
@@ -101,16 +137,12 @@ namespace Service
 
             if (slobodneOrdinacije.Count == 0)
             {
-                MessageBox.Show("Nema slbodnih ordinacija u izabranom terminu");
+                MessageBox.Show("Nema slbodnih ordinacija u izabranom terminu. Molimo Vas izaberite neki od drugih ponudjenih termina");
                 return null;
             }
-            MessageBox.Show(slobodneOrdinacije.Count.ToString());
-            foreach(Prostorija pr in slobodneOrdinacije)
-            {
-                if (pr != null)
-                    return pr;
-            }
-            return null;
+           
+           
+            return slobodneOrdinacije[0];
             
                
             
@@ -167,7 +199,7 @@ namespace Service
                 if (slobodan == 0)
                 {
                     slobodniTermini.Add(t);
-                    MessageBox.Show(t.ToString());
+                   
                 }
 
                 if (t.Hour == 19 && t.Minute==40)
