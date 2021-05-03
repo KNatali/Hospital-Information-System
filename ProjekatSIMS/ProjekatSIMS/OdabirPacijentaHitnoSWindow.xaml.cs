@@ -14,20 +14,18 @@ using System.Windows.Shapes;
 
 namespace ProjekatSIMS
 {
-    /// <summary>
-    /// Interaction logic for DoktorPacijentHitnoSWindow.xaml
-    /// </summary>
-    public partial class DoktorPacijentHitnoSWindow : Window
+    public partial class OdabirPacijentaHitnoSWindow : Window
     {
         public List<Pacijent> Pacijenti { get; set; }
         public Pacijent pac { get; set; }
-        public DoktorPacijentHitnoSWindow()
+        public OdabirPacijentaHitnoSWindow()
         {
             InitializeComponent();
             this.DataContext = this;
             Pacijenti = new List<Pacijent>();
             OsobaRepository fajl = new OsobaRepository(@"..\..\..\Fajlovi\Pacijent.txt");
             Pacijenti = fajl.DobaviPacijente();
+            Oblasti.ItemsSource = Enum.GetValues(typeof(Specijalizacija));
         }
         private void Otkazi(object sender, RoutedEventArgs e)
         {
@@ -72,6 +70,22 @@ namespace ProjekatSIMS
                 hp.Show();
                 this.Close();
             }
+            string stro = Oblasti.Text;
+            ComboBoxItem cbio = (ComboBoxItem)Oblasti.SelectedItem;
+            string opcijao = cbi.Content.ToString();
+            string valo = Oblasti.SelectedValue.ToString();
+            if (opcijao == "Opsta")
+            {
+                
+            }
+            else if (opcijao == "Kardiologija")
+            {
+
+            }
+            else if (opcijao == "Hirurgija")
+            {
+
+            }
         }
 
         private void Prikaz(object sender, RoutedEventArgs e)
@@ -89,17 +103,6 @@ namespace ProjekatSIMS
                 Ime.Visibility = Visibility.Visible;
                 Prezime.Visibility = Visibility.Visible;
                 dataGridPacijenti.Visibility = Visibility.Hidden;
-                String jmbg = Jmbg.Text;
-                String ime = Ime.Text;
-                String prezime = Prezime.Text;
-                Pacijent p = new Pacijent();
-                p.Jmbg = jmbg;
-                p.Ime = ime;
-                p.Prezime = prezime;
-                OsobaRepository fajl = new OsobaRepository(@"..\..\..\Fajlovi\Pacijent.txt");
-                List<Pacijent> pacijenti = fajl.DobaviPacijente();
-                pacijenti.Add(p);
-                fajl.Sacuvaj(pacijenti);
             }
             else if (opcija == "Odaberi postojeći nalog")
             {
