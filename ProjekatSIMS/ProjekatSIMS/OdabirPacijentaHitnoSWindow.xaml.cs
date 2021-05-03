@@ -25,7 +25,6 @@ namespace ProjekatSIMS
             Pacijenti = new List<Pacijent>();
             OsobaRepository fajl = new OsobaRepository(@"..\..\..\Fajlovi\Pacijent.txt");
             Pacijenti = fajl.DobaviPacijente();
-            Oblasti.ItemsSource = Enum.GetValues(typeof(Specijalizacija));
         }
         private void Otkazi(object sender, RoutedEventArgs e)
         {
@@ -69,22 +68,6 @@ namespace ProjekatSIMS
                 HitanPregledSWindow hp = new HitanPregledSWindow(p);
                 hp.Show();
                 this.Close();
-            }
-            string stro = Oblasti.Text;
-            ComboBoxItem cbio = (ComboBoxItem)Oblasti.SelectedItem;
-            string opcijao = cbi.Content.ToString();
-            string valo = Oblasti.SelectedValue.ToString();
-            if (opcijao == "Opsta")
-            {
-                
-            }
-            else if (opcijao == "Kardiologija")
-            {
-
-            }
-            else if (opcijao == "Hirurgija")
-            {
-
             }
         }
 

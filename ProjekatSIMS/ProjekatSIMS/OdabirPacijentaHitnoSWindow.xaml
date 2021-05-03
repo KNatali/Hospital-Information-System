@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="OdabirPacijentaHitnoSWindow" Height="450" Width="800">
     <Grid>
-        <Label Width="356" VerticalAlignment="Top" Margin="250,65,0,0" Height="50" HorizontalAlignment="Left" FontSize="20" Foreground="#1963bf" FontWeight="Bold" Content="Odaberite pacijenta i oblast doktora"/>
+        <Label Width="200" VerticalAlignment="Top" Margin="0,80,0,0" Height="50" HorizontalAlignment="Center" FontSize="20" Foreground="#1963bf" FontWeight="Bold" Content="Odaberite pacijenta"/>
         <Label Margin="175,11,465,352">
             <StackPanel Orientation="Horizontal">
                 <fa:ImageAwesome Icon="Globe" Width="60" Foreground="#1963bf"/>
@@ -45,6 +45,5 @@
             </DataGrid.Columns>
         </DataGrid>
         <Button Content="Prikaži" Click="Prikaz" HorizontalAlignment="Left" Margin="483,153,0,0" VerticalAlignment="Top" Height="38" Width="145" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
-        <ComboBox HorizontalAlignment="Left" x:Name="Oblasti" FontSize="20" Margin="288,104,0,0" VerticalAlignment="Top" Width="252" Height="38"/>
     </Grid>
 </Window>

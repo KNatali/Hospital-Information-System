@@ -8,7 +8,6 @@
         mc:Ignorable="d"
         Title="HitanPregledSWindow" Height="450" Width="800">
     <Grid>
-
         <Label Width="271" VerticalAlignment="Top" Margin="280,79,0,0" Height="50" HorizontalAlignment="Left" FontSize="20" Foreground="#1963bf" FontWeight="Bold" Content="Zakazivanje hitnog termina"/>
         <Label Margin="175,11,465,352">
             <StackPanel Orientation="Horizontal">
@@ -23,7 +22,20 @@
             </StackPanel>
         </Label>
         <Label Content="ZDRAVO KORPORACIJA" FontSize="25" Margin="324,24,172,380" Foreground="#1963bf" FontWeight="Bold"/>
-        <ComboBox HorizontalAlignment="Left" x:Name="Oblasti" FontSize="20" Margin="290,140,0,0" VerticalAlignment="Top" Width="252" Height="38"/>
-        <Button Content="Zakaži" Click="Zakazi" HorizontalAlignment="Left" Margin="326,341,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
+        <Button Content="Zakaži" Click="Zakazi" HorizontalAlignment="Left" Margin="326,359,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
+        <ComboBox HorizontalAlignment="Left" x:Name="Oblasti" FontSize="20" Margin="40,134,0,0" VerticalAlignment="Top" Width="190" Height="38"/>
+        <Button Content="Prikaži" Click="Prikaz" HorizontalAlignment="Left" Margin="260,134,0,0" VerticalAlignment="Top" Height="38" Width="144" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
+        <DataGrid x:Name="dataGridPregledi" ItemsSource="{Binding Pregledi}" IsReadOnly="True" Visibility="Hidden"
+            SelectionMode="Single" FontSize="15" AutoGenerateColumns="False" Margin="30,196,270,100">
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Header="Početak" Binding="{Binding Pocetak}" Width="145"/>
+                <DataGridTextColumn Header="Trajanje" Binding="{Binding Trajanje}" Width="65"/>
+                <DataGridTextColumn Header="Ime" Binding="{Binding doktor.Ime}" Width="90"/>
+                <DataGridTextColumn Header="Prezime" Binding="{Binding doktor.Prezime}" Width="90"/>
+                <DataGridTextColumn Header="Specijalizacija" Binding="{Binding doktor.Specijalizacija}" Width="*"/>
+
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>
