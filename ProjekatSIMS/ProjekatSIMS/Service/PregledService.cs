@@ -104,6 +104,8 @@ namespace Service
             List<Uput> uputi = new List<Uput>();
             if (uputRepository.DobaviUpute() == null)
                 uputi = new List<Uput>();
+            else
+                uputi = uputRepository.DobaviUpute();
             
             uputi.Add(uput);
             uputRepository.SacuvajUput(uputi);
@@ -161,10 +163,10 @@ namespace Service
         {
             List<DateTime> slobodniTermini = new List<DateTime>();
          
-            slobodniTermini = getSlobodniTermini(doktor, pocetnoVrijeme, krajnjeVrijeme);
+            /*slobodniTermini = getSlobodniTermini(doktor, pocetnoVrijeme, krajnjeVrijeme);
             if (slobodniTermini.Count != 0)
                 return slobodniTermini;
-            else
+            else*/
                 return PronadjiNoveTermine(doktor, pocetnoVrijeme, krajnjeVrijeme);
         }
 
@@ -181,15 +183,25 @@ namespace Service
             }
 
             DateTime pocetakRadnoVrijeme = new DateTime(pocetnoVrijeme.Year, pocetnoVrijeme.Month, pocetnoVrijeme.Day, 8, 0, 0);
-            DateTime krajnjeRadnoVrijeme= new DateTime(krajnjeVrijeme.Year, krajnjeVrijeme.Month, krajnjeVrijeme.Day, 20, 0, 0);
-            for (DateTime t=pocetakRadnoVrijeme;t<krajnjeRadnoVrijeme; t = t.AddMinutes(TRAJANJE_PREGLEDA))
+            DateTime krajRadnoVrijeme= new DateTime(krajnjeVrijeme.Year, krajnjeVrijeme.Month, krajnjeVrijeme.Day, 20, 0, 0);
+
+            slobodniTermini = SlobodniTerminiZaInterval(zauzetiPregledi, pocetakRadnoVrijeme, krajRadnoVrijeme);
+            return slobodniTermini;
+        }
+
+        public List<DateTime> SlobodniTerminiZaInterval(List<Pregled> zauzetiPregledi,DateTime pocetakRadnoVrijeme,DateTime krajRadnoVrijeme)
+        {
+           
+            List<DateTime> slobodniTermini = new List<DateTime>();
+
+            for (DateTime t = pocetakRadnoVrijeme; t < krajRadnoVrijeme; t = t.AddMinutes(TRAJANJE_PREGLEDA))
             {
                 int slobodan = 0;
                 DateTime terminKraj = pocetakRadnoVrijeme.AddMinutes(TRAJANJE_PREGLEDA);
-                foreach(Pregled p in zauzetiPregledi)
+                foreach (Pregled p in zauzetiPregledi)
                 {
-                    
-                    if (DateTime.Compare(t, p.Pocetak) >= 0 && DateTime.Compare(t,p.Pocetak.AddMinutes(p.Trajanje)) < 0 ||
+
+                    if (DateTime.Compare(t, p.Pocetak) >= 0 && DateTime.Compare(t, p.Pocetak.AddMinutes(p.Trajanje)) < 0 ||
                         DateTime.Compare(terminKraj, p.Pocetak) > 0 && DateTime.Compare(terminKraj, p.Pocetak.AddMinutes(p.Trajanje)) <= 0)
                     {
                         slobodan++;
@@ -199,23 +211,75 @@ namespace Service
                 if (slobodan == 0)
                 {
                     slobodniTermini.Add(t);
-                   
+
                 }
 
-                if (t.Hour == 19 && t.Minute==40)
+                if (t.Hour == 19 && t.Minute == 40)
                 {
                     t = t.AddHours(12);
                 }
-               
+
             }
 
             return slobodniTermini;
-          
         }
 
         public List<DateTime> PronadjiNoveTermine(Doktor doktor, DateTime pocetnoVrijeme, DateTime krajnjeVrijeme)
         {
-            return null;
+
+            List<Pregled> ZakazaniPreglediDoktora = DobaviZakazanePregledeDoktora(doktor);
+            List<Pregled> zauzetiPregledi = new List<Pregled>();
+            List<DateTime> slobodniTerminiPrije = new List<DateTime>();
+            List<DateTime> slobodniTerminiPoslije = new List<DateTime>();
+            List<DateTime> slobodniTermini = new List<DateTime>();
+
+            foreach (Pregled p in ZakazaniPreglediDoktora)
+            {
+                if (p.Pocetak.Date >= pocetnoVrijeme.Date && p.Pocetak.Date <= krajnjeVrijeme.Date)
+                    zauzetiPregledi.Add(p);
+            }
+
+            DateTime pocetakRadnoVrijeme = new DateTime(pocetnoVrijeme.Year, pocetnoVrijeme.Month, pocetnoVrijeme.Day, 8, 0, 0);
+            DateTime pocetakRadnoVrijemePrije=pocetakRadnoVrijeme.AddDays(-2);
+            DateTime krajnjeRadnoVrijeme= new DateTime(krajnjeVrijeme.Year, krajnjeVrijeme.Month, krajnjeVrijeme.Day, 20, 0, 0);
+            DateTime krajnjeRadnoVrijemePrije = pocetakRadnoVrijeme.AddHours(-12);
+
+            DateTime pocetakRadnoVrijemePoslije = krajnjeRadnoVrijeme.AddHours(12);
+            DateTime krajnjeRadnoVrijemePoslije = krajnjeRadnoVrijeme.AddDays(2);
+
+            slobodniTerminiPrije = SlobodniTerminiZaInterval(zauzetiPregledi, pocetakRadnoVrijemePrije, krajnjeRadnoVrijemePrije);
+            slobodniTerminiPoslije = SlobodniTerminiZaInterval(zauzetiPregledi, pocetakRadnoVrijemePoslije, krajnjeRadnoVrijemePoslije);
+
+            List<KeyValuePair<int, DateTime>> parovi = new List<KeyValuePair<int, DateTime>>();
+
+          
+            foreach (DateTime t in slobodniTerminiPrije)
+            {
+                int distanca = (int)((t - pocetnoVrijeme.AddHours(2)).Duration()).TotalSeconds;
+
+               parovi.Add(new KeyValuePair<int, DateTime>(distanca, t));
+            }
+
+            foreach (DateTime t in slobodniTerminiPoslije)
+            {
+                int distanca = (int)((t - krajnjeVrijeme.AddHours(2)).Duration()).TotalSeconds;
+
+                parovi.Add(new KeyValuePair<int, DateTime>(distanca, t));
+            }
+            parovi.Sort((x, y) => x.Key.CompareTo(y.Key));
+
+            //izlistavam 4 najbliza termina izabranom
+            for (int i = 1; i < 10; i++)
+            {
+                if (parovi.Count < i + 1)
+                    break;
+                slobodniTermini.Add(parovi[i].Value);
+            }
+
+            return slobodniTermini;
+
+
+
         }
 
         public List<Pregled> DobaviZakazanePregledeDoktora(Doktor doktor)
