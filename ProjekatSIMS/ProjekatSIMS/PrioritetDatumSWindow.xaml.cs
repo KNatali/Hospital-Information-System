@@ -93,7 +93,7 @@ namespace ProjekatSIMS
             //p.pacijent = pac;
             Pacijent pac = new Pacijent();
             List<Pacijent> postojecipac = new List<Pacijent>();
-            PacijentRepository fajlpac = new PacijentRepository();
+            PacijentRepository fajlpac = new PacijentRepository(@"..\..\..\Fajlovi\Pacijent.txt");
             postojecipac = fajlpac.UcitajSvePacijente();
 
             foreach (Pacijent f in postojecipac)

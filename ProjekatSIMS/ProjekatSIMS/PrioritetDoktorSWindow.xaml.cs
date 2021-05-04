@@ -58,7 +58,7 @@ namespace ProjekatSIMS
             p.StatusPregleda = StatusPregleda.Zakazan;
 
             List<Pacijent> postojeci = new List<Pacijent>();
-            PacijentRepository fajlpac = new PacijentRepository();
+            PacijentRepository fajlpac = new PacijentRepository(@"..\..\..\Fajlovi\Pacijent.txt");
             postojeci = fajlpac.UcitajSvePacijente();
 
             foreach (Pacijent t in postojeci)
