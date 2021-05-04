@@ -61,9 +61,9 @@ namespace Controller
 
         }
 
-        public List<DateTime> PrikazSlobodnihTermina(Pacijent pacijent,Doktor doktor,DateTime pocetnoVrijeme,DateTime krajnjeVrijeme)
+        public List<DateTime> PrikazSlobodnihTermina(Doktor doktor,DateTime pocetnoVrijeme,DateTime krajnjeVrijeme)
         {
-            List<DateTime> termini= pregledService.PrikazSlobodnihTermina(pacijent, doktor, pocetnoVrijeme, krajnjeVrijeme);
+            List<DateTime> termini= pregledService.PrikazSlobodnihTermina(doktor, pocetnoVrijeme, krajnjeVrijeme);
 
             return termini;
         }

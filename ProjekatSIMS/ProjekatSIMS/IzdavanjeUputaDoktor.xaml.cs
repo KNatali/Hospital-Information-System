@@ -57,7 +57,7 @@ namespace ProjekatSIMS
             DateTime krajnjeVrijeme = (DateTime)DatumKraj.SelectedDate;
 
             List<DateTime> slobodniTermini = new List<DateTime>();
-            slobodniTermini=pregledController.PrikazSlobodnihTermina(izabraniPacijent, izabraniDoktor, pocetnoVrijeme, krajnjeVrijeme);
+            slobodniTermini=pregledController.PrikazSlobodnihTermina(izabraniDoktor, pocetnoVrijeme, krajnjeVrijeme);
             Termini.ItemsSource = slobodniTermini;
         }
 
@@ -69,7 +69,10 @@ namespace ProjekatSIMS
 
            
             pregledController.IzdavanjeUputa(izabraniPacijent, izabraniDoktor,izabranTermin );
-           
+
+            MessageBox.Show("Uspjesno je izdat uput");
+            this.NavigationService.Navigate(new Uri("PrikazPregledaDoktor.xaml", UriKind.Relative));
+
         }
     }
 }
