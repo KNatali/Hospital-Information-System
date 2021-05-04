@@ -54,7 +54,7 @@ namespace ProjekatSIMS
                     break;
                 }
             }
-            pregledRepository.SacuvajPregledDoktor(pregledi);
+            pregledRepository.SacuvajPregledeDoktor(pregledi);
             this.NavigationService.Navigate(new Uri("PrikazPregledaDoktor.xaml", UriKind.Relative));
 
         }

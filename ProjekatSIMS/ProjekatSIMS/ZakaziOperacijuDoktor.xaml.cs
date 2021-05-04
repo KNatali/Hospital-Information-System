@@ -173,7 +173,7 @@ namespace ProjekatSIMS
                 p.Id = pregledi[pregledi.Count - 1].Id + 1;
             }
             pregledi.Add(p);
-            prep.SacuvajPregledDoktor(pregledi);
+            prep.SacuvajPregledeDoktor(pregledi);
 
             MessageBox.Show("Uspjesno je zakazana operacija");
             this.NavigationService.Navigate(new Uri("PrikazPregledaDoktor.xaml", UriKind.Relative));

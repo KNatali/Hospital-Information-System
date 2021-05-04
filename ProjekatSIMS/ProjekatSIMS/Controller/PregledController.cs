@@ -70,8 +70,9 @@ namespace Controller
 
         public Boolean IzdavanjeUputa(Pacijent pacijent, Doktor doktor, DateTime izabraniTermin)
         {
-            pregledService.IzdavanjeUputa(pacijent, doktor, izabraniTermin);
-            return true;
+            if(pregledService.IzdavanjeUputa(pacijent, doktor, izabraniTermin))
+                return true;
+            return false;
         }
 
         public List<Pregled> DobaviSvePreglede()

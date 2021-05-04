@@ -147,7 +147,7 @@ namespace ProjekatSIMS
                     break;
                 }
             }
-            pregledRepository.SacuvajPregledDoktor(pregledi);
+            pregledRepository.SacuvajPregledeDoktor(pregledi);
             PopupNotifier popup = new PopupNotifier();
             popup.Image = Properties.Resources.informacija;
             popup.TitleText = "OBAVEŠTENJE";

@@ -140,11 +140,26 @@ namespace Repository
     
 
       
-      public void SacuvajPregledDoktor(List<Pregled> pregledi)
+      public void SacuvajPregledeDoktor(List<Pregled> pregledi)
       {
 
             string newJson = JsonConvert.SerializeObject(pregledi);
             File.WriteAllText(putanja, newJson);
+      }
+
+      public void SacuvajPregledDoktor(Pregled pregled)
+        {
+            List<Pregled> sviPregledi = DobaviSvePregledeDoktor();
+            if (sviPregledi.Count == 0)
+            {
+                pregled.Id = 1;
+            }
+            else
+            {
+                pregled.Id = sviPregledi[sviPregledi.Count - 1].Id + 1;
+            }
+            sviPregledi.Add(pregled);
+            SacuvajPregledeDoktor(sviPregledi);
         }
    
 }
