@@ -14,6 +14,8 @@ namespace Service
     public class PregledService
     {
         private const int TRAJANJE_PREGLEDA = 20;
+        public const int POCETAK_RADNOG_VREMENA = 8;
+        public const int KRAJ_RADNOG_VREMENA = 20;
         public int MAKSIMALNO_OTKAZIVANJA = 10;
         public Repository.PregledRepository pregledRepository = new PregledRepository();
         public Repository.ReceptRepository receptRepository;
@@ -235,8 +237,9 @@ namespace Service
         private static void PostavljanjeRadnogVremenaOkoIntervala(DateTime pocetnoVrijeme, DateTime krajnjeVrijeme, out DateTime pocetakRadnoVrijemePrije, out DateTime krajnjeRadnoVrijemePrije, out DateTime pocetakRadnoVrijemePoslije, out DateTime krajnjeRadnoVrijemePoslije)
         {
 
-            DateTime pocetakRadnoVrijeme = new DateTime(pocetnoVrijeme.Year, pocetnoVrijeme.Month, pocetnoVrijeme.Day, 8, 0, 0);
-            DateTime krajnjeRadnoVrijeme = new DateTime(krajnjeVrijeme.Year, krajnjeVrijeme.Month, krajnjeVrijeme.Day, 20, 0, 0);
+            DateTime pocetakRadnoVrijeme = new DateTime(pocetnoVrijeme.Year, pocetnoVrijeme.Month, pocetnoVrijeme.Day, POCETAK_RADNOG_VREMENA, 0, 0);
+
+            DateTime krajnjeRadnoVrijeme = new DateTime(krajnjeVrijeme.Year, krajnjeVrijeme.Month, krajnjeVrijeme.Day, KRAJ_RADNOG_VREMENA, 0, 0);
 
             pocetakRadnoVrijemePrije = pocetakRadnoVrijeme.AddDays(-2);
             krajnjeRadnoVrijemePrije = pocetakRadnoVrijeme.AddHours(-12);
@@ -246,8 +249,8 @@ namespace Service
 
         private static void PostavljanjeRadnogVremena(DateTime pocetnoVrijeme, DateTime krajnjeVrijeme, out DateTime pocetakRadnoVrijeme, out DateTime krajnjeRadnoVrijeme)
         {
-            pocetakRadnoVrijeme = new DateTime(pocetnoVrijeme.Year, pocetnoVrijeme.Month, pocetnoVrijeme.Day, 8, 0, 0);
-            krajnjeRadnoVrijeme = new DateTime(krajnjeVrijeme.Year, krajnjeVrijeme.Month, krajnjeVrijeme.Day, 20, 0, 0);
+            pocetakRadnoVrijeme = new DateTime(pocetnoVrijeme.Year, pocetnoVrijeme.Month, pocetnoVrijeme.Day, POCETAK_RADNOG_VREMENA, 0, 0);
+            krajnjeRadnoVrijeme = new DateTime(krajnjeVrijeme.Year, krajnjeVrijeme.Month, krajnjeVrijeme.Day, KRAJ_RADNOG_VREMENA, 0, 0);
         }
 
         private static List<DateTime> IzlistavanjeNajblizihTermina(List<KeyValuePair<int, DateTime>> parUdaljenostTermin)
