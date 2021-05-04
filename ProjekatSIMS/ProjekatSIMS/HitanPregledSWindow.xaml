@@ -24,7 +24,7 @@
         <Label Content="ZDRAVO KORPORACIJA" FontSize="25" Margin="324,24,172,380" Foreground="#1963bf" FontWeight="Bold"/>
         <Button Content="Zakaži" Click="Zakazi" HorizontalAlignment="Left" Margin="326,359,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
         <ComboBox HorizontalAlignment="Left" x:Name="Oblasti" FontSize="20" Margin="30,134,0,0" VerticalAlignment="Top" Width="190" Height="38"/>
-        <Button Content="Vidi zauzete termine" Click="Prikaz" HorizontalAlignment="Left" Margin="240,134,0,0" VerticalAlignment="Top" Height="38" Width="246" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
+        <Button Content="Vidi zauzete termine" Click="PrikazZauzetihTerminaIzOdabraneOblasti" HorizontalAlignment="Left" Margin="240,134,0,0" VerticalAlignment="Top" Height="38" Width="246" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
         <DataGrid x:Name="dataGridPregledi" ItemsSource="{Binding Pregledi}" IsReadOnly="True" Visibility="Hidden"
             SelectionMode="Single" FontSize="15" AutoGenerateColumns="False" Margin="177,196,172,100">
             <DataGrid.Columns>
@@ -36,7 +36,7 @@
 
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Vidi slobodne termine" Click="Slobodni" HorizontalAlignment="Left" Margin="511,134,0,0" VerticalAlignment="Top" Height="38" Width="261" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
+        <Button Content="Vidi slobodne termine" Click="PrikazSlobodnihTermina" HorizontalAlignment="Left" Margin="511,134,0,0" VerticalAlignment="Top" Height="38" Width="261" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
         <DataGrid x:Name="dataGridSlobodniTermini" ItemsSource="{Binding Termini}" IsReadOnly="True" Visibility="Hidden"
             SelectionMode="Single" FontSize="15" AutoGenerateColumns="False" Margin="174,196,174,100">
             <DataGrid.Columns>
