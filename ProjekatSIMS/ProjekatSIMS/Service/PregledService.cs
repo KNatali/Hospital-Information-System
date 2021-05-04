@@ -146,9 +146,9 @@ namespace Service
         {
 
             List<DateTime> slobodniTermini = GetSlobodniTermini(doktor, pocetnoVrijeme, krajnjeVrijeme);
-           /* if (slobodniTermini.Count != 0)
+            if (slobodniTermini.Count != 0)
                 return slobodniTermini;
-            else*/
+            else
             {
                 MessageBox.Show("Nema slobodnih termina u datom intervalu.Prikazace se najblizi slobodni termini");
                 return PronadjiNoveTermine(doktor, pocetnoVrijeme, krajnjeVrijeme);
