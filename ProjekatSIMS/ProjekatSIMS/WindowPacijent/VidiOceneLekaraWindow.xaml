@@ -1,0 +1,21 @@
+﻿<Window x:Class="ProjekatSIMS.WindowPacijent.VidiOceneLekaraWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjekatSIMS.WindowPacijent"
+        mc:Ignorable="d"
+        Title="VidiOceneLekaraWindow" Height="450" Width="800">
+    <Grid>
+        <DataGrid x:Name="dataGridOceneLekara" ItemsSource="{Binding OceneLekara}" IsReadOnly="True"
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="32,0,435,0" Height="317" VerticalAlignment="Center">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Ime lekara" Binding="{Binding ImeLekara}"/>
+                <DataGridTextColumn Header="Prezime lekara" Binding="{Binding PrezimeLekara}"/>
+                <DataGridTextColumn Header="Ocena" Binding="{Binding Ocena}"/>
+                <DataGridTextColumn Header="Komentar" Binding="{Binding Komentar}"/>
+
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

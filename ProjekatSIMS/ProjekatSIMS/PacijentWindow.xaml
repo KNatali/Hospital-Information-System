@@ -7,26 +7,16 @@
         mc:Ignorable="d"
         Title="PacijentWindow" Height="450" Width="800">
     <Grid>
-        <Label Content="PACIJENT" HorizontalAlignment="Left" Margin="46,30,0,0" VerticalAlignment="Top" FontWeight="Bold" FontStyle="Italic" FontSize="16"/>
-        <Label Content="Opcije:" HorizontalAlignment="Left" Margin="46,92,0,0" VerticalAlignment="Top" FontWeight="Normal" FontStyle="Italic"/>
-        <Button Content="Zakazi pregled" Click="Click_zakazi" Width="100" Height="40" HorizontalAlignment="Left" Margin="220,105,0,0" VerticalAlignment="Top"/>
-        <Button Content="Otkazi pregled" Click="Click_otkazi" Width="100" Height="40" HorizontalAlignment="Left" Margin="220,177,0,0" VerticalAlignment="Top"/>
-        <Button Content="Izmeni pregled" Click="Click_izmeni" Width="100" Height="40"  HorizontalAlignment="Left" Margin="220,245,0,0" VerticalAlignment="Top"/>
-
-        <Button Content="Vidi preglede" Click="Click_vidi" Width="100" Height="40" HorizontalAlignment="Left" Margin="220,317,0,0" VerticalAlignment="Top"/>
-
-
-        <DataGrid x:Name="dataGridRecepti" ItemsSource="{Binding Recepti}" IsReadOnly="True"
-                  SelectionMode="Single" AutoGenerateColumns="False" Margin="380,125,41,0" Height="229" VerticalAlignment="Top">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Naziv leka" Binding="{Binding NazivLeka}"/>
-                <DataGridTextColumn Header="Kolicina" Binding="{Binding Kolicina}"/>
-                <DataGridTextColumn Header="DatumPropisivanjaLeka" Binding="{Binding DatumPropisivanjaLeka}"/>
-                <DataGridTextColumn Header="Uputstvo" Binding="{Binding Uputstvo}"/>
-
-            </DataGrid.Columns>
-        </DataGrid>
-        
+        <Label Content="Dobrodošli!" HorizontalAlignment="Left" Margin="46,30,0,0" VerticalAlignment="Top" FontWeight="Bold" FontStyle="Italic" FontSize="16"/>
+        <Label Content="Opcije:" HorizontalAlignment="Left" Margin="51,79,0,0" VerticalAlignment="Top" FontWeight="Normal" FontStyle="Italic"/>
+        <Button Content="Zakazi pregled" Click="Click_zakazi" Width="100" Height="40" HorizontalAlignment="Left" Margin="160,92,0,0" VerticalAlignment="Top"/>
+        <Button Content="Otkazi pregled" Click="Click_otkazi" Width="100" Height="40" HorizontalAlignment="Left" Margin="160,164,0,0" VerticalAlignment="Top"/>
+        <Button Content="Izmeni pregled" Click="Click_izmeni" Width="100" Height="40"  HorizontalAlignment="Left" Margin="160,233,0,0" VerticalAlignment="Top"/>
+        <Button Content="Vidi preglede" Click="Click_vidi" Width="100" Height="40" HorizontalAlignment="Left" Margin="160,298,0,0" VerticalAlignment="Top"/>
+        <Button Content="Oceni bolnicu" Width="100" Height="40" Margin="400,92,300,302" Click="OceniBolnicu_Click" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <Button Content="Oceni lekara" Width="100" Height="40" Margin="400,164,300,230" Click="OceniLekara_Click" HorizontalAlignment="Right" VerticalAlignment="Center" />
+        <Button Content="Vidi ocene bolnice" Width="100" Height="40" Margin="400,233,300,161" Click="VidiOceneBolnice_Click" HorizontalAlignment="Right" VerticalAlignment="Center" />
+        <Button Content="Vidi ocene svih lekara" Width="100" Height="40" Margin="400,298,300,96" Click="VidiOceneLekara_Click" HorizontalAlignment="Right" VerticalAlignment="Center" />
 
 
     </Grid>

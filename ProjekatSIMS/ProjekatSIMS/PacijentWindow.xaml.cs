@@ -16,6 +16,13 @@ namespace ProjekatSIMS
             get;
             set;
         }
+        public List<Pregled> pregledi
+        {
+            get;
+            set;
+        }
+
+        public int mozeSeOceniti = 0;
         
         public PacijentWindow()
         {
@@ -50,6 +57,19 @@ namespace ProjekatSIMS
 
             }
 
+            //da li postoji barem jedan zavren pregled
+            pregledi = new List<Pregled>();
+            PregledRepository file = new PregledRepository(@"..\..\..\Fajlovi\Pregled.txt");
+            pregledi = file.DobaviSvePregledePacijent();
+            foreach(Pregled p in pregledi)
+            {
+                if(p.StatusPregleda == StatusPregleda.Zavrsen)
+                {
+                    mozeSeOceniti = 1;
+                    break;
+                }
+            }
+
 
 
 
@@ -79,6 +99,36 @@ namespace ProjekatSIMS
             vw.Show();
         }
 
-        
+        private void OceniBolnicu_Click(object sender, RoutedEventArgs e)
+        {
+            OceniBolnicuWindow obw = new OceniBolnicuWindow();
+            if(mozeSeOceniti == 1)
+            {
+                obw.Show();
+            }
+            else
+            {
+                MessageBox.Show("Bolnicu mozete oceniti tek kada imate makar jedan zavrsen pregled.");
+            }
+            
+        }
+
+        private void VidiOceneBolnice_Click(object sender, RoutedEventArgs e)
+        {
+            VidiOceneBolniceWindow vobw = new VidiOceneBolniceWindow();
+            vobw.Show();
+        }
+
+        private void OceniLekara_Click(object sender, RoutedEventArgs e)
+        {
+            OceniLekaraWindow olw = new OceniLekaraWindow();
+            olw.Show();
+        }
+
+        private void VidiOceneLekara_Click(object sender, RoutedEventArgs e)
+        {
+            VidiOceneLekaraWindow volw = new VidiOceneLekaraWindow();
+            volw.Show();
+        }
     }
 }
