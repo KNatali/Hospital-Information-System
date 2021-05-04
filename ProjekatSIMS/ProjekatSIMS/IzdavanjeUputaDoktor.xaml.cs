@@ -65,13 +65,14 @@ namespace ProjekatSIMS
         {
             Doktor izabraniDoktor = (Doktor)Doktori.SelectedItem;
             DateTime izabranTermin = (DateTime)Termini.SelectedItem;
-           
 
-           
-            pregledController.IzdavanjeUputa(izabraniPacijent, izabraniDoktor,izabranTermin );
-
-            MessageBox.Show("Uspjesno je izdat uput");
-            this.NavigationService.Navigate(new Uri("PrikazPregledaDoktor.xaml", UriKind.Relative));
+            if (pregledController.IzdavanjeUputa(izabraniPacijent, izabraniDoktor, izabranTermin))
+            {
+                MessageBox.Show("Uput je uspjesno izdat");
+                this.NavigationService.Navigate(new Uri("PrikazPregledaDoktor.xaml", UriKind.Relative));
+            }
+            else
+                MessageBox.Show("Neuspjesno izdavanje uputa");
 
         }
     }

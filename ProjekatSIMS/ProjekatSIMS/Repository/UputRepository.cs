@@ -17,10 +17,22 @@ namespace Repository
            
         }
 
-        public void SacuvajUput(List<Uput> uputi)
+        public void SacuvajUpute(List<Uput> uputi)
         {
             string newJson = JsonConvert.SerializeObject(uputi);
             File.WriteAllText(putanja, newJson);
+        }
+
+        public  void SacuvajUput(Uput uput)
+        {
+            List<Uput> uputi = new List<Uput>();
+            if (DobaviUpute() == null)
+                uputi = new List<Uput>();
+            else
+                uputi = DobaviUpute();
+
+            uputi.Add(uput);
+            SacuvajUpute(uputi);
         }
 
         public List<Uput> DobaviUpute(){
