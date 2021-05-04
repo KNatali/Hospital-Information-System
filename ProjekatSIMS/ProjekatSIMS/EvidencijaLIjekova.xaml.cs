@@ -57,7 +57,10 @@ namespace ProjekatSIMS
             Lijek lijek = (Lijek)dataGridVerifikacija.SelectedItems[0];
             Opis.Text = lijek.Opis;
             List<String> sastojci = lijek.Alergeni;
+            List<String> alternativni = lijek.AlternativniLekovi;
             Sastojci.ItemsSource = sastojci;
+            AlternativniLijekovi.ItemsSource = alternativni;
+
         }
 
         private void PregledVerifikovanihLijekova(object sender, RoutedEventArgs e)
@@ -93,12 +96,7 @@ namespace ProjekatSIMS
             Lijek lijek = (Lijek)dataGridVerifikacija.SelectedItems[0];
             List<Lijek> lijekoviNovi = new List<Lijek>();
 
-            //cuvanje u fajl izmjenjeni lijek
-            SviLijekovi.Find(p => p.NazivLeka == lijek.NazivLeka).Status = OdobravanjeLekaEnum.Odbijen;
-
-            string newJson = JsonConvert.SerializeObject(SviLijekovi);
-            File.WriteAllText(@"..\..\..\Fajlovi\Lijek.txt", newJson);
-
+           
           
             //da se pozdaina zatamni
             this.Opacity = 0.3;
@@ -106,8 +104,14 @@ namespace ProjekatSIMS
             o.ShowDialog();
             
             this.Opacity = 1;
-            //PORUKU TREBA NEGDJE SMJESTITI
-           // MessageBox.Show(o.Poruka);
+            
+
+            //cuvanje u fajl izmjenjeni lijek
+            SviLijekovi.Find(p => p.NazivLeka == lijek.NazivLeka).Status = OdobravanjeLekaEnum.Odbijen;
+            SviLijekovi.Find(p => p.NazivLeka == lijek.NazivLeka).PorukaOdbaci =o.Poruka;
+
+            string newJson = JsonConvert.SerializeObject(SviLijekovi);
+            File.WriteAllText(@"..\..\..\Fajlovi\Lijek.txt", newJson);
 
             PrikazTabele();
         }

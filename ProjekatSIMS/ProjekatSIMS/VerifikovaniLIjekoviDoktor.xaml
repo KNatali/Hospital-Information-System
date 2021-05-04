@@ -11,7 +11,7 @@
     <Grid Background="White">
         <Label Content="Evidencija lijekova" HorizontalAlignment="Left" Margin="317,10,0,0" VerticalAlignment="Top" FontSize="16"/>
 
-        <DataGrid Name="dataGridVerifikovani" SelectionMode="Single" AutoGenerateColumns="False" Margin="30,96,383,172" IsReadOnly="True"
+        <DataGrid Name="dataGridVerifikovani" SelectionMode="Single" AutoGenerateColumns="False" Margin="23,134,390,112" IsReadOnly="True"
                   ScrollViewer.CanContentScroll="True" 
                   ScrollViewer.VerticalScrollBarVisibility="Auto">
 
@@ -43,12 +43,12 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-               
-               
+
+
             </DataGrid.Columns>
         </DataGrid>
 
-        <Border Margin="452,96,24,284" 
+        <Border Margin="445,134,31,246" 
                 BorderThickness="1"
                 BorderBrush="Black">
             <TextBlock  Name="Opis"
@@ -60,7 +60,7 @@
         </Border>
 
         <DataGrid x:Name="Sastojci" IsReadOnly="True"
-                  SelectionMode="Single" AutoGenerateColumns="False" Margin="452,187,192,172"
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="445,225,199,112"
                   ScrollViewer.CanContentScroll="True" 
                   ScrollViewer.VerticalScrollBarVisibility="Auto">
             <DataGrid.Columns>
@@ -70,7 +70,7 @@
         </DataGrid>
 
         <DataGrid x:Name="AlternativniLijekovi" IsReadOnly="True"
-                  SelectionMode="Single" AutoGenerateColumns="False" Margin="620,187,24,172"
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="613,225,31,112"
                   ScrollViewer.CanContentScroll="True" 
                   ScrollViewer.VerticalScrollBarVisibility="Auto">
             <DataGrid.Columns>
@@ -78,8 +78,22 @@
 
             </DataGrid.Columns>
         </DataGrid>
+        <Label Content="Verifikovani lijekovi:" HorizontalAlignment="Left" Margin="23,103,0,0" VerticalAlignment="Top"/>
+        <Label Content="Opis lijeka:" HorizontalAlignment="Left" Margin="445,103,0,0" VerticalAlignment="Top"/>
+        <Button Content="Nazad" Click="NazadNaVerifikovane" HorizontalAlignment="Left" Margin="649,387,0,0" VerticalAlignment="Top" Height="32" Width="82"/>
+        <Grid Name="Poruka" Visibility="Hidden">
+            <Border Margin="23,373,390,31" 
+                BorderThickness="1"
+                BorderBrush="Black" Height="30"
+                >
+            <TextBlock  Name="Poruka1"
+                       VerticalAlignment="Top" 
+                       HorizontalAlignment="Left"
+                        Text=""
+                TextWrapping="Wrap"/>
 
-
-       
+        </Border>
+        <Label Content="Poruka zasto je odbacen:" HorizontalAlignment="Left" Margin="23,347,0,0" VerticalAlignment="Top"/>
+        </Grid>
     </Grid>
 </Page>

@@ -13,7 +13,9 @@ namespace Model
         
         public List<String> Alergeni { get; set; }
 
-        public List<Lijek> AlternativniLekovi { get; set; }
+        public List<String> AlternativniLekovi { get; set; }
+
+        public String PorukaOdbaci { get; set; }
 
 
 

@@ -48,18 +48,37 @@ namespace ProjekatSIMS
 
         private void PrikaziDetaljaLijeka(object sender, RoutedEventArgs e)
         {
+            Poruka.Visibility = Visibility.Hidden;
             Lijek lijek = (Lijek)dataGridVerifikovani.SelectedItems[0];
             Opis.Text = lijek.Opis;
             List<String> sastojci = lijek.Alergeni;
+            List<String> alternativni = lijek.AlternativniLekovi;
             Sastojci.ItemsSource = sastojci;
+            AlternativniLijekovi.ItemsSource = alternativni;
+
+
+            if (lijek.PorukaOdbaci !=null)
+            {
+               Poruka.Visibility = Visibility.Visible;
+               Poruka1.Text = lijek.PorukaOdbaci;
+            }
+
         }
 
-        
+
         private void IzmijeniLijek(object sender, RoutedEventArgs e)
         {
             Lijek lijek = (Lijek)dataGridVerifikovani.SelectedItems[0];
             IzmjenaLijekDoktor i = new IzmjenaLijekDoktor(lijek);
              this.NavigationService.Navigate(i);
         }
+
+        private void NazadNaVerifikovane(object sender, RoutedEventArgs e)
+        {
+
+            this.NavigationService.Navigate(new Uri("EvidencijaLijekova.xaml", UriKind.Relative));
+        }
     }
+
+    
 }
