@@ -23,17 +23,27 @@
         </Label>
         <Label Content="ZDRAVO KORPORACIJA" FontSize="25" Margin="324,24,172,380" Foreground="#1963bf" FontWeight="Bold"/>
         <Button Content="Zakaži" Click="Zakazi" HorizontalAlignment="Left" Margin="326,359,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
-        <ComboBox HorizontalAlignment="Left" x:Name="Oblasti" FontSize="20" Margin="40,134,0,0" VerticalAlignment="Top" Width="190" Height="38"/>
-        <Button Content="Prikaži" Click="Prikaz" HorizontalAlignment="Left" Margin="260,134,0,0" VerticalAlignment="Top" Height="38" Width="144" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
+        <ComboBox HorizontalAlignment="Left" x:Name="Oblasti" FontSize="20" Margin="30,134,0,0" VerticalAlignment="Top" Width="190" Height="38"/>
+        <Button Content="Vidi zauzete termine" Click="Prikaz" HorizontalAlignment="Left" Margin="240,134,0,0" VerticalAlignment="Top" Height="38" Width="246" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
         <DataGrid x:Name="dataGridPregledi" ItemsSource="{Binding Pregledi}" IsReadOnly="True" Visibility="Hidden"
-            SelectionMode="Single" FontSize="15" AutoGenerateColumns="False" Margin="30,196,270,100">
+            SelectionMode="Single" FontSize="15" AutoGenerateColumns="False" Margin="177,196,172,100">
             <DataGrid.Columns>
 
-                <DataGridTextColumn Header="Početak" Binding="{Binding Pocetak}" Width="145"/>
-                <DataGridTextColumn Header="Trajanje" Binding="{Binding Trajanje}" Width="65"/>
-                <DataGridTextColumn Header="Ime" Binding="{Binding doktor.Ime}" Width="90"/>
-                <DataGridTextColumn Header="Prezime" Binding="{Binding doktor.Prezime}" Width="90"/>
-                <DataGridTextColumn Header="Specijalizacija" Binding="{Binding doktor.Specijalizacija}" Width="*"/>
+                <DataGridTextColumn Header="Početak" Binding="{Binding Pocetak}" Width="*"/>
+                <DataGridTextColumn Header="Trajanje" Binding="{Binding Trajanje}" Width="*"/>
+                <DataGridTextColumn Header="Ime" Binding="{Binding doktor.Ime}" Width="*"/>
+                <DataGridTextColumn Header="Prezime" Binding="{Binding doktor.Prezime}" Width="*"/>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Vidi slobodne termine" Click="Slobodni" HorizontalAlignment="Left" Margin="511,134,0,0" VerticalAlignment="Top" Height="38" Width="261" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
+        <DataGrid x:Name="dataGridSlobodniTermini" ItemsSource="{Binding Termini}" IsReadOnly="True" Visibility="Hidden"
+            SelectionMode="Single" FontSize="15" AutoGenerateColumns="False" Margin="174,196,174,100">
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Header="Početak" Binding="{Binding PocetakTermina}" Width="*"/>
+                <DataGridTextColumn Header="Kraj" Binding="{Binding KrajTermina}" Width="*"/>
+                <DataGridTextColumn Header="Doktor" Binding="{Binding doktor.Jmbg}" Width="*"/>
 
             </DataGrid.Columns>
         </DataGrid>
