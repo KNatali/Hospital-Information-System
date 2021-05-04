@@ -8,7 +8,7 @@ namespace Repository
 {
    public class PregledRepository
    {
-        private String lokacija;
+        private String lokacija = @"..\..\..\Fajlovi\Pregled.txt";
 
         private List<ZdravsteniKarton> zk;
 

@@ -13,6 +13,7 @@
         <Label Content="Evidencija lijekova" HorizontalAlignment="Left" Margin="317,10,0,0" VerticalAlignment="Top" FontSize="16"/>
 
         <DataGrid Name="dataGridVerifikacija" SelectionMode="Single" AutoGenerateColumns="False" Margin="30,96,383,172" IsReadOnly="True"
+
                   ScrollViewer.CanContentScroll="True" 
                   ScrollViewer.VerticalScrollBarVisibility="Auto">
             <DataGrid.Columns>
@@ -51,7 +52,9 @@
             </DataGrid.Columns>
         </DataGrid>
 
+
         <Border Margin="452,96,24,284" 
+
                 BorderThickness="1"
                 BorderBrush="Black">
             <TextBlock  Name="Opis"
@@ -63,7 +66,9 @@
         </Border>
 
         <DataGrid x:Name="Sastojci" IsReadOnly="True"
+
                   SelectionMode="Single" AutoGenerateColumns="False" Margin="452,187,192,172"
+
                   ScrollViewer.CanContentScroll="True" 
                   ScrollViewer.VerticalScrollBarVisibility="Auto">
             <DataGrid.Columns>
@@ -73,7 +78,9 @@
         </DataGrid>
 
         <DataGrid x:Name="AlternativniLijekovi" IsReadOnly="True"
+
                   SelectionMode="Single" AutoGenerateColumns="False" Margin="620,187,24,172"
+
                   ScrollViewer.CanContentScroll="True" 
                   ScrollViewer.VerticalScrollBarVisibility="Auto">
             <DataGrid.Columns>
@@ -84,7 +91,8 @@
 
 
         <Button Content="Verifikovani lijekovi" Click="PregledVerifikovanihLijekova" HorizontalAlignment="Left" Margin="30,360,0,0" VerticalAlignment="Top" Height="38" Width="168" Background="#FFB5CDE2"/>
-        
+
+
     </Grid>
 
 

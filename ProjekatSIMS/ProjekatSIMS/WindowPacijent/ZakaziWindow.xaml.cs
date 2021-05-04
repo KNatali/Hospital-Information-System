@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using Controller;
+using Model;
 using Newtonsoft.Json;
 using Repository;
 using System;
@@ -41,7 +42,38 @@ namespace ProjekatSIMS.WindowPacijent
             int trajanje = 30;
             DateTime datum2 = datum1.AddMinutes(trajanje);
 
-            PregledRepository fajl = new PregledRepository(@"..\..\..\Fajlovi\Pregled.txt");
+            PregledController pregCont = new PregledController();
+            
+            if(pregCont.ZakazivanjePregledaPacijent(ime,prezime,imeDoktora,prezime,datum1,jmbg) == true)
+            {
+                MessageBox.Show("Pregled je uspesno zakazan!");
+                this.Close();
+            }
+            else if(pregCont.DaLiJeTerminZauzet() == true){
+                if (DoktorPrioritet.IsChecked == true)
+                {
+                    DoktorPrioritetWindow dpw = new DoktorPrioritetWindow(imeDoktora, prezimeDoktora, ime, prezime);
+                    dpw.Show();
+                }
+                else
+                {
+                    VremePrioritetWindow vpw = new VremePrioritetWindow(datum1, ime, prezime);
+                    vpw.Show();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Pregled nije zakazan.");
+                this.Close();
+            }
+            
+
+
+
+
+
+
+            /*PregledRepository fajl = new PregledRepository(@"..\..\..\Fajlovi\Pregled.txt");
             List<Pregled> pregledi = fajl.DobaviSvePregledePacijent();
 
 
@@ -118,12 +150,12 @@ namespace ProjekatSIMS.WindowPacijent
             {
                 this.Close();
             }
-
+            */
 
 
         }
 
-        private bool DaLiJeKorisnikMaliciozan(String imePacijenta, String prezimePacijenta)
+       /* private bool DaLiJeKorisnikMaliciozan(String imePacijenta, String prezimePacijenta)
         {
             foreach (Pacijent pacijent in Pacijenti)
             {
@@ -140,6 +172,8 @@ namespace ProjekatSIMS.WindowPacijent
             }
             return jesteMaliciozniKorisnik;
         }
+       */
+       
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

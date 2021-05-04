@@ -15,8 +15,13 @@ namespace Service
         private const int TRAJANJE_PREGLEDA = 20;
         public Repository.PregledRepository pregledRepository = new PregledRepository();
         public Repository.ReceptRepository receptRepository;
+
         public ProstorijaRepository prostorijaRepository = new ProstorijaRepository(@"..\..\..\Fajlovi\Prostorija.txt");
         public UputRepository uputRepository = new UputRepository();
+
+        public int MAKSIMALNO_OTKAZIVANJA = 10;
+        public int zauzetPregled = 0;
+
         public Model.Pregled ZakaziGuestPregledService(DateTime datumPregleda, Model.Pacijent pacijent)
         {
             // TODO: implement
@@ -562,8 +567,129 @@ namespace Service
         }
 
 
+        public Boolean OdredjivanjePrioritetaPacijent()
+        {
+           
+            if (zauzetPregled == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public Boolean ZakazivanjePregledaPacijent(String ime, String prezime, String imeDoktora, String prezimeDoktora, DateTime datum, String jmbg)
+        {
+            Pregled p = new Pregled();
+            
+            int trajanje = 30;
+
+            List<Doktor> doktori = new List<Doktor>();
+            using (StreamReader sr = new StreamReader(@"..\..\..\Fajlovi\Doktor.txt"))
+            {
+                string json = sr.ReadToEnd();
+                doktori = JsonConvert.DeserializeObject<List<Doktor>>(json);
+            }
+            Pacijent pacijent = new Pacijent { Jmbg = jmbg, Ime = ime, Prezime = prezime };
+            bool postojiDoktor = false;
+
+            if (DaLiJeKorisnikMaliciozan(ime,prezime) == false)
+            {
+
+                foreach (Doktor dr in doktori)
+                {
+                    if ((dr.Ime == imeDoktora) && (dr.Prezime == prezimeDoktora))
+                    {
+                        postojiDoktor = true;
+                        p.doktor = dr;
+                        break;
+                    }
+                }
+                if (postojiDoktor == false)
+                {
+                    MessageBox.Show("Ne postoji doktor sa tim imenom!");
+                    return false;
+                }
 
 
 
+                pregledRepository = new PregledRepository();
+
+                List<Pregled> pregledi = pregledRepository.DobaviSvePregledePacijent();
+
+                foreach (Pregled pregled in pregledi)
+                {
+                    if (pregled.Pocetak == datum)
+                    {
+                        MessageBox.Show("Odabrali ste termin koji je zauzet, na osnovu Vaseg prioriteta cemo Vam predloziti slobodne termine.");
+                        zauzetPregled = 1;
+                        
+                        return false;
+                    }
+                }
+
+                if (zauzetPregled == 0)
+                {
+                    
+                    p.Tip = TipPregleda.Standardni;
+                    p.Pocetak = datum;
+                    p.Trajanje = trajanje;
+                    Pacijent pac = new Pacijent { Jmbg = jmbg, Ime = ime, Prezime = prezime };
+                    p.pacijent = pac;
+                    p.StatusPregleda = StatusPregleda.Zakazan;
+
+                    ProstorijaRepository file = new ProstorijaRepository(@"..\..\..\Fajlovi\Prostorija.txt");
+                    List<Prostorija> prostorije = file.DobaviSveProstorije();
+                    foreach (Prostorija pr in prostorije)
+                    {
+                        if (pr.slobodna == true)
+                        {
+                            p.prostorija = pr;
+                            pr.slobodna = false;
+                            break;
+                        }
+                    }
+                    pregledi.Add(p);
+
+                    pregledRepository.SacuvajPregledPacijent(pregledi);
+
+
+                    return true;
+
+
+                }
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private Boolean DaLiJeKorisnikMaliciozan(String imePacijenta, String prezimePacijenta)
+        {
+            bool jesteMaliciozniKorisnik = false;
+
+             List<Pacijent> Pacijenti;
+             Pacijenti = new List<Pacijent>();
+             PacijentRepository f = new PacijentRepository(@"..\..\..\Fajlovi\Pacijent.txt");
+             Pacijenti = f.UcitajSvePacijente();
+            
+            foreach (Pacijent pacijent in Pacijenti)
+            {
+                if ((pacijent.Ime == imePacijenta) && (pacijent.Prezime == prezimePacijenta) && (pacijent.otkazaoPregled >= MAKSIMALNO_OTKAZIVANJA))
+                {
+
+                    MessageBox.Show("Zakazali ste i otkazali previse pregleda u proteklom periodu, privremeno Vam je zabranjeno zakazivanje pregleda.");
+                    jesteMaliciozniKorisnik = true;
+                    break;
+
+
+                }
+
+            }
+            return jesteMaliciozniKorisnik;
+        }
     }
 }
