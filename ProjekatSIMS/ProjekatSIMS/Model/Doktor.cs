@@ -6,6 +6,7 @@ namespace Model
    {
       public int BrojSlobodnihDana;
       public String RadnoVreme;
+      public Specijalizacija Specijalizacija { get; set; }
       
       public System.Collections.ArrayList pregled;
       

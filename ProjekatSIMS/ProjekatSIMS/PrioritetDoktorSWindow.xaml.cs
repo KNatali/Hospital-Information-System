@@ -1,4 +1,6 @@
 ﻿using Model;
+using ProjekatSIMS.Model;
+using ProjekatSIMS.Repository;
 using Repository;
 using System;
 using System.Collections.Generic;
@@ -17,56 +19,61 @@ namespace ProjekatSIMS
 {
     public partial class PrioritetDoktorSWindow : Window
     {
+        public Pacijent pac { get; set; }
         public List<Doktor> Doktori { get; set; }
-        public PrioritetDoktorSWindow()
+        public List<SlobodanTermin> Termini { get; set; }
+        public PrioritetDoktorSWindow(Pacijent p)
         {
             InitializeComponent();
             this.DataContext = this;
+            pac = p;
             List<Doktor> doktori = new List<Doktor>();
             Doktori = new List<Doktor>();
             OsobaRepository fajl = new OsobaRepository(@"..\..\..\Fajlovi\Doktor.txt");
             Doktori = fajl.DobaviDoktore();
         }
+        /*public PrioritetDoktorSWindow(String ime, String prezime)
+        {
+            InitializeComponent();
+            this.DataContext = this;
+            Doktor selektovani = (Doktor)dataGridDoktori.SelectedItems[0];
+            //selektovani.Ime = ime;
+            Termini = new List<SlobodanTermin>();
+            SlobodanTerminRepository fajl = new SlobodanTerminRepository(@"..\..\..\Fajlovi\SlobodniTermini.txt");
+            Termini = fajl.DobaviSveSlobodneTermineZaDoktora(selektovani.Ime, selektovani.Prezime);
+        }*/
         private void Zakazi(object sender, RoutedEventArgs e)
         {
             Doktor selektovani = (Doktor)dataGridDoktori.SelectedItems[0];
+            SlobodanTermin st = (SlobodanTermin)dataGridSlobodniTermini.SelectedItems[0];
             Pregled p = new Pregled();
             String jmbgp = Jmbg_pacijent.Text;
-            //String jmbgd = Jmbg_doktor.Text;
-            DateTime datum = (DateTime)Datum.SelectedDate;
-            double sati = Convert.ToDouble(Sat.Text);
-            double minuti = Convert.ToDouble(Minut.Text);
-            DateTime datum1 = new DateTime();
-
-            datum1 = datum.AddHours(sati);
-            datum1 = datum1.AddMinutes(minuti);
             int trajanje = 30;
-            DateTime datum2 = datum1.AddMinutes(trajanje);
 
             p.Tip = TipPregleda.Standardni;
-            p.Pocetak = datum1;
+            p.Pocetak = st.Termin;
             p.Trajanje = trajanje;
-            Pacijent pac = new Pacijent { Jmbg = jmbgp };
-            p.pacijent = pac;
-            //Doktor dr = new Doktor { Jmbg = jmbgd };
+            Pacijent pac = new Pacijent();
             p.doktor = selektovani;
             p.StatusPregleda = StatusPregleda.Zakazan;
 
+            List<Pacijent> postojeci = new List<Pacijent>();
+            PacijentRepository fajlpac = new PacijentRepository();
+            postojeci = fajlpac.UcitajSvePacijente();
 
-            PregledRepository fajl = new PregledRepository(@"..\..\..\Fajlovi\Pregled.txt");
-            List<Pregled> pregledi = fajl.GetListaPregledaSekretar();
-
-            ProstorijaRepository file = new ProstorijaRepository(@"..\..\..\Fajlovi\Prostorija.txt");
-            List<Prostorija> prostorije = file.DobaviSveProstorije();
-            foreach (Prostorija pr in prostorije)
+            foreach (Pacijent t in postojeci)
             {
-                if (pr.slobodna == true)
+
+                if (t.Jmbg==jmbgp)
                 {
-                    p.prostorija = pr;
-                    pr.slobodna = false;
+                    pac = t;
                     break;
                 }
             }
+            p.pacijent = pac;
+
+            PregledRepository fajl = new PregledRepository(@"..\..\..\Fajlovi\Pregled.txt");
+            List<Pregled> pregledi = fajl.GetListaPregledaSekretar();
 
             pregledi.Add(p);
 
@@ -82,6 +89,27 @@ namespace ProjekatSIMS
         private void Nazad(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void Prikazi(object sender, RoutedEventArgs e)
+        {
+            Doktor selektovani = (Doktor)dataGridDoktori.SelectedItems[0];
+            Termini = new List<SlobodanTermin>();
+            List<SlobodanTermin> termini = new List<SlobodanTermin>();
+            SlobodanTerminRepository fajl = new SlobodanTerminRepository(@"..\..\..\Fajlovi\SlobodniTermini.txt");
+            termini = fajl.DobaviSveSlobodneTermine();
+
+            foreach (SlobodanTermin t in termini)
+            {
+                
+                if (t.ImeDoktora==selektovani.Ime && t.PrezimeDoktora==selektovani.Prezime)
+                {
+                    Termini.Add(t);
+                }
+                
+            }
+            dataGridSlobodniTermini.ItemsSource = null;
+            dataGridSlobodniTermini.ItemsSource = Termini;
         }
     }
 }

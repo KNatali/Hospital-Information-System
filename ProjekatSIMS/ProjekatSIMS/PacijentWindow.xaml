@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="PacijentWindow" Height="450" Width="800">
     <Grid>
+
         <Label Content="Dobrodošli!" HorizontalAlignment="Left" Margin="46,30,0,0" VerticalAlignment="Top" FontWeight="Bold" FontStyle="Italic" FontSize="16"/>
         <Label Content="Opcije:" HorizontalAlignment="Left" Margin="51,79,0,0" VerticalAlignment="Top" FontWeight="Normal" FontStyle="Italic"/>
         <Button Content="Zakazi pregled" Click="Click_zakazi" Width="100" Height="40" HorizontalAlignment="Left" Margin="160,92,0,0" VerticalAlignment="Top"/>
@@ -17,6 +18,8 @@
         <Button Content="Oceni lekara" Width="100" Height="40" Margin="400,164,300,230" Click="OceniLekara_Click" HorizontalAlignment="Right" VerticalAlignment="Center" />
         <Button Content="Vidi ocene bolnice" Width="100" Height="40" Margin="400,233,300,161" Click="VidiOceneBolnice_Click" HorizontalAlignment="Right" VerticalAlignment="Center" />
         <Button Content="Vidi ocene svih lekara" Width="100" Height="40" Margin="400,298,300,96" Click="VidiOceneLekara_Click" HorizontalAlignment="Right" VerticalAlignment="Center" />
+        
+
 
 
     </Grid>
