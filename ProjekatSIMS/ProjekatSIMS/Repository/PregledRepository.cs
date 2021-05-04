@@ -14,8 +14,7 @@ namespace Repository
 
         private List<Pregled> pregledi;
 
-        private String LokacijaFajla;
-        
+      
         private const string putanja = @"..\..\..\Fajlovi\Pregled.txt";
        
 
