@@ -10,10 +10,10 @@ using System.Windows.Controls;
 
 namespace Service
 {
-    public class PregledService
-    {
-
-        public Repository.PregledRepository pregledRepository = new PregledRepository();
+   public class PregledService
+   {
+        public Doktor dok { get; set; }
+        public Repository.PregledRepository pregledRepository =new PregledRepository();
         public Repository.ReceptRepository receptRepository;
         public int MAKSIMALNO_OTKAZIVANJA = 10;
         public int zauzetPregled = 0;
@@ -65,6 +65,104 @@ namespace Service
             pregledRepository.SacuvajPregledDoktor(pregledi);
             return true;
 
+        }
+        public Boolean ZakazivanjePregledaSekretar(ComboBox Termin, String jmbg, String jmbgdoktor, Prostorija prostorija, DateTime datum1, DateTime datum2)
+        {
+            Pregled p = new Pregled();
+            List<Doktor> doktori = new List<Doktor>();
+            using (StreamReader r = new StreamReader(@"..\..\..\Fajlovi\Doktor.txt"))
+            {
+                string json = r.ReadToEnd();
+                doktori = JsonConvert.DeserializeObject<List<Doktor>>(json);
+            }
+            List<Pacijent> pacijenti = new List<Pacijent>();
+            using (StreamReader r = new StreamReader(@"..\..\..\Fajlovi\Pacijent.txt"))
+            {
+                string json = r.ReadToEnd();
+                pacijenti = JsonConvert.DeserializeObject<List<Pacijent>>(json);
+            }
+
+            int znak = 0;
+
+            foreach (Doktor dr in doktori)
+            {
+                if (dr.Jmbg == jmbgdoktor)
+                {
+                    znak++;
+                    p.doktor = dr;
+                    break;
+                }
+            }
+            if (znak == 0)
+            {
+                MessageBox.Show("Doktor nije nadjen!");
+                return false;
+            }
+            
+            foreach (Pacijent pa in pacijenti)
+            {
+                if (pa.Jmbg == jmbg)
+                {
+                    znak++;
+                    p.pacijent = pa;
+                    break;
+                }
+            }
+            if (znak == 0)
+            {
+                MessageBox.Show("Pacijent nije nadjen!");
+                return false;
+            }
+
+            pregledRepository = new PregledRepository();
+
+            List<Pregled> pregledi = pregledRepository.DobaviSvePregledeDoktor();
+
+            foreach (Pregled pr in pregledi)
+            {
+
+                if (pr.StatusPregleda == StatusPregleda.Zakazan)
+                {
+                    if (jmbgdoktor == pr.doktor.Jmbg || pr.prostorija == prostorija)
+                    {
+                        if (pr.Pocetak.Year == datum1.Year && pr.Pocetak.Month == datum1.Month && pr.Pocetak.Day == datum1.Day)
+                        {
+
+                            DateTime datum11 = pr.Pocetak;
+                            DateTime datum22 = pr.Pocetak.AddMinutes(pr.Trajanje);
+                            if (DateTime.Compare(datum1, datum11) >= 0 && DateTime.Compare(datum1, datum22) < 0 ||
+                                DateTime.Compare(datum2, datum11) > 0 && DateTime.Compare(datum2, datum22) <= 0)
+                            {
+                                MessageBox.Show("Dati termin je zauzet");
+                                PrikazTermina(Termin, pregledi, datum1, datum2, pr.doktor);
+                                return false;
+                            }
+
+                        }
+                    }
+                }
+            }
+
+            p.Pocetak = datum1;
+            p.Trajanje = 20;
+
+            p.Tip = TipPregleda.Standardni;
+            p.StatusPregleda = StatusPregleda.Zakazan;
+            p.prostorija = prostorija;
+
+            if (pregledi.Count == 0)
+            {
+                p.Id = 1;
+            }
+            else
+            {
+                p.Id = pregledi[pregledi.Count - 1].Id + 1;
+            }
+            pregledi.Add(p);
+            pregledRepository.SacuvajPregledDoktor(pregledi);
+
+
+            return true;
         }
 
         public Boolean ZakazivanjePregleda(ComboBox Termin, String jmbg, Prostorija prostorija, DateTime datum1, DateTime datum2)

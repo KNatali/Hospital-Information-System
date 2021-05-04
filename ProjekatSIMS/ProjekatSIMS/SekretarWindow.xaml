@@ -4,15 +4,99 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjekatSIMS"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
         mc:Ignorable="d"
         Title="SekretarWindow" Height="450" Width="800">
     <Grid>
-        <Label Content="Sekretar" HorizontalAlignment="Center" Margin="0,30,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
-        <Button Content="Kreirajte profil pacijenta" Click="Kreiranje_profila" HorizontalAlignment="Left" Margin="448,100,0,0" VerticalAlignment="Top" Height="52" Width="161" Background="#FFA6B1D6"/>
-        <Button Content="Pretražite pacijente" Click="Pretrazi_pacijente" HorizontalAlignment="Center" Margin="0,180,0,0" VerticalAlignment="Top" Height="52" Width="160" Background="#FFA6B1D6"/>
-        <Button Content="Nazad" Click="Nazad" HorizontalAlignment="Left" Margin="40,350,0,0" VerticalAlignment="Top" Height="30" Width="70" Background="#FFA6B1D6"/>
-        <Button Content="Kalendar pregleda i operacija" Click="Kalendar" HorizontalAlignment="Left" Margin="190,260,0,0" VerticalAlignment="Top" Height="52" Width="161" Background="#FFA6B1D6"/>
-        <Button Content="Zakažite termin" Click="Zakazivanje" HorizontalAlignment="Left" Margin="448,260,0,0" VerticalAlignment="Top" Height="52" Width="161" Background="#FFA6B1D6"/>
-        <Button Content="Kreirajte hitan nalog" Click="Kreiraj" HorizontalAlignment="Left" Margin="190,100,0,0" VerticalAlignment="Top" Height="52" Width="161" Background="#FFA6B1D6"/>
+        <Button Click="Kreiranje_profila" HorizontalAlignment="Left" Margin="420,90,0,0" VerticalAlignment="Top" Height="60" Width="320" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <fa:ImageAwesome Icon="UserPlus" Width="30"/>
+                    <TextBlock Text=" Kreirajte profil pacijenta"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+        <Button Click="Pretrazi_pacijente" HorizontalAlignment="Left" Margin="40,161,0,0" VerticalAlignment="Top" Height="60" Width="320" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <fa:ImageAwesome Icon="Users" Width="30"/>
+                    <TextBlock Text=" Pretražite pacijente"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+        <Button Click="Kalendar" HorizontalAlignment="Center" Margin="0,231,0,0" VerticalAlignment="Top" Height="60" Width="320" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <fa:ImageAwesome Icon="Calendar" Width="30"/>
+                    <TextBlock Text=" Svi zakazani termini"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+        <Button Content="Kreirajte hitan nalog" Click="Kreiraj" HorizontalAlignment="Left" Margin="580,231,0,0" VerticalAlignment="Top" Height="60" Width="220" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
+        <Button Click="Hitna" HorizontalAlignment="Left" Margin="40,90,0,0" VerticalAlignment="Top" Height="60" Width="320" FontSize="25" Foreground="#b31a0c" BorderBrush="#b31a0c" Background="#f09e8d">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <fa:ImageAwesome Icon="Heartbeat" Width="30" Foreground="#b31a0c"/>
+                    <TextBlock Text=" Zakažite hitnu operaciju"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+        <Button Click="Pretrazi_doktore" HorizontalAlignment="Left" Margin="420,161,0,0" VerticalAlignment="Top" Height="60" Width="320" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <fa:ImageAwesome Icon="UserMd" Width="30"/>
+                    <TextBlock Text=" Pretražite doktore"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+        <Button Click="Naplata" HorizontalAlignment="Left" Margin="40,300,0,0" VerticalAlignment="Top" Height="60" Width="320" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <fa:ImageAwesome Icon="CcVisa" Width="30"/>
+                    <TextBlock Text=" Naplata pregleda"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+        <Button Click="Zauzetost" HorizontalAlignment="Left" Margin="420,300,0,0" VerticalAlignment="Top" Height="60" Width="320" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <fa:ImageAwesome Icon="FileText" Width="30"/>
+                    <TextBlock Text=" Zauzetost prostorija"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+        <Button Click="Oglasi" HorizontalAlignment="Left" Margin="40,370,0,0" VerticalAlignment="Top" Height="60" Width="320" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <fa:ImageAwesome Icon="Commenting" Width="30"/>
+                    <TextBlock Text=" Vesti na oglasnoj tabli"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+        <Button Click="Nazad" HorizontalAlignment="Left" Margin="420,370,0,0" Foreground="#b31a0c" VerticalAlignment="Top" Height="60" Width="320" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <fa:ImageAwesome Icon="SignOut" Width="30" Foreground="#b31a0c"/>
+                    <TextBlock Text=" Odjavite se"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+        <Label Margin="175,11,465,352">
+            <Label.Content>
+                <StackPanel Orientation="Horizontal">
+                    <fa:ImageAwesome Icon="Globe" Width="60" Foreground="#1963bf"/>
+                    <fa:ImageAwesome Icon="HSquare" Width="37" Foreground="#b31a0c"/>
+                    <fa:ImageAwesome Icon="UserMd" Width="37" Foreground="#1963bf"/>
+                </StackPanel>
+            </Label.Content>
+        </Label>
+        <Label Margin="191,27,445,352">
+            <Label.Content>
+                <StackPanel Orientation="Horizontal">
+                    <fa:ImageAwesome Icon="Heart" Width="15" Foreground="#b31a0c"/>
+                </StackPanel>
+            </Label.Content>
+        </Label>
+        <Label Content="ZDRAVO KORPORACIJA" FontSize="25" Margin="324,24,172,380" Foreground="#1963bf" FontWeight="Bold"/>
     </Grid>
 </Window>

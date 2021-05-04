@@ -37,15 +37,37 @@ namespace ProjekatSIMS
             KalendarPregledaSWindow kp = new KalendarPregledaSWindow();
             kp.Show();
         }
-        private void Zakazivanje(object sender, RoutedEventArgs e)
-        {
-            OdabirPrioritetaSWindow op = new OdabirPrioritetaSWindow();
-            op.Show();
-        }
         private void Kreiraj(object sender, RoutedEventArgs e)
         {
             HitanNalogSWindow hn = new HitanNalogSWindow();
             hn.Show();
+        }
+
+        private void Pretrazi_doktore(object sender, RoutedEventArgs e)
+        {
+            PretraziDoktoreSekretarWindow pd = new PretraziDoktoreSekretarWindow();
+            pd.Show();
+        }
+
+        private void Naplata(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Zauzetost(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Oglasi(object sender, RoutedEventArgs e)
+        {
+            OglasnaTablaSWindow ot = new OglasnaTablaSWindow();
+            ot.Show();
+        }
+
+        private void Hitna(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

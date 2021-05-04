@@ -19,11 +19,19 @@ namespace ProjekatSIMS
         public OsobaRepository fajl { get; set; }
         public List<Pacijent> Pacijenti { get; set; }
         public Pacijent pac { get; set; }
-        public ProfilPacijentaSWindow(String ime, String prezime)
+        public ProfilPacijentaSWindow(Pacijent pacijent)
         {
             InitializeComponent();
             this.DataContext = this;
-            Pacijenti = new List<Pacijent>();
+            pac = pacijent;
+            Jmbg.Text = pac.Jmbg;
+            Ime.Text = pac.Ime;
+            Prezime.Text = pac.Prezime;
+            Datum.Text = pac.DatumRodjenja.ToString();
+            Mail.Text = pac.Email;
+            Telefon.Text = pac.BrojTelefona;
+            Adresa.Text = pac.Adresa;
+            /*Pacijenti = new List<Pacijent>();
             List<Pacijent> ListaPacijenata = new List<Pacijent>();
             OsobaRepository fajl = new OsobaRepository(@"..\..\..\Fajlovi\Pacijent.txt");
             ListaPacijenata = fajl.DobaviPacijente();
@@ -34,7 +42,7 @@ namespace ProjekatSIMS
                     Pacijenti.Add(p);
                     pac = p;
                 }
-            }
+            }*/
         }
         private void Sacuvaj(object sender, RoutedEventArgs e)
         {
@@ -67,19 +75,17 @@ namespace ProjekatSIMS
         }
         private void Obrisi(object sender, RoutedEventArgs e)
         {
-            Pacijent p = (Pacijent)dataGridPacijenti.SelectedItems[0];
-
             MessageBoxResult ret = MessageBox.Show("Da li želite da obrišete pacijenta?", "PROVERA", MessageBoxButton.YesNo);
             switch (ret)
             {
                 case MessageBoxResult.Yes:
-                    if (p.ObrisiPacijent() == true)
+                    if (pac.ObrisiPacijent() == true)
                     {
                         OsobaRepository fajl = new OsobaRepository(@"..\..\..\Fajlovi\Pacijent.txt");
                         List<Pacijent> pacijent = fajl.DobaviPacijente();
                         foreach (Pacijent pa in pacijent)
                         {
-                            if (pa.Jmbg == p.Jmbg)
+                            if (pa.Jmbg == pac.Jmbg)
                             {
                                 pacijent.Remove(pa);
                                 break;
@@ -96,9 +102,20 @@ namespace ProjekatSIMS
         }
         private void Lista_alergena(object sender, RoutedEventArgs e)
         {
-            Pacijent p = (Pacijent)dataGridPacijenti.SelectedItems[0];
-            ListaAlergenaSWindow la = new ListaAlergenaSWindow(p);
+            //Pacijent p = (Pacijent)dataGridPacijenti.SelectedItems[0];
+            ListaAlergenaSWindow la = new ListaAlergenaSWindow(pac);
             la.Show();
+        }
+
+        private void Zakazi(object sender, RoutedEventArgs e)
+        {
+            OdabirPrioritetaSWindow op = new OdabirPrioritetaSWindow(pac);
+            op.Show();
+        }
+
+        private void Kalendar(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

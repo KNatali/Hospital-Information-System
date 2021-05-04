@@ -4,13 +4,20 @@ namespace Model
 {
    public class Notifikacija
    {
-      public String Tekst;
-      public DateTime Datum;
+      public int Id { get; set; }
+      public String Naslov { get; set; }
+      public String Tekst { get; set; }
+      public DateTime Datum { get; set; }
       
-      public System.Collections.ArrayList osoba;
-      
-      /// <pdGenerated>default getter</pdGenerated>
-      public System.Collections.ArrayList GetOsoba()
+      public System.Collections.ArrayList osoba { get; set; }
+
+      public Boolean ObrisiNotifikaciju()
+      {
+          // TODO: implement
+          return true;
+      }
+        /// <pdGenerated>default getter</pdGenerated>
+        public System.Collections.ArrayList GetOsoba()
       {
          if (osoba == null)
             osoba = new System.Collections.ArrayList();
