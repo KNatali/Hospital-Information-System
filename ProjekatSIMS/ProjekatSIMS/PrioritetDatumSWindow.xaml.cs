@@ -122,7 +122,7 @@ namespace ProjekatSIMS
             SlobodanTerminRepository fajl = new SlobodanTerminRepository(@"..\..\..\Fajlovi\SlobodniTermini.txt");
             Termini = fajl.DobaviSveSlobodneTermineZaDatum(datum);
             
-            /*foreach (SlobodanTermin t in termini)
+            foreach (SlobodanTermin t in termini)
             {
 
                 if (t.Termin == datum)
@@ -130,7 +130,7 @@ namespace ProjekatSIMS
                     Termini.Add(t);
                 }
 
-            }*/
+            }
         }
     }
 }

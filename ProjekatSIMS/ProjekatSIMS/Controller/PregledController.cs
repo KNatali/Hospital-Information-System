@@ -61,6 +61,19 @@ namespace Controller
 
         }
 
+        public List<DateTime> PrikazSlobodnihTermina(Doktor doktor,DateTime pocetnoVrijeme,DateTime krajnjeVrijeme)
+        {
+            List<DateTime> termini= pregledService.PrikazSlobodnihTermina(doktor, pocetnoVrijeme, krajnjeVrijeme);
+
+            return termini;
+        }
+
+        public Boolean IzdavanjeUputa(Pacijent pacijent, Doktor doktor, DateTime izabraniTermin)
+        {
+            pregledService.IzdavanjeUputa(pacijent, doktor, izabraniTermin);
+            return true;
+        }
+
         public List<Pregled> DobaviSvePreglede()
         {
            return pregledService.DobaviSvePreglede();
@@ -96,8 +109,24 @@ namespace Controller
          // TODO: implement
          return true;
       }
-   
-      
-   
-   }
+
+        public Boolean ZakazivanjePregledaPacijent(String ime, String prezime, String imeDoktora, String prezimeDoktora, DateTime datum, String jmbg)
+        {
+
+            if (pregledService.ZakazivanjePregledaPacijent(ime, prezime, imeDoktora,prezimeDoktora,datum,jmbg))
+                return true;
+
+            return false;
+
+        }
+        public Boolean DaLiJeTerminZauzet()
+        {
+            if(pregledService.OdredjivanjePrioritetaPacijent() == true)
+            {
+                return true;
+            }
+            return false;
+        }
+
+    }
 }

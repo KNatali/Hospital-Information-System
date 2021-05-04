@@ -1,0 +1,99 @@
+﻿<Page x:Class="ProjekatSIMS.EvidencijaLIjekova"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ProjekatSIMS"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="EvidencijaLIjekova"
+      >
+
+    <Grid Background="White">
+        <Label Content="Evidencija lijekova" HorizontalAlignment="Left" Margin="317,10,0,0" VerticalAlignment="Top" FontSize="16"/>
+
+        <DataGrid Name="dataGridVerifikacija" SelectionMode="Single" AutoGenerateColumns="False" Margin="30,96,383,172" IsReadOnly="True"
+
+                  ScrollViewer.CanContentScroll="True" 
+                  ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Naziv lijeka" Binding="{Binding Path='NazivLeka'}" IsReadOnly="True" />
+
+
+                <DataGridTemplateColumn Header="Detalji">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="Detalji" Content="Detalji" Click="PrikaziDetaljaLijeka" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Izmijeni">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="Izmijeni" Content="Izmijeni" Click="IzmijeniLijek" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Prihvati">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="Prihvati" Content="Prihvati" Click="PrihvatiLijek" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Odbaci" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="Odbaci" Content="Odbaci" Click="OdbaciLijek" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+        <Border Margin="452,96,24,284" 
+
+                BorderThickness="1"
+                BorderBrush="Black">
+            <TextBlock  Name="Opis"
+                       VerticalAlignment="Top" 
+                       HorizontalAlignment="Left"
+                        Text=""
+                TextWrapping="Wrap"/>
+
+        </Border>
+
+        <DataGrid x:Name="Sastojci" IsReadOnly="True"
+
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="452,187,192,172"
+
+                  ScrollViewer.CanContentScroll="True" 
+                  ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Sastojci" Binding="{Binding}" Width="*"/>
+
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <DataGrid x:Name="AlternativniLijekovi" IsReadOnly="True"
+
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="620,187,24,172"
+
+                  ScrollViewer.CanContentScroll="True" 
+                  ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Alternativni lijekovi" Binding="{Binding}"  Width="*"/>
+
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+        <Button Content="Verifikovani lijekovi" Click="PregledVerifikovanihLijekova" HorizontalAlignment="Left" Margin="30,360,0,0" VerticalAlignment="Top" Height="38" Width="168" Background="#FFB5CDE2"/>
+
+
+    </Grid>
+
+
+</Page>

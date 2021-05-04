@@ -1,0 +1,15 @@
+﻿<Window x:Class="ProjekatSIMS.OdbacivanjePoruka"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjekatSIMS"
+        mc:Ignorable="d"
+        Title="OdbacivanjePoruka" Height="300" Width="350" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <TextBox Name="UnijetaPoruka" HorizontalAlignment="Center" Margin="0,92,0,0" Text=" " TextWrapping="Wrap" VerticalAlignment="Top" Width="278" Height="78"/>
+        <Label Content="Poruka zbog cega ste odbacili lijek:" HorizontalAlignment="Center" Margin="0,45,0,0" VerticalAlignment="Top"/>
+        <Button Content="Potvrdi"  Click="PotvrdiPoruku" HorizontalAlignment="Left" Margin="257,194,0,0" VerticalAlignment="Top" Height="30" Width="55"/>
+
+    </Grid>
+</Window>

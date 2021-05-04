@@ -8,14 +8,13 @@ namespace Repository
 {
    public class PregledRepository
    {
-        private String lokacija;
+        private String lokacija = @"..\..\..\Fajlovi\Pregled.txt";
 
         private List<ZdravsteniKarton> zk;
 
         private List<Pregled> pregledi;
 
-        private String LokacijaFajla;
-        
+      
         private const string putanja = @"..\..\..\Fajlovi\Pregled.txt";
        
 
@@ -115,6 +114,19 @@ namespace Repository
                 pregledi = JsonConvert.DeserializeObject<List<Pregled>>(json);
             }
             return pregledi;
+        }
+
+        public List<Pregled> DobaviZakazanePreglede()
+        {
+            List<Pregled> sviPregledi = DobaviSvePregledeDoktor();
+            List<Pregled> zakazaniPregledi = new List<Pregled>();
+            foreach (Pregled p in sviPregledi)
+            {
+                if (p.StatusPregleda == StatusPregleda.Zakazan)
+                    zakazaniPregledi.Add(p);
+
+            }
+            return zakazaniPregledi;
         }
 
 
