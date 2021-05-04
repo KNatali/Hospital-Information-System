@@ -14,6 +14,7 @@ namespace ProjekatSIMS.Model
         public String PrezimeDoktora { get; set; }
         public Doktor doktor { get; set; }
         public bool Slobodan { get; set; }
+        public Specijalizacija Specijalizacija { get; set; }
 
         public SlobodanTermin(DateTime termin, String ime, String prezime, bool sl)
         {

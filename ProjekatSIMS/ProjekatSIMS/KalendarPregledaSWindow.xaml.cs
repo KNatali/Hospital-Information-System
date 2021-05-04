@@ -72,12 +72,5 @@ namespace ProjekatSIMS
                     break;
             }
         }
-
-        private void Zakazi(object sender, RoutedEventArgs e)
-        {
-            /*OdabirPrioritetaSWindow op = new OdabirPrioritetaSWindow();
-            op.Show();
-            this.Close();*/
-        }
     }
 }

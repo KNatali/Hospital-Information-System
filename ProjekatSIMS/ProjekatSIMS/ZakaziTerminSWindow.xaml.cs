@@ -23,7 +23,6 @@ namespace ProjekatSIMS
         public Pacijent pac { get; set; }
         public List<Doktor> Doktori { get; set; }
         public List<Prostorija> Ordinacije { get; set; }
-        public List<TipPregleda> Tipovi { get; set; }
         public ZakaziTerminSWindow(Pacijent p)
         {
             InitializeComponent();
@@ -39,8 +38,10 @@ namespace ProjekatSIMS
             }
             foreach (Doktor d in doktori)
                 Doktori.Add(d);
+            Pregledi.ItemsSource = Enum.GetValues(typeof(TipPregleda));
             List<Prostorija> prostorije = new List<Prostorija>();
             Ordinacije = new List<Prostorija>();
+            Prostorija prostorija1 = new Prostorija();
             //ucitavanje ordinacija u combobox
             using (StreamReader r = new StreamReader(@"..\..\..\Fajlovi\Prostorija.txt"))
             {
@@ -52,17 +53,23 @@ namespace ProjekatSIMS
             foreach (Prostorija pr in prostorije)
             {
                 if (pr.vrsta == VrstaProstorije.Ordinacija)
-                    Ordinacije.Add(pr);
+                {
+                    prostorija1 = pr;
+                    Ordinacije.Add(prostorija1);
+                }
             }
-            List<TipPregleda> tipovi = new List<TipPregleda>();
-            Tipovi = new List<TipPregleda>();
-            //ucitavanje tipova pregleda u combobox
-            foreach (TipPregleda t in tipovi)
-                Tipovi.Add(t);
         }
         private void Otkazi(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            MessageBoxResult ret = MessageBox.Show("Da li želite da otkažete zakazivanje pregleda pacijenta?", "PROVERA", MessageBoxButton.YesNo);
+            switch(ret)
+            {
+                case MessageBoxResult.Yes:
+                    this.Close();
+                    break;
+                case MessageBoxResult.No:
+                    break;
+            }
         }
         private void Zakazi(object sender, RoutedEventArgs e)
         {
@@ -72,8 +79,17 @@ namespace ProjekatSIMS
             DateTime datum = (DateTime)Datum.SelectedDate;
             double sat;
             double minut;
+            TipPregleda tippregleda = (TipPregleda)Pregledi.SelectedIndex;
+            if (tippregleda.ToString() == "Standardni")
+            {
+                p.Tip = TipPregleda.Standardni;
+            }
+            else
+            {
+                p.Tip = TipPregleda.Operacija;
+            }
 
-            if (Termin.Visibility == Visibility.Visible)
+                if (Termin.Visibility == Visibility.Visible)
             {
                 sat = Convert.ToDouble(Termin.Text.Split(":")[0]);
                 minut = Convert.ToDouble(Termin.Text.Split(":")[1]);
@@ -89,7 +105,7 @@ namespace ProjekatSIMS
             datum1 = datum1.AddMinutes(minut);
             DateTime datum2 = datum1.AddMinutes(20);
             PregledController pc = new PregledController();
-            if (pc.ZakazivanjePregledaSekretar(Termin, pac.Jmbg, p.doktor.Jmbg,prostorija, datum1, datum2) == true)
+            if (pc.ZakazivanjePregledaSekretar(Termin, pac.Jmbg, p.doktor.Jmbg, prostorija, datum1, datum2) == true)
             {
                 PopupNotifier popup = new PopupNotifier();
                 popup.Image = Properties.Resources.informacija;
@@ -103,7 +119,13 @@ namespace ProjekatSIMS
             {
                 MessageBox.Show("Niste uspeli da zakažete pregled.");
             }
-           
+        }
+
+        private void IzborPregleda(object sender, SelectionChangedEventArgs e)
+        {
+            TipPregleda tippregleda = (TipPregleda)Pregledi.SelectedIndex;
+            ImeSale.Visibility = Visibility.Visible;
+            Ordinacija.Visibility = Visibility.Visible;
         }
     }
 }

@@ -1,24 +1,58 @@
-﻿<Window x:Class="ProjekatSIMS.PrioritetDatumSWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjekatSIMS"
+        xmlns:fa="http://schemas.fontawesome.io/icons/" x:Class="ProjekatSIMS.PrioritetDatumSWindow"
         mc:Ignorable="d"
         Title="PrioritetDatumSWindow" Height="450" Width="800">
     <Grid>
-        <Button Content="Zakaži termin" Click="Zakazi" HorizontalAlignment="Left" Margin="448,343,0,0" VerticalAlignment="Top" Height="30" Width="100" Background="#FFA6B1D6"/>
-        <Button Content="Otkaži" Click="Nazad" HorizontalAlignment="Left" Margin="248,343,0,0" VerticalAlignment="Top" Height="30" Width="100" Background="#FFA6B1D6"/>
-        <Label Content="JMBG pacijenta" HorizontalAlignment="Left" Height="25" Margin="248,274,0,0" VerticalAlignment="Top" Width="145"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Jmbg_pacijent" Margin="430,274,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <DataGrid x:Name="dataGridSlobodniTermini" ItemsSource="{Binding Termini}" IsReadOnly="True"
-            SelectionMode="Single" AutoGenerateColumns="False" Margin="233,67,245,0" Height="180" VerticalAlignment="Top">
+        <Button Content="Zakaži termin" Click="Zakazi" HorizontalAlignment="Left" Margin="580,363,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
+        <Button Content="Otkaži" Click="Nazad" HorizontalAlignment="Left" Margin="68,363,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
+        <DataGrid x:Name="dataGridSlobodniTermini" ItemsSource="{Binding Termini}" FontSize="15" IsReadOnly="True" Visibility="Hidden"
+            SelectionMode="Single" AutoGenerateColumns="False" Margin="307,154,40,0" Height="180" VerticalAlignment="Top">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Termin" Binding="{Binding Termin}" Width="*"/>
-                <DataGridTextColumn Header="Ime doktora" Binding="{Binding ImeDoktora}" Width="*"/>
-                <DataGridTextColumn Header="Prezime doktora" Binding="{Binding PrezimeDoktora}" Width="*"/>
+                <DataGridTextColumn Header="Termin" Binding="{Binding Termin}" Width="140"/>
+                <DataGridTextColumn Header="Ime" Binding="{Binding ImeDoktora}" Width="100"/>
+                <DataGridTextColumn Header="Prezime" Binding="{Binding PrezimeDoktora}" Width="100"/>
+                <DataGridTextColumn Header="Specijalizacija" Binding="{Binding Specijalizacija}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Label Content="Odaberite neki od ponuđenih termina" HorizontalAlignment="Left" Height="25" Margin="274,37,0,0" VerticalAlignment="Top" Width="372" FontWeight="Bold"/>
+        <Label Width="268" VerticalAlignment="Top" x:Name="Labela" Visibility="Hidden" Margin="386,119,0,0" Height="39" HorizontalAlignment="Left" FontSize="15" Foreground="#1963bf" Content="Odaberite neki od ponuđenih termina"/>
+        <Label Width="268" VerticalAlignment="Top" Margin="272,79,0,0" Height="50" HorizontalAlignment="Left" FontSize="20" Foreground="#1963bf" FontWeight="Bold" Content="Zakažite pregled pacijentu"/>
+        <Label Margin="175,11,465,352">
+            <StackPanel Orientation="Horizontal">
+                <fa:ImageAwesome Icon="Globe" Width="60" Foreground="#1963bf"/>
+                <fa:ImageAwesome Icon="HSquare" Width="37" Foreground="#b31a0c"/>
+                <fa:ImageAwesome Icon="UserMd" Width="37" Foreground="#1963bf"/>
+            </StackPanel>
+        </Label>
+        <Label Margin="191,27,445,352">
+            <StackPanel Orientation="Horizontal">
+                <fa:ImageAwesome Icon="Heart" Width="15" Foreground="#b31a0c"/>
+            </StackPanel>
+        </Label>
+        <Label Content="ZDRAVO KORPORACIJA" FontSize="25" Margin="324,24,172,380" Foreground="#1963bf" FontWeight="Bold"/>
+        <Label Width="272" VerticalAlignment="Top" Margin="30,119,0,0" Height="39" HorizontalAlignment="Left" FontSize="15" Foreground="#1963bf" Content="Datum za koji tražite slobodne termine"/>
+        <DatePicker HorizontalAlignment="Left" x:Name="Datum" FontSize="20" Margin="30,163,0,0" VerticalAlignment="Top" Width="257"/>
+        <Label Content="Sala" HorizontalAlignment="Left" FontSize="20" Margin="30,217,0,0" VerticalAlignment="Top" Height="39" Width="72"/>
+        <ComboBox  x:Name="Ordinacija" HorizontalAlignment="Left"   
+            Margin="131,220,0,0"   
+            VerticalAlignment="Top"   
+            Width="156" FontSize="20"
+            ItemsSource="{Binding Ordinacije}">
+
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding id}"/>
+                        <TextBlock Text=" - "/>
+                        <TextBlock Text="{Binding vrsta}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Button Content="Prikaži termine" Click="Prikaz" HorizontalAlignment="Left" Margin="68,274,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
     </Grid>
 </Window>

@@ -27,8 +27,7 @@
                 </Style>
             </DataGrid.ItemContainerStyle>
         </DataGrid>
-        <Button Content="Zakaži pregled" Click="Zakazi" HorizontalAlignment="Left" Margin="590,365,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
-        <Button Content="Otkaži pregled" Click="Otkazi" HorizontalAlignment="Center" Margin="0,365,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
+        <Button Content="Otkaži pregled" Click="Otkazi" HorizontalAlignment="Left" Margin="590,365,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
         <Label Width="318" VerticalAlignment="Top" Margin="0,71,0,0" Height="50" HorizontalAlignment="Center" FontSize="20" Foreground="#1963bf" FontWeight="Bold" Content="Kalendar svih zakazanih termina"/>
         <Label Margin="175,11,465,352">
             <StackPanel Orientation="Horizontal">
