@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -12,6 +13,7 @@ namespace ProjekatSIMS.Model
         public String ImeDoktora { get; set; }
         public String PrezimeDoktora { get; set; }
         public bool Slobodan { get; set; }
+        public Specijalizacija Specijalizacija { get; set; }
 
         public SlobodanTermin(DateTime termin, String ime, String prezime, bool sl)
         {
