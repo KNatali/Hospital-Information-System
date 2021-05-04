@@ -1,4 +1,5 @@
 ﻿
+using ProjekatSIMS.Controller;
 using ProjekatSIMS.Model;
 using ProjekatSIMS.Repository;
 using System.Collections.Generic;
@@ -20,15 +21,21 @@ namespace ProjekatSIMS.WindowPacijent
             OcenaBolnice ob = new OcenaBolnice();
             string ocena = Ocena.Text;
             string komentar = Komentar.Text;
-            OcenaBolniceRepository fajl = new OcenaBolniceRepository(@"..\..\..\Fajlovi\OcenaBolnice.txt");
-            List<OcenaBolnice> oceneBolnice = fajl.DobaviSveOceneBolnice();
-            ob.Ocena = ocena;
-            ob.Komentar = komentar;
-            oceneBolnice.Add(ob);
-            fajl.SacuvajOcenuBolnice(oceneBolnice);
-            MessageBox.Show("Hvala Vam sto ste izdvojili vreme da ocenite nasu bolnicu!");
 
-            this.Close();
+            OcenaController ocenaCont = new OcenaController();
+            if(ocenaCont.ProsledjenaOcenaBolnice(ocena,komentar) == true)
+            {
+                MessageBox.Show("Hvala Vam sto ste izdvojili vreme da ocenite nasu bolnicu!");
+
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Molimo Vas unesite ocenu bolnice.");
+            }
+
+           
+            
 
         }
     }
