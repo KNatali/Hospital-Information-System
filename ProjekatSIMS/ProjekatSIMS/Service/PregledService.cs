@@ -593,6 +593,8 @@ namespace Service
             }
             Pacijent pacijent = new Pacijent { Jmbg = jmbg, Ime = ime, Prezime = prezime };
             bool postojiDoktor = false;
+            
+
 
             if (DaLiJeKorisnikMaliciozan(ime,prezime) == false)
             {
@@ -663,6 +665,17 @@ namespace Service
             }
             else
             {
+                pregledRepository = new PregledRepository();
+
+                List<Pregled> pregledi = pregledRepository.DobaviSvePregledePacijent();
+                //svi pregledi koje je taj pacijent imao zakazane postaju otkazani
+                foreach (Pregled pregled in pregledi)
+                {
+                    if((pregled.pacijent.Ime == ime) && (pregled.pacijent.Prezime == prezime))
+                    {
+                        pregled.StatusPregleda = StatusPregleda.Otkazan;
+                    }
+                }
                 return false;
             }
         }
@@ -681,7 +694,7 @@ namespace Service
                 if ((pacijent.Ime == imePacijenta) && (pacijent.Prezime == prezimePacijenta) && (pacijent.otkazaoPregled >= MAKSIMALNO_OTKAZIVANJA))
                 {
 
-                    MessageBox.Show("Zakazali ste i otkazali previse pregleda u proteklom periodu, privremeno Vam je zabranjeno zakazivanje pregleda.");
+                    MessageBox.Show("Zakazali ste i otkazali previse pregleda u proteklom periodu, privremeno Vam je zabranjeno zakazivanje pregleda. Ukoliko smatrate da je ovo greska, molimo Vas obratite se sekretaru.");
                     jesteMaliciozniKorisnik = true;
                     break;
 
@@ -689,7 +702,10 @@ namespace Service
                 }
 
             }
+
             return jesteMaliciozniKorisnik;
         }
+
+       
     }
 }

@@ -31,6 +31,8 @@ namespace ProjekatSIMS
             PacijentRepository file = new PacijentRepository(@"..\..\..\Fajlovi\Pacijent.txt");
             Pacijenti = file.UcitajSvePacijente();
 
+           
+
 
         }
 
