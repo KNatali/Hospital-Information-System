@@ -22,7 +22,7 @@ namespace ProjekatSIMS.WindowPacijent
             InitializeComponent();
             this.DataContext = this;
             OceneBolnice = new List<OcenaBolnice>();
-            OcenaBolniceRepository fajl = new OcenaBolniceRepository(@"..\..\..\Fajlovi\OcenaBolnice.txt");
+            OcenaRepository fajl = new OcenaRepository(@"..\..\..\Fajlovi\OcenaBolnice.txt");
             OceneBolnice = fajl.DobaviSveOceneBolnice();
 
 
