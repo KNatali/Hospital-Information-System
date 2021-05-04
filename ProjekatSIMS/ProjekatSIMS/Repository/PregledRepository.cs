@@ -116,6 +116,19 @@ namespace Repository
             return pregledi;
         }
 
+        public List<Pregled> DobaviZakazanePreglede()
+        {
+            List<Pregled> sviPregledi = DobaviSvePregledeDoktor();
+            List<Pregled> zakazaniPregledi = new List<Pregled>();
+            foreach (Pregled p in sviPregledi)
+            {
+                if (p.StatusPregleda == StatusPregleda.Zakazan)
+                    zakazaniPregledi.Add(p);
+
+            }
+            return zakazaniPregledi;
+        }
+
 
         public void SacuvajPregledPacijent(List<Pregled> pregledi)
         {

@@ -57,9 +57,11 @@ namespace ProjekatSIMS
             Lijek lijek = (Lijek)dataGridVerifikacija.SelectedItems[0];
             Opis.Text = lijek.Opis;
             List<String> sastojci = lijek.Alergeni;
+
             List<String> alternativni = lijek.AlternativniLekovi;
             Sastojci.ItemsSource = sastojci;
             AlternativniLijekovi.ItemsSource = alternativni;
+
 
         }
 
@@ -96,7 +98,14 @@ namespace ProjekatSIMS
             Lijek lijek = (Lijek)dataGridVerifikacija.SelectedItems[0];
             List<Lijek> lijekoviNovi = new List<Lijek>();
 
-           
+
+            //cuvanje u fajl izmjenjeni lijek
+            SviLijekovi.Find(p => p.NazivLeka == lijek.NazivLeka).Status = OdobravanjeLekaEnum.Odbijen;
+
+            string newJson = JsonConvert.SerializeObject(SviLijekovi);
+            File.WriteAllText(@"..\..\..\Fajlovi\Lijek.txt", newJson);
+
+
           
             //da se pozdaina zatamni
             this.Opacity = 0.3;
@@ -104,6 +113,7 @@ namespace ProjekatSIMS
             o.ShowDialog();
             
             this.Opacity = 1;
+
             
 
             //cuvanje u fajl izmjenjeni lijek
@@ -112,6 +122,7 @@ namespace ProjekatSIMS
 
             string newJson = JsonConvert.SerializeObject(SviLijekovi);
             File.WriteAllText(@"..\..\..\Fajlovi\Lijek.txt", newJson);
+
 
             PrikazTabele();
         }

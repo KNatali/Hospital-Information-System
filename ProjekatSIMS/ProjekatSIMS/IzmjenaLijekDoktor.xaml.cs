@@ -67,6 +67,7 @@ namespace ProjekatSIMS
 
         private void DodajAlternativniLijek(object sender, RoutedEventArgs e)
         {
+
             Lijek izabraniLijek = (Lijek)SviLijekovi.SelectedItem;
             String noviAlternativniLijek = izabraniLijek.NazivLeka;
             
@@ -78,6 +79,7 @@ namespace ProjekatSIMS
             foreach (String s in lijek.AlternativniLekovi)
                 alternativniNovi.Add(s);
             AlternativniLijekovi.ItemsSource = alternativniNovi;
+
         }
 
         private void SacuvajPromjene(object sender, RoutedEventArgs e)
@@ -87,12 +89,20 @@ namespace ProjekatSIMS
             l.Opis = Opis.Text;
             l.Status = lijek.Status;
             l.Alergeni = new List<String>();
+
+           foreach(String i in Sastojci.Items)
+
             l.AlternativniLekovi = new List<String>();
             foreach (String i in Sastojci.Items)
+
             {
                 l.Alergeni.Add(i);
                 
             }
+
+          
+          
+
 
             foreach (String i in AlternativniLijekovi.Items)
             {
@@ -101,6 +111,7 @@ namespace ProjekatSIMS
             }
 
             foreach (Lijek li in Lijekovi)
+
             {
                 if (li.NazivLeka == l.NazivLeka)
                 {
@@ -120,7 +131,9 @@ namespace ProjekatSIMS
 
         private void Odustani(object sender, RoutedEventArgs e)
         {
+
             this.NavigationService.GoBack();
+
         }
     }
 }

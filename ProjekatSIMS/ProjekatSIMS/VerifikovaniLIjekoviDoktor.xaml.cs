@@ -48,6 +48,7 @@ namespace ProjekatSIMS
 
         private void PrikaziDetaljaLijeka(object sender, RoutedEventArgs e)
         {
+
             Poruka.Visibility = Visibility.Hidden;
             Lijek lijek = (Lijek)dataGridVerifikovani.SelectedItems[0];
             Opis.Text = lijek.Opis;
@@ -66,12 +67,14 @@ namespace ProjekatSIMS
         }
 
 
+
         private void IzmijeniLijek(object sender, RoutedEventArgs e)
         {
             Lijek lijek = (Lijek)dataGridVerifikovani.SelectedItems[0];
             IzmjenaLijekDoktor i = new IzmjenaLijekDoktor(lijek);
              this.NavigationService.Navigate(i);
         }
+
 
         private void NazadNaVerifikovane(object sender, RoutedEventArgs e)
         {
@@ -81,4 +84,5 @@ namespace ProjekatSIMS
     }
 
     
+
 }

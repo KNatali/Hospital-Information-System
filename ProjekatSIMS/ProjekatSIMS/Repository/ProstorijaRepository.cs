@@ -10,10 +10,13 @@ namespace Repository
    {
         private String LokacijaFajla;
         private List<Prostorija> prostorije;
+       
         public void SacuvajProstoriju()
       {
          // TODO: implement
       }
+
+
         public ProstorijaRepository(String lokacija)
         {
             LokacijaFajla = lokacija;
@@ -28,5 +31,17 @@ namespace Repository
             return prostorije;
         }
 
+        public List<Prostorija> DobaviOrdinacije()
+        {
+            List<Prostorija> sveProstorije = DobaviSveProstorije();
+            List<Prostorija> ordinacije = new List<Prostorija>();
+            foreach(Prostorija p in sveProstorije)
+            {
+                if (p.vrsta == VrstaProstorije.Ordinacija)
+                    ordinacije.Add(p);
+            }
+
+            return ordinacije;
+        }
     }
 }
