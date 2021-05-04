@@ -98,14 +98,6 @@ namespace ProjekatSIMS
             Lijek lijek = (Lijek)dataGridVerifikacija.SelectedItems[0];
             List<Lijek> lijekoviNovi = new List<Lijek>();
 
-
-            //cuvanje u fajl izmjenjeni lijek
-            SviLijekovi.Find(p => p.NazivLeka == lijek.NazivLeka).Status = OdobravanjeLekaEnum.Odbijen;
-
-            string newJson = JsonConvert.SerializeObject(SviLijekovi);
-            File.WriteAllText(@"..\..\..\Fajlovi\Lijek.txt", newJson);
-
-
           
             //da se pozdaina zatamni
             this.Opacity = 0.3;

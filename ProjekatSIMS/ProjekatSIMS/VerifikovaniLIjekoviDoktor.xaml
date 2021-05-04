@@ -44,6 +44,7 @@
                             <Button Name="Izmijeni" Content="Izmijeni" Click="IzmijeniLijek" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
 
 
 
