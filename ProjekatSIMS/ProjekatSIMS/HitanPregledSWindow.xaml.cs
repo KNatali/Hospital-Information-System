@@ -43,7 +43,7 @@ namespace ProjekatSIMS
             Termini = fajlTermina.DobaviSveSlobodneTermineZaDatum(danasnjiDatum);
         }
 
-        private void Prikaz(object sender, RoutedEventArgs e)
+        private void PrikazZauzetihTerminaIzOdabraneOblasti(object sender, RoutedEventArgs e)
         {
             Doktor d = new Doktor();
             List<Pregled> Pregledi1 = new List<Pregled>();
@@ -54,39 +54,20 @@ namespace ProjekatSIMS
             dataGridSlobodniTermini.Visibility = Visibility.Hidden;
 
             Specijalizacija spec = (Specijalizacija)Oblasti.SelectedIndex;
-            if (spec.ToString() == "Opsta")
+            OdabirOblastiLekara(spec, ListaPregleda);
+        }
+        public void OdabirOblastiLekara(Specijalizacija specijalizacija, List<Pregled> listaPregleda)
+        {
+            List<Pregled> ispisPregleda = new List<Pregled>();
+            foreach (Pregled pr in listaPregleda)
             {
-                foreach (Pregled pr in ListaPregleda)
+                if (pr.doktor.Specijalizacija == specijalizacija)
                 {
-                    if (pr.doktor.Specijalizacija == Specijalizacija.Opsta)
-                    {
-                        Pregledi1.Add(pr);
-                        pre = pr;
-                    }
+                    ispisPregleda.Add(pr);
+                    pre = pr;
                 }
             }
-            else if (spec.ToString() == "Kardiologija")
-            {
-                foreach (Pregled pr in Pregledi)
-                {
-                    if (pr.doktor.Specijalizacija == Specijalizacija.Kardiologija)
-                    {
-                        Pregledi1.Add(pr);
-                        pre = pr;
-                    }
-                }
-            }
-            else if (spec.ToString() == "Hirurgija")
-            {
-                foreach (Pregled pr in Pregledi)
-                {
-                    if (pr.doktor.Specijalizacija == Specijalizacija.Hirurgija)
-                    {
-                        Pregledi1.Add(pr);
-                        pre = pr;
-                    }
-                }
-            }
+            dataGridPregledi.ItemsSource = ispisPregleda;
         }
         private void Zakazi(object sender, RoutedEventArgs e)
         {
@@ -97,20 +78,29 @@ namespace ProjekatSIMS
             zakaziPregled.Pocetak = danasnjiDatum;
             zakaziPregled.Tip = TipPregleda.Operacija;
             zakaziPregled.Trajanje = 30;
+            CuvanjeUFajl(zakaziPregled);
+            SlanjeNotifikacija();
+            this.Close();
+        }
+
+        private void CuvanjeUFajl(Pregled zakaziPregled)
+        {
             PregledRepository fajl = new PregledRepository(@"..\..\..\Fajlovi\Pregled.txt");
             Pregledi.Add(zakaziPregled);
             fajl.SacuvajPregledSekretar(Pregledi);
+        }
 
+        private static void SlanjeNotifikacija()
+        {
             PopupNotifier popup = new PopupNotifier();
             popup.Image = Properties.Resources.informacija;
             popup.TitleText = "OBAVEŠTENJE";
             popup.ContentText = "Pregled je uspešno zakazan. " +
                 "Poslato je obaveštenje pacijentu i doktoru o predstojećem pregledu.";
             popup.Popup();
-            this.Close();
         }
 
-        private void Slobodni(object sender, RoutedEventArgs e)
+        private void PrikazSlobodnihTermina(object sender, RoutedEventArgs e)
         {
             List<SlobodanTermin> slobodniTermini = new List<SlobodanTermin>();
             List<SlobodanTermin> listaTermina = new List<SlobodanTermin>();

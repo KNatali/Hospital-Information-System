@@ -41,23 +41,11 @@ namespace ProjekatSIMS
 
         private void Zakazi(object sender, RoutedEventArgs e)
         {
-            string str = Nalog.Text;
-            ComboBoxItem cbi = (ComboBoxItem)Nalog.SelectedItem;
-            string opcija = cbi.Content.ToString();
-            string val = Nalog.SelectedValue.ToString();
+            ComboBoxItem izborPacijenta = (ComboBoxItem)Nalog.SelectedItem;
+            string opcija = izborPacijenta.Content.ToString();
             if (opcija == "Kreiraj hitan nalog")
             {
-                String jmbg = Jmbg.Text;
-                String ime = Ime.Text;
-                String prezime = Prezime.Text;
-                Pacijent p = new Pacijent();
-                p.Jmbg = jmbg;
-                p.Ime = ime;
-                p.Prezime = prezime;
-                OsobaRepository fajl = new OsobaRepository(@"..\..\..\Fajlovi\Pacijent.txt");
-                List<Pacijent> pacijenti = fajl.DobaviPacijente();
-                pacijenti.Add(p);
-                fajl.Sacuvaj(pacijenti);
+                Pacijent p = KreiranjeHitnogNaloga();
                 HitanPregledSWindow hp = new HitanPregledSWindow(p);
                 hp.Show();
                 this.Close();
@@ -71,33 +59,57 @@ namespace ProjekatSIMS
             }
         }
 
+        private Pacijent KreiranjeHitnogNaloga()
+        {
+            String jmbg = Jmbg.Text;
+            String ime = Ime.Text;
+            String prezime = Prezime.Text;
+            Pacijent p = new Pacijent();
+            p.Jmbg = jmbg;
+            p.Ime = ime;
+            p.Prezime = prezime;
+            OsobaRepository fajl = new OsobaRepository(@"..\..\..\Fajlovi\Pacijent.txt");
+            List<Pacijent> pacijenti = fajl.DobaviPacijente();
+            pacijenti.Add(p);
+            fajl.Sacuvaj(pacijenti);
+            return p;
+        }
+
         private void Prikaz(object sender, RoutedEventArgs e)
         {
-            string str = Nalog.Text;
             ComboBoxItem cbi = (ComboBoxItem)Nalog.SelectedItem;
             string opcija = cbi.Content.ToString();
-            string val = Nalog.SelectedValue.ToString();
             if (opcija == "Kreiraj hitan nalog")
             {
-                LabelaJMBG.Visibility = Visibility.Visible;
-                LabelaIme.Visibility = Visibility.Visible;
-                LabelaPrezime.Visibility = Visibility.Visible;
-                Jmbg.Visibility = Visibility.Visible;
-                Ime.Visibility = Visibility.Visible;
-                Prezime.Visibility = Visibility.Visible;
-                dataGridPacijenti.Visibility = Visibility.Hidden;
+                PrikaPoljaZaKreiranjeHitnogNaloga();
             }
             else if (opcija == "Odaberi postojeći nalog")
             {
-                dataGridPacijenti.Visibility = Visibility.Visible;
-                dataGridPacijenti.ItemsSource = Pacijenti;
-                LabelaJMBG.Visibility = Visibility.Hidden;
-                LabelaIme.Visibility = Visibility.Hidden;
-                LabelaPrezime.Visibility = Visibility.Hidden;
-                Jmbg.Visibility = Visibility.Hidden;
-                Ime.Visibility = Visibility.Hidden;
-                Prezime.Visibility = Visibility.Hidden;
+                PrikazTabeleSaSvimPacijentima();
             }
+        }
+
+        private void PrikazTabeleSaSvimPacijentima()
+        {
+            dataGridPacijenti.Visibility = Visibility.Visible;
+            dataGridPacijenti.ItemsSource = Pacijenti;
+            LabelaJMBG.Visibility = Visibility.Hidden;
+            LabelaIme.Visibility = Visibility.Hidden;
+            LabelaPrezime.Visibility = Visibility.Hidden;
+            Jmbg.Visibility = Visibility.Hidden;
+            Ime.Visibility = Visibility.Hidden;
+            Prezime.Visibility = Visibility.Hidden;
+        }
+
+        private void PrikaPoljaZaKreiranjeHitnogNaloga()
+        {
+            LabelaJMBG.Visibility = Visibility.Visible;
+            LabelaIme.Visibility = Visibility.Visible;
+            LabelaPrezime.Visibility = Visibility.Visible;
+            Jmbg.Visibility = Visibility.Visible;
+            Ime.Visibility = Visibility.Visible;
+            Prezime.Visibility = Visibility.Visible;
+            dataGridPacijenti.Visibility = Visibility.Hidden;
         }
     }
 }
