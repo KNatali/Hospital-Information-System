@@ -1,0 +1,49 @@
+﻿<Window x:Class="ProjekatSIMS.OdabirPacijentaHitnoSWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjekatSIMS"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        mc:Ignorable="d"
+        Title="OdabirPacijentaHitnoSWindow" Height="450" Width="800">
+    <Grid>
+        <Label Width="200" VerticalAlignment="Top" Margin="0,80,0,0" Height="50" HorizontalAlignment="Center" FontSize="20" Foreground="#1963bf" FontWeight="Bold" Content="Odaberite pacijenta"/>
+        <Label Margin="175,11,465,352">
+            <StackPanel Orientation="Horizontal">
+                <fa:ImageAwesome Icon="Globe" Width="60" Foreground="#1963bf"/>
+                <fa:ImageAwesome Icon="HSquare" Width="37" Foreground="#b31a0c"/>
+                <fa:ImageAwesome Icon="UserMd" Width="37" Foreground="#1963bf"/>
+            </StackPanel>
+        </Label>
+        <Label Margin="191,27,445,352">
+            <StackPanel Orientation="Horizontal">
+                <fa:ImageAwesome Icon="Heart" Width="15" Foreground="#b31a0c"/>
+            </StackPanel>
+        </Label>
+        <Label Content="ZDRAVO KORPORACIJA" FontSize="25" Margin="324,24,172,380" Foreground="#1963bf" FontWeight="Bold"/>
+        <Button Content="Otkaži" Click="Otkazi" HorizontalAlignment="Left" Margin="134,364,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
+        <Button Content="Zakaži" Click="Zakazi" HorizontalAlignment="Left" Margin="523,364,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
+        <ComboBox HorizontalAlignment="Left" x:Name="Nalog" FontSize="20" Margin="199,153,0,0" VerticalAlignment="Top" Width="252" Height="38">
+            <ComboBoxItem Content="Kreiraj hitan nalog"/>
+            <ComboBoxItem Content="Odaberi postojeći nalog"/>
+        </ComboBox>
+        <Label Content="JMBG" HorizontalAlignment="Left" x:Name="LabelaJMBG" Visibility="Hidden" FontSize="20" Height="35" Margin="252,210,0,0" VerticalAlignment="Top" Width="89"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Jmbg" Visibility="Hidden" FontSize="20" Margin="379,210,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="178"/>
+        <Label Content="Ime" HorizontalAlignment="Left" x:Name="LabelaIme" Visibility="Hidden" FontSize="20" Height="40" Margin="252,250,0,0" VerticalAlignment="Top" Width="72"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Ime" Visibility="Hidden" FontSize="20" Margin="379,250,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="178"/>
+        <Label Content="Prezime" HorizontalAlignment="Left" x:Name="LabelaPrezime" Visibility="Hidden" FontSize="20" Height="42" Margin="252,290,0,0" VerticalAlignment="Top" Width="89"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Prezime" Visibility="Hidden" FontSize="20" Margin="379,290,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="178"/>
+        <DataGrid x:Name="dataGridPacijenti" ItemsSource="{Binding Pacijenti}" IsReadOnly="True"
+                  SelectionMode="Single" Visibility="Hidden" AutoGenerateColumns="False" Margin="190,201,120,98" FontSize="20">
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Header="Ime" Binding="{Binding Ime}" Width="130"/>
+                <DataGridTextColumn Header="Prezime" Binding="{Binding Prezime}" Width="130"/>
+                <DataGridTextColumn Header="JMBG" Binding="{Binding Jmbg}" Width="*"/>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Prikaži" Click="Prikaz" HorizontalAlignment="Left" Margin="483,153,0,0" VerticalAlignment="Top" Height="38" Width="145" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
+    </Grid>
+</Window>
