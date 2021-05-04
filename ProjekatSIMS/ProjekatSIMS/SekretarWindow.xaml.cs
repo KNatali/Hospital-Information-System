@@ -37,11 +37,6 @@ namespace ProjekatSIMS
             KalendarPregledaSWindow kp = new KalendarPregledaSWindow();
             kp.Show();
         }
-        private void Kreiraj(object sender, RoutedEventArgs e)
-        {
-            HitanNalogSWindow hn = new HitanNalogSWindow();
-            hn.Show();
-        }
 
         private void Pretrazi_doktore(object sender, RoutedEventArgs e)
         {
@@ -67,7 +62,8 @@ namespace ProjekatSIMS
 
         private void Hitna(object sender, RoutedEventArgs e)
         {
-
+            OdabirPacijentaHitnoSWindow op = new OdabirPacijentaHitnoSWindow();
+            op.Show();
         }
     }
 }

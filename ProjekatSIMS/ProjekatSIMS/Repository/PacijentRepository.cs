@@ -9,7 +9,15 @@ namespace Repository
 {
     class PacijentRepository
     {
+        private string lokacija;
         private const string putanja = @"..\..\..\Fajlovi\Pacijent.txt";
+        private string v;
+
+        public PacijentRepository(string l)
+        {
+            this.lokacija = l;
+        }
+
         public List<Pacijent> UcitajSvePacijente()
         {
             List<Pacijent> pacijenti = new List<Pacijent>();

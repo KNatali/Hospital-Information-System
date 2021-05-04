@@ -1,9 +1,11 @@
 ﻿using Model;
+using Newtonsoft.Json;
 using ProjekatSIMS.Model;
 using ProjekatSIMS.Repository;
 using Repository;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -22,6 +24,7 @@ namespace ProjekatSIMS
         public Pacijent pac { get; set; }
         public List<Doktor> Doktori { get; set; }
         public List<SlobodanTermin> Termini { get; set; }
+        public List<Prostorija> Ordinacije { get; set; }
         public PrioritetDoktorSWindow(Pacijent p)
         {
             InitializeComponent();
@@ -31,51 +34,42 @@ namespace ProjekatSIMS
             Doktori = new List<Doktor>();
             OsobaRepository fajl = new OsobaRepository(@"..\..\..\Fajlovi\Doktor.txt");
             Doktori = fajl.DobaviDoktore();
+            List<Prostorija> prostorije = new List<Prostorija>();
+            Ordinacije = new List<Prostorija>();
+            //ucitavanje ordinacija u combobox
+            using (StreamReader r = new StreamReader(@"..\..\..\Fajlovi\Prostorija.txt"))
+            {
+
+                string json = r.ReadToEnd();
+                prostorije = JsonConvert.DeserializeObject<List<Prostorija>>(json);
+
+            }
+            foreach (Prostorija pr in prostorije)
+            {
+                if (pr.vrsta == VrstaProstorije.Ordinacija)
+                    Ordinacije.Add(pr);
+            }
         }
-        /*public PrioritetDoktorSWindow(String ime, String prezime)
-        {
-            InitializeComponent();
-            this.DataContext = this;
-            Doktor selektovani = (Doktor)dataGridDoktori.SelectedItems[0];
-            //selektovani.Ime = ime;
-            Termini = new List<SlobodanTermin>();
-            SlobodanTerminRepository fajl = new SlobodanTerminRepository(@"..\..\..\Fajlovi\SlobodniTermini.txt");
-            Termini = fajl.DobaviSveSlobodneTermineZaDoktora(selektovani.Ime, selektovani.Prezime);
-        }*/
         private void Zakazi(object sender, RoutedEventArgs e)
         {
             Doktor selektovani = (Doktor)dataGridDoktori.SelectedItems[0];
             SlobodanTermin st = (SlobodanTermin)dataGridSlobodniTermini.SelectedItems[0];
-            Pregled p = new Pregled();
-            String jmbgp = Jmbg_pacijent.Text;
+            Prostorija prostorija = (Prostorija)Ordinacija.SelectedItem;
+            Pregled pre = new Pregled();
             int trajanje = 30;
 
-            p.Tip = TipPregleda.Standardni;
-            p.Pocetak = st.Termin;
-            p.Trajanje = trajanje;
-            Pacijent pac = new Pacijent();
-            p.doktor = selektovani;
-            p.StatusPregleda = StatusPregleda.Zakazan;
-
-            List<Pacijent> postojeci = new List<Pacijent>();
-            PacijentRepository fajlpac = new PacijentRepository();
-            postojeci = fajlpac.UcitajSvePacijente();
-
-            foreach (Pacijent t in postojeci)
-            {
-
-                if (t.Jmbg==jmbgp)
-                {
-                    pac = t;
-                    break;
-                }
-            }
-            p.pacijent = pac;
+            pre.Tip = TipPregleda.Standardni;
+            pre.Pocetak = st.Termin;
+            pre.Trajanje = trajanje;
+            pre.doktor = selektovani;
+            pre.StatusPregleda = StatusPregleda.Zakazan;
+            pre.pacijent = pac;
+            pre.prostorija = prostorija;
 
             PregledRepository fajl = new PregledRepository(@"..\..\..\Fajlovi\Pregled.txt");
             List<Pregled> pregledi = fajl.GetListaPregledaSekretar();
 
-            pregledi.Add(p);
+            pregledi.Add(pre);
 
             fajl.SacuvajPregledSekretar(pregledi);
             PopupNotifier popup = new PopupNotifier();
@@ -90,8 +84,7 @@ namespace ProjekatSIMS
         {
             this.Close();
         }
-
-        private void Prikazi(object sender, RoutedEventArgs e)
+        private void Dvoklik(object sender, MouseButtonEventArgs e)
         {
             Doktor selektovani = (Doktor)dataGridDoktori.SelectedItems[0];
             Termini = new List<SlobodanTermin>();
@@ -101,14 +94,16 @@ namespace ProjekatSIMS
 
             foreach (SlobodanTermin t in termini)
             {
-                
-                if (t.ImeDoktora==selektovani.Ime && t.PrezimeDoktora==selektovani.Prezime)
+
+                if (t.ImeDoktora == selektovani.Ime && t.PrezimeDoktora == selektovani.Prezime)
                 {
                     Termini.Add(t);
                 }
-                
+
             }
-            dataGridSlobodniTermini.ItemsSource = null;
+            //dataGridSlobodniTermini.ItemsSource = null;
+            Labela.Visibility = Visibility.Visible;
+            dataGridSlobodniTermini.Visibility = Visibility.Visible;
             dataGridSlobodniTermini.ItemsSource = Termini;
         }
     }

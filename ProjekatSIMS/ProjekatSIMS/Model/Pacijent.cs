@@ -8,8 +8,9 @@ using System.Collections.Generic;
 
 namespace Model
 {
-   public class Pacijent : Osoba
-   {
+    public class Pacijent : Osoba
+    {
+        public int otkazaoPregled = 0;
       public Boolean IzmeniInformacije(String ime, String prezime, String email, String brojTelefona, String adresa, String jmbg, DateTime datumRodjenja)
       {
          // TODO: implement
