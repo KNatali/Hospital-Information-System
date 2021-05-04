@@ -32,7 +32,6 @@
                 </StackPanel>
             </Button.Content>
         </Button>
-        <Button Content="Kreirajte hitan nalog" Click="Kreiraj" HorizontalAlignment="Left" Margin="580,231,0,0" VerticalAlignment="Top" Height="60" Width="220" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
         <Button Click="Hitna" HorizontalAlignment="Left" Margin="40,90,0,0" VerticalAlignment="Top" Height="60" Width="320" FontSize="25" Foreground="#b31a0c" BorderBrush="#b31a0c" Background="#f09e8d">
             <Button.Content>
                 <StackPanel Orientation="Horizontal">

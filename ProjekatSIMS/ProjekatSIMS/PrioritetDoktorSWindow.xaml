@@ -1,34 +1,69 @@
-﻿<Window x:Class="ProjekatSIMS.PrioritetDoktorSWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjekatSIMS"
+        xmlns:fa="http://schemas.fontawesome.io/icons/" x:Class="ProjekatSIMS.PrioritetDoktorSWindow"
         mc:Ignorable="d"
         Title="PrioritetDoktorSWindow" Height="450" Width="800">
     <Grid>
         <DataGrid x:Name="dataGridDoktori" ItemsSource="{Binding Doktori}" IsReadOnly="True"
-                  SelectionMode="Single" AutoGenerateColumns="False" Margin="31,60,369,0" Height="180" VerticalAlignment="Top">
+                  SelectionMode="Single" FontSize="15" AutoGenerateColumns="False" Margin="30,149,330,0" Height="200" VerticalAlignment="Top">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Jmbg" Binding="{Binding Jmbg}" Width="120"/>
-                <DataGridTextColumn Header="Ime doktora" Binding="{Binding Ime}" Width="120"/>
-                <DataGridTextColumn Header="Prezime doktora" Binding="{Binding Prezime}" Width="*"/>
-
+                <DataGridTextColumn Header="Jmbg" Binding="{Binding Jmbg}" Width="110"/>
+                <DataGridTextColumn Header="Ime" Binding="{Binding Ime}" Width="110"/>
+                <DataGridTextColumn Header="Prezime" Binding="{Binding Prezime}" Width="110"/>
+                <DataGridTextColumn Header="Specijalizacija" Binding="{Binding Specijalizacija}" Width="*"/>
             </DataGrid.Columns>
+            <DataGrid.ItemContainerStyle>
+                <Style TargetType="DataGridRow">
+                    <EventSetter Event="MouseDoubleClick" Handler="Dvoklik"/>
+                </Style>
+            </DataGrid.ItemContainerStyle>
         </DataGrid>
-        <Button Content="Zakaži termin" Click="Zakazi" HorizontalAlignment="Left" Margin="231,370,0,0" VerticalAlignment="Top" Height="30" Width="100" Background="#FFA6B1D6"/>
-        <Button Content="Otkaži" Click="Nazad" HorizontalAlignment="Left" Margin="31,370,0,0" VerticalAlignment="Top" Height="30" Width="100" Background="#FFA6B1D6"/>
-        <Label Content="JMBG pacijenta" HorizontalAlignment="Left" Height="25" Margin="30,264,0,0" VerticalAlignment="Top" Width="145"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Jmbg_pacijent" Margin="212,264,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Odaberite doktora kod kog želite da zakažete pregled" HorizontalAlignment="Left" Height="25" Margin="31,30,0,0" VerticalAlignment="Top" Width="314" FontWeight="Bold"/>
-        <DataGrid x:Name="dataGridSlobodniTermini" ItemsSource="{Binding Termini}" IsReadOnly="True"
-            SelectionMode="Single" AutoGenerateColumns="False" Margin="500,60,100,0" Height="180" VerticalAlignment="Top">
+        <Button Content="Zakaži termin" Click="Zakazi" HorizontalAlignment="Left" Margin="574,370,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
+        <Button Content="Otkaži" Click="Nazad" HorizontalAlignment="Left" Margin="30,370,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
+        <Label Content="Kliknite dva puta na doktora kod kog želite da zakažete pregled" HorizontalAlignment="Left" Margin="30,117,0,0" VerticalAlignment="Top" FontSize="15" Foreground="#1963bf" Height="39" Width="440"/>
+        <DataGrid x:Name="dataGridSlobodniTermini" ItemsSource="{Binding Termini}" IsReadOnly="True" FontSize="15" Visibility="Hidden"
+            SelectionMode="Single" AutoGenerateColumns="False" Margin="490,149,44,0" Height="156" VerticalAlignment="Top">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Termin" Binding="{Binding Termin}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Label Content="Odaberite neki od ponuđenih termina" HorizontalAlignment="Left" Height="25" Margin="487,30,0,0" VerticalAlignment="Top" Width="232" FontWeight="Bold"/>
-        <Button Content="Prikaži termine" Click="Prikazi" HorizontalAlignment="Left" Margin="553,273,0,0" VerticalAlignment="Top" Height="30" Width="100" Background="#FFA6B1D6"/>
+
+        <Label Width="268" VerticalAlignment="Top" Margin="272,79,0,0" Height="50" HorizontalAlignment="Left" FontSize="20" Foreground="#1963bf" FontWeight="Bold" Content="Zakažite pregled pacijentu"/>
+        <Label Margin="175,11,465,352">
+            <StackPanel Orientation="Horizontal">
+                <fa:ImageAwesome Icon="Globe" Width="60" Foreground="#1963bf"/>
+                <fa:ImageAwesome Icon="HSquare" Width="37" Foreground="#b31a0c"/>
+                <fa:ImageAwesome Icon="UserMd" Width="37" Foreground="#1963bf"/>
+            </StackPanel>
+        </Label>
+        <Label Margin="191,27,445,352">
+            <StackPanel Orientation="Horizontal">
+                <fa:ImageAwesome Icon="Heart" Width="15" Foreground="#b31a0c"/>
+            </StackPanel>
+        </Label>
+        <Label Content="ZDRAVO KORPORACIJA" FontSize="25" Margin="324,24,172,380" Foreground="#1963bf" FontWeight="Bold"/>
+        <Label Content="Odaberite neki od ponuđenih termina" x:Name="Labela" Visibility="Hidden" HorizontalAlignment="Left" Margin="490,117,0,0" VerticalAlignment="Top" FontSize="15" Foreground="#1963bf" Height="39" Width="266"/>
+        <Label Content="Sala" HorizontalAlignment="Left" FontSize="20" Margin="490,310,0,0" VerticalAlignment="Top" Height="44" Width="72"/>
+        <ComboBox  x:Name="Ordinacija" HorizontalAlignment="Left"   
+            Margin="574,316,0,0"   
+            VerticalAlignment="Top"   
+            Width="180" FontSize="20"
+            ItemsSource="{Binding Ordinacije}">
+
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding id}"/>
+                        <TextBlock Text=" - "/>
+                        <TextBlock Text="{Binding vrsta}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
 
     </Grid>
 </Window>
