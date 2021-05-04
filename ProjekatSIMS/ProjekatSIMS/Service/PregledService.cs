@@ -109,7 +109,7 @@ namespace Service
             DateTime terminKraj = terminPocetak.AddMinutes(TRAJANJE_PREGLEDA);
             List<Pregled> zakazaniPregledi = pregledRepository.DobaviZakazanePreglede();
             List<Prostorija> ordinacije = prostorijaRepository.DobaviOrdinacije();
-            List<Prostorija> slobodneOrdinacije = GetSlobodneOrdinacije(terminPocetak, terminKraj, zakazaniPregledi, ordinacije);
+            List<Prostorija> slobodneOrdinacije = DobaviSlobodneOrdinacije(terminPocetak, terminKraj, zakazaniPregledi, ordinacije);
 
             if (slobodneOrdinacije.Count == 0)
             {
@@ -120,7 +120,7 @@ namespace Service
             return slobodneOrdinacije[0];
         }
 
-        private static List<Prostorija> GetSlobodneOrdinacije(DateTime terminPocetak, DateTime terminKraj, List<Pregled> zakazaniPregledi, List<Prostorija> ordinacije)
+        private static List<Prostorija> DobaviSlobodneOrdinacije(DateTime terminPocetak, DateTime terminKraj, List<Pregled> zakazaniPregledi, List<Prostorija> ordinacije)
         {
             List<Prostorija> slobodneOrdinacije = ordinacije;
 
@@ -145,7 +145,7 @@ namespace Service
         public List<DateTime> PrikazSlobodnihTermina(Doktor doktor, DateTime pocetnoVrijeme, DateTime krajnjeVrijeme)
         {
 
-            List<DateTime> slobodniTermini = GetSlobodniTermini(doktor, pocetnoVrijeme, krajnjeVrijeme);
+            List<DateTime> slobodniTermini = DobaviSlobodneTermineDoktora(doktor, pocetnoVrijeme, krajnjeVrijeme);
             if (slobodniTermini.Count != 0)
                 return slobodniTermini;
             else
@@ -157,7 +157,7 @@ namespace Service
 
         }
 
-        public List<DateTime> GetSlobodniTermini(Doktor doktor, DateTime pocetnoVrijeme, DateTime krajnjeVrijeme)
+        public List<DateTime> DobaviSlobodneTermineDoktora(Doktor doktor, DateTime pocetnoVrijeme, DateTime krajnjeVrijeme)
         {
             List<Pregled> ZakazaniPreglediDoktora = DobaviZakazanePregledeDoktora(doktor);
             List<Pregled> zauzetiPreglediZaInterval = new List<Pregled>();
@@ -172,11 +172,11 @@ namespace Service
             DateTime pocetakRadnoVrijeme, krajRadnoVrijeme;
             PostavljanjeRadnogVremena(pocetnoVrijeme,krajnjeVrijeme,out pocetakRadnoVrijeme,out krajRadnoVrijeme);
            
-            List<DateTime> slobodniTermini = SlobodniTerminiZaInterval(zauzetiPreglediZaInterval, pocetakRadnoVrijeme, krajRadnoVrijeme);
+            List<DateTime> slobodniTermini = RacunanjeSlobodnihTermina(zauzetiPreglediZaInterval, pocetakRadnoVrijeme, krajRadnoVrijeme);
             return slobodniTermini;
         }
 
-        public List<DateTime> SlobodniTerminiZaInterval(List<Pregled> zauzetiPregledi, DateTime pocetakRadnoVrijeme, DateTime krajRadnoVrijeme)
+        public List<DateTime> RacunanjeSlobodnihTermina(List<Pregled> zauzetiPregledi, DateTime pocetakRadnoVrijeme, DateTime krajRadnoVrijeme)
         {
 
             List<DateTime> slobodniTermini = new List<DateTime>();
@@ -207,35 +207,37 @@ namespace Service
         {
 
             List<Pregled> ZakazaniPreglediDoktora = DobaviZakazanePregledeDoktora(doktor);
-            List<Pregled> zauzetiPregledi = new List<Pregled>();
+            List<Pregled> zauzetiPreglediZaInterval = new List<Pregled>();
             List<DateTime> slobodniTerminiPrije = new List<DateTime>();
             List<DateTime> slobodniTerminiPoslije = new List<DateTime>();
-            List<DateTime> slobodniTermini = new List<DateTime>();
+           
 
             foreach (Pregled p in ZakazaniPreglediDoktora)
             {
                 if (p.Pocetak.Date >= pocetnoVrijeme.Date && p.Pocetak.Date <= krajnjeVrijeme.Date)
-                    zauzetiPregledi.Add(p);
+                    zauzetiPreglediZaInterval.Add(p);
             }
 
-            DateTime pocetakRadnoVrijeme, krajnjeRadnoVrijeme;
-            PostavljanjeRadnogVremena(pocetnoVrijeme, krajnjeVrijeme, out pocetakRadnoVrijeme, out krajnjeRadnoVrijeme);
-
+            
             DateTime pocetakRadnoVrijemePrije, krajnjeRadnoVrijemePrije, pocetakRadnoVrijemePoslije, krajnjeRadnoVrijemePoslije;
-            PostavljanjeRadnogVremenaOkoIntervala(pocetakRadnoVrijeme, krajnjeRadnoVrijeme, out pocetakRadnoVrijemePrije, out krajnjeRadnoVrijemePrije, out pocetakRadnoVrijemePoslije, out krajnjeRadnoVrijemePoslije);
+            PostavljanjeRadnogVremenaOkoIntervala(pocetnoVrijeme, krajnjeVrijeme, out pocetakRadnoVrijemePrije, out krajnjeRadnoVrijemePrije, out pocetakRadnoVrijemePoslije, out krajnjeRadnoVrijemePoslije);
 
-            slobodniTerminiPrije = SlobodniTerminiZaInterval(zauzetiPregledi, pocetakRadnoVrijemePrije, krajnjeRadnoVrijemePrije);
-            slobodniTerminiPoslije = SlobodniTerminiZaInterval(zauzetiPregledi, pocetakRadnoVrijemePoslije, krajnjeRadnoVrijemePoslije);
+            slobodniTerminiPrije = RacunanjeSlobodnihTermina(zauzetiPreglediZaInterval, pocetakRadnoVrijemePrije, krajnjeRadnoVrijemePrije);
+            slobodniTerminiPoslije = RacunanjeSlobodnihTermina(zauzetiPreglediZaInterval, pocetakRadnoVrijemePoslije, krajnjeRadnoVrijemePoslije);
 
-            List<KeyValuePair<int, DateTime>> parDistancaInterval = new List<KeyValuePair<int, DateTime>>();
-            parDistancaInterval = DistanceOdZadatogVremena(parDistancaInterval, pocetnoVrijeme, slobodniTerminiPrije);
-            parDistancaInterval = DistanceOdZadatogVremena(parDistancaInterval, krajnjeVrijeme, slobodniTerminiPoslije);
-            return IzlistavanjeNajblizihTermina(slobodniTermini, parDistancaInterval);
+            List<KeyValuePair<int, DateTime>> parUdaljenostTermin = new List<KeyValuePair<int, DateTime>>();
+            parUdaljenostTermin = UdaljenostiOdZadatogVremena(parUdaljenostTermin, pocetnoVrijeme, slobodniTerminiPrije);
+            parUdaljenostTermin = UdaljenostiOdZadatogVremena(parUdaljenostTermin, krajnjeVrijeme, slobodniTerminiPoslije);
+            return IzlistavanjeNajblizihTermina( parUdaljenostTermin);
 
         }
 
-        private static void PostavljanjeRadnogVremenaOkoIntervala(DateTime pocetakRadnoVrijeme, DateTime krajnjeRadnoVrijeme, out DateTime pocetakRadnoVrijemePrije, out DateTime krajnjeRadnoVrijemePrije, out DateTime pocetakRadnoVrijemePoslije, out DateTime krajnjeRadnoVrijemePoslije)
+        private static void PostavljanjeRadnogVremenaOkoIntervala(DateTime pocetnoVrijeme, DateTime krajnjeVrijeme, out DateTime pocetakRadnoVrijemePrije, out DateTime krajnjeRadnoVrijemePrije, out DateTime pocetakRadnoVrijemePoslije, out DateTime krajnjeRadnoVrijemePoslije)
         {
+
+            DateTime pocetakRadnoVrijeme = new DateTime(pocetnoVrijeme.Year, pocetnoVrijeme.Month, pocetnoVrijeme.Day, 8, 0, 0);
+            DateTime krajnjeRadnoVrijeme = new DateTime(krajnjeVrijeme.Year, krajnjeVrijeme.Month, krajnjeVrijeme.Day, 20, 0, 0);
+
             pocetakRadnoVrijemePrije = pocetakRadnoVrijeme.AddDays(-2);
             krajnjeRadnoVrijemePrije = pocetakRadnoVrijeme.AddHours(-12);
             pocetakRadnoVrijemePoslije = krajnjeRadnoVrijeme.AddHours(12);
@@ -248,15 +250,16 @@ namespace Service
             krajnjeRadnoVrijeme = new DateTime(krajnjeVrijeme.Year, krajnjeVrijeme.Month, krajnjeVrijeme.Day, 20, 0, 0);
         }
 
-        private static List<DateTime> IzlistavanjeNajblizihTermina(List<DateTime> slobodniTermini, List<KeyValuePair<int, DateTime>> parDistancaInterval)
+        private static List<DateTime> IzlistavanjeNajblizihTermina(List<KeyValuePair<int, DateTime>> parUdaljenostTermin)
         {
-            parDistancaInterval.Sort((x, y) => x.Key.CompareTo(y.Key));
+            List<DateTime> slobodniTermini = new List<DateTime>();
+            parUdaljenostTermin.Sort((x, y) => x.Key.CompareTo(y.Key));
 
             for (int i = 1; i < 100; i++)
             {
-                if (parDistancaInterval.Count < i + 1)
+                if (parUdaljenostTermin.Count < i + 1)
                     break;
-                slobodniTermini.Add(parDistancaInterval[i].Value);
+                slobodniTermini.Add(parUdaljenostTermin[i].Value);
             }
 
             List<DateTime> sortiraniSlobodniTermini = slobodniTermini.OrderBy(o => o).ToList();
@@ -264,17 +267,17 @@ namespace Service
             return sortiraniSlobodniTermini;
         }
 
-        private static List<KeyValuePair<int, DateTime>> DistanceOdZadatogVremena( List<KeyValuePair<int, DateTime>> parDistancaInterval,DateTime pocetnoVrijeme, List<DateTime> slobodniTermini)
+        private static List<KeyValuePair<int, DateTime>> UdaljenostiOdZadatogVremena( List<KeyValuePair<int, DateTime>> parUdaljenostTermin,DateTime pocetnoVrijeme, List<DateTime> slobodniTermini)
         {
            
             foreach (DateTime t in slobodniTermini)
             {
                 int distanca = (int)((t - pocetnoVrijeme.AddHours(2)).Duration()).TotalSeconds;
 
-                parDistancaInterval.Add(new KeyValuePair<int, DateTime>(distanca, t));
+                parUdaljenostTermin.Add(new KeyValuePair<int, DateTime>(distanca, t));
             }
 
-            return parDistancaInterval;
+            return parUdaljenostTermin;
         }
 
         public List<Pregled> DobaviZakazanePregledeDoktora(Doktor doktor)
