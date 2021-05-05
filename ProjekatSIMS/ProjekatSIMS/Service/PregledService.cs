@@ -699,14 +699,8 @@ namespace Service
 
         private Boolean DaLiJeKorisnikMaliciozan(String imePacijenta, String prezimePacijenta)
         {
-            foreach (Pacijent pacijent in  DobavljanjePacijenataIzFajla())
-            {
-                if ((pacijent.Ime == imePacijenta) && (pacijent.Prezime == prezimePacijenta) && (pacijent.otkazaoPregled >= MAKSIMALNO_OTKAZIVANJA))
-                {
-                    SlanjePorukeOBlokiranjuKorisnika();
-                    break;
-                }
-            }
+            ProveraPodatakaPacijenta(imePacijenta, prezimePacijenta);
+            
             return jesteMaliciozniKorisnik;
         }
 
@@ -722,6 +716,17 @@ namespace Service
             PacijentRepository pacijentRepository = new PacijentRepository(@"..\..\..\Fajlovi\Pacijent.txt");
             Pacijenti = pacijentRepository.UcitajSvePacijente();
             return Pacijenti;
+        }
+        private void ProveraPodatakaPacijenta(String imePacijenta, String prezimePacijenta)
+        {
+            foreach (Pacijent pacijent in DobavljanjePacijenataIzFajla())
+            {
+                if ((pacijent.Ime == imePacijenta) && (pacijent.Prezime == prezimePacijenta) && (pacijent.otkazaoPregled >= MAKSIMALNO_OTKAZIVANJA))
+                {
+                    SlanjePorukeOBlokiranjuKorisnika();
+                    break;
+                }
+            }
         }
 
         
