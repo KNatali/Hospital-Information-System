@@ -17,6 +17,7 @@ namespace Service
         public const int POCETAK_RADNOG_VREMENA = 8;
         public const int KRAJ_RADNOG_VREMENA = 20;
         public int MAKSIMALNO_OTKAZIVANJA = 10;
+        public bool jesteMaliciozniKorisnik = false;
         public Repository.PregledRepository pregledRepository = new PregledRepository();
         public Repository.ReceptRepository receptRepository;
 
@@ -698,30 +699,32 @@ namespace Service
 
         private Boolean DaLiJeKorisnikMaliciozan(String imePacijenta, String prezimePacijenta)
         {
-            bool jesteMaliciozniKorisnik = false;
-
-             List<Pacijent> Pacijenti;
-             Pacijenti = new List<Pacijent>();
-             PacijentRepository f = new PacijentRepository(@"..\..\..\Fajlovi\Pacijent.txt");
-             Pacijenti = f.UcitajSvePacijente();
-            
-            foreach (Pacijent pacijent in Pacijenti)
+            foreach (Pacijent pacijent in  DobavljanjePacijenataIzFajla())
             {
                 if ((pacijent.Ime == imePacijenta) && (pacijent.Prezime == prezimePacijenta) && (pacijent.otkazaoPregled >= MAKSIMALNO_OTKAZIVANJA))
                 {
-
-                    MessageBox.Show("Zakazali ste i otkazali previse pregleda u proteklom periodu, privremeno Vam je zabranjeno zakazivanje pregleda. Ukoliko smatrate da je ovo greska, molimo Vas obratite se sekretaru.");
-                    jesteMaliciozniKorisnik = true;
+                    SlanjePorukeOBlokiranjuKorisnika();
                     break;
-
-
                 }
-
             }
-
             return jesteMaliciozniKorisnik;
         }
 
+        private void SlanjePorukeOBlokiranjuKorisnika()
+        {
+            MessageBox.Show("Zakazali ste i otkazali previse pregleda u proteklom periodu, privremeno Vam je zabranjeno zakazivanje pregleda. Ukoliko smatrate da je ovo greska, molimo Vas obratite se sekretaru.");
+            jesteMaliciozniKorisnik = true;
+        }
+        private List<Pacijent> DobavljanjePacijenataIzFajla()
+        {
+            List<Pacijent> Pacijenti;
+            Pacijenti = new List<Pacijent>();
+            PacijentRepository pacijentRepository = new PacijentRepository(@"..\..\..\Fajlovi\Pacijent.txt");
+            Pacijenti = pacijentRepository.UcitajSvePacijente();
+            return Pacijenti;
+        }
+
+        
        
     }
 }
