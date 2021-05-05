@@ -697,6 +697,8 @@ namespace Service
             }
         }
 
+        
+
         private Boolean DaLiJeKorisnikMaliciozan(String imePacijenta, String prezimePacijenta)
         {
             ProveraPodatakaPacijenta(imePacijenta, prezimePacijenta);
