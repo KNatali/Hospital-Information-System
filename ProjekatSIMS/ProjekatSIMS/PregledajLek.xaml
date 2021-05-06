@@ -48,15 +48,7 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
 
-        <DataGrid x:Name="dgrAlergeni" ItemsSource="{Binding AlergeniLeka}"  Margin="176,136,410,209" IsReadOnly="True" ScrollViewer.CanContentScroll="True" 
-                  ScrollViewer.VerticalScrollBarVisibility="Auto" SelectionMode="Single" AutoGenerateColumns="False">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Alergeni"  Width="*" />
-            </DataGrid.Columns>
 
-
-
-        </DataGrid>
 
         <TextBox x:Name="Alergen"   HorizontalAlignment="Left" Height="30" Margin="452,136,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="179"  Foreground="#FF151515" OpacityMask="#FFD78787" Background="#FFFAF8F8"/>
 
@@ -66,5 +58,6 @@
         <Button Content="Sacuvaj izmene" Click="sacuvaj" HorizontalAlignment="Center" Margin="0,389,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.449,0.052" Width="196" Height="35"/>
         <Button Content="Dodaj alergen" Click="dodajAl" HorizontalAlignment="Left" Margin="666,136,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.449,0.052" Width="89" Height="30"/>
         <Button Content="Obrisi alergen" Click="obrisiAl" HorizontalAlignment="Left" Margin="452,194,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.449,0.052" Width="90" Height="30"/>
+        <ListBox Name="Alergeni" HorizontalAlignment="Left" Height="73" Margin="128,151,0,0" VerticalAlignment="Top" Width="262"/>
     </Grid>
 </Window>

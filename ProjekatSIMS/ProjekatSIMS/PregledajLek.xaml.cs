@@ -18,9 +18,10 @@ namespace ProjekatSIMS
     
     public partial class PregledajLek : Window
     {
-        public List<Lijek> Lekovi { get; set; }
+        public List<String> Lekovi { get; set; }
         public Lijek Lek1 { get; set; }
         public List<String> AlergeniLeka { get; set; }
+        
         public PregledajLek(Lijek lek)
         {
             Lek1 = lek;
@@ -29,38 +30,77 @@ namespace ProjekatSIMS
             
             LijekRepository lekRepository = new LijekRepository();
             List<Lijek> lekovi1 = lekRepository.DobaviSveLekove();
-            List<Lijek> slLekovi = new List<Lijek>();
+            
+            Lek1 = lek;
+            
             AlergeniLeka = new List<string>();
 
-            Lekovi = new List<Lijek>();
+            Lekovi = new List<String>();
             foreach(Lijek l in lekovi1)
             {
-                if(l.NazivLeka == lek.NazivLeka)
-                {
-                    slLekovi = l.AlternativniLekovi;
-                    AlergeniLeka = l.Alergeni;
-                }
+                
                 if(l.NazivLeka != lek.NazivLeka)
                 {
-                    Lekovi.Add(l);
+                    Lekovi.Add(l.NazivLeka);
                 }
 
             }
+            
 
-            dgrAlergeni.ItemsSource = AlergeniLeka;
-            dgrLekovi.ItemsSource = slLekovi;
+            Alergeni.ItemsSource = Lek1.Alergeni;
+            AlternativniLekovi.ItemsSource = Lek1.AlternativniLekovi;
 
         }
 
         private void obrisi(object sender, RoutedEventArgs e)
         {
-            
 
+            String al = AlternativniLek.Text;
+            int flag = 0;
+
+            foreach (String s in Lek1.AlternativniLekovi)
+            {
+                if (s.Equals(al, StringComparison.OrdinalIgnoreCase))
+                {
+                    Lek1.AlternativniLekovi.Remove(s);
+                    MessageBox.Show("Izabrani alternativni lek je obrisan!");
+                    flag++;
+                    break;
+                }
+            }
+            if (flag == 0)
+            {
+                MessageBox.Show("Uneli ste nepostojeci alternativni lek!");
+            }
+            AlternativniLek.Text = "";
+            AlternativniLekovi.ItemsSource = Lek1.AlternativniLekovi;
         }
 
         private void dodaj(object sender, RoutedEventArgs e)
         {
-            //Lek.SelectedItem
+            Lijek l = (Lijek)Lek.SelectedItem;
+            int temp = 0;
+            if(Lek1.AlternativniLekovi == null)
+            {
+                Lek1.AlternativniLekovi.Add(l.NazivLeka);
+            }
+            foreach(String s in Lek1.AlternativniLekovi)
+            {
+                if(s.Equals(l.NazivLeka, StringComparison.OrdinalIgnoreCase))
+                {
+                    MessageBox.Show("Vec postoji unesen alternativni lek sa tim nazivom!");
+                    temp++;
+                    break;
+                }
+                
+            }
+            if(temp == 0)
+            {
+                Lek1.AlternativniLekovi.Add(l.NazivLeka);
+            }
+            
+            AlternativniLekovi.ItemsSource = Lek1.AlternativniLekovi;
+
         }
         private void dodajAl (object sender, RoutedEventArgs e)
         {
@@ -75,7 +115,7 @@ namespace ProjekatSIMS
             }
             foreach(String s in alergeni)
             {
-                if(s == al)
+                if(s.Equals(al, StringComparison.OrdinalIgnoreCase))
                 {
                     MessageBox.Show("Vec ste uneli dati alergen!");
                     break;
@@ -87,18 +127,24 @@ namespace ProjekatSIMS
         }
         private void obrisiAl(object sender, RoutedEventArgs e)
         {
-            String string1 = (String)dgrAlergeni.SelectedItems[0];
-            List<String> alergeni = Lek1.Alergeni;
-            foreach (String s in alergeni)
+            String al = Alergen.Text;
+            int flag = 0;
+            
+            foreach (String s in Lek1.Alergeni)
             {
-                if (s == string1)
+                if (s.Equals(al, StringComparison.OrdinalIgnoreCase))
                 {
                     Lek1.Alergeni.Remove(s);
                     MessageBox.Show("Izabrani alergen je obrisan!");
+                    flag++;
                     break;
                 }
             }
-            this.Close();
+            if(flag == 0)
+            {
+                MessageBox.Show("Uneli ste nepostojeci alergen!");
+            }
+            Alergeni.ItemsSource = Lek1.Alergeni;
 
         }
 
