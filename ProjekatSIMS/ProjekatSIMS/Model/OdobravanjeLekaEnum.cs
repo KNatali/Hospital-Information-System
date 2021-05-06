@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Model
+
+namespace ProjekatSIMS.Model
 {
-    public enum OdobravanjeLekaEnum
+    public enum  OdobravanjeLekaEnum
+
     {
         Odobren,
         Ceka,
