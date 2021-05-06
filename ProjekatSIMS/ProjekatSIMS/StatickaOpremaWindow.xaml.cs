@@ -211,19 +211,7 @@ namespace ProjekatSIMS
         }
         private void pretrazi(object sender, RoutedEventArgs e)
         {
-            /*int parsiranaVrednost;
-            if(int.TryParse(Pretraga.Text, out parsiranaVrednost))
-            {
-                foreach(Inventar i in prostorija)
-                {
-                    if()
-                }
-
-
-
-
-
-            }*/
+            
             List<Inventar> noviInventar = new List<Inventar>();
             foreach(Inventar i in prostorija.inventar)
             {

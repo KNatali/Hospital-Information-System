@@ -18,14 +18,16 @@ namespace ProjekatSIMS
     /// </summary>
     public partial class SvaStatickaOprema : Window
     {
+        public List<Prostorija> prostorije { get; set; }
+        public List<Inventar> oprema { get; set; }
         public SvaStatickaOprema()
         {
             InitializeComponent();
             this.DataContext = this;
 
-            List<Inventar> oprema = new List<Inventar>();
+            oprema = new List<Inventar>();
             CuvanjeProstorija cuvanje = new CuvanjeProstorija(@"..\..\Fajlovi\Prostorije.txt");
-            List<Prostorija> prostorije = new List<Prostorija>();
+            prostorije = new List<Prostorija>();
             prostorije = cuvanje.UcitajProstorije();
 
 
@@ -34,10 +36,31 @@ namespace ProjekatSIMS
                 if (p.inventar != null && p.id != "0")
                 {
                     oprema.AddRange(p.inventar);
-                    //implementirati da se prostorija moze videti, da u fajlu bude upisan samo naziv ne cela prostorija
+                    
                 }
             }
             dgrStatickaOprema.ItemsSource = oprema;
+        }
+
+        private void pretrazi(object sender, RoutedEventArgs e)
+        {
+
+            List<Inventar> noviInventar = new List<Inventar>();
+            foreach (Inventar i in oprema)
+            {
+                if (i.ime == Pretraga.Text || i.prostorija == Pretraga.Text )
+                {
+                    noviInventar.Add(i);
+                }
+            }
+            dgrStatickaOprema.ItemsSource = noviInventar;
+
+        }
+        private void ponisti(object sender, RoutedEventArgs e)
+        {
+            
+            dgrStatickaOprema.ItemsSource = oprema;
+            Pretraga.Text = "";
         }
     }
 }

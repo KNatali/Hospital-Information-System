@@ -16,6 +16,11 @@
 
             </DataGrid.Columns>
         </DataGrid>
-        
+        <TextBox Name="Pretraga"  HorizontalAlignment="Left" Margin="563,24,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20"/>
+        <Button Content="Pretrazi" Click="pretrazi" HorizontalAlignment="Left" Margin="703,24,0,0" VerticalAlignment="Top" Width="45" Height="20" RenderTransformOrigin="0.464,-0.293"/>
+        <Button  Content="Ponisti filtere" Click="ponisti"  HorizontalAlignment="Left" Margin="703,75,0,0" VerticalAlignment="Top"/>
+
+
+
     </Grid>
 </Window>
