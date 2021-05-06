@@ -12,7 +12,6 @@ namespace Model
 
         public OdobravanjeLekaEnum Status { get; set; }
         
-        public List<String> Alergeni { get; set; }
 
 
 

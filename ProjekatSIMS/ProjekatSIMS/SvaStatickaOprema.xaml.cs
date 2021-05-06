@@ -31,7 +31,7 @@ namespace ProjekatSIMS
 
             foreach (Prostorija p in prostorije)
             {
-                if (p.inventar != null)
+                if (p.inventar != null && p.id != "0")
                 {
                     oprema.AddRange(p.inventar);
                     //implementirati da se prostorija moze videti, da u fajlu bude upisan samo naziv ne cela prostorija
