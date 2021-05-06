@@ -14,6 +14,7 @@ namespace ProjekatSIMS
     public partial class IzmeniWindow : Window
     {
         public List<Pregled> Pregledi { get; set; }
+        public List<Pacijent> Pacijenti { get; set; }
         public int prioritetVreme = 0;
         public int prioritetDoktor = 0;
        
@@ -26,7 +27,13 @@ namespace ProjekatSIMS
             PregledRepository fajl = new PregledRepository(@"..\..\..\Fajlovi\Pregled.txt");
             Pregledi = fajl.DobaviSvePregledePacijent();
 
-          
+            Pacijenti = new List<Pacijent>();
+            PacijentRepository file = new PacijentRepository(@"..\..\..\Fajlovi\Pacijent.txt");
+            Pacijenti = file.UcitajSvePacijente();
+
+           
+
+
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)
@@ -57,8 +64,17 @@ namespace ProjekatSIMS
             String imeDoktora = ImeDoktora.Text;
             
             String prezimeDoktora = PrezimeDoktora.Text;
-            
-            
+
+            foreach (Pacijent pac in Pacijenti)
+            {
+                if ((pac.Prezime == p.pacijent.Prezime) && (pac.Ime == p.pacijent.Ime))
+                {
+                    pac.otkazaoPregled++;
+                }
+            }
+            string newJ = JsonConvert.SerializeObject(Pacijenti);
+            File.WriteAllText(@"..\..\..\Fajlovi\Pacijent.txt", newJ);
+
 
             int slobodanTerminFlag = 0;
 

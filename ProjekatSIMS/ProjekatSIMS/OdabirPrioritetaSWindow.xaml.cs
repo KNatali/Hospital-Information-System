@@ -15,9 +15,12 @@ namespace ProjekatSIMS
 {
     public partial class OdabirPrioritetaSWindow : Window
     {
-        public OdabirPrioritetaSWindow()
+        public Pacijent pac { get; set; }
+        public OdabirPrioritetaSWindow(Pacijent p)
         {
             InitializeComponent();
+            this.DataContext = this;
+            pac = p;
         }
         private void Otkazi(object sender, RoutedEventArgs e)
         {
@@ -31,17 +34,17 @@ namespace ProjekatSIMS
             string val = Tip.SelectedValue.ToString();
             if(opcija == "-")
             {
-                ZakaziTerminSWindow zt = new ZakaziTerminSWindow();
+                ZakaziTerminSWindow zt = new ZakaziTerminSWindow(pac);
                 zt.Show();
             }
             else if(opcija == "Kod određenog doktora")
             {
-                PrioritetDoktorSWindow pd = new PrioritetDoktorSWindow();
+                PrioritetDoktorSWindow pd = new PrioritetDoktorSWindow(pac);
                 pd.Show();
             }
             else if(opcija == "U određeno vreme")
             {
-                PrioritetDatumSWindow pda = new PrioritetDatumSWindow();
+                PrioritetDatumSWindow pda = new PrioritetDatumSWindow(pac);
                 pda.Show();
             }
             this.Close();

@@ -121,7 +121,7 @@ namespace ProjekatSIMS
                     break;
                 }
             }
-            pregledRepository.SacuvajPregledDoktor(pregledi);
+            pregledRepository.SacuvajPregledeDoktor(pregledi);
 
             MessageBox.Show("Uspjesno je izmjenjen termin");
             this.NavigationService.Navigate(new Uri("PrikazPregledaDoktor.xaml", UriKind.Relative));

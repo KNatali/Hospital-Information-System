@@ -23,8 +23,17 @@ namespace Controller
          // TODO: implement
          return null;
       }
-      
-      public Boolean ZakazivanjePregleda(ComboBox Termin,String jmbg,Prostorija prostorija,DateTime datum1,DateTime datum2)
+
+        public Boolean ZakazivanjePregledaSekretar(ComboBox Termin, String jmbg, String jmbgdoktor,Prostorija prostorija, DateTime datum1, DateTime datum2)
+        {
+
+            if (pregledService.ZakazivanjePregledaSekretar(Termin, jmbg, jmbgdoktor, prostorija, datum1, datum2))
+                return true;
+
+            return false;
+
+        }
+        public Boolean ZakazivanjePregleda(ComboBox Termin,String jmbg,Prostorija prostorija,DateTime datum1,DateTime datum2)
       {
            
             if (pregledService.ZakazivanjePregleda(Termin,jmbg, prostorija, datum1, datum2))
@@ -50,6 +59,20 @@ namespace Controller
 
             return false;
 
+        }
+
+        public List<DateTime> PrikazSlobodnihTermina(Doktor doktor,DateTime pocetnoVrijeme,DateTime krajnjeVrijeme)
+        {
+            List<DateTime> termini= pregledService.PrikazSlobodnihTermina(doktor, pocetnoVrijeme, krajnjeVrijeme);
+
+            return termini;
+        }
+
+        public Boolean IzdavanjeUputa(Pacijent pacijent, Doktor doktor, DateTime izabraniTermin)
+        {
+            if(pregledService.IzdavanjeUputa(pacijent, doktor, izabraniTermin))
+                return true;
+            return false;
         }
 
         public List<Pregled> DobaviSvePreglede()
@@ -87,8 +110,24 @@ namespace Controller
          // TODO: implement
          return true;
       }
-   
-      
-   
-   }
+
+        public Boolean ZakazivanjePregledaPacijent(String ime, String prezime, String imeDoktora, String prezimeDoktora, DateTime datum, String jmbg)
+        {
+
+            if (pregledService.ZakazivanjePregledaPacijent(ime, prezime, imeDoktora,prezimeDoktora,datum,jmbg))
+                return true;
+
+            return false;
+
+        }
+        public Boolean DaLiJeTerminZauzet()
+        {
+            if(pregledService.OdredjivanjePrioritetaPacijent() == true)
+            {
+                return true;
+            }
+            return false;
+        }
+
+    }
 }

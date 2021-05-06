@@ -6,15 +6,22 @@ namespace Model
 {
     public class Lijek
     {
-        public String NazivLeka { get; set; }
-        public String Opis { get; set; }
+        public String NazivLeka { get; set; } 
+        public List<String> Alergeni { get; set; }
+        public String Opis{get; set;}
+
         public OdobravanjeLekaEnum Status { get; set; }
-        public List<Lijek> AlternativniLekovi { get; set; }
+        
         public List<String> Alergeni { get; set; }
 
 
+
+        public List<String> AlternativniLekovi { get; set; }
+
+        public String PorukaOdbaci { get; set; }
+
         public Lijek(){ }
-        public Lijek(String n, String o, List<Lijek> al, List<String> aler, OdobravanjeLekaEnum od)
+        public Lijek(String n, String o, List<String> al, List<String> aler, OdobravanjeLekaEnum od)
         {
             this.NazivLeka = n;
             this.Opis = o;
@@ -22,6 +29,13 @@ namespace Model
             this.Alergeni =aler;
             this.AlternativniLekovi = al;
         }
+
+
+        
+
+
+
+
 
     }
 }

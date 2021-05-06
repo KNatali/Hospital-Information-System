@@ -6,11 +6,13 @@ using System.IO;
 
 namespace Repository
 {
+
     public class ProstorijaRepository
     {
         public String LokacijaFajla{get; set;}
         public List<Prostorija> prostorije { get; set; }
         
+
         public ProstorijaRepository(String lokacija)
         {
             LokacijaFajla = lokacija;
@@ -24,6 +26,7 @@ namespace Repository
             }
             return prostorije;
         }
+
 
         public void SacuvajProstorije(List<Prostorija> prostorije)
         {
@@ -87,6 +90,20 @@ namespace Repository
             }
             return null;
 
+        }
+
+
+        public List<Prostorija> DobaviOrdinacije()
+        {
+            List<Prostorija> sveProstorije = DobaviSveProstorije();
+            List<Prostorija> ordinacije = new List<Prostorija>();
+            foreach(Prostorija p in sveProstorije)
+            {
+                if (p.vrsta == VrstaProstorije.Ordinacija)
+                    ordinacije.Add(p);
+            }
+
+            return ordinacije;
         }
 
     }

@@ -24,6 +24,7 @@
         <TextBox Name="Tip" IsReadOnly="True" HorizontalAlignment="Left" Margin="242,338,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Button Content="Zdravstveni karton" Click="ZdravstveniKarton" HorizontalAlignment="Left" Margin="530,179,0,0" VerticalAlignment="Top" Height="43" Width="142"/>
         <Button Content="Zavrsi pregled" Click="ZavrsiPregled"  HorizontalAlignment="Left" Margin="566,373,0,0" VerticalAlignment="Top" Height="39" Width="106"/>
+        <Button Content="Izdavanje uputa" Click="IzdavanjeUputa" HorizontalAlignment="Left" Margin="530,252,0,0" VerticalAlignment="Top" Height="43" Width="142"/>
 
 
 

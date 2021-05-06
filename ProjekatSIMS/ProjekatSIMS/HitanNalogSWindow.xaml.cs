@@ -49,7 +49,7 @@ namespace ProjekatSIMS
             switch (ret)
             {
                 case MessageBoxResult.Yes:
-                    OdabirPrioritetaSWindow op = new OdabirPrioritetaSWindow();
+                    OdabirPrioritetaSWindow op = new OdabirPrioritetaSWindow(p);
                     op.Show();
                     this.Close();
                     break;

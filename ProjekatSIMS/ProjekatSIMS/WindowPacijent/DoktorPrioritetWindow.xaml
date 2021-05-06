@@ -16,7 +16,7 @@
 
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Odaberi termin" HorizontalAlignment="Left" Margin="595,342,0,0" VerticalAlignment="Top" Height="34" Width="91" Click="Odaberi_Click"/>
+        <Button Content="Odaberi termin" IsDefault="True" HorizontalAlignment="Left" Margin="595,342,0,0" VerticalAlignment="Top" Height="34" Width="91" Click="Odaberi_Click"/>
 
     </Grid>
 </Window>

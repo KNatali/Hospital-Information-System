@@ -1,0 +1,51 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjekatSIMS"
+        xmlns:fa="http://schemas.fontawesome.io/icons/" x:Class="ProjekatSIMS.PretraziDoktoreSekretarWindow"
+        mc:Ignorable="d"
+        Title="PretraziDoktoreSekretarWindow" Height="450" Width="800">
+    <Grid>
+
+        <Button Content="Početna strana" Click="Nazad" HorizontalAlignment="Left" Margin="350,363,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
+        <Button Content="Pretraži" Click="Pretraga" HorizontalAlignment="Left" Margin="93,250,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
+        <Button Content="Prikaži sve" Click="Prikaz" HorizontalAlignment="Left" Margin="560,363,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
+        <Label Content="Ime" HorizontalAlignment="Left" FontSize="20" Height="35" Margin="30,142,0,0" VerticalAlignment="Top" Width="72"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Ime" FontSize="20" Margin="140,142,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170"/>
+        <Label Content="Prezime" HorizontalAlignment="Left" FontSize="20" Height="32" Margin="30,190,0,0" VerticalAlignment="Top" Width="93"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Prezime" FontSize="20" Margin="140,190,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170"/>
+
+        <Label Width="252" VerticalAlignment="Top" Margin="288,77,0,0" Height="50" HorizontalAlignment="Left" FontSize="20" Foreground="#1963bf" FontWeight="Bold" Content="Pretražite listu doktora"/>
+        <Label Margin="175,11,465,352">
+            <StackPanel Orientation="Horizontal">
+                <fa:ImageAwesome Icon="Globe" Width="60" Foreground="#1963bf"/>
+                <fa:ImageAwesome Icon="HSquare" Width="37" Foreground="#b31a0c"/>
+                <fa:ImageAwesome Icon="UserMd" Width="37" Foreground="#1963bf"/>
+            </StackPanel>
+        </Label>
+        <Label Margin="191,27,445,352">
+            <StackPanel Orientation="Horizontal">
+                <fa:ImageAwesome Icon="Heart" Width="15" Foreground="#b31a0c"/>
+            </StackPanel>
+        </Label>
+        <Label Content="ZDRAVO KORPORACIJA" FontSize="25" Margin="324,24,172,380" Foreground="#1963bf" FontWeight="Bold"/>
+        <Label Content="Kliknite dva puta na doktora u tabeli da biste videli njegov profil" x:Name="Labela" Visibility="Hidden" HorizontalAlignment="Left" Margin="330,109,0,0" VerticalAlignment="Top" FontSize="15" Foreground="#1963bf" Height="39" Width="440"/>
+        <DataGrid x:Name="dataGridDoktori" ItemsSource="{Binding Doktori}" IsReadOnly="True"
+                  SelectionMode="Single" Visibility="Hidden" AutoGenerateColumns="False" Margin="350,142,30,100" FontSize="20">
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Header="Ime" Binding="{Binding Ime}" Width="110"/>
+                <DataGridTextColumn Header="Prezime" Binding="{Binding Prezime}" Width="110"/>
+                <DataGridTextColumn Header="Specijalizacija" Binding="{Binding Specijalizacija}" Width="*"/>
+
+            </DataGrid.Columns>
+            <DataGrid.ItemContainerStyle>
+                <Style TargetType="DataGridRow">
+                    <EventSetter Event="MouseDoubleClick" Handler="Dvoklik"/>
+                </Style>
+            </DataGrid.ItemContainerStyle>
+        </DataGrid>
+    </Grid>
+</Window>

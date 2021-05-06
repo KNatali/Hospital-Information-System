@@ -32,11 +32,12 @@ namespace ProjekatSIMS
         {
             this.Close();
         }
-        private void Izmeni(object sender, RoutedEventArgs e)
+        private void Dvoklik(object sender, MouseButtonEventArgs e)
         {
             Pregled p = (Pregled)dataGridPregledi.SelectedItems[0];
             IzmenaPregledaSWindow ip = new IzmenaPregledaSWindow(p);
             ip.Show();
+            this.Close();
         }
         private void Otkazi(object sender, RoutedEventArgs e)
         {
@@ -63,7 +64,8 @@ namespace ProjekatSIMS
                         popup.ContentText = "Pregled je uspešno otkazan. " +
                             "Poslato je obaveštenje pacijentu i doktoru da je pregled otkazan.";
                         popup.Popup();
-                        this.Close();
+                        dataGridPregledi.ItemsSource = pregled;
+                        //this.Close();
                         break;
                     }
                 case MessageBoxResult.No:
