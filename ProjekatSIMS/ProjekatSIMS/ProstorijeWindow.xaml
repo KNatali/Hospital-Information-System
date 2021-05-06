@@ -5,38 +5,44 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjekatSIMS"
         mc:Ignorable="d"
-        Title="ProstorijeWindow" Height="450" Width="800">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-        <DataGrid x:Name="dgrProstorije" ItemsSource="{Binding Path=prostorije}" IsReadOnly="True">
+        Title="ProstorijeWindow" Height="499" Width="1000">
+    <Grid Margin="0,25,0,-40" Width="1030" HorizontalAlignment="Center">
+
+        <DataGrid x:Name="dgrProstorije" ItemsSource="{Binding prostorije}"  Margin="180,64,484,156" IsReadOnly="True" ScrollViewer.CanContentScroll="True" 
+                  ScrollViewer.VerticalScrollBarVisibility="Auto" SelectionMode="Single" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id prostorije" Binding="{Binding id}"/>
+                <DataGridTextColumn Header="Vrsta prostorije" Binding="{Binding vrsta}"/>
+                <DataGridTextColumn Header="Sprat" Binding="{Binding sprat}" />
+                <DataGridTextColumn Header="Kvadratura" Binding="{Binding kvadratura}" Width="*"/>
+
+
+
+            </DataGrid.Columns>
 
 
         </DataGrid>
-
-        <TextBox Grid.Row="1" Name="Id" Text="{Binding Path=id}" 
-        DataContext="{Binding ElementName=dgrProstorije, Path=SelectedItem}" 
-                 Margin="86,17,550,160" Width="165" Height="35" />
-        <TextBox Grid.Row="1" Name="Sprat" Text="{Binding Path=sprat}" 
+        <TextBox Name="Sprat" Text="{Binding sprat}" 
          DataContext="{Binding ElementName=dgrProstorije, Path=SelectedItem}"
-  Margin="86,74,549,108" Width="165" Height="35"/>
+  Margin="823,107,41,355" Width="165" Height="36"/>
 
-        <Button Content="Izmeni" Click="izmeni"  HorizontalAlignment="Left" Margin="73,175,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="0.328,-0.165" Height="29" Width="77"/>
-        <Button Content="Dodaj" Click="dodaj" HorizontalAlignment="Left" Margin="239,175,0,0" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="29"/>
-        <Button Content="Obrisi" Click="obrisi" HorizontalAlignment="Left" Margin="432,175,0,0" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="29"/>
-        <Label Content="Id" HorizontalAlignment="Left" Margin="10,19,0,0" Grid.Row="1" VerticalAlignment="Top" Width="57" FontSize="20"/>
-        <Label Content="Sprat" HorizontalAlignment="Left" Margin="10,73,0,0" Grid.Row="1" VerticalAlignment="Top" Width="57" FontSize="20"/>
-        <Label Content="Vrsta" HorizontalAlignment="Left" Margin="387,20,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="20" RenderTransformOrigin="0.515,-0.081"/>
-        <RadioButton DataContext="{Binding ElementName=dgrProstorije, Path=SelectedItem}" Content="Sala" Name="Sala" GroupName="vrsta" HorizontalAlignment="Left" Margin="526,26,0,0" Grid.Row="1" VerticalAlignment="Top"  RenderTransformOrigin="0.272,0.122"/>
-        <RadioButton DataContext="{Binding ElementName=dgrProstorije, Path=SelectedItem}" Content="Soba" Name="Soba" GroupName="vrsta" HorizontalAlignment="Left" Margin="526,61,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <RadioButton DataContext="{Binding ElementName=dgrProstorije, Path=SelectedItem}" Content="Ordinacija" Name="Ordinacija" GroupName="vrsta" HorizontalAlignment="Left" Margin="526,94,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <RadioButton DataContext="{Binding ElementName=dgrProstorije, Path=SelectedItem}" Content="Kancelarija" Name="Kancelarija" GroupName="vrsta"  HorizontalAlignment="Left" Margin="526,132,0,0" Grid.Row="1" VerticalAlignment="Top" />
-        <Button Content="Pregledaj inventar" Click="Button_Click"  HorizontalAlignment="Left" Margin="603,175,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="0.328,-0.165" Height="29" Width="125"/>
+        <TextBox Name="Id" Text="{Binding id}" Margin="823,47,41,415" Width="165" Height="36"
+         DataContext="{Binding ElementName=dgrProstorije, Path=SelectedItem}"/>
+        <TextBox Name="Kvadratura" Text="{Binding kvadratura}"  Margin="823,168,41,294" Width="165" Height="36"  DataContext="{Binding ElementName=dgrProstorije, Path=SelectedItem}"/>
+        <Button Content="Izmeni" Click="izmeni"  HorizontalAlignment="Left" Margin="709,411,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.328,-0.165" Height="30" Width="76"/>
+        <Button Content="Dodaj" Click="dodaj" HorizontalAlignment="Left" Margin="906,411,0,0" VerticalAlignment="Top" Width="76" Height="29"/>
+        <Button Content="Obrisi" Click="obrisi" HorizontalAlignment="Left" Margin="278,406,0,0" VerticalAlignment="Top" Width="78" Height="29"/>
+        <Label Content="Sprat" HorizontalAlignment="Left" Margin="742,98,0,0" VerticalAlignment="Top" Width="57" FontSize="20"/>
+        <Label Content="Vrsta" HorizontalAlignment="Left" Margin="709,236,0,0" VerticalAlignment="Top" FontSize="20" RenderTransformOrigin="0.515,-0.081"/>
+        <RadioButton  Content="Sala" Name="Sala" GroupName="vrsta" HorizontalAlignment="Left" Margin="813,233,0,0" VerticalAlignment="Top"  RenderTransformOrigin="0.272,0.122" Width="77" Height="25" FontSize="16"/>
+        <RadioButton  Content="Soba" Name="Soba" GroupName="vrsta" HorizontalAlignment="Left" Margin="813,263,0,0" VerticalAlignment="Top" Width="98" Height="24" FontSize="16"/>
+        <RadioButton  Content="Ordinacija" Name="Ordinacija" GroupName="vrsta" HorizontalAlignment="Left" Margin="813,299,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.372,0.518" FontSize="16" Width="144" Height="23"/>
+        <RadioButton  Content="Kancelarija" Name="Kancelarija" GroupName="vrsta"  HorizontalAlignment="Left" Margin="813,330,0,0" VerticalAlignment="Top" FontSize="16" Height="24" Width="146" />
+        <RadioButton  Content="Magacin" Name="Magacin" GroupName="vrsta"  HorizontalAlignment="Left" Margin="813,367,0,0" VerticalAlignment="Top" FontSize="16" Height="29" Width="122" />
+        <Button Content="Pregledaj inventar" Click="Button_Click"  HorizontalAlignment="Left" Margin="255,362,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.328,-0.165" Height="29" Width="124"/>
+        <Label Content="ID" HorizontalAlignment="Left" Margin="741,47,0,0" VerticalAlignment="Top" Width="58" FontSize="20" RenderTransformOrigin="1.557,0.135" Height="36"/>
+        <Label Content="Kvadratura" HorizontalAlignment="Left" Margin="695,167,0,0" VerticalAlignment="Top" FontSize="20" RenderTransformOrigin="0.515,-0.081"/>
+        <GridSplitter HorizontalAlignment="Left" Height="475" Margin="562,-22,0,0" VerticalAlignment="Top" Width="5"/>
 
 
 

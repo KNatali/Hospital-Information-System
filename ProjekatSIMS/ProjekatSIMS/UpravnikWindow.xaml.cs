@@ -32,5 +32,17 @@ namespace ProjekatSIMS
             ProstorijeWindow p = new ProstorijeWindow();
             p.Show();
         }
+
+        private void lekoviClick(object sender, RoutedEventArgs e)
+        {
+            LekoviWindow lw = new LekoviWindow();
+            lw.Show();
+        }
+
+        private void staticka(object sender, RoutedEventArgs e)
+        {
+            SvaStatickaOprema sso = new SvaStatickaOprema();
+            sso.Show();
+        }
     }
 }

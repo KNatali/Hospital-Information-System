@@ -21,6 +21,7 @@ namespace ProjekatSIMS
         {
             InitializeComponent();
             this.DataContext = this;
+            
             List<Inventar> oprema = new List<Inventar>();
             CuvanjeProstorija cuvanje = new CuvanjeProstorija(@"..\..\Fajlovi\Prostorije.txt");
             List<Prostorija> prostorije = new List<Prostorija>();
@@ -42,7 +43,7 @@ namespace ProjekatSIMS
 
         private void rasporedi1(object sender, RoutedEventArgs e)
         {
-         /*  Inventar inventar = (Inventar)dgrStatickaOprema.SelectedItems[0];
+          Inventar inventar = (Inventar)dgrStatickaOprema.SelectedItems[0];
             Prostorija p = (Prostorija)Prostorije.SelectedItem;
             DateTime datum = (DateTime)Datum.SelectedDate;
             Double sati = Convert.ToDouble(Sati.Text);
@@ -61,7 +62,7 @@ namespace ProjekatSIMS
             {
                 while (true)
                 {
-                    if (now == date)
+                    if (DateTime.Compare(now, date) == 0)
                     {
                         foreach (Prostorija pros in prostorije)
                         {
@@ -104,7 +105,7 @@ namespace ProjekatSIMS
             { 
                 MessageBox.Show("Izabrali ste pogresan datum!");
                 
-            }*/
+            }
             
 
         }
@@ -135,18 +136,22 @@ namespace ProjekatSIMS
             }
 
 
-
+            Prostorija item = new Prostorija();
             foreach (Prostorija p in prostorije)
             {
                 if (prostorija.id == p.id)
                 {
                     p.inventar.Add(inventar);
+                    dgrStatickaOprema.ItemsSource = p.inventar;
+                    break;
                 }
             }
             cuvanje.Sacuvaj(prostorije);
-
+            Id.Text = "";
+            Kolicina.Text = "";
+            Ime.Text = "";
             MessageBox.Show("Inventar je rasporedjen!");
-            this.Close();
+            
 
         }
 
@@ -166,6 +171,7 @@ namespace ProjekatSIMS
                         if (i.id == inventar.id) //pronasli smo trazeni inventar
                         {
                             p.inventar.Remove(i); //brisemo iz liste 
+                            
                             break;
 
 
@@ -173,12 +179,61 @@ namespace ProjekatSIMS
 
 
                     }
+                    dgrStatickaOprema.ItemsSource = p.inventar;
                 }
 
             }
+            Id.Text = "";
+            Kolicina.Text = "";
+            Ime.Text = "";
             cuvanje.Sacuvaj(prostorije);
             MessageBox.Show("Inventar je obrisan!");
-            this.Close();
+            
+        }
+
+        private void ponisti(object sender, RoutedEventArgs e)
+        {
+            List<Inventar> oprema = new List<Inventar>();
+            CuvanjeProstorija cuvanje = new CuvanjeProstorija(@"..\..\Fajlovi\Prostorije.txt");
+            List<Prostorija> prostorije = new List<Prostorija>();
+            prostorije = cuvanje.UcitajProstorije();
+
+
+            foreach (Prostorija p in prostorije)
+            {
+                if (prostorija.id == p.id)
+                {
+                    oprema = p.inventar;
+                }
+            }
+            dgrStatickaOprema.ItemsSource = oprema;
+            Pretraga.Text = "";
+        }
+        private void pretrazi(object sender, RoutedEventArgs e)
+        {
+            /*int parsiranaVrednost;
+            if(int.TryParse(Pretraga.Text, out parsiranaVrednost))
+            {
+                foreach(Inventar i in prostorija)
+                {
+                    if()
+                }
+
+
+
+
+
+            }*/
+            List<Inventar> noviInventar = new List<Inventar>();
+            foreach(Inventar i in prostorija.inventar)
+            {
+                if(i.ime == Pretraga.Text)
+                {
+                    noviInventar.Add(i);
+                }
+            }
+            dgrStatickaOprema.ItemsSource = noviInventar;
+
         }
 
     }

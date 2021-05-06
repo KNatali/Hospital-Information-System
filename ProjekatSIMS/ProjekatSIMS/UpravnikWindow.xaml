@@ -5,10 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjekatSIMS"
         mc:Ignorable="d"
-        Title="UpravnikWindow" Height="450" Width="800">
-    <Grid>
-        <Button Content="Dinamička oprema" Click="dinamicka" HorizontalAlignment="Center" Margin="0,157,0,0" VerticalAlignment="Top" Height="60" Width="210"/>
-        <Button Content="Prostorije" Click="prostorije" HorizontalAlignment="Center" Margin="0,263,0,0" VerticalAlignment="Top" Height="60" Width="210"/>
+        Title="UpravnikWindow" Height="500" Width="1000">
+    <Grid Width="1000" Height="450">
+        <Button Content="Dinamička oprema" Click="dinamicka" HorizontalAlignment="Left" Margin="672,95,0,0" VerticalAlignment="Top" Height="60" Width="210"/>
+        <Button Content="Prostorije" Click="prostorije" HorizontalAlignment="Left" Margin="178,95,0,0" VerticalAlignment="Top" Height="60" Width="210"/>
+        <Button Content="Lekovi" HorizontalAlignment="Left" Margin="178,249,0,0" VerticalAlignment="Top" Width="210" Height="60" Click="lekoviClick"/>
+        <Button Content="Staticka oprema" Click="staticka" HorizontalAlignment="Left" Margin="672,244,0,0" VerticalAlignment="Top" Width="210" Height="60" />
 
     </Grid>
 </Window>
