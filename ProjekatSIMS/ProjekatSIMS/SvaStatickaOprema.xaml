@@ -12,7 +12,7 @@
                 <DataGridTextColumn Header="Id" Binding="{Binding id}" Width="100"/>
                 <DataGridTextColumn Header="Ime" Binding="{Binding ime}" Width="200"/>
                 <DataGridTextColumn Header="Kolicina" Binding="{Binding kolicina}" Width="80"/>
-                <DataGridTextColumn Header="Prostorija" Binding="{Binding prostorija.id}" Width="*"/>
+                <DataGridTextColumn Header="Prostorija" Binding="{Binding prostorija}" Width="*"/>
 
             </DataGrid.Columns>
         </DataGrid>

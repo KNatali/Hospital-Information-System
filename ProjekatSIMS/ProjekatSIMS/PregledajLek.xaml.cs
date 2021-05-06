@@ -12,7 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using System.Linq;
 namespace ProjekatSIMS
 {
     
@@ -21,7 +21,7 @@ namespace ProjekatSIMS
         public List<String> Lekovi { get; set; }
         public Lijek Lek1 { get; set; }
         public List<String> AlergeniLeka { get; set; }
-        
+        public List<Lijek> lekovi1 { get; set; }
         public PregledajLek(Lijek lek)
         {
             Lek1 = lek;
@@ -29,7 +29,7 @@ namespace ProjekatSIMS
             this.DataContext = this;
             
             LijekRepository lekRepository = new LijekRepository();
-            List<Lijek> lekovi1 = lekRepository.DobaviSveLekove();
+             lekovi1 = lekRepository.DobaviSveLekove();
             
             Lek1 = lek;
             
@@ -39,7 +39,7 @@ namespace ProjekatSIMS
             foreach(Lijek l in lekovi1)
             {
                 
-                if(l.NazivLeka != lek.NazivLeka)
+                if(l.NazivLeka != lek.NazivLeka && l.Status == OdobravanjeLekaEnum.Odobren)
                 {
                     Lekovi.Add(l.NazivLeka);
                 }
@@ -64,6 +64,16 @@ namespace ProjekatSIMS
                 {
                     Lek1.AlternativniLekovi.Remove(s);
                     MessageBox.Show("Izabrani alternativni lek je obrisan!");
+                    LijekRepository lekRepository = new LijekRepository();
+                    foreach (Lijek l in lekovi1)
+                    {
+                        if (Lek1.NazivLeka == l.NazivLeka)
+                        {
+                            l.AlternativniLekovi = Lek1.AlternativniLekovi;
+                            break;
+                        }
+                    }
+                    lekRepository.SacuvajLekove(lekovi1);
                     flag++;
                     break;
                 }
@@ -78,15 +88,18 @@ namespace ProjekatSIMS
 
         private void dodaj(object sender, RoutedEventArgs e)
         {
-            Lijek l = (Lijek)Lek.SelectedItem;
+
+            String l = Convert.ToString(Lek.SelectedItem);
+            List<String> lista = new List<string>();
+            lista.Add(l);
             int temp = 0;
             if(Lek1.AlternativniLekovi == null)
             {
-                Lek1.AlternativniLekovi.Add(l.NazivLeka);
+                Lek1.AlternativniLekovi = lista;
             }
             foreach(String s in Lek1.AlternativniLekovi)
             {
-                if(s.Equals(l.NazivLeka, StringComparison.OrdinalIgnoreCase))
+                if(s.Equals(l, StringComparison.OrdinalIgnoreCase))
                 {
                     MessageBox.Show("Vec postoji unesen alternativni lek sa tim nazivom!");
                     temp++;
@@ -96,7 +109,17 @@ namespace ProjekatSIMS
             }
             if(temp == 0)
             {
-                Lek1.AlternativniLekovi.Add(l.NazivLeka);
+                Lek1.AlternativniLekovi.Add(l);
+                LijekRepository lekRepository = new LijekRepository();
+                foreach (Lijek l1 in lekovi1)
+                {
+                    if (Lek1.NazivLeka == l1.NazivLeka)
+                    {
+                        l1.AlternativniLekovi = Lek1.AlternativniLekovi;
+                        break;
+                    }
+                }
+                lekRepository.SacuvajLekove(lekovi1);
             }
             
             AlternativniLekovi.ItemsSource = Lek1.AlternativniLekovi;
@@ -106,6 +129,7 @@ namespace ProjekatSIMS
         {
             String al = Alergen.Text;
             List<String> alergeni = Lek1.Alergeni;
+            int temp = 0;
             if(alergeni == null)
             {
                 Lek1.Alergeni.Add(al);
@@ -118,12 +142,27 @@ namespace ProjekatSIMS
                 if(s.Equals(al, StringComparison.OrdinalIgnoreCase))
                 {
                     MessageBox.Show("Vec ste uneli dati alergen!");
+                    temp++;
                     break;
                 }
             }
-            Lek1.Alergeni.Add(al);
-            MessageBox.Show("Uspesno ste dodali alergen!");
-            this.Close();
+            if(temp == 0)
+            {
+                Lek1.Alergeni.Add(al);
+                MessageBox.Show("Uspesno ste dodali alergen!");
+                LijekRepository lekRepository = new LijekRepository();
+                foreach (Lijek l in lekovi1)
+                {
+                    if(Lek1.NazivLeka == l.NazivLeka)
+                    {
+                        l.Alergeni = Lek1.Alergeni;
+                        break;
+                    }
+                }
+                lekRepository.SacuvajLekove(lekovi1);
+            }
+
+            Alergeni.ItemsSource = Lek1.Alergeni;
         }
         private void obrisiAl(object sender, RoutedEventArgs e)
         {
@@ -136,6 +175,16 @@ namespace ProjekatSIMS
                 {
                     Lek1.Alergeni.Remove(s);
                     MessageBox.Show("Izabrani alergen je obrisan!");
+                    LijekRepository lekRepository = new LijekRepository();
+                    foreach (Lijek l in lekovi1)
+                    {
+                        if (Lek1.NazivLeka == l.NazivLeka)
+                        {
+                            l.Alergeni = Lek1.Alergeni;
+                            break;
+                        }
+                    }
+                    lekRepository.SacuvajLekove(lekovi1);
                     flag++;
                     break;
                 }
@@ -150,7 +199,22 @@ namespace ProjekatSIMS
 
         private void sacuvaj(object sender, RoutedEventArgs e)
         {
-
+            Lek1.Opis = Opis.Text;
+            Lek1.AlternativniLekovi = new List<string>(AlternativniLekovi.Items.Cast<String>());
+            Lek1.Alergeni = new List<string>(Alergeni.Items.Cast<String>());
+            LijekRepository lekRepository = new LijekRepository();
+            foreach (Lijek l in lekovi1)
+            {
+                if (Lek1.NazivLeka == l.NazivLeka)
+                {
+                    l.Opis = Lek1.Opis;
+                    l.Alergeni = Lek1.Alergeni;
+                    l.AlternativniLekovi = Lek1.AlternativniLekovi;
+                    break;
+                }
+            }
+            lekRepository.SacuvajLekove(lekovi1);
+            this.Close();
         }
     }
 }
