@@ -6,33 +6,33 @@
         xmlns:local="clr-namespace:ProjekatSIMS"
         xmlns:fa="http://schemas.fontawesome.io/icons/" x:Class="ProjekatSIMS.NovaObjavaSWindow"
         mc:Ignorable="d"
-        Title="NovaObjavaSWindow" Height="450" Width="800">
+        Title="NovaObjavaSWindow" Height="568" Width="924" Background="#d1e3ff">
     <Grid>
-        <Label Margin="310,85,274,311">
+        <Label Margin="362,89,222,415">
             <StackPanel Orientation="Horizontal">
                 <fa:ImageAwesome Icon="Bell" Width="20" Foreground="#1963bf"/>
                 <TextBlock Text=" Novo obaveštenje" FontSize="20" Foreground="#1963bf" FontWeight="Bold" Width="225"/>
             </StackPanel>
         </Label>
-        <Label Margin="175,11,465,352">
+        <Label Content="Tekst" HorizontalAlignment="Left" FontSize="20"  Height="35" Margin="60,212,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Tekst" FontSize="20" Margin="179,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="661" Height="151"/>
+        <Label Content="Naslov" HorizontalAlignment="Left" FontSize="20"  Height="35" Margin="60,162,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Naslov" FontSize="20" Margin="179,164,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="661"/>
+        <Button Content="Otkaži" Click="Nazad" HorizontalAlignment="Left" Margin="60,440,0,0" VerticalAlignment="Top" Height="50" Width="200" Background="#a2cafc" FontSize="20" BorderBrush="#1963bf"/>
+        <Button Content="Postavi obaveštenje" Click="Sacuvaj" HorizontalAlignment="Left" Margin="640,440,0,0" VerticalAlignment="Top" Height="50" Width="200" Background="#a2cafc" FontSize="20" BorderBrush="#1963bf"/>
+        <Label Margin="239,21,401,448">
             <StackPanel Orientation="Horizontal">
                 <fa:ImageAwesome Icon="Globe" Width="60" Foreground="#1963bf"/>
                 <fa:ImageAwesome Icon="HSquare" Width="37" Foreground="#b31a0c"/>
                 <fa:ImageAwesome Icon="UserMd" Width="37" Foreground="#1963bf"/>
             </StackPanel>
         </Label>
-        <Label Margin="191,27,445,352">
+        <Label Margin="255,37,381,475">
             <StackPanel Orientation="Horizontal">
                 <fa:ImageAwesome Icon="Heart" Width="15" Foreground="#b31a0c"/>
             </StackPanel>
         </Label>
-        <Label Content="ZDRAVO KORPORACIJA" FontSize="25" Margin="324,24,172,380" Foreground="#1963bf" FontWeight="Bold"/>
-        <Label Content="Tekst" HorizontalAlignment="Left" FontSize="20"  Height="35" Margin="42,198,0,0" VerticalAlignment="Top" Width="75"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Tekst" FontSize="20" Margin="160,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="590" Height="118"/>
-        <Label Content="Naslov" HorizontalAlignment="Left" FontSize="20"  Height="35" Margin="42,148,0,0" VerticalAlignment="Top" Width="75"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Naslov" FontSize="20" Margin="160,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="590"/>
-        <Button Content="Otkaži" Click="Nazad" HorizontalAlignment="Left" Margin="42,370,0,0" VerticalAlignment="Top" Height="50" Width="200" Background="#a2cafc" FontSize="20" BorderBrush="#1963bf"/>
-        <Button Content="Postavi obaveštenje" Click="Sacuvaj" HorizontalAlignment="Left" Margin="550,370,0,0" VerticalAlignment="Top" Height="50" Width="200" Background="#a2cafc" FontSize="20" BorderBrush="#1963bf"/>
+        <Label Content="ZDRAVO KORPORACIJA" FontSize="25" Margin="388,34,108,445" Foreground="#1963bf" FontWeight="Bold"/>
 
     </Grid>
 </Window>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjekatSIMS"
         mc:Ignorable="d"
-        Title="NoviAlergenSWindow" Height="450" Width="800">
+        Title="NoviAlergenSWindow" Height="450" Width="800" Background="#d1e3ff">
     <Grid>
         <Button Content="Sačuvaj" Click="Dodavanje" HorizontalAlignment="Left" Margin="545,221,0,0" VerticalAlignment="Top" Height="40" Width="100" Background="#FFA6B1D6"/>
         <Button Content="Otkaži" Click="Nazad" HorizontalAlignment="Left" Margin="175,221,0,0" VerticalAlignment="Top" Height="40" Width="100" Background="#FFA6B1D6"/>

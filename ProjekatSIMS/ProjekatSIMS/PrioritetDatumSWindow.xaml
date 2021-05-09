@@ -6,41 +6,28 @@
         xmlns:local="clr-namespace:ProjekatSIMS"
         xmlns:fa="http://schemas.fontawesome.io/icons/" x:Class="ProjekatSIMS.PrioritetDatumSWindow"
         mc:Ignorable="d"
-        Title="PrioritetDatumSWindow" Height="450" Width="800">
+        Title="PrioritetDatumSWindow" Height="568" Width="924" Background="#d1e3ff">
     <Grid>
-        <Button Content="Zakaži termin" Click="Zakazi" HorizontalAlignment="Left" Margin="580,363,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
-        <Button Content="Otkaži" Click="Nazad" HorizontalAlignment="Left" Margin="68,363,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
-        <DataGrid x:Name="dataGridSlobodniTermini" ItemsSource="{Binding Termini}" FontSize="15" IsReadOnly="True" Visibility="Hidden"
-            SelectionMode="Single" AutoGenerateColumns="False" Margin="307,154,40,0" Height="180" VerticalAlignment="Top">
+        <Button Content="Zakaži termin" Click="Zakazi" HorizontalAlignment="Left" Margin="683,461,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
+        <Button Content="Otkaži" Click="Nazad" HorizontalAlignment="Left" Margin="60,461,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
+        <DataGrid x:Name="dataGridSlobodniTermini" ItemsSource="{Binding Termini}" FontSize="20" IsReadOnly="True" Visibility="Hidden"
+            SelectionMode="Single" AutoGenerateColumns="False" Margin="333,205,61,0" Height="231" VerticalAlignment="Top">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Termin" Binding="{Binding Termin}" Width="140"/>
-                <DataGridTextColumn Header="Ime" Binding="{Binding ImeDoktora}" Width="100"/>
-                <DataGridTextColumn Header="Prezime" Binding="{Binding PrezimeDoktora}" Width="100"/>
+                <DataGridTextColumn Header="Termin" Binding="{Binding Termin}" Width="*"/>
+                <DataGridTextColumn Header="Ime" Binding="{Binding ImeDoktora}" Width="*"/>
+                <DataGridTextColumn Header="Prezime" Binding="{Binding PrezimeDoktora}" Width="*"/>
                 <DataGridTextColumn Header="Specijalizacija" Binding="{Binding Specijalizacija}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Label Width="268" VerticalAlignment="Top" x:Name="Labela" Visibility="Hidden" Margin="386,119,0,0" Height="39" HorizontalAlignment="Left" FontSize="15" Foreground="#1963bf" Content="Odaberite neki od ponuđenih termina"/>
-        <Label Width="268" VerticalAlignment="Top" Margin="272,79,0,0" Height="50" HorizontalAlignment="Left" FontSize="20" Foreground="#1963bf" FontWeight="Bold" Content="Zakažite pregled pacijentu"/>
-        <Label Margin="175,11,465,352">
-            <StackPanel Orientation="Horizontal">
-                <fa:ImageAwesome Icon="Globe" Width="60" Foreground="#1963bf"/>
-                <fa:ImageAwesome Icon="HSquare" Width="37" Foreground="#b31a0c"/>
-                <fa:ImageAwesome Icon="UserMd" Width="37" Foreground="#1963bf"/>
-            </StackPanel>
-        </Label>
-        <Label Margin="191,27,445,352">
-            <StackPanel Orientation="Horizontal">
-                <fa:ImageAwesome Icon="Heart" Width="15" Foreground="#b31a0c"/>
-            </StackPanel>
-        </Label>
-        <Label Content="ZDRAVO KORPORACIJA" FontSize="25" Margin="324,24,172,380" Foreground="#1963bf" FontWeight="Bold"/>
-        <Label Width="272" VerticalAlignment="Top" Margin="30,119,0,0" Height="39" HorizontalAlignment="Left" FontSize="15" Foreground="#1963bf" Content="Datum za koji tražite slobodne termine"/>
-        <DatePicker HorizontalAlignment="Left" x:Name="Datum" FontSize="20" Margin="30,163,0,0" VerticalAlignment="Top" Width="257"/>
-        <Label Content="Sala" HorizontalAlignment="Left" FontSize="20" Margin="30,217,0,0" VerticalAlignment="Top" Height="39" Width="72"/>
+        <Label Width="268" VerticalAlignment="Top" x:Name="Labela" Visibility="Hidden" Margin="500,160,0,0" Height="39" HorizontalAlignment="Left" FontSize="15" Foreground="#1963bf" Content="Odaberite neki od ponuđenih termina"/>
+        <Label Width="268" VerticalAlignment="Top" Margin="334,88,0,0" Height="50" HorizontalAlignment="Left" FontSize="20" Foreground="#1963bf" FontWeight="Bold" Content="Zakažite pregled pacijentu"/>
+        <Label Width="272" VerticalAlignment="Top" Margin="56,160,0,0" Height="39" HorizontalAlignment="Left" FontSize="15" Foreground="#1963bf" Content="Datum za koji tražite slobodne termine"/>
+        <DatePicker HorizontalAlignment="Left" x:Name="Datum" FontSize="25" Margin="60,205,0,0" VerticalAlignment="Top" Width="251"/>
+        <Label Content="Sala" HorizontalAlignment="Left" FontSize="25" Margin="60,257,0,0" VerticalAlignment="Top" Height="39" Width="72"/>
         <ComboBox  x:Name="Ordinacija" HorizontalAlignment="Left"   
-            Margin="131,220,0,0"   
-            VerticalAlignment="Top"   
-            Width="156" FontSize="20"
+            Margin="160,0,0,0"   
+            VerticalAlignment="Center"   
+            Width="151" FontSize="25"
             ItemsSource="{Binding Ordinacije}">
 
             <ComboBox.ItemTemplate>
@@ -53,6 +40,19 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        <Button Content="Prikaži termine" Click="Prikaz" HorizontalAlignment="Left" Margin="68,274,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
+        <Button Content="Prikaži termine" Click="Prikaz" HorizontalAlignment="Left" Margin="60,343,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
+        <Label Margin="239,21,401,448">
+            <StackPanel Orientation="Horizontal">
+                <fa:ImageAwesome Icon="Globe" Width="60" Foreground="#1963bf"/>
+                <fa:ImageAwesome Icon="HSquare" Width="37" Foreground="#b31a0c"/>
+                <fa:ImageAwesome Icon="UserMd" Width="37" Foreground="#1963bf"/>
+            </StackPanel>
+        </Label>
+        <Label Margin="255,37,381,475">
+            <StackPanel Orientation="Horizontal">
+                <fa:ImageAwesome Icon="Heart" Width="15" Foreground="#b31a0c"/>
+            </StackPanel>
+        </Label>
+        <Label Content="ZDRAVO KORPORACIJA" FontSize="25" Margin="388,34,108,445" Foreground="#1963bf" FontWeight="Bold"/>
     </Grid>
 </Window>
