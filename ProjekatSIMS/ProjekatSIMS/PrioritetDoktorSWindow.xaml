@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="PrioritetDoktorSWindow" Height="568" Width="924" Background="#d1e3ff">
     <Grid>
-        <DataGrid x:Name="dataGridDoktori" ItemsSource="{Binding Doktori}" IsReadOnly="True"
+        <DataGrid x:Name="dataGridDoktori" ItemsSource="{Binding Doktori}" IsReadOnly="True" BorderBrush="#1963bf" Foreground="#1963bf"
                   SelectionMode="Single" FontSize="20" AutoGenerateColumns="False" Margin="60,195,330,0" Height="223" VerticalAlignment="Top">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Jmbg" Binding="{Binding Jmbg}" Width="*"/>
@@ -22,23 +22,23 @@
                 </Style>
             </DataGrid.ItemContainerStyle>
         </DataGrid>
-        <Button Content="Zakaži termin" Click="Zakazi" HorizontalAlignment="Left" Margin="685,460,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
-        <Button Content="Otkaži" Click="Nazad" HorizontalAlignment="Left" Margin="60,460,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
-        <Label Content="Kliknite dva puta na doktora kod kog želite da zakažete pregled" HorizontalAlignment="Left" Margin="60,151,0,0" VerticalAlignment="Top" FontSize="15" Foreground="#1963bf" Height="39" Width="440"/>
-        <DataGrid x:Name="dataGridSlobodniTermini" ItemsSource="{Binding Termini}" IsReadOnly="True" FontSize="20" Visibility="Hidden"
+        <Button Content="Zakaži termin" Click="Zakazi" HorizontalAlignment="Left" Margin="685,460,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <Button Content="Otkaži" Click="Nazad" HorizontalAlignment="Left" Margin="60,460,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <Label Content="Kliknite dva puta na doktora kod kog želite da zakažete pregled" HorizontalAlignment="Left" Margin="60,151,0,0" VerticalAlignment="Top" FontSize="18" Foreground="#1963bf" Height="39" Width="553"/>
+        <DataGrid x:Name="dataGridSlobodniTermini" ItemsSource="{Binding Termini}" IsReadOnly="True" FontSize="20" Visibility="Hidden" BorderBrush="#1963bf" Foreground="#1963bf"
             SelectionMode="Single" AutoGenerateColumns="False" Margin="623,195,44,0" Height="156" VerticalAlignment="Top">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Termin" Binding="{Binding Termin}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
 
-        <Label Width="268" VerticalAlignment="Top" Margin="340,85,0,0" Height="50" HorizontalAlignment="Left" FontSize="20" Foreground="#1963bf" FontWeight="Bold" Content="Zakažite pregled pacijentu"/>
-        <Label Content="Odaberite neki od ponuđenih termina" x:Name="Labela" Visibility="Hidden" HorizontalAlignment="Left" Margin="618,151,0,0" VerticalAlignment="Top" FontSize="15" Foreground="#1963bf" Height="39" Width="266"/>
-        <Label Content="Sala" HorizontalAlignment="Left" FontSize="25" Margin="613,377,0,0" VerticalAlignment="Top" Height="44" Width="72"/>
+        <Label Width="290" VerticalAlignment="Top" Margin="340,85,0,0" Height="50" HorizontalAlignment="Left" FontSize="22" Foreground="#1963bf" FontWeight="Bold" Content="Zakažite pregled pacijentu"/>
+        <Label Content="Odaberite neki od ponuđenih termina" x:Name="Labela" Visibility="Hidden"  HorizontalAlignment="Left" Margin="600,151,0,0" VerticalAlignment="Top" FontSize="18" Foreground="#1963bf" Height="39" Width="334"/>
+        <Label Content="Sala" HorizontalAlignment="Left" FontSize="25" Margin="613,377,0,0" VerticalAlignment="Top" Height="44" Width="72" Foreground="#1963bf" FontWeight="DemiBold"/>
         <ComboBox  x:Name="Ordinacija" HorizontalAlignment="Left"   
             Margin="685,379,0,0"   
             VerticalAlignment="Top"   
-            Width="180" FontSize="25"
+            Width="180" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf"
             ItemsSource="{Binding Ordinacije}">
 
             <ComboBox.ItemTemplate>

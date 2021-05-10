@@ -8,10 +8,10 @@
         mc:Ignorable="d"
         Title="PrioritetDatumSWindow" Height="568" Width="924" Background="#d1e3ff">
     <Grid>
-        <Button Content="Zakaži termin" Click="Zakazi" HorizontalAlignment="Left" Margin="683,461,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
-        <Button Content="Otkaži" Click="Nazad" HorizontalAlignment="Left" Margin="60,461,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
+        <Button Content="Zakaži termin" Click="Zakazi" HorizontalAlignment="Left" Margin="683,461,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <Button Content="Otkaži" Click="Nazad" HorizontalAlignment="Left" Margin="60,461,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
         <DataGrid x:Name="dataGridSlobodniTermini" ItemsSource="{Binding Termini}" FontSize="20" IsReadOnly="True" Visibility="Hidden"
-            SelectionMode="Single" AutoGenerateColumns="False" Margin="333,205,61,0" Height="231" VerticalAlignment="Top">
+            SelectionMode="Single" AutoGenerateColumns="False" Margin="333,205,61,0" Height="231" VerticalAlignment="Top" BorderBrush="#1963bf" Foreground="#1963bf">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Termin" Binding="{Binding Termin}" Width="*"/>
                 <DataGridTextColumn Header="Ime" Binding="{Binding ImeDoktora}" Width="*"/>
@@ -19,15 +19,15 @@
                 <DataGridTextColumn Header="Specijalizacija" Binding="{Binding Specijalizacija}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Label Width="268" VerticalAlignment="Top" x:Name="Labela" Visibility="Hidden" Margin="500,160,0,0" Height="39" HorizontalAlignment="Left" FontSize="15" Foreground="#1963bf" Content="Odaberite neki od ponuđenih termina"/>
-        <Label Width="268" VerticalAlignment="Top" Margin="334,88,0,0" Height="50" HorizontalAlignment="Left" FontSize="20" Foreground="#1963bf" FontWeight="Bold" Content="Zakažite pregled pacijentu"/>
-        <Label Width="272" VerticalAlignment="Top" Margin="56,160,0,0" Height="39" HorizontalAlignment="Left" FontSize="15" Foreground="#1963bf" Content="Datum za koji tražite slobodne termine"/>
-        <DatePicker HorizontalAlignment="Left" x:Name="Datum" FontSize="25" Margin="60,205,0,0" VerticalAlignment="Top" Width="251"/>
-        <Label Content="Sala" HorizontalAlignment="Left" FontSize="25" Margin="60,257,0,0" VerticalAlignment="Top" Height="39" Width="72"/>
+        <Label Width="316" VerticalAlignment="Top" x:Name="Labela" Visibility="Hidden" Margin="436,160,0,0" Height="39" HorizontalAlignment="Left" FontSize="18" Foreground="#1963bf" Content="Odaberite neki od ponuđenih termina"/>
+        <Label Width="300" VerticalAlignment="Top" Margin="334,88,0,0" Height="50" HorizontalAlignment="Left" FontSize="22" Foreground="#1963bf" FontWeight="Bold" Content="Zakažite pregled pacijentu"/>
+        <Label Width="325" VerticalAlignment="Top" Margin="56,160,0,0" Height="39" HorizontalAlignment="Left" FontSize="18" Foreground="#1963bf" Content="Datum za koji tražite slobodne termine"/>
+        <DatePicker HorizontalAlignment="Left" x:Name="Datum" FontSize="25" Margin="60,205,0,0" VerticalAlignment="Top" Width="251" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <Label Content="Sala" HorizontalAlignment="Left" FontSize="25" Margin="60,257,0,0" VerticalAlignment="Top" Height="39" Width="72" Foreground="#1963bf" FontWeight="DemiBold"/>
         <ComboBox  x:Name="Ordinacija" HorizontalAlignment="Left"   
             Margin="160,0,0,0"   
             VerticalAlignment="Center"   
-            Width="151" FontSize="25"
+            Width="151" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf"
             ItemsSource="{Binding Ordinacije}">
 
             <ComboBox.ItemTemplate>
@@ -40,7 +40,7 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        <Button Content="Prikaži termine" Click="Prikaz" HorizontalAlignment="Left" Margin="60,343,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
+        <Button Content="Prikaži termine" Click="Prikaz" HorizontalAlignment="Left" Margin="60,343,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
         <Label Margin="239,21,401,448">
             <StackPanel Orientation="Horizontal">
                 <fa:ImageAwesome Icon="Globe" Width="60" Foreground="#1963bf"/>

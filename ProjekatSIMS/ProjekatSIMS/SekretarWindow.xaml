@@ -8,26 +8,26 @@
         mc:Ignorable="d"
         Title="SekretarWindow" Height="568" Width="924" Background="#d1e3ff">
     <Grid>
-        <Button Click="Kreiranje_profila" HorizontalAlignment="Left" Margin="500,120,0,0" VerticalAlignment="Top" Height="60" Width="320" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf">
+        <Button Click="Kreiranje_profila" HorizontalAlignment="Left" Margin="500,120,0,0" VerticalAlignment="Top" Height="60" Width="320" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf">
             <Button.Content>
                 <StackPanel Orientation="Horizontal">
-                    <fa:ImageAwesome Icon="UserPlus" Width="30"/>
+                    <fa:ImageAwesome Icon="UserPlus" Width="30" Foreground="#1963bf"/>
                     <TextBlock Text=" Kreirajte profil pacijenta"/>
                 </StackPanel>
             </Button.Content>
         </Button>
-        <Button Click="Pretrazi_pacijente" HorizontalAlignment="Left" Margin="100,200,0,0" VerticalAlignment="Top" Height="60" Width="320" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf">
+        <Button Click="Pretrazi_pacijente" HorizontalAlignment="Left" Margin="100,200,0,0" VerticalAlignment="Top" Height="60" Width="320" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf">
             <Button.Content>
                 <StackPanel Orientation="Horizontal">
-                    <fa:ImageAwesome Icon="Users" Width="30"/>
+                    <fa:ImageAwesome Icon="Users" Width="30" Foreground="#1963bf"/>
                     <TextBlock Text=" Pretražite pacijente"/>
                 </StackPanel>
             </Button.Content>
         </Button>
-        <Button Click="Kalendar" HorizontalAlignment="Center" Margin="0,280,0,0" VerticalAlignment="Top" Height="60" Width="320" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf">
+        <Button Click="Kalendar" HorizontalAlignment="Center" Margin="0,280,0,0" VerticalAlignment="Top" Height="60" Width="320" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf">
             <Button.Content>
                 <StackPanel Orientation="Horizontal">
-                    <fa:ImageAwesome Icon="Calendar" Width="30"/>
+                    <fa:ImageAwesome Icon="Calendar" Width="30" Foreground="#1963bf"/>
                     <TextBlock Text=" Svi zakazani termini"/>
                 </StackPanel>
             </Button.Content>
@@ -40,34 +40,34 @@
                 </StackPanel>
             </Button.Content>
         </Button>
-        <Button Click="Pretrazi_doktore" HorizontalAlignment="Left" Margin="500,200,0,0" VerticalAlignment="Top" Height="60" Width="320" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf">
+        <Button Click="Pretrazi_doktore" HorizontalAlignment="Left" Margin="500,200,0,0" VerticalAlignment="Top" Height="60" Width="320" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf">
             <Button.Content>
                 <StackPanel Orientation="Horizontal">
-                    <fa:ImageAwesome Icon="UserMd" Width="30"/>
+                    <fa:ImageAwesome Icon="UserMd" Width="30" Foreground="#1963bf"/>
                     <TextBlock Text=" Pretražite doktore"/>
                 </StackPanel>
             </Button.Content>
         </Button>
-        <Button Click="Naplata" HorizontalAlignment="Left" Margin="100,360,0,0" VerticalAlignment="Top" Height="60" Width="320" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf">
+        <Button Click="Naplata" HorizontalAlignment="Left" Margin="100,360,0,0" VerticalAlignment="Top" Height="60" Width="320" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf">
             <Button.Content>
                 <StackPanel Orientation="Horizontal">
-                    <fa:ImageAwesome Icon="CcVisa" Width="30"/>
+                    <fa:ImageAwesome Icon="CcVisa" Width="30" Foreground="#1963bf"/>
                     <TextBlock Text=" Naplata pregleda"/>
                 </StackPanel>
             </Button.Content>
         </Button>
-        <Button Click="Zauzetost" HorizontalAlignment="Left" Margin="500,360,0,0" VerticalAlignment="Top" Height="60" Width="320" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf">
+        <Button Click="Zauzetost" HorizontalAlignment="Left" Margin="500,360,0,0" VerticalAlignment="Top" Height="60" Width="320" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf">
             <Button.Content>
                 <StackPanel Orientation="Horizontal">
-                    <fa:ImageAwesome Icon="FileText" Width="30"/>
+                    <fa:ImageAwesome Icon="FileText" Width="30" Foreground="#1963bf"/>
                     <TextBlock Text=" Zauzetost prostorija"/>
                 </StackPanel>
             </Button.Content>
         </Button>
-        <Button Click="Oglasi" HorizontalAlignment="Left" Margin="100,440,0,0" VerticalAlignment="Top" Height="60" Width="320" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf">
+        <Button Click="Oglasi" HorizontalAlignment="Left" Margin="100,440,0,0" VerticalAlignment="Top" Height="60" Width="320" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf">
             <Button.Content>
                 <StackPanel Orientation="Horizontal">
-                    <fa:ImageAwesome Icon="Commenting" Width="30"/>
+                    <fa:ImageAwesome Icon="Commenting" Width="30" Foreground="#1963bf"/>
                     <TextBlock Text=" Vesti na oglasnoj tabli"/>
                 </StackPanel>
             </Button.Content>

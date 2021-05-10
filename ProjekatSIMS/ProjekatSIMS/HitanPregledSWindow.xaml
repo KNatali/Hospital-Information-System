@@ -6,27 +6,14 @@
         xmlns:local="clr-namespace:ProjekatSIMS"
         xmlns:fa="http://schemas.fontawesome.io/icons/" x:Class="ProjekatSIMS.HitanPregledSWindow"
         mc:Ignorable="d"
-        Title="HitanPregledSWindow" Height="450" Width="800">
+        Title="HitanPregledSWindow" Height="568" Width="924" Background="#d1e3ff">
     <Grid>
-        <Label Width="271" VerticalAlignment="Top" Margin="280,79,0,0" Height="50" HorizontalAlignment="Left" FontSize="20" Foreground="#1963bf" FontWeight="Bold" Content="Zakazivanje hitnog termina"/>
-        <Label Margin="175,11,465,352">
-            <StackPanel Orientation="Horizontal">
-                <fa:ImageAwesome Icon="Globe" Width="60" Foreground="#1963bf"/>
-                <fa:ImageAwesome Icon="HSquare" Width="37" Foreground="#b31a0c"/>
-                <fa:ImageAwesome Icon="UserMd" Width="37" Foreground="#1963bf"/>
-            </StackPanel>
-        </Label>
-        <Label Margin="191,27,445,352">
-            <StackPanel Orientation="Horizontal">
-                <fa:ImageAwesome Icon="Heart" Width="15" Foreground="#b31a0c"/>
-            </StackPanel>
-        </Label>
-        <Label Content="ZDRAVO KORPORACIJA" FontSize="25" Margin="324,24,172,380" Foreground="#1963bf" FontWeight="Bold"/>
-        <Button Content="Zakaži" Click="Zakazi" HorizontalAlignment="Left" Margin="326,359,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
-        <ComboBox HorizontalAlignment="Left" x:Name="Oblasti" FontSize="20" Margin="30,134,0,0" VerticalAlignment="Top" Width="190" Height="38"/>
-        <Button Content="Vidi zauzete termine" Click="PrikazZauzetihTerminaIzOdabraneOblasti" HorizontalAlignment="Left" Margin="240,134,0,0" VerticalAlignment="Top" Height="38" Width="246" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
+        <Label Width="306" VerticalAlignment="Top" Margin="319,89,0,0" Height="50" HorizontalAlignment="Left" FontSize="22" Foreground="#1963bf" FontWeight="Bold" Content="Zakazivanje hitnog termina"/>
+        <Button Content="Zakaži" Click="Zakazi" HorizontalAlignment="Center" Margin="0,440,0,0" VerticalAlignment="Top" Height="60" Width="179" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <ComboBox HorizontalAlignment="Left" x:Name="Oblasti" FontSize="25" Margin="60,150,0,0" VerticalAlignment="Top" Width="190" Height="38" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <Button Content="Vidi zauzete termine" Click="PrikazZauzetihTerminaIzOdabraneOblasti" HorizontalAlignment="Left" Margin="300,150,0,0" VerticalAlignment="Top" Height="38" Width="246" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
         <DataGrid x:Name="dataGridPregledi" ItemsSource="{Binding Pregledi}" IsReadOnly="True" Visibility="Hidden"
-            SelectionMode="Single" FontSize="15" AutoGenerateColumns="False" Margin="177,196,172,100">
+            SelectionMode="Single" FontSize="15" AutoGenerateColumns="False" Margin="175,218,174,145" BorderBrush="#1963bf" Foreground="#1963bf">
             <DataGrid.Columns>
 
                 <DataGridTextColumn Header="Početak" Binding="{Binding Pocetak}" Width="*"/>
@@ -36,9 +23,9 @@
 
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Vidi slobodne termine" Click="PrikazSlobodnihTermina" HorizontalAlignment="Left" Margin="511,134,0,0" VerticalAlignment="Top" Height="38" Width="261" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
+        <Button Content="Vidi slobodne termine" Click="PrikazSlobodnihTermina" HorizontalAlignment="Left" Margin="591,150,0,0" VerticalAlignment="Top" Height="38" Width="261" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
         <DataGrid x:Name="dataGridSlobodniTermini" ItemsSource="{Binding Termini}" IsReadOnly="True" Visibility="Hidden"
-            SelectionMode="Single" FontSize="15" AutoGenerateColumns="False" Margin="174,196,174,100">
+            SelectionMode="Single" FontSize="15" AutoGenerateColumns="False" Margin="174,218,174,145" BorderBrush="#1963bf" Foreground="#1963bf">
             <DataGrid.Columns>
 
                 <DataGridTextColumn Header="Početak" Binding="{Binding PocetakTermina}" Width="*"/>
@@ -47,5 +34,18 @@
 
             </DataGrid.Columns>
         </DataGrid>
+        <Label Margin="239,21,401,448">
+            <StackPanel Orientation="Horizontal">
+                <fa:ImageAwesome Icon="Globe" Width="60" Foreground="#1963bf"/>
+                <fa:ImageAwesome Icon="HSquare" Width="37" Foreground="#b31a0c"/>
+                <fa:ImageAwesome Icon="UserMd" Width="37" Foreground="#1963bf"/>
+            </StackPanel>
+        </Label>
+        <Label Margin="255,37,381,475">
+            <StackPanel Orientation="Horizontal">
+                <fa:ImageAwesome Icon="Heart" Width="15" Foreground="#b31a0c"/>
+            </StackPanel>
+        </Label>
+        <Label Content="ZDRAVO KORPORACIJA" FontSize="25" Margin="388,34,108,445" Foreground="#1963bf" FontWeight="Bold"/>
     </Grid>
 </Window>

@@ -8,16 +8,16 @@
         mc:Ignorable="d"
         Title="IzmenaPregledaSWindow" Height="568" Width="924" Background="#d1e3ff">
     <Grid Grid.Column="0" Grid.Row="1" DataContext="{Binding SelectedItem, ElementName=dataGridPacijenti}">
-        <Button Content="Otkaži" Click="Otkazi" HorizontalAlignment="Left" Margin="60,440,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
-        <Button Content="Sačuvaj izmene" Click="Sacuvaj" HorizontalAlignment="Left" Margin="684,440,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
-        <Label Content="Datum pregleda:" HorizontalAlignment="Left" FontSize="25" Height="43" Margin="210,173,0,0" VerticalAlignment="Top" Width="201"/>
-        <DatePicker HorizontalAlignment="Left" x:Name="Datum" FontSize="25" Margin="455,173,0,0" VerticalAlignment="Top" Width="246"/>
-        <Label Content="Vreme pregelda:" HorizontalAlignment="Left" FontSize="25" Height="49" Margin="210,238,0,0" VerticalAlignment="Top" Width="201"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Sat" FontSize="25" Margin="455,245,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="98"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Minut" FontSize="25" Margin="603,245,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="98"/>
-        <Label x:Name="Izbor" Content="Izaberite termin:" Visibility="Hidden" FontSize="20" HorizontalAlignment="Left" Height="39" Margin="180,259,0,0" VerticalAlignment="Top" Width="155"/>
-        <ComboBox x:Name="Termin" HorizontalAlignment="Left" Visibility="Hidden" FontSize="20" VerticalAlignment="Top" Width="151" Margin="365,265,0,0"/>
-        <Label Width="320" VerticalAlignment="Top" Margin="310,87,0,0" Height="50" HorizontalAlignment="Left" FontSize="20" Foreground="#1963bf" FontWeight="Bold" Content="Modifikacija zakazanog pregleda"/>
+        <Button Content="Otkaži" Click="Otkazi" HorizontalAlignment="Left" Margin="60,440,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <Button Content="Sačuvaj izmene" Click="Sacuvaj" HorizontalAlignment="Left" Margin="684,440,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <Label Content="Datum pregleda:" HorizontalAlignment="Left" FontSize="25" Height="43" Margin="210,173,0,0" VerticalAlignment="Top" Width="201" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <DatePicker HorizontalAlignment="Left" x:Name="Datum" FontSize="25" Margin="455,173,0,0" VerticalAlignment="Top" Width="246" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <Label Content="Vreme pregelda:" HorizontalAlignment="Left" FontSize="25" Height="49" Margin="210,238,0,0" VerticalAlignment="Top" Width="201" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Sat" FontSize="25" Margin="455,245,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="98" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Minut" FontSize="25" Margin="603,245,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="98" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <Label x:Name="Izbor" Content="Izaberite termin:" Visibility="Hidden" FontSize="25" HorizontalAlignment="Left" Height="45" Margin="210,303,0,0" VerticalAlignment="Top" Width="230" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <ComboBox x:Name="Termin" HorizontalAlignment="Left" Visibility="Hidden" FontSize="25" VerticalAlignment="Top" Width="246" Margin="455,308,0,0" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <Label Width="364" VerticalAlignment="Top" Margin="310,87,0,0" Height="50" HorizontalAlignment="Left" FontSize="22" Foreground="#1963bf" FontWeight="Bold" Content="Modifikacija zakazanog pregleda"/>
         <Label Margin="239,21,401,448">
             <StackPanel Orientation="Horizontal">
                 <fa:ImageAwesome Icon="Globe" Width="60" Foreground="#1963bf"/>
