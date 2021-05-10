@@ -6,25 +6,12 @@
         xmlns:local="clr-namespace:ProjekatSIMS"
         xmlns:fa="http://schemas.fontawesome.io/icons/" x:Class="ProjekatSIMS.OglasnaTablaSWindow"
         mc:Ignorable="d"
-        Title="OglasnaTablaSWindow" Height="450" Width="800">
+        Title="OglasnaTablaSWindow" Height="568" Width="924" Background="#d1e3ff">
     <Grid>
 
-        <Label Width="160" VerticalAlignment="Top" Margin="324,81,0,0" Height="50" HorizontalAlignment="Left" FontSize="20" Foreground="#1963bf" FontWeight="Bold" Content="Oglasna tabla"/>
-        <Label Margin="175,11,465,352">
-            <StackPanel Orientation="Horizontal">
-                <fa:ImageAwesome Icon="Globe" Width="60" Foreground="#1963bf"/>
-                <fa:ImageAwesome Icon="HSquare" Width="37" Foreground="#b31a0c"/>
-                <fa:ImageAwesome Icon="UserMd" Width="37" Foreground="#1963bf"/>
-            </StackPanel>
-        </Label>
-        <Label Margin="191,27,445,352">
-            <StackPanel Orientation="Horizontal">
-                <fa:ImageAwesome Icon="Heart" Width="15" Foreground="#b31a0c"/>
-            </StackPanel>
-        </Label>
-        <Label Content="ZDRAVO KORPORACIJA" FontSize="25" Margin="324,24,172,380" Foreground="#1963bf" FontWeight="Bold"/>
+        <Label Width="160" VerticalAlignment="Top" Margin="386,87,0,0" Height="50" HorizontalAlignment="Left" FontSize="20" Foreground="#1963bf" FontWeight="Bold" Content="Oglasna tabla"/>
         <DataGrid x:Name="dataGridObavestenja" ItemsSource="{Binding Obavestenja}" IsReadOnly="True"
-                  SelectionMode="Single" AutoGenerateColumns="False" Margin="40,158,40,84" FontSize="20">
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="60,158,60,115" FontSize="20">
             <DataGrid.Columns>
 
                 <DataGridTextColumn Header="Naslov" Binding="{Binding Naslov}" Width="200"/>
@@ -38,8 +25,21 @@
                 </Style>
             </DataGrid.ItemContainerStyle>
         </DataGrid>
-        <Label Content="Kliknite dva puta na obaveštenje u tabeli kako biste ga pregledali" HorizontalAlignment="Left" Margin="40,127,0,0" VerticalAlignment="Top" FontSize="15" Foreground="#1963bf" Height="39" Width="446"/>
-        <Button Content="Početna strana" Click="Nazad" HorizontalAlignment="Left" Margin="40,370,0,0" VerticalAlignment="Top" Height="50" Width="200" Background="#a2cafc" FontSize="20" BorderBrush="#1963bf"/>
-        <Button Content="Nova objava" Click="Novo" HorizontalAlignment="Left" Margin="560,370,0,0" VerticalAlignment="Top" Height="50" Width="200" Background="#a2cafc" FontSize="20" BorderBrush="#1963bf"/>
+        <Label Content="Kliknite dva puta na obaveštenje u tabeli kako biste ga pregledali" HorizontalAlignment="Left" Margin="60,127,0,0" VerticalAlignment="Top" FontSize="15" Foreground="#1963bf" Height="39" Width="446"/>
+        <Button Content="Početna strana" Click="Nazad" HorizontalAlignment="Left" Margin="60,480,0,0" VerticalAlignment="Top" Height="50" Width="200" Background="#a2cafc" FontSize="20" BorderBrush="#1963bf"/>
+        <Button Content="Nova objava" Click="Novo" HorizontalAlignment="Left" Margin="664,480,0,0" VerticalAlignment="Top" Height="50" Width="200" Background="#a2cafc" FontSize="20" BorderBrush="#1963bf"/>
+        <Label Margin="239,21,401,448">
+            <StackPanel Orientation="Horizontal">
+                <fa:ImageAwesome Icon="Globe" Width="60" Foreground="#1963bf"/>
+                <fa:ImageAwesome Icon="HSquare" Width="37" Foreground="#b31a0c"/>
+                <fa:ImageAwesome Icon="UserMd" Width="37" Foreground="#1963bf"/>
+            </StackPanel>
+        </Label>
+        <Label Margin="255,37,381,475">
+            <StackPanel Orientation="Horizontal">
+                <fa:ImageAwesome Icon="Heart" Width="15" Foreground="#b31a0c"/>
+            </StackPanel>
+        </Label>
+        <Label Content="ZDRAVO KORPORACIJA" FontSize="25" Margin="388,34,108,445" Foreground="#1963bf" FontWeight="Bold"/>
     </Grid>
 </Window>

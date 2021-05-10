@@ -6,33 +6,33 @@
         xmlns:local="clr-namespace:ProjekatSIMS"
         xmlns:fa="http://schemas.fontawesome.io/icons/" x:Class="ProjekatSIMS.ListaAlergenaSWindow"
         mc:Ignorable="d"
-        Title="ListaAlergenaSWindow" Height="450" Width="800">
+        Title="ListaAlergenaSWindow" Height="568" Width="924" Background="#d1e3ff">
     <Grid>
-        <DataGrid x:Name="dataGridAlergeni" ItemsSource="{Binding Alergeni1}" IsReadOnly="True"
-                  SelectionMode="Single" AutoGenerateColumns="False" Margin="40,130,40,161">
+        <DataGrid x:Name="dataGridAlergeni" ItemsSource="{Binding Alergeni1}" IsReadOnly="True" FontSize="20"
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="60,142,60,161">
             <DataGrid.Columns>
 
                 <DataGridTextColumn Header="Naziv alergena" Binding="{Binding}" Width="*"/>
 
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Nazad na profil" Click="Nazad" HorizontalAlignment="Left" Margin="40,350,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
-        <Button Content="Dodaj novi" Click="Dodavanje" HorizontalAlignment="Left" Margin="580,350,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
+        <Button Content="Nazad na profil" Click="Nazad" HorizontalAlignment="Left" Margin="60,440,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
+        <Button Content="Dodaj novi" Click="Dodavanje" HorizontalAlignment="Left" Margin="684,440,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
 
-        <Label Width="252" VerticalAlignment="Top" Margin="0,77,0,0" Height="50" HorizontalAlignment="Center" FontSize="20" Foreground="#1963bf" FontWeight="Bold" Content="Lista alergena pacijenta"/>
-        <Label Margin="175,11,465,352">
+        <Label Width="252" VerticalAlignment="Top" Margin="362,87,0,0" Height="50" HorizontalAlignment="Left" FontSize="20" Foreground="#1963bf" FontWeight="Bold" Content="Lista alergena pacijenta"/>
+        <Label Margin="239,21,401,448">
             <StackPanel Orientation="Horizontal">
                 <fa:ImageAwesome Icon="Globe" Width="60" Foreground="#1963bf"/>
                 <fa:ImageAwesome Icon="HSquare" Width="37" Foreground="#b31a0c"/>
                 <fa:ImageAwesome Icon="UserMd" Width="37" Foreground="#1963bf"/>
             </StackPanel>
         </Label>
-        <Label Margin="191,27,445,352">
+        <Label Margin="255,37,381,475">
             <StackPanel Orientation="Horizontal">
                 <fa:ImageAwesome Icon="Heart" Width="15" Foreground="#b31a0c"/>
             </StackPanel>
         </Label>
-        <Label Content="ZDRAVO KORPORACIJA" FontSize="25" Margin="324,24,172,380" Foreground="#1963bf" FontWeight="Bold"/>
+        <Label Content="ZDRAVO KORPORACIJA" FontSize="25" Margin="388,34,108,445" Foreground="#1963bf" FontWeight="Bold"/>
 
     </Grid>
 

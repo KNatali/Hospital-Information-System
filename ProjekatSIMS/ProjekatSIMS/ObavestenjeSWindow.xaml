@@ -6,35 +6,35 @@
         xmlns:local="clr-namespace:ProjekatSIMS"
         xmlns:fa="http://schemas.fontawesome.io/icons/" x:Class="ProjekatSIMS.ObavestenjeSWindow"
         mc:Ignorable="d"
-        Title="ObavestenjeSWindow" Height="450" Width="800">
+        Title="ObavestenjeSWindow" Height="568" Width="924" Background="#d1e3ff">
     <Grid>
-        <Label Margin="320,79,329,317">
+        <Label Margin="388,85,381,430">
             <StackPanel Orientation="Horizontal">
                 <fa:ImageAwesome Icon="Bell" Width="20" Foreground="#1963bf"/>
                 <TextBlock Text=" Obaveštenje" FontSize="20" Foreground="#1963bf" FontWeight="Bold"/>
             </StackPanel>
         </Label>
-        <Label Margin="175,11,465,352">
+        <Label Content="Tekst" HorizontalAlignment="Left" FontSize="25"  Height="44" Margin="60,198,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Tekst" FontSize="25" Margin="220,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="642" Height="118"/>
+        <Label Content="Naslov" HorizontalAlignment="Left" FontSize="25"  Height="45" Margin="60,140,0,0" VerticalAlignment="Top" Width="100"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Naslov" FontSize="25" Margin="220,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="642"/>
+        <Label Content="Objavljeno" Grid.Column="0" FontSize="25" HorizontalAlignment="Left" Height="58" Margin="60,326,0,0" VerticalAlignment="Top" Width="132"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Datum" FontSize="25" Margin="220,332,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="350"/>
+        <Button Content="Sačuvaj izmene" Click="Sacuvaj" HorizontalAlignment="Left" Margin="660,450,0,0" VerticalAlignment="Top" Height="50" Width="200" Background="#a2cafc" FontSize="20" BorderBrush="#1963bf"/>
+        <Button Content="Obriši obaveštenje" Click="Obrisi" HorizontalAlignment="Left" Margin="370,450,0,0" VerticalAlignment="Top" Height="50" Width="200" Background="#a2cafc" FontSize="20" BorderBrush="#1963bf"/>
+        <Button Content="Početna strana" Click="Nazad" HorizontalAlignment="Left" Margin="60,450,0,0" VerticalAlignment="Top" Height="50" Width="200" Background="#a2cafc" FontSize="20" BorderBrush="#1963bf"/>
+        <Label Margin="239,21,401,448">
             <StackPanel Orientation="Horizontal">
                 <fa:ImageAwesome Icon="Globe" Width="60" Foreground="#1963bf"/>
                 <fa:ImageAwesome Icon="HSquare" Width="37" Foreground="#b31a0c"/>
                 <fa:ImageAwesome Icon="UserMd" Width="37" Foreground="#1963bf"/>
             </StackPanel>
         </Label>
-        <Label Margin="191,27,445,352">
+        <Label Margin="255,37,381,475">
             <StackPanel Orientation="Horizontal">
                 <fa:ImageAwesome Icon="Heart" Width="15" Foreground="#b31a0c"/>
             </StackPanel>
         </Label>
-        <Label Content="ZDRAVO KORPORACIJA" FontSize="25" Margin="324,24,172,380" Foreground="#1963bf" FontWeight="Bold"/>
-        <Label Content="Tekst" HorizontalAlignment="Left" FontSize="20"  Height="35" Margin="42,178,0,0" VerticalAlignment="Top" Width="75"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Tekst" FontSize="20" Margin="160,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="590" Height="118"/>
-        <Label Content="Naslov" HorizontalAlignment="Left" FontSize="20"  Height="35" Margin="42,128,0,0" VerticalAlignment="Top" Width="75"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Naslov" FontSize="20" Margin="160,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="590"/>
-        <Label Content="Objavljeno" Grid.Column="0" FontSize="20" HorizontalAlignment="Left" Height="40" Margin="42,314,0,0" VerticalAlignment="Top" Width="105"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Datum" FontSize="20" Margin="160,320,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="295"/>
-        <Button Content="Sačuvaj izmene" Click="Sacuvaj" HorizontalAlignment="Left" Margin="550,370,0,0" VerticalAlignment="Top" Height="50" Width="200" Background="#a2cafc" FontSize="20" BorderBrush="#1963bf"/>
-        <Button Content="Obriši obaveštenje" Click="Obrisi" HorizontalAlignment="Left" Margin="302,370,0,0" VerticalAlignment="Top" Height="50" Width="200" Background="#a2cafc" FontSize="20" BorderBrush="#1963bf"/>
-        <Button Content="Početna strana" Click="Nazad" HorizontalAlignment="Left" Margin="42,370,0,0" VerticalAlignment="Top" Height="50" Width="200" Background="#a2cafc" FontSize="20" BorderBrush="#1963bf"/>
+        <Label Content="ZDRAVO KORPORACIJA" FontSize="25" Margin="388,34,108,445" Foreground="#1963bf" FontWeight="Bold"/>
     </Grid>
 </Window>
