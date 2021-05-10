@@ -5,14 +5,14 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ProjekatSIMS"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="600" d:DesignWidth="780"
       Title="EvidencijaLIjekova"
       >
 
-    <Grid Background="White">
+    <Grid>
         <Label Content="Evidencija lijekova" HorizontalAlignment="Left" Margin="317,10,0,0" VerticalAlignment="Top" FontSize="16"/>
 
-        <DataGrid Name="dataGridVerifikacija" SelectionMode="Single" AutoGenerateColumns="False" Margin="30,96,383,172" IsReadOnly="True"
+        <DataGrid Name="dataGridVerifikacija" SelectionMode="Single" AutoGenerateColumns="False" Margin="30,96,383,254" IsReadOnly="True"
 
                   ScrollViewer.CanContentScroll="True" 
                   ScrollViewer.VerticalScrollBarVisibility="Auto">
@@ -53,7 +53,7 @@
         </DataGrid>
 
 
-        <Border Margin="452,96,24,284" 
+        <Border Margin="452,96,24,362" 
 
                 BorderThickness="1"
                 BorderBrush="Black">
@@ -67,7 +67,7 @@
 
         <DataGrid x:Name="Sastojci" IsReadOnly="True"
 
-                  SelectionMode="Single" AutoGenerateColumns="False" Margin="452,187,192,172"
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="452,264,176,172"
 
                   ScrollViewer.CanContentScroll="True" 
                   ScrollViewer.VerticalScrollBarVisibility="Auto">
@@ -79,7 +79,7 @@
 
         <DataGrid x:Name="AlternativniLijekovi" IsReadOnly="True"
 
-                  SelectionMode="Single" AutoGenerateColumns="False" Margin="620,187,24,172"
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="609,264,24,172"
 
                   ScrollViewer.CanContentScroll="True" 
                   ScrollViewer.VerticalScrollBarVisibility="Auto">

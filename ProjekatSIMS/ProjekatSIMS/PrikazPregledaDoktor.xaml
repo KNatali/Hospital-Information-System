@@ -5,10 +5,10 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ProjekatSIMS"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="600" d:DesignWidth="800"
       Title="PrikazPregledaDoktor">
 
-    <Grid Background="white" Name="Tabela">
+    <Grid  Name="Tabela">
         <DataGrid x:Name="dataGridPregledi" ItemsSource="{Binding Pregledi}" IsReadOnly="True"
                   SelectionMode="Single" AutoGenerateColumns="False" Margin="43,30,54,163"
                   ScrollViewer.CanContentScroll="True" 
@@ -25,11 +25,11 @@
 
             </DataGrid.Columns>
         </DataGrid>
-        <Label Content="NAPOMENA:Obavezno selektovati red u tabeli prije klika na date opcije" HorizontalAlignment="Left" Margin="43,316,0,0" VerticalAlignment="Top"/>
-        <Button Content="Otkazi Pregled" Click="OtkaziPregled"  HorizontalAlignment="Left" Margin="237,347,0,0" VerticalAlignment="Top" Height="39" Width="132" Background="#FFB5CDE2"/>
-        <Button Content="Pomjeri Pregled" Click="IzmijeniPregled"  HorizontalAlignment="Left" Margin="429,347,0,0" VerticalAlignment="Top" Height="39" Width="132" Background="#FFB5CDE2"/>
-        <Button Content="Zdravstveni karton" Click="PrikazProfila"  HorizontalAlignment="Left" Margin="614,347,0,0" VerticalAlignment="Top" Height="39" Width="132" Background="#FFB5CDE2"/>
-        <Button Content="Zapocni pregled" Click="ZapocniPregled"  HorizontalAlignment="Left" Margin="43,347,0,0" VerticalAlignment="Top" Height="37" Width="132" Background="#FF659AC9"/>
+        <Label Content="NAPOMENA:Obavezno selektovati red u tabeli prije klika na date opcije" HorizontalAlignment="Left" Margin="43,445,0,0" VerticalAlignment="Top"/>
+        <Button Content="Otkazi Pregled" Click="OtkaziPregled"  HorizontalAlignment="Left" Margin="237,476,0,0" VerticalAlignment="Top" Height="39" Width="132" Background="#FFB5CDE2"/>
+        <Button Content="Pomjeri Pregled" Click="IzmijeniPregled"  HorizontalAlignment="Left" Margin="429,476,0,0" VerticalAlignment="Top" Height="39" Width="132" Background="#FFB5CDE2"/>
+        <Button Content="Zdravstveni karton" Click="PrikazProfila"  HorizontalAlignment="Left" Margin="614,476,0,0" VerticalAlignment="Top" Height="39" Width="132" Background="#FFB5CDE2"/>
+        <Button Content="Zapocni pregled" Click="ZapocniPregled"  HorizontalAlignment="Left" Margin="43,476,0,0" VerticalAlignment="Top" Height="37" Width="132" Background="#FF659AC9"/>
 
 
 

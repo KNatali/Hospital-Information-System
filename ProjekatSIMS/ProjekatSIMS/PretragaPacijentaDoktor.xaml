@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:ProjekatSIMS"
      
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="600" d:DesignWidth="800"
       Title="PretragaPacijentaDoktor">
 
     <Grid>
@@ -25,8 +25,8 @@
         </ListView>
         <Label Content="Pretrazi pacijenta:" HorizontalAlignment="Left" Margin="277,90,0,0" VerticalAlignment="Top"/>
 
-        <Button Content="Prikaz zdravstevnog kartona" Click="PrikazZdravstvenogKartona" HorizontalAlignment="Left" Margin="520,343,0,0" VerticalAlignment="Top" Height="35" Width="166"/>
-        
+        <Button Content="Prikaz zdravstevnog kartona" Click="PrikazZdravstvenogKartona" HorizontalAlignment="Left" Margin="520,515,0,0" VerticalAlignment="Top" Height="35" Width="166"/>
+
 
 
     </Grid>

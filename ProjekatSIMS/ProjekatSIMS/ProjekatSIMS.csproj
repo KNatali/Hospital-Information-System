@@ -7,6 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Slike\calendar.png" />
+    <None Remove="Slike\date.png" />
+    <None Remove="Slike\doctor.png" />
+    <None Remove="Slike\help.png" />
+    <None Remove="Slike\home.png" />
+    <None Remove="Slike\log-out.png" />
+    <None Remove="Slike\patients.png" />
+  </ItemGroup>
+
+  <ItemGroup>
 
 
 
@@ -21,6 +31,16 @@
     <PackageReference Include="Tulpep.NotificationWindow" Version="1.1.38" />
 
 
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Slike\calendar.png" />
+    <Resource Include="Slike\date.png" />
+    <Resource Include="Slike\doctor.png" />
+    <Resource Include="Slike\help.png" />
+    <Resource Include="Slike\home.png" />
+    <Resource Include="Slike\log-out.png" />
+    <Resource Include="Slike\patients.png" />
   </ItemGroup>
 
   <ItemGroup>

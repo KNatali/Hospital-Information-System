@@ -62,6 +62,24 @@ namespace ProjekatSIMS
             
         }
 
+        private void MojProfil(object sender, RoutedEventArgs e)
+        {
+            DoktorFrame.Content = new ZakaziPregledDoktor();
+
+        }
+
+        private void Odjavljivanje(object sender, RoutedEventArgs e)
+        {
+            DoktorFrame.Content = new ZakaziPregledDoktor();
+
+        }
+
+        private void Pomoc(object sender, RoutedEventArgs e)
+        {
+            DoktorFrame.Content = new ZakaziPregledDoktor();
+
+        }
+
 
     }
 }

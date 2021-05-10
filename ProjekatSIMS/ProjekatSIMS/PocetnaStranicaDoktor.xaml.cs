@@ -21,6 +21,7 @@ namespace ProjekatSIMS
         public PocetnaStranicaDoktor()
         {
             InitializeComponent();
+            
         }
 
         private void PrikazLijekova(object sender, RoutedEventArgs e)
