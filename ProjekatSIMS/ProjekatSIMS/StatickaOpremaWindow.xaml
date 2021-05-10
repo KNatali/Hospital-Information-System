@@ -14,12 +14,12 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <DataGrid x:Name="dgrStatickaOprema" ItemsSource="{Binding Path=oprema}" IsReadOnly="True">
+        <DataGrid x:Name="dgrStatickaOprema" ItemsSource="{Binding oprema}" IsReadOnly="True" AutoGenerateColumns="False" Margin="131,57,116,15">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Binding="{Binding Path=id}"/>
-                <DataGridTextColumn Header="Ime" Binding="{Binding Path =ime}"/>
-                <DataGridTextColumn Header="Kolicina" Binding="{Binding Path =kolicina}"/>
-                <DataGridTextColumn Header="Prostorija" Binding="{Binding Path =prostorija.id}"/>
+                <DataGridTextColumn Header="Id" Binding="{Binding id}" Width="100"/>
+                <DataGridTextColumn Header="Ime" Binding="{Binding ime}" Width="200"/>
+                <DataGridTextColumn Header="Kolicina" Binding="{Binding kolicina}" Width="80"/>
+                <DataGridTextColumn Header="Prostorija" Binding="{Binding prostorija.id}" Width="*"/>
 
             </DataGrid.Columns>
         </DataGrid>
@@ -27,18 +27,18 @@
 
 
 
-        <Label Content="Id" HorizontalAlignment="Left" Margin="54,17,0,0" Grid.Row="1" VerticalAlignment="Top" Width="58" FontSize="20"/>
-        <Label Content="Ime" HorizontalAlignment="Left" Margin="54,60,0,0" Grid.Row="1" VerticalAlignment="Top" Width="58" FontSize="20"/>
-        <Label Content="Kolicina" HorizontalAlignment="Left" Margin="54,102,0,0" Grid.Row="1" VerticalAlignment="Top" Width="96" FontSize="20"/>
-        <Label Content="Prostorija" Margin="381,23,316,139" Grid.Row="1" FontSize="20" />
-        <TextBox Grid.Row="1" Name="Id" Text="{Binding Path=id}" DataContext="{Binding ElementName=dgrStatickaOprema, Path=SelectedItem}" Margin="174,19,461,163" Width="165" Height="35" RenderTransformOrigin="0.418,0.682" />
-        <TextBox Grid.Row="1" Name="Ime" Text="{Binding Path=ime}" DataContext="{Binding ElementName=dgrStatickaOprema, Path=SelectedItem}"  Margin="174,69,462,113" Width="165" Height="35"/>
-        <TextBox Text="{Binding Path=kolicina}" Name ="Kolicina" DataContext="{Binding ElementName=dgrStatickaOprema, Path=SelectedItem}" Margin="174,109,462,73" Width="165" Height="35" Grid.Row="1"/>
+        <Label Content="Id" HorizontalAlignment="Left" Margin="141,18,0,0" Grid.Row="1" VerticalAlignment="Top" Width="48" FontSize="14" Height="34"/>
+        <Label Content="Ime" HorizontalAlignment="Left" Margin="136,75,0,0" Grid.Row="1" VerticalAlignment="Top" Width="58" FontSize="14" RenderTransformOrigin="0.466,0.549"/>
+        <Label Content="Kolicina" HorizontalAlignment="Left" Margin="131,112,0,0" Grid.Row="1" VerticalAlignment="Top" Width="58" FontSize="14"/>
+        <Label Content="Prostorija" Margin="437,25,294,161" Grid.Row="1" FontSize="14" />
+        <TextBox Grid.Row="1" Name="Id" Text="{Binding Path=id}" DataContext="{Binding ElementName=dgrStatickaOprema, Path=SelectedItem}" Margin="216,18,419,164" Width="165" Height="35" RenderTransformOrigin="0.418,0.682" />
+        <TextBox Grid.Row="1" Name="Ime" Text="{Binding Path=ime}" DataContext="{Binding ElementName=dgrStatickaOprema, Path=SelectedItem}"  Margin="216,69,419,113" Width="165" Height="35"/>
+        <TextBox Text="{Binding Path=kolicina}" Name ="Kolicina" DataContext="{Binding ElementName=dgrStatickaOprema, Path=SelectedItem}" Margin="216,109,419,73" Width="165" Height="35" Grid.Row="1"/>
 
 
-        <Button Content="Rasporedi" Click="rasporedi1"  HorizontalAlignment="Left" Margin="73,175,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="0.328,-0.165" Height="29" Width="77"/>
-        <Button Content="Dodaj" Click="dodaj1" HorizontalAlignment="Left" Margin="323,175,0,0" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="29"/>
-        <Button Content="Obrisi" Click="obrisi1" HorizontalAlignment="Left" Margin="547,175,0,0" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="29"/>
+        <Button Content="Rasporedi" Click="rasporedi1"  HorizontalAlignment="Left" Margin="160,175,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="0.328,-0.165" Height="29" Width="77"/>
+        <Button Content="Dodaj" Click="dodaj1" HorizontalAlignment="Center" Margin="0,175,0,0" Grid.Row="1" VerticalAlignment="Top" Width="76" Height="29"/>
+        <Button Content="Obrisi" Click="obrisi1" HorizontalAlignment="Left" Margin="584,175,0,0" Grid.Row="1" VerticalAlignment="Top" Width="78" Height="29"/>
 
         <DatePicker Name="Datum"   HorizontalAlignment="Left" Margin="674,28,0,0" Grid.Row="1" VerticalAlignment="Top"/>
         <ComboBox Name="Prostorije" ItemsSource="{Binding Path=prostorije}" SelectedItem="{Binding Path=prostorija}" HorizontalAlignment="Left" Margin="526,29,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120">
@@ -52,9 +52,15 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        <Label Content="Vreme" HorizontalAlignment="Left" Margin="381,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="75" FontSize="20" Height="36"/>
-        <TextBox Grid.Row="1" Name="Sati" Text=""  Margin="496,91,237,91" Height="36" RenderTransformOrigin="0.418,0.682" Width="75" />
-        <TextBox Grid.Row="1" Name="Minuti" Text=""  Margin="586,91,139,90" Height="36" RenderTransformOrigin="0.418,0.682" Width="75" />
+        <Label Content="Vreme" HorizontalAlignment="Left" Margin="450,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="76" FontSize="14" Height="36"/>
+        <TextBox Grid.Row="1" Name="Sati" Text=""  Margin="547,91,178,90" Height="36" RenderTransformOrigin="0.418,0.682" Width="75" />
+        <TextBox Grid.Row="1" Name="Minuti" Text=""  Margin="650,91,75,90" Height="36" RenderTransformOrigin="0.418,0.682" Width="75" />
+
+
+        <TextBox Name="Pretraga"  HorizontalAlignment="Left" Margin="563,24,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20"/>
+        <Button Content="Pretrazi" Click="pretrazi" HorizontalAlignment="Left" Margin="703,24,0,0" VerticalAlignment="Top" Width="45" Height="20" RenderTransformOrigin="0.464,-0.293"/>
+        <Button  Content="Ponisti filtere" Click="ponisti"  HorizontalAlignment="Left" Margin="703,75,0,0" VerticalAlignment="Top"/>
+
 
 
 

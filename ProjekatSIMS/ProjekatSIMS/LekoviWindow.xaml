@@ -1,0 +1,36 @@
+﻿<Window x:Class="ProjekatSIMS.LekoviWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjekatSIMS"
+        mc:Ignorable="d"
+        Title="LekoviWindow" Height="400" Width="700">
+    <Grid>
+        <DataGrid x:Name="dgrLekovi" ItemsSource="{Binding Lekovi}"  Margin="142,55,50,165" IsReadOnly="True" ScrollViewer.CanContentScroll="True" 
+                  ScrollViewer.VerticalScrollBarVisibility="Auto" SelectionMode="Single" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Naziv leka" Binding="{Binding NazivLeka}" Width="150"/>
+                <DataGridTextColumn Header="Opis leka" Binding="{Binding Opis}" Width="*"  />
+               
+
+            </DataGrid.Columns>
+
+
+
+        </DataGrid>
+        <Button Content="Obrisi lek" Click="obrisi" HorizontalAlignment="Left" Margin="356,344,0,0" VerticalAlignment="Top" Width="80" Height="30"/>
+        <Button Content="Pregledaj lek" Click="pregledaj"  HorizontalAlignment="Left" Margin="334,248,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.328,-0.165" Height="30" Width="124"/>
+        <Button Content="Dodaj lek" Click="dodaj" HorizontalAlignment="Left" Margin="361,296,0,0" VerticalAlignment="Top" Width="70" Height="30"/>
+
+
+
+
+
+
+
+
+
+
+    </Grid>
+</Window>

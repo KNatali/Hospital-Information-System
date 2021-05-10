@@ -5,9 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjekatSIMS"
         mc:Ignorable="d"
-        Title="DoktorWindow" Height="500" Width="980">
+        Title="DoktorWindow" Height="500" Width="980"
+        WindowStartupLocation="CenterScreen">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="89*"/>
+            <RowDefinition Height="32*"/>
+        </Grid.RowDefinitions>
         <Label Content="Doktor" HorizontalAlignment="Left" Margin="47,34,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
         <Button Content="Zakazi pregled" Click="ZakaziPregled" HorizontalAlignment="Left" Margin="1,214,0,0" VerticalAlignment="Top" Height="54" Width="168" Background="#FFB5CDE2"/>
         <Button Content="Prikaz zakazanih pregleda" Click="PrikazPregleda" HorizontalAlignment="Left" Margin="1,96,0,0" VerticalAlignment="Top" Height="54" Width="168" Background="#FFB5CDE2"/>
@@ -16,8 +21,14 @@
 
 
 
-        <Button Content="Pretraga pacijenata" Click="PretraziPacijenta" HorizontalAlignment="Left" VerticalAlignment="Top" Height="54" Width="168" Background="#FFB5CDE2" RenderTransformOrigin="0.485,0.575" Margin="0,332,0,0"/>
-        <Frame x:Name="DoktorFrame" Margin="184,0,0,0"/>
+        <Button Content="Pretraga pacijenata" Click="PretraziPacijenta" HorizontalAlignment="Left" VerticalAlignment="Top" Height="54" Width="168" Background="#FFB5CDE2" RenderTransformOrigin="0.485,0.575" Margin="2,334,0,0" Grid.RowSpan="2"/>
+        <Button Content="Pocetna stranica" Click="PocetnaStranica" HorizontalAlignment="Left" VerticalAlignment="Top" Height="54" Width="168" Background="#FFB5CDE2" RenderTransformOrigin="0.485,0.575" Margin="2,39,0,0" Grid.Row="1"/>
+
+
+
+
+        <Frame x:Name="DoktorFrame" Margin="184,0,0,0" Grid.RowSpan="2"/>
+
 
     </Grid>
 

@@ -8,14 +8,13 @@ namespace Repository
 {
    public class PregledRepository
    {
-        private String lokacija;
+        private String lokacija = @"..\..\..\Fajlovi\Pregled.txt";
 
         private List<ZdravsteniKarton> zk;
 
         private List<Pregled> pregledi;
 
-        private String LokacijaFajla;
-        
+      
         private const string putanja = @"..\..\..\Fajlovi\Pregled.txt";
        
 
@@ -117,6 +116,19 @@ namespace Repository
             return pregledi;
         }
 
+        public List<Pregled> DobaviZakazanePreglede()
+        {
+            List<Pregled> sviPregledi = DobaviSvePregledeDoktor();
+            List<Pregled> zakazaniPregledi = new List<Pregled>();
+            foreach (Pregled p in sviPregledi)
+            {
+                if (p.StatusPregleda == StatusPregleda.Zakazan)
+                    zakazaniPregledi.Add(p);
+
+            }
+            return zakazaniPregledi;
+        }
+
 
         public void SacuvajPregledPacijent(List<Pregled> pregledi)
         {
@@ -128,11 +140,26 @@ namespace Repository
     
 
       
-      public void SacuvajPregledDoktor(List<Pregled> pregledi)
+      public void SacuvajPregledeDoktor(List<Pregled> pregledi)
       {
 
             string newJson = JsonConvert.SerializeObject(pregledi);
             File.WriteAllText(putanja, newJson);
+      }
+
+      public void SacuvajPregledDoktor(Pregled pregled)
+        {
+            List<Pregled> sviPregledi = DobaviSvePregledeDoktor();
+            if (sviPregledi.Count == 0)
+            {
+                pregled.Id = 1;
+            }
+            else
+            {
+                pregled.Id = sviPregledi[sviPregledi.Count - 1].Id + 1;
+            }
+            sviPregledi.Add(pregled);
+            SacuvajPregledeDoktor(sviPregledi);
         }
    
 }

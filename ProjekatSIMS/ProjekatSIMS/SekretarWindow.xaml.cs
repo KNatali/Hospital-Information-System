@@ -62,7 +62,8 @@ namespace ProjekatSIMS
 
         private void Hitna(object sender, RoutedEventArgs e)
         {
-
+            OdabirPacijentaHitnoSWindow op = new OdabirPacijentaHitnoSWindow();
+            op.Show();
         }
     }
 }

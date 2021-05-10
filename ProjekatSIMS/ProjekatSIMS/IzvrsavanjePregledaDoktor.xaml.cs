@@ -54,11 +54,20 @@ namespace ProjekatSIMS
                     break;
                 }
             }
-            pregledRepository.SacuvajPregledDoktor(pregledi);
+            pregledRepository.SacuvajPregledeDoktor(pregledi);
             this.NavigationService.Navigate(new Uri("PrikazPregledaDoktor.xaml", UriKind.Relative));
 
         }
 
+        private void IzdavanjeUputa(object sender, RoutedEventArgs e)
+        {
+            IzdavanjeUputaDoktor z = new IzdavanjeUputaDoktor(pregled.pacijent);
+            // this.NavigationService.Navigate(new Uri("ZdravstveniKartonDoktor.xaml", UriKind.Relative));
+            this.NavigationService.Navigate(z);
+        }
+
         public PregledRepository pregledRepository;
     }
+
+
 }

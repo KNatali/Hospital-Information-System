@@ -54,5 +54,14 @@ namespace ProjekatSIMS
  
 
         }
+
+        private void PocetnaStranica(object sender, RoutedEventArgs e)
+        {
+            DoktorFrame.Content = new PocetnaStranicaDoktor();
+
+            
+        }
+
+
     }
 }

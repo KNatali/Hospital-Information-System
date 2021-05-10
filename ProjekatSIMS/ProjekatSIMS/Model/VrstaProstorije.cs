@@ -13,7 +13,8 @@ namespace Model
         Soba,
         Ordinacija,
         Magacin,
-        Kancelarija
+        Kancelarija,
+        GlavniMagacin
 
     }
 

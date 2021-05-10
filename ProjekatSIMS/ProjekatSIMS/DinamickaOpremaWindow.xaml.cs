@@ -46,7 +46,7 @@ namespace ProjekatSIMS
             inventar.id = Convert.ToInt32(Id.Text);
             inventar.ime = Ime.Text;
             inventar.kolicina = Convert.ToInt32(Kolicina.Text);
-            inventar.Staticka = true;
+            inventar.Staticka = false;
             
             CuvanjeProstorija cuvanje = new CuvanjeProstorija(@"..\..\Fajlovi\Prostorije.txt");
             List<Prostorija> prostorije = new List<Prostorija>();
@@ -153,6 +153,55 @@ namespace ProjekatSIMS
             MessageBox.Show("Inventar je rasporedjen!");
             this.Close();
 
+        }
+
+        private void pretrazi(object sender, RoutedEventArgs e)
+        {
+            List<Inventar> oprema = new List<Inventar>();
+
+            CuvanjeProstorija cuvanje = new CuvanjeProstorija(@"..\..\Fajlovi\Prostorije.txt");
+            List<Prostorija> prostorije = new List<Prostorija>();
+            prostorije = cuvanje.UcitajProstorije();
+            foreach (Prostorija p in prostorije)
+            {
+                if (Convert.ToInt32(p.id) == 0)
+                {
+                    oprema = p.inventar;
+                }
+            }
+            List<Inventar> noviInventar = new List<Inventar>();
+            foreach(Inventar i in oprema)
+            {
+              if(i.ime.Equals(Pretraga.Text, StringComparison.OrdinalIgnoreCase))
+                {
+                    noviInventar.Add(i);
+                }
+            }
+            dgrDinamickaOprema.ItemsSource = noviInventar;
+
+            
+        }
+
+        private void ponisti(object sender, RoutedEventArgs e)
+        {
+            List<Inventar> oprema = new List<Inventar>();
+
+
+
+
+
+            CuvanjeProstorija cuvanje = new CuvanjeProstorija(@"..\..\Fajlovi\Prostorije.txt");
+            List<Prostorija> prostorije = new List<Prostorija>();
+            prostorije = cuvanje.UcitajProstorije();
+            foreach (Prostorija p in prostorije)
+            {
+                if (Convert.ToInt32(p.id) == 0)
+                {
+                    oprema = p.inventar;
+                }
+            }
+            Pretraga.Text = "";
+            dgrDinamickaOprema.ItemsSource = oprema;
         }
     }
 }
