@@ -8,16 +8,16 @@
         mc:Ignorable="d"
         Title="NovaObjavaSWindow" Height="568" Width="924" Background="#d1e3ff">
     <Grid>
-        <Label Margin="362,91,322,423">
+        <Label Margin="362,89,260,381">
             <StackPanel Orientation="Horizontal">
                 <fa:ImageAwesome Icon="Bell" Width="22" Foreground="#1963bf"/>
                 <TextBlock Text=" Novo obaveštenje" FontSize="22" Foreground="#1963bf" FontWeight="Bold" Width="225"/>
             </StackPanel>
         </Label>
-        <Label Content="Tekst" HorizontalAlignment="Left" FontSize="25"  Height="50" Margin="60,212,0,0" VerticalAlignment="Top" Width="75" Foreground="#1963bf" FontWeight="DemiBold"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Tekst" FontSize="25" Margin="179,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="661" Height="151" BorderBrush="#1963bf" Foreground="#1963bf"/>
-        <Label Content="Naslov" HorizontalAlignment="Left" FontSize="25"  Height="45" Margin="60,162,0,0" VerticalAlignment="Top" Width="100" Foreground="#1963bf" FontWeight="DemiBold"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Naslov" FontSize="25" Margin="179,164,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="661" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <Label Content="Tekst" HorizontalAlignment="Left" FontSize="25"  Height="50" Margin="60,216,0,0" VerticalAlignment="Top" Width="75" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Tekst" FontSize="25" Margin="179,218,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="661" Height="151" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <Label Content="Naslov" HorizontalAlignment="Left" FontSize="25"  Height="45" Margin="60,166,0,0" VerticalAlignment="Top" Width="100" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Naslov" FontSize="25" Margin="179,168,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="661" BorderBrush="#1963bf" Foreground="#1963bf"/>
         <Button Content="Otkaži" Click="Nazad" HorizontalAlignment="Left" Margin="60,440,0,0" VerticalAlignment="Top" Height="50" Width="200" Background="#a2cafc" FontSize="20" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
         <Button Content="Postavi obaveštenje" Click="Sacuvaj" HorizontalAlignment="Left" Margin="640,440,0,0" VerticalAlignment="Top" Height="50" Width="200" Background="#a2cafc" FontSize="20" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
         <Label Margin="239,21,401,448">

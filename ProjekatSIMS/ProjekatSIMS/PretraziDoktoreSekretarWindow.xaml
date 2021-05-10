@@ -12,9 +12,9 @@
         <Button Content="Pretraži" Click="Pretraga" HorizontalAlignment="Left" Margin="129,282,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
         <Button Content="Prikaži sve" Click="Prikaz" HorizontalAlignment="Left" Margin="684,450,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
         <Label Content="Ime" HorizontalAlignment="Left" FontSize="25" Height="43" Margin="60,142,0,0" VerticalAlignment="Top" Width="72" Foreground="#1963bf" FontWeight="DemiBold"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Ime" FontSize="25" Margin="180,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Ime" FontSize="25" Margin="180,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" BorderBrush="#1963bf" Foreground="#1963bf"/>
         <Label Content="Prezime" HorizontalAlignment="Left" FontSize="25" Height="49" Margin="60,201,0,0" VerticalAlignment="Top" Width="110" Foreground="#1963bf" FontWeight="DemiBold"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Prezime" FontSize="25" Margin="180,208,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Prezime" FontSize="25" Margin="180,208,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" BorderBrush="#1963bf" Foreground="#1963bf"/>
 
         <Label Width="252" VerticalAlignment="Top" Margin="0,85,0,0" Height="50" HorizontalAlignment="Center" FontSize="22" Foreground="#1963bf" FontWeight="Bold" Content="Pretražite listu doktora"/>
         <Label Content="Kliknite dva puta na doktora u tabeli da biste videli njegov profil" x:Name="Labela" Visibility="Hidden" HorizontalAlignment="Left" Margin="376,120,0,0" VerticalAlignment="Top" FontSize="18" Foreground="#1963bf" Height="40" Width="556"/>

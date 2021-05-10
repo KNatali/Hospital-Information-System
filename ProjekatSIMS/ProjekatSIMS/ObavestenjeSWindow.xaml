@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="ObavestenjeSWindow" Height="568" Width="924" Background="#d1e3ff">
     <Grid>
-        <Label Margin="388,91,354,424">
+        <Label Margin="388,91,322,398">
             <StackPanel Orientation="Horizontal">
                 <fa:ImageAwesome Icon="Bell" Width="20" Foreground="#1963bf"/>
                 <TextBlock Text=" Obaveštenje" FontSize="22" Foreground="#1963bf" FontWeight="Bold" Width="164"/>
