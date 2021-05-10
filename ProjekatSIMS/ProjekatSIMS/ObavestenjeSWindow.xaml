@@ -8,21 +8,21 @@
         mc:Ignorable="d"
         Title="ObavestenjeSWindow" Height="568" Width="924" Background="#d1e3ff">
     <Grid>
-        <Label Margin="388,85,381,430">
+        <Label Margin="388,91,354,424">
             <StackPanel Orientation="Horizontal">
                 <fa:ImageAwesome Icon="Bell" Width="20" Foreground="#1963bf"/>
-                <TextBlock Text=" Obaveštenje" FontSize="20" Foreground="#1963bf" FontWeight="Bold"/>
+                <TextBlock Text=" Obaveštenje" FontSize="22" Foreground="#1963bf" FontWeight="Bold" Width="164"/>
             </StackPanel>
         </Label>
-        <Label Content="Tekst" HorizontalAlignment="Left" FontSize="25"  Height="44" Margin="60,198,0,0" VerticalAlignment="Top" Width="75"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Tekst" FontSize="25" Margin="220,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="642" Height="118"/>
-        <Label Content="Naslov" HorizontalAlignment="Left" FontSize="25"  Height="45" Margin="60,140,0,0" VerticalAlignment="Top" Width="100"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Naslov" FontSize="25" Margin="220,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="642"/>
-        <Label Content="Objavljeno" Grid.Column="0" FontSize="25" HorizontalAlignment="Left" Height="58" Margin="60,326,0,0" VerticalAlignment="Top" Width="132"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Datum" FontSize="25" Margin="220,332,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="350"/>
-        <Button Content="Sačuvaj izmene" Click="Sacuvaj" HorizontalAlignment="Left" Margin="660,450,0,0" VerticalAlignment="Top" Height="50" Width="200" Background="#a2cafc" FontSize="20" BorderBrush="#1963bf"/>
-        <Button Content="Obriši obaveštenje" Click="Obrisi" HorizontalAlignment="Left" Margin="370,450,0,0" VerticalAlignment="Top" Height="50" Width="200" Background="#a2cafc" FontSize="20" BorderBrush="#1963bf"/>
-        <Button Content="Početna strana" Click="Nazad" HorizontalAlignment="Left" Margin="60,450,0,0" VerticalAlignment="Top" Height="50" Width="200" Background="#a2cafc" FontSize="20" BorderBrush="#1963bf"/>
+        <Label Content="Tekst" HorizontalAlignment="Left" FontSize="25"  Height="44" Margin="60,198,0,0" VerticalAlignment="Top" Width="75" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Tekst" FontSize="25" Margin="220,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="642" Height="118" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <Label Content="Naslov" HorizontalAlignment="Left" FontSize="25"  Height="45" Margin="60,140,0,0" VerticalAlignment="Top" Width="100" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Naslov" FontSize="25" Margin="220,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="642" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <Label Content="Objavljeno" Grid.Column="0" FontSize="25" HorizontalAlignment="Left" Height="58" Margin="60,326,0,0" VerticalAlignment="Top" Width="132" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Datum" FontSize="25" Margin="220,332,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="350" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <Button Content="Sačuvaj izmene" Click="Sacuvaj" HorizontalAlignment="Left" Margin="660,450,0,0" VerticalAlignment="Top" Height="50" Width="200" Background="#a2cafc" FontSize="20" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <Button Content="Obriši obaveštenje" Click="Obrisi" HorizontalAlignment="Left" Margin="370,450,0,0" VerticalAlignment="Top" Height="50" Width="200" Background="#a2cafc" FontSize="20" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <Button Content="Početna strana" Click="Nazad" HorizontalAlignment="Left" Margin="60,450,0,0" VerticalAlignment="Top" Height="50" Width="200" Background="#a2cafc" FontSize="20" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
         <Label Margin="239,21,401,448">
             <StackPanel Orientation="Horizontal">
                 <fa:ImageAwesome Icon="Globe" Width="60" Foreground="#1963bf"/>

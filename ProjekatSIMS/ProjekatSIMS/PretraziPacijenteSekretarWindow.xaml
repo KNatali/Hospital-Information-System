@@ -8,16 +8,16 @@
         mc:Ignorable="d"
         Title="PretraziPacijenteSekretarWindow" Height="568" Width="924" Background="#d1e3ff">
     <Grid>
-        <Button Content="Početna strana" Click="Nazad" HorizontalAlignment="Left" Margin="399,450,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
-        <Button Content="Pretraži" Click="Pretraga" HorizontalAlignment="Left" Margin="129,282,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
-        <Button Content="Prikaži sve" Click="Prikaz" HorizontalAlignment="Left" Margin="684,450,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
-        <Label Content="Ime" HorizontalAlignment="Left" FontSize="25" Height="43" Margin="60,152,0,0" VerticalAlignment="Top" Width="72"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Ime" FontSize="25" Margin="180,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170"/>
-        <Label Content="Prezime" HorizontalAlignment="Left" FontSize="25" Height="55" Margin="60,208,0,0" VerticalAlignment="Top" Width="110"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Prezime" FontSize="25" Margin="180,208,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170"/>
+        <Button Content="Početna strana" Click="Nazad" HorizontalAlignment="Left" Margin="399,450,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <Button Content="Pretraži" Click="Pretraga" HorizontalAlignment="Left" Margin="129,282,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <Button Content="Prikaži sve" Click="Prikaz" HorizontalAlignment="Left" Margin="684,450,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <Label Content="Ime" HorizontalAlignment="Left" FontSize="25" Height="43" Margin="60,152,0,0" VerticalAlignment="Top" Width="72" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Ime" FontSize="25" Margin="180,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <Label Content="Prezime" HorizontalAlignment="Left" FontSize="25" Height="55" Margin="60,208,0,0" VerticalAlignment="Top" Width="110" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Prezime" FontSize="25" Margin="180,208,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" BorderBrush="#1963bf" Foreground="#1963bf"/>
 
-        <DataGrid x:Name="dataGridPacijenti" ItemsSource="{Binding Pacijenti}" IsReadOnly="True" Visibility="Hidden" 
-                  SelectionMode="Single" AutoGenerateColumns="False" Margin="399,152,60,144" FontSize="20">
+        <DataGrid x:Name="dataGridPacijenti" ItemsSource="{Binding Pacijenti}" IsReadOnly="True" Visibility="Hidden"
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="399,152,60,144" FontSize="20" Foreground="#1963bf" FontWeight="DemiBold">
             <DataGrid.Columns>
 
                 <DataGridTextColumn Header="Ime" Binding="{Binding Ime}" Width="*"/>
@@ -32,8 +32,8 @@
             </DataGrid.ItemContainerStyle>
         </DataGrid>
 
-        <Label Width="252" VerticalAlignment="Top" Margin="350,86,0,0" Height="50" HorizontalAlignment="Left" FontSize="20" Foreground="#1963bf" FontWeight="Bold" Content="Pretražite listu pacijenata"/>
-        <Label Content="Kliknite dva puta na pacijenta u tabeli da biste videli njegov profil" x:Name="Labela" Visibility="Hidden"  HorizontalAlignment="Left" Margin="412,120,0,0" VerticalAlignment="Top" FontSize="15" Foreground="#1963bf" Height="39" Width="440"/>
+        <Label Width="282" VerticalAlignment="Top" Margin="350,86,0,0" Height="50" HorizontalAlignment="Left" FontSize="22" Foreground="#1963bf" FontWeight="Bold" Content="Pretražite listu pacijenata"/>
+        <Label Content="Kliknite dva puta na pacijenta u tabeli da biste videli njegov profil" x:Name="Labela"  Visibility="Hidden" HorizontalAlignment="Left" Margin="364,120,0,0" VerticalAlignment="Top" FontSize="18" Foreground="#1963bf" Height="39" Width="557"/>
         <Label Margin="239,21,401,448">
             <StackPanel Orientation="Horizontal">
                 <fa:ImageAwesome Icon="Globe" Width="60" Foreground="#1963bf"/>

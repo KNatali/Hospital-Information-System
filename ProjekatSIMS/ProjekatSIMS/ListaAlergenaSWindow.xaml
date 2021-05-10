@@ -8,18 +8,18 @@
         mc:Ignorable="d"
         Title="ListaAlergenaSWindow" Height="568" Width="924" Background="#d1e3ff">
     <Grid>
-        <DataGrid x:Name="dataGridAlergeni" ItemsSource="{Binding Alergeni1}" IsReadOnly="True" FontSize="20"
-                  SelectionMode="Single" AutoGenerateColumns="False" Margin="60,142,60,161">
+        <DataGrid x:Name="dataGridAlergeni" ItemsSource="{Binding Alergeni1}" IsReadOnly="True" FontSize="25"
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="60,142,60,161" BorderBrush="#1963bf" Foreground="#1963bf">
             <DataGrid.Columns>
 
                 <DataGridTextColumn Header="Naziv alergena" Binding="{Binding}" Width="*"/>
 
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Nazad na profil" Click="Nazad" HorizontalAlignment="Left" Margin="60,440,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
-        <Button Content="Dodaj novi" Click="Dodavanje" HorizontalAlignment="Left" Margin="684,440,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
+        <Button Content="Nazad na profil" Click="Nazad" HorizontalAlignment="Left" Margin="60,440,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <Button Content="Dodaj novi" Click="Dodavanje" HorizontalAlignment="Left" Margin="684,440,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
 
-        <Label Width="252" VerticalAlignment="Top" Margin="362,87,0,0" Height="50" HorizontalAlignment="Left" FontSize="20" Foreground="#1963bf" FontWeight="Bold" Content="Lista alergena pacijenta"/>
+        <Label Width="265" VerticalAlignment="Top" Margin="362,87,0,0" Height="50" HorizontalAlignment="Left" FontSize="22" Foreground="#1963bf" FontWeight="Bold" Content="Lista alergena pacijenta"/>
         <Label Margin="239,21,401,448">
             <StackPanel Orientation="Horizontal">
                 <fa:ImageAwesome Icon="Globe" Width="60" Foreground="#1963bf"/>

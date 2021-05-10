@@ -9,9 +9,9 @@
         Title="OglasnaTablaSWindow" Height="568" Width="924" Background="#d1e3ff">
     <Grid>
 
-        <Label Width="160" VerticalAlignment="Top" Margin="386,87,0,0" Height="50" HorizontalAlignment="Left" FontSize="20" Foreground="#1963bf" FontWeight="Bold" Content="Oglasna tabla"/>
+        <Label Width="160" VerticalAlignment="Top" Margin="386,87,0,0" Height="50" HorizontalAlignment="Left" FontSize="22" Foreground="#1963bf" FontWeight="Bold" Content="Oglasna tabla"/>
         <DataGrid x:Name="dataGridObavestenja" ItemsSource="{Binding Obavestenja}" IsReadOnly="True"
-                  SelectionMode="Single" AutoGenerateColumns="False" Margin="60,158,60,115" FontSize="20">
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="60,158,60,115" FontSize="20" BorderBrush="#1963bf" Foreground="#1963bf">
             <DataGrid.Columns>
 
                 <DataGridTextColumn Header="Naslov" Binding="{Binding Naslov}" Width="200"/>
@@ -25,9 +25,9 @@
                 </Style>
             </DataGrid.ItemContainerStyle>
         </DataGrid>
-        <Label Content="Kliknite dva puta na obaveštenje u tabeli kako biste ga pregledali" HorizontalAlignment="Left" Margin="60,127,0,0" VerticalAlignment="Top" FontSize="15" Foreground="#1963bf" Height="39" Width="446"/>
-        <Button Content="Početna strana" Click="Nazad" HorizontalAlignment="Left" Margin="60,480,0,0" VerticalAlignment="Top" Height="50" Width="200" Background="#a2cafc" FontSize="20" BorderBrush="#1963bf"/>
-        <Button Content="Nova objava" Click="Novo" HorizontalAlignment="Left" Margin="664,480,0,0" VerticalAlignment="Top" Height="50" Width="200" Background="#a2cafc" FontSize="20" BorderBrush="#1963bf"/>
+        <Label Content="Kliknite dva puta na obaveštenje u tabeli kako biste ga pregledali" HorizontalAlignment="Left" Margin="60,127,0,0" VerticalAlignment="Top" FontSize="18" Foreground="#1963bf" Height="39" Width="542"/>
+        <Button Content="Početna strana" Click="Nazad" HorizontalAlignment="Left" Margin="60,480,0,0" VerticalAlignment="Top" Height="50" Width="200" Background="#a2cafc" FontSize="20" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <Button Content="Nova objava" Click="Novo" HorizontalAlignment="Left" Margin="664,480,0,0" VerticalAlignment="Top" Height="50" Width="200" Background="#a2cafc" FontSize="20" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
         <Label Margin="239,21,401,448">
             <StackPanel Orientation="Horizontal">
                 <fa:ImageAwesome Icon="Globe" Width="60" Foreground="#1963bf"/>

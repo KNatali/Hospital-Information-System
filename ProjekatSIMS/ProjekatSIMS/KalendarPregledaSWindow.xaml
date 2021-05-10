@@ -8,8 +8,8 @@
         mc:Ignorable="d"
         Title="KalendarPregledaSWindow" Height="568" Width="924" Background="#d1e3ff">
     <Grid>
-        <DataGrid x:Name="dataGridPregledi" ItemsSource="{Binding Pregledi}" IsReadOnly="True"
-                  SelectionMode="Single" FontSize="20" AutoGenerateColumns="False" Margin="60,130,60,140">
+        <DataGrid x:Name="dataGridPregledi" ItemsSource="{Binding Pregledi}" IsReadOnly="True" BorderBrush="#1963bf" Foreground="#1963bf"
+                  SelectionMode="Single" FontSize="20" AutoGenerateColumns="False" Margin="60,148,60,137">
             <DataGrid.Columns>
 
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="40"/>
@@ -27,10 +27,10 @@
                 </Style>
             </DataGrid.ItemContainerStyle>
         </DataGrid>
-        <Button Content="Otkaži pregled" Click="Otkazi" HorizontalAlignment="Left" Margin="684,440,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
-        <Label Width="318" VerticalAlignment="Top" Margin="0,71,0,0" Height="50" HorizontalAlignment="Center" FontSize="20" Foreground="#1963bf" FontWeight="Bold" Content="Kalendar svih zakazanih termina"/>
-        <Button Content="Početna strana" Click="Nazad" HorizontalAlignment="Left" Margin="60,440,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
-        <Label Content="Kliknite dva puta na zakazani termin u tabeli kako biste ga izmenili" HorizontalAlignment="Left" Margin="30,102,0,0" VerticalAlignment="Top" FontSize="15" Foreground="#1963bf" Height="39" Width="495"/>
+        <Button Content="Otkaži pregled" Click="Otkazi" HorizontalAlignment="Left" Margin="684,440,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <Label Width="346" VerticalAlignment="Top" Margin="311,79,0,0" Height="50" HorizontalAlignment="Left" FontSize="22" Foreground="#1963bf" FontWeight="Bold" Content="Kalendar svih zakazanih termina"/>
+        <Button Content="Početna strana" Click="Nazad" HorizontalAlignment="Left" Margin="60,440,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <Label Content="Kliknite dva puta na zakazani termin u tabeli kako biste ga izmenili" HorizontalAlignment="Left" Margin="60,112,0,0" VerticalAlignment="Top" FontSize="18" Foreground="#1963bf" Height="49" Width="550"/>
         <Label Margin="239,21,401,448">
             <StackPanel Orientation="Horizontal">
                 <fa:ImageAwesome Icon="Globe" Width="60" Foreground="#1963bf"/>

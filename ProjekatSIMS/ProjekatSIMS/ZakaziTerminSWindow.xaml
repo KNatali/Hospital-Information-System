@@ -8,11 +8,11 @@
         mc:Ignorable="d"
         Title="ZakaziTerminSWindow" Height="568" Width="924" Background="#d1e3ff">
     <Grid>
-        <Label Content="Kod doktora:" HorizontalAlignment="Left" FontSize="25" Height="49" Margin="154,180,0,0" VerticalAlignment="Top" Width="160"/>
+        <Label Content="Kod doktora:" HorizontalAlignment="Left" FontSize="25" Height="49" Margin="154,180,0,0" VerticalAlignment="Top" Width="160" Foreground="#1963bf" FontWeight="DemiBold"/>
         <ComboBox  Name="Doktor" HorizontalAlignment="Left" 
                   Margin="401,185,0,0"   
                   VerticalAlignment="Top"   
-                  Width="415" FontSize="25"  
+                  Width="444" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf"
                   ItemsSource="{Binding Path=Doktori}">
 
             <ComboBox.ItemTemplate>
@@ -27,18 +27,18 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        <Label Content="Datum termina" HorizontalAlignment="Left" FontSize="25" Height="51" Margin="154,248,0,0" VerticalAlignment="Top" Width="176"/>
-        <DatePicker HorizontalAlignment="Left" x:Name="Datum" FontSize="25" Margin="401,248,0,0" VerticalAlignment="Top" Width="201" Height="48"/>
-        <Label Content="Vreme termina" HorizontalAlignment="Left" FontSize="25" Height="48" Margin="154,309,0,0" VerticalAlignment="Top" Width="174"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Sat" FontSize="25" Text="Sati" Margin="401,317,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="156"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Minut" FontSize="25" Text="Minuta" Margin="622,315,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="156"/>
-        <Label Width="318" VerticalAlignment="Top" Margin="0,103,0,0" Height="49" HorizontalAlignment="Center" FontSize="22" Foreground="#1963bf" FontWeight="Bold" Content="Zakažite pregled pacijentu"/>
-        <Button Content="Otkaži" Click="Otkazi" HorizontalAlignment="Left" Margin="80,460,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
-        <Button Content="Zakaži" Click="Zakazi" HorizontalAlignment="Left" Margin="665,460,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
-        <Label Content="Tip pregleda" HorizontalAlignment="Left" FontSize="25" Height="54" Margin="154,371,0,0" VerticalAlignment="Top" Width="156"/>
+        <Label Content="Datum termina" HorizontalAlignment="Left" FontSize="25" Height="51" Margin="154,248,0,0" VerticalAlignment="Top" Width="190" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <DatePicker HorizontalAlignment="Left" x:Name="Datum" FontSize="25" Margin="401,248,0,0" VerticalAlignment="Top" Width="201" Height="48" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <Label Content="Vreme termina" HorizontalAlignment="Left" FontSize="25" Height="48" Margin="154,309,0,0" VerticalAlignment="Top" Width="187" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Sat" FontSize="25" Text="Sati" Margin="401,317,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="156" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Minut" FontSize="25" Text="Minuta" Margin="622,315,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="156" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <Label Width="293" VerticalAlignment="Top" Margin="0,103,0,0" Height="49" HorizontalAlignment="Center" FontSize="22" Foreground="#1963bf" FontWeight="Bold" Content="Zakažite pregled pacijentu"/>
+        <Button Content="Otkaži" Click="Otkazi" HorizontalAlignment="Left" Margin="80,460,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <Button Content="Zakaži" Click="Zakazi" HorizontalAlignment="Left" Margin="665,460,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <Label Content="Tip pregleda" HorizontalAlignment="Left" FontSize="25" Height="54" Margin="154,371,0,0" VerticalAlignment="Top" Width="156" Foreground="#1963bf" FontWeight="DemiBold"/>
         <ComboBox x:Name="Pregledi" HorizontalAlignment="Left"   
                   Margin="401,373,0,0"   
-                  VerticalAlignment="Top"   
+                  VerticalAlignment="Top" BorderBrush="#1963bf" Foreground="#1963bf"
                   Width="201" FontSize="25" SelectionChanged="IzborPregleda">
         </ComboBox>
         <ComboBox  Name="Termin" HorizontalAlignment="Left"   
@@ -46,11 +46,11 @@
                   VerticalAlignment="Top" FontSize="20"
                   Width="155">
         </ComboBox>
-        <Label Content="Sala" x:Name="ImeSale" HorizontalAlignment="Left" FontSize="20" Visibility="Hidden" Margin="134,297,0,0" VerticalAlignment="Top" Height="44" Width="72"/>
+        <Label Content="Sala" x:Name="ImeSale" HorizontalAlignment="Left" FontSize="25" Visibility="Hidden" Margin="628,371,0,0" VerticalAlignment="Top" Height="44" Width="72" Foreground="#1963bf" FontWeight="DemiBold"/>
         <ComboBox  x:Name="Ordinacija" HorizontalAlignment="Left"   
-            Margin="346,301,0,0"   
-            VerticalAlignment="Top"   
-            Width="156" FontSize="20" Visibility="Hidden"
+            Margin="705,373,0,0"   
+            VerticalAlignment="Top"   Visibility="Hidden"
+            Width="140" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf"
             ItemsSource="{Binding Ordinacije}">
 
             <ComboBox.ItemTemplate>
@@ -70,11 +70,11 @@
                 <fa:ImageAwesome Icon="UserMd" Width="37" Foreground="#1963bf"/>
             </StackPanel>
         </Label>
-        <Label Margin="255,37,381,342">
+        <Label Margin="255,37,381,462">
             <StackPanel Orientation="Horizontal">
                 <fa:ImageAwesome Icon="Heart" Width="15" Foreground="#b31a0c"/>
             </StackPanel>
         </Label>
-        <Label Content="ZDRAVO KORPORACIJA" FontSize="25" Margin="388,34,108,370" Foreground="#1963bf" FontWeight="Bold"/>
+        <Label Content="ZDRAVO KORPORACIJA" FontSize="25" Margin="388,34,108,462" Foreground="#1963bf" FontWeight="Bold"/>
     </Grid>
 </Window>

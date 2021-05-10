@@ -75,20 +75,6 @@ namespace ProjekatSIMS
             return p;
         }
 
-        private void Prikaz(object sender, RoutedEventArgs e)
-        {
-            ComboBoxItem cbi = (ComboBoxItem)Nalog.SelectedItem;
-            string opcija = cbi.Content.ToString();
-            if (opcija == "Kreiraj hitan nalog")
-            {
-                PrikaPoljaZaKreiranjeHitnogNaloga();
-            }
-            else if (opcija == "Odaberi postojeći nalog")
-            {
-                PrikazTabeleSaSvimPacijentima();
-            }
-        }
-
         private void PrikazTabeleSaSvimPacijentima()
         {
             dataGridPacijenti.Visibility = Visibility.Visible;
@@ -101,7 +87,7 @@ namespace ProjekatSIMS
             Prezime.Visibility = Visibility.Hidden;
         }
 
-        private void PrikaPoljaZaKreiranjeHitnogNaloga()
+        private void PrikazPoljaZaKreiranjeHitnogNaloga()
         {
             LabelaJMBG.Visibility = Visibility.Visible;
             LabelaIme.Visibility = Visibility.Visible;
@@ -110,6 +96,20 @@ namespace ProjekatSIMS
             Ime.Visibility = Visibility.Visible;
             Prezime.Visibility = Visibility.Visible;
             dataGridPacijenti.Visibility = Visibility.Hidden;
+        }
+
+        private void Prikazi(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBoxItem cbi = (ComboBoxItem)Nalog.SelectedItem;
+            string opcija = cbi.Content.ToString();
+            if (opcija == "Kreiraj hitan nalog")
+            {
+                PrikazPoljaZaKreiranjeHitnogNaloga();
+            }
+            else if (opcija == "Odaberi postojeći nalog")
+            {
+                PrikazTabeleSaSvimPacijentima();
+            }
         }
     }
 }
