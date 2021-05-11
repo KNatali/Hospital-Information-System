@@ -5,15 +5,23 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ProjekatSIMS"
       mc:Ignorable="d" 
-      d:DesignHeight="600" d:DesignWidth="800"
+      
       Title="PrikazPregledaDoktor">
 
-    <Grid  Name="Tabela">
-        <DataGrid x:Name="dataGridPregledi" ItemsSource="{Binding Pregledi}" IsReadOnly="True"
-                  SelectionMode="Single" AutoGenerateColumns="False" Margin="43,30,54,163"
+    <Grid  Name="Tabela" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="1*"/>
+           
+
+        </Grid.RowDefinitions>
+        <DataGrid Grid.Row="0" x:Name="dataGridPregledi" Margin="20" ItemsSource="{Binding Pregledi}" IsReadOnly="True"
+                  SelectionMode="Single" AutoGenerateColumns="False" 
                   ScrollViewer.CanContentScroll="True" 
-                  ScrollViewer.VerticalScrollBarVisibility="Auto">
+                  ScrollViewer.VerticalScrollBarVisibility="Auto"  BorderBrush="{x:Null}" GridLinesVisibility="All">
+            
             <DataGrid.Columns>
+                
                 <DataGridTextColumn Header="Id pregleda" Binding="{Binding Id}"/>
                 <DataGridTextColumn Header="Vrijeme pocetka" Binding="{Binding Pocetak}"/>
                 <DataGridTextColumn Header="Trajanje" Binding="{Binding Trajanje}"/>
@@ -24,14 +32,15 @@
                 <DataGridTextColumn Header="Status pregleda" Binding="{Binding StatusPregleda}" Width="*"/>
 
             </DataGrid.Columns>
+            
         </DataGrid>
-        <Label Content="NAPOMENA:Obavezno selektovati red u tabeli prije klika na date opcije" HorizontalAlignment="Left" Margin="43,445,0,0" VerticalAlignment="Top"/>
-        <Button Content="Otkazi Pregled" Click="OtkaziPregled"  HorizontalAlignment="Left" Margin="237,476,0,0" VerticalAlignment="Top" Height="39" Width="132" Background="#FFB5CDE2"/>
-        <Button Content="Pomjeri Pregled" Click="IzmijeniPregled"  HorizontalAlignment="Left" Margin="429,476,0,0" VerticalAlignment="Top" Height="39" Width="132" Background="#FFB5CDE2"/>
-        <Button Content="Zdravstveni karton" Click="PrikazProfila"  HorizontalAlignment="Left" Margin="614,476,0,0" VerticalAlignment="Top" Height="39" Width="132" Background="#FFB5CDE2"/>
-        <Button Content="Zapocni pregled" Click="ZapocniPregled"  HorizontalAlignment="Left" Margin="43,476,0,0" VerticalAlignment="Top" Height="37" Width="132" Background="#FF659AC9"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Content="Otkazi Pregled" Click="OtkaziPregled" Style="{StaticResource btnStandard}"/>
+        <Button Content="Pomjeri Pregled" Click="IzmijeniPregled"  />
+        <Button Content="Zdravstveni karton" Click="PrikazProfila"  HorizontalAlignment="Left" />
+        <Button Content="Zapocni pregled" Click="ZapocniPregled"  HorizontalAlignment="Left"/>
 
-
+        </StackPanel>
 
 
 

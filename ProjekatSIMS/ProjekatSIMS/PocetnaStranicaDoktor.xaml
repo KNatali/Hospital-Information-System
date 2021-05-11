@@ -40,7 +40,7 @@
         
 
         <StackPanel Grid.Column="1" Grid.Row="0"   VerticalAlignment="Center" Margin="20" >
-            <Button   Style="{StaticResource btnStandard}" Content="Izvještaj o potrošenim lijekovima"  />
+            <Button   Style="{StaticResource btnStandard}" Content="Izvještaj o potrošenim lijekovima" />
             <Button    Style="{StaticResource btnStandard}" Content="Modifikacija inventara"  />
              <Button  Click="PrikazLijekova"  Style="{StaticResource btnStandard}" Content="Evidencija lijekova"  />
        

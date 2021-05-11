@@ -23,6 +23,7 @@ namespace ProjekatSIMS
         public DoktorWindow()
         {
             InitializeComponent();
+            DoktorFrame.Content = new PocetnaStranicaDoktor();
         }
 
         private void ZakaziPregled(object sender, RoutedEventArgs e)
