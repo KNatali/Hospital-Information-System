@@ -23,6 +23,7 @@ namespace ProjekatSIMS
         public DoktorWindow()
         {
             InitializeComponent();
+            DoktorFrame.Content = new PocetnaStranicaDoktor();
         }
 
         private void ZakaziPregled(object sender, RoutedEventArgs e)
@@ -60,6 +61,24 @@ namespace ProjekatSIMS
             DoktorFrame.Content = new PocetnaStranicaDoktor();
 
             
+        }
+
+        private void MojProfil(object sender, RoutedEventArgs e)
+        {
+            DoktorFrame.Content = new ZakaziPregledDoktor();
+
+        }
+
+        private void Odjavljivanje(object sender, RoutedEventArgs e)
+        {
+            DoktorFrame.Content = new ZakaziPregledDoktor();
+
+        }
+
+        private void Pomoc(object sender, RoutedEventArgs e)
+        {
+            DoktorFrame.Content = new ZakaziPregledDoktor();
+
         }
 
 
