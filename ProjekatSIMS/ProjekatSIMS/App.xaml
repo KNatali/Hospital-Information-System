@@ -5,20 +5,19 @@
              StartupUri="MainWindow.xaml">
     
     <Application.Resources>
-        <Style TargetType="Label">
-            <Setter Property="FontFamily" Value="Roboto"/>
-            <Setter Property="FontSize" Value="16"/>
-        </Style>
-        
-        
 
-        <Style  TargetType="Frame">
+
+   
+
+
+          <Style  TargetType="Frame">
 
             <Setter Property="Background" Value="#C7E5DD"/>
         </Style>
+        
         <Style TargetType="Button" x:Key="btnBlue">
-            <Setter Property="Background" Value="#329B9B"/>
-            <Setter Property="Foreground" Value="black"/>
+            <Setter Property="Background" Value="#287D7D"/>
+            <Setter Property="Foreground" Value="white"/>
             <Setter Property="FontFamily" Value="Roboto"/>
             <Setter Property="FontSize" Value="16"/>
            
@@ -44,26 +43,28 @@
                     <Setter Property="Foreground" Value="black"/>
                     <Setter Property="FontSize" Value="17"/>
                     <Setter Property="Cursor" Value="Hand"/>
-                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="FontWeight" Value="SemiBold"/>
+                   
                 </Trigger>
             </Style.Triggers>
         </Style>
 
 
         <Style TargetType="Button" x:Key="btnStandard">
-            <Setter Property="Background" Value="#329B9B"/>
-            <Setter Property="Foreground" Value="black"/>
+            <Setter Property="Background" Value="#287D7D"/>
+            <Setter Property="Foreground" Value="white"/>
             <Setter Property="FontFamily" Value="Roboto"/>
             <Setter Property="FontSize" Value="16"/>
-            
+            <Setter Property="Margin" Value="5"/>
+
             <Setter Property="Height" Value="45"/>
             
                 <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border 
+                        <Border Background="{TemplateBinding Background}"
                             CornerRadius="5"
-                            BorderThickness="2"
+                            BorderThickness="0"
                            BorderBrush="White"
                             Padding="5">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -76,7 +77,22 @@
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background" Value="white"/>
-                    <Setter Property="Foreground" Value="#008282"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}"
+                            CornerRadius="5"
+                            BorderThickness="2"
+                           BorderBrush="#287D7D"
+                           >
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
+
+                                    </ContentPresenter>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
                     <Setter Property="Cursor" Value="Hand"/>
                 </Trigger>
             </Style.Triggers>
@@ -88,7 +104,7 @@
             <Setter Property="HorizontalContentAlignment" Value="Center" />
             <Setter Property="HorizontalAlignment" Value="Stretch" />
             <Setter Property="HorizontalContentAlignment" Value="Center" />
-            <Setter Property="Background" Value="#66B4B4"/>
+            <Setter Property="Background" Value="#81B9B9"/>
             <Setter Property="Height" Value="40"/>
             <Setter Property="Padding" Value="10"/>
             <Setter Property="BorderBrush" Value="#DDDDDD" />
@@ -110,7 +126,12 @@
                         <Style.Triggers>
                             <!-- Highlight a grid row as the mouse passes over -->
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="LightCyan" />
+                                <Setter Property="Background" Value="#E5F1F1" />
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="#81B9B9" />
+                                <Setter Property="BorderBrush" Value="Transparent" />
+                                <Setter Property="Foreground" Value="Black" />
                             </Trigger>
                         </Style.Triggers>
                         
@@ -123,12 +144,12 @@
                         <Style.Triggers>
                             <!-- Highlight selected rows -->
                             <Trigger Property="IsSelected" Value="True">
-                                <Setter Property="Background" Value="#ff66ccff" />
+                                <Setter Property="Background" Value="red" />
                                 <Setter Property="BorderBrush" Value="Transparent" />
                                 <Setter Property="Foreground" Value="Black" />
                             </Trigger>
                             <Trigger Property="IsFocused" Value="True">
-                                <Setter Property="Background" Value="#ff66ccff" />
+                                <Setter Property="Background" Value="LightGray" />
                                 <Setter Property="BorderBrush" Value="Black" />
                                 <Setter Property="BorderThickness" Value="1"/>
                                 <Setter Property="Foreground" Value="Black" />

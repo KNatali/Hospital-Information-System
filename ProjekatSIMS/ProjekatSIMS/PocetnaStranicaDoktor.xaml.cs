@@ -21,6 +21,7 @@ namespace ProjekatSIMS
         public PocetnaStranicaDoktor()
         {
             InitializeComponent();
+           
             
         }
 

@@ -8,17 +8,23 @@
      
       Title="PocetnaStranicaDoktor">
     <Page.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
         <DataTemplate x:Key="listBoxTemplate">
             
                 <StackPanel Margin="3">
                 <DockPanel>
-                    <TextBlock FontWeight="Bold" Text="Datum:" DockPanel.Dock="Left" Margin="5,0,10,0" />
-                    <TextBlock Text="" />
-                    <TextBlock Text="{Binding Datum}" Foreground="Green" FontWeight="Bold" />
+                    <TextBlock Text="{Binding Datum}" Foreground="#1F6161" FontWeight="SemiBold"  DockPanel.Dock="Left" Margin="5,0,10,0" />
                 </DockPanel>
                 <DockPanel>
-                    <TextBlock FontWeight="Bold" Text="Sadrzaj:" Foreground="DarkOrange" DockPanel.Dock="Left" Margin="5,0,5,0" />
-                    <TextBlock Text="{Binding Poruka}" />
+                    <TextBlock Text="{Binding Poruka}" DockPanel.Dock="Left" Margin="5,0,5,0"/>
                    
                 </DockPanel>
             </StackPanel>
@@ -39,7 +45,7 @@
 
         
 
-        <StackPanel Grid.Column="1" Grid.Row="0"   VerticalAlignment="Center" Margin="20" >
+        <StackPanel Grid.Column="1" Grid.Row="0"   VerticalAlignment="Center" Margin="20">
             <Button   Style="{StaticResource btnStandard}" Content="Izvještaj o potrošenim lijekovima" />
             <Button    Style="{StaticResource btnStandard}" Content="Modifikacija inventara"  />
              <Button  Click="PrikazLijekova"  Style="{StaticResource btnStandard}" Content="Evidencija lijekova"  />
@@ -56,9 +62,14 @@
                 </Calendar>
             </Viewbox>
         </StackPanel>
-        <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"  Margin="20,10,20,10">
-            <Label FontWeight="Bold" >Obavještenja:</Label>
-            <ListBox MinHeight="200" Name="listBox1" ItemTemplate="{StaticResource listBoxTemplate}" />
+       
+            <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"  Margin="20,10,20,10" >
+                <Label FontWeight="Bold" >Obavještenja:</Label>
+
+            <ListBox MinHeight="200" Name="listBox1" ItemTemplate="{StaticResource listBoxTemplate}">
+                <Border BorderBrush="black" CornerRadius="10"/>
+            </ListBox>
         </StackPanel>
+      
     </Grid>
 </Page>

@@ -5,9 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjekatSIMS"
         mc:Ignorable="d"
-        Title="DoktorWindow" Height="600" Width="1050"
+        Title="DoktorWindow" Height="600" Width="1100"
         WindowStartupLocation="CenterScreen"
         >
+    <Window.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+    </Window.Resources>
+   
 
 
     <Grid >
@@ -22,17 +34,19 @@
             <RowDefinition Height="Auto"/>
 
         </Grid.RowDefinitions>
-        <StackPanel Grid.Column="0" Grid.Row="0" Background="#329B9B">
-            <Image Source="Slike/doctor.png" Height="28" Width="28" Margin="0,10,0,0"/>
+        <StackPanel Grid.Column="0" Grid.Row="0" Background="#287D7D">
+            <Image Source="Slike/doctor1.png" Height="28" Width="28" Margin="0,10,0,0"/>
 
 
-            <Label  Content="Doktor" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Margin="0,0,0,10" />
+            <Label  Foreground="white" Content="Doktor" HorizontalAlignment="Center" FontSize="18" FontWeight="SemiBold" Margin="0,0,0,10" />
 
         </StackPanel>
-        <StackPanel Grid.Column="0" Grid.Row="1" Background="#329B9B"  VerticalAlignment="Stretch" >
+        <StackPanel Grid.Column="0" Grid.Row="1" Background="#287D7D"  VerticalAlignment="Stretch" >
             <Button  Click="PocetnaStranica"  Style="{StaticResource btnBlue}"  >
                 <StackPanel Orientation="Horizontal">
-                    <Image Source="Slike/home.png"  Height="28" Width="28" Margin="5,5,10,5"/>
+                    
+                        <Image Source="Slike/home1.png"  Height="28" Width="28" Margin="5,5,10,5"/>
+                  
                     <TextBlock Text="Početna stranica" VerticalAlignment="Center"/>
                 </StackPanel>
             </Button>
@@ -41,26 +55,27 @@
             <Button  Click="PrikazPregleda"  Style="{StaticResource btnBlue}" >
                 <StackPanel  Orientation="Horizontal" >
                     
-                    <Image Source="Slike/calendar.png" Height="28" Width="28" Margin="5,5,10,5"/>
+                    <Image Source="Slike/calendar1.png" Height="28" Width="28" Margin="5,5,10,5"/>
                    
                             <TextBlock Text="Kalendar pregleda" VerticalAlignment="Center"/>
                 </StackPanel>
             </Button>
             <Button Click="PretraziPacijenta" Style="{StaticResource btnBlue}">
                 <StackPanel Orientation="Horizontal" >
-                    <Image Source="Slike/patients.png"  Height="28" Width="28" Margin="5,5,10,5"/>
+                    <Image Source="Slike/patients1.png"  Height="28" Width="28" Margin="5,5,10,5"/>
                     <TextBlock Text="Pregled pacijenata" VerticalAlignment="Center" />
                 </StackPanel>
             </Button>
             <Button  Click="ZakaziPregled"  Style="{StaticResource btnBlue}">
                 <StackPanel Orientation="Horizontal">
-                    <Image Source="Slike/date.png" Height="28" Width="28" Margin="5,5,10,5"/>
+                    <Image Source="Slike/date1.png" Height="28" Width="28" Margin="5,5,10,5"/>
                     <TextBlock Text="Zakazivanje pregleda" VerticalAlignment="Center"/>
                 </StackPanel>
             </Button>
             <Button  Click="ZakaziOperaciju" Style="{StaticResource btnBlue}">
                 <StackPanel Orientation="Horizontal" >
-                    <Image Source="Slike/date.png" Height="28" Width="28" Margin="5,5,10,5"/>
+                    <Image Source="Slike/date1.png" Height="28" Width="28" Margin="5,5,10,5"/>
+
                     <TextBlock Text="Zakazivanje operacije" VerticalAlignment="Center"/>
                 </StackPanel>
             </Button>
@@ -74,19 +89,19 @@
         <StackPanel Grid.Column="0" Grid.Row="2" Background="#329B9B" VerticalAlignment="Bottom">
             <Button  Click="MojProfil" Style="{StaticResource btnBlue}">
                 <StackPanel  Orientation="Horizontal" >
-                    <Image Source="Slike/doctor.png"  Height="23" Width="30" Margin="5,5,10,5"/>
+                    <Image Source="Slike/doctor1.png"  Height="23" Width="30" Margin="5,5,10,5"/>
                     <TextBlock Text="Moj profil" VerticalAlignment="Center" />
                 </StackPanel>
             </Button>
             <Button  Click="Odjavljivanje" Style="{StaticResource btnBlue}">
                 <StackPanel Orientation="Horizontal" >
-                    <Image Source="Slike/log-out.png"  Height="23" Width="30" Margin="5,5,10,5"/>
+                    <Image Source="Slike/log-out1.png"  Height="23" Width="30" Margin="5,5,10,5"/>
                     <TextBlock Text="Odjavljivanje" VerticalAlignment="Center" />
                 </StackPanel>
             </Button>
             <Button  Click="Pomoc" Style="{StaticResource btnBlue}">
                 <StackPanel Orientation="Horizontal" >
-                    <Image Source="Slike/help.png"  Height="23" Width="30" Margin="5,5,10,5"/>
+                    <Image Source="Slike/help1.png"  Height="23" Width="30" Margin="5,5,10,5"/>
                     <TextBlock Text="Prikaz funkcionalnosti" VerticalAlignment="Center" />
                 </StackPanel>
             </Button>
