@@ -259,7 +259,7 @@ namespace Service
             pocetakIntervalaOdInteresa = new DateTime(pocetnoVrijeme.Year, pocetnoVrijeme.Month, pocetnoVrijeme.Day, POCETAK_RADNOG_VREMENA, 0, 0);
             krajIntervalaOdInteresa = new DateTime(krajnjeVrijeme.Year, krajnjeVrijeme.Month, krajnjeVrijeme.Day, KRAJ_RADNOG_VREMENA, 0, 0);
         }
-
+        
         private static List<DateTime> IzlistavanjeNajblizihTermina(List<KeyValuePair<int, DateTime>> parUdaljenostTermin)
         {
             List<DateTime> slobodniTermini = new List<DateTime>();
