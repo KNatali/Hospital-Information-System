@@ -16,15 +16,15 @@ namespace ProjekatSIMS
 {
     public partial class ObavestenjeSWindow : Window
     {
-        public Notifikacija n { get; set; }
-        public ObavestenjeSWindow(Notifikacija notifikacija)
+        public Notifikacija notifikacija { get; set; }
+        public ObavestenjeSWindow(Notifikacija novaNotifikacija)
         {
             InitializeComponent();
             this.DataContext = this;
-            n = notifikacija;
-            Naslov.Text = n.Naslov;
-            Tekst.Text = n.Tekst;
-            Datum.Text = n.Datum.ToString();
+            notifikacija = novaNotifikacija;
+            Naslov.Text = notifikacija.Naslov;
+            Tekst.Text = notifikacija.Tekst;
+            Datum.Text = notifikacija.Datum.ToString();
         }
 
         private void Nazad(object sender, RoutedEventArgs e)
@@ -34,49 +34,81 @@ namespace ProjekatSIMS
 
         private void Obrisi(object sender, RoutedEventArgs e)
         {
+            ProveraBrisanjaObjave();
+        }
+
+        private void ProveraBrisanjaObjave()
+        {
             MessageBoxResult ret = MessageBox.Show("Da li želite da obrišete ovu objavu?", "PROVERA", MessageBoxButton.YesNo);
             switch (ret)
             {
                 case MessageBoxResult.Yes:
-                    if (n.ObrisiNotifikaciju() == true)
-                    {
-                        NotifikacijaRepository fajl = new NotifikacijaRepository(@"..\..\..\Fajlovi\Vesti.txt");
-                        List<Notifikacija> notif = fajl.DobaviNotifikacije();
-                        foreach (Notifikacija no in notif)
-                        {
-                            if (no.Id == n.Id)
-                            {
-                                notif.Remove(no);
-                                break;
-                            }
-                        }
-                        fajl.SacuvajNotifikaciju(notif);
-                        MessageBox.Show("Objava je uspešno obrisana.", "OBAVEŠTENJE");
-                        this.Close();
-                    }
+                    BrisanjeObjave();
                     break;
                 case MessageBoxResult.No:
                     break;
             }
         }
 
-        private void Sacuvaj(object sender, RoutedEventArgs e)
+        private void BrisanjeObjave()
         {
-            n.Naslov = Naslov.Text;
-            n.Tekst = Tekst.Text;
-            List<Notifikacija> ListaN = new List<Notifikacija>();
-            NotifikacijaRepository fajl = new NotifikacijaRepository(@"..\..\..\Fajlovi\Vesti.txt");
-            ListaN = fajl.DobaviNotifikacije();
-            foreach (Notifikacija notif in ListaN)
+            //if (MetodaZaBrisanjeObavestenja())
+            //{
+                NotifikacijaRepository fajlVesti;
+                List<Notifikacija> listaNotifikacija;
+                CitanjeIzFajla(out fajlVesti, out listaNotifikacija);
+                BrisanjeNotifikacije(fajlVesti, listaNotifikacija);
+                MessageBox.Show("Objava je uspešno obrisana.", "OBAVEŠTENJE");
+                this.Close();
+            //}
+        }
+
+        private void BrisanjeNotifikacije(NotifikacijaRepository fajlVesti, List<Notifikacija> listaNotifikacija)
+        {
+            foreach (Notifikacija n in listaNotifikacija)
             {
-                if (n.Id == notif.Id)
+                if (n.Id == notifikacija.Id)
                 {
-                    notif.Naslov = n.Naslov;
-                    notif.Tekst = n.Tekst;
+                    listaNotifikacija.Remove(n);
+                    break;
                 }
             }
-            fajl.SacuvajNotifikaciju(ListaN);
+            fajlVesti.SacuvajNotifikaciju(listaNotifikacija);
+        }
+
+        private static void CitanjeIzFajla(out NotifikacijaRepository fajl, out List<Notifikacija> notif)
+        {
+            fajl = new NotifikacijaRepository(@"..\..\..\Fajlovi\Vesti.txt");
+            notif = fajl.DobaviNotifikacije();
+        }
+
+        /*private bool MetodaZaBrisanjeObavestenja()
+        {
+            return notifikacija.ObrisiNotifikaciju();
+        }*/
+
+        private void Sacuvaj(object sender, RoutedEventArgs e)
+        {
+            notifikacija.Naslov = Naslov.Text;
+            notifikacija.Tekst = Tekst.Text;
+            NotifikacijaRepository fajlVesti;
+            List<Notifikacija> listaNotifikacija;
+            CitanjeIzFajla(out fajlVesti, out listaNotifikacija);
+            IzmenaNotifikacije(fajlVesti, listaNotifikacija);
             this.Close();
+        }
+
+        private void IzmenaNotifikacije(NotifikacijaRepository fajlVesti, List<Notifikacija> listaNotifikacija)
+        {
+            foreach (Notifikacija n in listaNotifikacija)
+            {
+                if (notifikacija.Id == n.Id)
+                {
+                    n.Naslov = notifikacija.Naslov;
+                    n.Tekst = notifikacija.Tekst;
+                }
+            }
+            fajlVesti.SacuvajNotifikaciju(listaNotifikacija);
         }
     }
 }

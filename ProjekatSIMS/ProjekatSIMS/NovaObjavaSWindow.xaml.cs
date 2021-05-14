@@ -23,6 +23,11 @@ namespace ProjekatSIMS
 
         private void Nazad(object sender, RoutedEventArgs e)
         {
+            PorukaProvere();
+        }
+
+        private void PorukaProvere()
+        {
             MessageBoxResult ret = MessageBox.Show("Da li želite da otkažete postavljanje obaveštenja?", "PROVERA", MessageBoxButton.YesNo);
             switch (ret)
             {
@@ -36,18 +41,26 @@ namespace ProjekatSIMS
 
         private void Sacuvaj(object sender, RoutedEventArgs e)
         {
-            String naslov = Naslov.Text;
-            String tekst = Tekst.Text;
             Notifikacija n = new Notifikacija();
-            n.Naslov = naslov;
-            n.Tekst = tekst;
-            n.Datum = DateTime.Now;
-            NotifikacijaRepository fajl = new NotifikacijaRepository(@"..\..\..\Fajlovi\Vesti.txt");
-            List<Notifikacija> notifikacija = fajl.DobaviNotifikacije();
-            notifikacija.Add(n);
-            fajl.SacuvajNotifikaciju(notifikacija);
+            PopunjavanjePoljaNotifikacije(n);
+            UpisivanjeUFajl(n);
             MessageBox.Show("Obaveštenje je uspešno postavljeno.", "OBAVEŠTENJE");
             this.Close();
+        }
+
+        private static void UpisivanjeUFajl(Notifikacija n)
+        {
+            NotifikacijaRepository fajlVesti = new NotifikacijaRepository(@"..\..\..\Fajlovi\Vesti.txt");
+            List<Notifikacija> listaNotifikacija = fajlVesti.DobaviNotifikacije();
+            listaNotifikacija.Add(n);
+            fajlVesti.SacuvajNotifikaciju(listaNotifikacija);
+        }
+
+        private void PopunjavanjePoljaNotifikacije(Notifikacija n)
+        {
+            n.Naslov = Naslov.Text;
+            n.Tekst = Tekst.Text;
+            n.Datum = DateTime.Now;
         }
     }
 }
