@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjekatSIMS"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
         mc:Ignorable="d"
         Title="DoktorWindow" Height="600" Width="1100"
         WindowStartupLocation="CenterScreen"
@@ -43,40 +44,45 @@
         </StackPanel>
         <StackPanel Grid.Column="0" Grid.Row="1" Background="#287D7D"  VerticalAlignment="Stretch" >
             <Button  Click="PocetnaStranica"  Style="{StaticResource btnBlue}"  >
-                <StackPanel Orientation="Horizontal">
-                    
-                        <Image Source="Slike/home1.png"  Height="28" Width="28" Margin="5,5,10,5"/>
-                  
-                    <TextBlock Text="Početna stranica" VerticalAlignment="Center"/>
+                <StackPanel Orientation="Horizontal" Margin="7,0,0,0">
+                    <fa:ImageAwesome Icon="Home" Width="27" Foreground="{Binding Path=Foreground,  RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Button}}}"/>
+
+
+                    <TextBlock Text="Početna stranica" VerticalAlignment="Center" Margin="10,0,0,0"/>
                 </StackPanel>
             </Button>
 
 
             <Button  Click="PrikazPregleda"  Style="{StaticResource btnBlue}" >
-                <StackPanel  Orientation="Horizontal" >
-                    
-                    <Image Source="Slike/calendar1.png" Height="28" Width="28" Margin="5,5,10,5"/>
-                   
-                            <TextBlock Text="Kalendar pregleda" VerticalAlignment="Center"/>
+                <StackPanel  Orientation="Horizontal" Margin="7,0,0,0">
+
+                    <fa:ImageAwesome Icon="Calendar" Width="27" Foreground="{Binding Path=Foreground,  RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Button}}}"/>
+
+
+
+                    <TextBlock Text="Kalendar pregleda" VerticalAlignment="Center" Margin="10,0,0,0"/>
                 </StackPanel>
             </Button>
             <Button Click="PretraziPacijenta" Style="{StaticResource btnBlue}">
-                <StackPanel Orientation="Horizontal" >
-                    <Image Source="Slike/patients1.png"  Height="28" Width="28" Margin="5,5,10,5"/>
-                    <TextBlock Text="Pregled pacijenata" VerticalAlignment="Center" />
+                <StackPanel Orientation="Horizontal" Margin="7,0,0,0">
+                    <fa:ImageAwesome Icon="Users" Width="27" Foreground="{Binding Path=Foreground,  RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Button}}}"/>
+
+
+                    <TextBlock Text="Pregled pacijenata" VerticalAlignment="Center" Margin="10,0,0,0"/>
                 </StackPanel>
             </Button>
             <Button  Click="ZakaziPregled"  Style="{StaticResource btnBlue}">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="Slike/date1.png" Height="28" Width="28" Margin="5,5,10,5"/>
-                    <TextBlock Text="Zakazivanje pregleda" VerticalAlignment="Center"/>
+                <StackPanel Orientation="Horizontal" Margin="7,0,0,0">
+                    <fa:ImageAwesome Icon="CalendarCheckOutline" Width="27" Foreground="{Binding Path=Foreground,  RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Button}}}"/>
+
+
+                    <TextBlock Text="Zakazivanje pregleda" VerticalAlignment="Center" Margin="10,0,0,0"/>
                 </StackPanel>
             </Button>
             <Button  Click="ZakaziOperaciju" Style="{StaticResource btnBlue}">
-                <StackPanel Orientation="Horizontal" >
-                    <Image Source="Slike/date1.png" Height="28" Width="28" Margin="5,5,10,5"/>
-
-                    <TextBlock Text="Zakazivanje operacije" VerticalAlignment="Center"/>
+                <StackPanel Orientation="Horizontal" Margin="7,0,0,0">
+                    <fa:ImageAwesome Icon="CalendarCheckOutline" Width="27" Foreground="{Binding Path=Foreground,  RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Button}}}"/>
+                    <TextBlock Text="Zakazivanje operacije" VerticalAlignment="Center" Margin="10,0,0,0"/>
                 </StackPanel>
             </Button>
 
@@ -88,23 +94,31 @@
         </StackPanel>
         <StackPanel Grid.Column="0" Grid.Row="2" Background="#329B9B" VerticalAlignment="Bottom">
             <Button  Click="MojProfil" Style="{StaticResource btnBlue}">
-                <StackPanel  Orientation="Horizontal" >
-                    <Image Source="Slike/doctor1.png"  Height="23" Width="30" Margin="5,5,10,5"/>
-                    <TextBlock Text="Moj profil" VerticalAlignment="Center" />
+                <StackPanel  Orientation="Horizontal" Margin="7,0,0,0" >
+                    <fa:ImageAwesome Icon="UserMd" Width="27" Foreground="{Binding Path=Foreground,  RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Button}}}"/>
+
+
+
+                    <TextBlock Text="Moj profil" VerticalAlignment="Center" Margin="10,0,0,0"/>
                 </StackPanel>
             </Button>
             <Button  Click="Odjavljivanje" Style="{StaticResource btnBlue}">
-                <StackPanel Orientation="Horizontal" >
-                    <Image Source="Slike/log-out1.png"  Height="23" Width="30" Margin="5,5,10,5"/>
-                    <TextBlock Text="Odjavljivanje" VerticalAlignment="Center" />
+                <StackPanel Orientation="Horizontal" Margin="7,0,0,0">
+                    <fa:ImageAwesome Icon="SignOut" Width="27" Foreground="{Binding Path=Foreground,  RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Button}}}"/>
+
+                    <TextBlock Text="Odjavljivanje" VerticalAlignment="Center" Margin="10,0,0,0"/>
                 </StackPanel>
             </Button>
             <Button  Click="Pomoc" Style="{StaticResource btnBlue}">
-                <StackPanel Orientation="Horizontal" >
-                    <Image Source="Slike/help1.png"  Height="23" Width="30" Margin="5,5,10,5"/>
-                    <TextBlock Text="Prikaz funkcionalnosti" VerticalAlignment="Center" />
+                <StackPanel Orientation="Horizontal" Margin="7,0,0,0">
+                    <fa:ImageAwesome Icon="InfoCircle" Width="27" Foreground="{Binding Path=Foreground,  RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Button}}}"/>
+
+                    <TextBlock Text="Prikaz funkcionalnosti" VerticalAlignment="Center" Margin="10,0,0,0"/>
                 </StackPanel>
+                
             </Button>
+           
+
 
             <Button Content="Prikaz zavrsenih pregleda" Click="PrikazZavrsenihPregleda"  Style="{StaticResource btnBlue}"/>
 

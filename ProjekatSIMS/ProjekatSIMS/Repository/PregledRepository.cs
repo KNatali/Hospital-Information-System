@@ -129,6 +129,19 @@ namespace Repository
             return zakazaniPregledi;
         }
 
+        public List<Pregled> DobaviZakazanePregledeDoktora(Doktor doktor)
+        {
+
+            List<Pregled> zakazaniPregledi =DobaviZakazanePreglede();
+            List<Pregled> zakazaniPreglediDoktora = new List<Pregled>();
+            foreach (Pregled p in zakazaniPregledi)
+            {
+                if (p.doktor.Jmbg == doktor.Jmbg)
+                    zakazaniPreglediDoktora.Add(p);
+            }
+            return zakazaniPreglediDoktora;
+
+        }
 
         public void SacuvajPregledPacijent(List<Pregled> pregledi)
         {
