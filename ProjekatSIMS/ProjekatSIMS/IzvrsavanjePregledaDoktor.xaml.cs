@@ -26,11 +26,7 @@ namespace ProjekatSIMS
             InitializeComponent();
             pregled = p;
             this.DataContext = this;
-            Ime.Text = pregled.pacijent.Ime;
-            Prezime.Text = pregled.pacijent.Prezime;
-            Vrijeme.Text = pregled.Pocetak.ToString();
-            Trajanje.Text = pregled.Trajanje.ToString();
-            Tip.Text = pregled.Tip.ToString();
+           
         }
 
         private void ZdravstveniKarton(object sender, RoutedEventArgs e)
