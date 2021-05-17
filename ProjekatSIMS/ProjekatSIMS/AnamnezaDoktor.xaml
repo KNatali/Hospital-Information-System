@@ -8,7 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AnamnezaDoktor">
 
-    <Grid Background="white">
+    <Grid >
         <Label Content="Anamneza" HorizontalAlignment="Center" Margin="0,37,0,0" VerticalAlignment="Top" FontSize="18"/>
 
         <DatePicker Name="Datum" HorizontalAlignment="Left" Margin="204,110,0,0" VerticalAlignment="Top"/>

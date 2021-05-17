@@ -55,9 +55,12 @@ namespace ProjekatSIMS
             Doktor izabraniDoktor = (Doktor)Doktori.SelectedItem;
             DateTime pocetnoVrijeme = (DateTime)DatumPocetak.SelectedDate;
             DateTime krajnjeVrijeme = (DateTime)DatumKraj.SelectedDate;
+            int pocetniInterval = Convert.ToInt32(IntervalPocetak.Text);
+            int krajnjiInterval = Convert.ToInt32(IntervalKraj.Text);
+
 
             List<DateTime> slobodniTermini = new List<DateTime>();
-            slobodniTermini=pregledController.PrikazSlobodnihTermina(izabraniDoktor, pocetnoVrijeme, krajnjeVrijeme);
+            slobodniTermini=pregledController.PrikazSlobodnihTermina(izabraniDoktor, pocetnoVrijeme, krajnjeVrijeme,pocetniInterval,krajnjiInterval);
             Termini.ItemsSource = slobodniTermini;
         }
 

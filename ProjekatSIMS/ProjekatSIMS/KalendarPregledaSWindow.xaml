@@ -6,18 +6,18 @@
         xmlns:local="clr-namespace:ProjekatSIMS"
         xmlns:fa="http://schemas.fontawesome.io/icons/" x:Class="ProjekatSIMS.KalendarPregledaSWindow"
         mc:Ignorable="d"
-        Title="KalendarPregledaSWindow" Height="450" Width="800">
+        Title="KalendarPregledaSWindow" Height="568" Width="924" Background="#d1e3ff">
     <Grid>
-        <DataGrid x:Name="dataGridPregledi" ItemsSource="{Binding Pregledi}" IsReadOnly="True"
-                  SelectionMode="Single" FontSize="15" AutoGenerateColumns="False" Margin="30,130,30,90">
+        <DataGrid x:Name="dataGridPregledi" ItemsSource="{Binding Pregledi}" IsReadOnly="True" BorderBrush="#1963bf" Foreground="#1963bf"
+                  SelectionMode="Single" FontSize="20" AutoGenerateColumns="False" Margin="60,148,60,137">
             <DataGrid.Columns>
 
-                <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="50"/>
-                <DataGridTextColumn Header="Početak" Binding="{Binding Pocetak}" Width="150"/>
-                <DataGridTextColumn Header="Trajanje" Binding="{Binding Trajanje}" Width="100"/>
-                <DataGridTextColumn Header="Prostorija" Binding="{Binding prostorija.id}" Width="85"/>
-                <DataGridTextColumn Header="Doktor" Binding="{Binding doktor.Jmbg}" Width="110"/>
-                <DataGridTextColumn Header="Ime pacijenta" Binding="{Binding pacijent.Ime}" Width="110"/>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="40"/>
+                <DataGridTextColumn Header="Početak" Binding="{Binding Pocetak}" Width="*"/>
+                <DataGridTextColumn Header="Trajanje" Binding="{Binding Trajanje}" Width="90"/>
+                <DataGridTextColumn Header="Prostorija" Binding="{Binding prostorija.id}" Width="100"/>
+                <DataGridTextColumn Header="Doktor" Binding="{Binding doktor.Jmbg}" Width="*"/>
+                <DataGridTextColumn Header="Ime pacijenta" Binding="{Binding pacijent.Ime}" Width="*"/>
                 <DataGridTextColumn Header="Prezime pacijenta" Binding="{Binding pacijent.Prezime}" Width="*"/>
 
             </DataGrid.Columns>
@@ -27,22 +27,22 @@
                 </Style>
             </DataGrid.ItemContainerStyle>
         </DataGrid>
-        <Button Content="Otkaži pregled" Click="Otkazi" HorizontalAlignment="Left" Margin="590,365,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
-        <Label Width="318" VerticalAlignment="Top" Margin="0,71,0,0" Height="50" HorizontalAlignment="Center" FontSize="20" Foreground="#1963bf" FontWeight="Bold" Content="Kalendar svih zakazanih termina"/>
-        <Label Margin="175,11,465,352">
+        <Button Content="Otkaži pregled" Click="Otkazi" HorizontalAlignment="Left" Margin="684,440,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <Label Width="346" VerticalAlignment="Top" Margin="311,79,0,0" Height="50" HorizontalAlignment="Left" FontSize="22" Foreground="#1963bf" FontWeight="Bold" Content="Kalendar svih zakazanih termina"/>
+        <Button Content="Početna strana" Click="Nazad" HorizontalAlignment="Left" Margin="60,440,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <Label Content="Kliknite dva puta na zakazani termin u tabeli kako biste ga izmenili" HorizontalAlignment="Left" Margin="60,112,0,0" VerticalAlignment="Top" FontSize="18" Foreground="#1963bf" Height="49" Width="550"/>
+        <Label Margin="239,21,401,448">
             <StackPanel Orientation="Horizontal">
                 <fa:ImageAwesome Icon="Globe" Width="60" Foreground="#1963bf"/>
                 <fa:ImageAwesome Icon="HSquare" Width="37" Foreground="#b31a0c"/>
                 <fa:ImageAwesome Icon="UserMd" Width="37" Foreground="#1963bf"/>
             </StackPanel>
         </Label>
-        <Label Margin="191,27,445,352">
+        <Label Margin="255,37,381,475">
             <StackPanel Orientation="Horizontal">
                 <fa:ImageAwesome Icon="Heart" Width="15" Foreground="#b31a0c"/>
             </StackPanel>
         </Label>
-        <Label Content="ZDRAVO KORPORACIJA" FontSize="25" Margin="324,24,172,380" Foreground="#1963bf" FontWeight="Bold"/>
-        <Button Content="Početna strana" Click="Nazad" HorizontalAlignment="Left" Margin="30,365,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
-        <Label Content="Kliknite dva puta na zakazani termin u tabeli kako biste ga izmenili" HorizontalAlignment="Left" Margin="30,102,0,0" VerticalAlignment="Top" FontSize="15" Foreground="#1963bf" Height="39" Width="495"/>
+        <Label Content="ZDRAVO KORPORACIJA" FontSize="25" Margin="388,34,108,445" Foreground="#1963bf" FontWeight="Bold"/>
     </Grid>
 </Window>

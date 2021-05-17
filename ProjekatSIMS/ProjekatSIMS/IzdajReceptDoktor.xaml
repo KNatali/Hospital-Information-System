@@ -8,7 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="IzdajReceptDoktor">
 
-    <Grid Background="white">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="179*"/>
             <RowDefinition Height="272*"/>

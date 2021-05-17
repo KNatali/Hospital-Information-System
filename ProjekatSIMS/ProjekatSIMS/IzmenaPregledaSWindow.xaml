@@ -6,30 +6,30 @@
         xmlns:local="clr-namespace:ProjekatSIMS"
         xmlns:fa="http://schemas.fontawesome.io/icons/" x:Class="ProjekatSIMS.IzmenaPregledaSWindow"
         mc:Ignorable="d"
-        Title="IzmenaPregledaSWindow" Height="450" Width="800">
+        Title="IzmenaPregledaSWindow" Height="568" Width="924" Background="#d1e3ff">
     <Grid Grid.Column="0" Grid.Row="1" DataContext="{Binding SelectedItem, ElementName=dataGridPacijenti}">
-        <Button Content="Otkaži" Click="Otkazi" HorizontalAlignment="Left" Margin="131,350,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
-        <Button Content="Sačuvaj izmene" Click="Sacuvaj" HorizontalAlignment="Left" Margin="512,350,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
-        <Label Content="Datum pregleda:" HorizontalAlignment="Left" FontSize="20" Height="35" Margin="180,173,0,0" VerticalAlignment="Top" Width="162"/>
-        <DatePicker HorizontalAlignment="Left" x:Name="Datum" FontSize="20" Margin="365,173,0,0" VerticalAlignment="Top" Width="151"/>
-        <Label Content="Vreme pregelda:" HorizontalAlignment="Left" FontSize="20" Height="38" Margin="180,216,0,0" VerticalAlignment="Top" Width="162"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Sat" FontSize="20" Margin="365,225,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="98"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Minut" FontSize="20" Margin="513,225,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="98"/>
-        <Label x:Name="Izbor" Content="Izaberite termin:" Visibility="Hidden" FontSize="20" HorizontalAlignment="Left" Height="39" Margin="180,259,0,0" VerticalAlignment="Top" Width="155"/>
-        <ComboBox x:Name="Termin" HorizontalAlignment="Left" Visibility="Hidden" FontSize="20" VerticalAlignment="Top" Width="151" Margin="365,265,0,0"/>
-        <Label Width="321" VerticalAlignment="Top" Margin="0,71,0,0" Height="50" HorizontalAlignment="Center" FontSize="20" Foreground="#1963bf" FontWeight="Bold" Content="Modifikacija zakazanog pregleda"/>
-        <Label Margin="175,11,465,352">
+        <Button Content="Otkaži" Click="Otkazi" HorizontalAlignment="Left" Margin="60,440,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <Button Content="Sačuvaj izmene" Click="Sacuvaj" HorizontalAlignment="Left" Margin="684,440,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <Label Content="Datum pregleda:" HorizontalAlignment="Left" FontSize="25" Height="43" Margin="210,173,0,0" VerticalAlignment="Top" Width="201" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <DatePicker HorizontalAlignment="Left" x:Name="Datum" FontSize="25" Margin="455,173,0,0" VerticalAlignment="Top" Width="246" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <Label Content="Vreme pregelda:" HorizontalAlignment="Left" FontSize="25" Height="49" Margin="210,238,0,0" VerticalAlignment="Top" Width="201" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Sat" FontSize="25" Margin="455,245,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="98" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Minut" FontSize="25" Margin="603,245,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="98" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <Label x:Name="Izbor" Content="Izaberite termin:" Visibility="Hidden" FontSize="25" HorizontalAlignment="Left" Height="45" Margin="210,303,0,0" VerticalAlignment="Top" Width="230" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <ComboBox x:Name="Termin" HorizontalAlignment="Left" Visibility="Hidden" FontSize="25" VerticalAlignment="Top" Width="246" Margin="455,308,0,0" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <Label Width="364" VerticalAlignment="Top" Margin="310,87,0,0" Height="50" HorizontalAlignment="Left" FontSize="22" Foreground="#1963bf" FontWeight="Bold" Content="Modifikacija zakazanog pregleda"/>
+        <Label Margin="239,21,401,448">
             <StackPanel Orientation="Horizontal">
                 <fa:ImageAwesome Icon="Globe" Width="60" Foreground="#1963bf"/>
                 <fa:ImageAwesome Icon="HSquare" Width="37" Foreground="#b31a0c"/>
                 <fa:ImageAwesome Icon="UserMd" Width="37" Foreground="#1963bf"/>
             </StackPanel>
         </Label>
-        <Label Margin="191,27,445,352">
+        <Label Margin="255,37,381,475">
             <StackPanel Orientation="Horizontal">
                 <fa:ImageAwesome Icon="Heart" Width="15" Foreground="#b31a0c"/>
             </StackPanel>
         </Label>
-        <Label Content="ZDRAVO KORPORACIJA" FontSize="25" Margin="324,24,172,380" Foreground="#1963bf" FontWeight="Bold"/>
+        <Label Content="ZDRAVO KORPORACIJA" FontSize="25" Margin="388,34,108,445" Foreground="#1963bf" FontWeight="Bold"/>
     </Grid>
 </Window>
