@@ -46,7 +46,7 @@ namespace ProjekatSIMS
             foreach (Pacijent pacijent in Pacijenti)
             {
                 int prosloNedeljuDana = DateTime.Compare(pacijent.datumPrvogZakazivanjaPregleda.AddDays(7), sadasnjeVreme);
-                if(prosloNedeljuDana == 0)
+                if(prosloNedeljuDana < 0)
                 {
                     ObrisiPokusajeZakazivanja(pacijent.Ime, pacijent.Prezime);
                 }

@@ -619,6 +619,24 @@ namespace Service
 
             
         }
+
+        private void zabeleziPodatkePacijenta(Pacijent p)
+        {
+            
+            PacijentRepository file = new PacijentRepository(@"..\..\..\Fajlovi\Pacijent.txt");
+            List <Pacijent> Pacijenti = file.UcitajSvePacijente();
+            foreach(Pacijent pa in Pacijenti)
+            {
+                if (p.zakazaoPregled == 0)
+                {
+                    p.datumPrvogZakazivanjaPregleda = DateTime.UtcNow;
+                }
+            }
+            
+
+
+
+        }
         public Boolean ZakazivanjePregledaPacijent(String ime, String prezime, String imeDoktora, String prezimeDoktora, DateTime datum, String jmbg)
         {
             Pregled p = new Pregled();
@@ -671,10 +689,10 @@ namespace Service
                         }
                     }
                     pregledi.Add(p);
-                    if(pacijent.zakazaoPregled == 0)
-                    {
-                        pacijent.datumPrvogZakazivanjaPregleda = DateTime.UtcNow;
-                    }
+                   
+
+                    
+
 
 
                     pregledRepository.SacuvajPregledPacijent(pregledi);
