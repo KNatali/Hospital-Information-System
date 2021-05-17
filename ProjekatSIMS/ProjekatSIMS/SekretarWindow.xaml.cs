@@ -65,5 +65,11 @@ namespace ProjekatSIMS
             OdabirPacijentaHitnoSWindow op = new OdabirPacijentaHitnoSWindow();
             op.Show();
         }
+
+        private void Kreiranje_doktora(object sender, RoutedEventArgs e)
+        {
+            KreiranjeProfilaDoktoraSWindow kd = new KreiranjeProfilaDoktoraSWindow();
+            kd.Show();
+        }
     }
 }

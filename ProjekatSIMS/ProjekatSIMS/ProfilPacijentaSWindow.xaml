@@ -20,12 +20,12 @@
         <TextBox HorizontalAlignment="Left" x:Name="Jmbg" FontSize="25" Margin="357,260,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" BorderBrush="#1963bf" Foreground="#1963bf"/>
         <Label Content="Broj telefona" Grid.Column="0" FontSize="25"  HorizontalAlignment="Left" Height="49" Margin="60,366,0,0" VerticalAlignment="Top" Width="157" Foreground="#1963bf" FontWeight="DemiBold"/>
         <Label Content="Datum rođenja" Grid.Column="0" FontSize="25" HorizontalAlignment="Left" Height="40" Margin="239,305,0,0" VerticalAlignment="Top" Width="90" Foreground="#1963bf" FontWeight="DemiBold"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Datum" FontSize="25" Margin="357,310,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Datum" FontSize="25" Margin="357,310,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="202" BorderBrush="#1963bf" Foreground="#1963bf"/>
         <TextBox HorizontalAlignment="Left" x:Name="Telefon" FontSize="25" Margin="271,373,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="288" BorderBrush="#1963bf" Foreground="#1963bf"/>
         <Label Content="E-mail" HorizontalAlignment="Left" FontSize="25"  Height="43" Margin="60,475,0,0" VerticalAlignment="Top" Width="97" Foreground="#1963bf" FontWeight="DemiBold"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Mail" FontSize="25" Margin="271,475,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="288" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Mail" FontSize="25" Margin="271,475,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="288" BorderBrush="#1963bf" Foreground="#1963bf"/>
         <Label Content="Adresa" HorizontalAlignment="Left" FontSize="25"  Height="48" Margin="60,421,0,0" VerticalAlignment="Top" Width="97" Foreground="#1963bf" FontWeight="DemiBold"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Adresa" FontSize="25" Margin="271,425,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="288" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Adresa" FontSize="25" Margin="271,425,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="288" BorderBrush="#1963bf" Foreground="#1963bf"/>
         <fa:ImageAwesome Icon="UserCircle" Margin="68,148,722,270" Foreground="#88bcfc"/>
 
         <Label Width="182" VerticalAlignment="Top" Margin="399,90,0,0" Height="50" HorizontalAlignment="Left" FontSize="22" Foreground="#1963bf" FontWeight="Bold" Content="Profil pacijenta"/>
