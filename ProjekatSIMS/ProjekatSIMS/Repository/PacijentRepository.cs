@@ -18,6 +18,10 @@ namespace Repository
             this.lokacija = l;
         }
 
+        public PacijentRepository()
+        {
+        }
+
         public List<Pacijent> UcitajSvePacijente()
         {
             List<Pacijent> pacijenti = new List<Pacijent>();
