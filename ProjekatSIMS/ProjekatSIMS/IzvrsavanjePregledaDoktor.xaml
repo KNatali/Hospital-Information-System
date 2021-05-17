@@ -50,7 +50,7 @@
         <Button Content="Uput za specijalisticki pregled" Grid.Row="2" Grid.Column="1"  Margin="20,0,0,0" Click="IzdavanjeUputa" Style="{StaticResource btnStandard}"/>
         <Button Content="Uput za bolnicko lijecenje" Grid.Row="2" Grid.Column="0"  Margin="0,0,20,0" Click="IzdavanjeUputa" Style="{StaticResource btnStandard}"/>
         <Button Content="Izdaj opravdanje" Grid.Row="3" Grid.Column="1"  Margin="20,0,0,0" Click="IzdavanjeUputa" Style="{StaticResource btnStandard}"/>
-        <Button Content="Izdaj recept" Grid.Row="3" Grid.Column="0"  Margin="0,0,20,0" Click="IzdavanjeUputa" Style="{StaticResource btnStandard}"/>
+        <Button Content="Izdaj recept" Grid.Row="3" Grid.Column="0"  Margin="0,0,20,0" Click="IzdavanjeRecepta" Style="{StaticResource btnStandard}"/>
         <StackPanel  Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2"  HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
             <Button Content="Zavrsi pregled" Width="120" Margin="0,0,20,0"  HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnStandard}"/>
             <Button Content="Odustani" Width="100"  HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnStandard}"/>

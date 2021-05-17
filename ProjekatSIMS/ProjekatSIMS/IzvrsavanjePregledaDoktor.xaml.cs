@@ -62,6 +62,13 @@ namespace ProjekatSIMS
             this.NavigationService.Navigate(z);
         }
 
+        private void IzdavanjeRecepta(object sender, RoutedEventArgs e)
+        {
+            IzdajReceptDoktor z = new IzdajReceptDoktor(pregled.pacijent);
+            // this.NavigationService.Navigate(new Uri("ZdravstveniKartonDoktor.xaml", UriKind.Relative));
+            this.NavigationService.Navigate(z);
+        }
+
         public PregledRepository pregledRepository;
     }
 

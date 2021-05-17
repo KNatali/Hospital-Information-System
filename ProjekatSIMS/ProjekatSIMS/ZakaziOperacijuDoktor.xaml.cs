@@ -25,6 +25,8 @@ namespace ProjekatSIMS
     public partial class ZakaziOperacijuDoktor : Page
     {
         public List<Prostorija> Sale { get; set; }
+
+        public Prostorija Sala1 { get; set; }
         public List<Pacijent> Pacijenti { get; set; }
         public ZakaziOperacijuDoktor()
         {
@@ -35,17 +37,22 @@ namespace ProjekatSIMS
             Sale = new List<Prostorija>();
             Pacijenti = new List<Pacijent>();
             //ucitavanje sala u combobox
+          
             using (StreamReader r = new StreamReader(@"..\..\..\Fajlovi\Prostorija.txt"))
             {
                 string json = r.ReadToEnd();
                 prostorije = JsonConvert.DeserializeObject<List<Prostorija>>(json);
 
             }
+        
+            
             //ubacujem samo sale za operaciju
             foreach (Prostorija p in prostorije)
             {
                 if (p.vrsta == VrstaProstorije.Sala)
                     Sale.Add(p);
+               
+
 
             }
 
