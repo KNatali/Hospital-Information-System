@@ -11,6 +11,8 @@ namespace Model
     public class Pacijent : Osoba
     {
         public int otkazaoPregled = 0;
+        public int zakazaoPregled = 0;
+        public DateTime datumPrvogZakazivanjaPregleda;
       public Boolean IzmeniInformacije(String ime, String prezime, String email, String brojTelefona, String adresa, String jmbg, DateTime datumRodjenja)
       {
          // TODO: implement
