@@ -54,7 +54,7 @@ namespace ProjekatSIMS.Service
                     break;
                 }
             }
-            if(ocena != null)
+            if(ocena != null) 
             {
                 if (lekarSeMozeOceniti == true)
                 {

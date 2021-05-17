@@ -54,12 +54,6 @@ namespace Repository
             return zk;
         }
 
-
-
-
-   
-        
-
         public PregledRepository()
         {
             
@@ -82,10 +76,6 @@ namespace Repository
          return null;
       }
 
-
-   
-
-      
       public List<Pregled> GetListaPregledaRepository(DateTime zaDan)
       {
          // TODO: implement
