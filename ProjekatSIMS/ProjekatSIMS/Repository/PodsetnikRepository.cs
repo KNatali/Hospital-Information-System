@@ -9,7 +9,7 @@ namespace ProjekatSIMS.Repository
 {
    public class PodsetnikRepository
     {
-        private const string putanja = @"..\..\Fajlovi\Podsetnik.txt";
+        private const string putanja = @"..\..\..\Fajlovi\Podsetnik.txt";
 
         public void SacuvajPodsetnik(List<Podsetnik> podsetnici)
         {

@@ -11,7 +11,8 @@ namespace ProjekatSIMS.Model
         public String opisPodsetnika { get; set; }
         public DateTime datumPocetkaObavestenja { get; set; }
         public DateTime datumZavrsetkaObavestenja { get; set; }
-        public Pacijent pacijent;
+
+        public Pacijent pacijent { get; set; }
         public Podsetnik()
         {
 

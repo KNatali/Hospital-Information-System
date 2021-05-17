@@ -6,108 +6,7 @@
         xmlns:local="clr-namespace:ProjekatSIMS"
         mc:Ignorable="d"
         Title="PacijentWindow" Height="450" Width="800">
-    <Window.Resources>
-        <Style TargetType="Menu" x:Key="MenuStyle">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Menu}">
-                        <Border BorderThickness="1">
-                            <Border.BorderBrush>
-                                <LinearGradientBrush StartPoint="0,0"
-                                 EndPoint="0,1">
-                                    <LinearGradientBrush.GradientStops>
-                                        <GradientStopCollection>
-                                            <GradientStop Color="#FF888888"
-                                                Offset="0.0" />
-                                            <GradientStop Color="#FF888888"
-                                                Offset="1.0" />
-                                        </GradientStopCollection>
-                                    </LinearGradientBrush.GradientStops>
-                                </LinearGradientBrush>
-
-                            </Border.BorderBrush>
-                            <Border.Background>
-                                <LinearGradientBrush EndPoint="0.5,1"
-                                 StartPoint="0.5,0">
-                                    <GradientStop Color="#FF888888"
-                                        Offset="0" />
-                                    <GradientStop Color="#FF888888"
-                                        Offset="1" />
-                                </LinearGradientBrush>
-                            </Border.Background>
-                            <StackPanel ClipToBounds="True"
-                                Orientation="Vertical"
-                                IsItemsHost="True" />
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style TargetType="MenuItem" x:Key="BaseMenuItem">
-            <Setter Property="FontSize" Value="25" />
-            <Setter Property="Width" Value="33" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="MenuItem">
-                        <Grid x:Name="MenuItemGrid">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="30" />
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
-                            <Border x:Name="MenuItemBorder" Grid.ColumnSpan="2">
-                                <Border.BorderBrush>
-                                    <LinearGradientBrush StartPoint="0,0"
-                                 EndPoint="0,1">
-                                        <LinearGradientBrush.GradientStops>
-                                            <GradientStopCollection>
-                                                <GradientStop Color="#FF888888"
-                                                Offset="0.0" />
-                                                <GradientStop Color="#FF888888"
-                                                Offset="1.0" />
-                                            </GradientStopCollection>
-                                        </LinearGradientBrush.GradientStops>
-                                    </LinearGradientBrush>
-
-                                </Border.BorderBrush>
-                                <Border.Background>
-                                    <LinearGradientBrush EndPoint="0.5,1"
-                                 StartPoint="0.5,0">
-                                        <GradientStop Color="#FF888888"
-                                        Offset="0" />
-                                        <GradientStop Color="#FF888888"
-                                        Offset="1" />
-                                    </LinearGradientBrush>
-                                </Border.Background>
-                                <StackPanel ClipToBounds="True"
-                                    Orientation="Horizontal"
-                                    IsItemsHost="True" />
-                            </Border>
-                            <ContentPresenter x:Name="IconPresenter"  ContentSource="Icon"/>
-                            <ContentPresenter ContentSource="Header"
-                                          Margin="7, 1, 7, 1" Grid.Column="1" />
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="MenuItemBorder" Property="Background" Value="CadetBlue" />
-                            </Trigger>
-                            <DataTrigger Binding="{Binding Path=Checker}" Value="True">
-                                <DataTrigger.EnterActions>
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <DoubleAnimation Duration="0:0:1" Storyboard.TargetProperty="Width" From="33" To="150" />
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </DataTrigger.EnterActions>
-                            </DataTrigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </Window.Resources>
     <Grid>
-   
 
         <Label Content="Dobrodošli!" HorizontalAlignment="Left" Margin="46,30,0,0" VerticalAlignment="Top" FontWeight="Bold" FontStyle="Italic" FontSize="16"/>
         <Label Content="Opcije:" HorizontalAlignment="Left" Margin="51,79,0,0" VerticalAlignment="Top" FontWeight="Normal" FontStyle="Italic"/>
@@ -119,7 +18,7 @@
         <Button Content="Oceni lekara" Width="150" Height="70" Margin="0,149,225,0" Click="OceniLekara_Click" HorizontalAlignment="Right" VerticalAlignment="Top" />
         <Button Content="Vidi ocene bolnice" Width="150" Height="70" Margin="0,224,225,0" Click="VidiOceneBolnice_Click" HorizontalAlignment="Right" VerticalAlignment="Top" />
         <Button Content="Vidi ocene svih lekara" Width="150" Height="70" Margin="0,318,225,0" Click="VidiOceneLekara_Click" HorizontalAlignment="Right" VerticalAlignment="Top" />
-
+        <Button Content="Kreiraj podsetnik" Width="150" Height="70" Margin="0,177,37,0" Click="Podsetnik_Click" HorizontalAlignment="Right" VerticalAlignment="Top" />
 
 
 

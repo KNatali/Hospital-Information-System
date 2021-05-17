@@ -130,5 +130,11 @@ namespace ProjekatSIMS
             VidiOceneLekaraWindow volw = new VidiOceneLekaraWindow();
             volw.Show();
         }
+
+        private void Podsetnik_Click(object sender, RoutedEventArgs e)
+        {
+            KreirajPodsetnikWindow kpw = new KreirajPodsetnikWindow();
+            kpw.Show();
+        }
     }
 }
