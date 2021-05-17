@@ -393,6 +393,7 @@ namespace Service
             return true;
         }
 
+
         public Boolean ZakazivanjePregleda(ComboBox Termin, String jmbg, Prostorija prostorija, DateTime datum1, DateTime datum2)
         {
             Pregled p = new Pregled();
@@ -590,42 +591,48 @@ namespace Service
                 return false;
             }
         }
-        public Boolean ZakazivanjePregledaPacijent(String ime, String prezime, String imeDoktora, String prezimeDoktora, DateTime datum, String jmbg)
+
+        private Doktor postojiDoktorUSistemu(String ime,String prezime)
         {
-            Pregled p = new Pregled();
-
-            int trajanje = 30;
-
+            bool doktorPostoji = false;
             List<Doktor> doktori = new List<Doktor>();
             using (StreamReader sr = new StreamReader(@"..\..\..\Fajlovi\Doktor.txt"))
             {
                 string json = sr.ReadToEnd();
                 doktori = JsonConvert.DeserializeObject<List<Doktor>>(json);
             }
+            foreach (Doktor dr in doktori)
+            {
+                if ((dr.Ime == ime) && (dr.Prezime == prezime))
+                {
+
+                    return dr;
+                    break;
+                }
+            }
+            if(doktorPostoji == false)
+            {
+                return null;
+                MessageBox.Show("Ne postoji doktor sa tim imenom!");
+            }
+            return null;
+
+            
+        }
+        public Boolean ZakazivanjePregledaPacijent(String ime, String prezime, String imeDoktora, String prezimeDoktora, DateTime datum, String jmbg)
+        {
+            Pregled p = new Pregled();
+
+            int trajanje = 30;
+
             Pacijent pacijent = new Pacijent { Jmbg = jmbg, Ime = ime, Prezime = prezime };
-            bool postojiDoktor = false;
-
-
+            if(postojiDoktorUSistemu(imeDoktora,prezimeDoktora) != null)
+            {
+                p.doktor = postojiDoktorUSistemu(imeDoktora, prezimeDoktora);
+            }
 
             if (DaLiJeKorisnikMaliciozan(ime, prezime) == false)
             {
-
-                foreach (Doktor dr in doktori)
-                {
-                    if ((dr.Ime == imeDoktora) && (dr.Prezime == prezimeDoktora))
-                    {
-                        postojiDoktor = true;
-                        p.doktor = dr;
-                        break;
-                    }
-                }
-                if (postojiDoktor == false)
-                {
-                    MessageBox.Show("Ne postoji doktor sa tim imenom!");
-                    return false;
-                }
-
-
 
                 pregledRepository = new PregledRepository();
 
@@ -664,6 +671,11 @@ namespace Service
                         }
                     }
                     pregledi.Add(p);
+                    if(pacijent.zakazaoPregled == 0)
+                    {
+                        pacijent.datumPrvogZakazivanjaPregleda = DateTime.UtcNow;
+                    }
+
 
                     pregledRepository.SacuvajPregledPacijent(pregledi);
 
@@ -691,6 +703,7 @@ namespace Service
             }
         }
 
+       
 
 
         private Boolean DaLiJeKorisnikMaliciozan(String imePacijenta, String prezimePacijenta)
@@ -724,6 +737,8 @@ namespace Service
                 }
             }
         }
+
+       
 
 
 
