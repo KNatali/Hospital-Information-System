@@ -37,5 +37,30 @@ namespace ProjekatSIMS.WindowPacijent
         {
             PacijentFrame.Content = new IzmeniPregledPacijenta();
         }
+
+        private void OceniBolnicu(object sender, RoutedEventArgs e)
+        {
+            PacijentFrame.Content = new OceniBolnicuPacijent();
+        }
+
+        private void OceniLekara(object sender, RoutedEventArgs e)
+        {
+            PacijentFrame.Content = new OceniLekaraPacijent();
+        }
+
+        private void VidiOcene(object sender, RoutedEventArgs e)
+        {
+            PacijentFrame.Content = new VidiOcenePacijent();
+        }
+
+        private void KreirajPodsetnik(object sender, RoutedEventArgs e)
+        {
+            PacijentFrame.Content = new KreiranjePodsetnika();
+        }
+
+        private void VidiPodsetnike(object sender, RoutedEventArgs e)
+        {
+            PacijentFrame.Content = new PregledPodsetnika();
+        }
     }
 }
