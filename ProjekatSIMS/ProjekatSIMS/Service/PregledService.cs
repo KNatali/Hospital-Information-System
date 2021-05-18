@@ -592,7 +592,7 @@ namespace Service
             }
         }
 
-        private Doktor postojiDoktorUSistemu(String ime,String prezime)
+      /*  private Doktor postojiDoktorUSistemu(String ime,String prezime)
         {
             bool doktorPostoji = false;
             List<Doktor> doktori = new List<Doktor>();
@@ -619,7 +619,7 @@ namespace Service
             return null;
 
             
-        }
+        } */
 
         private void zabeleziPodatkePacijenta(Pacijent p)
         {
@@ -679,10 +679,12 @@ namespace Service
             ProveraVremenaZakazivanja(danasnjiDan);
 
             Pacijent pacijent = new Pacijent { Jmbg = jmbg, Ime = ime, Prezime = prezime };
-            if(postojiDoktorUSistemu(imeDoktora,prezimeDoktora) != null)
+            /*if(postojiDoktorUSistemu(imeDoktora,prezimeDoktora) != null)
             {
                 p.doktor = postojiDoktorUSistemu(imeDoktora, prezimeDoktora);
-            }
+            } */
+            Doktor doktor = new Doktor { Ime = imeDoktora, Prezime = prezimeDoktora };
+            p.doktor = doktor;
 
             if (DaLiJeKorisnikMaliciozan(ime, prezime) == false)
             {
