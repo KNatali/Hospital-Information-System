@@ -1,0 +1,21 @@
+﻿<Window x:Class="ProjekatSIMS.WindowPacijent.KreirajPodsetnikWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjekatSIMS.WindowPacijent"
+        mc:Ignorable="d"
+        Title="KreirajPodsetnikWindow" Height="450" Width="800">
+    <Grid>
+        <Button Content="Kreiraj podsetnik" HorizontalAlignment="Left" Margin="667,381,0,0" VerticalAlignment="Top" Click="Kreiraj_Click"/>
+        <DatePicker HorizontalAlignment="Left" Margin="254,321,0,0" VerticalAlignment="Top" Name="DatumKraja" />
+        <DatePicker HorizontalAlignment="Left" Margin="254,241,0,0" VerticalAlignment="Top" Name="DatumPocetka" />
+        <TextBox HorizontalAlignment="Left" Margin="254,86,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Name="Naziv"/>
+        <TextBox HorizontalAlignment="Left" Margin="254,142,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="94" Name="Opis" />
+        <Label Content="Unesite naziv podsetnika:" HorizontalAlignment="Left" Margin="28,78,0,0" VerticalAlignment="Top"  />
+        <Label Content="Unesite opis podsetnika:" HorizontalAlignment="Left" Margin="28,142,0,0" VerticalAlignment="Top"/>
+        <Label Content="Unesite datum pocetka:" HorizontalAlignment="Left" Margin="28,227,0,0" VerticalAlignment="Top"/>
+        <Label Content="Unesite datum kraja:" HorizontalAlignment="Left" Margin="28,319,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
