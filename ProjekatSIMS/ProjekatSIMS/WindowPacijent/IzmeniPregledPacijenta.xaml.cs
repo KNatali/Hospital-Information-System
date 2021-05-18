@@ -1,25 +1,35 @@
 ﻿using Model;
 using Newtonsoft.Json;
-using ProjekatSIMS.WindowPacijent;
 using Repository;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
-namespace ProjekatSIMS
+namespace ProjekatSIMS.WindowPacijent
 {
-
-    public partial class IzmeniWindow: Window
+    /// <summary>
+    /// Interaction logic for IzmeniPregled.xaml
+    /// </summary>
+    public partial class IzmeniPregledPacijenta : Page
     {
         public List<Pregled> Pregledi { get; set; }
         public List<Pacijent> Pacijenti { get; set; }
+        
         public int prioritetVreme = 0;
         public int prioritetDoktor = 0;
-       
-        public IzmeniWindow()
+        public IzmeniPregledPacijenta()
         {
+            
             InitializeComponent();
             this.DataContext = this;
 
@@ -30,27 +40,12 @@ namespace ProjekatSIMS
             Pacijenti = new List<Pacijent>();
             PacijentRepository file = new PacijentRepository(@"..\..\..\Fajlovi\Pacijent.txt");
             Pacijenti = file.UcitajSvePacijente();
-
-           
-
-
         }
 
-        private void button1_Click(object sender, RoutedEventArgs e)
+        private void Izmeni(object sender, RoutedEventArgs e)
         {
-            if (DoktorPrioritet.IsChecked == true) {
-                MessageBox.Show("Odabrali ste doktora kao prioritet u slucaju da Vas termin nije slobodan.");
-                prioritetDoktor = 1;
-            } 
-            else if (VremePrioritet.IsChecked == true) {
-                MessageBox.Show("Odabrali ste vreme kao prioritet u slucaju da Vas doktor nije slobodan.");
-                prioritetVreme = 1;
-            }
-                
-        }
 
-        private void Izmeni_Click(object sender, RoutedEventArgs e)
-        {
+
             Pregled p = (Pregled)dataGridPregledi.SelectedItems[0]; //pregled koji je izabran za izmenu
 
             //preuzimanje datuma i vremena iz forme
@@ -62,7 +57,7 @@ namespace ProjekatSIMS
             datumNovi = datum.AddHours(sati);
             datumNovi = datumNovi.AddMinutes(minuti);
             String imeDoktora = ImeDoktora.Text;
-            
+
             String prezimeDoktora = PrezimeDoktora.Text;
 
             foreach (Pacijent pac in Pacijenti)
@@ -89,28 +84,29 @@ namespace ProjekatSIMS
             }
             else
             {
-                foreach(Pregled pregled in Pregledi)
+                foreach (Pregled pregled in Pregledi)
                 {
                     if (pregled.Pocetak == datumNovi)
                     {
                         MessageBox.Show("Ovaj termin je zauzet. Ponudicemo Vam novi termin spram Vaseg prioriteta.");
                         slobodanTerminFlag = 1;
-                        if(prioritetVreme == 1)
+                        if (prioritetVreme == 1)
                         {
-                            VremePrioritetWindow vpw = new VremePrioritetWindow(datumNovi,p.pacijent.Ime,p.pacijent.Prezime);
+                            VremePrioritetWindow vpw = new VremePrioritetWindow(datumNovi, p.pacijent.Ime, p.pacijent.Prezime);
                             vpw.Show();
-                        }else if(prioritetDoktor == 1)
+                        }
+                        else if (prioritetDoktor == 1)
                         {
-                            DoktorPrioritetWindow dpw = new DoktorPrioritetWindow(imeDoktora,prezimeDoktora, p.pacijent.Ime, p.pacijent.Prezime);
+                            DoktorPrioritetWindow dpw = new DoktorPrioritetWindow(imeDoktora, prezimeDoktora, p.pacijent.Ime, p.pacijent.Prezime);
                             dpw.Show();
                         }
-                        
+
                         break;
                     }
-                    
+
                 }
 
-                if(slobodanTerminFlag == 0)
+                if (slobodanTerminFlag == 0)
                 {
                     Pregledi.Remove(p);
                     p.Pocetak = datumNovi;
@@ -122,12 +118,23 @@ namespace ProjekatSIMS
                     File.WriteAllText(@"..\..\..\Fajlovi\Pregled.txt", newJson);
                     MessageBox.Show("Pregled je uspesno izmenjen.");
                 }
-                
+
 
             }
+        }
 
-
-            this.Close();
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            if (DoktorPrioritet.IsChecked == true)
+            {
+                MessageBox.Show("Odabrali ste doktora kao prioritet u slucaju da Vas termin nije slobodan.");
+                prioritetDoktor = 1;
+            }
+            else if (VremePrioritet.IsChecked == true)
+            {
+                MessageBox.Show("Odabrali ste vreme kao prioritet u slucaju da Vas doktor nije slobodan.");
+                prioritetVreme = 1;
+            }
 
         }
 
@@ -137,8 +144,6 @@ namespace ProjekatSIMS
             VremePrioritet.Foreground = Brushes.Blue;
 
         }
-        
-
 
     }
 }

@@ -10,7 +10,7 @@
 
     <Grid Background="#CDFEBB">
         <DataGrid x:Name="dataGridPregledi" ItemsSource="{Binding Pregledi}" IsReadOnly="True"
-                  SelectionMode="Single" AutoGenerateColumns="False" Margin="10,28,268,0" Height="317" VerticalAlignment="Top">
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="42,10,236,0" Height="317" VerticalAlignment="Top">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Pocetak" Binding="{Binding Pocetak}"/>
                 <DataGridTextColumn Header="Trajanje" Binding="{Binding Trajanje}"/>
@@ -23,7 +23,8 @@
             </DataGrid.Columns>
         </DataGrid>
         <Button Content="Zatvori" IsDefault="True" HorizontalAlignment="Left" Margin="664,377,0,0" VerticalAlignment="Top" Height="33" Width="78" Click="Zatvori" Background="#A4E98A"/>
-        <Button Content="Otkazi pregled" HorizontalAlignment="Left" Margin="80,360,0,0" VerticalAlignment="Top" Background="#A4E98A" Height="34" Width="97"/>
-        <Button Content="Izmeni pregled" HorizontalAlignment="Left" Margin="235,361,0,0" VerticalAlignment="Top" Background="#A4E98A" Height="33" Width="97"/>
+        <Button Content="Otkazi pregled" HorizontalAlignment="Left" Margin="80,360,0,0" VerticalAlignment="Top" Background="#A4E98A" Height="34" Width="97" Click="OtkaziPregled"/>
+
     </Grid>
+
 </Page>
