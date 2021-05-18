@@ -40,6 +40,10 @@ namespace Service
         {
             return pregledRepository.DobaviSvePregledeDoktor();
         }
+        public List<Pregled> DobaviSvePregledeSekretar()
+        {
+            return pregledRepository.GetListaPregledaSekretar();
+        }
 
 
         public Boolean OtkazivanjePregledaDoktor(Pregled p)
@@ -57,7 +61,20 @@ namespace Service
             return true;
 
         }
-
+        public Boolean OtkazivanjePregledaSekretar(Pregled p)
+        {
+            List<Pregled> pregledi = pregledRepository.GetListaPregledaSekretar();
+            foreach(Pregled pr in pregledi)
+            {
+                if(pr.Id==p.Id)
+                {
+                    pregledi.Remove(pr);
+                    break;
+                }
+            }
+            pregledRepository.SacuvajPregledSekretar(pregledi);
+            return true;
+        }
         public Boolean IzmjenaPregledaDoktor(Pregled p, DateTime datum)
         {
             List<Pregled> pregledi = pregledRepository.DobaviSvePregledeDoktor();
