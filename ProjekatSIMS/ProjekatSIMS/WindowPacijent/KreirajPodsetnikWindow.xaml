@@ -16,6 +16,10 @@
         <Label Content="Unesite opis podsetnika:" HorizontalAlignment="Left" Margin="28,142,0,0" VerticalAlignment="Top"/>
         <Label Content="Unesite datum pocetka:" HorizontalAlignment="Left" Margin="28,227,0,0" VerticalAlignment="Top"/>
         <Label Content="Unesite datum kraja:" HorizontalAlignment="Left" Margin="28,319,0,0" VerticalAlignment="Top"/>
+        <Label Content="Unesite svoje ime: " HorizontalAlignment="Left" Margin="28,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="Unesite svoje prezime: " HorizontalAlignment="Left" Margin="28,43,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="254,14,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Name="Ime" />
+        <TextBox HorizontalAlignment="Left" Margin="254,51,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Name="Prezime"/>
 
     </Grid>
 </Window>
