@@ -32,5 +32,10 @@ namespace ProjekatSIMS.WindowPacijent
         {
             PacijentFrame.Content = new VidiPreglede();
         }
+
+        private void IzmeniPregled(object sender, RoutedEventArgs e)
+        {
+            PacijentFrame.Content = new IzmeniPregledPacijenta();
+        }
     }
 }
