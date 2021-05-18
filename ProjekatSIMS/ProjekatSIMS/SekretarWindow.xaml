@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="SekretarWindow" Height="568" Width="924" Background="#d1e3ff">
     <Grid>
-        <Button Click="Kreiranje_profila" HorizontalAlignment="Left" Margin="500,120,0,0" VerticalAlignment="Top" Height="60" Width="320" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf">
+        <Button Click="Kreiranje_profila" HorizontalAlignment="Left" Margin="100,280,0,0" VerticalAlignment="Top" Height="60" Width="320" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf">
             <Button.Content>
                 <StackPanel Orientation="Horizontal">
                     <fa:ImageAwesome Icon="UserPlus" Width="30" Foreground="#1963bf"/>
@@ -24,7 +24,7 @@
                 </StackPanel>
             </Button.Content>
         </Button>
-        <Button Click="Kalendar" HorizontalAlignment="Center" Margin="0,280,0,0" VerticalAlignment="Top" Height="60" Width="320" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf">
+        <Button Click="Kalendar" HorizontalAlignment="Left" Margin="500,120,0,0" VerticalAlignment="Top" Height="60" Width="320" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf">
             <Button.Content>
                 <StackPanel Orientation="Horizontal">
                     <fa:ImageAwesome Icon="Calendar" Width="30" Foreground="#1963bf"/>
@@ -80,6 +80,14 @@
                 </StackPanel>
             </Button.Content>
         </Button>
+        <Button Click="Kreiranje_doktora" HorizontalAlignment="Left" Margin="500,280,0,0" VerticalAlignment="Top" Height="60" Width="320" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <fa:ImageAwesome Icon="UserPlus" Width="30" Foreground="#1963bf"/>
+                    <TextBlock Text=" Kreirajte profil doktora"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
         <Label Margin="239,21,401,342">
             <Label.Content>
                 <StackPanel Orientation="Horizontal">
@@ -96,6 +104,6 @@
                 </StackPanel>
             </Label.Content>
         </Label>
-        <Label Content="ZDRAVO KORPORACIJA" FontSize="25" Margin="388,34,108,370" Foreground="#1963bf" FontWeight="Bold"/>
+        <Label Content="ZDRAVO KORPORACIJA" FontSize="25" Margin="388,34,108,445" Foreground="#1963bf" FontWeight="Bold"/>
     </Grid>
 </Window>

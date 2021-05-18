@@ -18,12 +18,13 @@ namespace Service
         public const int KRAJ_RADNOG_VREMENA = 20;
         public int MAKSIMALNO_OTKAZIVANJA = 10;
         public bool jesteMaliciozniKorisnik = false;
+      
         public Repository.PregledRepository pregledRepository = new PregledRepository();
         public Repository.ReceptRepository receptRepository;
+        
 
         public ProstorijaRepository prostorijaRepository = new ProstorijaRepository(@"..\..\..\Fajlovi\Prostorija.txt");
         public UputRepository uputRepository = new UputRepository();
-
 
         public int zauzetPregled = 0;
 
@@ -621,11 +622,11 @@ namespace Service
             
         } */
 
-        private void zabeleziPodatkePacijenta(Pacijent p)
+        private void ZabeleziPodatkePacijenta(Pacijent p)
         {
-            
-            PacijentRepository file = new PacijentRepository(@"..\..\..\Fajlovi\Pacijent.txt");
-            List <Pacijent> Pacijenti = file.UcitajSvePacijente();
+
+            PacijentRepository pacijentRepository = new PacijentRepository();
+            List <Pacijent> Pacijenti = pacijentRepository.UcitajSvePacijente();
             foreach(Pacijent pa in Pacijenti)
             {
                 if (p.zakazaoPregled == 0)
@@ -638,8 +639,8 @@ namespace Service
 
         private void ProveraVremenaZakazivanja(DateTime sadasnjeVreme)
         {
-            PacijentRepository file = new PacijentRepository(@"..\..\..\Fajlovi\Pacijent.txt");
-            List<Pacijent> Pacijenti = file.UcitajSvePacijente();
+            PacijentRepository pacijentRepository = new PacijentRepository();
+            List<Pacijent> Pacijenti = pacijentRepository.UcitajSvePacijente();
 
             foreach (Pacijent pacijent in Pacijenti)
             {
@@ -655,7 +656,7 @@ namespace Service
 
         private void ObrisiPokusajeZakazivanja(String ime, String prezime)
         {
-            PacijentRepository pacijentRepository = new PacijentRepository(@"..\..\..\Fajlovi\Pacijent.txt");
+            PacijentRepository pacijentRepository = new PacijentRepository();
             List<Pacijent> Pacijenti = pacijentRepository.UcitajSvePacijente();
 
             foreach (Pacijent pacijent in Pacijenti)
@@ -671,6 +672,7 @@ namespace Service
         }
         public Boolean ZakazivanjePregledaPacijent(String ime, String prezime, String imeDoktora, String prezimeDoktora, DateTime datum, String jmbg)
         {
+            
             Pregled p = new Pregled();
 
             int trajanje = 30;
@@ -726,12 +728,7 @@ namespace Service
                         }
                     }
                     pregledi.Add(p);
-                   
-
-                    
-
-
-
+                  
                     pregledRepository.SacuvajPregledPacijent(pregledi);
 
 
@@ -758,26 +755,43 @@ namespace Service
             }
         }
 
-       
+       private Pacijent PretragaPacijenta(String ime,String prezime)
+        {
+            PacijentRepository pacijentRepository = new PacijentRepository();
+            List<Pacijent> Pacijenti = pacijentRepository.UcitajSvePacijente();
+            foreach(Pacijent p in Pacijenti)
+            {
+                if((p.Ime == ime) && (p.Prezime == prezime))
+                {
+                    return p;
+                }
+            }
+            return null;
+        }
 
 
         private Boolean DaLiJeKorisnikMaliciozan(String imePacijenta, String prezimePacijenta)
         {
             ProveraPodatakaPacijenta(imePacijenta, prezimePacijenta);
-
+           
             return jesteMaliciozniKorisnik;
+            
+            
         }
 
-        private void SlanjePorukeOBlokiranjuKorisnika()
+        private void SlanjePorukeOBlokiranjuKorisnika(String ime,String prezime)
         {
             MessageBox.Show("Zakazali ste i otkazali previse pregleda u proteklom periodu, privremeno Vam je zabranjeno zakazivanje pregleda. Ukoliko smatrate da je ovo greska, molimo Vas obratite se sekretaru.");
             jesteMaliciozniKorisnik = true;
+        
         }
+
+        
         private List<Pacijent> DobavljanjePacijenataIzFajla()
         {
             List<Pacijent> Pacijenti;
             Pacijenti = new List<Pacijent>();
-            PacijentRepository pacijentRepository = new PacijentRepository(@"..\..\..\Fajlovi\Pacijent.txt");
+            PacijentRepository pacijentRepository = new PacijentRepository();
             Pacijenti = pacijentRepository.UcitajSvePacijente();
             return Pacijenti;
         }
@@ -787,7 +801,9 @@ namespace Service
             {
                 if ((pacijent.Ime == imePacijenta) && (pacijent.Prezime == prezimePacijenta) && (pacijent.otkazaoPregled >= MAKSIMALNO_OTKAZIVANJA))
                 {
-                    SlanjePorukeOBlokiranjuKorisnika();
+                    SlanjePorukeOBlokiranjuKorisnika(imePacijenta,prezimePacijenta);
+                    
+                   
                     break;
                 }
             }

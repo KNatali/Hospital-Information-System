@@ -35,28 +35,24 @@ namespace ProjekatSIMS
         private void Obrisi(object sender, RoutedEventArgs e)
         {
             MessageBoxResult ret = MessageBox.Show("Da li želite da obrišete ovu objavu?", "PROVERA", MessageBoxButton.YesNo);
-            switch (ret)
+            if(ret==MessageBoxResult.Yes)
             {
-                case MessageBoxResult.Yes:
-                    if (n.ObrisiNotifikaciju() == true)
+                if (n.ObrisiNotifikaciju() == true)
+                {
+                    NotifikacijaRepository fajl = new NotifikacijaRepository(@"..\..\..\Fajlovi\Vesti.txt");
+                    List<Notifikacija> notif = fajl.DobaviNotifikacije();
+                    foreach (Notifikacija no in notif)
                     {
-                        NotifikacijaRepository fajl = new NotifikacijaRepository(@"..\..\..\Fajlovi\Vesti.txt");
-                        List<Notifikacija> notif = fajl.DobaviNotifikacije();
-                        foreach (Notifikacija no in notif)
+                        if (no.Id == n.Id)
                         {
-                            if (no.Id == n.Id)
-                            {
-                                notif.Remove(no);
-                                break;
-                            }
+                            notif.Remove(no);
+                            break;
                         }
-                        fajl.SacuvajNotifikaciju(notif);
-                        MessageBox.Show("Objava je uspešno obrisana.", "OBAVEŠTENJE");
-                        this.Close();
                     }
-                    break;
-                case MessageBoxResult.No:
-                    break;
+                    fajl.SacuvajNotifikaciju(notif);
+                    MessageBox.Show("Objava je uspešno obrisana.", "OBAVEŠTENJE");
+                    this.Close();
+                }
             }
         }
 
