@@ -39,29 +39,12 @@
         <ComboBox x:Name="Pregledi" HorizontalAlignment="Left"   
                   Margin="401,373,0,0"   
                   VerticalAlignment="Top" BorderBrush="#1963bf" Foreground="#1963bf"
-                  Width="201" FontSize="25" SelectionChanged="IzborPregleda">
+                  Width="201" FontSize="25">
         </ComboBox>
         <ComboBox  Name="Termin" HorizontalAlignment="Left"   
                   Margin="545,301,0,0" Visibility="Hidden"
                   VerticalAlignment="Top" FontSize="20"
                   Width="155">
-        </ComboBox>
-        <Label Content="Sala" x:Name="ImeSale" HorizontalAlignment="Left" FontSize="25" Visibility="Hidden" Margin="628,371,0,0" VerticalAlignment="Top" Height="44" Width="72" Foreground="#1963bf" FontWeight="DemiBold"/>
-        <ComboBox  x:Name="Ordinacija" HorizontalAlignment="Left"   
-            Margin="705,373,0,0"   
-            VerticalAlignment="Top"   Visibility="Hidden"
-            Width="140" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf"
-            ItemsSource="{Binding Ordinacije}">
-
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding id}"/>
-                        <TextBlock Text=" - "/>
-                        <TextBlock Text="{Binding vrsta}"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
         </ComboBox>
         <Label Margin="239,21,401,342">
             <StackPanel Orientation="Horizontal">
