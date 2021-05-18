@@ -607,13 +607,14 @@ namespace Service
                 {
 
                     return dr;
-                    break;
+                    
                 }
             }
             if(doktorPostoji == false)
             {
-                return null;
                 MessageBox.Show("Ne postoji doktor sa tim imenom!");
+                return null;
+                
             }
             return null;
 
@@ -632,16 +633,50 @@ namespace Service
                     p.datumPrvogZakazivanjaPregleda = DateTime.UtcNow;
                 }
             }
-            
+     
+        }
 
+        private void ProveraVremenaZakazivanja(DateTime sadasnjeVreme)
+        {
+            PacijentRepository file = new PacijentRepository(@"..\..\..\Fajlovi\Pacijent.txt");
+            List<Pacijent> Pacijenti = file.UcitajSvePacijente();
 
+            foreach (Pacijent pacijent in Pacijenti)
+            {
+                int prosloNedeljuDana = DateTime.Compare(pacijent.datumPrvogZakazivanjaPregleda.AddDays(7), sadasnjeVreme);
+                if (prosloNedeljuDana < 0)
+                {
+                    ObrisiPokusajeZakazivanja(pacijent.Ime, pacijent.Prezime);
+                }
 
+            }
+
+        }
+
+        private void ObrisiPokusajeZakazivanja(String ime, String prezime)
+        {
+            PacijentRepository pacijentRepository = new PacijentRepository(@"..\..\..\Fajlovi\Pacijent.txt");
+            List<Pacijent> Pacijenti = pacijentRepository.UcitajSvePacijente();
+
+            foreach (Pacijent pacijent in Pacijenti)
+            {
+                if ((pacijent.Prezime == prezime) && (pacijent.Ime == ime))
+                {
+                    pacijent.otkazaoPregled = 0;
+                    pacijent.zakazaoPregled = 0;
+                    
+                }
+            }
+            pacijentRepository.SacuvajPacijente(Pacijenti);
         }
         public Boolean ZakazivanjePregledaPacijent(String ime, String prezime, String imeDoktora, String prezimeDoktora, DateTime datum, String jmbg)
         {
             Pregled p = new Pregled();
 
             int trajanje = 30;
+            DateTime danasnjiDan = DateTime.UtcNow;
+
+            ProveraVremenaZakazivanja(danasnjiDan);
 
             Pacijent pacijent = new Pacijent { Jmbg = jmbg, Ime = ime, Prezime = prezime };
             if(postojiDoktorUSistemu(imeDoktora,prezimeDoktora) != null)

@@ -10,6 +10,16 @@ namespace ProjekatSIMS.Repository
    public class PodsetnikRepository
     {
         private const string putanja = @"..\..\..\Fajlovi\Podsetnik.txt";
+        private string v;
+
+        public PodsetnikRepository(string v)
+        {
+            this.v = v;
+        }
+
+        public PodsetnikRepository()
+        {
+        }
 
         public void SacuvajPodsetnik(List<Podsetnik> podsetnici)
         {
