@@ -4,10 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjekatSIMS"
-        xmlns:fa="http://schemas.fontawesome.io/icons/" x:Class="ProjekatSIMS.KreirajProfilWindow"
+        xmlns:fa="http://schemas.fontawesome.io/icons/" x:Class="ProjekatSIMS.KreiranjeProfilaDoktoraSWindow"
         mc:Ignorable="d"
-        Title="KreirajProfilWindow" Height="568" Width="924" Background="#d1e3ff">
+        Title="KreiranjeProfilaDoktoraSWindow" Height="568" Width="924" Background="#d1e3ff">
     <Grid>
+
         <Button Content="Otkaži" Click="Otkazi" HorizontalAlignment="Left" Margin="60,440,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
         <Button Content="Potvrdi" Click="Potvrdi" HorizontalAlignment="Left" Margin="683,440,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
         <Label Content="Kreiranje profila pacijenta" FontSize="22" HorizontalAlignment="Left" Height="50" Margin="351,86,0,0" VerticalAlignment="Top" Width="280" FontWeight="Bold" Foreground="#1963bf"/>
@@ -19,24 +20,31 @@
         <TextBox HorizontalAlignment="Left" x:Name="Prezime" FontSize="25" Margin="255,216,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="191" BorderBrush="#1963bf" Foreground="#1963bf"/>
         <Label Content="Broj telefona" HorizontalAlignment="Left" FontSize="25" Height="41" Margin="470,165,0,0" VerticalAlignment="Top" Width="156" Foreground="#1963bf" FontWeight="DemiBold"/>
         <TextBox HorizontalAlignment="Left" x:Name="Telefon" FontSize="25" Margin="672,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="191" BorderBrush="#1963bf" Foreground="#1963bf"/>
-        <Label Content="E-mail" HorizontalAlignment="Left" FontSize="25" Height="39" Margin="470,258,0,0" VerticalAlignment="Top" Width="145" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <Label Content="E-mail" HorizontalAlignment="Left" FontSize="25" Height="39" Margin="470,263,0,0" VerticalAlignment="Top" Width="145" Foreground="#1963bf" FontWeight="DemiBold"/>
         <TextBox HorizontalAlignment="Left" x:Name="Mail" FontSize="25" Margin="672,261,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="191" BorderBrush="#1963bf" Foreground="#1963bf"/>
         <Label Content="Adresa" HorizontalAlignment="Left" FontSize="25" Height="40" Margin="470,214,0,0" VerticalAlignment="Top" Width="145" Foreground="#1963bf" FontWeight="DemiBold"/>
         <TextBox HorizontalAlignment="Left" x:Name="Adresa" FontSize="25" Margin="672,216,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="191" BorderBrush="#1963bf" Foreground="#1963bf"/>
         <Label Content="Datum rodjenja" HorizontalAlignment="Left" FontSize="25" Height="49" Margin="60,299,0,0" VerticalAlignment="Top" Width="199" Foreground="#1963bf" FontWeight="DemiBold"/>
         <DatePicker x:Name="Datum" HorizontalAlignment="Left" FontSize="25" Margin="255,303,0,0" VerticalAlignment="Top" Width="192" BorderBrush="#1963bf" Foreground="#1963bf"/>
-        <Label Margin="239,21,401,448">
+        <Label Margin="239,21,277,330">
             <StackPanel Orientation="Horizontal">
                 <fa:ImageAwesome Icon="Globe" Width="60" Foreground="#1963bf"/>
                 <fa:ImageAwesome Icon="HSquare" Width="37" Foreground="#b31a0c"/>
                 <fa:ImageAwesome Icon="UserMd" Width="37" Foreground="#1963bf"/>
             </StackPanel>
         </Label>
-        <Label Margin="255,37,381,475">
+        <Label Margin="255,37,257,357">
             <StackPanel Orientation="Horizontal">
                 <fa:ImageAwesome Icon="Heart" Width="15" Foreground="#b31a0c"/>
             </StackPanel>
         </Label>
-        <Label Content="ZDRAVO KORPORACIJA" FontSize="25" Margin="388,34,108,445" Foreground="#1963bf" FontWeight="Bold"/>
+        <Label Content="ZDRAVO KORPORACIJA" FontSize="25" Margin="388,34,-16,327" Foreground="#1963bf" FontWeight="Bold"/>
+        <Label Content="Stručnost" Grid.Column="0" FontSize="25" HorizontalAlignment="Left" Height="40" Margin="469,304,0,0" VerticalAlignment="Top" Width="118" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <ComboBox HorizontalAlignment="Left" x:Name="Oblasti" FontSize="25" Margin="672,306,0,0" VerticalAlignment="Top" Width="191" Height="38" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <Label Content="Radno vreme:" HorizontalAlignment="Left" FontSize="25"  Height="43" Margin="60,347,0,0" VerticalAlignment="Top" Width="169" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Od" FontSize="25" Margin="255,355,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="143" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <Label Content="-" HorizontalAlignment="Left" FontSize="25"  Height="43" Margin="420,351,0,0" VerticalAlignment="Top" Width="27" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Do" FontSize="25" Margin="470,355,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="143" BorderBrush="#1963bf" Foreground="#1963bf"/>
+
     </Grid>
 </Window>
