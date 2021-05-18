@@ -34,7 +34,7 @@ namespace ProjekatSIMS.WindowPacijent
         private void Zatvori(object sender, RoutedEventArgs e)
         {
             PacijentMainWindow pmw = new PacijentMainWindow();
-            this.NavigationService.Navigate(pmw);
+            //this.NavigationService.Navigate(pmw);
         }
     }
 }
