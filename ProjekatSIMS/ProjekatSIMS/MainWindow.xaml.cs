@@ -45,8 +45,8 @@ namespace ProjekatSIMS
 
         private void Pacijent_Click(object sender, RoutedEventArgs e)
         {
-            PacijentWindow p = new PacijentWindow();
-            p.Show();
+            WindowPacijent.PacijentMainWindow pmw = new WindowPacijent.PacijentMainWindow();
+            pmw.Show();
         }
     }
 }
