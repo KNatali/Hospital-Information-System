@@ -1,40 +1,36 @@
-﻿
-using ProjekatSIMS.Controller;
+﻿using ProjekatSIMS.Controller;
 using ProjekatSIMS.Model;
 using System.Windows;
+using System.Windows.Controls;
+
 namespace ProjekatSIMS.WindowPacijent
 {
    
-    public partial class OceniBolnicuWindow : Window
+    public partial class OceniBolnicuPacijent : Page
     {
-        public OceniBolnicuWindow()
+        public OceniBolnicuPacijent()
         {
             InitializeComponent();
             this.DataContext = this;
-
         }
 
-        private void Oceni_Click(object sender, RoutedEventArgs e)
+        private void Oceni(object sender, RoutedEventArgs e)
         {
             OcenaBolnice ob = new OcenaBolnice();
             string ocena = Ocena.Text;
             string komentar = Komentar.Text;
 
             OcenaController ocenaCont = new OcenaController();
-            if(ocenaCont.ProsledjenaOcenaBolnice(ocena,komentar) == true)
+            if (ocenaCont.ProsledjenaOcenaBolnice(ocena, komentar) == true)
             {
                 MessageBox.Show("Hvala Vam sto ste izdvojili vreme da ocenite nasu bolnicu!");
 
-                this.Close();
+                
             }
             else
             {
                 MessageBox.Show("Molimo Vas unesite ocenu bolnice.");
             }
-
-           
-            
-
         }
     }
 }
