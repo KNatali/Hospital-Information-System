@@ -27,9 +27,9 @@
                 </Style>
             </DataGrid.ItemContainerStyle>
         </DataGrid>
-        <Button Content="Otkaži pregled" Click="Otkazi" HorizontalAlignment="Left" Margin="684,440,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <Button Content="Otkaži pregled" Click="Otkazi" HorizontalAlignment="Left" Margin="684,440,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
         <Label Width="346" VerticalAlignment="Top" Margin="311,79,0,0" Height="50" HorizontalAlignment="Left" FontSize="22" Foreground="#1963bf" FontWeight="Bold" Content="Kalendar svih zakazanih termina"/>
-        <Button Content="Početna strana" Click="Nazad" HorizontalAlignment="Left" Margin="60,440,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <Button Content="Početna strana" Click="Nazad" HorizontalAlignment="Left" Margin="60,440,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
         <Label Content="Kliknite dva puta na zakazani termin u tabeli kako biste ga izmenili" HorizontalAlignment="Left" Margin="60,112,0,0" VerticalAlignment="Top" FontSize="18" Foreground="#1963bf" Height="49" Width="550"/>
         <Label Margin="239,21,401,448">
             <StackPanel Orientation="Horizontal">

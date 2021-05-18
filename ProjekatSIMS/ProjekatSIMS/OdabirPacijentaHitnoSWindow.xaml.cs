@@ -1,4 +1,5 @@
 ﻿using Model;
+using ProjekatSIMS.Model;
 using Repository;
 using System;
 using System.Collections.Generic;
@@ -11,20 +12,25 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Tulpep.NotificationWindow;
 
 namespace ProjekatSIMS
 {
     public partial class OdabirPacijentaHitnoSWindow : Window
     {
+        private DateTime danasnjiDatum;
         public List<Pacijent> Pacijenti { get; set; }
         public Pacijent pac { get; set; }
+        public List<Pregled> Pregledi { get; set; }
         public OdabirPacijentaHitnoSWindow()
         {
             InitializeComponent();
             this.DataContext = this;
+            danasnjiDatum = DateTime.Now;
             Pacijenti = new List<Pacijent>();
             OsobaRepository fajl = new OsobaRepository(@"..\..\..\Fajlovi\Pacijent.txt");
             Pacijenti = fajl.DobaviPacijente();
+            Oblasti.ItemsSource = Enum.GetValues(typeof(Specijalizacija));
         }
         private void Otkazi(object sender, RoutedEventArgs e)
         {
@@ -41,16 +47,43 @@ namespace ProjekatSIMS
 
         private void Zakazi(object sender, RoutedEventArgs e)
         {
+            List<SlobodanTermin> slobodniTermini = new List<SlobodanTermin>();
             ComboBoxItem izborPacijenta = (ComboBoxItem)Nalog.SelectedItem;
-            string opcija = izborPacijenta.Content.ToString();
-            if (opcija == "Kreiraj hitan nalog")
+            string izborPac = izborPacijenta.Content.ToString();
+            /*ComboBoxItem izborOblasti = (ComboBoxItem)Oblasti.SelectedItem;
+            string izborObl = izborOblasti.Content.ToString();*/
+            Specijalizacija izborObl = (Specijalizacija)Oblasti.SelectedIndex;
+            PregledRepository fajl = new PregledRepository(@"..\..\..\Fajlovi\Pregled.txt");
+            if (izborPac == "Kreiraj hitan nalog")
             {
                 Pacijent p = KreiranjeHitnogNaloga();
+                
+                if(izborObl.ToString()==Specijalizacija.Opsta.ToString())
+                {
+                    foreach(SlobodanTermin st in slobodniTermini)
+                    {
+                        if (st.PocetakTermina == danasnjiDatum.AddMinutes(30) && izborObl.ToString() == st.doktor.Specijalizacija.ToString())
+                        {
+                            Pregled zakaziPregled = new Pregled();
+                            zakaziPregled.pacijent = p;
+                            zakaziPregled.doktor = st.doktor;
+                            zakaziPregled.Pocetak = danasnjiDatum.AddMinutes(30);
+                            zakaziPregled.Tip = TipPregleda.Operacija;
+                            zakaziPregled.Trajanje = 30;
+                            
+                            Pregledi.Add(zakaziPregled);
+                            fajl.SacuvajPregledSekretar(Pregledi);
+                            SlanjeNotifikacija();
+                        }
+                        else
+                            MessageBox.Show("Nema slobodnih termina u narednih pola sata kod doktora iz odabrane oblasti.");
+                    }
+                }
                 HitanPregledSWindow hp = new HitanPregledSWindow(p);
                 hp.Show();
                 this.Close();
             }
-            else if (opcija == "Odaberi postojeći nalog")
+            else if (izborPac == "Odaberi postojeći nalog")
             {
                 Pacijent p = (Pacijent)dataGridPacijenti.SelectedItems[0];
                 HitanPregledSWindow hp = new HitanPregledSWindow(p);
@@ -58,7 +91,21 @@ namespace ProjekatSIMS
                 this.Close();
             }
         }
-
+        private void CuvanjeUFajl(Pregled zakaziPregled)
+        {
+            PregledRepository fajl = new PregledRepository(@"..\..\..\Fajlovi\Pregled.txt");
+            Pregledi.Add(zakaziPregled);
+            fajl.SacuvajPregledSekretar(Pregledi);
+        }
+        private static void SlanjeNotifikacija()
+        {
+            PopupNotifier popup = new PopupNotifier();
+            popup.Image = Properties.Resources.informacija;
+            popup.TitleText = "OBAVEŠTENJE";
+            popup.ContentText = "Pregled je uspešno zakazan. " +
+                "Poslato je obaveštenje pacijentu i doktoru o predstojećem pregledu.";
+            popup.Popup();
+        }
         private Pacijent KreiranjeHitnogNaloga()
         {
             String jmbg = Jmbg.Text;
