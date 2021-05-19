@@ -8,25 +8,73 @@
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="800"
       Title="PretragaPacijentaDoktor">
+    <Page.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="FontSize" Value="16"/>
+            
+        </Style>
+        <Style  TargetType="TextBox">
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="BorderBrush" Value="#287D7D"/>
+            <Style.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10" />
 
-    <Grid>
-        <TextBox Name="Filter" HorizontalAlignment="Left" Margin="448,94,0,0" TextChanged="txtFilter_TextChanged" TextWrapping="Wrap" VerticalAlignment="Top" Width="144"/>
+                </Style>
+            </Style.Resources>
+        </Style>
+    </Page.Resources>
 
+    <Grid Margin="30">
 
-        <ListView Name="Pacijenti" Margin="181,140,181,123">
-            <ListView.View>
-                <GridView  ScrollViewer.VerticalScrollBarVisibility="Auto">
-                    <GridViewColumn Header="Jmbg pacijenta" Width="120" DisplayMemberBinding="{Binding Jmbg}" />
-                    <GridViewColumn Header="Ime pacijenta" Width="120" DisplayMemberBinding="{Binding Ime}" />
-                    <GridViewColumn Header="Prezime pacijenta" Width="200" DisplayMemberBinding="{Binding Prezime}" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="6*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid  Grid.Row="1" Grid.Column="1" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBox Name="Filter" Grid.Column="1"  HorizontalAlignment="Stretch"  TextChanged="txtFilter_TextChanged" TextWrapping="Wrap" VerticalAlignment="Center" />
+            <Label  Grid.Column="0" Content="Pretraži pacijenta:"  VerticalAlignment="Center"></Label>
+         </Grid>
+    <DataGrid Grid.Row="2" Grid.ColumnSpan="2" x:Name="Pacijenti" Style="{StaticResource Tabela}"  Height="Auto"  IsReadOnly="True"
+                  SelectionMode="Single" AutoGenerateColumns="False" 
+                  ScrollViewer.CanContentScroll="True" 
+                  ScrollViewer.VerticalScrollBarVisibility="Auto"  BorderBrush="{x:Null}" GridLinesVisibility="All">
 
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <Label Content="Pretrazi pacijenta:" HorizontalAlignment="Left" Margin="277,90,0,0" VerticalAlignment="Top"/>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Jmbg pacijenta" Binding="{Binding Jmbg}" Width="100*" />
+                <DataGridTextColumn Header="Ime" Binding="{Binding Ime}" Width="100*"/>
+                <DataGridTextColumn Header="Prezime" Binding="{Binding Prezime}" Width="100*"/>
+              
+                <!-- <DataGridTextColumn Header="Status pregleda" Binding="{Binding StatusPregleda}" Width="*"/>-->
+                <DataGridTemplateColumn Header="Zdravstveni karton" Width="150*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="Pogledaj" Content="Zadravstveni karton" Click="PrikazZdravstvenogKartona"  Style="{StaticResource btnStandard}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
 
-        <Button Content="Prikaz zdravstevnog kartona" Click="PrikazZdravstvenogKartona" HorizontalAlignment="Left" Margin="520,515,0,0" VerticalAlignment="Top" Height="35" Width="166"/>
+            </DataGrid.Columns>
 
+        </DataGrid>
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontSize="17" FontWeight="SemiBold" Content="Pregled pacijenata:" HorizontalAlignment="Center"/>
+
+       
 
 
     </Grid>

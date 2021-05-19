@@ -8,28 +8,96 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ZdravstveniKartonDoktor">
 
-    <Grid>
-        <Label Content="Jmbg:" HorizontalAlignment="Left" Margin="20,117,0,0" VerticalAlignment="Top" Padding="10,5,5,5" Width="80"/>
-        <Label Content="Ime:" HorizontalAlignment="Left" Margin="20,159,0,0" VerticalAlignment="Top" Padding="10,5,5,5" Width="50"/>
-        <Label Content="Prezime:" HorizontalAlignment="Left" Margin="20,196,0,0" VerticalAlignment="Top" Padding="10,5,5,5" Width="80"/>
-        <Label Content="Datum rodjenja:" HorizontalAlignment="Left" Margin="20,234,0,0" VerticalAlignment="Top" Padding="10,5,5,5" Width="146"/>
-        <Label Content="Adresa stanovanja:" HorizontalAlignment="Left" Margin="20,315,0,0" VerticalAlignment="Top" Padding="10,5,5,5" Width="146"/>
-        <Label Content="Email:" HorizontalAlignment="Left" Margin="20,274,0,0" VerticalAlignment="Top" Padding="10,5,5,5" Width="80"/>
-        <Label Content="Broj telefona:" HorizontalAlignment="Left" Margin="20,358,0,0" VerticalAlignment="Top" Padding="10,5,5,5" Width="132"/>
-        <TextBox Name="Ime" IsReadOnly="True" HorizontalAlignment="Left" Margin="196,160,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" Height="24"/>
-        <TextBox Name="Jmbg" IsReadOnly="True" HorizontalAlignment="Left" Margin="196,120,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" Height="24"/>
-        <TextBox Name="Prezime" IsReadOnly="True" HorizontalAlignment="Left" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" Height="24" Margin="196,199,0,0"/>
-        <TextBox Name="Datum" IsReadOnly="True" HorizontalAlignment="Left" Margin="196,238,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" Height="24"/>
-        <TextBox Name="Email" IsReadOnly="True" HorizontalAlignment="Left" Margin="196,278,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" Height="24"/>
-        <TextBox Name="Adresa" IsReadOnly="True"  HorizontalAlignment="Left" Margin="196,320,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" Height="24"/>
-        <TextBox Name="Broj" IsReadOnly="True" HorizontalAlignment="Left" Margin="196,360,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" Height="24"/>
-        <Button Content="Pregled izdatih recepata" Click="PrikazRecepata" HorizontalAlignment="Left" Margin="584,341,0,0" VerticalAlignment="Top" Height="44" Width="168"/>
+    <Page.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="FontSize" Value="16"/>
+
+        </Style>
+        <Style  TargetType="TextBox">
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Background" Value="#C7E5DD"/>
+            <Setter Property="Foreground" Value="black"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="BorderBrush" Value="#287D7D"/>
+            <Style.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10" />
+
+                </Style>
+            </Style.Resources>
+        </Style>
+    </Page.Resources>
+
+   
+        <Grid Margin="30">
+            <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="3" CornerRadius="10" BorderThickness="10"  Background="White">
+            <Grid Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="3">
+            <Grid Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+               
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0" Content="Jmbg:" HorizontalAlignment="Stretch" />
+            <Label Grid.Row="1" Content="Ime:" HorizontalAlignment="Stretch"/>
+            <Label Grid.Row="2" Content="Prezime:" HorizontalAlignment="Stretch"/>
+            <Label Grid.Row="3" Content="Datum rodjenja:" HorizontalAlignment="Stretch"/>
+            <Label Grid.Row="4" Content="Adresa stanovanja:" HorizontalAlignment="Stretch"/>
+            <Label Grid.Row="5" Content="Email:" HorizontalAlignment="Stretch"/>
+            <Label Grid.Row="6" Content="Broj telefona:" HorizontalAlignment="Stretch"/>
+                <TextBox Name="Ime" Grid.Row="1" Grid.Column="1" IsReadOnly="True" HorizontalAlignment="Stretch"  Text="" TextWrapping="Wrap"/>
+                <TextBox Name="Jmbg" IsReadOnly="True" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch"  Text="" TextWrapping="Wrap"/>
+                <TextBox Name="Prezime" Grid.Row="2" Grid.Column="1" IsReadOnly="True" HorizontalAlignment="Stretch"  Text="" TextWrapping="Wrap"/>
+                <TextBox Name="Datum" Grid.Row="3" Grid.Column="1" IsReadOnly="True" HorizontalAlignment="Stretch"  Text="" TextWrapping="Wrap"/>
+                <TextBox Name="Email" Grid.Row="4" Grid.Column="1" IsReadOnly="True" HorizontalAlignment="Stretch"  Text="" TextWrapping="Wrap"/>
+                <TextBox Name="Adresa" Grid.Row="5" Grid.Column="1" IsReadOnly="True" HorizontalAlignment="Stretch"  Text="" TextWrapping="Wrap"/>
+                <TextBox Name="Broj" Grid.Row="6" Grid.Column="1" IsReadOnly="True" HorizontalAlignment="Stretch"  Text="" TextWrapping="Wrap"/>
+        </Grid>
+                
+        </Grid>
+        </Border>
+
+
+        <Button Content="Pregled izdatih recepata" Grid.Column="2" Grid.Row="2" Click="PrikazRecepata"  Style="{StaticResource btnStandard}"/>
 
         <Button Content="Kreiranje anamneze" Click="KreiranjeAnamneze" HorizontalAlignment="Left" Margin="384,268,0,0" VerticalAlignment="Top" Height="44" Width="168"/>
-        <Button Content="Pregled anamneza" Click="PrikazAnamneza" HorizontalAlignment="Left" Margin="584,268,0,0" VerticalAlignment="Top" Height="43" Width="168"/>
+        <Button Content="Pregled anamneza" Click="PrikazAnamneza" Grid.Column="2" Grid.Row="3"   Style="{StaticResource btnStandard}"/>
         <Button Content="Izdavanje recepta" Click="IzdavanjeRecepta" HorizontalAlignment="Left" Margin="384,341,0,0" VerticalAlignment="Top" Height="43" Width="168"/>
+        
+        <Label Content="Zdravstveni karton" Grid.Row="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="17" FontWeight="SemiBold"/>
 
-        <Label Content="Zdravstveni karton" HorizontalAlignment="Center" Margin="0,22,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <Button Content="Nazad" Grid.Column="2" Grid.Row="6" Style="{StaticResource btnStandard}" Width="100" HorizontalAlignment="Right"/>
 
 
 

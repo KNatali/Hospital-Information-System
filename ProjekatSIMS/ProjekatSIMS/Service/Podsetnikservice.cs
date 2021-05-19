@@ -23,7 +23,6 @@ namespace ProjekatSIMS.Service
             {
                 podsetnik.pacijent = DaLiPostojiPacijent(imePacijenta, prezimePacijenta);
 
-               
             }
             
 

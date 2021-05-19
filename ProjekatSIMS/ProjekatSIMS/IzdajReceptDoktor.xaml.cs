@@ -1,125 +1,105 @@
 ﻿using Model;
 using Newtonsoft.Json;
+using ProjekatSIMS.Repository;
+using Repository;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace ProjekatSIMS
 {
     /// <summary>
     /// Interaction logic for IzdajReceptDoktor.xaml
     /// </summary>
+    /// 
+
     public partial class IzdajReceptDoktor : Page
     {
         public List<Lijek> Lijekovi { get; set; }
         public ZdravsteniKarton zk { get; set; }
         public Lijek l { get; set; }
+        private LijekRepository lijekRepository = new LijekRepository();
+        private ReceptRepository receptRepository = new ReceptRepository();
 
         public Pacijent Pacijent { get; set; }
         public IzdajReceptDoktor(Pacijent p)
         {
             InitializeComponent();
             this.DataContext = this;
+            UcitavanjePodataka(p);
+
+        }
+
+        private void UcitavanjePodataka(Pacijent p)
+        {
             Pacijent = p;
             Ime.Text = p.Ime;
             Prezime.Text = p.Prezime;
-           
-
-            List<Lijek> lijekovi = new List<Lijek>();
             Lijekovi = new List<Lijek>();
-            //ucitavanje lijekova u combobox
-            using (StreamReader r = new StreamReader(@"..\..\..\Fajlovi\Lijek.txt"))
-            {
-                string json = r.ReadToEnd();
-                lijekovi = JsonConvert.DeserializeObject<List<Lijek>>(json);
-
-            }
-          
+            List<Lijek> lijekovi = new List<Lijek>();
+            lijekovi = lijekRepository.DobaviSveLekove();
             foreach (Lijek l in lijekovi)
             {
                 Lijekovi.Add(l);
-
             }
-
-
         }
 
         private void IzdavanjeRecepta(object sender, RoutedEventArgs e)
         {
-            Recept r = new Recept();
-            DateTime datum =(DateTime) Datum.SelectedDate;
-            DateTime datum1 = new DateTime();
+            DateTime datumPrveKonzumacije = FormiranjeVremenaPrveKonzumacije();
 
-           double sat = Convert.ToDouble(Sat.Text);
-            double minut = Convert.ToDouble(Minut.Text);
-            datum1 = datum.AddHours(sat);
-            datum1 = datum1.AddMinutes(minut);
-            r.DatumPropisivanjaLeka = datum1;
-            r.Kolicina = Kolicina.Text;
-            
+            string ucestalostKoriscenja = KreiranjeTekstaZaUputstvo();
+            Recept r = KreiranjeRecepta(datumPrveKonzumacije, ucestalostKoriscenja);
 
 
-
-            r.zdravsteniKarton = zk;
-            r.NazivLeka = l.NazivLeka;
-            String ucestalost = "";
-            String u = "";
-            if (Period.Text =="1")
-            {
-                ucestalost = "svaki dan";
-
-            }
-            else if (Convert.ToDouble(Period.Text) < 5){
-                ucestalost = "svaka " + Period.Text + " dana";
-            }
-            else
-            {
-                ucestalost = "svakih " + Period.Text + " dana";
-            }
-            u = "Terapija traje " + Trajanje.Text + " dana i lijek se uzima " + ucestalost;
-            r.Uputstvo = u;
-
-
-            List<Recept> recepti= new List<Recept>();
-
-            using (StreamReader sr = new StreamReader(@"..\..\..\Fajlovi\Recept.txt"))
-            {
-                string json = sr.ReadToEnd();
-                recepti = JsonConvert.DeserializeObject<List<Recept>>(json);
-            }
-            if (recepti == null)
-            {
-                recepti = new List<Recept>();
-                
-            }
-            recepti.Add(r);
-
-            string newJson = JsonConvert.SerializeObject(recepti);
-            File.WriteAllText(@"..\..\..\Fajlovi\Recept.txt", newJson);
-          
-
-            
+            receptRepository.DodajRecept(r);
 
             MessageBox.Show("Uspjesno je izdat recept");
             ZdravstveniKartonDoktor z = new ZdravstveniKartonDoktor(Pacijent);
-
             this.NavigationService.Navigate(z);
 
         }
 
+        private DateTime FormiranjeVremenaPrveKonzumacije()
+        {
+            DateTime izabraniDatum = (DateTime)Datum.SelectedDate;
+            DateTime datum1 = new DateTime();
+            double sat = Convert.ToDouble(Sat.Text);
+            double minut = Convert.ToDouble(Minut.Text);
+            datum1 = izabraniDatum.AddHours(sat);
+            datum1 = datum1.AddMinutes(minut);
+            return datum1;
+        }
+
+        private Recept KreiranjeRecepta(DateTime datum1, string ucestalostKoriscenja)
+        {
+            Recept r = new Recept();
+            r.DatumPropisivanjaLeka = datum1;
+            r.Kolicina = Kolicina.Text;
+            r.zdravsteniKarton = zk;
+            r.NazivLeka = l.NazivLeka;
+            r.Uputstvo = "Terapija traje " + Trajanje.Text + " dana i lijek se uzima " + ucestalostKoriscenja;
+            return r;
+        }
+
+        private string KreiranjeTekstaZaUputstvo()
+        {
+            String ucestalostKoriscenja = "";
+            if (Period.Text == "1")
+                ucestalostKoriscenja = "svaki dan";
+            else if (Convert.ToDouble(Period.Text) < 5)
+                ucestalostKoriscenja = "svaka " + Period.Text + " dana";
+            else
+                ucestalostKoriscenja = "svakih " + Period.Text + " dana";
+          
+            return ucestalostKoriscenja;
+        }
+
         private void Alergican(object sender, SelectionChangedEventArgs e)
         {
-            
+
             l = (Lijek)Lijek.SelectedItem;
 
             List<String> alergeni = new List<String>();
@@ -131,7 +111,7 @@ namespace ProjekatSIMS
                 string json = sr.ReadToEnd();
                 kartoni = JsonConvert.DeserializeObject<List<ZdravsteniKarton>>(json);
             }
-            
+
             foreach (ZdravsteniKarton k in kartoni)
             {
                 if (k.pacijent.Jmbg == Pacijent.Jmbg)
@@ -161,7 +141,7 @@ namespace ProjekatSIMS
                 }
             }
 
-           
+
 
         }
 

@@ -708,8 +708,8 @@ namespace Service
         {
             
             Pregled p = new Pregled();
-
             int trajanje = 30;
+
             DateTime danasnjiDan = DateTime.UtcNow;
 
             ProveraVremenaZakazivanja(danasnjiDan);
@@ -722,7 +722,7 @@ namespace Service
             Doktor doktor = new Doktor { Ime = imeDoktora, Prezime = prezimeDoktora };
             p.doktor = doktor;
 
-            if (DaLiJeKorisnikMaliciozan(ime, prezime) == false)
+            if (DaLiJeKorisnikMaliciozan(pacijent.Ime, pacijent.Prezime) == false)
             {
 
                 pregledRepository = new PregledRepository();
@@ -807,18 +807,46 @@ namespace Service
         private Boolean DaLiJeKorisnikMaliciozan(String imePacijenta, String prezimePacijenta)
         {
             ProveraPodatakaPacijenta(imePacijenta, prezimePacijenta);
+
+            Pacijent pacijent = new Pacijent();
+            foreach(Pacijent p in DobavljanjePacijenataIzFajla())
+            {
+                if((p.Ime == imePacijenta) && (p.Prezime == prezimePacijenta))
+                {
+                    pacijent = p;
+                }
+            }
+
+            return pacijent.jesteMaliciozanKorisnik;
+        }
+
+        private void SlanjePorukeOBlokiranjuKorisnika(String ime, String prezime)
+        {
+            MessageBox.Show("Zakazali ste i otkazali previse pregleda u proteklom periodu, privremeno Vam je zabranjeno zakazivanje pregleda. Ukoliko smatrate da je ovo greska, molimo Vas obratite se sekretaru.");
+            jesteMaliciozniKorisnik = true;
+            List<Pacijent> Pacijenti = new List<Pacijent>();
+            PacijentRepository pacijentRepository = new PacijentRepository(@"..\..\..\Fajlovi\Pacijent.txt");
+            Pacijenti = pacijentRepository.UcitajSvePacijente();
+            foreach(Pacijent p in Pacijenti)
+            {
+                if((p.Ime == ime) & (p.Prezime == prezime))
+                {
+                    p.jesteMaliciozanKorisnik = true;
+
+                    
+                }
+            }
+            pacijentRepository.SacuvajPacijente(Pacijenti);
+            
+
+
            
             return jesteMaliciozniKorisnik;
             
             
         }
 
-        private void SlanjePorukeOBlokiranjuKorisnika(String ime,String prezime)
-        {
-            MessageBox.Show("Zakazali ste i otkazali previse pregleda u proteklom periodu, privremeno Vam je zabranjeno zakazivanje pregleda. Ukoliko smatrate da je ovo greska, molimo Vas obratite se sekretaru.");
-            jesteMaliciozniKorisnik = true;
-        
-        }
+  
 
         
         private List<Pacijent> DobavljanjePacijenataIzFajla()
@@ -836,8 +864,7 @@ namespace Service
                 if ((pacijent.Ime == imePacijenta) && (pacijent.Prezime == prezimePacijenta) && (pacijent.otkazaoPregled >= MAKSIMALNO_OTKAZIVANJA))
                 {
                     SlanjePorukeOBlokiranjuKorisnika(imePacijenta,prezimePacijenta);
-                    
-                   
+
                     break;
                 }
             }
