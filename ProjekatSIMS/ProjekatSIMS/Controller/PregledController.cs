@@ -51,7 +51,12 @@ namespace Controller
             return false;
 
         }
-
+        public Boolean OtkazivanjePregledaSekretar(Pregled p)
+        {
+            if (pregledService.OtkazivanjePregledaSekretar(p))
+                return true;
+            return false;
+        }
         public Boolean IzmjenaPregledaDoktor(Pregled p,DateTime datum)
         {
             if (pregledService.IzmjenaPregledaDoktor(p,datum))
@@ -80,6 +85,10 @@ namespace Controller
            return pregledService.DobaviSvePreglede();
 
         }
+     public List<Pregled> DobaviSvePregledeSekretar()
+     {
+         return pregledService.DobaviSvePregledeSekretar();
+     }
       
       public List<Pregled> GetListaPregledaController(DateTime zaDan)
       {

@@ -91,8 +91,20 @@ namespace Service
             return true;
 
         }
-
-
+        public Boolean IzmenaPregledaSekretar(Pregled p, DateTime datum)
+        {
+            List<Pregled> pregledi = pregledRepository.GetListaPregledaSekretar();
+            foreach(Pregled pr in pregledi)
+            {
+                if(pr.Id==p.Id)
+                {
+                    pr.Pocetak = datum;
+                    break;
+                }
+            }
+            pregledRepository.SacuvajPregledSekretar(pregledi);
+            return true;
+        }
 
         public Boolean IzdavanjeUputa(Pacijent pacijent, Doktor doktor, DateTime izabraniTermin)
         {
@@ -125,6 +137,11 @@ namespace Service
             return pregled;
         }
 
+        /*private static Pregled ZakazivanjePregledaSekretar(Pacijent pacijent, Doktor doktor, DateTime terminPregleda)
+        {
+            Pregled pregled = new Pregled();
+            return pregled;
+        }*/
         public Prostorija NadjiSlobodnuOrdinaciju(DateTime terminPocetak)
         {
             DateTime terminKraj = terminPocetak.AddMinutes(TRAJANJE_PREGLEDA);
