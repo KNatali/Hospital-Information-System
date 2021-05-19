@@ -13,9 +13,9 @@ namespace Service
         {
             return pacijentRepository.DobaviSve();
         }
-        private static Pacijent ProveraImePrezime()
+        /*private static Pacijent ProveraImePrezime()
         {
             
-        }
+        }*/
     }
 }

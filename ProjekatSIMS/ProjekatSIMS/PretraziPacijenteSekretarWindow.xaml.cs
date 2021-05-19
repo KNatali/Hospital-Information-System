@@ -41,6 +41,14 @@ namespace ProjekatSIMS
             pacijentController = new PacijentController();
             pretragaPacijenata = pacijentController.DobaviSve();
             PretragaPoImePrezimePacijenta(refreshTabelePacijenata, pretragaPacijenata);
+            /*foreach (Pacijent p in pretragaPacijenata)
+            {
+                if (p.Ime == Ime.Text && p.Prezime == Prezime.Text)
+                {
+                    refreshTabelePacijenata.Add(p);
+                    pac = p;
+                }
+            }*/
             dataGridPacijenti.ItemsSource = refreshTabelePacijenata;
         }
 
