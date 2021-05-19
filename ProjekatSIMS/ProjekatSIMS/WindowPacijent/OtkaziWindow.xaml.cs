@@ -12,8 +12,8 @@ namespace ProjekatSIMS
     public partial class OtkaziWindow : Window
     {
         public List<Pregled> Pregledi { get; set; }
-        public List<Pacijent> Pacijenti { get; set; }
         
+        public List<Pacijent> Pacijenti { get; set; }
         public OtkaziWindow()
         {
             InitializeComponent();

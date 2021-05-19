@@ -18,12 +18,13 @@ namespace Service
         public const int KRAJ_RADNOG_VREMENA = 20;
         public int MAKSIMALNO_OTKAZIVANJA = 10;
         public bool jesteMaliciozniKorisnik = false;
+      
         public Repository.PregledRepository pregledRepository = new PregledRepository();
         public Repository.ReceptRepository receptRepository;
+        
 
         public ProstorijaRepository prostorijaRepository = new ProstorijaRepository(@"..\..\..\Fajlovi\Prostorija.txt");
         public UputRepository uputRepository = new UputRepository();
-
 
         public int zauzetPregled = 0;
 
@@ -38,6 +39,10 @@ namespace Service
         public List<Pregled> DobaviSvePreglede()
         {
             return pregledRepository.DobaviSvePregledeDoktor();
+        }
+        public List<Pregled> DobaviSvePregledeSekretar()
+        {
+            return pregledRepository.GetListaPregledaSekretar();
         }
 
 
@@ -56,7 +61,20 @@ namespace Service
             return true;
 
         }
-
+        public Boolean OtkazivanjePregledaSekretar(Pregled p)
+        {
+            List<Pregled> pregledi = pregledRepository.GetListaPregledaSekretar();
+            foreach(Pregled pr in pregledi)
+            {
+                if(pr.Id==p.Id)
+                {
+                    pregledi.Remove(pr);
+                    break;
+                }
+            }
+            pregledRepository.SacuvajPregledSekretar(pregledi);
+            return true;
+        }
         public Boolean IzmjenaPregledaDoktor(Pregled p, DateTime datum)
         {
             List<Pregled> pregledi = pregledRepository.DobaviSvePregledeDoktor();
@@ -592,7 +610,7 @@ namespace Service
             }
         }
 
-        private Doktor postojiDoktorUSistemu(String ime,String prezime)
+      /*  private Doktor postojiDoktorUSistemu(String ime,String prezime)
         {
             bool doktorPostoji = false;
             List<Doktor> doktori = new List<Doktor>();
@@ -607,24 +625,25 @@ namespace Service
                 {
 
                     return dr;
-                    break;
+                    
                 }
             }
             if(doktorPostoji == false)
             {
-                return null;
                 MessageBox.Show("Ne postoji doktor sa tim imenom!");
+                return null;
+                
             }
             return null;
 
             
-        }
+        } */
 
-        private void zabeleziPodatkePacijenta(Pacijent p)
+        private void ZabeleziPodatkePacijenta(Pacijent p)
         {
-            
-            PacijentRepository file = new PacijentRepository(@"..\..\..\Fajlovi\Pacijent.txt");
-            List <Pacijent> Pacijenti = file.UcitajSvePacijente();
+
+            PacijentRepository pacijentRepository = new PacijentRepository();
+            List <Pacijent> Pacijenti = pacijentRepository.UcitajSvePacijente();
             foreach(Pacijent pa in Pacijenti)
             {
                 if (p.zakazaoPregled == 0)
@@ -632,20 +651,59 @@ namespace Service
                     p.datumPrvogZakazivanjaPregleda = DateTime.UtcNow;
                 }
             }
-            
+     
+        }
 
+        private void ProveraVremenaZakazivanja(DateTime sadasnjeVreme)
+        {
+            PacijentRepository pacijentRepository = new PacijentRepository();
+            List<Pacijent> Pacijenti = pacijentRepository.UcitajSvePacijente();
 
+            foreach (Pacijent pacijent in Pacijenti)
+            {
+                int prosloNedeljuDana = DateTime.Compare(pacijent.datumPrvogZakazivanjaPregleda.AddDays(7), sadasnjeVreme);
+                if (prosloNedeljuDana < 0)
+                {
+                    ObrisiPokusajeZakazivanja(pacijent.Ime, pacijent.Prezime);
+                }
 
+            }
+
+        }
+
+        private void ObrisiPokusajeZakazivanja(String ime, String prezime)
+        {
+            PacijentRepository pacijentRepository = new PacijentRepository();
+            List<Pacijent> Pacijenti = pacijentRepository.UcitajSvePacijente();
+
+            foreach (Pacijent pacijent in Pacijenti)
+            {
+                if ((pacijent.Prezime == prezime) && (pacijent.Ime == ime))
+                {
+                    pacijent.otkazaoPregled = 0;
+                    pacijent.zakazaoPregled = 0;
+                    
+                }
+            }
+            pacijentRepository.SacuvajPacijente(Pacijenti);
         }
         public Boolean ZakazivanjePregledaPacijent(String ime, String prezime, String imeDoktora, String prezimeDoktora, DateTime datum, String jmbg)
         {
+            
             Pregled p = new Pregled();
             int trajanje = 30;
+
+            DateTime danasnjiDan = DateTime.UtcNow;
+
+            ProveraVremenaZakazivanja(danasnjiDan);
+
             Pacijent pacijent = new Pacijent { Jmbg = jmbg, Ime = ime, Prezime = prezime };
-            if(postojiDoktorUSistemu(imeDoktora,prezimeDoktora) != null)
+            /*if(postojiDoktorUSistemu(imeDoktora,prezimeDoktora) != null)
             {
                 p.doktor = postojiDoktorUSistemu(imeDoktora, prezimeDoktora);
-            }
+            } */
+            Doktor doktor = new Doktor { Ime = imeDoktora, Prezime = prezimeDoktora };
+            p.doktor = doktor;
 
             if (DaLiJeKorisnikMaliciozan(pacijent.Ime, pacijent.Prezime) == false)
             {
@@ -687,12 +745,7 @@ namespace Service
                         }
                     }
                     pregledi.Add(p);
-                   
-
-                    
-
-
-
+                  
                     pregledRepository.SacuvajPregledPacijent(pregledi);
 
 
@@ -719,12 +772,25 @@ namespace Service
             }
         }
 
-       
+       private Pacijent PretragaPacijenta(String ime,String prezime)
+        {
+            PacijentRepository pacijentRepository = new PacijentRepository();
+            List<Pacijent> Pacijenti = pacijentRepository.UcitajSvePacijente();
+            foreach(Pacijent p in Pacijenti)
+            {
+                if((p.Ime == ime) && (p.Prezime == prezime))
+                {
+                    return p;
+                }
+            }
+            return null;
+        }
 
 
         private Boolean DaLiJeKorisnikMaliciozan(String imePacijenta, String prezimePacijenta)
         {
             ProveraPodatakaPacijenta(imePacijenta, prezimePacijenta);
+
             Pacijent pacijent = new Pacijent();
             foreach(Pacijent p in DobavljanjePacijenataIzFajla())
             {
@@ -756,12 +822,21 @@ namespace Service
             pacijentRepository.SacuvajPacijente(Pacijenti);
             
 
+
+           
+            return jesteMaliciozniKorisnik;
+            
+            
         }
+
+  
+
+        
         private List<Pacijent> DobavljanjePacijenataIzFajla()
         {
             List<Pacijent> Pacijenti;
             Pacijenti = new List<Pacijent>();
-            PacijentRepository pacijentRepository = new PacijentRepository(@"..\..\..\Fajlovi\Pacijent.txt");
+            PacijentRepository pacijentRepository = new PacijentRepository();
             Pacijenti = pacijentRepository.UcitajSvePacijente();
             return Pacijenti;
         }
@@ -772,6 +847,7 @@ namespace Service
                 if ((pacijent.Ime == imePacijenta) && (pacijent.Prezime == prezimePacijenta) && (pacijent.otkazaoPregled >= MAKSIMALNO_OTKAZIVANJA))
                 {
                     SlanjePorukeOBlokiranjuKorisnika(imePacijenta,prezimePacijenta);
+
                     break;
                 }
             }

@@ -23,6 +23,7 @@ namespace ProjekatSIMS
         public Pacijent pac { get; set; }
         public List<Doktor> Doktori { get; set; }
         public List<Prostorija> Ordinacije { get; set; }
+        public NeradniDani neradniDani { get; set; }
         public ZakaziTerminSWindow(Pacijent p)
         {
             InitializeComponent();
@@ -43,7 +44,7 @@ namespace ProjekatSIMS
             Ordinacije = new List<Prostorija>();
             Prostorija prostorija1 = new Prostorija();
             //ucitavanje ordinacija u combobox
-            using (StreamReader r = new StreamReader(@"..\..\..\Fajlovi\Prostorija.txt"))
+            /*using (StreamReader r = new StreamReader(@"..\..\..\Fajlovi\Prostorija.txt"))
             {
 
                 string json = r.ReadToEnd();
@@ -57,7 +58,7 @@ namespace ProjekatSIMS
                     prostorija1 = pr;
                     Ordinacije.Add(prostorija1);
                 }
-            }
+            }*/
         }
         private void Otkazi(object sender, RoutedEventArgs e)
         {
@@ -75,8 +76,19 @@ namespace ProjekatSIMS
         {
             Pregled p = new Pregled();
             p.doktor = (Doktor)Doktor.SelectedItem;
-            Prostorija prostorija = (Prostorija)Ordinacija.SelectedItem;
+            //Prostorija prostorija = (Prostorija)Ordinacija.SelectedItem;
+            Prostorija prostorija = new Prostorija();
             DateTime datum = (DateTime)Datum.SelectedDate;
+            DateTime neradnoOD = neradniDani.NeradnoOd;
+            DateTime neradnoDO = neradniDani.NeradnoDo;
+            int brojNeradnihDana = (neradnoDO - neradnoOD).Days;
+            if(neradniDani.doktor.Jmbg==p.doktor.Jmbg)
+            {
+                if(neradnoOD==datum || neradnoDO==datum)
+                {
+                    MessageBox.Show("Ne možete da zakažete pregled kod odabranog doktora.");
+                }
+            }
             double sat;
             double minut;
             TipPregleda tippregleda = (TipPregleda)Pregledi.SelectedIndex;
@@ -121,11 +133,11 @@ namespace ProjekatSIMS
             }
         }
 
-        private void IzborPregleda(object sender, SelectionChangedEventArgs e)
+        /*private void IzborPregleda(object sender, SelectionChangedEventArgs e)
         {
             TipPregleda tippregleda = (TipPregleda)Pregledi.SelectedIndex;
             ImeSale.Visibility = Visibility.Visible;
             Ordinacija.Visibility = Visibility.Visible;
-        }
+        }*/
     }
 }

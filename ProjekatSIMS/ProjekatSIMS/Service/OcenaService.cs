@@ -68,7 +68,7 @@ namespace ProjekatSIMS.Service
                 if ((p.StatusPregleda == StatusPregleda.Zavrsen) && (DaLiSeLekarMozeOceniti(imeLekara,prezimeLekara) == true))
                 {
                     return true;
-                    break;
+                    
                 }
             }
             if(ocena != null) 

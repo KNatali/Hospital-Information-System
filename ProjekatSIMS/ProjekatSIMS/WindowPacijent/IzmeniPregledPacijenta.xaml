@@ -1,0 +1,46 @@
+﻿<Page x:Class="ProjekatSIMS.WindowPacijent.IzmeniPregledPacijenta"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ProjekatSIMS.WindowPacijent"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="IzmeniPregled">
+
+    <Grid Background="#CDFEBB">
+        <DataGrid x:Name="dataGridPregledi" ItemsSource="{Binding Pregledi}" IsReadOnly="True"
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="26,10,312,0" Height="251" VerticalAlignment="Top">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Vreme pocetka" Binding="{Binding Pocetak}"/>
+                <DataGridTextColumn Header="Trajanje" Binding="{Binding Trajanje}"/>
+                <DataGridTextColumn Header="Ime doktora" Binding="{Binding doktor.Ime}"/>
+                <DataGridTextColumn Header="Prezime doktora" Binding="{Binding doktor.Prezime}"/>
+                <DataGridTextColumn Header="Prostorija" Binding="{Binding prostorija.id}"/>
+                <DataGridTextColumn Header="Sprat" Binding="{Binding prostorija.sprat}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label  Content="Izaberite novi datum pregleda: " Margin="26,277,585,147"/>
+        <DatePicker x:Name="Datum"  HorizontalAlignment="Left" Margin="235,279,0,0" VerticalAlignment="Top"/>
+
+        <Label  Content="Izaberite novo vreme pregleda: " Margin="26,317,585,107"/>
+        <TextBox  x:Name="Sati" HorizontalAlignment="Left" Margin="235,319,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="42" Height="19"/>
+        <TextBox  x:Name="Minuti" HorizontalAlignment="Left" Margin="295,319,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="42" Height="20" />
+
+        <Label  Content="Unesite doktora:" HorizontalAlignment="Left" Margin="26,348,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="ImeDoktora" HorizontalAlignment="Left" Margin="176,356,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="PrezimeDoktora" HorizontalAlignment="Left" Margin="307,356,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+
+        <Label  Content="Izaberite prioritet:" HorizontalAlignment="Left" Margin="26,379,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="DoktorPrioritet" Margin="0,402,570,-373" GroupName="Prioritet" HorizontalAlignment="Right"  Checked="Btn1_Checked" Click="button1_Click" >Doktor</RadioButton>
+        <RadioButton x:Name="VremePrioritet" Margin="0,385,571,-336" GroupName="Prioritet" HorizontalAlignment="Right"  Checked="Btn1_Checked" Click="button1_Click" >Vreme</RadioButton>
+
+
+
+
+
+        <Button Margin="654,380,56,36" Content="Izmeni" Click="Izmeni"  Background="#A4E98A" ></Button>
+
+
+    </Grid>
+</Page>
