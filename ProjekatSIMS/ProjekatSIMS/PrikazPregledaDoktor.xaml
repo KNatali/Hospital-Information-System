@@ -8,14 +8,55 @@
       
       Title="PrikazPregledaDoktor">
 
-    <Grid  Name="Tabela" >
+    <Page.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="FontSize" Value="16"/>
+
+        </Style>
+        <Style  TargetType="TextBox">
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="BorderBrush" Value="#287D7D"/>
+            <Style.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10" />
+
+                </Style>
+            </Style.Resources>
+        </Style>
+    </Page.Resources>
+
+    <Grid  Name="Tabela" Margin="30" >
         <Grid.RowDefinitions>
-            <RowDefinition Height="4*"/>
             <RowDefinition Height="1*"/>
-           
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+
 
         </Grid.RowDefinitions>
-        <DataGrid Grid.Row="0" x:Name="dataGridPregledi" Style="{StaticResource Tabela}" Margin="20" ItemsSource="{Binding Pregledi}" IsReadOnly="True"
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Label FontSize="17" FontWeight="SemiBold" Grid.Row="0" Grid.ColumnSpan="2" Content="Zakazani pregledi:" HorizontalAlignment="Center"/>
+
+
+        <Grid  Grid.Row="1" Grid.Column="1" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBox Name="Filter" Grid.Column="1" HorizontalAlignment="Stretch"   TextWrapping="Wrap"  VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label  Grid.Column="0" Content="Pretraži pregled:"  VerticalAlignment="Center"></Label>
+        </Grid>
+        <DataGrid Grid.Row="2" Grid.ColumnSpan="2" x:Name="dataGridPregledi" Style="{StaticResource Tabela}" ItemsSource="{Binding Pregledi}" IsReadOnly="True"
                   SelectionMode="Single" AutoGenerateColumns="False" 
                   ScrollViewer.CanContentScroll="True" 
                   ScrollViewer.VerticalScrollBarVisibility="Auto"  BorderBrush="{x:Null}" GridLinesVisibility="All">
@@ -27,12 +68,12 @@
                 <DataGridTextColumn Header="Ime pacijenta" Binding="{Binding pacijent.Ime}"/>
                 <DataGridTextColumn Header="Prezime pacijenta" Binding="{Binding pacijent.Prezime}"/>
                 <DataGridTextColumn Header="Sala" Binding="{Binding prostorija.id}"/>
-                <DataGridTextColumn Header="Tip" Binding="{Binding Tip}"/>
+             
                <!-- <DataGridTextColumn Header="Status pregleda" Binding="{Binding StatusPregleda}" Width="*"/>-->
                 <DataGridTemplateColumn Header="Detalji" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Name="Pogledaj" Content="Detalji" Click="DetaljiPregleda" Style="{StaticResource btnStandard}"/>
+                            <Button Name="Pogledaj" Content="Pogledaj" Click="DetaljiPregleda" Style="{StaticResource btnStandard}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -40,7 +81,7 @@
             </DataGrid.Columns>
             
         </DataGrid>
-        <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Button Content="Otkazi Pregled" Click="OtkaziPregled" Style="{StaticResource btnStandard}"/>
         <Button Content="Pomjeri Pregled" Click="IzmijeniPregled"  />
         <Button Content="Zdravstveni karton" Click="PrikazProfila"  HorizontalAlignment="Left" />

@@ -13,7 +13,7 @@ namespace ProjekatSIMS.Repository
         
         
 
-        private const String putanja = @"..\..\Fajlovi\Lijek.txt";
+        private const String putanja = @"..\..\..\Fajlovi\Lijek.txt";
 
         public LijekRepository() { }
 
@@ -49,6 +49,8 @@ namespace ProjekatSIMS.Repository
             }
             return false;
         }
+
+       
 
 
 
