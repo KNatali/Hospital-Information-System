@@ -51,9 +51,9 @@ namespace Controller
             return false;
 
         }
-        public Boolean OtkazivanjePregledaSekretar(Pregled p)
+        public Boolean OtkazivanjeSekretar(Pregled p)
         {
-            if (pregledService.OtkazivanjePregledaSekretar(p))
+            if (pregledService.OtkazivanjeSekretar(p))
                 return true;
             return false;
         }
@@ -85,9 +85,9 @@ namespace Controller
            return pregledService.DobaviSvePreglede();
 
         }
-     public List<Pregled> DobaviSvePregledeSekretar()
+     public List<Pregled> DobaviSveSekretar()
      {
-         return pregledService.DobaviSvePregledeSekretar();
+         return pregledService.DobaviSveSekretar();
      }
       
       public List<Pregled> GetListaPregledaController(DateTime zaDan)

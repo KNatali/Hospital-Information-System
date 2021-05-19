@@ -25,7 +25,7 @@ namespace ProjekatSIMS
 
             Pacijenti = new List<Pacijent>();
             PacijentRepository file = new PacijentRepository(@"..\..\..\Fajlovi\Pacijent.txt");
-            Pacijenti = file.UcitajSvePacijente();
+            Pacijenti = file.DobaviSve();
         }
 
         private void BrojacOtkazivanjaPregleda(String ime,String prezime)

@@ -11,6 +11,10 @@ namespace Repository
         private String lokacija;
         private List<Pacijent> pacijenti;
         private List<Doktor> doktori;
+        public OsobaRepository()
+        {
+
+        }
         public OsobaRepository(String l)
         {
             lokacija = l;

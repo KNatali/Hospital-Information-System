@@ -28,7 +28,7 @@ namespace ProjekatSIMS
             List<Pregled> tabelaPregleda = new List<Pregled>();
             Pregledi = new List<Pregled>();
             pregledController = (Application.Current as App).PregledController;
-            tabelaPregleda = pregledController.DobaviSvePregledeSekretar();
+            tabelaPregleda = pregledController.DobaviSveSekretar();
             foreach (Pregled p in tabelaPregleda)
                 Pregledi.Add(p);
         }
@@ -49,9 +49,9 @@ namespace ProjekatSIMS
             MessageBoxResult retMessage = MessageBox.Show("Da li želite da otkažete pregled?", "PROVERA", MessageBoxButton.YesNo);
             if(retMessage==MessageBoxResult.Yes)
             {
-                if (pregledController.OtkazivanjePregledaSekretar(selektovaniPregled))
+                if (pregledController.OtkazivanjeSekretar(selektovaniPregled))
                 {
-                    List<Pregled> refreshTabelePregleda = pregledController.DobaviSvePregledeSekretar();
+                    List<Pregled> refreshTabelePregleda = pregledController.DobaviSveSekretar();
                     ProzorSaNotifikacijom();
                     dataGridPregledi.ItemsSource = refreshTabelePregleda;
                 }
