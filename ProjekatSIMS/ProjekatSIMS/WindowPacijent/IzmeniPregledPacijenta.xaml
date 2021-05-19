@@ -20,21 +20,27 @@
                 <DataGridTextColumn Header="Sprat" Binding="{Binding prostorija.sprat}"/>
             </DataGrid.Columns>
         </DataGrid>
+        <Label  Content="Izaberite novi datum pregleda: " Margin="26,277,585,147"/>
+        <DatePicker x:Name="Datum"  HorizontalAlignment="Left" Margin="235,279,0,0" VerticalAlignment="Top"/>
 
+        <Label  Content="Izaberite novo vreme pregleda: " Margin="26,317,585,107"/>
+        <TextBox  x:Name="Sati" HorizontalAlignment="Left" Margin="235,319,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="42" Height="19"/>
+        <TextBox  x:Name="Minuti" HorizontalAlignment="Left" Margin="295,319,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="42" Height="20" />
 
-        <Label  Content="Izaberite prioritet:" HorizontalAlignment="Left" Margin="33,379,0,0" VerticalAlignment="Top"/>
-        <RadioButton x:Name="DoktorPrioritet" Margin="0,0,568,10" GroupName="Prioritet" HorizontalAlignment="Right" VerticalAlignment="Bottom" Checked="Btn1_Checked" Click="button1_Click" >Doktor</RadioButton>
-        <RadioButton x:Name="VremePrioritet" Margin="0,0,568,42" GroupName="Prioritet" HorizontalAlignment="Right" VerticalAlignment="Bottom" Checked="Btn1_Checked" Click="button1_Click" >Vreme</RadioButton>
-
-        <Label  Content="Unesite doktora:" HorizontalAlignment="Left" Margin="37,348,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="ImeDoktora" HorizontalAlignment="Left" Margin="171,356,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label  Content="Unesite doktora:" HorizontalAlignment="Left" Margin="26,348,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="ImeDoktora" HorizontalAlignment="Left" Margin="176,356,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox Name="PrezimeDoktora" HorizontalAlignment="Left" Margin="307,356,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
-        <Label  Content="Izaberite novi datum pregleda: " Margin="37,291,574,133"/>
-        <DatePicker x:Name="Datum" Margin="234,291,434,135"/>
-        <Label  Content="Izaberite novo vreme pregleda: " Margin="33,322,578,102"/>
-        <TextBox  x:Name="Sati"  TextWrapping="Wrap" Margin="234,324,520,104"/>
-        <TextBox  x:Name="Minuti"  TextWrapping="Wrap" Margin="323,328,411,102"/>
-        <Button Margin="667,384,43,32" Content="Izmeni" Click="Izmeni"  Background="#A4E98A" ></Button>
+        <Label  Content="Izaberite prioritet:" HorizontalAlignment="Left" Margin="26,379,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="DoktorPrioritet" Margin="0,402,570,-373" GroupName="Prioritet" HorizontalAlignment="Right"  Checked="Btn1_Checked" Click="button1_Click" >Doktor</RadioButton>
+        <RadioButton x:Name="VremePrioritet" Margin="0,385,571,-336" GroupName="Prioritet" HorizontalAlignment="Right"  Checked="Btn1_Checked" Click="button1_Click" >Vreme</RadioButton>
+
+
+
+
+
+        <Button Margin="654,380,56,36" Content="Izmeni" Click="Izmeni"  Background="#A4E98A" ></Button>
+
+
     </Grid>
 </Page>
