@@ -18,7 +18,7 @@
         <Button Content="Oceni lekara" Width="150" Height="70" Margin="0,149,225,0" Click="OceniLekara_Click" HorizontalAlignment="Right" VerticalAlignment="Top" />
         <Button Content="Vidi ocene bolnice" Width="150" Height="70" Margin="0,224,225,0" Click="VidiOceneBolnice_Click" HorizontalAlignment="Right" VerticalAlignment="Top" />
         <Button Content="Vidi ocene svih lekara" Width="150" Height="70" Margin="0,318,225,0" Click="VidiOceneLekara_Click" HorizontalAlignment="Right" VerticalAlignment="Top" />
-
+        <Button Content="Kreiraj podsetnik" Width="150" Height="70" Margin="0,177,37,0" Click="Podsetnik_Click" HorizontalAlignment="Right" VerticalAlignment="Top" />
 
 
 

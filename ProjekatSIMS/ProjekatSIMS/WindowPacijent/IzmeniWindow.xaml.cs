@@ -11,7 +11,7 @@ using System.Windows.Media;
 namespace ProjekatSIMS
 {
 
-    public partial class IzmeniWindow : Window
+    public partial class IzmeniWindow: Window
     {
         public List<Pregled> Pregledi { get; set; }
         public List<Pacijent> Pacijenti { get; set; }

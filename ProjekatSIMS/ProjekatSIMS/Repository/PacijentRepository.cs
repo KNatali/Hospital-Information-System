@@ -18,6 +18,10 @@ namespace Repository
             this.lokacija = l;
         }
 
+        public PacijentRepository()
+        {
+        }
+
         public List<Pacijent> UcitajSvePacijente()
         {
             List<Pacijent> pacijenti = new List<Pacijent>();
@@ -29,5 +33,12 @@ namespace Repository
             return pacijenti;
 
         }
+
+        public void SacuvajPacijente(List<Pacijent> pacijenti)
+        {
+            string newJson = JsonConvert.SerializeObject(pacijenti);
+            File.WriteAllText(putanja, newJson);
+        }
+
     }
 }

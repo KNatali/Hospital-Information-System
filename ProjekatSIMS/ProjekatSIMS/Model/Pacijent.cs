@@ -10,8 +10,12 @@ namespace Model
 {
     public class Pacijent : Osoba
     {
+        public bool jesteMaliciozanKorisnik = false;
         public int otkazaoPregled = 0;
-      public Boolean IzmeniInformacije(String ime, String prezime, String email, String brojTelefona, String adresa, String jmbg, DateTime datumRodjenja)
+        public int zakazaoPregled = 0;
+        public DateTime datumPrvogZakazivanjaPregleda;
+        public bool jesteMaliciozniKorisnik;
+        public Boolean IzmeniInformacije(String ime, String prezime, String email, String brojTelefona, String adresa, String jmbg, DateTime datumRodjenja)
       {
          // TODO: implement
          return true;

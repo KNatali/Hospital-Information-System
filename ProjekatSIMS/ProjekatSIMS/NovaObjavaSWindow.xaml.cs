@@ -24,14 +24,8 @@ namespace ProjekatSIMS
         private void Nazad(object sender, RoutedEventArgs e)
         {
             MessageBoxResult ret = MessageBox.Show("Da li želite da otkažete postavljanje obaveštenja?", "PROVERA", MessageBoxButton.YesNo);
-            switch (ret)
-            {
-                case MessageBoxResult.Yes:
-                    this.Close();
-                    break;
-                case MessageBoxResult.No:
-                    break;
-            }
+            if (ret==MessageBoxResult.Yes)
+                this.Close();
         }
 
         private void Sacuvaj(object sender, RoutedEventArgs e)
