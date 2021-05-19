@@ -39,5 +39,6 @@ namespace Repository
             string newJson = JsonConvert.SerializeObject(pacijenti);
             File.WriteAllText(putanja, newJson);
         }
+
     }
 }

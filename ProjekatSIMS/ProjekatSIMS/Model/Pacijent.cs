@@ -10,6 +10,7 @@ namespace Model
 {
     public class Pacijent : Osoba
     {
+        public bool jesteMaliciozanKorisnik = false;
         public int otkazaoPregled = 0;
         public int zakazaoPregled = 0;
         public DateTime datumPrvogZakazivanjaPregleda;
