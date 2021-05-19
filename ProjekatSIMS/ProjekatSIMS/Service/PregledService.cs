@@ -824,7 +824,7 @@ namespace Service
 
 
            
-            return jesteMaliciozniKorisnik;
+            
             
             
         }
