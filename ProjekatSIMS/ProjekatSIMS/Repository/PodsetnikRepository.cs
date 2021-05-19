@@ -70,5 +70,17 @@ namespace ProjekatSIMS.Repository
 
             return podsetniciZaPacijenta;
         }
+
+        public List<Podsetnik> DobaviSvePodsetnike()
+        {
+            List<Podsetnik> podsetnici = new List<Podsetnik>();
+            using (StreamReader sr = new StreamReader(putanja))
+            {
+                string json = sr.ReadToEnd();
+
+                podsetnici = JsonConvert.DeserializeObject<List<Podsetnik>>(json);
+            }
+            return podsetnici;
+        }
     }
 }

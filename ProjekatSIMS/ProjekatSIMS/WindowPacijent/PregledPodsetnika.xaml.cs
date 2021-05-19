@@ -31,15 +31,15 @@ namespace ProjekatSIMS.WindowPacijent
             this.DataContext = this;
             Podsetnici = new List<Podsetnik>();
             PodsetnikRepository fajl = new PodsetnikRepository(@"..\..\..\Fajlovi\Podsetnik.txt");
-            Podsetnici = fajl.DobaviSvePodsetnikeZaPacijenta("Biljana","Marinkov");
+            Podsetnici = fajl.DobaviSvePodsetnike();
 
         }
 
         private void Obrisi(object sender, RoutedEventArgs e)
         {
-            PodsetnikRepository fajl = new PodsetnikRepository(@"..\..\..\Fajlovi\Podsetnik.txt");
+            
             Podsetnik odabrani = (Podsetnik)dataGridPodsetnik.SelectedItems[0];
-            Podsetnici = fajl.DobaviSvePodsetnikeZaPacijenta(odabrani.pacijent.Ime, odabrani.pacijent.Prezime);
+            
             string naziv;
             string opis;
             naziv = odabrani.nazivPodsetika;
