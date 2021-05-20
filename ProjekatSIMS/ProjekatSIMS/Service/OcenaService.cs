@@ -11,27 +11,45 @@ namespace ProjekatSIMS.Service
     public class OcenaService
     {
 
-        public Repository.OcenaRepository ocenaRepository = new OcenaRepository();
+        public Repository.OcenaRepository ocenaRepositoryLekar = new OcenaRepository(@"..\..\..\Fajlovi\OcenaLekara.txt");
+        public OcenaRepository ocenaRepositoryBolnica = new OcenaRepository(@"..\..\..\Fajlovi\OcenaBolnice.txt");
+        public PregledRepository pregledRepository = new PregledRepository(@"..\..\..\Fajlovi\Pregled.txt");
        
         public bool lekarSeMozeOceniti = false;
+        public bool bolnicaSeMozeOceniti = false;
         
 
-       
+       private Boolean DaLiSeBolnicaMozeOceniti()
+        {
+            List<Pregled> pregledi = pregledRepository.DobaviSvePregledePacijent();
+            foreach (Pregled p in pregledi)
+            {
+                if (p.StatusPregleda == StatusPregleda.Zavrsen)
+                {
+                    return true;
+
+                }
+            }
+            return false;
+        }
+
+        private OcenaBolnice PostavljanjeOceneBolnice(String ocena, String komentar)
+        {
+            OcenaBolnice ob = new OcenaBolnice();
+            ob.Ocena = ocena;
+            ob.Komentar = komentar;
+            return ob;
+        }
 
         public Boolean OcenjivanjeBolnice(String ocena, String komentar)
         {
-            if( ocena != null)
+            if( DaLiSeBolnicaMozeOceniti() == true)
             {
-                OcenaBolnice ob = new OcenaBolnice();
-                ocenaRepository = new OcenaRepository(@"..\..\..\Fajlovi\OcenaBolnice.txt");
-                List<OcenaBolnice> oceneBolnice = ocenaRepository.DobaviSveOceneBolnice();
-                ob.Ocena = ocena;
-                ob.Komentar = komentar;
-                oceneBolnice.Add(ob);
-                ocenaRepository.SacuvajOcenuBolnice(oceneBolnice);
+                List<OcenaBolnice> oceneBolnice = ocenaRepositoryBolnica.DobaviSveOceneBolnice();
+                oceneBolnice.Add(PostavljanjeOceneBolnice(ocena,komentar));
+                ocenaRepositoryBolnica.SacuvajOcenuBolnice(oceneBolnice);
                 return true;
-            }
-            else
+            }else
             {
                 return false;
             }
@@ -41,7 +59,6 @@ namespace ProjekatSIMS.Service
         private Boolean DaLiSeLekarMozeOceniti(String ime,String prezime)
         {
             bool mozeSeOceniti = false;
-            PregledRepository pregledRepository = new PregledRepository(@"..\..\..\Fajlovi\Pregled.txt");
             List<Pregled> pregledi = pregledRepository.DobaviSvePregledePacijent();
             foreach (Pregled p in pregledi)
             {
@@ -55,46 +72,47 @@ namespace ProjekatSIMS.Service
             
         }
 
-        public Boolean OcenjivanjeLekara(String imeLekara, String prezimeLekara, String ocena, String komentar)
+        private OcenaLekara PostavljanjeOceneLekara(String imeLekara, String prezimeLekara, String ocena, String komentar)
         {
             OcenaLekara ol = new OcenaLekara();
-            List<Pregled> pregledi = new List<Pregled>();
-            ocenaRepository = new OcenaRepository(@"..\..\..\Fajlovi\OcenaLekara.txt");
-            List<OcenaLekara> oceneLekara = ocenaRepository.DobaviSveOceneLekara();
-            PregledRepository pregledRepository = new PregledRepository(@"..\..\..\Fajlovi\Pregled.txt");
-            pregledi = pregledRepository.DobaviSvePregledePacijent();
+            ol.ImeLekara = imeLekara;
+            ol.PrezimeLekara = prezimeLekara;
+            ol.Ocena = ocena;
+            ol.Komentar = komentar;
+
+            return ol;
+        }
+
+        private Boolean DaLiPostojiZavrsenPregled()
+        {
+            List<Pregled> pregledi = pregledRepository.DobaviSvePregledePacijent();
             foreach (Pregled p in pregledi)
             {
-                if ((p.StatusPregleda == StatusPregleda.Zavrsen) && (DaLiSeLekarMozeOceniti(imeLekara,prezimeLekara) == true))
+                if ((p.StatusPregleda == StatusPregleda.Zavrsen))
                 {
                     return true;
-                    
                 }
             }
+            return false;
+        }
+
+        public Boolean OcenjivanjeLekara(String imeLekara, String prezimeLekara, String ocena, String komentar)
+        {
+            List<OcenaLekara> oceneLekara = ocenaRepositoryLekar.DobaviSveOceneLekara();
             if(ocena != null) 
             {
-                if (DaLiSeLekarMozeOceniti(imeLekara,prezimeLekara) == true)
+                if ((DaLiSeLekarMozeOceniti(imeLekara,prezimeLekara) == true)  && (DaLiPostojiZavrsenPregled()== true))
                 {
-                    ol.ImeLekara = imeLekara;
-                    ol.PrezimeLekara = prezimeLekara;
-                    ol.Ocena = ocena;
-                    ol.Komentar = komentar;
-                    oceneLekara.Add(ol);
-                    ocenaRepository.SacuvajOcenuLekara(oceneLekara);
+                    oceneLekara.Add(PostavljanjeOceneLekara(imeLekara,prezimeLekara,ocena,komentar));
+                    ocenaRepositoryLekar.SacuvajOcenuLekara(oceneLekara);
                     return true;
                    
                 }
                 return false ;
-            }
-            else
+            }else
             {
                 return false;
             }
-           
-
-
-
-           
         }
     }
 }

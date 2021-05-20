@@ -22,6 +22,12 @@ namespace Controller
 
         }
 
+        public void PrikazivanjePodsetika()
+        {
+            podsetnikservice.PrikazivanjePodsetnika();
+            
+        }
+
 
     }
 }

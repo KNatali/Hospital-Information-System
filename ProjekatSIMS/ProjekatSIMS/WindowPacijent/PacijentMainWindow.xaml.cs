@@ -1,26 +1,41 @@
-﻿using System;
+﻿
+using Microsoft.Toolkit.Uwp.Notifications;
+using ProjekatSIMS.Model;
+using ProjekatSIMS.Repository;
+using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace ProjekatSIMS.WindowPacijent
 {
     public partial class PacijentMainWindow : Window
     {
         private NavigationService NavigationService { get; set; }
+        public PodsetnikRepository podsetnikRepository = new PodsetnikRepository();
 
         public PacijentMainWindow()
         {
             InitializeComponent();
-            
+            List<Podsetnik> podsetnici = podsetnikRepository.DobaviSvePodsetnike();
+            foreach (Podsetnik p in podsetnici)
+            {
+                int res1 = DateTime.Compare(p.datumZavrsetkaObavestenja, DateTime.UtcNow);
+                int res2 = DateTime.Compare(p.datumPocetkaObavestenja, DateTime.UtcNow);
+
+                if ((res1 < 0) && (res2 < 0))
+                {
+                    {
+                        new ToastContentBuilder()
+                       .AddArgument("action", "viewConversation")
+                       .AddText(p.nazivPodsetika)
+                       .AddText(p.opisPodsetnika)
+                       .Show();
+
+                    }
+                }
+            }
+
         }
 
         private void ZakaziPregled(object sender, RoutedEventArgs e)
