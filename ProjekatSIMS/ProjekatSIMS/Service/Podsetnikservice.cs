@@ -49,7 +49,7 @@ namespace ProjekatSIMS.Service
         {
             Pacijent pacijent = new Pacijent();
 
-            List<Pacijent> pacijenti = pacijentRepository.UcitajSvePacijente();
+            List<Pacijent> pacijenti = pacijentRepository.DobaviSve();
 
             foreach (Pacijent p in pacijenti)
             {
