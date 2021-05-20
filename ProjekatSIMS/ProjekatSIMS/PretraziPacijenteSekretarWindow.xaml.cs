@@ -1,7 +1,10 @@
-﻿using Model;
+﻿using Controller;
+using Model;
+using Newtonsoft.Json;
 using Repository;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,6 +19,7 @@ namespace ProjekatSIMS
 {
     public partial class PretraziPacijenteSekretarWindow : Window
     {
+        private PacijentController pacijentController;
         public List<Pacijent> Pacijenti { get; set; }
         public Pacijent pac { get; set; }
         public PretraziPacijenteSekretarWindow()
@@ -23,45 +27,56 @@ namespace ProjekatSIMS
             InitializeComponent();
             this.DataContext = this;
             Pacijenti = new List<Pacijent>();
-            OsobaRepository fajl = new OsobaRepository(@"..\..\..\Fajlovi\Pacijent.txt");
-            Pacijenti = fajl.DobaviPacijente();
+            List<Pacijent> tabelaPacijenata = new List<Pacijent>();
+            pacijentController = new PacijentController();
+            tabelaPacijenata = pacijentController.DobaviSve();
+            foreach (Pacijent p in tabelaPacijenata)
+                Pacijenti.Add(p);
         }
         private void Pretraga(object sender, RoutedEventArgs e)
         {
-            //kada unese ime i prezime pretrazice i izbaciti tabelu sa tim pacijentima u tabelapacijenata prozoru
-            String ime = Ime.Text;
-            String prezime = Prezime.Text;
-            /*this.Close();
-            ProfilPacijentaSWindow pp = new ProfilPacijentaSWindow(ime, prezime);
-            pp.Show();*/
-            dataGridPacijenti.Visibility = Visibility.Visible;
-            List<Pacijent> Pacijenti1 = new List<Pacijent>();
-            List<Pacijent> ListaPacijenata = new List<Pacijent>();
-            OsobaRepository fajl = new OsobaRepository(@"..\..\..\Fajlovi\Pacijent.txt");
-            ListaPacijenata = fajl.DobaviPacijente();
-            foreach (Pacijent p in ListaPacijenata)
+            VidljivostPolja();
+            List<Pacijent> refreshTabelePacijenata = new List<Pacijent>();
+            List<Pacijent> pretragaPacijenata = new List<Pacijent>();
+            pacijentController = new PacijentController();
+            pretragaPacijenata = pacijentController.DobaviSve();
+            PretragaPoImePrezimePacijenta(refreshTabelePacijenata, pretragaPacijenata);
+            /*foreach (Pacijent p in pretragaPacijenata)
             {
-                if (p.Ime == ime && p.Prezime == prezime)
+                if (p.Ime == Ime.Text && p.Prezime == Prezime.Text)
                 {
-                    Pacijenti1.Add(p);
+                    refreshTabelePacijenata.Add(p);
                     pac = p;
                 }
-            }
-            Labela.Visibility = Visibility.Visible;
-            dataGridPacijenti.ItemsSource = Pacijenti1;  // refresh tabele
+            }*/
+            dataGridPacijenti.ItemsSource = refreshTabelePacijenata;
         }
+
+        private void PretragaPoImePrezimePacijenta(List<Pacijent> refreshTabelePacijenata, List<Pacijent> pretragaPacijenata)
+        {
+            foreach (Pacijent p in pretragaPacijenata)
+            {
+                ProveraImePrezimePacijenta(refreshTabelePacijenata, p);
+            }
+        }
+
+        private void ProveraImePrezimePacijenta(List<Pacijent> refreshTabelePacijenata, Pacijent p)
+        {
+            if (p.Ime == Ime.Text && p.Prezime == Prezime.Text)
+            {
+                refreshTabelePacijenata.Add(p);
+                pac = p;
+            }
+        }
+
         private void Nazad(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
         private void Prikaz(object sender, RoutedEventArgs e)
         {
-            dataGridPacijenti.Visibility = Visibility.Visible;
+            VidljivostPolja();
             dataGridPacijenti.ItemsSource = Pacijenti;
-            Labela.Visibility = Visibility.Visible;
-            /*TabelaPacijenataSWindow tp = new TabelaPacijenataSWindow();
-            tp.Show();
-            this.Close();*/
         }
         private void Dvoklik(object sender, MouseButtonEventArgs e)
         {
@@ -69,6 +84,11 @@ namespace ProjekatSIMS
             ProfilPacijentaSWindow pp = new ProfilPacijentaSWindow(p);
             pp.Show();
             this.Close();
+        }
+        private void VidljivostPolja()
+        {
+            dataGridPacijenti.Visibility = Visibility.Visible;
+            Labela.Visibility = Visibility.Visible;
         }
     }
 }

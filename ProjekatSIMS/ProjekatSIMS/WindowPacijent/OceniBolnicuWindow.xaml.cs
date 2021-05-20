@@ -1,8 +1,6 @@
 ﻿
 using ProjekatSIMS.Controller;
 using ProjekatSIMS.Model;
-using ProjekatSIMS.Repository;
-using System.Collections.Generic;
 using System.Windows;
 namespace ProjekatSIMS.WindowPacijent
 {

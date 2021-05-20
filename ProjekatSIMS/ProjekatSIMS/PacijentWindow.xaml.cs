@@ -1,5 +1,7 @@
 ﻿ using Microsoft.Toolkit.Uwp.Notifications;
 using Model;
+using ProjekatSIMS.Model;
+using ProjekatSIMS.Repository;
 using ProjekatSIMS.WindowPacijent;
 using Repository;
 using System;
@@ -21,6 +23,11 @@ namespace ProjekatSIMS
             get;
             set;
         }
+        public List<Podsetnik> Podsetnici
+        {
+            get;
+            set;
+        }
 
         public int mozeSeOceniti = 0;
         
@@ -31,6 +38,10 @@ namespace ProjekatSIMS
             Recepti = new List<Recept>();
             ReceptRepository fajl = new ReceptRepository(@"..\..\..\Fajlovi\Recept.txt");
             Recepti = fajl.DobaviSveRecepte();
+
+            /*Podsetnici = new List<Podsetnik>();
+            PodsetnikRepository podsetnikRepository = new PodsetnikRepository(@"..\..\..\Fajlovi\Podsetnik.txt");
+            Podsetnici = podsetnikRepository.DobaviSvePodsetnikeZaPacijenta(); */ 
 
             foreach (Recept r in Recepti)
             {
@@ -57,7 +68,7 @@ namespace ProjekatSIMS
 
             }
 
-            //da li postoji barem jedan zavren pregled
+            //da li postoji barem jedan zavrsen pregled
             pregledi = new List<Pregled>();
             PregledRepository file = new PregledRepository(@"..\..\..\Fajlovi\Pregled.txt");
             pregledi = file.DobaviSvePregledePacijent();
@@ -70,6 +81,8 @@ namespace ProjekatSIMS
                 }
             }
 
+
+            
 
 
 
@@ -129,6 +142,12 @@ namespace ProjekatSIMS
         {
             VidiOceneLekaraWindow volw = new VidiOceneLekaraWindow();
             volw.Show();
+        }
+
+        private void Podsetnik_Click(object sender, RoutedEventArgs e)
+        {
+            KreirajPodsetnikWindow kpw = new KreirajPodsetnikWindow();
+            kpw.Show();
         }
     }
 }

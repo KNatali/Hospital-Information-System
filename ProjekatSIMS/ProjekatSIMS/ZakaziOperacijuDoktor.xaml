@@ -6,78 +6,272 @@
       xmlns:local="clr-namespace:ProjekatSIMS"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="ZakaziOperacijuDoktor">
+      Title="ZakaziPregledDoktor" >
+    
+    <Page.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
 
-    <Grid>
+        <Style  TargetType="TextBox">
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="BorderBrush" Value="#287D7D"/>
+            <Style.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10" />
 
-        <ComboBox  Name="Pacijent" HorizontalAlignment="Left"   
-                  Margin="300,46,0,0"   
+                </Style>
+            </Style.Resources>
+        </Style>
+
+        <Style TargetType="{x:Type DatePickerTextBox}">
+            <Setter Property="Background" Value="Transparent"></Setter>
+            <Setter Property="BorderBrush" Value="black"></Setter>
+            <Setter Property="BorderThickness" Value="0"></Setter>
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Style.Resources>
+
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10" />
+
+                </Style>
+            </Style.Resources>
+
+        </Style>
+        <Style TargetType="DatePicker">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="BorderBrush" Value="#287D7D"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Background" Value="white"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Style.Resources>
+
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10" />
+
+                </Style>
+            </Style.Resources>
+        </Style>
+        <Style x:Key="styleCalendar" TargetType="{x:Type Calendar}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Calendar}">
+                        <!-- Wrapping in ViewBox will enlarge calendar of that size.-->
+                        <Viewbox Height="270"
+                         Width="270">
+                            <CalendarItem x:Name="PART_CalendarItem"
+                                  Background="{TemplateBinding Background}"
+                                  BorderBrush="{TemplateBinding BorderBrush}"
+                                  BorderThickness="{TemplateBinding BorderThickness}"/>
+                        </Viewbox>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+
+
+
+        <SolidColorBrush x:Key="ComboBoxNormalBorderBrush" Color="#e3e9ef" />
+        <SolidColorBrush x:Key="ComboBoxNormalBackgroundBrush" Color="#fff" />
+        <SolidColorBrush x:Key="ComboBoxDisabledForegroundBrush" Color="#888" />
+        <SolidColorBrush x:Key="ComboBoxDisabledBackgroundBrush" Color="#eee" />
+        <SolidColorBrush x:Key="ComboBoxDisabledBorderBrush" Color="#888" />
+
+        <ControlTemplate TargetType="ToggleButton" x:Key="ComboBoxToggleButtonTemplate">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="20" />
+                </Grid.ColumnDefinitions>
+                <Border Grid.ColumnSpan="2" Name="Border"
+              BorderBrush="#287D7D" 
+              CornerRadius="10,10,10,10" BorderThickness="0" 
+              Background="white" />
+                <Border Grid.Column="1" Margin="1, 1, 1, 1" BorderBrush="red" Name="ButtonBorder"
+              CornerRadius="10" BorderThickness="0" 
+              Background="{StaticResource ComboBoxNormalBackgroundBrush}" />
+
+                <Path Name="Arrow" Grid.Column="1" 
+            Data="M0,0 L0,2 L4,6 L8,2 L8,0 L4,4 z"
+            HorizontalAlignment="Center" Fill="#444"
+            VerticalAlignment="Center" />
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                    <Setter Property="Panel.Background" TargetName="ButtonBorder" Value="WhiteSmoke"/>
+
+                </Trigger>
+                <Trigger Property="ToggleButton.IsChecked" Value="True">
+                    <Setter Property="Panel.Background" TargetName="ButtonBorder" Value="WhiteSmoke"/>
+                    <Setter Property="Shape.Fill" TargetName="Arrow" Value="#FF8D979E"/>
+                </Trigger>
+                <Trigger Property="UIElement.IsEnabled" Value="False">
+                    <Setter Property="Panel.Background" TargetName="Border" Value="{StaticResource ComboBoxDisabledBackgroundBrush}"/>
+                    <Setter Property="Panel.Background" TargetName="ButtonBorder" Value="{StaticResource ComboBoxDisabledBackgroundBrush}"/>
+                    <Setter Property="Border.BorderBrush" TargetName="ButtonBorder" Value="{StaticResource ComboBoxDisabledBorderBrush}"/>
+                    <Setter Property="TextElement.Foreground" Value="{StaticResource ComboBoxDisabledForegroundBrush}"/>
+                    <Setter Property="Shape.Fill" TargetName="Arrow" Value="#999"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+
+
+
+
+    </Page.Resources>
+
+
+        <Grid Margin="30">
+
+            <!-- <ComboBox  Name="Pacijenti" HorizontalAlignment="Left"   
+                  Margin="477,48,0,0"   
                   VerticalAlignment="Top"   
                   Width="120"   
                   ItemsSource="{Binding Path=Pacijenti}"    
+                 DisplayMemberPath="Ime"
+                   
+                   IsTextSearchEnabled="True" 
+                   IsEditable="True"
+                  />-->
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition  Width="1.3*" />
+                <ColumnDefinition/>
+
+            </Grid.ColumnDefinitions>
+
+
+
+            <Label Content="Zakazivanje operacije:" FontSize="17" FontWeight="SemiBold" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"  HorizontalAlignment="Center" Grid.RowSpan="2" />
+
+
+
+
+            <Label Grid.Row="1" Grid.Column="0" Content="Izaberi pacijenta:" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <ComboBox  Name="Pacijent"   Grid.Row="1" Grid.Column="1" FontSize="16" FontFamily="Roboto" 
+                Style="{StaticResource ComboBoxFlatStyle}"
+                  VerticalAlignment="Center"   
+                   HorizontalAlignment="Stretch" 
+                   Height="30"
+                  ItemsSource="{Binding Path=Pacijenti}"    
                 >
 
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Path=Jmbg}"/>
-                        <TextBlock Text=" "/>
-                        <TextBlock Text="{Binding Path=Ime}"/>
-                        <TextBlock Text=" "/>
-                        <TextBlock Text="{Binding Path=Prezime}"/>
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=Jmbg}"/>
+                            <TextBlock Text=" "/>
+                            <TextBlock Text="{Binding Path=Ime}"/>
+                            <TextBlock Text=" "/>
+                            <TextBlock Text="{Binding Path=Prezime}"/>
 
-                    </StackPanel>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
-        <Label Content="Pacijent:" HorizontalAlignment="Left" Margin="60,40,0,0" VerticalAlignment="Top" Height="28"/>
-        <Label Content="Datum operacije:" HorizontalAlignment="Left" Margin="60,157,0,0" VerticalAlignment="Top" Height="26"/>
-        <DatePicker Name="Date" HorizontalAlignment="Left" Margin="300,159,0,0" VerticalAlignment="Top" Height="24" Width="120"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Label Grid.Row="3" Grid.Column="0" Content="Datum operacije:" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <DatePicker CalendarStyle="{StaticResource styleCalendar}" Grid.Row="3" Grid.Column="1" Name="Date" HorizontalAlignment="Stretch" VerticalAlignment="Center"  />
 
-        <Label Content="Sala:" HorizontalAlignment="Left" Margin="60,96,0,0" VerticalAlignment="Top" Height="28"/>
+            <Label Content="Sala:"  Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
 
-        <Button Content="ZakaziOperaciju" Click="ZakazivanjeOperacije" HorizontalAlignment="Left" Margin="606,345,0,0" VerticalAlignment="Top" Height="42" Width="116" Background="#FFB5CDE2"/>
-        <ComboBox  Name="Sala" HorizontalAlignment="Left"   
-                  Margin="300,99,0,0"   
-                  VerticalAlignment="Top"   
-                  Width="120"   
-                  ItemsSource="{Binding Path=Sale}"    
-                  SelectedItem="{Binding Path=Sala1}"
-                   SelectionChanged="PrikazInventara">
+            <ComboBox Height="30" Grid.Row="2" Style="{StaticResource ComboBoxFlatStyle}" FontSize="16" FontFamily="Roboto" Grid.Column="1"  Name="Sala" HorizontalAlignment="Stretch"  VerticalAlignment="Center"  ItemsSource="{Binding Path=Sale}"
+                   SelectionChanged="PrikazInventara"   
+          >
 
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Path=id}"/>
-                        <TextBlock Text=" - "/>
-                        <TextBlock Text="{Binding Path=vrsta}"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
-        <Label Content="Vrijeme(Sati i minuti):" HorizontalAlignment="Left" Margin="60,209,0,0" VerticalAlignment="Top" Height="26"/>
-        <TextBox Name="Sat" HorizontalAlignment="Left" Margin="300,217,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="66" Height="20"/>
-        <TextBox Name="Minut" HorizontalAlignment="Left" Margin="416,217,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Height="20"/>
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=id}"/>
+                            <TextBlock Text=" - "/>
+                            <TextBlock Text="{Binding Path=vrsta}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Label  Grid.Row="2" Grid.Column="3" Content="Inventar u dabranoj sali:" HorizontalAlignment="Center"  VerticalAlignment="Center" />
 
-        <Label Content="Trajanje:" HorizontalAlignment="Left" Margin="68,264,0,0" VerticalAlignment="Top" Height="26"/>
-        <TextBox Name="Trajanje" HorizontalAlignment="Left" Margin="300,270,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="66" Height="20"/>
+            <ListBox FontFamily="Roboto" FontSize="16" Margin=" 10,0,0,0" Grid.Row="3" Grid.Column="2" Grid.RowSpan="3" Name="RightListBox" HorizontalAlignment="Stretch" BorderThickness="0" >
+                <ListBox.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+
+                    </Style>
+                </ListBox.Resources>
+            </ListBox>
+
+            <Label  Grid.Row="4" Grid.Column="0" Content="Vrijeme(Sati i minuti):" HorizontalAlignment="Left"  VerticalAlignment="Center" />
+
+
+            <Grid Grid.Row="4" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+
+
+                </Grid.ColumnDefinitions>
+
+                <TextBox  Grid.Column="0"  Name="Sat" HorizontalAlignment="Stretch" Text="" TextWrapping="Wrap" VerticalAlignment="Center"/>
+
+
+                <Label   Grid.Column="1" VerticalAlignment="Center" HorizontalContentAlignment="Center">:</Label>
+                <TextBox  Grid.Column="2"  Name="Minut" HorizontalAlignment="Stretch"  Text="" TextWrapping="Wrap" VerticalAlignment="Center" />
+
+
+            </Grid>
+
+            <Label  Grid.Row="5" Grid.Column="0" Content="Trajanje(minuti):" HorizontalAlignment="Left"  VerticalAlignment="Center" />
+            <TextBox Grid.Row="5" Grid.Column="1"  Name="Trajanje" HorizontalAlignment="Left" Width="85" Text="" TextWrapping="Wrap" VerticalAlignment="Center"/>
 
 
 
-        <ComboBox  Name="Termin" HorizontalAlignment="Left"   
-                  Margin="300,321,0,0"   
-                  VerticalAlignment="Top" 
+
+
+
+
+            <Label Visibility="Hidden" Name="Izbor" Grid.Row="6" Grid.Column="0" Content="Izaberi jedan od slobodnih termina:" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+
+            <StackPanel  Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2"  HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
+                <Button Content="Zakazi" Width="100" Margin="0,0,20,0" Click="ZakazivanjeOperacije" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnStandard}"/>
+                <Button Content="Odustani" Width="100"  HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnStandard}"/>
+
+            </StackPanel>
+
+            <ComboBox  Name="Termin" HorizontalAlignment="Stretch"   Height="30" Grid.Row="6" Grid.Column="1" Style="{StaticResource ComboBoxFlatStyle}" FontSize="16" FontFamily="Roboto"
+                 
+                  VerticalAlignment="Center" 
                  Visibility="Hidden"
-                  Width="120"   
+                  
                    >
 
 
-        </ComboBox>
-        <Label Name="Izbor" Content="Izaberi jedan od slobodnih termina:" Visibility="Hidden"    HorizontalAlignment="Left" Margin="60,314,0,0" VerticalAlignment="Top"/>
+            </ComboBox>
 
+        </Grid>
 
-        <ListBox  Margin="502,102,0,126" Name="RightListBox" HorizontalAlignment="Left" Width="262" />
-
-
-    </Grid>
 </Page>

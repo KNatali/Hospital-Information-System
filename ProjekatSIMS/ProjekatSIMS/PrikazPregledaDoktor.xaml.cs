@@ -59,6 +59,18 @@ namespace ProjekatSIMS
            
         }
 
+        private void DetaljiPregleda(object sender, RoutedEventArgs e)
+        {
+            Pregled p = (Pregled)dataGridPregledi.SelectedItems[0];
+            DetaljiPregledaDoktor d=new DetaljiPregledaDoktor(p);
+            this.Opacity = 0.3;
+            d.ShowDialog();
+            this.Opacity = 1;
+
+
+
+        }
+
         private void OtkaziPregled(object sender, RoutedEventArgs e)
         {
             Pregled p = (Pregled)dataGridPregledi.SelectedItems[0]; //selektovani red

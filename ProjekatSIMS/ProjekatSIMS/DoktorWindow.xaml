@@ -4,30 +4,130 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjekatSIMS"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
         mc:Ignorable="d"
-        Title="DoktorWindow" Height="500" Width="980"
-        WindowStartupLocation="CenterScreen">
+        Title="DoktorWindow" Height="600" Width="1100"
+        WindowStartupLocation="CenterScreen"
+        >
+    <Window.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
 
-    <Grid>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+    </Window.Resources>
+   
+
+
+    <Grid >
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="230"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="89*"/>
-            <RowDefinition Height="32*"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+
         </Grid.RowDefinitions>
-        <Label Content="Doktor" HorizontalAlignment="Left" Margin="47,34,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
-        <Button Content="Zakazi pregled" Click="ZakaziPregled" HorizontalAlignment="Left" Margin="1,214,0,0" VerticalAlignment="Top" Height="54" Width="168" Background="#FFB5CDE2"/>
-        <Button Content="Prikaz zakazanih pregleda" Click="PrikazPregleda" HorizontalAlignment="Left" Margin="1,96,0,0" VerticalAlignment="Top" Height="54" Width="168" Background="#FFB5CDE2"/>
-        <Button Content="Zakazi operaciju" Click="ZakaziOperaciju" HorizontalAlignment="Left" Margin="1,273,0,0" VerticalAlignment="Top" Height="54" Width="168" Background="#FFB5CDE2"/>
-        <Button Content="Prikaz zavrsenih pregleda" Click="PrikazZavrsenihPregleda" HorizontalAlignment="Left" Margin="1,155,0,0" VerticalAlignment="Top" Height="54" Width="169" Background="#FFB5CDE2" />
+        <StackPanel Grid.Column="0" Grid.Row="0" Background="#287D7D">
+            <Image Source="Slike/doctor1.png" Height="28" Width="28" Margin="0,10,0,0"/>
+
+
+            <Label  Foreground="white" Content="Doktor" HorizontalAlignment="Center" FontSize="18" FontWeight="SemiBold" Margin="0,0,0,10" />
+
+        </StackPanel>
+        <StackPanel Grid.Column="0" Grid.Row="1" Background="#287D7D"  VerticalAlignment="Stretch" >
+            <Button  Click="PocetnaStranica"  Style="{StaticResource btnBlue}"  >
+                <StackPanel Orientation="Horizontal" Margin="7,0,0,0">
+                    <fa:ImageAwesome Icon="Home" Width="27" Foreground="{Binding Path=Foreground,  RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Button}}}"/>
+
+
+                    <TextBlock Text="Početna stranica" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                </StackPanel>
+            </Button>
+
+
+            <Button  Click="PrikazPregleda"  Style="{StaticResource btnBlue}" >
+                <StackPanel  Orientation="Horizontal" Margin="7,0,0,0">
+
+                    <fa:ImageAwesome Icon="Calendar" Width="27" Foreground="{Binding Path=Foreground,  RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Button}}}"/>
 
 
 
-        <Button Content="Pretraga pacijenata" Click="PretraziPacijenta" HorizontalAlignment="Left" VerticalAlignment="Top" Height="54" Width="168" Background="#FFB5CDE2" RenderTransformOrigin="0.485,0.575" Margin="2,334,0,0" Grid.RowSpan="2"/>
-        <Button Content="Pocetna stranica" Click="PocetnaStranica" HorizontalAlignment="Left" VerticalAlignment="Top" Height="54" Width="168" Background="#FFB5CDE2" RenderTransformOrigin="0.485,0.575" Margin="2,39,0,0" Grid.Row="1"/>
+                    <TextBlock Text="Kalendar pregleda" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                </StackPanel>
+            </Button>
+            <Button Click="PretraziPacijenta" Style="{StaticResource btnBlue}">
+                <StackPanel Orientation="Horizontal" Margin="7,0,0,0">
+                    <fa:ImageAwesome Icon="Users" Width="27" Foreground="{Binding Path=Foreground,  RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Button}}}"/>
+
+
+                    <TextBlock Text="Pregled pacijenata" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                </StackPanel>
+            </Button>
+            <Button  Click="ZakaziPregled"  Style="{StaticResource btnBlue}">
+                <StackPanel Orientation="Horizontal" Margin="7,0,0,0">
+                    <fa:ImageAwesome Icon="CalendarCheckOutline" Width="27" Foreground="{Binding Path=Foreground,  RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Button}}}"/>
+
+
+                    <TextBlock Text="Zakazivanje pregleda" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                </StackPanel>
+            </Button>
+            <Button  Click="ZakaziOperaciju" Style="{StaticResource btnBlue}">
+                <StackPanel Orientation="Horizontal" Margin="7,0,0,0">
+                    <fa:ImageAwesome Icon="CalendarCheckOutline" Width="27" Foreground="{Binding Path=Foreground,  RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Button}}}"/>
+                    <TextBlock Text="Zakazivanje operacije" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                </StackPanel>
+            </Button>
 
 
 
 
-        <Frame x:Name="DoktorFrame" Margin="184,0,0,0" Grid.RowSpan="2"/>
+
+
+        </StackPanel>
+        <StackPanel Grid.Column="0" Grid.Row="2" Background="#287D7D" VerticalAlignment="Bottom">
+            <Button  Click="MojProfil" Style="{StaticResource btnBlue}">
+                <StackPanel  Orientation="Horizontal" Margin="7,0,0,0" >
+                    <fa:ImageAwesome Icon="UserMd" Width="27" Foreground="{Binding Path=Foreground,  RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Button}}}"/>
+
+
+
+                    <TextBlock Text="Moj profil" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                </StackPanel>
+            </Button>
+            <Button  Click="Odjavljivanje" Style="{StaticResource btnBlue}">
+                <StackPanel Orientation="Horizontal" Margin="7,0,0,0">
+                    <fa:ImageAwesome Icon="SignOut" Width="27" Foreground="{Binding Path=Foreground,  RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Button}}}"/>
+
+                    <TextBlock Text="Odjavljivanje" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                </StackPanel>
+            </Button>
+            <Button  Click="Pomoc" Style="{StaticResource btnBlue}">
+                <StackPanel Orientation="Horizontal" Margin="7,0,0,0">
+                    <fa:ImageAwesome Icon="InfoCircle" Width="27" Foreground="{Binding Path=Foreground,  RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Button}}}"/>
+
+                    <TextBlock Text="Prikaz funkcionalnosti" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                </StackPanel>
+                
+            </Button>
+           
+
+
+            <Button Content="Prikaz zavrsenih pregleda" Click="PrikazZavrsenihPregleda"  Style="{StaticResource btnBlue}"/>
+
+        </StackPanel>
+
+       
+            <Frame  x:Name="DoktorFrame" NavigationUIVisibility="Hidden"  Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="3"/>
+        
+
 
 
     </Grid>

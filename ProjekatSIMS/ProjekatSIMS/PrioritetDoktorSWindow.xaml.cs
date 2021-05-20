@@ -46,7 +46,7 @@ namespace ProjekatSIMS
             }
             foreach (Prostorija pr in prostorije)
             {
-                if (pr.vrsta == VrstaProstorije.Ordinacija)
+                //if (pr.vrsta == VrstaProstorije.Ordinacija)
                     Ordinacije.Add(pr);
             }
         }

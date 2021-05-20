@@ -38,6 +38,23 @@ namespace ProjekatSIMS.Service
            
         }
 
+        private Boolean DaLiSeLekarMozeOceniti(String ime,String prezime)
+        {
+            bool mozeSeOceniti = false;
+            PregledRepository pregledRepository = new PregledRepository(@"..\..\..\Fajlovi\Pregled.txt");
+            List<Pregled> pregledi = pregledRepository.DobaviSvePregledePacijent();
+            foreach (Pregled p in pregledi)
+            {
+                if((p.doktor.Ime == ime) && (p.doktor.Prezime == prezime))
+                {
+                    mozeSeOceniti = true;
+                    break;
+                }
+            }
+            return mozeSeOceniti;
+            
+        }
+
         public Boolean OcenjivanjeLekara(String imeLekara, String prezimeLekara, String ocena, String komentar)
         {
             OcenaLekara ol = new OcenaLekara();
@@ -48,15 +65,15 @@ namespace ProjekatSIMS.Service
             pregledi = pregledRepository.DobaviSvePregledePacijent();
             foreach (Pregled p in pregledi)
             {
-                if ((p.StatusPregleda == StatusPregleda.Zavrsen) && (p.doktor.Prezime == prezimeLekara) && (p.doktor.Ime == imeLekara))
+                if ((p.StatusPregleda == StatusPregleda.Zavrsen) && (DaLiSeLekarMozeOceniti(imeLekara,prezimeLekara) == true))
                 {
-                    lekarSeMozeOceniti = true;
-                    break;
+                    return true;
+                    
                 }
             }
-            if(ocena != null)
+            if(ocena != null) 
             {
-                if (lekarSeMozeOceniti == true)
+                if (DaLiSeLekarMozeOceniti(imeLekara,prezimeLekara) == true)
                 {
                     ol.ImeLekara = imeLekara;
                     ol.PrezimeLekara = prezimeLekara;
@@ -64,9 +81,10 @@ namespace ProjekatSIMS.Service
                     ol.Komentar = komentar;
                     oceneLekara.Add(ol);
                     ocenaRepository.SacuvajOcenuLekara(oceneLekara);
+                    return true;
                    
                 }
-                return true;
+                return false ;
             }
             else
             {

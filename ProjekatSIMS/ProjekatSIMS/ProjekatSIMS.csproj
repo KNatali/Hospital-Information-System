@@ -7,6 +7,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Slike\calendar.png" />
+    <None Remove="Slike\calendar1.png" />
+    <None Remove="Slike\date.png" />
+    <None Remove="Slike\date1.png" />
+    <None Remove="Slike\doctor.png" />
+    <None Remove="Slike\doctor1.png" />
+    <None Remove="Slike\help.png" />
+    <None Remove="Slike\help1.png" />
+    <None Remove="Slike\home.png" />
+    <None Remove="Slike\home1.png" />
+    <None Remove="Slike\log-out.png" />
+    <None Remove="Slike\log-out1.png" />
+    <None Remove="Slike\patients.png" />
+    <None Remove="Slike\patients1.png" />
+  </ItemGroup>
+
+  <ItemGroup>
 
 
 
@@ -24,6 +41,23 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Slike\calendar.png" />
+    <Resource Include="Slike\calendar1.png" />
+    <Resource Include="Slike\date.png" />
+    <Resource Include="Slike\date1.png" />
+    <Resource Include="Slike\doctor.png" />
+    <Resource Include="Slike\doctor1.png" />
+    <Resource Include="Slike\help.png" />
+    <Resource Include="Slike\help1.png" />
+    <Resource Include="Slike\home.png" />
+    <Resource Include="Slike\home1.png" />
+    <Resource Include="Slike\log-out.png" />
+    <Resource Include="Slike\log-out1.png" />
+    <Resource Include="Slike\patients.png" />
+    <Resource Include="Slike\patients1.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -36,6 +70,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="WindowPacijent\Slike\" />
   </ItemGroup>
 
 </Project>

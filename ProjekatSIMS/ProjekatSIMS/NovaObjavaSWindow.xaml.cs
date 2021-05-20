@@ -24,14 +24,8 @@ namespace ProjekatSIMS
         private void Nazad(object sender, RoutedEventArgs e)
         {
             MessageBoxResult ret = MessageBox.Show("Da li želite da otkažete postavljanje obaveštenja?", "PROVERA", MessageBoxButton.YesNo);
-            switch (ret)
-            {
-                case MessageBoxResult.Yes:
-                    this.Close();
-                    break;
-                case MessageBoxResult.No:
-                    break;
-            }
+            if (ret==MessageBoxResult.Yes)
+                this.Close();
         }
 
         private void Sacuvaj(object sender, RoutedEventArgs e)
@@ -43,9 +37,9 @@ namespace ProjekatSIMS
             n.Tekst = tekst;
             n.Datum = DateTime.Now;
             NotifikacijaRepository fajl = new NotifikacijaRepository(@"..\..\..\Fajlovi\Vesti.txt");
-            List<Notifikacija> notifikacija = fajl.DobaviNotifikacije();
+            List<Notifikacija> notifikacija = fajl.DobaviSve();
             notifikacija.Add(n);
-            fajl.SacuvajNotifikaciju(notifikacija);
+            fajl.Sacuvaj(notifikacija);
             MessageBox.Show("Obaveštenje je uspešno postavljeno.", "OBAVEŠTENJE");
             this.Close();
         }

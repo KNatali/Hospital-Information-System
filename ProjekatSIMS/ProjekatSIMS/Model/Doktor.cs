@@ -5,7 +5,8 @@ namespace Model
    public class Doktor : Osoba
    {
       public int BrojSlobodnihDana;
-      public String RadnoVreme;
+      public String PocetakRadnogVremena { get; set; }
+      public String KrajRadnogVremena { get; set; }
       public Specijalizacija Specijalizacija { get; set; }
       
       public System.Collections.ArrayList pregled;

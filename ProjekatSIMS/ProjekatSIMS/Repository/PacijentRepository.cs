@@ -7,18 +7,24 @@ using System.Text;
 
 namespace Repository
 {
-    class PacijentRepository
+    public class PacijentRepository
     {
-        private string lokacija;
+        private string lokacija = @"..\..\..\Fajlovi\Pacijent.txt";
         private const string putanja = @"..\..\..\Fajlovi\Pacijent.txt";
         private string v;
+        private List<Pacijent> pacijenti;
 
         public PacijentRepository(string l)
         {
             this.lokacija = l;
         }
 
-        public List<Pacijent> UcitajSvePacijente()
+        public PacijentRepository()
+        {
+
+        }
+
+        public List<Pacijent> DobaviSve()
         {
             List<Pacijent> pacijenti = new List<Pacijent>();
             using (StreamReader r = new StreamReader(@"..\..\..\Fajlovi\Pacijent.txt"))
@@ -29,5 +35,12 @@ namespace Repository
             return pacijenti;
 
         }
+
+        public void Sacuvaj(List<Pacijent> pacijenti)
+        {
+            string newJson = JsonConvert.SerializeObject(pacijenti);
+            File.WriteAllText(putanja, newJson);
+        }
+
     }
 }

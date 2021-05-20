@@ -4,53 +4,183 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ProjekatSIMS"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      mc:Ignorable="d" d:DesignWidth="800"
       Title="IzdajReceptDoktor">
 
-    <Grid Background="white">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="179*"/>
-            <RowDefinition Height="272*"/>
-        </Grid.RowDefinitions>
-        <Label Content="Recept" HorizontalAlignment="Center" Margin="0,31,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <Label Content="Ime:" HorizontalAlignment="Left" Margin="26,0,0,0" VerticalAlignment="Center" Padding="10,5,5,5" Width="50"/>
-        <Label Content="Prezime:" HorizontalAlignment="Left" Margin="430,75,0,0" VerticalAlignment="Top" Padding="10,5,5,5" Width="80"/>
+    <Page.Resources>
 
-        <TextBox Name="Ime" IsReadOnly="True" HorizontalAlignment="Left" Margin="202,0,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Center" Width="152" Height="24"/>
-        <TextBox Name="Prezime" IsReadOnly="True" HorizontalAlignment="Left" Text="" TextWrapping="Wrap" VerticalAlignment="Center" Width="152" Height="24" Margin="606,0,0,0"/>
-        <ComboBox  Name="Lijek" HorizontalAlignment="Left"   
-                  Margin="202,160,0,0"   
-                  VerticalAlignment="Top"   
-                  Width="152"   
-                  ItemsSource="{Binding Path=Lijekovi}" Grid.RowSpan="2" 
+       
+        
+        <Style TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+        <Style  TargetType="TextBox">
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="BorderBrush" Value="#287D7D"/>
+            <Style.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10" />
+
+                </Style>
+            </Style.Resources>
+        </Style>
+
+        <Style TargetType="{x:Type DatePickerTextBox}">
+            <Setter Property="Background" Value="Transparent"></Setter>
+            <Setter Property="BorderBrush" Value="black"></Setter>
+            <Setter Property="BorderThickness" Value="0"></Setter>
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Style.Resources>
+
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10" />
+
+                </Style>
+            </Style.Resources>
+
+        </Style>
+        <Style TargetType="DatePicker">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="BorderBrush" Value="#287D7D"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Background" Value="white"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Style.Resources>
+
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10" />
+
+                </Style>
+            </Style.Resources>
+        </Style>
+        <Style x:Key="styleCalendar" TargetType="{x:Type Calendar}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Calendar}">
+                        <!-- Wrapping in ViewBox will enlarge calendar of that size.-->
+                        <Viewbox Height="270"
+                         Width="270">
+                            <CalendarItem x:Name="PART_CalendarItem"
+                                  Background="{TemplateBinding Background}"
+                                  BorderBrush="{TemplateBinding BorderBrush}"
+                                  BorderThickness="{TemplateBinding BorderThickness}"/>
+                        </Viewbox>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <ScrollViewer VerticalScrollBarVisibility="Visible">
+        <Grid Margin="30">
+
+
+            <Grid.RowDefinitions>
+                <RowDefinition MinHeight="57"/>
+                <RowDefinition  MinHeight="160"/>
+                <RowDefinition  MinHeight="57"/>
+                <RowDefinition  MinHeight="57"/>
+                <RowDefinition  MinHeight="57"/>
+                <RowDefinition  MinHeight="57"/>
+                <RowDefinition  MinHeight="57"/>
+                <RowDefinition  MinHeight="57"/>
+                <RowDefinition  MinHeight="80"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="1.3*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0" Grid.ColumnSpan="3" Content="Ljekarski recept" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="17" FontWeight="SemiBold"/>
+
+            <Border Grid.Row="1" Grid.ColumnSpan="3" CornerRadius="10" Background="white">
+                <Grid  Grid.Row="1" Grid.ColumnSpan="2"  Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Content="Naziv zdravstvene ustanove:" HorizontalAlignment="Left"  VerticalAlignment="Center" />
+                <Label Grid.Row="1" Grid.Column="0" Content="Ime pacijenta:" HorizontalAlignment="Left"  VerticalAlignment="Center" />
+                <Label Grid.Row="2" Grid.Column="0" Content="Prezime pacijenta:" HorizontalAlignment="Left"  VerticalAlignment="Center" />
+                <TextBox Name="Ime" Grid.Row="1" Grid.Column="1"  HorizontalAlignment="Left" Text="" TextWrapping="Wrap" VerticalAlignment="Center" IsReadOnly="True" />
+                    <TextBox Name="Prezime" Grid.Row="2" Grid.Column="1"  HorizontalAlignment="Left" Text="" TextWrapping="Wrap" VerticalAlignment="Center" IsReadOnly="True"/>
+                    <TextBox Name="NazivUstanove" Grid.Row="0" Grid.Column="1"  HorizontalAlignment="Left" Text="Zdravo Korporacija" TextWrapping="Wrap" VerticalAlignment="Center" IsReadOnly="True" FontWeight="SemiBold" />
+
+
+
+                </Grid>
+            </Border>
+            <Label Grid.Row="2" Grid.Column="0" Content="Izaberi lijek" HorizontalAlignment="Left" VerticalAlignment="Center" />
+
+
+            <ComboBox  Grid.Row="2" Grid.Column="1"  Name="Lijek" HorizontalAlignment="Stretch"   
+                 Style="{StaticResource ComboBoxFlatStyle}"
+                VerticalAlignment="Center"
+                  ItemsSource="{Binding Path=Lijekovi}"
                    SelectionChanged="Alergican"
                  
                   >
 
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Path=NazivLeka}"/>
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=NazivLeka}"/>
 
-                    </StackPanel>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
-        <Label Content="Izaberi lijek" HorizontalAlignment="Left" Margin="26,156,0,0" VerticalAlignment="Top" Grid.RowSpan="2"/>
-        <Label Content="Kolicina:" HorizontalAlignment="Left" Margin="26,37,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.065,0.25" Grid.Row="1"/>
-        <TextBox Name="Kolicina"  HorizontalAlignment="Left" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" Height="24" Margin="202,38,0,0" Grid.Row="1"/>
-        <Label Content="Trajanje terapije(dani):" HorizontalAlignment="Left" Margin="26,89,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.065,0.25" Grid.Row="1"/>
-        <TextBox Name="Trajanje" HorizontalAlignment="Left" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" Height="24" Margin="202,85,0,0" Grid.Row="1"/>
-        <Label Content="Datum prve upotrebe lijeka:" HorizontalAlignment="Left" Margin="414,157,0,0" VerticalAlignment="Top" Grid.RowSpan="2"/>
-        <DatePicker Name="Datum" HorizontalAlignment="Left" Margin="592,157,0,0" VerticalAlignment="Top" Width="152" Grid.RowSpan="2"/>
-        <TextBlock HorizontalAlignment="Left" Margin="420,85,0,0" Grid.Row="1" Text="Vremenski period izmedju dvije koznumacije" TextWrapping="Wrap" VerticalAlignment="Top" Height="44" Width="144"/>
-        <TextBox Name="Period" HorizontalAlignment="Left" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" Height="24" Margin="592,95,0,0" Grid.Row="1"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Label Grid.Row="3" Grid.Column="0" Content="Kolicina:" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <TextBox Grid.Row="3" Grid.Column="1" Name="Kolicina"  HorizontalAlignment="Stretch" Text="" TextWrapping="Wrap" VerticalAlignment="Center" />
+            <Label Grid.Row="4" Grid.Column="0"  Content="Trajanje terapije(dani):" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <TextBox Grid.Row="4" Grid.Column="1" Name="Trajanje" HorizontalAlignment="Left" Text="" TextWrapping="Wrap" VerticalAlignment="Center" Width="80" />
+            <Label Grid.Row="5" Grid.Column="0" Content="Datum prve upotrebe lijeka:" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <DatePicker Grid.Row="5" Grid.Column="1" Name="Datum" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="7" Grid.Column="0" HorizontalAlignment="Left"  Text="Vremenski period izmedju dvije koznumacije(dani)" VerticalAlignment="Center" TextWrapping="Wrap"/>
+            <TextBox Grid.Row="7" Grid.Column="1" Name="Period" HorizontalAlignment="Left" Text="" TextWrapping="Wrap" VerticalAlignment="Center" Width="80"/>
 
-        <Button Content="Sacuvaj" Click="IzdavanjeRecepta" HorizontalAlignment="Left" Margin="622,176,0,0" VerticalAlignment="Top" Height="42" Width="92" Background="#FFB5CDE2" Grid.Row="1"/>
-        <Label Content="Vrijeme(Sati i minuti):" HorizontalAlignment="Left" Margin="416,29,0,0" VerticalAlignment="Top" Height="26" Grid.Row="1"/>
-        <TextBox Name="Sat" HorizontalAlignment="Left" Margin="592,38,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="66" Height="20" Grid.Row="1"/>
-        <TextBox Name="Minut" HorizontalAlignment="Left" Margin="682,38,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Height="20" Grid.Row="1"/>
+            <Label  Grid.Row="6" Grid.Column="0"  Content="Vrijeme(Sati i minuti):" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <Grid Grid.Row="6" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
 
-    </Grid>
+
+                </Grid.ColumnDefinitions>
+
+                <TextBox  Grid.Column="0"  Name="Sat" HorizontalAlignment="Stretch" Text="" TextWrapping="Wrap" VerticalAlignment="Center"/>
+
+
+                <Label   Grid.Column="1" VerticalAlignment="Center" HorizontalContentAlignment="Center">:</Label>
+                <TextBox  Grid.Column="2"  Name="Minut" HorizontalAlignment="Stretch"  Text="" TextWrapping="Wrap" VerticalAlignment="Center" />
+
+                
+            </Grid>
+            <StackPanel  Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2"  HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
+                <Button Content="Sacuvaj" Width="100" Margin="0,0,20,0" Click="IzdavanjeRecepta" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnStandard}"/>
+                <Button Content="Odustani" Width="100"  HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnStandard}"/>
+
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
 </Page>

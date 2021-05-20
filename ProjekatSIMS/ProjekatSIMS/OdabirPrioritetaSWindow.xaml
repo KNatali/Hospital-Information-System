@@ -6,28 +6,28 @@
         xmlns:local="clr-namespace:ProjekatSIMS"
         xmlns:fa="http://schemas.fontawesome.io/icons/" x:Class="ProjekatSIMS.OdabirPrioritetaSWindow"
         mc:Ignorable="d"
-        Title="OdabirPrioritetaSWindow" Height="450" Width="800">
+        Title="OdabirPrioritetaSWindow" Height="568" Width="924" Background="#d1e3ff">
     <Grid>
-        <ComboBox HorizontalAlignment="Center" x:Name="Tip" FontSize="20" Margin="0,160,0,0" VerticalAlignment="Top" Width="270">
+        <ComboBox HorizontalAlignment="Center" x:Name="Tip" FontSize="25" Margin="0,171,0,0" VerticalAlignment="Top" Width="326" BorderBrush="#1963bf" Foreground="#1963bf">
             <ComboBoxItem IsSelected="True" Content="-"/>
             <ComboBoxItem Content="Kod određenog doktora"/>
             <ComboBoxItem Content="U određeno vreme"/>
         </ComboBox>
-        <Button Content="Zakaži termin" Click="Zakazi" HorizontalAlignment="Left" Margin="530,350,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
-        <Label Width="318" VerticalAlignment="Top" Margin="257,77,0,0" Height="50" HorizontalAlignment="Left" FontSize="20" Foreground="#1963bf" FontWeight="Bold" Content="Odaberite šta vam je prioritet"/>
-        <Label Margin="175,11,465,352">
+        <Button Content="Zakaži termin" Click="Zakazi" HorizontalAlignment="Left" Margin="679,440,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <Label Width="328" VerticalAlignment="Top" Margin="323,89,0,0" Height="50" HorizontalAlignment="Left" FontSize="22" Foreground="#1963bf" FontWeight="Bold" Content="Odaberite šta vam je prioritet"/>
+        <Button Content="Otkaži" Click="Otkazi" HorizontalAlignment="Left" Margin="60,440,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <Label Margin="239,21,401,448">
             <StackPanel Orientation="Horizontal">
                 <fa:ImageAwesome Icon="Globe" Width="60" Foreground="#1963bf"/>
                 <fa:ImageAwesome Icon="HSquare" Width="37" Foreground="#b31a0c"/>
                 <fa:ImageAwesome Icon="UserMd" Width="37" Foreground="#1963bf"/>
             </StackPanel>
         </Label>
-        <Label Margin="191,27,445,352">
+        <Label Margin="255,37,381,475">
             <StackPanel Orientation="Horizontal">
                 <fa:ImageAwesome Icon="Heart" Width="15" Foreground="#b31a0c"/>
             </StackPanel>
         </Label>
-        <Label Content="ZDRAVO KORPORACIJA" FontSize="25" Margin="324,24,172,380" Foreground="#1963bf" FontWeight="Bold"/>
-        <Button Content="Otkaži" Click="Otkazi" HorizontalAlignment="Left" Margin="70,350,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf"/>
+        <Label Content="ZDRAVO KORPORACIJA" FontSize="25" Margin="388,34,108,445" Foreground="#1963bf" FontWeight="Bold"/>
     </Grid>
 </Window>
