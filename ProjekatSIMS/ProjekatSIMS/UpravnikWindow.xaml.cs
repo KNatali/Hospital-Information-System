@@ -35,7 +35,7 @@ namespace ProjekatSIMS
 
         private void lekoviClick(object sender, RoutedEventArgs e)
         {
-            LekoviWindow lw = new LekoviWindow();
+            Lekovi lw = new Lekovi();
             lw.Show();
         }
 
