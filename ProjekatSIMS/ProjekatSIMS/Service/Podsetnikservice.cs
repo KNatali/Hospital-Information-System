@@ -48,7 +48,9 @@ namespace ProjekatSIMS.Service
         private Pacijent DaLiPostojiPacijent(String imePacijenta, String prezimePacijenta)
         {
             Pacijent pacijent = new Pacijent();
+
             List<Pacijent> pacijenti = pacijentRepository.UcitajSvePacijente();
+
             foreach (Pacijent p in pacijenti)
             {
                 if ((p.Ime == imePacijenta) & (p.Prezime == prezimePacijenta))

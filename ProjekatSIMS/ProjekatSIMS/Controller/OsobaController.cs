@@ -1,16 +1,22 @@
+using Model;
+using Service;
 using System;
+using System.Collections.Generic;
 
 namespace Controller
 {
    public class OsobaController
    {
-      public Model.Pacijent KreiranjeHitnogNalogaController(String jmbg, String ime, String prezime)
+        public Service.OsobaService osobaService = new OsobaService();
+        public Model.Pacijent KreiranjeHitnogNalogaController(String jmbg, String ime, String prezime)
       {
          // TODO: implement
          return null;
       }
-   
-      public Service.OsobaService osobaService;
-   
-   }
+        public List<Pacijent> DobaviSvePacijenteSekretar()
+        {
+            return osobaService.DobaviSvePacijente();
+        }
+
+    }
 }
