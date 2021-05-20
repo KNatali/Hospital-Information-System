@@ -826,7 +826,7 @@ namespace Service
             jesteMaliciozniKorisnik = true;
             List<Pacijent> Pacijenti = new List<Pacijent>();
             PacijentRepository pacijentRepository = new PacijentRepository(@"..\..\..\Fajlovi\Pacijent.txt");
-            Pacijenti = pacijentRepository.UcitajSvePacijente();
+            Pacijenti = pacijentRepository.DobaviSve();
             foreach(Pacijent p in Pacijenti)
             {
                 if((p.Ime == ime) & (p.Prezime == prezime))
@@ -836,12 +836,12 @@ namespace Service
                     
                 }
             }
-            pacijentRepository.SacuvajPacijente(Pacijenti);
+            pacijentRepository.Sacuvaj(Pacijenti);
             
 
 
            
-            return jesteMaliciozniKorisnik;
+           
             
             
         }

@@ -39,7 +39,7 @@ namespace ProjekatSIMS
             Prezime.Text = p.Prezime;
             Lijekovi = new List<Lijek>();
             List<Lijek> lijekovi = new List<Lijek>();
-            lijekovi = lijekRepository.DobaviSveLekove();
+            lijekovi = lijekRepository.DobaviSve();
             foreach (Lijek l in lijekovi)
             {
                 Lijekovi.Add(l);
