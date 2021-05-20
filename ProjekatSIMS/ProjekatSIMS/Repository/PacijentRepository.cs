@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Repository
 {
-    class PacijentRepository
+    public class PacijentRepository
     {
         private string lokacija;
         private const string putanja = @"..\..\..\Fajlovi\Pacijent.txt";

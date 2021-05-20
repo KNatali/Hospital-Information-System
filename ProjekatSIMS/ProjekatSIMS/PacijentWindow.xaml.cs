@@ -39,9 +39,6 @@ namespace ProjekatSIMS
             ReceptRepository fajl = new ReceptRepository(@"..\..\..\Fajlovi\Recept.txt");
             Recepti = fajl.DobaviSveRecepte();
 
-            /*Podsetnici = new List<Podsetnik>();
-            PodsetnikRepository podsetnikRepository = new PodsetnikRepository(@"..\..\..\Fajlovi\Podsetnik.txt");
-            Podsetnici = podsetnikRepository.DobaviSvePodsetnikeZaPacijenta(); */ 
 
             foreach (Recept r in Recepti)
             {
@@ -49,8 +46,6 @@ namespace ProjekatSIMS
                 
                 if(res>0)
                 {
-                    if((r.DatumPropisivanjaLeka.Month == DateTime.UtcNow.Month) && (r.DatumPropisivanjaLeka.Day == DateTime.UtcNow.Day) && (r.DatumPropisivanjaLeka.Year == DateTime.UtcNow.Year))
-                   
                     {
                     new ToastContentBuilder()
                    .AddArgument("action", "viewConversation")
@@ -65,27 +60,7 @@ namespace ProjekatSIMS
 
                     }
                 }
-
             }
-
-            //da li postoji barem jedan zavrsen pregled
-            pregledi = new List<Pregled>();
-            PregledRepository file = new PregledRepository(@"..\..\..\Fajlovi\Pregled.txt");
-            pregledi = file.DobaviSvePregledePacijent();
-            foreach(Pregled p in pregledi)
-            {
-                if(p.StatusPregleda == StatusPregleda.Zavrsen)
-                {
-                    mozeSeOceniti = 1;
-                    break;
-                }
-            }
-
-
-            
-
-
-
         }
 
         private void Click_zakazi(object sender, RoutedEventArgs e)
