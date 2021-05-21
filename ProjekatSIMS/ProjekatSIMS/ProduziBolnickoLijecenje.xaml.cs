@@ -31,7 +31,7 @@ namespace ProjekatSIMS
         private void ProduziUput(object sender, RoutedEventArgs e)
         {
 
-            if (produzenjeUputaController.IsProduzavanjeMoguce(uputStari, (DateTime)KrajInterval.SelectedDate))
+            if (produzenjeUputaController.IsProduzenjeMoguce(uputStari, (DateTime)KrajInterval.SelectedDate))
             {
                 produzenjeUputaController.ProduzavanjeUputa(uputStari, (DateTime)KrajInterval.SelectedDate, pacijent);
                 MessageBox.Show("Uspjesno ste produzili period bolnickog lijecenja");

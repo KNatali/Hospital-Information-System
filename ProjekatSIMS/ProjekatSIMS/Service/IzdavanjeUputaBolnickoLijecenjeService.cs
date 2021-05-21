@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace Service
 {
-    public class IzdavanjeUputaBolnickoLijecenje
+    public class IzdavanjeUputaBolnickoLijecenjeService
     {
         private ProstorijaRepository prostorijaRepository = new ProstorijaRepository();
         private UputBolnickoLijecenjeRepository uputRepository = new UputBolnickoLijecenjeRepository();
