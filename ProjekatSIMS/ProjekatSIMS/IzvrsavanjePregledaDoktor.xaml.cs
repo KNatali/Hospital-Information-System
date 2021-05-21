@@ -61,6 +61,12 @@ namespace ProjekatSIMS
             // this.NavigationService.Navigate(new Uri("ZdravstveniKartonDoktor.xaml", UriKind.Relative));
             this.NavigationService.Navigate(z);
         }
+        private void IzdavanjeUputaBolnickoLijecenje(object sender, RoutedEventArgs e)
+        {
+            UputZaBolnickoLijecenjeDoktor z = new UputZaBolnickoLijecenjeDoktor(pregled.pacijent);
+            // this.NavigationService.Navigate(new Uri("ZdravstveniKartonDoktor.xaml", UriKind.Relative));
+            this.NavigationService.Navigate(z);
+        }
 
         private void IzdavanjeRecepta(object sender, RoutedEventArgs e)
         {

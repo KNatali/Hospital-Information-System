@@ -48,7 +48,7 @@
         <Button Content="Pregled zdravstvenog kartona" Margin="0,0,20,0" Grid.Row="1" Grid.Column="0" Click="ZdravstveniKarton" Style="{StaticResource btnStandard}"/>
         <Button Content="Kreiraj anamnezu"  Grid.Row="1" Grid.Column="1"  Margin="20,0,0,0"  Click="ZavrsiPregled" Style="{StaticResource btnStandard}"/>
         <Button Content="Uput za specijalisticki pregled" Grid.Row="2" Grid.Column="1"  Margin="20,0,0,0" Click="IzdavanjeUputa" Style="{StaticResource btnStandard}"/>
-        <Button Content="Uput za bolnicko lijecenje" Grid.Row="2" Grid.Column="0"  Margin="0,0,20,0" Click="IzdavanjeUputa" Style="{StaticResource btnStandard}"/>
+        <Button Content="Uput za bolnicko lijecenje" Grid.Row="2" Grid.Column="0"  Margin="0,0,20,0" Click="IzdavanjeUputaBolnickoLijecenje" Style="{StaticResource btnStandard}"/>
         <Button Content="Izdaj opravdanje" Grid.Row="3" Grid.Column="1"  Margin="20,0,0,0" Click="IzdavanjeUputa" Style="{StaticResource btnStandard}"/>
         <Button Content="Izdaj recept" Grid.Row="3" Grid.Column="0"  Margin="0,0,20,0" Click="IzdavanjeRecepta" Style="{StaticResource btnStandard}"/>
         <StackPanel  Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2"  HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
