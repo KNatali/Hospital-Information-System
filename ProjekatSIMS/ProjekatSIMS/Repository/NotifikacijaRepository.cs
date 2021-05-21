@@ -8,13 +8,17 @@ namespace Repository
 {
    public class NotifikacijaRepository
    {
-        private String lokacija;
+        private String lokacija = @"..\..\..\Fajlovi\Vesti.txt";
         private List<Notifikacija> n;
+        public NotifikacijaRepository()
+        {
+
+        }
         public NotifikacijaRepository(String l)
         {
             lokacija = l;
         }
-      public List<Notifikacija> DobaviNotifikacije()
+      public List<Notifikacija> DobaviSve()
       {
             using (StreamReader r = new StreamReader(lokacija))
             {
@@ -24,7 +28,7 @@ namespace Repository
             return n;
       }
       
-      public void SacuvajNotifikaciju(List<Notifikacija> notifikacija)
+      public void Sacuvaj(List<Notifikacija> notifikacija)
       {
             string newJson = JsonConvert.SerializeObject(notifikacija);
             File.WriteAllText(lokacija, newJson);

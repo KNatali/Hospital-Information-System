@@ -20,6 +20,7 @@ namespace ProjekatSIMS
         }
 
         public PregledController PregledController { get; private set; }
-
+        public NotifikacijaController NotifikacijaController { get; internal set; }
+        public PacijentController PacijentController { get; internal set; }
     }
 }

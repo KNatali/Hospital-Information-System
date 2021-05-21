@@ -24,7 +24,7 @@ namespace ProjekatSIMS
         public List<Lijek> lekovi1 { get; set; }
         public PregledajLek(Lijek lek)
         {
-            Lek1 = lek;
+            /*Lek1 = lek;
             InitializeComponent();
             this.DataContext = this;
             
@@ -48,13 +48,13 @@ namespace ProjekatSIMS
             
 
             Alergeni.ItemsSource = Lek1.Alergeni;
-            AlternativniLekovi.ItemsSource = Lek1.AlternativniLekovi;
+            AlternativniLekovi.ItemsSource = Lek1.AlternativniLekovi;*/
 
         }
 
         private void obrisi(object sender, RoutedEventArgs e)
         {
-
+            /*
             String al = AlternativniLek.Text;
             int flag = 0;
 
@@ -83,12 +83,12 @@ namespace ProjekatSIMS
                 MessageBox.Show("Uneli ste nepostojeci alternativni lek!");
             }
             AlternativniLek.Text = "";
-            AlternativniLekovi.ItemsSource = Lek1.AlternativniLekovi;
+            AlternativniLekovi.ItemsSource = Lek1.AlternativniLekovi;*/
         }
 
         private void dodaj(object sender, RoutedEventArgs e)
         {
-
+            /*
             String l = Convert.ToString(Lek.SelectedItem);
             List<String> lista = new List<string>();
             lista.Add(l);
@@ -122,11 +122,11 @@ namespace ProjekatSIMS
                 lekRepository.SacuvajLekove(lekovi1);
             }
             
-            AlternativniLekovi.ItemsSource = Lek1.AlternativniLekovi;
+            AlternativniLekovi.ItemsSource = Lek1.AlternativniLekovi;*/
 
         }
         private void dodajAl (object sender, RoutedEventArgs e)
-        {
+        {/*
             String al = Alergen.Text;
             List<String> alergeni = Lek1.Alergeni;
             int temp = 0;
@@ -162,10 +162,10 @@ namespace ProjekatSIMS
                 lekRepository.SacuvajLekove(lekovi1);
             }
 
-            Alergeni.ItemsSource = Lek1.Alergeni;
+            Alergeni.ItemsSource = Lek1.Alergeni;*/
         }
         private void obrisiAl(object sender, RoutedEventArgs e)
-        {
+        { /*
             String al = Alergen.Text;
             int flag = 0;
             
@@ -193,12 +193,12 @@ namespace ProjekatSIMS
             {
                 MessageBox.Show("Uneli ste nepostojeci alergen!");
             }
-            Alergeni.ItemsSource = Lek1.Alergeni;
+            Alergeni.ItemsSource = Lek1.Alergeni;*/
 
         }
 
         private void sacuvaj(object sender, RoutedEventArgs e)
-        {
+        { /*
             Lek1.Opis = Opis.Text;
             Lek1.AlternativniLekovi = new List<string>(AlternativniLekovi.Items.Cast<String>());
             Lek1.Alergeni = new List<string>(Alergeni.Items.Cast<String>());
@@ -214,7 +214,7 @@ namespace ProjekatSIMS
                 }
             }
             lekRepository.SacuvajLekove(lekovi1);
-            this.Close();
+            this.Close(); */
         }
     }
 }

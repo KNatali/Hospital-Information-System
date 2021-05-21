@@ -40,7 +40,7 @@ namespace ProjekatSIMS
                 if (n.ObrisiNotifikaciju() == true)
                 {
                     NotifikacijaRepository fajl = new NotifikacijaRepository(@"..\..\..\Fajlovi\Vesti.txt");
-                    List<Notifikacija> notif = fajl.DobaviNotifikacije();
+                    List<Notifikacija> notif = fajl.DobaviSve();
                     foreach (Notifikacija no in notif)
                     {
                         if (no.Id == n.Id)
@@ -49,7 +49,7 @@ namespace ProjekatSIMS
                             break;
                         }
                     }
-                    fajl.SacuvajNotifikaciju(notif);
+                    fajl.Sacuvaj(notif);
                     MessageBox.Show("Objava je uspešno obrisana.", "OBAVEŠTENJE");
                     this.Close();
                 }
@@ -62,7 +62,7 @@ namespace ProjekatSIMS
             n.Tekst = Tekst.Text;
             List<Notifikacija> ListaN = new List<Notifikacija>();
             NotifikacijaRepository fajl = new NotifikacijaRepository(@"..\..\..\Fajlovi\Vesti.txt");
-            ListaN = fajl.DobaviNotifikacije();
+            ListaN = fajl.DobaviSve();
             foreach (Notifikacija notif in ListaN)
             {
                 if (n.Id == notif.Id)
@@ -71,7 +71,7 @@ namespace ProjekatSIMS
                     notif.Tekst = n.Tekst;
                 }
             }
-            fajl.SacuvajNotifikaciju(ListaN);
+            fajl.Sacuvaj(ListaN);
             this.Close();
         }
     }

@@ -34,7 +34,7 @@ namespace ProjekatSIMS.WindowPacijent
 
             Pacijenti = new List<Pacijent>();
             PacijentRepository file = new PacijentRepository(@"..\..\..\Fajlovi\Pacijent.txt");
-            Pacijenti = file.UcitajSvePacijente();
+            Pacijenti = file.DobaviSve();
             
     }
         private void Zatvori(object sender, RoutedEventArgs e)

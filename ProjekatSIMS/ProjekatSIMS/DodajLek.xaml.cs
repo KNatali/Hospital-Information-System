@@ -29,7 +29,7 @@ namespace ProjekatSIMS
             InitializeComponent();
             this.DataContext = this;
 
-            LijekRepository lekRepository = new LijekRepository();
+            /*LijekRepository lekRepository = new LijekRepository();
             Lekovi = lekRepository.DobaviSveLekove();
             Lek1 = new Lijek();
             Lekovi1 = new List<String>();
@@ -44,14 +44,14 @@ namespace ProjekatSIMS
                 
             }
 
-            AlternativniLekovi.ItemsSource = Lek1.AlternativniLekovi;
+            AlternativniLekovi.ItemsSource = Lek1.AlternativniLekovi;*/
 
 
 
         }
 
         private void dodaj(object sender, RoutedEventArgs e)
-        {
+        {/*
             //biramo lek
             String l = Convert.ToString(Lek.SelectedItem);
             List<String> lista = new List<string>();
@@ -82,20 +82,13 @@ namespace ProjekatSIMS
                 MessageBox.Show("Uspesno ste dodali alternativni lek!");
             }
 
-            AlternativniLekovi.ItemsSource = Lek1.AlternativniLekovi;
+            AlternativniLekovi.ItemsSource = Lek1.AlternativniLekovi;*/
 
 
-
-
-
-
-            
-            
-            
 
         }
         private void dodajAl(object sender, RoutedEventArgs e)
-        {
+        {/*
             String al = Alergen.Text;
             int temp = 0;
             List<String> lista = new List<string>();
@@ -122,12 +115,12 @@ namespace ProjekatSIMS
                 Lek1.Alergeni.Add(al);
                 MessageBox.Show("Uspesno ste uneli alergen!");
             }
-            Alergeni.ItemsSource = Lek1.Alergeni;
+            Alergeni.ItemsSource = Lek1.Alergeni;*/
 
         }
         private void sacuvaj(object sender, RoutedEventArgs e)
         {
-            int temp = 0;
+           /* int temp = 0;
             Lijek l = new Lijek();
             l.NazivLeka = Naziv.Text;
             foreach(Lijek l1 in Lekovi)
@@ -152,7 +145,7 @@ namespace ProjekatSIMS
             }
             LijekRepository lekRepository = new LijekRepository();
             lekRepository.SacuvajLekove(Lekovi);
-            this.Close();
+            this.Close();*/
             
 
         }

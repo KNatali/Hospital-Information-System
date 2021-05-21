@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using Microsoft.Toolkit.Uwp.Notifications;
+using Model;
 using ProjekatSIMS.Model;
 using ProjekatSIMS.Repository;
 using Repository;
@@ -11,38 +12,44 @@ namespace ProjekatSIMS.Service
    
     public class Podsetnikservice
     {
-        public PodsetnikRepository podsetnikRepository = new PodsetnikRepository();
         
+        public PodsetnikRepository podsetnikRepository = new PodsetnikRepository();
+        public PacijentRepository pacijentRepository = new PacijentRepository();
+        
+
+        private Podsetnik PostavljanjeAtributaPodsetnika(String naziv,String opis, DateTime datumPocetka, DateTime datumKraja, String imePacijenta, String prezimePacijenta)
+        {
+            Podsetnik podsetnik = new Podsetnik();
+            podsetnik.nazivPodsetika = naziv;
+            podsetnik.opisPodsetnika = opis;
+            podsetnik.datumPocetkaObavestenja = datumPocetka;
+            podsetnik.datumZavrsetkaObavestenja = datumKraja;
+            if (DaLiPostojiPacijent(imePacijenta, prezimePacijenta) != null)
+            {
+                podsetnik.pacijent = DaLiPostojiPacijent(imePacijenta, prezimePacijenta);
+            }
+            return podsetnik;
+        }
+
+        public void PrikazivanjePodsetnika()
+        {
+            
+            
+        }
 
         public Boolean kreiranjePodsetnika(String naziv,String opis, DateTime pocetakObavestenja, DateTime krajObavestenja,String imePacijenta,String prezimePacijenta)
         {
-            
-
-            Podsetnik podsetnik = new Podsetnik();
-            if(DaLiPostojiPacijent(imePacijenta,prezimePacijenta) != null)
-            {
-                podsetnik.pacijent = DaLiPostojiPacijent(imePacijenta, prezimePacijenta);
-
-            }
-            
-
-            List<Podsetnik> podsetnici = podsetnikRepository.DobaviSvePodsetnikeZaPacijenta(imePacijenta,prezimePacijenta);
-
-            podsetnik.nazivPodsetika = naziv;
-            podsetnik.opisPodsetnika = opis;
-            podsetnik.datumPocetkaObavestenja = pocetakObavestenja;
-            podsetnik.datumZavrsetkaObavestenja = krajObavestenja;
-            podsetnici.Add(podsetnik);
+            List<Podsetnik> podsetnici = podsetnikRepository.DobaviSvePodsetnike();
+            podsetnici.Add(PostavljanjeAtributaPodsetnika(naziv, opis, pocetakObavestenja, krajObavestenja,imePacijenta,prezimePacijenta));
             podsetnikRepository.SacuvajPodsetnik(podsetnici);
-
             return true;
         }
 
         private Pacijent DaLiPostojiPacijent(String imePacijenta, String prezimePacijenta)
         {
             Pacijent pacijent = new Pacijent();
-            PacijentRepository pacijentRepo = new PacijentRepository();
-            List<Pacijent> pacijenti = pacijentRepo.UcitajSvePacijente();
+
+            List<Pacijent> pacijenti = pacijentRepository.DobaviSve();
 
             foreach (Pacijent p in pacijenti)
             {
