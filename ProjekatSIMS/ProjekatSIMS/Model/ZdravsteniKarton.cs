@@ -21,6 +21,8 @@ namespace Model
       public List<String> Alergeni { get; set; }
       public List<String> Terapija { get; set; }
 
+        public List<UputBolnickoLijecenje> UputiZaBolnickoLijecenje { get; set; }
+
    
    }
 }

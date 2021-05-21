@@ -5,13 +5,10 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ProjekatSIMS"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+     d:DesignWidth="800"
       Title="UputZaBolnickoLijecenjeDoktor">
     <Page.Resources>
-
-
-
-        <Style TargetType="TextBlock">
+  <Style TargetType="TextBlock">
             <Setter Property="FontFamily" Value="Roboto"/>
             <Setter Property="FontSize" Value="16"/>
         </Style>
@@ -82,67 +79,107 @@
             </Setter>
         </Style>
     </Page.Resources>
-
-    <Grid Margin="30">
-        <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition  Height="3*" />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-          
-            <RowDefinition />
-
-
-
-        </Grid.RowDefinitions>
-
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1.5*"/>
-            <ColumnDefinition Width="1.3*"/>
-            <ColumnDefinition/>
-            
-        </Grid.ColumnDefinitions>
-
-        <Label Grid.Row="0" Grid.ColumnSpan="3" Content="Uput za bolnicko lijecenje" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="17" FontWeight="SemiBold"/>
-
-        <Border Grid.Row="1" Grid.ColumnSpan="3" CornerRadius="10" Background="white">
-            <Grid  Grid.Row="1" Grid.ColumnSpan="2"  Margin="10">
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Label Grid.Row="0" Grid.Column="0" Content="Naziv zdravstvene ustanove:" HorizontalAlignment="Left"  VerticalAlignment="Center" />
-                <Label Grid.Row="1" Grid.Column="0" Content="Ime pacijenta:" HorizontalAlignment="Left"  VerticalAlignment="Center" />
-                <Label Grid.Row="2" Grid.Column="0" Content="Prezime pacijenta:" HorizontalAlignment="Left"  VerticalAlignment="Center" />
-                <TextBox Name="Ime" Grid.Row="1" Grid.Column="1"  HorizontalAlignment="Left" Text="" TextWrapping="Wrap" VerticalAlignment="Center" IsReadOnly="True" />
-                <TextBox Name="Prezime" Grid.Row="2" Grid.Column="1"  HorizontalAlignment="Left" Text="" TextWrapping="Wrap" VerticalAlignment="Center" IsReadOnly="True"/>
-                <TextBox Name="NazivUstanove" Grid.Row="0" Grid.Column="1"  HorizontalAlignment="Left" Text="Zdravo Korporacija" TextWrapping="Wrap" VerticalAlignment="Center" IsReadOnly="True" FontWeight="SemiBold" />
+    <ScrollViewer VerticalScrollBarVisibility="Visible">
+        <Grid Margin="30">
+            <Grid.RowDefinitions>
+                <RowDefinition MinHeight="57"/>
+                <RowDefinition  MinHeight="160"/>
+                <RowDefinition  MinHeight="57"/>
+                <RowDefinition  MinHeight="57"/>
+                <RowDefinition  MinHeight="57"/>
+                <RowDefinition  MinHeight="57"/>
+                <RowDefinition  MinHeight="57"/>
+              
+                <RowDefinition  MinHeight="80"/>
 
 
 
-            </Grid>
-        </Border>
-        <Label Grid.Row="2" Grid.Column="0" Content="Razlog hospitalizacije" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <TextBox Name="Razlog" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Text="" TextWrapping="Wrap" VerticalAlignment="Center"/>
-        <Label Content="U periodu od:" Grid.Row="3" VerticalAlignment="Center"></Label>
-        <DatePicker Grid.Row="3" Grid.Column="1"  CalendarStyle="{StaticResource styleCalendar}" Name="DatumPocetak" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
-        <Label Content="Do:" Grid.Row="4" VerticalAlignment="Center"></Label>
-        <DatePicker Grid.Row="4" Grid.Column="1"  CalendarStyle="{StaticResource styleCalendar}" Name="DatumKraj" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="1.3*"/>
+                <ColumnDefinition/>
+
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0" Grid.ColumnSpan="3" Content="Uput za bolnicko lijecenje" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="17" FontWeight="SemiBold"/>
+
+            <Border Grid.Row="1" Grid.ColumnSpan="3" CornerRadius="10" Background="white">
+                <Grid  Grid.Row="1" Grid.ColumnSpan="2"  Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Content="Naziv zdravstvene ustanove:" HorizontalAlignment="Left"  VerticalAlignment="Center" />
+                    <Label Grid.Row="1" Grid.Column="0" Content="Ime pacijenta:" HorizontalAlignment="Left"  VerticalAlignment="Center" />
+                    <Label Grid.Row="2" Grid.Column="0" Content="Prezime pacijenta:" HorizontalAlignment="Left"  VerticalAlignment="Center" />
+                    <TextBox Name="Ime" Grid.Row="1" Grid.Column="1"  HorizontalAlignment="Left" Text="" TextWrapping="Wrap" VerticalAlignment="Center" IsReadOnly="True" />
+                    <TextBox Name="Prezime" Grid.Row="2" Grid.Column="1"  HorizontalAlignment="Left" Text="" TextWrapping="Wrap" VerticalAlignment="Center" IsReadOnly="True"/>
+                    <TextBox Name="NazivUstanove" Grid.Row="0" Grid.Column="1"  HorizontalAlignment="Left" Text="Zdravo Korporacija" TextWrapping="Wrap" VerticalAlignment="Center" IsReadOnly="True" FontWeight="SemiBold" />
 
 
 
+                </Grid>
+            </Border>
+            <Label Grid.Row="2" Grid.Column="0" Content="Razlog hospitalizacije" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <TextBox Name="Razlog" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Text="" TextWrapping="Wrap" VerticalAlignment="Center"/>
+            <Label Content="U periodu od:" Grid.Row="3" VerticalAlignment="Center"></Label>
+            <DatePicker Grid.Row="3" Grid.Column="1"  CalendarStyle="{StaticResource styleCalendar}" Name="DatumPocetak" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+            <Label Content="Do:" Grid.Row="4" VerticalAlignment="Center"></Label>
+            <DatePicker Grid.Row="4" Grid.Column="1"  CalendarStyle="{StaticResource styleCalendar}" Name="DatumKraj" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+            <Button  Grid.Row="5" Grid.Column="0" Content="Prikazi slobodne sobe" Click="PrikazSlobodnihSoba" HorizontalAlignment="Left"  VerticalAlignment="Center" Style="{StaticResource btnIstakni}"/>
 
-        <StackPanel  Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2"  HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
-            <Button Content="Sacuvaj" Width="100" Margin="0,0,20,0" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnStandard}"/>
-            <Button Content="Odustani" Width="100"  HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnStandard}"/>
 
-        </StackPanel>
+            <ComboBox  Grid.Row="5" Grid.Column="1"  Name="SlobodneSobe" HorizontalAlignment="Stretch"   
+                 Style="{StaticResource ComboBoxFlatStyle}"
+                VerticalAlignment="Center"
+                SelectionChanged="KrevetiZaSobu"
+                  >
 
-    </Grid>
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=Soba}"/>
+
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+
+            <ComboBox  Grid.Row="6" Grid.Column="1"  Name="SlobodniKreveti" HorizontalAlignment="Stretch"   
+                 Style="{StaticResource ComboBoxFlatStyle}"
+                VerticalAlignment="Center"
+                SelectedItem=""
+                 
+                 
+                  >
+
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Krevet br."/>
+                            <TextBlock Text="{Binding }"/>
+
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+
+
+            <StackPanel  Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2"  HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
+                <Button Content="Sacuvaj" Click="SacuvajUput"  Width="100" Margin="0,0,20,0" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnStandard}"/>
+                <Button Content="Odustani" Click="Odustani" Width="100"  HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnStandard}"/>
+
+            </StackPanel>
+
+        </Grid>
+    </ScrollViewer>
 </Page>

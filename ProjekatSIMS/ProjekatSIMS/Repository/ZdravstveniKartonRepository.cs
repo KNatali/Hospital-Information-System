@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Windows;
 
 namespace Repository
 {
@@ -31,7 +32,7 @@ namespace Repository
         }
         public List<ZdravsteniKarton> DobaviZdravstveneKartone()
         {
-
+            List<ZdravsteniKarton> sviKartoni = new List<ZdravsteniKarton>();
             using (StreamReader r = new StreamReader(putanja))
             {
                 string json = r.ReadToEnd();
@@ -64,10 +65,15 @@ namespace Repository
             foreach (ZdravsteniKarton z in sviKartoni)
             {
                 if (z.pacijent.Jmbg == zdravstveniKarton.pacijent.Jmbg)
+                {
                     z.Recepti = zdravstveniKarton.Recepti;
                     z.Alergeni = zdravstveniKarton.Alergeni;
                     z.anamneza = zdravstveniKarton.anamneza;
                     z.Terapija = zdravstveniKarton.Terapija;
+                    z.UputiZaBolnickoLijecenje = zdravstveniKarton.UputiZaBolnickoLijecenje;
+                }
+                   
+               
 
             }
             SacuvajZdravsteveneKartone(sviKartoni);
