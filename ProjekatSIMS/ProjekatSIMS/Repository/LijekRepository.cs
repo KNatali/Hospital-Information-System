@@ -8,7 +8,7 @@ using System.Text;
 
 namespace ProjekatSIMS.Repository
 {
-    class LijekRepository
+    public class LijekRepository
     {
         
         
@@ -17,7 +17,8 @@ namespace ProjekatSIMS.Repository
 
         public LijekRepository() { }
 
-        public List<Lijek> DobaviSveLekove()
+        
+        public List<Lijek> DobaviSve()
         {
             List<Lijek> lekovi = new List<Lijek>();
             using (StreamReader sr = new StreamReader(putanja))
@@ -28,22 +29,22 @@ namespace ProjekatSIMS.Repository
             return lekovi;
         }
 
-        public void SacuvajLekove(List<Lijek> lekovi)
+        public void Sacuvaj(List<Lijek> lekovi)
         {
             string json = JsonConvert.SerializeObject(lekovi);
             File.WriteAllText(putanja, json);
         }
 
-        public Boolean obrisiLek(Lijek lek)
+        public Boolean ObrisiLek(Lijek lek)
         {
             List<Lijek> lekovi = new List<Lijek>();
-            lekovi = DobaviSveLekove();
+            lekovi = DobaviSve();
             foreach(Lijek l in lekovi)
             {
                 if (lek.NazivLeka == l.NazivLeka)
                 {
                     lekovi.Remove(l);
-                   // SacuvajLekove(lekovi);
+                   Sacuvaj(lekovi);
                     return true;
                 }
             }

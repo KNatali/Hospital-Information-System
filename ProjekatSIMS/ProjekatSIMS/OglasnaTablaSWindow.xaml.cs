@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using Controller;
+using Model;
 using Repository;
 using System;
 using System.Collections.Generic;
@@ -16,16 +17,20 @@ namespace ProjekatSIMS
 {
     public partial class OglasnaTablaSWindow : Window
     {
+        private NotifikacijaController notifikacijaController;
         public List<Notifikacija> Obavestenja { get; set; }
         public OglasnaTablaSWindow()
         {
             InitializeComponent();
             this.DataContext = this;
+            List<Notifikacija> tabelaNotifikacija = new List<Notifikacija>();
             Obavestenja = new List<Notifikacija>();
-            NotifikacijaRepository fajl = new NotifikacijaRepository(@"..\..\..\Fajlovi\Vesti.txt");
-            Obavestenja = fajl.DobaviNotifikacije();
+            notifikacijaController = new NotifikacijaController();
+            tabelaNotifikacija = notifikacijaController.DobaviSve();
+            foreach (Notifikacija n in tabelaNotifikacija)
+                Obavestenja.Add(n);
         }
-        private void Dvoklik(object sender, MouseButtonEventArgs e)
+        private void DvoklikNaOglas(object sender, MouseButtonEventArgs e)
         {
             Notifikacija n = (Notifikacija)dataGridObavestenja.SelectedItems[0];
             ObavestenjeSWindow o = new ObavestenjeSWindow(n);
@@ -38,7 +43,7 @@ namespace ProjekatSIMS
             this.Close();
         }
 
-        private void Novo(object sender, RoutedEventArgs e)
+        private void NovaObjava(object sender, RoutedEventArgs e)
         {
             NovaObjavaSWindow no = new NovaObjavaSWindow();
             no.Show();

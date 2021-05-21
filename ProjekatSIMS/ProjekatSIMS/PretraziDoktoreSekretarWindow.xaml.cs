@@ -1,6 +1,8 @@
 ﻿using Model;
+using Controller;
 using Repository;
 using System;
+using Service;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -16,6 +18,7 @@ namespace ProjekatSIMS
 {
     public partial class PretraziDoktoreSekretarWindow : Window
     {
+        private DoktorController doktorController;
         public List<Doktor> Doktori { get; set; }
         public Doktor dok { get; set; }
         public PretraziDoktoreSekretarWindow()
@@ -23,29 +26,29 @@ namespace ProjekatSIMS
             InitializeComponent();
             this.DataContext = this;
             Doktori = new List<Doktor>();
-            OsobaRepository fajl = new OsobaRepository(@"..\..\..\Fajlovi\Doktor.txt");
-            Doktori = fajl.DobaviDoktore();
+            List<Doktor> tabelaDoktora = new List<Doktor>();
+            doktorController = new DoktorController();
+            tabelaDoktora = doktorController.DobaviSve();
+            foreach (Doktor d in tabelaDoktora)
+                Doktori.Add(d);
         }
 
         private void Pretraga(object sender, RoutedEventArgs e)
         {
-            String ime = Ime.Text;
-            String prezime = Prezime.Text;
-            dataGridDoktori.Visibility = Visibility.Visible;
-            List<Doktor> Doktori1 = new List<Doktor>();
-            List<Doktor> ListaDoktora = new List<Doktor>();
-            OsobaRepository fajl = new OsobaRepository(@"..\..\..\Fajlovi\Doktor.txt");
-            ListaDoktora = fajl.DobaviDoktore();
-            foreach (Doktor d in ListaDoktora)
+            VidljivostPolja();
+            List<Doktor> refreshTabeleDoktora = new List<Doktor>();
+            List<Doktor> pretragaDoktora = new List<Doktor>();
+            doktorController = new DoktorController();
+            pretragaDoktora = doktorController.DobaviSve();
+            foreach (Doktor d in pretragaDoktora)
             {
-                if (d.Ime == ime && d.Prezime == prezime)
+                if (d.Ime == Ime.Text && d.Prezime == Prezime.Text)
                 {
-                    Doktori1.Add(d);
+                    refreshTabeleDoktora.Add(d);
                     dok = d;
                 }
             }
-            Labela.Visibility = Visibility.Visible;
-            dataGridDoktori.ItemsSource = Doktori1;  // refresh tabele
+            dataGridDoktori.ItemsSource = refreshTabeleDoktora;
         }
 
         private void Nazad(object sender, RoutedEventArgs e)
@@ -55,8 +58,7 @@ namespace ProjekatSIMS
 
         private void Prikaz(object sender, RoutedEventArgs e)
         {
-            dataGridDoktori.Visibility = Visibility.Visible;
-            dataGridDoktori.ItemsSource = Doktori;
+            VidljivostPolja();
             Labela.Visibility = Visibility.Visible;
         }
         private void Dvoklik(object sender, MouseButtonEventArgs e)
@@ -65,6 +67,11 @@ namespace ProjekatSIMS
             ProfilDoktoraSWindow pd = new ProfilDoktoraSWindow(d);
             pd.Show();
             this.Close();
+        }
+        private void VidljivostPolja()
+        {
+            dataGridDoktori.Visibility = Visibility.Visible;
+            Labela.Visibility = Visibility.Visible;
         }
     }
 }
