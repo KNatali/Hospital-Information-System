@@ -7,7 +7,7 @@ using Repository;
 
 namespace Service
 {
-    class IzdavanjeReceptaService
+    public class IzdavanjeReceptaService
     {
       
         private ReceptRepository receptRepository = new ReceptRepository();

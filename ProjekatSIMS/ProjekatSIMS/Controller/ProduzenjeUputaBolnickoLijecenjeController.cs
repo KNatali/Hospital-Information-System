@@ -12,12 +12,14 @@ namespace Controller
 
         public bool IsProduzavanjeMoguce(UputBolnickoLijecenje uput, DateTime krajIntervala)
         {
-            return uputService.IsProduzavanjeMoguce(uput, krajIntervala);
+            //return uputService.IsProduzavanjeMoguce(uput, krajIntervala);
+            return true;
         }
 
         public void ProduzavanjeUputa(UputBolnickoLijecenje uput, DateTime krajIntervala, Pacijent pacijent)
         {
-            uputService.ProduzavanjeUputa(uput, krajIntervala, pacijent);
+            //uputService.ProduzavanjeUputa(uput, krajIntervala, pacijent);
+           
         }
     }
 }
