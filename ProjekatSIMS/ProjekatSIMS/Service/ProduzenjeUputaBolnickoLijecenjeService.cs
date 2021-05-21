@@ -8,6 +8,7 @@ namespace Service
 {
     public class ProduzenjeUputaBolnickoLijecenjeService
     {
+
         private ProstorijaRepository prostorijaRepository = new ProstorijaRepository();
         private UputBolnickoLijecenjeRepository uputRepository = new UputBolnickoLijecenjeRepository();
         private ZdravstveniKartonRepository zdravstveniKartonRepository = new ZdravstveniKartonRepository();
@@ -59,5 +60,6 @@ namespace Service
 
             return uputi;
         }
+
     }
 }
