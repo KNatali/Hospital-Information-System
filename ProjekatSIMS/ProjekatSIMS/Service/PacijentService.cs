@@ -13,9 +13,17 @@ namespace Service
         {
             return pacijentRepository.DobaviSve();
         }
-        /*private static Pacijent ProveraImePrezime()
+        public Boolean ProveraImePrezime(String ime, String prezime)
         {
-            
-        }*/
+            List<Pacijent> pacijenti = pacijentRepository.DobaviSve();
+            foreach(Pacijent p in pacijenti)
+            {
+                if (p.Ime == ime && p.Prezime == prezime)
+                {
+                    break;
+                }
+            }
+            return true;
+        }
     }
 }

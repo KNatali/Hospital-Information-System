@@ -13,5 +13,11 @@ namespace Controller
         {
             return pacijentService.DobaviSve();
         }
+        public Boolean ProveraImePrezime(String ime, String prezime)
+        {
+            if (pacijentService.ProveraImePrezime(ime, prezime))
+                return true;
+            return false;
+        }
     }
 }
