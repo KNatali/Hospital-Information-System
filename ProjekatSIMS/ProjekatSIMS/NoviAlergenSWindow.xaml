@@ -8,8 +8,8 @@
         mc:Ignorable="d"
         Title="NoviAlergenSWindow" Height="568" Width="924" Background="#d1e3ff">
     <Grid>
-        <Button Content="Sačuvaj" Click="Dodavanje" HorizontalAlignment="Left" Margin="684,440,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
-        <Button Content="Otkaži" Click="Nazad" HorizontalAlignment="Left" Margin="60,440,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <Button Content="Sačuvaj" Click="Dodavanje" HorizontalAlignment="Left" Margin="684,440,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
+        <Button Content="Otkaži" Click="Nazad" HorizontalAlignment="Left" Margin="60,440,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
         <Label Content="Naziv alergena" FontSize="25" HorizontalAlignment="Left" Height="47" Margin="100,200,0,0" VerticalAlignment="Top" Width="180" Foreground="#1963bf" FontWeight="DemiBold"/>
         <TextBox HorizontalAlignment="Left" x:Name="Naziv" FontSize="25" Margin="312,206,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="504" BorderBrush="#1963bf" Foreground="#1963bf"/>
         <Label Margin="239,21,401,448">

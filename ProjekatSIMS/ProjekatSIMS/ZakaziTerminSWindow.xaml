@@ -33,8 +33,8 @@
         <TextBox HorizontalAlignment="Left" x:Name="Sat" FontSize="25" Text="Sati" Margin="401,317,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="156" BorderBrush="#1963bf" Foreground="#1963bf"/>
         <TextBox HorizontalAlignment="Left" x:Name="Minut" FontSize="25" Text="Minuta" Margin="622,315,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="156" BorderBrush="#1963bf" Foreground="#1963bf"/>
         <Label Width="293" VerticalAlignment="Top" Margin="0,103,0,0" Height="49" HorizontalAlignment="Center" FontSize="22" Foreground="#1963bf" FontWeight="Bold" Content="Zakažite pregled pacijentu"/>
-        <Button Content="Otkaži" Click="Otkazi" HorizontalAlignment="Left" Margin="80,460,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
-        <Button Content="Zakaži" Click="Zakazi" HorizontalAlignment="Left" Margin="665,460,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <Button Content="Otkaži" Click="Otkazi" HorizontalAlignment="Left" Margin="80,460,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
+        <Button Content="Zakaži" Click="Zakazi" HorizontalAlignment="Left" Margin="665,460,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
         <Label Content="Tip pregleda" HorizontalAlignment="Left" FontSize="25" Height="54" Margin="154,371,0,0" VerticalAlignment="Top" Width="156" Foreground="#1963bf" FontWeight="DemiBold"/>
         <ComboBox x:Name="Pregledi" HorizontalAlignment="Left"   
                   Margin="401,373,0,0"   
