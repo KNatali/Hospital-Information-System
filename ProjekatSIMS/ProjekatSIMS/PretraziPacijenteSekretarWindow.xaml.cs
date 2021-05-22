@@ -43,7 +43,7 @@ namespace ProjekatSIMS
             PretragaPoImePrezimePacijenta(refreshTabelePacijenata, pretragaPacijenata);
             /*foreach (Pacijent p in pretragaPacijenata)
             {
-                if (p.Ime == Ime.Text && p.Prezime == Prezime.Text)
+                if (pacijentController.ProveraImePrezime(Ime.Text, Prezime.Text))
                 {
                     refreshTabelePacijenata.Add(p);
                     pac = p;
