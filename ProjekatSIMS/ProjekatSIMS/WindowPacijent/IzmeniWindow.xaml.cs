@@ -11,7 +11,7 @@ using System.Windows.Media;
 namespace ProjekatSIMS
 {
 
-    public partial class IzmeniWindow : Window
+    public partial class IzmeniWindow: Window
     {
         public List<Pregled> Pregledi { get; set; }
         public List<Pacijent> Pacijenti { get; set; }
@@ -29,7 +29,7 @@ namespace ProjekatSIMS
 
             Pacijenti = new List<Pacijent>();
             PacijentRepository file = new PacijentRepository(@"..\..\..\Fajlovi\Pacijent.txt");
-            Pacijenti = file.UcitajSvePacijente();
+            Pacijenti = file.DobaviSve();
 
            
 

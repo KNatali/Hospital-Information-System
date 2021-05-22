@@ -12,8 +12,8 @@ namespace ProjekatSIMS
     public partial class OtkaziWindow : Window
     {
         public List<Pregled> Pregledi { get; set; }
-        public List<Pacijent> Pacijenti { get; set; }
         
+        public List<Pacijent> Pacijenti { get; set; }
         public OtkaziWindow()
         {
             InitializeComponent();
@@ -25,7 +25,7 @@ namespace ProjekatSIMS
 
             Pacijenti = new List<Pacijent>();
             PacijentRepository file = new PacijentRepository(@"..\..\..\Fajlovi\Pacijent.txt");
-            Pacijenti = file.UcitajSvePacijente();
+            Pacijenti = file.DobaviSve();
         }
 
         private void BrojacOtkazivanjaPregleda(String ime,String prezime)

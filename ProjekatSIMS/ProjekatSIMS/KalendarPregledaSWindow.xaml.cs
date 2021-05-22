@@ -1,4 +1,5 @@
-﻿using Microsoft.Toolkit.Uwp.Notifications;
+﻿using Controller;
+using Microsoft.Toolkit.Uwp.Notifications;
 using Model;
 using Repository;
 using System;
@@ -18,59 +19,52 @@ namespace ProjekatSIMS
 {
     public partial class KalendarPregledaSWindow : Window
     {
+        private PregledController pregledController;
         public List<Pregled> Pregledi { get; set; }
         public KalendarPregledaSWindow()
         {
             InitializeComponent();
             this.DataContext = this;
-            List<Pregled> pregledi = new List<Pregled>();
+            List<Pregled> tabelaPregleda = new List<Pregled>();
             Pregledi = new List<Pregled>();
-            PregledRepository fajl = new PregledRepository(@"..\..\..\Fajlovi\Pregled.txt");
-            Pregledi = fajl.GetListaPregledaSekretar();
+            pregledController = (Application.Current as App).PregledController;
+            tabelaPregleda = pregledController.DobaviSveSekretar();
+            foreach (Pregled p in tabelaPregleda)
+                Pregledi.Add(p);
         }
         private void Nazad(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
-        private void Dvoklik(object sender, MouseButtonEventArgs e)
+        private void DvoklikNaPregled(object sender, MouseButtonEventArgs e)
         {
             Pregled p = (Pregled)dataGridPregledi.SelectedItems[0];
             IzmenaPregledaSWindow ip = new IzmenaPregledaSWindow(p);
             ip.Show();
             this.Close();
         }
-        private void Otkazi(object sender, RoutedEventArgs e)
+        private void OtkaziPregled(object sender, RoutedEventArgs e)
         {
-            Pregled p = (Pregled)dataGridPregledi.SelectedItems[0];
-            MessageBoxResult ret = MessageBox.Show("Da li želite da otkažete pregled?", "PROVERA", MessageBoxButton.YesNo);
-            switch (ret)
+            Pregled selektovaniPregled = (Pregled)dataGridPregledi.SelectedItems[0];
+            MessageBoxResult retMessage = MessageBox.Show("Da li želite da otkažete pregled?", "PROVERA", MessageBoxButton.YesNo);
+            if(retMessage==MessageBoxResult.Yes)
             {
-                case MessageBoxResult.Yes:
-                    {
-                        PregledRepository fajl = new PregledRepository(@"..\..\..\Fajlovi\Pregled.txt");
-                        List<Pregled> pregled = fajl.GetListaPregledaSekretar();
-                        foreach (Pregled pr in pregled)
-                        {
-                            if (pr.Id == p.Id)
-                            {
-                                pregled.Remove(pr);
-                                break;
-                            }
-                        }
-                        fajl.SacuvajPregledSekretar(pregled);
-                        PopupNotifier popup = new PopupNotifier();
-                        popup.Image = Properties.Resources.informacija;
-                        popup.TitleText = "OBAVEŠTENJE";
-                        popup.ContentText = "Pregled je uspešno otkazan. " +
-                            "Poslato je obaveštenje pacijentu i doktoru da je pregled otkazan.";
-                        popup.Popup();
-                        dataGridPregledi.ItemsSource = pregled;
-                        //this.Close();
-                        break;
-                    }
-                case MessageBoxResult.No:
-                    break;
+                if (pregledController.OtkazivanjeSekretar(selektovaniPregled))
+                {
+                    List<Pregled> refreshTabelePregleda = pregledController.DobaviSveSekretar();
+                    ProzorSaNotifikacijom();
+                    dataGridPregledi.ItemsSource = refreshTabelePregleda;
+                }
             }
+        }
+        private static void ProzorSaNotifikacijom()
+        {
+            PopupNotifier popup = new PopupNotifier();
+            popup.Image = Properties.Resources.informacija;
+            popup.TitleText = "OBAVEŠTENJE";
+            popup.ContentText = "Pregled je uspešno otkazan. " +
+                "Poslato je obaveštenje pacijentu i doktoru da je pregled otkazan.";
+            popup.Popup();
         }
     }
 }

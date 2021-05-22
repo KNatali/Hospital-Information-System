@@ -11,7 +11,11 @@ namespace Repository
     {
         public String LokacijaFajla{get; set;}
         public List<Prostorija> prostorije { get; set; }
-        
+
+        public ProstorijaRepository()
+        {
+            LokacijaFajla = @"..\..\..\Fajlovi\Prostorija.txt";
+        }
 
         public ProstorijaRepository(String lokacija)
         {
@@ -104,6 +108,19 @@ namespace Repository
             }
 
             return ordinacije;
+        }
+
+        public List<Prostorija> DobaviSobe()
+        {
+            List<Prostorija> sveProstorije = DobaviSveProstorije();
+            List<Prostorija> sobe = new List<Prostorija>();
+            foreach (Prostorija p in sveProstorije)
+            {
+                if (p.vrsta == VrstaProstorije.Soba)
+                    sobe.Add(p);
+            }
+
+            return sobe;
         }
 
     }

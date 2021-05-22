@@ -10,6 +10,16 @@ namespace ProjekatSIMS.Repository
    public class PodsetnikRepository
     {
         private const string putanja = @"..\..\..\Fajlovi\Podsetnik.txt";
+        private string v;
+
+        public PodsetnikRepository(string v)
+        {
+            this.v = v;
+        }
+
+        public PodsetnikRepository()
+        {
+        }
 
         public void SacuvajPodsetnik(List<Podsetnik> podsetnici)
         {
@@ -59,6 +69,18 @@ namespace ProjekatSIMS.Repository
             }
 
             return podsetniciZaPacijenta;
+        }
+
+        public List<Podsetnik> DobaviSvePodsetnike()
+        {
+            List<Podsetnik> podsetnici = new List<Podsetnik>();
+            using (StreamReader sr = new StreamReader(putanja))
+            {
+                string json = sr.ReadToEnd();
+
+                podsetnici = JsonConvert.DeserializeObject<List<Podsetnik>>(json);
+            }
+            return podsetnici;
         }
     }
 }

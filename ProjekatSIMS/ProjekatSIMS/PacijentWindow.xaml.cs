@@ -1,5 +1,7 @@
 ﻿ using Microsoft.Toolkit.Uwp.Notifications;
 using Model;
+using ProjekatSIMS.Model;
+using ProjekatSIMS.Repository;
 using ProjekatSIMS.WindowPacijent;
 using Repository;
 using System;
@@ -21,6 +23,11 @@ namespace ProjekatSIMS
             get;
             set;
         }
+        public List<Podsetnik> Podsetnici
+        {
+            get;
+            set;
+        }
 
         public int mozeSeOceniti = 0;
         
@@ -32,14 +39,13 @@ namespace ProjekatSIMS
             ReceptRepository fajl = new ReceptRepository(@"..\..\..\Fajlovi\Recept.txt");
             Recepti = fajl.DobaviSveRecepte();
 
+
             foreach (Recept r in Recepti)
             {
                 int res = DateTime.Compare(r.DatumPropisivanjaLeka.AddHours(-4), DateTime.UtcNow);
                 
                 if(res>0)
                 {
-                    if((r.DatumPropisivanjaLeka.Month == DateTime.UtcNow.Month) && (r.DatumPropisivanjaLeka.Day == DateTime.UtcNow.Day) && (r.DatumPropisivanjaLeka.Year == DateTime.UtcNow.Year))
-                   
                     {
                     new ToastContentBuilder()
                    .AddArgument("action", "viewConversation")
@@ -54,25 +60,7 @@ namespace ProjekatSIMS
 
                     }
                 }
-
             }
-
-            //da li postoji barem jedan zavren pregled
-            pregledi = new List<Pregled>();
-            PregledRepository file = new PregledRepository(@"..\..\..\Fajlovi\Pregled.txt");
-            pregledi = file.DobaviSvePregledePacijent();
-            foreach(Pregled p in pregledi)
-            {
-                if(p.StatusPregleda == StatusPregleda.Zavrsen)
-                {
-                    mozeSeOceniti = 1;
-                    break;
-                }
-            }
-
-
-
-
         }
 
         private void Click_zakazi(object sender, RoutedEventArgs e)

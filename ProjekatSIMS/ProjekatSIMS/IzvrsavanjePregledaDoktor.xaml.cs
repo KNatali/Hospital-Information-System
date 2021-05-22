@@ -26,11 +26,7 @@ namespace ProjekatSIMS
             InitializeComponent();
             pregled = p;
             this.DataContext = this;
-            Ime.Text = pregled.pacijent.Ime;
-            Prezime.Text = pregled.pacijent.Prezime;
-            Vrijeme.Text = pregled.Pocetak.ToString();
-            Trajanje.Text = pregled.Trajanje.ToString();
-            Tip.Text = pregled.Tip.ToString();
+           
         }
 
         private void ZdravstveniKarton(object sender, RoutedEventArgs e)
@@ -62,6 +58,19 @@ namespace ProjekatSIMS
         private void IzdavanjeUputa(object sender, RoutedEventArgs e)
         {
             IzdavanjeUputaDoktor z = new IzdavanjeUputaDoktor(pregled.pacijent);
+            // this.NavigationService.Navigate(new Uri("ZdravstveniKartonDoktor.xaml", UriKind.Relative));
+            this.NavigationService.Navigate(z);
+        }
+        private void IzdavanjeUputaBolnickoLijecenje(object sender, RoutedEventArgs e)
+        {
+            UputZaBolnickoLijecenjeDoktor z = new UputZaBolnickoLijecenjeDoktor(pregled.pacijent);
+            // this.NavigationService.Navigate(new Uri("ZdravstveniKartonDoktor.xaml", UriKind.Relative));
+            this.NavigationService.Navigate(z);
+        }
+
+        private void IzdavanjeRecepta(object sender, RoutedEventArgs e)
+        {
+            IzdajReceptDoktor z = new IzdajReceptDoktor(pregled.pacijent);
             // this.NavigationService.Navigate(new Uri("ZdravstveniKartonDoktor.xaml", UriKind.Relative));
             this.NavigationService.Navigate(z);
         }

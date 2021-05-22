@@ -9,11 +9,15 @@ namespace Repository
    public class ReceptRepository
    {
         private String LokacijaFajla;
-        private List<Recept> recepti;
+        private List<Recept> recepti = new List<Recept>();
 
         public ReceptRepository(String lokacija)
         {
             LokacijaFajla = lokacija;
+        }
+        public ReceptRepository()
+        {
+            LokacijaFajla = @"..\..\..\Fajlovi\Recept.txt";
         }
         public void SacuvajRecept(List<Recept> recepti)
       {
@@ -29,6 +33,14 @@ namespace Repository
                 recepti = JsonConvert.DeserializeObject<List<Recept>>(json);
             }
             return recepti;
+        }
+
+        public void DodajRecept(Recept recept)
+        {
+            recepti = DobaviSveRecepte();
+            recepti.Add(recept);
+            SacuvajRecept(recepti);
+            
         }
    
    }

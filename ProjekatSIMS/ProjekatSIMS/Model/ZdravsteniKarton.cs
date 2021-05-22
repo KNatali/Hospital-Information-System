@@ -5,7 +5,7 @@ namespace Model
 {
    public class ZdravsteniKarton
    {
-      public Recept[] recept { get; set; }
+      public List<Recept> Recepti { get; set; }
       public List<Anamneza> anamneza { get; set;}
       
       /// <pdGenerated>default getter</pdGenerated>
@@ -20,6 +20,8 @@ namespace Model
    
       public List<String> Alergeni { get; set; }
       public List<String> Terapija { get; set; }
+
+        public List<UputBolnickoLijecenje> UputiZaBolnickoLijecenje { get; set; }
 
    
    }

@@ -37,9 +37,9 @@ namespace ProjekatSIMS
             n.Tekst = tekst;
             n.Datum = DateTime.Now;
             NotifikacijaRepository fajl = new NotifikacijaRepository(@"..\..\..\Fajlovi\Vesti.txt");
-            List<Notifikacija> notifikacija = fajl.DobaviNotifikacije();
+            List<Notifikacija> notifikacija = fajl.DobaviSve();
             notifikacija.Add(n);
-            fajl.SacuvajNotifikaciju(notifikacija);
+            fajl.Sacuvaj(notifikacija);
             MessageBox.Show("Obaveštenje je uspešno postavljeno.", "OBAVEŠTENJE");
             this.Close();
         }

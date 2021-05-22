@@ -1,0 +1,37 @@
+﻿<Page x:Class="ProjekatSIMS.WindowPacijent.ZakaziPregled"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ProjekatSIMS"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ZakaziPregledPacijent">
+
+    <Grid Background="#CDFEBB" >
+        <Label Content="Zakazivanje pregleda" HorizontalAlignment="Left" Margin="34,33,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <Label Content="Odaberite datum:" HorizontalAlignment="Left" Margin="32,225,0,0" VerticalAlignment="Top" FontStyle="Italic"/>
+        <DatePicker Name="Date" HorizontalAlignment="Left" Margin="174,227,0,0" VerticalAlignment="Top"/>
+        <Label Content="Vreme pregleda: " HorizontalAlignment="Left" Margin="35,267,0,0" VerticalAlignment="Top" FontWeight="Normal"/>
+
+        <Label Content="Ime doktora:" HorizontalAlignment="Left" Margin="34,298,0,0" VerticalAlignment="Top" FontStyle="Italic"/>
+
+        <Button Content="Zakazi" IsDefault="True" Width="100" Height="40" HorizontalAlignment="Left" Margin="674,386,0,0" VerticalAlignment="Top" Click="Zakazi_Pregled" Background="#A4E98A"/>
+        <Label Content="Upisite svoje ime: " HorizontalAlignment="Left" Margin="35,143,0,0" VerticalAlignment="Top" FontStyle="Italic"/>
+        <TextBox Name="Ime"  HorizontalAlignment="Left" Margin="174,147,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Upisite svoje prezime: " HorizontalAlignment="Left" Margin="34,174,0,0" VerticalAlignment="Top" FontStyle="Italic"/>
+        <TextBox Name="Prezime"  HorizontalAlignment="Left" Margin="174,178,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+
+        <TextBox  Name="Sati" HorizontalAlignment="Left" Margin="174,271,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="42" Height="22"/>
+        <TextBox Name="Minuti" HorizontalAlignment="Left" Margin="234,272,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Height="20"/>
+        <TextBox Name="ImeDoktora" HorizontalAlignment="Left" Margin="174,306,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="PrezimeDoktora" HorizontalAlignment="Left" Margin="174,337,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Prezime doktora" HorizontalAlignment="Left" Margin="32,329,0,0" VerticalAlignment="Top" FontStyle="Italic"/>
+        <Label Content="Upisite svoj JMBG: " HorizontalAlignment="Left" Margin="35,112,0,0" VerticalAlignment="Top" FontStyle="Italic"/>
+        <TextBox Name="Jmbg" HorizontalAlignment="Left" Margin="174,116,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+
+        <Label FontWeight="Bold" Content="Izaberite prioritet:" HorizontalAlignment="Left" Margin="34,373,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="DoktorPrioritet" Margin="0,406,572,-369" GroupName="Prioritet" HorizontalAlignment="Right"  Checked="Btn1_Checked" Click="Button_Click" >Doktor</RadioButton>
+        <RadioButton x:Name="VremePrioritet" Margin="0,386,575,-325" GroupName="Prioritet" HorizontalAlignment="Right"  Checked="Btn1_Checked" Click="Button_Click" >Vreme</RadioButton>
+    </Grid>
+</Page>
