@@ -19,7 +19,7 @@
         <Label Content="Naslov" HorizontalAlignment="Left" FontSize="25"  Height="45" Margin="60,166,0,0" VerticalAlignment="Top" Width="100" Foreground="#1963bf" FontWeight="DemiBold"/>
         <TextBox HorizontalAlignment="Left" x:Name="Naslov" FontSize="25" Margin="179,168,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="661" BorderBrush="#1963bf" Foreground="#1963bf"/>
         <Button Content="Otkaži" Click="Nazad" HorizontalAlignment="Left" Margin="60,440,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
-        <Button Content="Objavi" Click="Sacuvaj" HorizontalAlignment="Left" Margin="640,440,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
+        <Button Content="Objavi" Click="Sacuvaj" HorizontalAlignment="Left" Margin="660,440,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
         <Label Margin="239,21,401,448">
             <StackPanel Orientation="Horizontal">
                 <fa:ImageAwesome Icon="Globe" Width="60" Foreground="#1963bf"/>
