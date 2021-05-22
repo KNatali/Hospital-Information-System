@@ -820,13 +820,13 @@ namespace Service
             return pacijent.jesteMaliciozanKorisnik;
         }
 
-        private void SlanjePorukeOBlokiranjuKorisnika(String ime, String prezime)
+        private bool SlanjePorukeOBlokiranjuKorisnika(String ime, String prezime)
         {
             MessageBox.Show("Zakazali ste i otkazali previse pregleda u proteklom periodu, privremeno Vam je zabranjeno zakazivanje pregleda. Ukoliko smatrate da je ovo greska, molimo Vas obratite se sekretaru.");
             jesteMaliciozniKorisnik = true;
             List<Pacijent> Pacijenti = new List<Pacijent>();
             PacijentRepository pacijentRepository = new PacijentRepository(@"..\..\..\Fajlovi\Pacijent.txt");
-            Pacijenti = pacijentRepository.UcitajSvePacijente();
+            Pacijenti = pacijentRepository.DobaviSve();
             foreach(Pacijent p in Pacijenti)
             {
                 if((p.Ime == ime) & (p.Prezime == prezime))
@@ -836,7 +836,7 @@ namespace Service
                     
                 }
             }
-            pacijentRepository.SacuvajPacijente(Pacijenti);
+            pacijentRepository.Sacuvaj(Pacijenti);
             
 
 
