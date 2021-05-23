@@ -21,6 +21,12 @@ namespace Controller
         {
             return notifikacijaService.DobaviSve();
         }
-
+        public Boolean pisanjeObavestenja(String naslov, String tekst, DateTime datumObjavljivanja)
+        {
+            if (notifikacijaService.pisanjeObavestenja(naslov,tekst,datumObjavljivanja) == true)
+                return true;
+            else
+                return false;
+        }
     }
 }

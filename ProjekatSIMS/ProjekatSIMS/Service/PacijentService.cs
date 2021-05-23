@@ -28,13 +28,9 @@ namespace Service
         public Boolean kreiranjeProfila(String jmbg, String ime, String prezime, DateTime datumRodjenja, String telefon, String mail, String adresa)
         {
             List<Pacijent> sviPacijenti = pacijentRepository.DobaviSve();
-            if(jmbg!=null || ime!=null || prezime!=null)
-            {
-                sviPacijenti.Add(noviPacijent(jmbg, ime, prezime, datumRodjenja, telefon, mail, adresa));
-                pacijentRepository.Sacuvaj(sviPacijenti);
-                return true;
-            }
-            return false;
+            sviPacijenti.Add(noviPacijent(jmbg, ime, prezime, datumRodjenja, telefon, mail, adresa));
+            pacijentRepository.Sacuvaj(sviPacijenti);
+            return true;
         }
         private Pacijent noviPacijent(String jmbg, String ime, String prezime, DateTime datumRodjenja, String telefon, String mail, String adresa)
         {

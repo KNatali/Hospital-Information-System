@@ -29,7 +29,7 @@ namespace ProjekatSIMS
             Mail.Text = dok.Email;
             Telefon.Text = dok.BrojTelefona;
             Oblasti.ItemsSource = Enum.GetValues(typeof(Specijalizacija));
-            //Oblasti.Text = dok.Specijalizacija.ToString();
+            Oblasti.SelectedItem = dok.Specijalizacija;
             Od.Text = dok.PocetakRadnogVremena;
             Do.Text = dok.KrajRadnogVremena;
         }
