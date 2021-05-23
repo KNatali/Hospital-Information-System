@@ -80,7 +80,12 @@ namespace ProjekatSIMS.WindowPacijent
 
         private void IzmeniPodsetnik(object sender, RoutedEventArgs e)
         {
+            PacijentFrame.Content = new IzmenaPodsetnika();
+        }
 
+        private void PregledajKarton(object sender, RoutedEventArgs e)
+        {
+            PacijentFrame.Content = new PregledajZdravstveniKarton();
         }
     }
 }

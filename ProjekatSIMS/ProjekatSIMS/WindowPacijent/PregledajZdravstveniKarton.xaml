@@ -1,0 +1,25 @@
+﻿<Page x:Class="ProjekatSIMS.WindowPacijent.PregledajZdravstveniKarton"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ProjekatSIMS.WindowPacijent"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PregledajZdravstveniKarton">
+
+    <Grid Background="#CDFEBB">
+        <DataGrid x:Name="dataGridZdravstveniKarton" ItemsSource="{Binding ZdravstveniKarton}" IsReadOnly="True"
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="10,52,293,0" Height="318" VerticalAlignment="Top">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Recepti" Binding="{Binding Recepti}"/>
+                <DataGridTextColumn Header="Anamneza" Binding="{Binding anamneza}"/>
+                <DataGridTextColumn Header="Alergeni" Binding="{Binding Alergeni}"/>
+                <DataGridTextColumn Header="Terapija" Binding="{Binding Terapija}"/>
+                <DataGridTextColumn Header="Uput" Binding="{Binding UputiZaBolnickoLijecenje}"/>
+
+            </DataGrid.Columns>
+        </DataGrid>
+       
+    </Grid>
+</Page>
