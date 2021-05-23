@@ -28,8 +28,8 @@ namespace ProjekatSIMS
         {
             InitializeComponent();
             this.DataContext = this;
-            Datum.Text = an.datum.ToString();
-            Opis.Text = an.OpisAnamneze;
+            Datum.Text = an.Datum.ToString();
+            Opis.Text = an.OpisAnamneze1;
             pacijent = p;
             a = an;
 
@@ -56,9 +56,9 @@ namespace ProjekatSIMS
                         foreach (Anamneza i in k.anamneza)
                         {
 
-                            if (i.OpisAnamneze == a.OpisAnamneze)
+                            if (i.OpisAnamneze1 == a.OpisAnamneze1)
 
-                                i.OpisAnamneze = Opis.Text;
+                                i.OpisAnamneze1 = Opis.Text;
                                
                         }
                     }

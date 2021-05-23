@@ -39,8 +39,8 @@ namespace ProjekatSIMS
             AnamnezaRepository anamnezaRepository = new AnamnezaRepository();
           
             Anamneza a = new Anamneza();
-            a.OpisAnamneze = Opis.Text;
-            a.datum = (DateTime)Datum.SelectedDate;
+            a.OpisAnamneze1 = Opis.Text;
+            a.Datum = (DateTime)Datum.SelectedDate;
            
             /* if (anamnezaRepository.DobaviSveAnamneze() == null)
                  lista.Add(a);

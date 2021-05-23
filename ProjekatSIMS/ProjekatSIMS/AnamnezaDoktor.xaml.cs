@@ -38,9 +38,9 @@ namespace ProjekatSIMS
             AnamnezaRepository anamnezaRepository = new AnamnezaRepository();
             List<Anamneza> lista = new List<Anamneza>();
             Anamneza a = new Anamneza();
-            a.OpisAnamneze = Opis.Text;
-            a.datum =(DateTime) Datum.SelectedDate;
-            a.zdravsteniKarton.pacijent = pacijent;
+            a.OpisAnamneze1 = Opis.Text;
+            a.Datum =(DateTime) Datum.SelectedDate;
+            a.ZdravsteniKarton.pacijent = pacijent;
            
             if (anamnezaRepository.DobaviSveAnamneze() == null)
                 lista.Add(a);

@@ -4,18 +4,31 @@ namespace Model
 {
    public class Anamneza
    {
-      public ZdravsteniKarton zdravsteniKarton { get; set; }
-        public String OpisAnamneze { get; set; }
-        public DateTime datum { get; set; }
+        private ZdravsteniKarton zdravsteniKarton;
+        private String OpisAnamneze;
+        private DateTime datum; 
 
-        /// <pdGenerated>default parent getter</pdGenerated>
+        public Anamneza()
+        {
+
+        }
+        public Anamneza(ZdravsteniKarton zdravsteniKarton, string opisAnamneze, DateTime datum)
+        {
+            this.ZdravsteniKarton = zdravsteniKarton;
+            OpisAnamneze1 = opisAnamneze;
+            this.Datum = datum;
+        }
+
+        public ZdravsteniKarton ZdravsteniKarton { get => zdravsteniKarton; set => zdravsteniKarton = value; }
+        public string OpisAnamneze1 { get => OpisAnamneze; set => OpisAnamneze = value; }
+        public DateTime Datum { get => datum; set => datum = value; }
+
         public ZdravsteniKarton GetZdravsteniKarton()
       {
-         return zdravsteniKarton;
+         return ZdravsteniKarton;
       }
       
-      /// <pdGenerated>default parent setter</pdGenerated>
-      /// <param>newZdravsteniKarton</param>
+
      
    
      
