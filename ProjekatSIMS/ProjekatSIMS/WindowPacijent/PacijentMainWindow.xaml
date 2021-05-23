@@ -112,6 +112,12 @@
                     <TextBlock Text="Vidi podsetnike" VerticalAlignment="Center" Margin="10,0,0,0"/>
                 </StackPanel>
             </Button>
+            <Button  Click="PregledKarton" Background="#A4E98A" >
+                <StackPanel Orientation="Horizontal" Width="267">
+                    <fa:ImageAwesome Icon="PencilSquare"  Width="27" Foreground="{Binding Path=Foreground,  RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Button}}}"/>
+                    <TextBlock Text="Pregledaj zdravstveni karton" VerticalAlignment="Center" Margin="10,0,0,0" TextWrapping="Wrap" Height="36"/>
+                </StackPanel>
+            </Button>
 
         </StackPanel>
         <StackPanel Grid.Column="0" Grid.Row="2" Background="#C0FCA9" VerticalAlignment="Center" Height="62">
