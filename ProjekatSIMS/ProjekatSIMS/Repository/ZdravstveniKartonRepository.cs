@@ -92,7 +92,6 @@ namespace Repository
                 alergeni = JsonConvert.DeserializeObject<List<String>>(json);
             }
             return alergeni;
-
         }
 
         public void SacuvajAlergen(List<string> alergeni)

@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using Controller;
+using Model;
 using Repository;
 using System;
 using System.Collections.Generic;
@@ -31,30 +32,19 @@ namespace ProjekatSIMS
             Mail.Text = pac.Email;
             Telefon.Text = pac.BrojTelefona;
             Adresa.Text = pac.Adresa;
-            /*Pacijenti = new List<Pacijent>();
-            List<Pacijent> ListaPacijenata = new List<Pacijent>();
-            OsobaRepository fajl = new OsobaRepository(@"..\..\..\Fajlovi\Pacijent.txt");
-            ListaPacijenata = fajl.DobaviPacijente();
-            foreach (Pacijent p in ListaPacijenata)
-            {
-                if (p.Ime == ime && p.Prezime == prezime)
-                {
-                    Pacijenti.Add(p);
-                    pac = p;
-                }
-            }*/
         }
         private void Sacuvaj(object sender, RoutedEventArgs e)
         {
-            pac.Ime = Ime.Text;
+            /*pac.Ime = Ime.Text;
             pac.Prezime = Prezime.Text;
             pac.BrojTelefona = Telefon.Text;
             pac.Email = Mail.Text;
-            pac.Adresa = Adresa.Text;
-            List<Pacijent> novaListaPacijenata = new List<Pacijent>();
-            OsobaRepository fajl = new OsobaRepository(@"..\..\..\Fajlovi\Pacijent.txt");
-            novaListaPacijenata = fajl.DobaviPacijente();
-            foreach (Pacijent p in novaListaPacijenata)
+            pac.Adresa = Adresa.Text;*/
+            //List<Pacijent> novaListaPacijenata = new List<Pacijent>();
+            //PacijentController pacijentController = new PacijentController();
+            //OsobaRepository fajl = new OsobaRepository(@"..\..\..\Fajlovi\Pacijent.txt");
+            //novaListaPacijenata = fajl.DobaviPacijente();
+            /*foreach (Pacijent p in novaListaPacijenata)
             {
                 if (pac.Jmbg == p.Jmbg)
                 {
@@ -65,8 +55,10 @@ namespace ProjekatSIMS
                     p.Adresa = pac.Adresa;
                 }
             }
-            fajl.Sacuvaj(novaListaPacijenata);
-
+            fajl.Sacuvaj(novaListaPacijenata);*/
+            PacijentController pacijentController = new PacijentController();
+            if (pacijentController.cuvanjeIzmenjenjihPodataka(Jmbg.Text, Ime.Text, Prezime.Text, Telefon.Text, Mail.Text, Adresa.Text) == true)
+                MessageBox.Show("Podaci su uspesno izmenjeni.");
             this.Close();
         }
         private void Nazad(object sender, RoutedEventArgs e)

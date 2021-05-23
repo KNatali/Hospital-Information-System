@@ -26,5 +26,19 @@ namespace Controller
             else
                 return false;
         }
+        /*public Boolean cuvanjeIzmenjenjihPodataka(Pacijent stariPodaci)
+        {
+            if (pacijentService.cuvanjeIzmenjenjihPodataka(stariPodaci))
+                return true;
+            else
+                return false;
+        }*/
+        public Boolean cuvanjeIzmenjenjihPodataka(String jmbg, String ime, String prezime, String telefon, String mail, String adresa)
+        {
+            if (pacijentService.cuvanjeIzmenjenjihPodataka(jmbg, ime, prezime, telefon, mail, adresa))
+                return true;
+            else
+                return false;
+        }
     }
 }

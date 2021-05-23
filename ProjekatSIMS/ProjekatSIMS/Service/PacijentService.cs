@@ -44,5 +44,39 @@ namespace Service
             pacijent.Adresa = adresa;
             return pacijent;
         }
+        /*public Boolean cuvanjeIzmenjenjihPodataka(Pacijent stariPodaci)
+        {
+            List<Pacijent> novaListaPacijenata = new List<Pacijent>();
+            foreach (Pacijent noviPodaci in novaListaPacijenata)
+            {
+                if (stariPodaci.Jmbg == noviPodaci.Jmbg)
+                {
+                    noviPodaci.Ime = stariPodaci.Ime;
+                    noviPodaci.Prezime = stariPodaci.Prezime;
+                    noviPodaci.BrojTelefona = stariPodaci.BrojTelefona;
+                    noviPodaci.Email = stariPodaci.Email;
+                    noviPodaci.Adresa = stariPodaci.Adresa;
+                }
+            }
+            pacijentRepository.Sacuvaj(novaListaPacijenata);
+            return true;
+        }*/
+        public Boolean cuvanjeIzmenjenjihPodataka(String jmbg, String ime, String prezime, String telefon, String mail, String adresa)
+        {
+            List<Pacijent> novaListaPacijenata = new List<Pacijent>();
+            foreach (Pacijent noviPodaci in novaListaPacijenata)
+            {
+                if (jmbg == noviPodaci.Jmbg)
+                {
+                    noviPodaci.Ime = ime;
+                    noviPodaci.Prezime = prezime;
+                    noviPodaci.BrojTelefona = telefon;
+                    noviPodaci.Email = mail;
+                    noviPodaci.Adresa = adresa;
+                }
+            }
+            pacijentRepository.Sacuvaj(novaListaPacijenata);
+            return true;
+        }
     }
 }

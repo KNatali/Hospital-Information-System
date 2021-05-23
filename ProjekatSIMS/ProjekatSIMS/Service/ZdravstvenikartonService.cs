@@ -23,6 +23,10 @@ namespace Service
             }
             return true;
         }
+        public List<String> DobaviSveAlergene()
+        {
+            return zdravstveniKartonRepository.DobaviSveAlergene();
+        }
         public void PregledKartona()
       {
          // TODO: implement

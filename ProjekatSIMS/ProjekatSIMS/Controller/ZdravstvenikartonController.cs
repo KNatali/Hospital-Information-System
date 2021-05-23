@@ -44,5 +44,9 @@ namespace Controller
             else
                 return false;
         }
+        public List<String> DobaviSveAlergene()
+        {
+            return zdravstvenikartonService.DobaviSveAlergene();
+        }
     }
 }
