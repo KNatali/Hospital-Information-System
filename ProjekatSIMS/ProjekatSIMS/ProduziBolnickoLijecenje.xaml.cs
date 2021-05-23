@@ -6,9 +6,7 @@ using System.Windows.Controls;
 
 namespace ProjekatSIMS
 {
-    /// <summary>
-    /// Interaction logic for ProduziBolnickoLijecenje.xaml
-    /// </summary>
+
     public partial class ProduziBolnickoLijecenje : Page
     {
 

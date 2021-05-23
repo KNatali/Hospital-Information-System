@@ -19,7 +19,7 @@ namespace Controller
         }
           public void ProduzavanjeUputa(UputBolnickoLijecenje uput, DateTime krajIntervala, Pacijent pacijent)
         {
-            //uputService.ProduzavanjeUputa(uput, krajIntervala, pacijent);
+            uputService.ProduzavanjeUputa(uput, krajIntervala, pacijent);
            
         }
     }
