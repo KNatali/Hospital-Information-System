@@ -821,7 +821,7 @@ namespace Service
             return pacijent.jesteMaliciozanKorisnik;
         }
 
-        private bool SlanjePorukeOBlokiranjuKorisnika(String ime, String prezime)
+        private void SlanjePorukeOBlokiranjuKorisnika(String ime, String prezime)
         {
             
             List<Pacijent> Pacijenti = new List<Pacijent>();
