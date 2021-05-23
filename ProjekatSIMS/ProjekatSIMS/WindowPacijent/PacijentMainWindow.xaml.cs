@@ -77,5 +77,10 @@ namespace ProjekatSIMS.WindowPacijent
         {
             PacijentFrame.Content = new PregledPodsetnika();
         }
+
+        private void IzmeniPodsetnik(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

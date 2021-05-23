@@ -14,6 +14,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Naziv" Binding="{Binding nazivPodsetika}"/>
                 <DataGridTextColumn Header="Opis" Binding="{Binding opisPodsetnika}"/>
+                <DataGridTextColumn Header="Datum pocetka" Binding="{Binding opisPodsetnika}"/>
 
             </DataGrid.Columns>
         </DataGrid>
