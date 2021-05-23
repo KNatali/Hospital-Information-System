@@ -837,8 +837,8 @@ namespace Service
                 }
             }
             pacijentRepository.Sacuvaj(Pacijenti);
-            
 
+            return true;
 
 
         }
