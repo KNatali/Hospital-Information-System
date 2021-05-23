@@ -51,10 +51,10 @@ namespace ProjekatSIMS
             pac.BrojTelefona = Telefon.Text;
             pac.Email = Mail.Text;
             pac.Adresa = Adresa.Text;
-            List<Pacijent> ListaPacijenata = new List<Pacijent>();
+            List<Pacijent> novaListaPacijenata = new List<Pacijent>();
             OsobaRepository fajl = new OsobaRepository(@"..\..\..\Fajlovi\Pacijent.txt");
-            ListaPacijenata = fajl.DobaviPacijente();
-            foreach (Pacijent p in ListaPacijenata)
+            novaListaPacijenata = fajl.DobaviPacijente();
+            foreach (Pacijent p in novaListaPacijenata)
             {
                 if (pac.Jmbg == p.Jmbg)
                 {
@@ -65,7 +65,7 @@ namespace ProjekatSIMS
                     p.Adresa = pac.Adresa;
                 }
             }
-            fajl.Sacuvaj(ListaPacijenata);
+            fajl.Sacuvaj(novaListaPacijenata);
 
             this.Close();
         }
@@ -102,7 +102,6 @@ namespace ProjekatSIMS
         }
         private void Lista_alergena(object sender, RoutedEventArgs e)
         {
-            //Pacijent p = (Pacijent)dataGridPacijenti.SelectedItems[0];
             ListaAlergenaSWindow la = new ListaAlergenaSWindow(pac);
             la.Show();
         }

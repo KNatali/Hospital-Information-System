@@ -19,5 +19,12 @@ namespace Controller
                 return true;
             return false;
         }
+        public Boolean kreiranjeProfila(String jmbg, String ime, String prezime, DateTime datumRodjenja, String telefon, String mail, String adresa)
+        {
+            if (pacijentService.kreiranjeProfila(jmbg, ime, prezime, datumRodjenja, telefon, mail, adresa) == true)
+                return true;
+            else
+                return false;
+        }
     }
 }
