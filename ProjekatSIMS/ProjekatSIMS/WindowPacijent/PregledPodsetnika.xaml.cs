@@ -39,11 +39,13 @@ namespace ProjekatSIMS.WindowPacijent
         {
             
             Podsetnik odabrani = (Podsetnik)dataGridPodsetnik.SelectedItems[0];
+
+            string naziv = odabrani.nazivPodsetika;
+            string opis = odabrani.opisPodsetnika;
+            DateTime datumPocetka = odabrani.datumPocetkaObavestenja;
+            DateTime datumZavrsetka = odabrani.datumZavrsetkaObavestenja;
             
-            string naziv;
-            string opis;
-            naziv = odabrani.nazivPodsetika;
-            opis = odabrani.opisPodsetnika;
+
             using (StreamReader file = new StreamReader(@"..\..\..\Fajlovi\Podsetnik.txt"))
             {
 

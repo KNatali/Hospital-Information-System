@@ -10,13 +10,15 @@
 
     <Grid Background="#CDFEBB">
         <DataGrid x:Name="dataGridPodsetnik" ItemsSource="{Binding Podsetnici}" IsReadOnly="True"
-                  SelectionMode="Single" AutoGenerateColumns="False" Margin="32,0,435,0" Height="317" VerticalAlignment="Center">
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="32,0,271,0" Height="318" VerticalAlignment="Center">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Naziv" Binding="{Binding nazivPodsetika}"/>
                 <DataGridTextColumn Header="Opis" Binding="{Binding opisPodsetnika}"/>
+                <DataGridTextColumn Header="Datum pocetka" Binding="{Binding datumPocetkaObavestenja}"/>
+                <DataGridTextColumn Header="Datum kraja" Binding="{Binding datumZavrsetkaObavestenja}"/>
 
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Obrisi" HorizontalAlignment="Left" Margin="471,247,0,0" VerticalAlignment="Top" Background="#A4E98A" Height="34" Width="97" Click="Obrisi"/>
+        <Button Content="Obrisi" HorizontalAlignment="Left" Margin="624,225,0,0" VerticalAlignment="Top" Background="#A4E98A" Height="34" Width="97" Click="Obrisi"/>
     </Grid>
 </Page>
