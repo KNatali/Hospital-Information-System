@@ -13,5 +13,21 @@ namespace ProjekatSIMS.Service
         {
             return neradniDaniRepository.DobaviNeradneDane();
         }
+        public Boolean OdobriNeradneDane(NeradniDani neradniDani)
+        {
+            List<NeradniDani> sviNeradniDani = neradniDaniRepository.DobaviNeradneDane();
+            sviNeradniDani.Add(Odobri(neradniDani));
+            neradniDaniRepository.SacuvajNeradanDan(sviNeradniDani);
+            return true;
+        }
+        private NeradniDani Odobri(NeradniDani polje)
+        {
+            NeradniDani neradniDani = new NeradniDani();
+            neradniDani.NeradnoOd = polje.NeradnoOd;
+            neradniDani.NeradnoDo = polje.NeradnoDo;
+            neradniDani.Vrsta = polje.Vrsta;
+            neradniDani.doktor = polje.doktor;
+            return neradniDani;
+        }
     }
 }

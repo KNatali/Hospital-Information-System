@@ -43,20 +43,26 @@ namespace ProjekatSIMS
             ip.Show();
             this.Close();
         }
-        private void OtkaziPregled(object sender, RoutedEventArgs e)
+        private void Otkazi_pregled(object sender, RoutedEventArgs e)
         {
             Pregled selektovaniPregled = (Pregled)dataGridPregledi.SelectedItems[0];
             MessageBoxResult retMessage = MessageBox.Show("Da li želite da otkažete pregled?", "PROVERA", MessageBoxButton.YesNo);
             if(retMessage==MessageBoxResult.Yes)
             {
-                if (pregledController.OtkazivanjeSekretar(selektovaniPregled))
-                {
-                    List<Pregled> refreshTabelePregleda = pregledController.DobaviSveSekretar();
-                    ProzorSaNotifikacijom();
-                    dataGridPregledi.ItemsSource = refreshTabelePregleda;
-                }
+                OtkazivanjePregleda(selektovaniPregled);
             }
         }
+
+        private void OtkazivanjePregleda(Pregled selektovaniPregled)
+        {
+            if (pregledController.OtkazivanjeSekretar(selektovaniPregled))
+            {
+                List<Pregled> refreshTabelePregleda = pregledController.DobaviSveSekretar();
+                ProzorSaNotifikacijom();
+                dataGridPregledi.ItemsSource = refreshTabelePregleda;
+            }
+        }
+
         private static void ProzorSaNotifikacijom()
         {
             PopupNotifier popup = new PopupNotifier();

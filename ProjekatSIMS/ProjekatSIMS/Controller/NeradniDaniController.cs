@@ -13,5 +13,12 @@ namespace ProjekatSIMS.Controller
         {
             return neradniDaniService.DobaviSve();
         }
+        public Boolean OdobriNeradneDane(NeradniDani neradniDani)
+        {
+            if (neradniDaniService.OdobriNeradneDane(neradniDani) == true)
+                return true;
+            else
+                return false;
+        }
     }
 }

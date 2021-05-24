@@ -1,4 +1,5 @@
 ﻿using Controller;
+using ProjekatSIMS.Controller;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -22,5 +23,6 @@ namespace ProjekatSIMS
         public PregledController PregledController { get; private set; }
         public NotifikacijaController NotifikacijaController { get; internal set; }
         public PacijentController PacijentController { get; internal set; }
+        public NeradniDaniController NeradniDaniController { get; internal set; }
     }
 }
