@@ -19,23 +19,16 @@ namespace Controller
                 return true;
             return false;
         }
-        public Boolean kreiranjeProfila(String jmbg, String ime, String prezime, DateTime datumRodjenja, String telefon, String mail, String adresa)
+        public Boolean kreiranjeProfila(Pacijent pacijent)
         {
-            if (pacijentService.kreiranjeProfila(jmbg, ime, prezime, datumRodjenja, telefon, mail, adresa) == true)
+            if (pacijentService.kreiranjeProfila(pacijent) == true)
                 return true;
             else
                 return false;
         }
-        /*public Boolean cuvanjeIzmenjenjihPodataka(Pacijent stariPodaci)
+        public Boolean cuvanjeIzmenjenjihPodataka(Pacijent stariPodaci)
         {
             if (pacijentService.cuvanjeIzmenjenjihPodataka(stariPodaci))
-                return true;
-            else
-                return false;
-        }*/
-        public Boolean cuvanjeIzmenjenjihPodataka(String jmbg, String ime, String prezime, String telefon, String mail, String adresa)
-        {
-            if (pacijentService.cuvanjeIzmenjenjihPodataka(jmbg, ime, prezime, telefon, mail, adresa))
                 return true;
             else
                 return false;

@@ -13,27 +13,57 @@ namespace Service
         {
             return doktorRepository.DobaviSve();
         }
-        public Boolean kreiranjeProfila(String jmbg, String ime, String prezime, DateTime datumRodjenja, String telefon, String mail, String adresa, Specijalizacija specijalizacija, String pocetakRadnogVremena, String krajRadnogVremena)
+        public Boolean kreiranjeProfila(Doktor doktor)
         {
             List<Doktor> sviDoktori = doktorRepository.DobaviSve();
-            sviDoktori.Add(noviDoktor(jmbg, ime, prezime, datumRodjenja, telefon, mail, adresa, specijalizacija, pocetakRadnogVremena, krajRadnogVremena));
+            sviDoktori.Add(noviDoktor(doktor));
             doktorRepository.Sacuvaj(sviDoktori);
             return true;
         }
-        private Doktor noviDoktor(String jmbg, String ime, String prezime, DateTime datumRodjenja, String telefon, String mail, String adresa, Specijalizacija specijalizacija, String pocetakRadnogVremena, String krajRadnogVremena)
+        private Doktor noviDoktor(Doktor poljeDoktora)
         {
             Doktor doktor = new Doktor();
-            doktor.Jmbg = jmbg;
-            doktor.Ime = ime;
-            doktor.Prezime = prezime;
-            doktor.DatumRodjenja = datumRodjenja;
-            doktor.BrojTelefona = telefon;
-            doktor.Email = mail;
-            doktor.Adresa = adresa;
-            doktor.Specijalizacija = specijalizacija;
-            doktor.PocetakRadnogVremena = pocetakRadnogVremena;
-            doktor.KrajRadnogVremena = krajRadnogVremena;
+            doktor.Jmbg = poljeDoktora.Jmbg;
+            doktor.Ime = poljeDoktora.Ime;
+            doktor.Prezime = poljeDoktora.Prezime;
+            doktor.DatumRodjenja = poljeDoktora.DatumRodjenja;
+            doktor.BrojTelefona = poljeDoktora.BrojTelefona;
+            doktor.Email = poljeDoktora.Email;
+            doktor.Adresa = poljeDoktora.Adresa;
+            doktor.Specijalizacija = poljeDoktora.Specijalizacija;
+            doktor.PocetakRadnogVremena = poljeDoktora.PocetakRadnogVremena;
+            doktor.KrajRadnogVremena = poljeDoktora.KrajRadnogVremena;
             return doktor;
+        }
+        public Boolean cuvanjeIzmenjenjihPodataka(Doktor stariPodaci)
+        {
+            List<Doktor> novaListaDoktora = new List<Doktor>();
+            novaListaDoktora = doktorRepository.DobaviSve();
+            foreach (Doktor noviPodaci in novaListaDoktora)
+            {
+                ProveraJmbgDoktora(stariPodaci, noviPodaci);
+            }
+            doktorRepository.Sacuvaj(novaListaDoktora);
+            return true;
+        }
+
+        private static void ProveraJmbgDoktora(Doktor stariPodaci, Doktor noviPodaci)
+        {
+            if (stariPodaci.Jmbg == noviPodaci.Jmbg)
+            {
+                IzmenaPodataka(stariPodaci, noviPodaci);
+            }
+        }
+
+        private static void IzmenaPodataka(Doktor stariPodaci, Doktor noviPodaci)
+        {
+            noviPodaci.Ime = stariPodaci.Ime;
+            noviPodaci.Prezime = stariPodaci.Prezime;
+            noviPodaci.BrojTelefona = stariPodaci.BrojTelefona;
+            noviPodaci.Email = stariPodaci.Email;
+            noviPodaci.Specijalizacija = stariPodaci.Specijalizacija;
+            noviPodaci.PocetakRadnogVremena = stariPodaci.PocetakRadnogVremena;
+            noviPodaci.KrajRadnogVremena = stariPodaci.KrajRadnogVremena;
         }
     }
 }

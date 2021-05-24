@@ -41,7 +41,7 @@ namespace ProjekatSIMS
             Doktor noviDoktor = new Doktor();
             DoktorController doktorController = new DoktorController();
             PopunjavanjePoljaZaNovogDoktora(noviDoktor);
-            if (doktorController.kreiranjeProfila(Jmbg.Text, Ime.Text, Prezime.Text, (DateTime)Datum.SelectedDate, Telefon.Text, Mail.Text, Adresa.Text, (Specijalizacija)Oblasti.SelectedIndex, Od.Text, Do.Text) == true)
+            if (doktorController.kreiranjeProfila(noviDoktor) == true)
             {
                 PorukaOUspesnomKreiranjuDoktora(noviDoktor);
             }

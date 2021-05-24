@@ -13,9 +13,16 @@ namespace Controller
         {
             return doktorService.DobaviSve();
         }
-        public Boolean kreiranjeProfila(String jmbg, String ime, String prezime, DateTime datumRodjenja, String telefon, String mail, String adresa, Specijalizacija specijalizacija, String pocetakRadnogVremena, String krajRadnogVremena)
+        public Boolean kreiranjeProfila(Doktor doktor)
         {
-            if (doktorService.kreiranjeProfila(jmbg, ime, prezime, datumRodjenja, telefon, mail, adresa, specijalizacija, pocetakRadnogVremena, krajRadnogVremena) == true)
+            if (doktorService.kreiranjeProfila(doktor) == true)
+                return true;
+            else
+                return false;
+        }
+        public Boolean cuvanjeIzmenjenjihPodataka(Doktor stariPodaci)
+        {
+            if (doktorService.cuvanjeIzmenjenjihPodataka(stariPodaci))
                 return true;
             else
                 return false;

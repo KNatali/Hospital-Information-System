@@ -1,6 +1,7 @@
 ﻿using Model;
 using Repository;
 using System;
+using Controller;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -33,8 +34,15 @@ namespace ProjekatSIMS
             Od.Text = dok.PocetakRadnogVremena;
             Do.Text = dok.KrajRadnogVremena;
         }
-
         private void Sacuvaj(object sender, RoutedEventArgs e)
+        {
+            PrikupljanjePodatakaDoktoraIzTextBoxa();
+            DoktorController doktorController = new DoktorController();
+            if (doktorController.cuvanjeIzmenjenjihPodataka(dok) == true)
+                MessageBox.Show("Podaci doktora su uspešno izmenjeni.");
+            this.Close();
+        }
+        private void PrikupljanjePodatakaDoktoraIzTextBoxa()
         {
             dok.Ime = Ime.Text;
             dok.Prezime = Prezime.Text;
@@ -43,25 +51,6 @@ namespace ProjekatSIMS
             dok.Specijalizacija = (Specijalizacija)Oblasti.SelectedIndex;
             dok.PocetakRadnogVremena = Od.Text;
             dok.KrajRadnogVremena = Do.Text;
-            List<Doktor> ListaDoktora = new List<Doktor>();
-            OsobaRepository fajl = new OsobaRepository(@"..\..\..\Fajlovi\Doktor.txt");
-            ListaDoktora = fajl.DobaviDoktore();
-            foreach (Doktor d in ListaDoktora)
-            {
-                if (dok.Jmbg == d.Jmbg)
-                {
-                    d.Ime = dok.Ime;
-                    d.Prezime = dok.Prezime;
-                    d.BrojTelefona = dok.BrojTelefona;
-                    d.Email = dok.Email;
-                    d.Specijalizacija = dok.Specijalizacija;
-                    d.PocetakRadnogVremena = dok.PocetakRadnogVremena;
-                    d.KrajRadnogVremena = dok.KrajRadnogVremena;
-                }
-            }
-            fajl.SacuvajDoktora(ListaDoktora);
-
-            this.Close();
         }
 
         private void Obrisi(object sender, RoutedEventArgs e)

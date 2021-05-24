@@ -38,7 +38,7 @@ namespace ProjekatSIMS
             Pacijent noviPacijent = new Pacijent();
             PacijentController pacijentController = new PacijentController();
             PopunjavanjePoljaZaNovogPacijenta(noviPacijent);
-            if (pacijentController.kreiranjeProfila(Jmbg.Text, Ime.Text, Prezime.Text, (DateTime)Datum.SelectedDate, Telefon.Text, Mail.Text, Adresa.Text) == true)
+            if (pacijentController.kreiranjeProfila(noviPacijent) == true)
             {
                 PorukaOUspesnomKreiranjuPacijenta(noviPacijent);
             }
