@@ -25,7 +25,7 @@ namespace Service
             }
             return true;
         }
-        public Boolean kreiranjeProfila(Pacijent pacijent)
+        public Boolean KreiranjeProfila(Pacijent pacijent)
         {
             List<Pacijent> sviPacijenti = pacijentRepository.DobaviSve();
             sviPacijenti.Add(noviPacijent(pacijent));
@@ -44,33 +44,53 @@ namespace Service
             pacijent.Adresa = poljePacijenta.Adresa;
             return pacijent;
         }
-        public Boolean cuvanjeIzmenjenjihPodataka(Pacijent stariPodaci)
+        public Boolean CuvanjeIzmenjenjihPodataka(Pacijent stariPodaci)
         {
             List<Pacijent> novaListaPacijenata = new List<Pacijent>();
             novaListaPacijenata = pacijentRepository.DobaviSve();
             foreach (Pacijent noviPodaci in novaListaPacijenata)
             {
-                ProveraJmbgPacijenta(stariPodaci, noviPodaci);
+                proveraJmbgPacijentaIzmena(stariPodaci, noviPodaci);
             }
             pacijentRepository.Sacuvaj(novaListaPacijenata);
             return true;
         }
 
-        private static void ProveraJmbgPacijenta(Pacijent stariPodaci, Pacijent noviPodaci)
+        private static void proveraJmbgPacijentaIzmena(Pacijent stariPodaci, Pacijent noviPodaci)
         {
             if (stariPodaci.Jmbg == noviPodaci.Jmbg)
             {
-                IzmenaPodataka(stariPodaci, noviPodaci);
+                izmenaPodataka(stariPodaci, noviPodaci);
             }
         }
 
-        private static void IzmenaPodataka(Pacijent stariPodaci, Pacijent noviPodaci)
+        private static void izmenaPodataka(Pacijent stariPodaci, Pacijent noviPodaci)
         {
             noviPodaci.Ime = stariPodaci.Ime;
             noviPodaci.Prezime = stariPodaci.Prezime;
             noviPodaci.BrojTelefona = stariPodaci.BrojTelefona;
             noviPodaci.Email = stariPodaci.Email;
             noviPodaci.Adresa = stariPodaci.Adresa;
+        }
+        public Boolean ObrisiPacijenta(Pacijent profilPacijenta)
+        {
+            List<Pacijent> sviPacijenti = new List<Pacijent>();
+            sviPacijenti = pacijentRepository.DobaviSve();
+            pretragaPacijenta(profilPacijenta, sviPacijenti);
+            pacijentRepository.Sacuvaj(sviPacijenti);
+            return true;
+        }
+
+        private static void pretragaPacijenta(Pacijent profilPacijenta, List<Pacijent> sviPacijenti)
+        {
+            foreach (Pacijent pacijent in sviPacijenti)
+            {
+                if (pacijent.Jmbg == profilPacijenta.Jmbg)
+                {
+                    sviPacijenti.Remove(pacijent);
+                    break;
+                }
+            }
         }
     }
 }

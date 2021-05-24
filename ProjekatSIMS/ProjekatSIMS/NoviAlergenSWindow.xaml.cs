@@ -27,7 +27,7 @@ namespace ProjekatSIMS
             this.DataContext = this;
             p = pac;
         }
-        private void Dodavanje(object sender, RoutedEventArgs e)
+        private void Sacuvaj_alergen(object sender, RoutedEventArgs e)
         {
             /*String alergen = Naziv.Text;
                                             List<String> alergeni = new List<String>();
@@ -77,7 +77,7 @@ namespace ProjekatSIMS
 
             this.Close();
         }
-        private void Nazad(object sender, RoutedEventArgs e)
+        private void Otkazi_dodavanje(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

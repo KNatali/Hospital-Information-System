@@ -34,7 +34,7 @@ namespace ProjekatSIMS
             Od.Text = dok.PocetakRadnogVremena;
             Do.Text = dok.KrajRadnogVremena;
         }
-        private void Sacuvaj(object sender, RoutedEventArgs e)
+        private void Sacuvaj_izmene(object sender, RoutedEventArgs e)
         {
             PrikupljanjePodatakaDoktoraIzTextBoxa();
             DoktorController doktorController = new DoktorController();
@@ -53,7 +53,7 @@ namespace ProjekatSIMS
             dok.KrajRadnogVremena = Do.Text;
         }
 
-        private void Obrisi(object sender, RoutedEventArgs e)
+        private void Obrisi_profil(object sender, RoutedEventArgs e)
         {
             MessageBoxResult ret = MessageBox.Show("Da li želite da obrišete doktora?", "PROVERA", MessageBoxButton.YesNo);
             if(ret==MessageBoxResult.Yes)

@@ -33,7 +33,7 @@ namespace ProjekatSIMS
             Telefon.Text = pac.BrojTelefona;
             Adresa.Text = pac.Adresa;
         }
-        private void Sacuvaj(object sender, RoutedEventArgs e)
+        private void Sacuvaj_izmene(object sender, RoutedEventArgs e)
         {
             PrikupljanjePodatakaPacijentaIzTextBoxa();
             PacijentController pacijentController = new PacijentController();
@@ -53,36 +53,30 @@ namespace ProjekatSIMS
         {
             this.Close();
         }
-        private void Obrisi(object sender, RoutedEventArgs e)
+        private void Obrisi_profil(object sender, RoutedEventArgs e)
         {
             MessageBoxResult ret = MessageBox.Show("Da li želite da obrišete pacijenta?", "PROVERA", MessageBoxButton.YesNo);
             if(ret==MessageBoxResult.Yes)
             {
-                if (pac.ObrisiPacijent() == true)
-                {
-                    OsobaRepository fajl = new OsobaRepository(@"..\..\..\Fajlovi\Pacijent.txt");
-                    List<Pacijent> pacijent = fajl.DobaviPacijente();
-                    foreach (Pacijent pa in pacijent)
-                    {
-                        if (pa.Jmbg == pac.Jmbg)
-                        {
-                            pacijent.Remove(pa);
-                            break;
-                        }
-                    }
-                    fajl.Sacuvaj(pacijent);
-                    MessageBox.Show("Pacijent je uspešno obrisan.", "OBAVEŠTENJE");
-                    this.Close();
-                }
+                PacijentController pacijentController = new PacijentController();
+                BrisanjePacijenta(pacijentController);
+                this.Close();
             }
         }
+
+        private void BrisanjePacijenta(PacijentController pacijentController)
+        {
+            if (pacijentController.obrisiPacijenta(pac) == true)
+                MessageBox.Show("Pacijent je uspešno obrisan.", "OBAVEŠTENJE");
+        }
+
         private void Lista_alergena(object sender, RoutedEventArgs e)
         {
             ListaAlergenaSWindow la = new ListaAlergenaSWindow(pac);
             la.Show();
         }
 
-        private void Zakazi(object sender, RoutedEventArgs e)
+        private void Zakazi_pregled(object sender, RoutedEventArgs e)
         {
             OdabirPrioritetaSWindow op = new OdabirPrioritetaSWindow(pac);
             op.Show();

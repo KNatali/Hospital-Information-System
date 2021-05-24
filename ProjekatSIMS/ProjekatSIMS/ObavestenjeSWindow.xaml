@@ -20,8 +20,8 @@
         <TextBox HorizontalAlignment="Left" x:Name="Naslov" FontSize="25" Margin="220,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="642" BorderBrush="#1963bf" Foreground="#1963bf"/>
         <Label Content="Objavljeno" Grid.Column="0" FontSize="25" HorizontalAlignment="Left" Height="58" Margin="60,326,0,0" VerticalAlignment="Top" Width="132" Foreground="#1963bf" FontWeight="DemiBold"/>
         <TextBox HorizontalAlignment="Left" x:Name="Datum" FontSize="25" Margin="220,332,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="350" BorderBrush="#1963bf" Foreground="#1963bf"/>
-        <Button Content="Sačuvaj" Click="Sacuvaj" HorizontalAlignment="Left" Margin="682,450,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
-        <Button Content="Obriši" Click="Obrisi" HorizontalAlignment="Left" Margin="381,450,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
+        <Button Content="Sačuvaj" Click="Sacuvaj_izmene" HorizontalAlignment="Left" Margin="682,450,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
+        <Button Content="Obriši" Click="Obrisi_obavestenje" HorizontalAlignment="Left" Margin="381,450,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
         <Button Content="Početna strana" Click="Nazad" HorizontalAlignment="Left" Margin="60,450,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
         <Label Margin="239,21,401,448">
             <StackPanel Orientation="Horizontal">

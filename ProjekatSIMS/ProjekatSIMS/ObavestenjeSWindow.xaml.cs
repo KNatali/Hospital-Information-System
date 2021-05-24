@@ -33,7 +33,7 @@ namespace ProjekatSIMS
             this.Close();
         }
 
-        private void Obrisi(object sender, RoutedEventArgs e)
+        private void Obrisi_obavestenje(object sender, RoutedEventArgs e)
         {
             MessageBoxResult ret = MessageBox.Show("Da li želite da obrišete ovu objavu?", "PROVERA", MessageBoxButton.YesNo);
             if(ret==MessageBoxResult.Yes)
@@ -57,7 +57,7 @@ namespace ProjekatSIMS
             }
         }
 
-        private void Sacuvaj(object sender, RoutedEventArgs e)
+        private void Sacuvaj_izmene(object sender, RoutedEventArgs e)
         {
             PrikupljanjePodatakaObavestenjaIzTextBoxa();
             NotifikacijaController notifikacijaController = new NotifikacijaController();

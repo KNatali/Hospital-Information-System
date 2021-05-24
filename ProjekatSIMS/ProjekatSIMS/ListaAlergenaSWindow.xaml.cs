@@ -64,7 +64,7 @@ namespace ProjekatSIMS
         {
             this.Close();
         }
-        private void Dodavanje(object sender, RoutedEventArgs e)
+        private void Novi_alergen(object sender, RoutedEventArgs e)
         {
             this.Close();
             NoviAlergenSWindow na = new NoviAlergenSWindow(pac);
