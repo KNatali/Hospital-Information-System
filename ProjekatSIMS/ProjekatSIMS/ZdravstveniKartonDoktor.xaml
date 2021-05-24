@@ -89,7 +89,10 @@
         </Border>
 
 
-        <Button Content="Pregled izdatih recepata" Grid.Column="2" Grid.Row="2" Click="PrikazRecepata"  Style="{StaticResource btnStandard}"/>
+        <Button Grid.Column="2" Grid.Row="2" Click="PrikazUputa"  Style="{StaticResource btnStandard}">
+            <TextBlock>Pregled uputa za <LineBreak/>bolnicko lijecenje</TextBlock>
+        </Button>
+        <Button Content="Pregled izdatih recepata" Grid.Column="2" Grid.Row="1" Click="PrikazRecepata"  Style="{StaticResource btnStandard}"/>
 
         <Button Content="Kreiranje anamneze" Click="KreiranjeAnamneze" HorizontalAlignment="Left" Margin="384,268,0,0" VerticalAlignment="Top" Height="44" Width="168"/>
         <Button Content="Pregled anamneza" Click="PrikazAnamneza" Grid.Column="2" Grid.Row="3"   Style="{StaticResource btnStandard}"/>
@@ -97,7 +100,7 @@
         
         <Label Content="Zdravstveni karton" Grid.Row="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="17" FontWeight="SemiBold"/>
 
-        <Button Content="Nazad" Grid.Column="2" Grid.Row="6" Style="{StaticResource btnStandard}" Width="100" HorizontalAlignment="Right"/>
+        <Button Content="Nazad" Click="Nazad" Grid.Column="2" Grid.Row="6" Style="{StaticResource btnStandard}" Width="100" HorizontalAlignment="Right"/>
 
 
 

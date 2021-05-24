@@ -22,8 +22,8 @@
                 </Style>
             </DataGrid.ItemContainerStyle>
         </DataGrid>
-        <Button Content="Zakaži termin" Click="Zakazi" HorizontalAlignment="Left" Margin="685,460,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
-        <Button Content="Otkaži" Click="Nazad" HorizontalAlignment="Left" Margin="60,460,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <Button Content="Zakaži termin" Click="Zakazi" HorizontalAlignment="Left" Margin="685,460,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
+        <Button Content="Otkaži" Click="Nazad" HorizontalAlignment="Left" Margin="60,460,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
         <Label Content="Kliknite dva puta na doktora kod kog želite da zakažete pregled" HorizontalAlignment="Left" Margin="60,151,0,0" VerticalAlignment="Top" FontSize="18" Foreground="#1963bf" Height="39" Width="553"/>
         <DataGrid x:Name="dataGridSlobodniTermini" ItemsSource="{Binding Termini}" IsReadOnly="True" FontSize="20" Visibility="Hidden" BorderBrush="#1963bf" Foreground="#1963bf"
             SelectionMode="Single" AutoGenerateColumns="False" Margin="623,195,44,0" Height="156" VerticalAlignment="Top">

@@ -821,7 +821,7 @@ namespace Service
             return pacijent.jesteMaliciozanKorisnik;
         }
 
-        private void SlanjePorukeOBlokiranjuKorisnika(String ime, String prezime)
+        private bool SlanjePorukeOBlokiranjuKorisnika(String ime, String prezime)
         {
             
             List<Pacijent> Pacijenti = new List<Pacijent>();
@@ -837,7 +837,9 @@ namespace Service
                 }
             }
             pacijentRepository.Sacuvaj(Pacijenti);
-            
+
+            return true;
+
 
         }
 

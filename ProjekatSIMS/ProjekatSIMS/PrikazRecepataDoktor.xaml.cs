@@ -22,6 +22,7 @@ namespace ProjekatSIMS
 
         public List<Recept> Recepti { get; set; }
         public Pacijent pacijent { get; set; }
+        private ZdravstveniKartonRepository zdravstveniKartonRepository = new ZdravstveniKartonRepository();
     
         
         public PrikazRecepataDoktor(Pacijent p)
@@ -32,8 +33,8 @@ namespace ProjekatSIMS
             this.DataContext = this;
             Recepti = new List<Recept>();
             pacijent = p;
-            List<Recept> recepti = new List<Recept>();
-            ReceptRepository receptRepository = new ReceptRepository(@"..\..\..\Fajlovi\Recept.txt");
+            List<Recept> recepti;
+            /*ReceptRepository receptRepository = new ReceptRepository(@"..\..\..\Fajlovi\Recept.txt");
             if (receptRepository.DobaviSveRecepte() != null)
             {
                 recepti = receptRepository.DobaviSveRecepte();
@@ -42,7 +43,14 @@ namespace ProjekatSIMS
             {
                 if (r.zdravsteniKarton.pacijent.Jmbg == p.Jmbg)
                     Recepti.Add(r);
-            }
+            }*/
+            ZdravsteniKarton zdravstveniKarton=zdravstveniKartonRepository.DobaviZdravstveniKartonZaPacijenta(pacijent);
+            if (zdravstveniKarton.Recepti == null)
+                recepti = new List<Recept>();
+            else
+                recepti = zdravstveniKarton.Recepti;
+            foreach (Recept r in recepti)
+                Recepti.Add(r);
 
 
 

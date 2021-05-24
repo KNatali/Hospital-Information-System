@@ -112,10 +112,16 @@
                     <TextBlock Text="Vidi podsetnike" VerticalAlignment="Center" Margin="10,0,0,0"/>
                 </StackPanel>
             </Button>
-            <Button  Click="PregledKarton" Background="#A4E98A" >
-                <StackPanel Orientation="Horizontal" Width="267">
+            <Button Click="IzmeniPodsetnik"  Background="#A4E98A" >
+                <StackPanel Orientation="Horizontal" Margin="7,0,0,0">
                     <fa:ImageAwesome Icon="PencilSquare"  Width="27" Foreground="{Binding Path=Foreground,  RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Button}}}"/>
-                    <TextBlock Text="Pregledaj zdravstveni karton" VerticalAlignment="Center" Margin="10,0,0,0" TextWrapping="Wrap" Height="36"/>
+                    <TextBlock Text="Izmeni podsetnik" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                </StackPanel>
+            </Button>
+            <Button Click="PregledajKarton" Background="#A4E98A" >
+                <StackPanel Orientation="Horizontal" Margin="7,0,0,0">
+                    <fa:ImageAwesome Icon="PencilSquare"  Width="27" Foreground="{Binding Path=Foreground,  RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Button}}}"/>
+                    <TextBlock Text="Zdravstveni karton" VerticalAlignment="Center" Margin="10,0,0,0"/>
                 </StackPanel>
             </Button>
 

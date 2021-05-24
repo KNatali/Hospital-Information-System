@@ -8,8 +8,8 @@
         mc:Ignorable="d"
         Title="PrioritetDatumSWindow" Height="568" Width="924" Background="#d1e3ff">
     <Grid>
-        <Button Content="Zakaži termin" Click="Zakazi" HorizontalAlignment="Left" Margin="683,461,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
-        <Button Content="Otkaži" Click="Nazad" HorizontalAlignment="Left" Margin="60,461,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <Button Content="Zakaži termin" Click="Zakazi" HorizontalAlignment="Left" Margin="683,461,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
+        <Button Content="Otkaži" Click="Nazad" HorizontalAlignment="Left" Margin="60,461,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
         <DataGrid x:Name="dataGridSlobodniTermini" ItemsSource="{Binding Termini}" FontSize="20" IsReadOnly="True" Visibility="Hidden"
             SelectionMode="Single" AutoGenerateColumns="False" Margin="333,205,61,0" Height="231" VerticalAlignment="Top" BorderBrush="#1963bf" Foreground="#1963bf">
             <DataGrid.Columns>
@@ -40,7 +40,7 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        <Button Content="Prikaži termine" Click="Prikaz" HorizontalAlignment="Left" Margin="60,343,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <Button Content="Prikaži termine" Click="Prikaz" HorizontalAlignment="Left" Margin="90,329,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}" Width="201"/>
         <Label Margin="239,21,401,448">
             <StackPanel Orientation="Horizontal">
                 <fa:ImageAwesome Icon="Globe" Width="60" Foreground="#1963bf"/>

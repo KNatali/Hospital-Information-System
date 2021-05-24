@@ -8,8 +8,8 @@
         mc:Ignorable="d"
         Title="IzmenaPregledaSWindow" Height="568" Width="924" Background="#d1e3ff">
     <Grid Grid.Column="0" Grid.Row="1" DataContext="{Binding SelectedItem, ElementName=dataGridPacijenti}">
-        <Button Content="Otkaži" Click="Otkazi" HorizontalAlignment="Left" Margin="60,440,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
-        <Button Content="Sačuvaj izmene" Click="Sacuvaj" HorizontalAlignment="Left" Margin="684,440,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <Button Content="Otkaži" Click="Otkazi" HorizontalAlignment="Left" Margin="60,440,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
+        <Button Content="Sačuvaj" Click="Sacuvaj" HorizontalAlignment="Left" Margin="684,440,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
         <Label Content="Datum pregleda:" HorizontalAlignment="Left" FontSize="25" Height="43" Margin="210,173,0,0" VerticalAlignment="Top" Width="201" Foreground="#1963bf" FontWeight="DemiBold"/>
         <DatePicker HorizontalAlignment="Left" x:Name="Datum" FontSize="25" Margin="455,173,0,0" VerticalAlignment="Top" Width="246" BorderBrush="#1963bf" Foreground="#1963bf"/>
         <Label Content="Vreme pregelda:" HorizontalAlignment="Left" FontSize="25" Height="49" Margin="210,238,0,0" VerticalAlignment="Top" Width="201" Foreground="#1963bf" FontWeight="DemiBold"/>
