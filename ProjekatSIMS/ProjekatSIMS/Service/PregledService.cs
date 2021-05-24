@@ -106,7 +106,7 @@ namespace Service
             return true;
         }
 
-        public Boolean IzdavanjeUputa(Pacijent pacijent, Doktor doktor, DateTime izabraniTermin)
+       /* public Boolean IzdavanjeUputa(Pacijent pacijent, Doktor doktor, DateTime izabraniTermin)
         {
             Prostorija slobodnaOrdinacija = NadjiSlobodnuOrdinaciju(izabraniTermin);
             if (slobodnaOrdinacija == null)
@@ -135,14 +135,14 @@ namespace Service
             pregled.StatusPregleda = StatusPregleda.Zakazan;
             pregled.Tip = TipPregleda.Standardni;
             return pregled;
-        }
+        }*/
 
-        /*private static Pregled ZakazivanjePregledaSekretar(Pacijent pacijent, Doktor doktor, DateTime terminPregleda)
+        private static Pregled ZakazivanjePregledaSekretar(Pacijent pacijent, Doktor doktor, DateTime terminPregleda)
         {
             Pregled pregled = new Pregled();
             return pregled;
-        }*/
-        public Prostorija NadjiSlobodnuOrdinaciju(DateTime terminPocetak)
+        }
+      /*  public Prostorija NadjiSlobodnuOrdinaciju(DateTime terminPocetak)
         {
             DateTime terminKraj = terminPocetak.AddMinutes(TRAJANJE_PREGLEDA);
             List<Pregled> zakazaniPregledi = pregledRepository.DobaviZakazanePreglede();
@@ -178,7 +178,7 @@ namespace Service
 
             return slobodneOrdinacije;
         }
-
+      */
       /*  public List<DateTime> PrikazSlobodnihTermina(Doktor doktor, DateTime pocetnoVrijeme, DateTime krajnjeVrijeme, int pocetniInterval, int krajnjiInerval)
         {
 

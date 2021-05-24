@@ -17,9 +17,7 @@ using System.Windows.Shapes;
 
 namespace ProjekatSIMS
 {
-    /// <summary>
-    /// Interaction logic for PrikazPregledaDoktor.xaml
-    /// </summary>
+   
     public partial class PrikazPregledaDoktor : Page
     {
        
@@ -73,7 +71,7 @@ namespace ProjekatSIMS
 
         private void OtkaziPregled(object sender, RoutedEventArgs e)
         {
-            Pregled p = (Pregled)dataGridPregledi.SelectedItems[0]; //selektovani red
+            Pregled p = (Pregled)dataGridPregledi.SelectedItems[0]; 
             if (pregledController.OtkazivanjePregledaDoktor(p))
             {
                 MessageBox.Show("Uspjesno ste otkazali pregled");

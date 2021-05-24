@@ -73,12 +73,12 @@ namespace Controller
             return termini;
         }
         */
-        public Boolean IzdavanjeUputa(Pacijent pacijent, Doktor doktor, DateTime izabraniTermin)
+       /* public Boolean IzdavanjeUputa(Pacijent pacijent, Doktor doktor, DateTime izabraniTermin)
         {
             if(pregledService.IzdavanjeUputa(pacijent, doktor, izabraniTermin))
                 return true;
             return false;
-        }
+        }*/
 
         public List<Pregled> DobaviSvePreglede()
         {
