@@ -24,10 +24,6 @@ namespace ProjekatSIMS.WindowPacijent
             OceneBolnice = new List<OcenaBolnice>();
             OcenaRepository fajl = new OcenaRepository(@"..\..\..\Fajlovi\OcenaBolnice.txt");
             OceneBolnice = fajl.DobaviSveOceneBolnice();
-
-
-           
-
         }
 
         

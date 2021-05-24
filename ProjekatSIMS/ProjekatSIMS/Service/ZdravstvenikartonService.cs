@@ -5,10 +5,6 @@ namespace Service
 {
    public class ZdravstvenikartonService
    {
-      public void PregledKartona()
-      {
-         // TODO: implement
-      }
       
       public Model.Anamneza KreiranjeAnamneze()
       {

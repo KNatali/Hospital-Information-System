@@ -79,16 +79,32 @@ namespace ProjekatSIMS
             //Prostorija prostorija = (Prostorija)Ordinacija.SelectedItem;
             Prostorija prostorija = new Prostorija();
             DateTime datum = (DateTime)Datum.SelectedDate;
-            DateTime neradnoOD = neradniDani.NeradnoOd;
-            DateTime neradnoDO = neradniDani.NeradnoDo;
+            /*DateTime neradnoOD = new DateTime(); 
+            neradnoOD = neradniDani.NeradnoOd;
+            DateTime neradnoDO = new DateTime(); 
+            neradnoDO = neradniDani.NeradnoDo;
             int brojNeradnihDana = (neradnoDO - neradnoOD).Days;
             if(neradniDani.doktor.Jmbg==p.doktor.Jmbg)
             {
-                if(neradnoOD==datum || neradnoDO==datum)
+                //if(neradnoOD==datum || neradnoDO==datum)
+                if(datum <= neradniDani.NeradnoDo && datum >= neradniDani.NeradnoOd)
                 {
                     MessageBox.Show("Ne možete da zakažete pregled kod odabranog doktora.");
                 }
-            }
+                if (p.doktor.NeradniDani != null)
+                {
+                    foreach (NeradniDani odmor in p.doktor.NeradniDani)
+                    {
+                        DateTime pocetakOdmora = odmor.NeradnoOd;
+                        DateTime krajOdmora = odmor.NeradnoDo;
+
+                        if (datum <= krajOdmora && datum >= pocetakOdmora)
+                        {
+                            MessageBox.Show("Odabrani doktor je na godišnjem odmoru.");
+                        }
+                    }
+                }
+            }*/
             double sat;
             double minut;
             TipPregleda tippregleda = (TipPregleda)Pregledi.SelectedIndex;

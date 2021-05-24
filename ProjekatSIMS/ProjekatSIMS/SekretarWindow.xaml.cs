@@ -29,7 +29,7 @@ namespace ProjekatSIMS
         }
         private void Pretrazi_pacijente(object sender, RoutedEventArgs e)
         {
-            PretraziPacijenteSekretarWindow pp = new PretraziPacijenteSekretarWindow();
+            PretraziPacijenteSWindow pp = new PretraziPacijenteSWindow();
             pp.Show();
         }
         private void Kalendar(object sender, RoutedEventArgs e)
@@ -40,7 +40,7 @@ namespace ProjekatSIMS
 
         private void Pretrazi_doktore(object sender, RoutedEventArgs e)
         {
-            PretraziDoktoreSekretarWindow pd = new PretraziDoktoreSekretarWindow();
+            PretraziDoktoreSWindow pd = new PretraziDoktoreSWindow();
             pd.Show();
         }
 

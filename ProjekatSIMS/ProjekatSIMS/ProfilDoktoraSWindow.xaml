@@ -8,9 +8,9 @@
         mc:Ignorable="d"
         Title="ProfilDoktoraSWindow" Height="568" Width="924" Background="#d1e3ff">
     <Grid>
-        <Button Content="Obriši profil" Click="Obrisi" HorizontalAlignment="Left" Margin="32,295,0,0" VerticalAlignment="Top" Height="50" Width="150" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
-        <Button Content="Početna stranica" Click="Nazad" HorizontalAlignment="Left" Margin="335,463,0,0" VerticalAlignment="Top" Height="50" Width="250" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
-        <Button Content="Sačuvaj izmene" Click="Sacuvaj" HorizontalAlignment="Left" Margin="32,376,0,0" VerticalAlignment="Top" Height="50" Width="250" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <Button Content="Obriši profil" Click="Obrisi" HorizontalAlignment="Left" Margin="32,295,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}" Height="50" Width="150"/>
+        <Button Content="Početna stranica" Click="Nazad" HorizontalAlignment="Left" Margin="335,463,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}" Height="50" Width="250"/>
+        <Button Content="Sačuvaj izmene" Click="Sacuvaj" HorizontalAlignment="Left" Margin="32,376,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}" Height="50" Width="250"/>
         <Label Content="Ime" Grid.Column="0" FontSize="25" HorizontalAlignment="Left" Height="40" Margin="195,158,0,0" VerticalAlignment="Top" Width="72" Foreground="#1963bf" FontWeight="DemiBold"/>
         <TextBox HorizontalAlignment="Left" x:Name="Ime" FontSize="25" Margin="319,161,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" BorderBrush="#1963bf" Foreground="#1963bf"/>
         <Label Content="Prezime" Grid.Column="0" FontSize="25" HorizontalAlignment="Left" Height="39" Margin="195,208,0,0" VerticalAlignment="Top" Width="112" Foreground="#1963bf" FontWeight="DemiBold"/>
@@ -27,8 +27,8 @@
         <fa:ImageAwesome Icon="UserCircle" Margin="40,148,750,270" Foreground="#88bcfc"/>
 
         <Label Width="182" VerticalAlignment="Top" Margin="403,90,0,0" Height="50" HorizontalAlignment="Left" FontSize="22" Foreground="#1963bf" FontWeight="Bold" Content="Profil doktora"/>
-        <Button Content="Manipulacija rada" Click="Manipulacija" HorizontalAlignment="Left" Margin="335,376,0,0" VerticalAlignment="Top" Height="50" Width="250" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
-        <Button Content="Kalendar pregleda" Click="Kalendar" HorizontalAlignment="Left" Margin="629,376,0,0" VerticalAlignment="Top" Height="50" Width="250" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <Button Content="Manipulacija rada" Click="Manipulacija" HorizontalAlignment="Left" Margin="335,376,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}" Height="50" Width="250"/>
+        <Button Content="Kalendar pregleda" Click="Kalendar" HorizontalAlignment="Left" Margin="629,376,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}" Height="50" Width="250"/>
         <Label Margin="239,21,401,448">
             <StackPanel Orientation="Horizontal">
                 <fa:ImageAwesome Icon="Globe" Width="60" Foreground="#1963bf"/>

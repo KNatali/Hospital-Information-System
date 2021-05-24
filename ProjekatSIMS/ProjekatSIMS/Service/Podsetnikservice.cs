@@ -1,5 +1,4 @@
-﻿using Microsoft.Toolkit.Uwp.Notifications;
-using Model;
+﻿using Model;
 using ProjekatSIMS.Model;
 using ProjekatSIMS.Repository;
 using Repository;
@@ -16,25 +15,14 @@ namespace ProjekatSIMS.Service
         public PodsetnikRepository podsetnikRepository = new PodsetnikRepository();
         public PacijentRepository pacijentRepository = new PacijentRepository();
         
-
         private Podsetnik PostavljanjeAtributaPodsetnika(String naziv,String opis, DateTime datumPocetka, DateTime datumKraja, String imePacijenta, String prezimePacijenta)
         {
-            Podsetnik podsetnik = new Podsetnik();
-            podsetnik.nazivPodsetika = naziv;
-            podsetnik.opisPodsetnika = opis;
-            podsetnik.datumPocetkaObavestenja = datumPocetka;
-            podsetnik.datumZavrsetkaObavestenja = datumKraja;
             if (DaLiPostojiPacijent(imePacijenta, prezimePacijenta) != null)
             {
-                podsetnik.pacijent = DaLiPostojiPacijent(imePacijenta, prezimePacijenta);
+                Podsetnik podsetnik = new Podsetnik { nazivPodsetika = naziv, opisPodsetnika = opis, datumPocetkaObavestenja = datumPocetka, datumZavrsetkaObavestenja = datumKraja, pacijent = DaLiPostojiPacijent(imePacijenta, prezimePacijenta)};
+                return podsetnik;
             }
-            return podsetnik;
-        }
-
-        public void PrikazivanjePodsetnika()
-        {
-            
-            
+            return null;
         }
 
         public Boolean kreiranjePodsetnika(String naziv,String opis, DateTime pocetakObavestenja, DateTime krajObavestenja,String imePacijenta,String prezimePacijenta)
@@ -48,9 +36,7 @@ namespace ProjekatSIMS.Service
         private Pacijent DaLiPostojiPacijent(String imePacijenta, String prezimePacijenta)
         {
             Pacijent pacijent = new Pacijent();
-
             List<Pacijent> pacijenti = pacijentRepository.DobaviSve();
-
             foreach (Pacijent p in pacijenti)
             {
                 if ((p.Ime == imePacijenta) & (p.Prezime == prezimePacijenta))
@@ -59,6 +45,17 @@ namespace ProjekatSIMS.Service
                 }
             }
             return pacijent;
+        }
+
+        public Boolean DaLiTrebaPoslatiObavestenje(DateTime krajObavestenja, DateTime pocetakObavestenja)
+        {
+            int porediKrajSaSadasnjim = DateTime.Compare(krajObavestenja, DateTime.UtcNow);
+            int porediPocetakSaSadasnjim = DateTime.Compare(pocetakObavestenja, DateTime.UtcNow);
+            if ((porediKrajSaSadasnjim >= 0) && (porediPocetakSaSadasnjim <= 0))
+            {
+                return true;
+            }
+            return false;
         }
     }
 }
