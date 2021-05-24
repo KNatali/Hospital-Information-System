@@ -16,6 +16,13 @@ namespace ProjekatSIMS.Model
         {
 
         }
+        public OcenaLekara(String ime, String prezime, String ocena, String komentar)
+        {
+            this.ImeLekara = ime;
+            this.PrezimeLekara = prezime;
+            this.Ocena = ocena;
+            this.Komentar = komentar;
+        }
 
 
     }

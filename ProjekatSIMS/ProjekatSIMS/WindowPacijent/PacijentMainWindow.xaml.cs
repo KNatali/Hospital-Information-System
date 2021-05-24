@@ -1,4 +1,5 @@
 ﻿
+using Controller;
 using Microsoft.Toolkit.Uwp.Notifications;
 using ProjekatSIMS.Model;
 using ProjekatSIMS.Repository;
@@ -13,17 +14,15 @@ namespace ProjekatSIMS.WindowPacijent
     {
         private NavigationService NavigationService { get; set; }
         public PodsetnikRepository podsetnikRepository = new PodsetnikRepository();
-
+        public PodsetnikController podsetnikController = new PodsetnikController();
+       
         public PacijentMainWindow()
         {
             InitializeComponent();
             List<Podsetnik> podsetnici = podsetnikRepository.DobaviSvePodsetnike();
             foreach (Podsetnik p in podsetnici)
             {
-                int res1 = DateTime.Compare(p.datumZavrsetkaObavestenja, DateTime.UtcNow);
-                int res2 = DateTime.Compare(p.datumPocetkaObavestenja, DateTime.UtcNow);
-
-                if ((res1 < 0) && (res2 < 0))
+                if (podsetnikController.DaLiTrebaPoslatiObavestenje(p.datumZavrsetkaObavestenja, p.datumPocetkaObavestenja) == true)
                 {
                     {
                         new ToastContentBuilder()

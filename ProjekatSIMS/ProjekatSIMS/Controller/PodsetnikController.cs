@@ -19,15 +19,14 @@ namespace Controller
             {
                 return false;
             }
-
         }
 
-        public void PrikazivanjePodsetika()
+        public Boolean DaLiTrebaPoslatiObavestenje(DateTime pocetak, DateTime kraj)
         {
-            podsetnikservice.PrikazivanjePodsetnika();
-            
+            if (podsetnikservice.DaLiTrebaPoslatiObavestenje(pocetak, kraj) == true) {
+                return true;
+            }
+            return false;
         }
-
-
     }
 }

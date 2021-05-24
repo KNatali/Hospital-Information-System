@@ -69,7 +69,6 @@ namespace ProjekatSIMS.Service
                 if (pregled.Pocetak == datum)
                 {
                     MessageBox.Show("Odabrali ste termin koji je zauzet, na osnovu Vaseg prioriteta cemo Vam predloziti slobodne termine.");
-
                     return true;
                 }
             }
@@ -89,7 +88,6 @@ namespace ProjekatSIMS.Service
         private Boolean DaLiJeKorisnikMaliciozan(String imePacijenta, String prezimePacijenta)
         {
             ProveraPodatakaPacijenta(imePacijenta, prezimePacijenta);
-
             Pacijent pacijent = new Pacijent();
             foreach (Pacijent p in DobavljanjePacijenataIzFajla())
             {
@@ -98,25 +96,20 @@ namespace ProjekatSIMS.Service
                     pacijent = p;
                 }
             }
-
             return pacijent.jesteMaliciozanKorisnik;
         }
 
         private bool SlanjePorukeOBlokiranjuKorisnika(String ime, String prezime)
         {
-
             List<Pacijent> Pacijenti = pacijentRepository.DobaviSve();
             foreach (Pacijent p in Pacijenti)
             {
                 if ((p.Ime == ime) & (p.Prezime == prezime))
                 {
                     p.jesteMaliciozanKorisnik = true;
-
-
                 }
             }
             pacijentRepository.Sacuvaj(Pacijenti);
-
             return true;
         }
 
@@ -132,7 +125,6 @@ namespace ProjekatSIMS.Service
                 if ((pacijent.Ime == imePacijenta) && (pacijent.Prezime == prezimePacijenta) && (pacijent.otkazaoPregled >= MAKSIMALNO_OTKAZIVANJA))
                 {
                     SlanjePorukeOBlokiranjuKorisnika(imePacijenta, prezimePacijenta);
-
                     break;
                 }
             }
@@ -148,9 +140,7 @@ namespace ProjekatSIMS.Service
                 {
                     ObrisiPokusajeZakazivanja(pacijent.Ime, pacijent.Prezime);
                 }
-
             }
-
         }
 
         private void ObrisiPokusajeZakazivanja(String ime, String prezime)
@@ -163,7 +153,6 @@ namespace ProjekatSIMS.Service
                 {
                     pacijent.otkazaoPregled = 0;
                     pacijent.zakazaoPregled = 0;
-
                 }
             }
             pacijentRepository.Sacuvaj(Pacijenti);
