@@ -12,11 +12,7 @@ using System.Windows.Controls;
 
 namespace ProjekatSIMS
 {
-    /// <summary>
-    /// Interaction logic for IzdajReceptDoktor.xaml
-    /// </summary>
-    /// 
-
+  
     public partial class IzdajReceptDoktor : Page
     {
         public List<Lijek> Lijekovi { get; set; }
@@ -42,8 +38,7 @@ namespace ProjekatSIMS
             Ime.Text = p.Ime;
             Prezime.Text = p.Prezime;
             Lijekovi = new List<Lijek>();
-            List<Lijek> lijekovi = new List<Lijek>();
-            lijekovi = lijekRepository.DobaviSve();
+            List<Lijek>  lijekovi = lijekRepository.DobaviSve();
             foreach (Lijek l in lijekovi)
             {
                 Lijekovi.Add(l);
@@ -61,7 +56,6 @@ namespace ProjekatSIMS
             String izabranaKolicina = Kolicina.Text;
 
             ReceptDTO receptDTO = new ReceptDTO(Pacijent,izabraniLijek.NazivLeka, izabranoTrajanje, izabraniDatum, sat, minut,izabraniPeriod, izabranaKolicina);
-
             receptController.IzdavanjeRecepta(receptDTO);
            
 

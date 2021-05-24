@@ -67,7 +67,7 @@
                 <DataGridTemplateColumn Header="Detalji" >
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Name="Detalji" Content="Detalji" Click="PrikaziDetaljaLijeka"  Style="{StaticResource btnStandard}"/>
+                            <Button Name="Detalji" Content="Detalji" Click="PrikazDetaljaLijeka"  Style="{StaticResource btnStandard}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

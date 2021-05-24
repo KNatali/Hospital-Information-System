@@ -1,4 +1,4 @@
-using Model;
+ using Model;
 using Newtonsoft.Json;
 using Repository;
 using System;
@@ -179,7 +179,7 @@ namespace Service
             return slobodneOrdinacije;
         }
 
-        public List<DateTime> PrikazSlobodnihTermina(Doktor doktor, DateTime pocetnoVrijeme, DateTime krajnjeVrijeme, int pocetniInterval, int krajnjiInerval)
+      /*  public List<DateTime> PrikazSlobodnihTermina(Doktor doktor, DateTime pocetnoVrijeme, DateTime krajnjeVrijeme, int pocetniInterval, int krajnjiInerval)
         {
 
             List<DateTime> slobodniTermini = DobaviSlobodneTermineDoktora(doktor, pocetnoVrijeme, krajnjeVrijeme, pocetniInterval, krajnjiInerval);
@@ -289,11 +289,7 @@ namespace Service
             krajnjeVrijemePoslije = krajnjeVrijeme.AddDays(2);
         }
 
-        private static void PostavljanjeVremenaOdInteresa(DateTime pocetnoVrijeme, DateTime krajnjeVrijeme, out DateTime pocetakIntervalaOdInteresa, out DateTime krajIntervalaOdInteresa)
-        {
-            pocetakIntervalaOdInteresa = new DateTime(pocetnoVrijeme.Year, pocetnoVrijeme.Month, pocetnoVrijeme.Day, POCETAK_RADNOG_VREMENA, 0, 0);
-            krajIntervalaOdInteresa = new DateTime(krajnjeVrijeme.Year, krajnjeVrijeme.Month, krajnjeVrijeme.Day, KRAJ_RADNOG_VREMENA, 0, 0);
-        }
+      
         
         private static List<DateTime> IzlistavanjeNajblizihTermina(List<KeyValuePair<int, DateTime>> parUdaljenostTermin)
         {
@@ -326,7 +322,7 @@ namespace Service
         }
 
 
-
+        */
 
 
         public Boolean ZakazivanjePregledaSekretar(ComboBox Termin, String jmbg, String jmbgdoktor, Prostorija prostorija, DateTime datum1, DateTime datum2)
