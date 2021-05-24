@@ -14,16 +14,12 @@ namespace ProjekatSIMS.WindowPacijent
     {
         public int prioritetVreme = 0;
         public int prioritetDoktor = 0;
-        public bool jesteMaliciozniKorisnik = false;
         public int MAKSIMAMLNO_OTKAZIVANJA = 10;
         public List<Pacijent> Pacijenti { get; set; }
         public ZakaziPregled()
         {
             InitializeComponent();
             this.DataContext = this;
-
-            
-           
         }
         private void Zakazi_Pregled(object sender, RoutedEventArgs e)
         {

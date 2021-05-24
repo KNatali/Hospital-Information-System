@@ -4,7 +4,6 @@ using ProjekatSIMS.Repository;
 using Repository;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace ProjekatSIMS.Service
 {
@@ -35,9 +34,7 @@ namespace ProjekatSIMS.Service
 
         private OcenaBolnice PostavljanjeOceneBolnice(String ocena, String komentar)
         {
-            OcenaBolnice ob = new OcenaBolnice();
-            ob.Ocena = ocena;
-            ob.Komentar = komentar;
+            OcenaBolnice ob = new OcenaBolnice { Ocena = ocena, Komentar = komentar };
             return ob;
         }
 
@@ -69,17 +66,11 @@ namespace ProjekatSIMS.Service
                 }
             }
             return mozeSeOceniti;
-            
         }
 
         private OcenaLekara PostavljanjeOceneLekara(String imeLekara, String prezimeLekara, String ocena, String komentar)
         {
-            OcenaLekara ol = new OcenaLekara();
-            ol.ImeLekara = imeLekara;
-            ol.PrezimeLekara = prezimeLekara;
-            ol.Ocena = ocena;
-            ol.Komentar = komentar;
-
+            OcenaLekara ol = new OcenaLekara { ImeLekara = imeLekara, PrezimeLekara = prezimeLekara, Ocena = ocena, Komentar = komentar };
             return ol;
         }
 

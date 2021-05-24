@@ -1,27 +1,19 @@
 ﻿using Model;
 using Newtonsoft.Json;
+using ProjekatSIMS.Service;
 using Repository;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace ProjekatSIMS.WindowPacijent
 {
-    /// <summary>
-    /// Interaction logic for IzmeniPregled.xaml
-    /// </summary>
     public partial class IzmeniPregledPacijenta : Page
     {
+        public IzmenaPregledaService izmenaPregledaService = new IzmenaPregledaService();
         public List<Pregled> Pregledi { get; set; }
         public List<Pacijent> Pacijenti { get; set; }
         
@@ -44,11 +36,7 @@ namespace ProjekatSIMS.WindowPacijent
 
         private void Izmeni(object sender, RoutedEventArgs e)
         {
-
-
             Pregled p = (Pregled)dataGridPregledi.SelectedItems[0]; //pregled koji je izabran za izmenu
-
-            //preuzimanje datuma i vremena iz forme
 
             double sati = Convert.ToDouble(Sati.Text);
             double minuti = Convert.ToDouble(Minuti.Text);
@@ -57,16 +45,10 @@ namespace ProjekatSIMS.WindowPacijent
             datumNovi = datum.AddHours(sati);
             datumNovi = datumNovi.AddMinutes(minuti);
             String imeDoktora = ImeDoktora.Text;
-
             String prezimeDoktora = PrezimeDoktora.Text;
 
-            foreach (Pacijent pac in Pacijenti)
-            {
-                if ((pac.Prezime == p.pacijent.Prezime) && (pac.Ime == p.pacijent.Ime))
-                {
-                    pac.otkazaoPregled++;
-                }
-            }
+            izmenaPregledaService.BrojacOtkazivanjaPregleda(p.pacijent.Ime, p.pacijent.Prezime);
+
             string newJ = JsonConvert.SerializeObject(Pacijenti);
             File.WriteAllText(@"..\..\..\Fajlovi\Pacijent.txt", newJ);
 
@@ -109,17 +91,13 @@ namespace ProjekatSIMS.WindowPacijent
                 if (slobodanTerminFlag == 0)
                 {
                     Pregledi.Remove(p);
-                    p.Pocetak = datumNovi;
                     Doktor doktor = new Doktor { Ime = imeDoktora, Prezime = prezimeDoktora };
-                    p.doktor = doktor;
+                    p = new Pregled { Pocetak = datumNovi, doktor = doktor, };
                     Pregledi.Add(p);
-
                     string newJson = JsonConvert.SerializeObject(Pregledi);
                     File.WriteAllText(@"..\..\..\Fajlovi\Pregled.txt", newJson);
                     MessageBox.Show("Pregled je uspesno izmenjen.");
                 }
-
-
             }
         }
 
