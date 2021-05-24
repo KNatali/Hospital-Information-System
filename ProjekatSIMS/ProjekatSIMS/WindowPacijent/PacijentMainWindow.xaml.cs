@@ -55,8 +55,7 @@ namespace ProjekatSIMS.WindowPacijent
                        {
                            toast.ExpirationTime = DateTime.UtcNow.AddDays(2);
                        }
-
-                            );
+                       );
 
                     }
                 }
