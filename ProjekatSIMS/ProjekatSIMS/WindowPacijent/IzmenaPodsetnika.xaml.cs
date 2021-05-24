@@ -34,10 +34,7 @@ namespace ProjekatSIMS.WindowPacijent
             DateTime pocetak = (DateTime)Pocetak.SelectedDate;
             DateTime kraj = (DateTime)Kraj.SelectedDate;
             Podsetnici.Remove(podsetnik);
-            podsetnik.nazivPodsetika = ime;
-            podsetnik.opisPodsetnika = opis;
-            podsetnik.datumPocetkaObavestenja = pocetak;
-            podsetnik.datumZavrsetkaObavestenja = kraj;
+            podsetnik = new Podsetnik { nazivPodsetika = ime, opisPodsetnika = opis, datumPocetkaObavestenja = pocetak, datumZavrsetkaObavestenja = kraj };
             Podsetnici.Add(podsetnik);
             string newJson = JsonConvert.SerializeObject(Podsetnici);
             File.WriteAllText(@"..\..\..\Fajlovi\Podsetnik.txt", newJson);
