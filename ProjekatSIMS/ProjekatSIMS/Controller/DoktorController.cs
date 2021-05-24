@@ -13,16 +13,23 @@ namespace Controller
         {
             return doktorService.DobaviSve();
         }
-        public Boolean kreiranjeProfila(Doktor doktor)
+        public Boolean KreiranjeProfila(Doktor doktor)
         {
-            if (doktorService.kreiranjeProfila(doktor) == true)
+            if (doktorService.KreiranjeProfila(doktor) == true)
                 return true;
             else
                 return false;
         }
-        public Boolean cuvanjeIzmenjenjihPodataka(Doktor stariPodaci)
+        public Boolean CuvanjeIzmenjenjihPodataka(Doktor stariPodaci)
         {
-            if (doktorService.cuvanjeIzmenjenjihPodataka(stariPodaci))
+            if (doktorService.CuvanjeIzmenjenjihPodataka(stariPodaci))
+                return true;
+            else
+                return false;
+        }
+        public Boolean ObrisiDoktora(Doktor stariDoktor)
+        {
+            if (doktorService.ObrisiDoktora(stariDoktor))
                 return true;
             else
                 return false;

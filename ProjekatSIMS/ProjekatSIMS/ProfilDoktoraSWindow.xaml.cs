@@ -38,7 +38,7 @@ namespace ProjekatSIMS
         {
             PrikupljanjePodatakaDoktoraIzTextBoxa();
             DoktorController doktorController = new DoktorController();
-            if (doktorController.cuvanjeIzmenjenjihPodataka(dok) == true)
+            if (doktorController.CuvanjeIzmenjenjihPodataka(dok) == true)
                 MessageBox.Show("Podaci doktora su uspešno izmenjeni.");
             this.Close();
         }
@@ -56,22 +56,17 @@ namespace ProjekatSIMS
         private void Obrisi_profil(object sender, RoutedEventArgs e)
         {
             MessageBoxResult ret = MessageBox.Show("Da li želite da obrišete doktora?", "PROVERA", MessageBoxButton.YesNo);
-            if(ret==MessageBoxResult.Yes)
+            if (ret == MessageBoxResult.Yes)
             {
-                OsobaRepository fajl = new OsobaRepository(@"..\..\..\Fajlovi\Doktor.txt");
-                List<Doktor> doktor = fajl.DobaviDoktore();
-                foreach (Doktor d in doktor)
-                {
-                    if (d.Jmbg == dok.Jmbg)
-                    {
-                        doktor.Remove(d);
-                        break;
-                    }
-                }
-                fajl.SacuvajDoktora(doktor);
-                MessageBox.Show("Doktor je uspešno obrisan.", "OBAVEŠTENJE");
+                DoktorController doktorController = new DoktorController();
+                BrisanjeDoktora(doktorController);
                 this.Close();
             }
+        }
+        private void BrisanjeDoktora(DoktorController doktorController)
+        {
+            if (doktorController.ObrisiDoktora(dok) == true)
+                MessageBox.Show("Doktor je uspešno obrisan.", "OBAVEŠTENJE");
         }
 
         private void Manipulacija(object sender, RoutedEventArgs e)

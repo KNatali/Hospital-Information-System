@@ -19,21 +19,21 @@ namespace Controller
                 return true;
             return false;
         }
-        public Boolean kreiranjeProfila(Pacijent pacijent)
+        public Boolean KreiranjeProfila(Pacijent pacijent)
         {
             if (pacijentService.KreiranjeProfila(pacijent) == true)
                 return true;
             else
                 return false;
         }
-        public Boolean cuvanjeIzmenjenjihPodataka(Pacijent stariPodaci)
+        public Boolean CuvanjeIzmenjenjihPodataka(Pacijent stariPodaci)
         {
             if (pacijentService.CuvanjeIzmenjenjihPodataka(stariPodaci))
                 return true;
             else
                 return false;
         }
-        public Boolean obrisiPacijenta(Pacijent stariPacijent)
+        public Boolean ObrisiPacijenta(Pacijent stariPacijent)
         {
             if (pacijentService.ObrisiPacijenta(stariPacijent))
                 return true;

@@ -28,11 +28,11 @@ namespace Service
         public Boolean KreiranjeProfila(Pacijent pacijent)
         {
             List<Pacijent> sviPacijenti = pacijentRepository.DobaviSve();
-            sviPacijenti.Add(noviPacijent(pacijent));
+            sviPacijenti.Add(NoviPacijent(pacijent));
             pacijentRepository.Sacuvaj(sviPacijenti);
             return true;
         }
-        private Pacijent noviPacijent(Pacijent poljePacijenta)
+        private Pacijent NoviPacijent(Pacijent poljePacijenta)
         {
             Pacijent pacijent = new Pacijent();
             pacijent.Jmbg = poljePacijenta.Jmbg;
@@ -50,21 +50,21 @@ namespace Service
             novaListaPacijenata = pacijentRepository.DobaviSve();
             foreach (Pacijent noviPodaci in novaListaPacijenata)
             {
-                proveraJmbgPacijentaIzmena(stariPodaci, noviPodaci);
+                ProveraJmbgPacijentaIzmena(stariPodaci, noviPodaci);
             }
             pacijentRepository.Sacuvaj(novaListaPacijenata);
             return true;
         }
 
-        private static void proveraJmbgPacijentaIzmena(Pacijent stariPodaci, Pacijent noviPodaci)
+        private static void ProveraJmbgPacijentaIzmena(Pacijent stariPodaci, Pacijent noviPodaci)
         {
             if (stariPodaci.Jmbg == noviPodaci.Jmbg)
             {
-                izmenaPodataka(stariPodaci, noviPodaci);
+                IzmenaPodataka(stariPodaci, noviPodaci);
             }
         }
 
-        private static void izmenaPodataka(Pacijent stariPodaci, Pacijent noviPodaci)
+        private static void IzmenaPodataka(Pacijent stariPodaci, Pacijent noviPodaci)
         {
             noviPodaci.Ime = stariPodaci.Ime;
             noviPodaci.Prezime = stariPodaci.Prezime;
@@ -76,12 +76,12 @@ namespace Service
         {
             List<Pacijent> sviPacijenti = new List<Pacijent>();
             sviPacijenti = pacijentRepository.DobaviSve();
-            pretragaPacijenta(profilPacijenta, sviPacijenti);
+            PretragaPacijenta(profilPacijenta, sviPacijenti);
             pacijentRepository.Sacuvaj(sviPacijenti);
             return true;
         }
 
-        private static void pretragaPacijenta(Pacijent profilPacijenta, List<Pacijent> sviPacijenti)
+        private static void PretragaPacijenta(Pacijent profilPacijenta, List<Pacijent> sviPacijenti)
         {
             foreach (Pacijent pacijent in sviPacijenti)
             {

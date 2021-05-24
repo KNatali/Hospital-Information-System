@@ -13,14 +13,14 @@ namespace Service
         {
             return doktorRepository.DobaviSve();
         }
-        public Boolean kreiranjeProfila(Doktor doktor)
+        public Boolean KreiranjeProfila(Doktor doktor)
         {
             List<Doktor> sviDoktori = doktorRepository.DobaviSve();
-            sviDoktori.Add(noviDoktor(doktor));
+            sviDoktori.Add(NoviDoktor(doktor));
             doktorRepository.Sacuvaj(sviDoktori);
             return true;
         }
-        private Doktor noviDoktor(Doktor poljeDoktora)
+        private Doktor NoviDoktor(Doktor poljeDoktora)
         {
             Doktor doktor = new Doktor();
             doktor.Jmbg = poljeDoktora.Jmbg;
@@ -35,7 +35,7 @@ namespace Service
             doktor.KrajRadnogVremena = poljeDoktora.KrajRadnogVremena;
             return doktor;
         }
-        public Boolean cuvanjeIzmenjenjihPodataka(Doktor stariPodaci)
+        public Boolean CuvanjeIzmenjenjihPodataka(Doktor stariPodaci)
         {
             List<Doktor> novaListaDoktora = new List<Doktor>();
             novaListaDoktora = doktorRepository.DobaviSve();
@@ -54,7 +54,6 @@ namespace Service
                 IzmenaPodataka(stariPodaci, noviPodaci);
             }
         }
-
         private static void IzmenaPodataka(Doktor stariPodaci, Doktor noviPodaci)
         {
             noviPodaci.Ime = stariPodaci.Ime;
@@ -64,6 +63,26 @@ namespace Service
             noviPodaci.Specijalizacija = stariPodaci.Specijalizacija;
             noviPodaci.PocetakRadnogVremena = stariPodaci.PocetakRadnogVremena;
             noviPodaci.KrajRadnogVremena = stariPodaci.KrajRadnogVremena;
+        }
+        public Boolean ObrisiDoktora(Doktor profilDoktora)
+        {
+            List<Doktor> sviDoktori = new List<Doktor>();
+            sviDoktori = doktorRepository.DobaviSve();
+            PretragaDoktora(profilDoktora, sviDoktori);
+            doktorRepository.Sacuvaj(sviDoktori);
+            return true;
+        }
+
+        private static void PretragaDoktora(Doktor profilDoktora, List<Doktor> sviDoktori)
+        {
+            foreach (Doktor doktor in sviDoktori)
+            {
+                if (doktor.Jmbg == profilDoktora.Jmbg)
+                {
+                    sviDoktori.Remove(doktor);
+                    break;
+                }
+            }
         }
     }
 }

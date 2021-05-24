@@ -37,7 +37,7 @@ namespace ProjekatSIMS
         {
             PrikupljanjePodatakaPacijentaIzTextBoxa();
             PacijentController pacijentController = new PacijentController();
-            if (pacijentController.cuvanjeIzmenjenjihPodataka(pac) == true)
+            if (pacijentController.CuvanjeIzmenjenjihPodataka(pac) == true)
                 MessageBox.Show("Podaci pacijenta su uspešno izmenjeni.");
             this.Close();
         }
@@ -66,7 +66,7 @@ namespace ProjekatSIMS
 
         private void BrisanjePacijenta(PacijentController pacijentController)
         {
-            if (pacijentController.obrisiPacijenta(pac) == true)
+            if (pacijentController.ObrisiPacijenta(pac) == true)
                 MessageBox.Show("Pacijent je uspešno obrisan.", "OBAVEŠTENJE");
         }
 
