@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Repository;
 using System;
+using Controller;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -26,10 +27,10 @@ namespace ProjekatSIMS
             this.DataContext = this;
             p = pac;
         }
-        private void Dodavanje(object sender, RoutedEventArgs e)
+        private void Sacuvaj_alergen(object sender, RoutedEventArgs e)
         {
-            String alergen = Naziv.Text;
-            List<String> alergeni = new List<String>();
+            /*String alergen = Naziv.Text;
+                                            List<String> alergeni = new List<String>();
             List<ZdravsteniKarton> kartoni = new List<ZdravsteniKarton>();
 
             using (StreamReader sr = new StreamReader(@"..\..\..\Fajlovi\ZdravstveniKarton.txt"))
@@ -49,7 +50,18 @@ namespace ProjekatSIMS
                 }
             }
             PregledRepository pr = new PregledRepository(@"..\..\..\Fajlovi\ZdravstveniKarton.txt");
-            pr.SacuvajAlergen(kartoni);
+            pr.SacuvajAlergen(kartoni);*/
+
+            List<ZdravsteniKarton> kartoni = new List<ZdravsteniKarton>();
+            ZdravstvenikartonController zdravstveniKartonController = new ZdravstvenikartonController();
+            if(zdravstveniKartonController.kreiranjeAlergena(Naziv.Text,p)==true)
+            {
+                MessageBox.Show("Alergen je dodat u listu alergena.", "OBAVEŠTENJE");
+            }
+            foreach(ZdravsteniKarton zk in kartoni)
+            {
+                zk.Alergeni.Add(Naziv.Text);
+            }
             
 
             /*ZdravstveniKarton zk = new ZdravstveniKarton();
@@ -65,7 +77,7 @@ namespace ProjekatSIMS
 
             this.Close();
         }
-        private void Nazad(object sender, RoutedEventArgs e)
+        private void Otkazi_dodavanje(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

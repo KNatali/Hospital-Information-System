@@ -37,40 +37,35 @@ namespace ProjekatSIMS
         {
             Pacijent noviPacijent = new Pacijent();
             PacijentController pacijentController = new PacijentController();
-            String jmbg = Jmbg.Text;
-            String ime = Ime.Text;
-            String prezime = Prezime.Text;
-            String telefon = Telefon.Text;
-            String mail = Mail.Text;
-            String adresa = Adresa.Text;
-            DateTime datum = (DateTime)Datum.SelectedDate;
-            if (pacijentController.kreiranjeProfila(jmbg, ime, prezime, datum, telefon, mail, adresa) == true)
+            PopunjavanjePoljaZaNovogPacijenta(noviPacijent);
+            if (pacijentController.KreiranjeProfila(noviPacijent) == true)
             {
-                MessageBoxResult ret = MessageBox.Show("Profil pacijenta je uspešno kreiran. Da li želite da pregledate njegov profil", "OBAVEŠTENJE", MessageBoxButton.YesNo);
-                if (ret == MessageBoxResult.Yes)
-                {
-                    ProfilPacijentaSWindow pp = new ProfilPacijentaSWindow(noviPacijent);
-                    this.Close();
-                    pp.Show();
-                }
-                else
-                    this.Close();
+                PorukaOUspesnomKreiranjuPacijenta(noviPacijent);
+            }
+        }
+
+        private void PorukaOUspesnomKreiranjuPacijenta(Pacijent noviPacijent)
+        {
+            MessageBoxResult ret = MessageBox.Show("Profil pacijenta je uspešno kreiran. Da li želite da pregledate njegov profil", "OBAVEŠTENJE", MessageBoxButton.YesNo);
+            if (ret == MessageBoxResult.Yes)
+            {
+                ProfilPacijentaSWindow pp = new ProfilPacijentaSWindow(noviPacijent);
+                this.Close();
+                pp.Show();
             }
             else
-                MessageBox.Show("Morate uneti obavezna polja pacijenta: Jmbg, Ime, Prezime.");
+                this.Close();
+        }
 
-            /*p.Jmbg = jmbg;
-            p.Ime = ime;
-            p.Prezime = prezime;
-            p.BrojTelefona = telefon;
-            p.Email = mail;
-            p.Adresa = adresa;
-            p.DatumRodjenja = datum;
-            
-            OsobaRepository fajl = new OsobaRepository(@"..\..\..\Fajlovi\Pacijent.txt");
-            List<Pacijent> pacijenti = fajl.DobaviPacijente();
-            pacijenti.Add(p);
-            fajl.Sacuvaj(pacijenti);*/
+        private void PopunjavanjePoljaZaNovogPacijenta(Pacijent noviPacijent)
+        {
+            noviPacijent.Jmbg = Jmbg.Text;
+            noviPacijent.Ime = Ime.Text;
+            noviPacijent.Prezime = Prezime.Text;
+            noviPacijent.DatumRodjenja = (DateTime)Datum.SelectedDate;
+            noviPacijent.BrojTelefona = Telefon.Text;
+            noviPacijent.Email = Mail.Text;
+            noviPacijent.Adresa = Adresa.Text;
         }
     }
 }

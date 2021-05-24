@@ -7,12 +7,12 @@ namespace ProjekatSIMS.Controller
 {
    public class OcenaController
     {
-
-        public Service.OcenaService ocenaService = new OcenaService();
+        public OcenjivanjeBolniceService ocenjivanjeBolniceService = new OcenjivanjeBolniceService();
+        public OcenjivanjeLekaraService ocenjivanjeLekaraService = new OcenjivanjeLekaraService();
 
         public Boolean ProsledjenaOcenaBolnice(String ocena, String komentar)
         {
-            if(ocenaService.OcenjivanjeBolnice(ocena,komentar) == true)
+            if(ocenjivanjeBolniceService.OcenjivanjeBolnice(ocena,komentar) == true)
             {
                 return true;
             }
@@ -24,7 +24,7 @@ namespace ProjekatSIMS.Controller
 
         public Boolean ProsledjenaOcenaLekara(String imeLekara, String prezimeLekara, String ocena, String komentar)
         {
-            if (ocenaService.OcenjivanjeLekara(imeLekara, prezimeLekara, ocena, komentar) == true)
+            if (ocenjivanjeLekaraService.OcenjivanjeLekara(imeLekara, prezimeLekara, ocena, komentar) == true)
             {
                 return true;
             }

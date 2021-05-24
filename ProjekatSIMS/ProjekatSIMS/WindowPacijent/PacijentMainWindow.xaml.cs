@@ -1,8 +1,10 @@
 ﻿
 using Controller;
 using Microsoft.Toolkit.Uwp.Notifications;
+using Model;
 using ProjekatSIMS.Model;
 using ProjekatSIMS.Repository;
+using Repository;
 using System;
 using System.Collections.Generic;
 using System.Windows;
@@ -15,11 +17,13 @@ namespace ProjekatSIMS.WindowPacijent
         private NavigationService NavigationService { get; set; }
         public PodsetnikRepository podsetnikRepository = new PodsetnikRepository();
         public PodsetnikController podsetnikController = new PodsetnikController();
-       
+        public ReceptRepository receptRepository = new ReceptRepository(@"..\..\..\Fajlovi\Recept.txt");
+
         public PacijentMainWindow()
         {
             InitializeComponent();
             List<Podsetnik> podsetnici = podsetnikRepository.DobaviSvePodsetnike();
+            List<Recept>Recepti = receptRepository.DobaviSveRecepte();
             foreach (Podsetnik p in podsetnici)
             {
                 if (podsetnikController.DaLiTrebaPoslatiObavestenje(p.datumZavrsetkaObavestenja, p.datumPocetkaObavestenja) == true)
@@ -30,6 +34,28 @@ namespace ProjekatSIMS.WindowPacijent
                        .AddText(p.nazivPodsetika)
                        .AddText(p.opisPodsetnika)
                        .Show();
+
+                    }
+                }
+            }
+
+
+            foreach (Recept r in Recepti)
+            {
+                int vremePrikazivanjaObavestenja = DateTime.Compare(r.DatumPropisivanjaLeka.AddHours(-4), DateTime.UtcNow);
+
+                if (vremePrikazivanjaObavestenja > 0)
+                {
+                    {
+                        new ToastContentBuilder()
+                       .AddArgument("action", "viewConversation")
+                       .AddText("Danas treba da uzmete svoju terapiju")
+                       .AddText(r.NazivLeka + " " + r.Kolicina + " " + r.Uputstvo + ", uzeti u " + r.DatumPropisivanjaLeka.TimeOfDay.ToString())
+                       .Show(toast =>
+                       {
+                           toast.ExpirationTime = DateTime.UtcNow.AddDays(2);
+                       }
+                       );
 
                     }
                 }
