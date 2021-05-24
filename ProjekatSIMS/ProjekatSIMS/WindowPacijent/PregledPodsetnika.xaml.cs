@@ -55,6 +55,7 @@ namespace ProjekatSIMS.WindowPacijent
             string newJson = JsonConvert.SerializeObject(Podsetnici);
             File.WriteAllText(@"..\..\..\Fajlovi\Podsetnik.txt", newJson);
             MessageBox.Show("Podsetnik je obrisan");
+            
         }
     }
 }
