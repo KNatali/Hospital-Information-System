@@ -46,7 +46,6 @@ namespace ProjekatSIMS
                 if (pr.Id == pregled.Id)
                 {
                     pr.StatusPregleda= StatusPregleda.Zavrsen;
-
                     break;
                 }
             }
@@ -57,7 +56,7 @@ namespace ProjekatSIMS
 
         private void IzdavanjeUputa(object sender, RoutedEventArgs e)
         {
-            IzdavanjeUputaDoktor z = new IzdavanjeUputaDoktor(pregled.pacijent);
+            IzdavanjeUputaSpecijalistiDoktor z = new IzdavanjeUputaSpecijalistiDoktor(pregled.pacijent);
             // this.NavigationService.Navigate(new Uri("ZdravstveniKartonDoktor.xaml", UriKind.Relative));
             this.NavigationService.Navigate(z);
         }

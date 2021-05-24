@@ -1,5 +1,7 @@
-﻿using Model;
+﻿using Controller;
+using Model;
 using Newtonsoft.Json;
+using ProjekatSIMS.Repository;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -16,12 +18,11 @@ using System.Windows.Shapes;
 
 namespace ProjekatSIMS
 {
-    /// <summary>
-    /// Interaction logic for IzmjenaLijekDoktor.xaml
-    /// </summary>
+  
     public partial class IzmjenaLijekDoktor : Page
     {
-
+        private LijekRepository lijekRepository = new LijekRepository();
+        private IzmjenaLijekaDoktorController izmjenaLijekaController = new IzmjenaLijekaDoktorController();
         public Lijek lijek { get; set; }
         public List<Lijek> Lijekovi { get; set; }
         public IzmjenaLijekDoktor(Lijek l)
@@ -33,13 +34,7 @@ namespace ProjekatSIMS
             Opis.Text = l.Opis;
             Sastojci.ItemsSource = l.Alergeni;
             AlternativniLijekovi.ItemsSource = l.AlternativniLekovi;
-
-            //dobavljanje svih iljekova
-            using (StreamReader r = new StreamReader(@"..\..\..\Fajlovi\Lijek.txt"))
-            {
-                string json = r.ReadToEnd();
-                Lijekovi = JsonConvert.DeserializeObject<List<Lijek>>(json);
-            }
+            Lijekovi = lijekRepository.DobaviSve();
             SviLijekovi.ItemsSource = Lijekovi;
         }
 
@@ -48,7 +43,8 @@ namespace ProjekatSIMS
         private void DodajSastojak(object sender, RoutedEventArgs e)
         {
             String noviSastojak = Sastojak.Text;
-            if (noviSastojak.Length > 1)
+          
+           /* if (noviSastojak.Length > 1)
             {
                 if (lijek.Alergeni == null)
                     lijek.Alergeni = new List<String>();
@@ -58,8 +54,8 @@ namespace ProjekatSIMS
             //KKAO DA SE OVO POPRAVI????????????
             List<String> sastojciNovi = new List<String>();
             foreach (String s in lijek.Alergeni)
-                sastojciNovi.Add(s);
-            Sastojci.ItemsSource = sastojciNovi;
+                sastojciNovi.Add(s);*/
+            Sastojci.ItemsSource = izmjenaLijekaController.DodavanjeSastojka(noviSastojak,lijek);
 
 
 
@@ -70,15 +66,15 @@ namespace ProjekatSIMS
 
             Lijek izabraniLijek = (Lijek)SviLijekovi.SelectedItem;
             String noviAlternativniLijek = izabraniLijek.NazivLeka;
-            
-            if (lijek.AlternativniLekovi == null)
+
+            /*if (lijek.AlternativniLekovi == null)
                 lijek.AlternativniLekovi = new List<String>();
             lijek.AlternativniLekovi.Add(noviAlternativniLijek);
             
             List<String> alternativniNovi = new List<String>();
             foreach (String s in lijek.AlternativniLekovi)
-                alternativniNovi.Add(s);
-            AlternativniLijekovi.ItemsSource = alternativniNovi;
+                alternativniNovi.Add(s);*/
+            AlternativniLijekovi.ItemsSource = izmjenaLijekaController.DodavanjeALternativnihLijekova(noviAlternativniLijek, lijek);
 
         }
 
@@ -88,10 +84,10 @@ namespace ProjekatSIMS
             l.NazivLeka = Naziv.Text;
             l.Opis = Opis.Text;
             l.Status = lijek.Status;
-            l.Alergeni = new List<String>();
+            
+            izmjenaLijekaController.SacuvajIzmjene(l, Sastojci.Items, AlternativniLijekovi.Items);
 
-           foreach(String i in Sastojci.Items)
-
+            /*
             l.AlternativniLekovi = new List<String>();
             foreach (String i in Sastojci.Items)
 
@@ -123,7 +119,7 @@ namespace ProjekatSIMS
             }
             //upisivanje u fajl
             string newJson = JsonConvert.SerializeObject(Lijekovi);
-            File.WriteAllText(@"..\..\..\Fajlovi\Lijek.txt", newJson);
+            File.WriteAllText(@"..\..\..\Fajlovi\Lijek.txt", newJson);*/
 
             this.NavigationService.GoBack();
 

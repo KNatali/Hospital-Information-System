@@ -15,9 +15,7 @@ using System.Windows.Shapes;
 
 namespace ProjekatSIMS
 {
-    /// <summary>
-    /// Interaction logic for PrikazRecepataDoktor.xaml
-    /// </summary>
+    
     public partial class PrikazRecepataDoktor : Page {
 
         public List<Recept> Recepti { get; set; }
