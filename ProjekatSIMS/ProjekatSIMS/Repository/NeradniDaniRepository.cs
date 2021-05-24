@@ -11,18 +11,23 @@ namespace Repository
     {
         private String lokacija;
         private List<NeradniDani> nd;
+        public NeradniDaniRepository()
+        {
+
+        }
         public NeradniDaniRepository(String l)
         {
             lokacija = l;
         }
         public List<NeradniDani> DobaviNeradneDane()
         {
-            using (StreamReader r = new StreamReader(lokacija))
+            List<NeradniDani> neradniDani = new List<NeradniDani>();
+            using (StreamReader r = new StreamReader(@"..\..\..\Fajlovi\NeradniDani.txt"))
             {
                 string json = r.ReadToEnd();
-                nd = JsonConvert.DeserializeObject<List<NeradniDani>>(json);
+                neradniDani = JsonConvert.DeserializeObject<List<NeradniDani>>(json);
             }
-            return nd;
+            return neradniDani;
         }
         public void SacuvajNeradanDan(List<NeradniDani> neradni)
         {

@@ -31,9 +31,9 @@
         <ComboBox x:Name="Obrazlozenje" HorizontalAlignment="Left"   
                   Margin="438,384,0,0"   
                   VerticalAlignment="Top" BorderBrush="#1963bf" Foreground="#1963bf" Width="201" FontSize="25"/>
-        <Button Content="Otkaži" Click="Otkazi" HorizontalAlignment="Left" Margin="80,460,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
-        <Button Content="Potvrdi" Click="Potvrdi" HorizontalAlignment="Left" Margin="665,460,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
-        <DataGrid x:Name="dataGridNeradniDani" ItemsSource="{Binding Neradni}" IsReadOnly="True" FontSize="25"
+        <Button Content="Otkaži" Click="Nazad" HorizontalAlignment="Left" Margin="80,460,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
+        <Button Content="Potvrdi" Click="Odobri_neradneDane" HorizontalAlignment="Left" Margin="665,460,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
+        <DataGrid x:Name="dataGridNeradniDani" ItemsSource="{Binding NeradniDani}" IsReadOnly="True" FontSize="25"
             SelectionMode="Single" AutoGenerateColumns="False" Margin="60,142,60,260" BorderBrush="#1963bf" Foreground="#1963bf">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Od" Binding="{Binding NeradnoOd}" Width="*"/>
