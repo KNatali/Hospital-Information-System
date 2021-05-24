@@ -24,8 +24,6 @@ namespace ProjekatSIMS.WindowPacijent
             if (ocenaCont.ProsledjenaOcenaBolnice(ocena, komentar) == true)
             {
                 MessageBox.Show("Hvala Vam sto ste izdvojili vreme da ocenite nasu bolnicu!");
-
-                
             }
             else
             {

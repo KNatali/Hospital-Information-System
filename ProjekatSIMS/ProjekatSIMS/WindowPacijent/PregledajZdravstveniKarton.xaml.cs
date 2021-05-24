@@ -8,11 +8,6 @@ namespace ProjekatSIMS.WindowPacijent
     public partial class PregledajZdravstveniKarton : Page
 
     {
-        public List<ZdravsteniKarton> ZdravstveniKarton
-        {
-            get;
-            set;
-        }
         public List<Recept> Recepti
         {
             get;
@@ -37,9 +32,6 @@ namespace ProjekatSIMS.WindowPacijent
         {
             InitializeComponent();
             this.DataContext = this;
-            ZdravstveniKarton = new List<ZdravsteniKarton>();
-            ZdravstveniKartonRepository zdravstveniKartonRepository = new ZdravstveniKartonRepository();
-            ZdravstveniKarton = zdravstveniKartonRepository.DobaviZdravstveneKartone();
           
             ReceptRepository receptRepository = new ReceptRepository();
             Recepti = receptRepository.DobaviSveRecepte();
