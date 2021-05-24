@@ -15,39 +15,49 @@ namespace ProjekatSIMS
 {
     public partial class OdabirPrioritetaSWindow : Window
     {
-        public Pacijent pac { get; set; }
+        public Pacijent pacijent { get; set; }
         public OdabirPrioritetaSWindow(Pacijent p)
         {
             InitializeComponent();
             this.DataContext = this;
-            pac = p;
+            pacijent = p;
         }
-        private void Otkazi(object sender, RoutedEventArgs e)
+        private void Nazad(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
-        private void Zakazi(object sender, RoutedEventArgs e)
+        private void Zakazi_termin(object sender, RoutedEventArgs e)
         {
-            string str = Tip.Text;
-            ComboBoxItem cbi = (ComboBoxItem)Tip.SelectedItem;
-            string opcija = cbi.Content.ToString();
-            string val = Tip.SelectedValue.ToString();
-            if(opcija == "-")
-            {
-                ZakaziTerminSWindow zt = new ZakaziTerminSWindow(pac);
-                zt.Show();
-            }
-            else if(opcija == "Kod određenog doktora")
-            {
-                PrioritetDoktorSWindow pd = new PrioritetDoktorSWindow(pac);
-                pd.Show();
-            }
-            else if(opcija == "U određeno vreme")
-            {
-                PrioritetDatumSWindow pda = new PrioritetDatumSWindow(pac);
-                pda.Show();
-            }
+            ComboBoxItem prioritet = (ComboBoxItem)Prioritet.SelectedItem;
+            string odabranPrioritet = prioritet.Content.ToString();
+            OdabirPrioritetaZakazivanja(odabranPrioritet);
             this.Close();
+        }
+        private void OdabirPrioritetaZakazivanja(string odabranPrioritet)
+        {
+            if (odabranPrioritet == "-")
+                ZakazivanjeBezPrioriteta();
+            else if (odabranPrioritet == "Kod određenog doktora")
+                ZakazivanjeSaPrioritetomDoktor();
+            else if (odabranPrioritet == "U određeno vreme")
+                ZakazivanjeSaPrioritetomVreme();
+        }
+        private void ZakazivanjeSaPrioritetomVreme()
+        {
+            PrioritetDatumSWindow pda = new PrioritetDatumSWindow(pacijent);
+            pda.Show();
+        }
+
+        private void ZakazivanjeSaPrioritetomDoktor()
+        {
+            PrioritetDoktorSWindow pd = new PrioritetDoktorSWindow(pacijent);
+            pd.Show();
+        }
+
+        private void ZakazivanjeBezPrioriteta()
+        {
+            ZakaziTerminSWindow zt = new ZakaziTerminSWindow(pacijent);
+            zt.Show();
         }
     }
 }
