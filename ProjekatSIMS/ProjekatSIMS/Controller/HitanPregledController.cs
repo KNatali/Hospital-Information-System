@@ -20,5 +20,26 @@ namespace Controller
             else
                 return false;
         }
+        public Boolean ZakazivanjeKodDoktoraOpstePrakse(Pregled pregled, Pacijent pacijent)
+        {
+            if (hpService.ZakazivanjeKodDoktoraOpstePrakse(pregled, pacijent) == true)
+                return true;
+            else
+                return false;
+        }
+        public Boolean ZakazivanjeKodDoktoraKardiologa(Pregled pregled, Pacijent pacijent)
+        {
+            if (hpService.ZakazivanjeKodDoktoraKardiologa(pregled, pacijent) == true)
+                return true;
+            else
+                return false;
+        }
+        public Boolean ZakazivanjeKodDoktoraHirurga(Pregled pregled, Pacijent pacijent)
+        {
+            if (hpService.ZakazivanjeKodDoktoraHirurga(pregled, pacijent) == true)
+                return true;
+            else
+                return false;
+        }
     }
 }

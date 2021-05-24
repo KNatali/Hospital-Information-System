@@ -50,77 +50,152 @@ namespace ProjekatSIMS
 
         private void Zakazi_pregled(object sender, RoutedEventArgs e)
         {
-            List<SlobodanTermin> slobodniTermini = new List<SlobodanTermin>();
+            Specijalizacija izborObl = (Specijalizacija)Oblasti.SelectedIndex;
             ComboBoxItem izborPacijenta = (ComboBoxItem)Nalog.SelectedItem;
             string izborPac = izborPacijenta.Content.ToString();
-            /*ComboBoxItem izborOblasti = (ComboBoxItem)Oblasti.SelectedItem;
-            string izborObl = izborOblasti.Content.ToString();*/
-            Specijalizacija izborObl = (Specijalizacija)Oblasti.SelectedIndex;
-            PregledRepository fajl = new PregledRepository(@"..\..\..\Fajlovi\Pregled.txt");
+            IzborPacijentaIzComboBoxa(izborObl, izborPac);
+        }
+
+        private void IzborPacijentaIzComboBoxa(Specijalizacija izborObl, string izborPac)
+        {
             if (izborPac == "Kreiraj hitan nalog")
             {
-                //Pacijent p = KreiranjeHitnogNaloga();
-                Pacijent noviPacijent = new Pacijent();
-                PacijentController pacijentController = new PacijentController();
-                PopunjavanjePoljaZaHitanNalog(noviPacijent);
-                if (pacijentController.KreiranjeProfila(noviPacijent) == true)
-                {
-                    MessageBox.Show("Kreiran je hitan profil pacijenta.");
-                }
-
-                /*if (izborObl.ToString()==Specijalizacija.Opsta.ToString())
-                {
-                    foreach(SlobodanTermin st in slobodniTermini)
-                    {
-                        if (st.PocetakTermina == danasnjiDatum.AddMinutes(30) && izborObl.ToString() == st.doktor.Specijalizacija.ToString())
-                        {
-                            Pregled zakaziPregled = new Pregled();
-                            zakaziPregled.pacijent = noviPacijent;
-                            zakaziPregled.doktor = st.doktor;
-                            zakaziPregled.Pocetak = danasnjiDatum.AddMinutes(30);
-                            zakaziPregled.Tip = TipPregleda.Operacija;
-                            zakaziPregled.Trajanje = 30;
-                            
-                            Pregledi.Add(zakaziPregled);
-                            fajl.SacuvajPregledSekretar(Pregledi);
-                            SlanjeNotifikacija();
-                        }
-                        else
-                            MessageBox.Show("Nema slobodnih termina u narednih pola sata kod doktora iz odabrane oblasti.");
-                    }
-                }*/
-                HitanPregledSWindow hp = new HitanPregledSWindow(noviPacijent);
-                hp.Show();
-                this.Close();
+                IzborKreiranjeHitnogNaloga(izborObl);
             }
             else if (izborPac == "Odaberi postojeći nalog")
+                IzborOdabirPostojecegNaloga(izborObl);
+        }
+
+        private void IzborOdabirPostojecegNaloga(Specijalizacija izborObl)
+        {
+            Pacijent pacijent = (Pacijent)dataGridPacijenti.SelectedItems[0];
+            ZakaziTerminOpstaPraksaPostojeciPacijent(izborObl, pacijent);
+            ZakaziTerminKardiologijaPostojeciPacijent(izborObl, pacijent);
+            ZakaziTerminHirurgijaPostojeciPacijent(izborObl, pacijent);
+        }
+
+        private void ZakaziTerminHirurgijaPostojeciPacijent(Specijalizacija izborObl, Pacijent pacijent)
+        {
+            if (izborObl.ToString() == Specijalizacija.Hirurgija.ToString())
             {
-                Pacijent p = (Pacijent)dataGridPacijenti.SelectedItems[0];
-                HitanPregledSWindow hp = new HitanPregledSWindow(p);
-                hp.Show();
-                this.Close();
+                Pregled noviPregled = new Pregled();
+                HitanPregledController hitanPregledController = new HitanPregledController();
+                if (hitanPregledController.ZakazivanjeKodDoktoraHirurga(noviPregled, pacijent) == true)
+                    SlanjeObavestenjaDoktoru();
+                else
+                    ZakazivanjeNeuspesnoPostojeciPacijent(pacijent);
             }
         }
-        private void PopunjavanjePoljaZaHitanNalog(Pacijent noviPacijent)
+
+        private void ZakaziTerminKardiologijaPostojeciPacijent(Specijalizacija izborObl, Pacijent pacijent)
         {
-            noviPacijent.Jmbg = Jmbg.Text;
-            noviPacijent.Ime = Ime.Text;
-            noviPacijent.Prezime = Prezime.Text;
+            if (izborObl.ToString() == Specijalizacija.Kardiologija.ToString())
+            {
+                Pregled noviPregled = new Pregled();
+                HitanPregledController hitanPregledController = new HitanPregledController();
+                if (hitanPregledController.ZakazivanjeKodDoktoraKardiologa(noviPregled, pacijent) == true)
+                    SlanjeObavestenjaDoktoru();
+                else
+                    ZakazivanjeNeuspesnoPostojeciPacijent(pacijent);
+            }
         }
-        private void CuvanjeUFajl(Pregled zakaziPregled)
+
+        private void ZakaziTerminOpstaPraksaPostojeciPacijent(Specijalizacija izborObl, Pacijent pacijent)
         {
-            PregledRepository fajl = new PregledRepository(@"..\..\..\Fajlovi\Pregled.txt");
-            Pregledi.Add(zakaziPregled);
-            fajl.SacuvajPregledSekretar(Pregledi);
+            if (izborObl.ToString() == Specijalizacija.Opsta.ToString())
+            {
+                Pregled noviPregled = new Pregled();
+                HitanPregledController hitanPregledController = new HitanPregledController();
+                if (hitanPregledController.ZakazivanjeKodDoktoraOpstePrakse(noviPregled, pacijent) == true)
+                    SlanjeObavestenjaDoktoru();
+                else
+                    ZakazivanjeNeuspesnoPostojeciPacijent(pacijent);
+            }
         }
-        private static void SlanjeNotifikacija()
+        private void ZakazivanjeNeuspesnoPostojeciPacijent(Pacijent pacijent)
+        {
+            HitanPregledSWindow hp = new HitanPregledSWindow(pacijent);
+            hp.Show();
+            this.Close();
+        }
+
+        private void IzborKreiranjeHitnogNaloga(Specijalizacija izborObl)
+        {
+            Pacijent noviPacijent = new Pacijent();
+            PacijentController pacijentController = new PacijentController();
+            PopunjavanjePoljaZaHitanNalog(noviPacijent);
+            KreiranjeHitnogNalogaPacijenta(izborObl, noviPacijent, pacijentController);
+        }
+
+        private void KreiranjeHitnogNalogaPacijenta(Specijalizacija izborObl, Pacijent noviPacijent, PacijentController pacijentController)
+        {
+            if (pacijentController.KreiranjeProfila(noviPacijent) == true)
+            {
+                ZakaziTerminOpstaPraksaNoviPacijent(izborObl, noviPacijent);
+                ZakaziTerminKardiologijaNoviPacijent(izborObl, noviPacijent);
+                ZakaziTerminHirurgijaNoviPacijent(izborObl, noviPacijent);
+            }
+        }
+
+        private void ZakaziTerminHirurgijaNoviPacijent(Specijalizacija izborObl, Pacijent noviPacijent)
+        {
+            if (izborObl.ToString() == Specijalizacija.Hirurgija.ToString())
+            {
+                Pregled noviPregled = new Pregled();
+                HitanPregledController hitanPregledController = new HitanPregledController();
+                if (hitanPregledController.ZakazivanjeKodDoktoraHirurga(noviPregled, noviPacijent) == true)
+                    SlanjeObavestenjaDoktoru();
+                else
+                    ZakazivanjeNeuspesnoNoviPacijent(noviPacijent);
+            }
+        }
+
+        private void ZakaziTerminKardiologijaNoviPacijent(Specijalizacija izborObl, Pacijent noviPacijent)
+        {
+            if (izborObl.ToString() == Specijalizacija.Kardiologija.ToString())
+            {
+                Pregled noviPregled = new Pregled();
+                HitanPregledController hitanPregledController = new HitanPregledController();
+                if (hitanPregledController.ZakazivanjeKodDoktoraKardiologa(noviPregled, noviPacijent) == true)
+                    SlanjeObavestenjaDoktoru();
+                else
+                    ZakazivanjeNeuspesnoNoviPacijent(noviPacijent);
+            }
+        }
+
+        private void ZakaziTerminOpstaPraksaNoviPacijent(Specijalizacija izborObl, Pacijent noviPacijent)
+        {
+            if (izborObl.ToString() == Specijalizacija.Opsta.ToString())
+            {
+                Pregled noviPregled = new Pregled();
+                HitanPregledController hitanPregledController = new HitanPregledController();
+                if (hitanPregledController.ZakazivanjeKodDoktoraOpstePrakse(noviPregled, noviPacijent) == true)
+                    SlanjeObavestenjaDoktoru();
+                else
+                    ZakazivanjeNeuspesnoNoviPacijent(noviPacijent);
+            }
+        }
+        private void ZakazivanjeNeuspesnoNoviPacijent(Pacijent noviPacijent)
+        {
+            HitanPregledSWindow hp = new HitanPregledSWindow(noviPacijent);
+            hp.Show();
+            this.Close();
+        }
+        private static void SlanjeObavestenjaDoktoru()
         {
             PopupNotifier popup = new PopupNotifier();
             popup.Image = Properties.Resources.informacija;
             popup.TitleText = "OBAVEŠTENJE";
             popup.ContentText = "Pregled je uspešno zakazan. " +
-                "Poslato je obaveštenje pacijentu i doktoru o predstojećem pregledu.";
+                "Poslato je obaveštenje doktoru o hitnom pregledu.";
             popup.Popup();
+        }
+
+        private void PopunjavanjePoljaZaHitanNalog(Pacijent noviPacijent)
+        {
+            noviPacijent.Jmbg = Jmbg.Text;
+            noviPacijent.Ime = Ime.Text;
+            noviPacijent.Prezime = Prezime.Text;
         }
         private void PrikazTabeleSaSvimPacijentima()
         {
