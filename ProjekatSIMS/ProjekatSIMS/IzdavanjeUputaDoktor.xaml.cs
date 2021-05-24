@@ -1,5 +1,6 @@
 ﻿using Controller;
 using Model;
+using ProjekatSIMS.DTO;
 using Repository;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,7 @@ namespace ProjekatSIMS
     {
         private OsobaRepository osobaRepository = new OsobaRepository((@"..\..\..\Fajlovi\Doktor.txt"));
         private PregledController pregledController = new PregledController();
+        private SlobodniTerminiUputSpecijelistiController slobodniTerminiUputSpecijelistiController = new SlobodniTerminiUputSpecijelistiController();
         private Doktor odabraniDoktor = new Doktor();
         private List<Doktor> sviDoktori = new List<Doktor>();
         private List<Doktor> doktoriPrikaz;
@@ -53,14 +55,11 @@ namespace ProjekatSIMS
         private void PrikazSlobodnihTermina(object sender, RoutedEventArgs e)
         {
             Doktor izabraniDoktor = (Doktor)Doktori.SelectedItem;
-            DateTime pocetnoVrijeme = (DateTime)DatumPocetak.SelectedDate;
-            DateTime krajnjeVrijeme = (DateTime)DatumKraj.SelectedDate;
-            int pocetniInterval = Convert.ToInt32(IntervalPocetak.Text);
-            int krajnjiInterval = Convert.ToInt32(IntervalKraj.Text);
-
-
-            List<DateTime> slobodniTermini = new List<DateTime>();
-            slobodniTermini=pregledController.PrikazSlobodnihTermina(izabraniDoktor, pocetnoVrijeme, krajnjeVrijeme,pocetniInterval,krajnjiInterval);
+            IntervalDatuma datumi = new IntervalDatuma((DateTime)DatumPocetak.SelectedDate, (DateTime)DatumKraj.SelectedDate);
+            IntervalSati sati = new IntervalSati(Convert.ToInt32(IntervalPocetak.Text), Convert.ToInt32(IntervalKraj.Text));
+         
+            SlobodniTerminiUputSpecijalistiDTO podaci = new SlobodniTerminiUputSpecijalistiDTO(izabraniDoktor, datumi, sati);
+            List<DateTime> slobodniTermini =slobodniTerminiUputSpecijelistiController.PrikazSlobodnihTermina(podaci);
             Termini.ItemsSource = slobodniTermini;
         }
 

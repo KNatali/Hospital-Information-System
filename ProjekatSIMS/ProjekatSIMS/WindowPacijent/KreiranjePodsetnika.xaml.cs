@@ -32,8 +32,6 @@ namespace ProjekatSIMS.WindowPacijent
                 MessageBox.Show("Uspesno ste kreirali svoj podsetnik");
                 
             }
-
-
         }
     }
 }

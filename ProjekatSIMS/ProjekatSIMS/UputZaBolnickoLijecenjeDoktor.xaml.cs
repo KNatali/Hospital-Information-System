@@ -8,9 +8,7 @@ using System.Windows.Controls;
 
 namespace ProjekatSIMS
 {
-    /// <summary>
-    /// Interaction logic for UputZaBolnickoLijecenjeDoktor.xaml
-    /// </summary>
+   
     public partial class UputZaBolnickoLijecenjeDoktor : Page
     {
         private Pacijent pacijent { get; set; }

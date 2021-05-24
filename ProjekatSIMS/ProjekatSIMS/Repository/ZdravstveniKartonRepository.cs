@@ -4,7 +4,6 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Windows;
 
 namespace Repository
 {
@@ -13,6 +12,7 @@ namespace Repository
 
         private String putanja = @"..\..\..\Fajlovi\ZdravstveniKarton.txt";
         private List<ZdravsteniKarton> sviKartoni = new List<ZdravsteniKarton>();
+        private String LokacijaFajla;
 
         public ZdravstveniKartonRepository()
         {
@@ -21,7 +21,8 @@ namespace Repository
         }
         public ZdravstveniKartonRepository(String lokacija)
         {
-            putanja = lokacija;
+            //putanja = lokacija;
+            LokacijaFajla = lokacija;
         }
 
         public ZdravsteniKarton DobaviZdravstveniKartonZaPacijenta(Pacijent pacijent)

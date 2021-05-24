@@ -8,10 +8,11 @@ namespace Controller
 {
    public class PodsetnikController
     {
-        public Podsetnikservice podsetnikservice = new Podsetnikservice();
+        public PrikazivanjePodsetnikaService prikazivanjePodsetnikaService = new PrikazivanjePodsetnikaService();
+        public KreiranjePodsetnikaService kreiranjePodsetnikaService = new KreiranjePodsetnikaService();
         public Boolean KreiranjePodsetnika(String naziv, String opis, DateTime pocetakObavestenja, DateTime krajObavestenja, String imePacijenta, String prezimePacijenta)
         {
-            if (podsetnikservice.kreiranjePodsetnika(naziv, opis, pocetakObavestenja, krajObavestenja, imePacijenta, prezimePacijenta) == true)
+            if (kreiranjePodsetnikaService.kreiranjePodsetnika(naziv, opis, pocetakObavestenja, krajObavestenja, imePacijenta, prezimePacijenta) == true)
             {
                 return true;
             }
@@ -19,15 +20,14 @@ namespace Controller
             {
                 return false;
             }
-
         }
 
-        public void PrikazivanjePodsetika()
+        public Boolean DaLiTrebaPoslatiObavestenje(DateTime pocetak, DateTime kraj)
         {
-            podsetnikservice.PrikazivanjePodsetnika();
-            
+            if (prikazivanjePodsetnikaService.DaLiTrebaPoslatiObavestenje(pocetak, kraj) == true) {
+                return true;
+            }
+            return false;
         }
-
-
     }
 }

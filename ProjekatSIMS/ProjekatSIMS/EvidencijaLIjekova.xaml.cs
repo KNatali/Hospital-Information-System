@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using Controller;
+using Model;
 using Newtonsoft.Json;
 using ProjekatSIMS.Model;
 using System;
@@ -17,12 +18,11 @@ using System.Windows.Shapes;
 
 namespace ProjekatSIMS
 {
-    /// <summary>
-    /// Interaction logic for EvidencijaLIjekova.xaml
-    /// </summary>
+
     public partial class EvidencijaLIjekova : Page
     {
-
+        private PrikazEvidencijeLijekovaController prikazEvidencijeLijekovaController = new PrikazEvidencijeLijekovaController();
+        private VerifikovanjeLijekovaController verifikovanjeLijekovaController = new VerifikovanjeLijekovaController();
         public List<Lijek> SviLijekovi { get; set; }
         public List<Lijek> LijekoviNaCekanju { get; set; }
         public EvidencijaLIjekova()
@@ -37,7 +37,9 @@ namespace ProjekatSIMS
         {
             SviLijekovi = new List<Lijek>();
             LijekoviNaCekanju = new List<Lijek>();
-            using (StreamReader r = new StreamReader(@"..\..\..\Fajlovi\Lijek.txt"))
+            TipLijekaPremaPrikazu tip = TipLijekaPremaPrikazu.Neverifikovan;
+            LijekoviNaCekanju = prikazEvidencijeLijekovaController.PrikazLijekovaPoStatusu(tip);
+           /*using (StreamReader r = new StreamReader(@"..\..\..\Fajlovi\Lijek.txt"))
             {
                 string json = r.ReadToEnd();
                 SviLijekovi = JsonConvert.DeserializeObject<List<Lijek>>(json);
@@ -46,19 +48,18 @@ namespace ProjekatSIMS
             {
                 if (l.Status == OdobravanjeLekaEnum.Ceka)
                     LijekoviNaCekanju.Add(l);
-            }
+            }*/
 
             dataGridVerifikacija.ItemsSource = LijekoviNaCekanju;
         }
 
 
 
-        private void PrikaziDetaljaLijeka(object sender, RoutedEventArgs e)
+        private void PrikazDetaljaLijeka(object sender, RoutedEventArgs e)
         {
             Lijek lijek = (Lijek)dataGridVerifikacija.SelectedItems[0];
             Opis.Text = lijek.Opis;
             List<String> sastojci = lijek.Alergeni;
-
             List<String> alternativni = lijek.AlternativniLekovi;
             Sastojci.ItemsSource = sastojci;
             AlternativniLijekovi.ItemsSource = alternativni;
@@ -80,44 +81,40 @@ namespace ProjekatSIMS
 
         private void PrihvatiLijek(object sender, RoutedEventArgs e)
         {
-            Lijek lijek = (Lijek)dataGridVerifikacija.SelectedItems[0];
-            List<Lijek> lijekoviNovi = new List<Lijek>();
+            Lijek izabraniLijek = (Lijek)dataGridVerifikacija.SelectedItems[0];
+            verifikovanjeLijekovaController.OdobriLijek(izabraniLijek);
+          /*  List<Lijek> lijekoviNovi = new List<Lijek>();
 
             //cuvanje u fajl izmjenjeni lijek
             SviLijekovi.Find(p => p.NazivLeka ==lijek.NazivLeka).Status =OdobravanjeLekaEnum.Odobren ;
 
             string newJson = JsonConvert.SerializeObject(SviLijekovi);
-            File.WriteAllText(@"..\..\..\Fajlovi\Lijek.txt", newJson);
-
-
+            File.WriteAllText(@"..\..\..\Fajlovi\Lijek.txt", newJson);*/
 
             PrikazTabele();
         }
 
         private void OdbaciLijek(object sender, RoutedEventArgs e)
         {
-            Lijek lijek = (Lijek)dataGridVerifikacija.SelectedItems[0];
-            List<Lijek> lijekoviNovi = new List<Lijek>();
-
-          
-            //da se pozdaina zatamni
+            Lijek izabraniLijek = (Lijek)dataGridVerifikacija.SelectedItems[0];
+         
             this.Opacity = 0.3;
-            OdbacivanjePoruka o = new OdbacivanjePoruka();
-            o.ShowDialog();
-            
+            OdbacivanjePoruka porukaProzor = new OdbacivanjePoruka();
+            porukaProzor.ShowDialog();
             this.Opacity = 1;
 
-            
+            verifikovanjeLijekovaController.OdbaciLijek(izabraniLijek, porukaProzor.Poruka);
+            PrikazTabele();
 
             //cuvanje u fajl izmjenjeni lijek
-            SviLijekovi.Find(p => p.NazivLeka == lijek.NazivLeka).Status = OdobravanjeLekaEnum.Odbijen;
-            SviLijekovi.Find(p => p.NazivLeka == lijek.NazivLeka).PorukaOdbaci =o.Poruka;
+            /* SviLijekovi.Find(p => p.NazivLeka == lijek.NazivLeka).Status = OdobravanjeLekaEnum.Odbijen;
+             SviLijekovi.Find(p => p.NazivLeka == lijek.NazivLeka).PorukaOdbaci =o.Poruka;
 
-            string newJson = JsonConvert.SerializeObject(SviLijekovi);
-            File.WriteAllText(@"..\..\..\Fajlovi\Lijek.txt", newJson);
+             string newJson = JsonConvert.SerializeObject(SviLijekovi);
+             File.WriteAllText(@"..\..\..\Fajlovi\Lijek.txt", newJson);*/
 
 
-            PrikazTabele();
+
         }
 
         

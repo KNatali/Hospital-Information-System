@@ -14,5 +14,10 @@ namespace ProjekatSIMS.Model
             this.Ocena = "";
             this.Komentar = "";
         }
+        public OcenaBolnice(String ocena, String komentar)
+        {
+            this.Ocena = ocena;
+            this.Komentar = komentar;
+        }
     }
 }
