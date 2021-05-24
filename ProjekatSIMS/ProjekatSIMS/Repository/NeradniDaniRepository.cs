@@ -11,6 +11,10 @@ namespace Repository
     {
         private String lokacija;
         private List<NeradniDani> nd;
+        public NeradniDaniRepository()
+        {
+
+        }
         public NeradniDaniRepository(String l)
         {
             lokacija = l;

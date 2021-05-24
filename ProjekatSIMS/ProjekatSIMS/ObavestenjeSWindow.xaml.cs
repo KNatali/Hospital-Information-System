@@ -1,6 +1,7 @@
 ﻿using Model;
 using Repository;
 using System;
+using Controller;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -58,21 +59,17 @@ namespace ProjekatSIMS
 
         private void Sacuvaj(object sender, RoutedEventArgs e)
         {
+            PrikupljanjePodatakaObavestenjaIzTextBoxa();
+            NotifikacijaController notifikacijaController = new NotifikacijaController();
+            if (notifikacijaController.cuvanjeIzmenjenjihPodataka(n) == true)
+                MessageBox.Show("Obaveštenje je uspešno izmenjeno.");
+            this.Close();
+        }
+
+        private void PrikupljanjePodatakaObavestenjaIzTextBoxa()
+        {
             n.Naslov = Naslov.Text;
             n.Tekst = Tekst.Text;
-            List<Notifikacija> ListaN = new List<Notifikacija>();
-            NotifikacijaRepository fajl = new NotifikacijaRepository(@"..\..\..\Fajlovi\Vesti.txt");
-            ListaN = fajl.DobaviSve();
-            foreach (Notifikacija notif in ListaN)
-            {
-                if (n.Id == notif.Id)
-                {
-                    notif.Naslov = n.Naslov;
-                    notif.Tekst = n.Tekst;
-                }
-            }
-            fajl.Sacuvaj(ListaN);
-            this.Close();
         }
     }
 }

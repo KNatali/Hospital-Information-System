@@ -33,7 +33,7 @@ namespace ProjekatSIMS
             Notifikacija novoObavestenje = new Notifikacija();
             NotifikacijaController notifikacijaController = new NotifikacijaController();
             PopunjavanjePoljaZaNovoObavestenje(novoObavestenje);
-            if (notifikacijaController.pisanjeObavestenja(Naslov.Text,Tekst.Text,DateTime.Now) == true)
+            if (notifikacijaController.pisanjeObavestenja(novoObavestenje) == true)
             {
                 MessageBox.Show("Obaveštenje je uspešno postavljeno.", "OBAVEŠTENJE");
                 this.Close();
