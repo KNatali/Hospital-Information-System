@@ -17,6 +17,13 @@ namespace ProjekatSIMS.Model
         {
 
         }
+        public Podsetnik(String naziv, String opis, DateTime pocetak, DateTime kraj)
+        {
+            this.nazivPodsetika = naziv;
+            this.opisPodsetnika = opis;
+            this.datumPocetkaObavestenja = pocetak;
+            this.datumZavrsetkaObavestenja = kraj;
+        }
 
       
 
