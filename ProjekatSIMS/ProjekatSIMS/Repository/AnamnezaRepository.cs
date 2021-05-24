@@ -10,7 +10,7 @@ namespace Repository
    public class AnamnezaRepository
    {
 
-        private const string putanja = @"..\..\Fajlovi\Anamneza.txt";
+        private const string putanja = @"..\..\..\Fajlovi\Anamneza.txt";
         public void SacuvajAnamnezu(List<Anamneza> anamneze)
         {
             string newJson = JsonConvert.SerializeObject(anamneze);
