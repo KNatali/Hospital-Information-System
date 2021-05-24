@@ -27,16 +27,22 @@ namespace ProjekatSIMS
         public DetaljiPregledaDoktor(Pregled p)
         {
             InitializeComponent();
-            this.DataContext =this;
+            this.DataContext = this;
             pregled = p;
-            Pacijent.Text = p.pacijent.Ime +" "+ p.pacijent.Prezime;
-            Sala.Text = p.prostorija.id;
-            Tip.Text = p.Tip.ToString();
-            Datum.Text = p.Pocetak.Month.ToString() +"/"+ p.Pocetak.Day.ToString() +"/"+ p.Pocetak.Year.ToString();
-            DateTime kraj = p.Pocetak.AddMinutes(p.Trajanje);
-            Vrijeme.Text = p.Pocetak.Hour.ToString() + ":" + p.Pocetak.Minute.ToString() + "-" + kraj.Hour.ToString() + ":" + kraj.Minute.ToString();
+            UcitavanjePodatakaZaPrikaz(p);
 
         }
+
+        private void UcitavanjePodatakaZaPrikaz(Pregled p)
+        {
+            Pacijent.Text = p.pacijent.Ime + " " + p.pacijent.Prezime;
+            Sala.Text = p.prostorija.id;
+            Tip.Text = p.Tip.ToString();
+            Datum.Text = p.Pocetak.Month.ToString() + "/" + p.Pocetak.Day.ToString() + "/" + p.Pocetak.Year.ToString();
+            DateTime kraj = p.Pocetak.AddMinutes(p.Trajanje);
+            Vrijeme.Text = p.Pocetak.Hour.ToString() + ":" + p.Pocetak.Minute.ToString() + "-" + kraj.Hour.ToString() + ":" + kraj.Minute.ToString();
+        }
+
         private void OtkaziPregled(object sender, RoutedEventArgs e)
         {
             

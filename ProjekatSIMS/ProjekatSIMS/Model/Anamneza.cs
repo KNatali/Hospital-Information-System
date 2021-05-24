@@ -4,29 +4,26 @@ namespace Model
 {
    public class Anamneza
    {
-        private ZdravsteniKarton zdravsteniKarton;
-        private String OpisAnamneze;
+        
+        private String opisAnamneze;
         private DateTime datum; 
 
         public Anamneza()
         {
 
         }
-        public Anamneza(ZdravsteniKarton zdravsteniKarton, string opisAnamneze, DateTime datum)
+        public Anamneza( string opisAnamneze, DateTime datum)
         {
-            this.ZdravsteniKarton = zdravsteniKarton;
-            OpisAnamneze1 = opisAnamneze;
+        
+            this.OpisAnamneze= opisAnamneze;
             this.Datum = datum;
         }
 
-        public ZdravsteniKarton ZdravsteniKarton { get => zdravsteniKarton; set => zdravsteniKarton = value; }
-        public string OpisAnamneze1 { get => OpisAnamneze; set => OpisAnamneze = value; }
+     
+        public string OpisAnamneze { get => opisAnamneze; set => opisAnamneze = value; }
         public DateTime Datum { get => datum; set => datum = value; }
 
-        public ZdravsteniKarton GetZdravsteniKarton()
-      {
-         return ZdravsteniKarton;
-      }
+      
       
 
      

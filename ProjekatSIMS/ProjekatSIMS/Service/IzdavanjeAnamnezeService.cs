@@ -8,13 +8,17 @@ namespace Service
 {
     public class IzdavanjeAnamnezeService
     {
-        private AnamnezaRepository anamnezaRepository = new AnamnezaRepository();
-        public void KreiranjeAnamneze(String opis, DateTime datumIzdavanja, ZdravsteniKarton karton )
+        private ZdravstveniKartonRepository zdravstveniKartonRepository = new ZdravstveniKartonRepository();
+        public void KreiranjeAnamneze(String opis, DateTime datumIzdavanja,Pacijent pacijent )
         {
-            Anamneza novaAnamneza = new Anamneza(karton,opis,datumIzdavanja);
-            List<Anamneza> sveAnamneze = new List<Anamneza>();
+            Anamneza novaAnamneza = new Anamneza(opis,datumIzdavanja);
+            ZdravsteniKarton zdravstveniKartonPacijenta=zdravstveniKartonRepository.DobaviZdravstveniKartonZaPacijenta(pacijent);
+            if (zdravstveniKartonPacijenta.anamneza == null)
+               zdravstveniKartonPacijenta.anamneza = new List<Anamneza>();
+            zdravstveniKartonPacijenta.anamneza.Add(novaAnamneza);
+            zdravstveniKartonRepository.AzurirajKarton(zdravstveniKartonPacijenta);
 
-            
+
         }
     }
 }

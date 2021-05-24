@@ -4,15 +4,15 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ProjekatSIMS.Controller
+namespace Controller
 {
     
     public class IzdavanjeAnamnezeController
     {
         private IzdavanjeAnamnezeService izdavanjeAnamnezeService = new IzdavanjeAnamnezeService();
-        public void KreiranjeAnamneze(String opis,DateTime datumIzdavanja, ZdravsteniKarton karton)
+        public void KreiranjeAnamneze(String opis,DateTime datumIzdavanja, Pacijent pacijent)
         {
-            izdavanjeAnamnezeService.KreiranjeAnamneze(opis,datumIzdavanja,karton);
+            izdavanjeAnamnezeService.KreiranjeAnamneze(opis,datumIzdavanja,pacijent);
         }
     }
 }
