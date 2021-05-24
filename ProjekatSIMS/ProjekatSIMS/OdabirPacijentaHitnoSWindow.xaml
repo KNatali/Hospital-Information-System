@@ -9,8 +9,8 @@
         Title="OdabirPacijentaHitnoSWindow" Height="568" Width="924" Background="#d1e3ff">
     <Grid>
         <Label Width="444" VerticalAlignment="Top" Margin="0,88,0,0" Height="50" HorizontalAlignment="Center" FontSize="22" Foreground="#1963bf" FontWeight="Bold" Content="Odaberite pacijenta i specijaliciju doktora"/>
-        <Button Content="Otkaži" Click="Otkazi" HorizontalAlignment="Left" Style="{StaticResource Dugme}" Margin="60,440,0,0" VerticalAlignment="Top"/>
-        <Button Content="Zakaži" Click="Zakazi" HorizontalAlignment="Left" Style="{StaticResource Dugme}" Margin="684,440,0,0" VerticalAlignment="Top"/>
+        <Button Content="Odustani" Click="Odustani" HorizontalAlignment="Left" Style="{StaticResource Dugme}" Margin="60,440,0,0" VerticalAlignment="Top"/>
+        <Button Content="Zakaži" Click="Zakazi_pregled" HorizontalAlignment="Left" Style="{StaticResource Dugme}" Margin="684,440,0,0" VerticalAlignment="Top"/>
         <ComboBox HorizontalAlignment="Left" x:Name="Nalog" FontSize="25" Margin="429,186,0,0" VerticalAlignment="Top" Width="314" Height="38" SelectionChanged="Prikazi" BorderBrush="#1963bf" Foreground="#1963bf">
             <ComboBoxItem Content="Kreiraj hitan nalog"/>
             <ComboBoxItem Content="Odaberi postojeći nalog"/>

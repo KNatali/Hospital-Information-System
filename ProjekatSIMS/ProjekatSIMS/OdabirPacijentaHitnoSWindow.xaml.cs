@@ -2,6 +2,7 @@
 using ProjekatSIMS.Model;
 using Repository;
 using System;
+using Controller;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -19,6 +20,7 @@ namespace ProjekatSIMS
     public partial class OdabirPacijentaHitnoSWindow : Window
     {
         private DateTime danasnjiDatum;
+        private HitanPregledController hitanPregledController;
         public List<Pacijent> Pacijenti { get; set; }
         public Pacijent pac { get; set; }
         public List<Pregled> Pregledi { get; set; }
@@ -27,25 +29,26 @@ namespace ProjekatSIMS
             InitializeComponent();
             this.DataContext = this;
             danasnjiDatum = DateTime.Now;
-            Pacijenti = new List<Pacijent>();
-            OsobaRepository fajl = new OsobaRepository(@"..\..\..\Fajlovi\Pacijent.txt");
-            Pacijenti = fajl.DobaviPacijente();
             Oblasti.ItemsSource = Enum.GetValues(typeof(Specijalizacija));
+            UcitavanjePacijenataUTabelu();
         }
-        private void Otkazi(object sender, RoutedEventArgs e)
+        private void UcitavanjePacijenataUTabelu()
+        {
+            List<Pacijent> tabelaPacijenata = new List<Pacijent>();
+            Pacijenti = new List<Pacijent>();
+            hitanPregledController = new HitanPregledController();
+            tabelaPacijenata = hitanPregledController.DobaviSvePacijente();
+            foreach (Pacijent p in tabelaPacijenata)
+                Pacijenti.Add(p);
+        }
+        private void Odustani(object sender, RoutedEventArgs e)
         {
             MessageBoxResult ret = MessageBox.Show("Da li želite da otkažete zakazivanje hitnog pregleda?", "PROVERA", MessageBoxButton.YesNo);
-            switch (ret)
-            {
-                case MessageBoxResult.Yes:
-                    this.Close();
-                    break;
-                case MessageBoxResult.No:
-                    break;
-            }
+            if (ret == MessageBoxResult.Yes)
+                this.Close();
         }
 
-        private void Zakazi(object sender, RoutedEventArgs e)
+        private void Zakazi_pregled(object sender, RoutedEventArgs e)
         {
             List<SlobodanTermin> slobodniTermini = new List<SlobodanTermin>();
             ComboBoxItem izborPacijenta = (ComboBoxItem)Nalog.SelectedItem;
@@ -56,16 +59,23 @@ namespace ProjekatSIMS
             PregledRepository fajl = new PregledRepository(@"..\..\..\Fajlovi\Pregled.txt");
             if (izborPac == "Kreiraj hitan nalog")
             {
-                Pacijent p = KreiranjeHitnogNaloga();
-                
-                if(izborObl.ToString()==Specijalizacija.Opsta.ToString())
+                //Pacijent p = KreiranjeHitnogNaloga();
+                Pacijent noviPacijent = new Pacijent();
+                PacijentController pacijentController = new PacijentController();
+                PopunjavanjePoljaZaHitanNalog(noviPacijent);
+                if (pacijentController.KreiranjeProfila(noviPacijent) == true)
+                {
+                    MessageBox.Show("Kreiran je hitan profil pacijenta.");
+                }
+
+                /*if (izborObl.ToString()==Specijalizacija.Opsta.ToString())
                 {
                     foreach(SlobodanTermin st in slobodniTermini)
                     {
                         if (st.PocetakTermina == danasnjiDatum.AddMinutes(30) && izborObl.ToString() == st.doktor.Specijalizacija.ToString())
                         {
                             Pregled zakaziPregled = new Pregled();
-                            zakaziPregled.pacijent = p;
+                            zakaziPregled.pacijent = noviPacijent;
                             zakaziPregled.doktor = st.doktor;
                             zakaziPregled.Pocetak = danasnjiDatum.AddMinutes(30);
                             zakaziPregled.Tip = TipPregleda.Operacija;
@@ -78,8 +88,8 @@ namespace ProjekatSIMS
                         else
                             MessageBox.Show("Nema slobodnih termina u narednih pola sata kod doktora iz odabrane oblasti.");
                     }
-                }
-                HitanPregledSWindow hp = new HitanPregledSWindow(p);
+                }*/
+                HitanPregledSWindow hp = new HitanPregledSWindow(noviPacijent);
                 hp.Show();
                 this.Close();
             }
@@ -90,6 +100,12 @@ namespace ProjekatSIMS
                 hp.Show();
                 this.Close();
             }
+        }
+        private void PopunjavanjePoljaZaHitanNalog(Pacijent noviPacijent)
+        {
+            noviPacijent.Jmbg = Jmbg.Text;
+            noviPacijent.Ime = Ime.Text;
+            noviPacijent.Prezime = Prezime.Text;
         }
         private void CuvanjeUFajl(Pregled zakaziPregled)
         {
@@ -106,22 +122,6 @@ namespace ProjekatSIMS
                 "Poslato je obaveštenje pacijentu i doktoru o predstojećem pregledu.";
             popup.Popup();
         }
-        private Pacijent KreiranjeHitnogNaloga()
-        {
-            String jmbg = Jmbg.Text;
-            String ime = Ime.Text;
-            String prezime = Prezime.Text;
-            Pacijent p = new Pacijent();
-            p.Jmbg = jmbg;
-            p.Ime = ime;
-            p.Prezime = prezime;
-            OsobaRepository fajl = new OsobaRepository(@"..\..\..\Fajlovi\Pacijent.txt");
-            List<Pacijent> pacijenti = fajl.DobaviPacijente();
-            pacijenti.Add(p);
-            fajl.Sacuvaj(pacijenti);
-            return p;
-        }
-
         private void PrikazTabeleSaSvimPacijentima()
         {
             dataGridPacijenti.Visibility = Visibility.Visible;

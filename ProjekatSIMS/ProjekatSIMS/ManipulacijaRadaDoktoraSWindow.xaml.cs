@@ -19,13 +19,13 @@ namespace ProjekatSIMS
     public partial class ManipulacijaRadaDoktoraSWindow : Window
     {
         private NeradniDaniController neradniDaniController;
-        public Doktor dok { get; set; }
+        public Doktor doktor { get; set; }
         public List<NeradniDani> NeradniDani { get; set; }
-        public ManipulacijaRadaDoktoraSWindow(Doktor doktor)
+        public ManipulacijaRadaDoktoraSWindow(Doktor d)
         {
             InitializeComponent();
             this.DataContext = this;
-            dok = doktor;
+            doktor = d;
             List<NeradniDani> tabelaNeradnihDana = new List<NeradniDani>();
             NeradniDani = new List<NeradniDani>();
             Obrazlozenje.ItemsSource = Enum.GetValues(typeof(VrsteNeradnihDana));
@@ -33,7 +33,7 @@ namespace ProjekatSIMS
             tabelaNeradnihDana = neradniDaniController.DobaviSve();
             foreach (NeradniDani n in tabelaNeradnihDana)
             {
-                if (n.doktor.Jmbg == doktor.Jmbg)
+                if (n.doktor.Jmbg == d.Jmbg)
                     NeradniDani.Add(n);
             }
         }
@@ -71,7 +71,7 @@ namespace ProjekatSIMS
             novoOdobrenje.NeradnoOd = (DateTime)Od.SelectedDate;
             novoOdobrenje.NeradnoDo = (DateTime)Do.SelectedDate;
             novoOdobrenje.Vrsta = (VrsteNeradnihDana)Obrazlozenje.SelectedIndex;
-            novoOdobrenje.doktor = dok;
+            novoOdobrenje.doktor = doktor;
         }
     }
 }
