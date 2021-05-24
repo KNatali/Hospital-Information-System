@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Model
 {
@@ -8,8 +9,17 @@ namespace Model
       public String PocetakRadnogVremena { get; set; }
       public String KrajRadnogVremena { get; set; }
       public Specijalizacija Specijalizacija { get; set; }
+      //public List<NeradniDani> NeradniDani { get; set; }
       
       public System.Collections.ArrayList pregled;
+        /*public Doktor()
+        {
+            NeradniDani = new List<NeradniDani>
+            {
+                new NeradniDani(DateTime.Now.AddDays(1), DateTime.Now.AddDays(3)),
+                new NeradniDani(DateTime.Now.AddDays(5), DateTime.Now.AddDays(7))
+            };
+        }*/
       
       /// <pdGenerated>default getter</pdGenerated>
       public System.Collections.ArrayList GetPregled()

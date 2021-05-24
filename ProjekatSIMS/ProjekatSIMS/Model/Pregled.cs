@@ -5,6 +5,19 @@ namespace Model
 {
    public class Pregled
    {
+      public Pregled(DateTime pocetak,int trajanje, TipPregleda tip,StatusPregleda status,Prostorija prostorija,Doktor doktor)
+        {
+            this.Pocetak = pocetak;
+            this.Trajanje = trajanje;
+            this.Tip = tip;
+            this.StatusPregleda = status;
+            this.prostorija = prostorija;
+            this.doktor = doktor;
+        }
+        public Pregled()
+        {
+
+        }
       public Boolean ZakaziPregled()
       {
          // TODO: implement

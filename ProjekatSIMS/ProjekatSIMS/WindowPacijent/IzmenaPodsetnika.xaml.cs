@@ -9,41 +9,36 @@ using System.Windows.Controls;
 
 namespace ProjekatSIMS.WindowPacijent
 {
-    
-    public partial class PregledPodsetnika : Page
+    public partial class IzmenaPodsetnika : Page
     {
         public List<Podsetnik> Podsetnici
         {
             get;
             set;
         }
-        public PregledPodsetnika()
+        public IzmenaPodsetnika()
         {
+
             InitializeComponent();
             this.DataContext = this;
             Podsetnici = new List<Podsetnik>();
             PodsetnikRepository fajl = new PodsetnikRepository(@"..\..\..\Fajlovi\Podsetnik.txt");
             Podsetnici = fajl.DobaviSvePodsetnike();
-
         }
 
-        private void Obrisi(object sender, RoutedEventArgs e)
+        private void Izmeni(object sender, RoutedEventArgs e)
         {
-            
-            Podsetnik odabrani = (Podsetnik)dataGridPodsetnik.SelectedItems[0];
-
-            string naziv = odabrani.nazivPodsetika;
-            string opis = odabrani.opisPodsetnika;
-            DateTime datumPocetka = odabrani.datumPocetkaObavestenja;
-            DateTime datumZavrsetka = odabrani.datumZavrsetkaObavestenja;
-            using (StreamReader file = new StreamReader(@"..\..\..\Fajlovi\Podsetnik.txt"))
-            {
-                Podsetnici.Remove(odabrani);
-            }
+            Podsetnik podsetnik = (Podsetnik)dataGridPodsetnik.SelectedItems[0];
+            string ime = Ime.Text;
+            string opis = Opis.Text;
+            DateTime pocetak = (DateTime)Pocetak.SelectedDate;
+            DateTime kraj = (DateTime)Kraj.SelectedDate;
+            Podsetnici.Remove(podsetnik);
+            podsetnik = new Podsetnik { nazivPodsetika = ime, opisPodsetnika = opis, datumPocetkaObavestenja = pocetak, datumZavrsetkaObavestenja = kraj };
+            Podsetnici.Add(podsetnik);
             string newJson = JsonConvert.SerializeObject(Podsetnici);
             File.WriteAllText(@"..\..\..\Fajlovi\Podsetnik.txt", newJson);
-            MessageBox.Show("Podsetnik je obrisan");
-            
+            MessageBox.Show("Podsetnik je uspesno izmenjen.");
         }
     }
 }
