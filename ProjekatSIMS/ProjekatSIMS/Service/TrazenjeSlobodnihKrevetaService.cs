@@ -11,7 +11,7 @@ namespace Service
     {
         private ProstorijaRepository prostorijaRepository = new ProstorijaRepository();
         private UputBolnickoLijecenjeRepository uputRepository = new UputBolnickoLijecenjeRepository();
-        private ZdravstveniKartonRepository zdravstveniKartonRepository = new ZdravstveniKartonRepository();
+
         public List<SlobodniKrevetDTO> DobaviSlobodneSobe(IntervalDatuma termin)
         {
 
