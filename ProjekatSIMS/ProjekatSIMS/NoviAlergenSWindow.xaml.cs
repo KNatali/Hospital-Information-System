@@ -31,7 +31,7 @@ namespace ProjekatSIMS
         {
             ZdravstvenikartonController zdravstvenikartonController = new ZdravstvenikartonController();
             zdravstvenikartonController.kreiranjeAlergena(Naziv.Text, pacijent);
-            MessageBox.Show("Dodali ste alergen.");
+            MessageBox.Show("Alergen je uspešno dodat.");
             this.Close();
         }
         private void Otkazi_dodavanje(object sender, RoutedEventArgs e)

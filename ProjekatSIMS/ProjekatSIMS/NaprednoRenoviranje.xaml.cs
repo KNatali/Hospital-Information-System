@@ -22,6 +22,7 @@ namespace ProjekatSIMS
         public ProstorijaService ProstorijaService = new ProstorijaService();
         public List<Prostorija> prostorijeZaSpajanje { get; set; }
         public List<Prostorija> razdeljeneProstorije { get; set; }
+        public Prostorija prostorija { get; set; }
         public NaprednoRenoviranje()
         {
             InitializeComponent();
@@ -31,6 +32,7 @@ namespace ProjekatSIMS
             prostorije = ProstorijaService.prostorijaRepository.DobaviSve();
             prostorijeZaSpajanje = new List<Prostorija>();
             razdeljeneProstorije = new List<Prostorija>();
+            prostorija = new Prostorija();
 
             ProstorijeZaSpajanje.ItemsSource = prostorijeZaSpajanje;
             RazdeljeneProstorije.ItemsSource = razdeljeneProstorije;
@@ -91,6 +93,7 @@ namespace ProjekatSIMS
         {
             Boolean greska = false;
             Prostorija novaProstorija = new Prostorija();
+
             novaProstorija.id = ID.Text;
             if (Sala.IsChecked == true)
             {
@@ -118,24 +121,88 @@ namespace ProjekatSIMS
             novaProstorija.kvadratura = Convert.ToDouble(Kvadratura.Text);
 
 
-            foreach (Prostorija p in razdeljeneProstorije)
-            {
-                if(p.id == novaProstorija.id)
-                {
-                    MessageBox.Show("Vec postoji prostorija sa datim id!");
-                    greska = true;
-                    break;
-                }
-            }
+            
             if(ProstorijaService.pronadjiProstorijuPoId(novaProstorija.id) == null)
             {
-                MessageBox.Show("Uspesno ste dodali prostoriju!");
-                razdeljeneProstorije.Add(novaProstorija);
-                RazdeljeneProstorije.ItemsSource = razdeljeneProstorije;
+                foreach (Prostorija p in razdeljeneProstorije)
+                {
+                    if (p.id == novaProstorija.id)
+                    {
+                        MessageBox.Show("Vec postoji prostorija sa datim id!");
+                        greska = true;
+                        break;
+                    }
+                }
+                if(greska == false)
+                {
+                    MessageBox.Show("Uspesno ste dodali prostoriju!");
+                    razdeljeneProstorije.Add(novaProstorija);
+                }
+
+                
             }
+
+
+            RazdeljeneProstorije.ItemsSource = razdeljeneProstorije;
+        }
+        private void izvrsiSpajanje(object sender, RoutedEventArgs e)
+        {
+            Prostorija novaProstorija = new Prostorija();
+            novaProstorija.id = ID.Text;
+            List<Inventar> oprema = new List<Inventar>();
+            if(ProstorijaService.pronadjiProstorijuPoId(ID.Text) == null)
+            {
+                foreach (Prostorija p in prostorijeZaSpajanje)
+                {
+
+                    novaProstorija.kvadratura += p.kvadratura;
+                    if(p.inventar != null)
+                    {
+                        foreach(Inventar i in p.inventar)
+                        {
+                            oprema.Add(i);
+                        }
+                        
+                    }
+                    novaProstorija.inventar = oprema;
+                    novaProstorija.vrsta = p.vrsta;
+                    novaProstorija.sprat = p.sprat;
+
+                }
+                novaProstorija.pregled = null;
+                novaProstorija.slobodna = true;
+
+                foreach(Prostorija pr in prostorijeZaSpajanje)
+                {
+                    ProstorijaService.obrisiProstoriju(pr.id);
+                }
+                MessageBox.Show("Uspesno ste spojili prostorije!");
+                prostorije.Add(novaProstorija);
+                ProstorijaService.prostorijaRepository.Sacuvaj(prostorije);
+
+                prostorije = ProstorijaService.prostorijaRepository.DobaviSve();
+
+
+            }
+            else
+            {
+                MessageBox.Show("Vec postoji prostorija sa tim id!");
+            }
+
 
 
         }
+        private void izvrsiRazdvajanje(object sender, RoutedEventArgs e)
+        {
+            double suma = 0;
+            Prostorija prostorijaZaDeljenje = (Prostorija)Prostorije.SelectedItem;
+            
+            ProstorijaService.obrisiProstoriju(prostorijaZaDeljenje.id);
+            prostorije.AddRange(razdeljeneProstorije);
+            ProstorijaService.prostorijaRepository.Sacuvaj(prostorije);
+            prostorije = ProstorijaService.prostorijaRepository.DobaviSve();
+        }
+
 
 
     }
