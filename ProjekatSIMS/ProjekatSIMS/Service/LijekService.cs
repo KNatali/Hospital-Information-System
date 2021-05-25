@@ -1,4 +1,5 @@
 ﻿using Model;
+using ProjekatSIMS.Model;
 using ProjekatSIMS.Repository;
 using System;
 using System.Collections.Generic;
@@ -11,36 +12,22 @@ namespace ProjekatSIMS.Service
         public LijekRepository lijekRepoisitory = new LijekRepository();
 
         public LijekService() { }
-        public List<Lijek> DobaviOdobrene()
+        public List<Lijek> DobaviPoStatusu(OdobravanjeLekaEnum statusLeka) 
         {
             List<Lijek> lijekovi = new List<Lijek>();
-            List<Lijek> odobreniLekovi = new List<Lijek>();
+            List<Lijek> trazeniLekovi = new List<Lijek>();
             lijekovi = lijekRepoisitory.DobaviSve();
             foreach(Lijek lijek in lijekovi)
             {
-                if(lijek.Status == 0)
+                if(lijek.Status == statusLeka)
                 {
-                    odobreniLekovi.Add(lijek);
+                    trazeniLekovi.Add(lijek);
                 }
 
             }
-            return odobreniLekovi;
+            return trazeniLekovi;
         }
-        public List<Lijek> DobaviOdbijene()
-        {
-            List<Lijek> lijekovi = new List<Lijek>();
-            List<Lijek> odbijeniLekovi = new List<Lijek>();
-            lijekovi = lijekRepoisitory.DobaviSve();
-            foreach (Lijek lijek in lijekovi)
-            {
-                if (lijek.Status == Model.OdobravanjeLekaEnum.Odbijen)
-                {
-                    odbijeniLekovi.Add(lijek);
-                }
-
-            }
-            return odbijeniLekovi;
-        }
+        
 
     }
 }

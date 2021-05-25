@@ -32,7 +32,7 @@ namespace ProjekatSIMS
             Lijekovi = new List<Lijek>();
             sviLekovi = new List<Lijek>();
             sviLekovi = LijekService.lijekRepoisitory.DobaviSve();
-            Lijekovi = LijekService.DobaviOdobrene();
+            Lijekovi = LijekService.DobaviPoStatusu(Model.OdobravanjeLekaEnum.Odobren);
             Sastojci.ItemsSource = Lijek1.Alergeni;
             AlternativniLekovi.ItemsSource = Lijek1.AlternativniLekovi;
 
