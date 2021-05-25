@@ -48,7 +48,7 @@ namespace ProjekatSIMS.Service
         }
         private Prostorija ZauzmiProstoriju()
         {
-            List<Prostorija> prostorije = prostorijaRepository.DobaviSveProstorije();
+            List<Prostorija> prostorije = prostorijaRepository.DobaviSve();
             Prostorija prostorija = new Prostorija();
             foreach (Prostorija pr in prostorije)
             {

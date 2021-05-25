@@ -14,10 +14,15 @@ namespace Repository
 
 
 
-        public ProstorijaRepository()
+        public ProstorijaRepository(string v)
         {
             
         }
+
+        public ProstorijaRepository()
+        {
+        }
+
         public List<Prostorija> DobaviSve()
         {
             List<Prostorija> prostorije = new List<Prostorija>();
@@ -95,6 +100,11 @@ namespace Repository
             }
 
             return ordinacije;
+        }
+
+        internal List<Prostorija> DobaviSveProstorije()
+        {
+            throw new NotImplementedException();
         }
 
         public List<Prostorija> DobaviSobe()
