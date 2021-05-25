@@ -16,7 +16,7 @@ namespace Service
         public const int KRAJ_RADNOG_VREMENA = 20;
         public int MAKSIMALNO_OTKAZIVANJA = 10;
         public Repository.PregledRepository pregledRepository = new PregledRepository();
-        public ProstorijaRepository prostorijaRepository = new ProstorijaRepository();
+        
         public UputRepository uputRepository = new UputRepository();
         public List<DateTime> PrikazSlobodnihTermina(SlobodniTerminiUputSpecijalistiDTO podaci)
         {
