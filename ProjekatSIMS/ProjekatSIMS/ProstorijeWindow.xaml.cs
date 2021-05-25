@@ -1,4 +1,5 @@
 ﻿using Model;
+using ProjekatSIMS.Service;
 using Repository;
 using System;
 using System.Collections.Generic;
@@ -17,189 +18,121 @@ namespace ProjekatSIMS
     
     public partial class ProstorijeWindow : Window
     {
-        
+        public ProstorijaService ProstorijaService { get; set; }
+        public List<Prostorija> prostorije { get; set; }
         public ProstorijeWindow()
         {
             InitializeComponent();
             this.DataContext = this;
-            CuvanjeProstorija cuvanje = new CuvanjeProstorija(@"..\..\Fajlovi\Prostorije.txt");
-            List<Prostorija> prostorije = new List<Prostorija>();
-            prostorije = cuvanje.UcitajProstorije();
-           // ProstorijaRepository prostorijaRepository = new ProstorijaRepository(@"..\..\Fajlovi\Prostorije.txt");
+            ProstorijaService = new ProstorijaService();
+            prostorije = new List<Prostorija>();
+            prostorije = ProstorijaService.prostorijaRepository.DobaviSve();
 
-           // prostorijaRepository.prostorije = prostorijaRepository.DobaviSveProstorije();
-           // dgrProstorije.ItemsSource = prostorijaRepository.prostorije;
-           dgrProstorije.ItemsSource = prostorije;
+            dgrProstorije.ItemsSource = prostorije;
 
         }
         private void dodaj(object sender, RoutedEventArgs e)
         {
-            /*
-            Prostorija prostorija = new Prostorija();
-            prostorija.id = Id.Text;
-            prostorija.sprat = Convert.ToInt32(Sprat.Text);
+            
+            Prostorija novaProstorija = new Prostorija();
+            novaProstorija.id = Id.Text;
+            novaProstorija.sprat = Convert.ToInt32(Sprat.Text);
+            novaProstorija.kvadratura = Convert.ToDouble(Kvadratura.Text);
+
             if (Sala.IsChecked == true)
             {
                 var s = VrstaProstorije.Sala;
-                prostorija.vrsta = s;
+                novaProstorija.vrsta = s;
             }
             else
            if (Soba.IsChecked == true)
             {
-                prostorija.vrsta = VrstaProstorije.Soba;
+                novaProstorija.vrsta = VrstaProstorije.Soba;
             }
             else
             if (Kancelarija.IsChecked == true)
             {
-                prostorija.vrsta = VrstaProstorije.Kancelarija;
+                novaProstorija.vrsta = VrstaProstorije.Kancelarija;
             }
             else
             if(Magacin.IsChecked == true)
             {
-                prostorija.vrsta = VrstaProstorije.Magacin;
+                novaProstorija.vrsta = VrstaProstorije.Magacin;
             }
             else
-                prostorija.vrsta = VrstaProstorije.Ordinacija;
+                novaProstorija.vrsta = VrstaProstorije.Ordinacija;
 
-            prostorija.pregled = null;
-            prostorija.inventar = null;
-            prostorija.slobodna = true;
+            novaProstorija.pregled = null;
+            novaProstorija.inventar = null;
+            novaProstorija.slobodna = true;
 
-            ProstorijaRepository prostorijaRepository = new ProstorijaRepository(@"..\..\Fajlovi\Prostorije.txt");
-
-
-            if (prostorijaRepository.dodajProstoriju(prostorija) == false)
+            if(ProstorijaService.pronadjiProstorijuPoId(novaProstorija.id) != null)
             {
-                MessageBox.Show("Vec postoji prostorija sa datim ID!");
+                MessageBox.Show("Vec postoji prostorija sa istom oznakom!");
             }
             else
             {
-                MessageBox.Show("Prostorije su azurirane!");
-                this.Close();
-            }*/
+                prostorije.Add(novaProstorija);
+                ProstorijaService.prostorijaRepository.Sacuvaj(prostorije);
+                prostorije = ProstorijaService.prostorijaRepository.DobaviSve();
+                dgrProstorije.ItemsSource = prostorije;
+
+            }
+
             
-            
-            CuvanjeProstorija cuvanje = new CuvanjeProstorija(@"..\..\Fajlovi\Prostorije.txt");
-            Prostorija prostorija = new Prostorija();
-            prostorija.id = Id.Text;
-            prostorija.sprat = Convert.ToInt32(Sprat.Text);
-            int flag = 0;
-           if(Sala.IsChecked == true)
-            {
-                var s = VrstaProstorije.Sala;
-                prostorija.vrsta = s;
-            }
-           else
-           if(Soba.IsChecked == true)
-           {
-                prostorija.vrsta = VrstaProstorije.Soba;
-            }
-           else
-            if (Kancelarija.IsChecked == true)
-            {
-                prostorija.vrsta = VrstaProstorije.Kancelarija;
-            }
-            else
-            if (Magacin.IsChecked == true)
-            {
-                prostorija.vrsta = VrstaProstorije.Magacin;
-            }
-            else
-                prostorija.vrsta = VrstaProstorije.Ordinacija;
-
-            prostorija.kvadratura = Convert.ToDouble(Kvadratura.Text);
-
-            prostorija.pregled = null;
-            prostorija.inventar = null;
-            prostorija.slobodna = true;
-
-            List<Prostorija> prostorije = new List<Prostorija>();
-            if (cuvanje.UcitajProstorije() == null)
-            {
-                prostorije.Add(prostorija);
-            }
-            else
-            {
-                prostorije = cuvanje.UcitajProstorije();
-                foreach (Prostorija pros in prostorije)
-                {
-                    if (prostorija.id == pros.id)
-                    {
-                        MessageBox.Show("Vec postoji prostorija sa istom oznakom!");
-                        flag = 1;
-                        break;
-                    }
-
-                }
-                if (flag == 0) {
-                    prostorije.Add(prostorija);
-                }
-                
-
-            }
-                cuvanje.Sacuvaj(prostorije);
-            MessageBox.Show("Prostorije su azurirane!");
-            this.Close();
+          
 
 
         }
         private void izmeni(object sender, RoutedEventArgs e)
         {
-            /*
-            ProstorijaRepository prostorijaRepository = new ProstorijaRepository(@"..\..\Fajlovi\Prostorije.txt");
-            Prostorija p = (Prostorija)dgrProstorije.SelectedItems[0];
-            p.sprat = Sprat.Text;
-            p.kvadratura = Convert.ToDouble(Kvadratura.Text);
-            */
             
-            CuvanjeProstorija cuvanje = new CuvanjeProstorija(@"..\..\Fajlovi\Prostorije.txt");
-            // Prostorija prostorija = new Prostorija();
-            List<Prostorija> prostorije = new List<Prostorija>();
-            prostorije = cuvanje.UcitajProstorije();
-            foreach (Prostorija prostorija in prostorije)
+            
+            foreach (Prostorija p in prostorije)
             {
                 if(Convert.ToInt32(Id.Text) == 0 )
                 {
                     MessageBox.Show("Nemoguce izmeniti glavni magacin!");
                     break;
                 }
-                if (Id.Text == prostorija.id)
+                if (Id.Text == p.id)
                 {
-                    prostorija.sprat = Convert.ToInt32(Sprat.Text);
+                    p.sprat = Convert.ToInt32(Sprat.Text);
                     if (Sala.IsChecked == true)
                     {
                         var s = VrstaProstorije.Sala;
-                        prostorija.vrsta = s;
+                        p.vrsta = s;
                     }
                     else
                      if (Soba.IsChecked == true)
                     {
-                        prostorija.vrsta = VrstaProstorije.Soba;
+                        p.vrsta = VrstaProstorije.Soba;
                     }
                     else
                     if (Kancelarija.IsChecked == true)
                     {
-                        prostorija.vrsta = VrstaProstorije.Kancelarija;
+                        p.vrsta = VrstaProstorije.Kancelarija;
                     }
                     else
                     if (Magacin.IsChecked == true)
                     {
-                        prostorija.vrsta = VrstaProstorije.Magacin;
+                        p.vrsta = VrstaProstorije.Magacin;
                     }
                     else
-                        prostorija.vrsta = VrstaProstorije.Ordinacija;
+                        p.vrsta = VrstaProstorije.Ordinacija;
 
-                    prostorija.kvadratura = Convert.ToDouble(Kvadratura.Text);
-                    cuvanje.Sacuvaj(prostorije);
-
+                    p.kvadratura = Convert.ToDouble(Kvadratura.Text);
                     MessageBox.Show("Prostorije su azurirane!");
+                    ProstorijaService.prostorijaRepository.Sacuvaj(prostorije);
+                    prostorije = ProstorijaService.prostorijaRepository.DobaviSve();
+                    dgrProstorije.ItemsSource = prostorije;
+                    
                     break;
 
                 }
 
             }
             
-            this.Close();
 
             
 
@@ -209,10 +142,8 @@ namespace ProjekatSIMS
             
             
             
-            Prostorija p = (Prostorija)dgrProstorije.SelectedItems[0];
-            CuvanjeProstorija cuvanje = new CuvanjeProstorija(@"..\..\Fajlovi\Prostorije.txt");
-            List<Prostorija> prostorije = cuvanje.UcitajProstorije();
-            foreach(Prostorija pros in prostorije)
+            Prostorija prostorijaZaBrisanje = (Prostorija)dgrProstorije.SelectedItems[0];
+            foreach(Prostorija p in prostorije)
 
             {
                 if (Convert.ToInt32(Id.Text) == 0)
@@ -220,20 +151,22 @@ namespace ProjekatSIMS
                     MessageBox.Show("Nemoguce je obrisati glavni magacin!");
                     break;
                 }
-                if (p.id == pros.id)
+                if (p.id == prostorijaZaBrisanje.id)
                 {
-                    prostorije.Remove(pros);
+                    prostorije.Remove(p);
                     break;
                 }
 
             }
-            cuvanje.Sacuvaj(prostorije);
 
             MessageBox.Show("Prostorija je obrisana!");
-            this.Close();
+            ProstorijaService.prostorijaRepository.Sacuvaj(prostorije);
+            prostorije = ProstorijaService.prostorijaRepository.DobaviSve();
+            dgrProstorije.ItemsSource = prostorije;
+
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void pregledajInventar(object sender, RoutedEventArgs e)
         {
             
             Prostorija p = (Prostorija)dgrProstorije.SelectedItems[0];

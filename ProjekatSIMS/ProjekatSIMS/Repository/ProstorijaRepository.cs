@@ -9,17 +9,17 @@ namespace Repository
 
     public class ProstorijaRepository
     {
-        public String LokacijaFajla{get; set;}
-        public List<Prostorija> prostorije { get; set; }
-        
+        private const String putanja = @"..\..\..\Fajlovi\Prostorija.txt";
 
-        public ProstorijaRepository(String lokacija)
+
+        public ProstorijaRepository()
         {
-            LokacijaFajla = lokacija;
+            
         }
-        public List<Prostorija> DobaviSveProstorije()
+        public List<Prostorija> DobaviSve()
         {
-            using (StreamReader sr = new StreamReader(LokacijaFajla))
+            List<Prostorija> prostorije = new List<Prostorija>();
+            using (StreamReader sr = new StreamReader(putanja))
             {
                 string json = sr.ReadToEnd();
                 prostorije = JsonConvert.DeserializeObject<List<Prostorija>>(json);
@@ -28,52 +28,25 @@ namespace Repository
         }
 
 
-        public void SacuvajProstorije(List<Prostorija> prostorije)
+        public void Sacuvaj(List<Prostorija> prostorije)
         {
             string json = JsonConvert.SerializeObject(prostorije);
-            File.WriteAllText(LokacijaFajla, json);
+            File.WriteAllText(putanja, json);
         }
+        
 
-        public Boolean dodajProstoriju(Prostorija p)
+        public Boolean obrisiProstoriju(String idProstorijeZaBrisanje)
         {
-            //List<Prostorija> prostorije1 = DobaviSveProstorije();
-            if (DobaviSveProstorije() == null)
+            List<Prostorija> prostorije = new List<Prostorija>();
+            prostorije = DobaviSve();
+            foreach (Prostorija p in prostorije)
             {
-                prostorije.Add(p);
-                SacuvajProstorije(prostorije);
-                return true;
-            }
-            else
-            {
-                List<Prostorija> pr1 = DobaviSveProstorije();
-                foreach(Prostorija pros in pr1)
-                {
-                    if(pros.id == p.id)
-                    {
-                        return false;
-                    }
-                }
-                pr1.Add(p);
-                SacuvajProstorije(pr1);
-                return true;
-            }
-            
-
-
-
-            
-
-        }
-
-        public Boolean obrisiProstoriju(Prostorija p)
-        {
-            foreach(Prostorija pros in prostorije)
-            {
-                if(p.id == pros.id)
+                if (p.id == idProstorijeZaBrisanje)
                 {
                     prostorije.Remove(p);
-                    return true;
                     
+                    Sacuvaj(prostorije);
+                    return true;
                 }
             }
             return false;
@@ -81,6 +54,9 @@ namespace Repository
 
         public Prostorija pronadjiProstoriju(String Id)
         {
+            List<Prostorija> prostorije = new List<Prostorija>();
+            prostorije = DobaviSve();
+
             foreach(Prostorija p in prostorije)
             {
                 if(p.id == Id)
@@ -95,7 +71,7 @@ namespace Repository
 
         public List<Prostorija> DobaviOrdinacije()
         {
-            List<Prostorija> sveProstorije = DobaviSveProstorije();
+            List<Prostorija> sveProstorije = DobaviSve();
             List<Prostorija> ordinacije = new List<Prostorija>();
             foreach(Prostorija p in sveProstorije)
             {

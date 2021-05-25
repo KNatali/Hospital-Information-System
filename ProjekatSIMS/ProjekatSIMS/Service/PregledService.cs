@@ -23,7 +23,7 @@ namespace Service
         public Repository.ReceptRepository receptRepository;
         
 
-        public ProstorijaRepository prostorijaRepository = new ProstorijaRepository(@"..\..\..\Fajlovi\Prostorija.txt");
+        public ProstorijaRepository prostorijaRepository = new ProstorijaRepository();
         public UputRepository uputRepository = new UputRepository();
 
         public int zauzetPregled = 0;
@@ -750,8 +750,8 @@ namespace Service
                     p.pacijent = pac;
                     p.StatusPregleda = StatusPregleda.Zakazan;
 
-                    ProstorijaRepository file = new ProstorijaRepository(@"..\..\..\Fajlovi\Prostorija.txt");
-                    List<Prostorija> prostorije = file.DobaviSveProstorije();
+                    ProstorijaRepository file = new ProstorijaRepository();
+                    List<Prostorija> prostorije = file.DobaviSve();
                     foreach (Prostorija pr in prostorije)
                     {
                         if (pr.slobodna == true)
