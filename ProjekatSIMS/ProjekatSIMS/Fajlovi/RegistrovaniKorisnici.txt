@@ -1,2 +1,2 @@
 [{"KorisnickoIme":"0205999855092", "Lozinka":"pacijent1","Uloga":"Pacijent"},{"KorisnickoIme":"5555", "Lozinka":"pacijent2","Uloga":"Pacijent"},{"KorisnickoIme":"1702999885002", "Lozinka":"sekretar","Uloga":"Sekretar"},
-{"KorisnickoIme":"1511990855023", "Lozinka":"doktor1","Uloga":"Doktor"}]
+{"KorisnickoIme":"1511990855023", "Lozinka":"doktor1","Uloga":"Doktor"},{"KorisnickoIme":"0112998139999", "Lozinka":"upravnik123","Uloga":"Upravnik"}]

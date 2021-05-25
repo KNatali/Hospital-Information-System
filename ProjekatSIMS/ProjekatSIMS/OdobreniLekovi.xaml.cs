@@ -25,7 +25,7 @@ namespace ProjekatSIMS
             this.DataContext = this;
             LijekService = new LijekService();
             odobreniLekovi = new List<Lijek>();
-            odobreniLekovi = LijekService.DobaviOdbijene();
+            odobreniLekovi = LijekService.DobaviPoStatusu(Model.OdobravanjeLekaEnum.Odobren);
 
             dgrLekovi.ItemsSource = odobreniLekovi;
         }
@@ -40,7 +40,9 @@ namespace ProjekatSIMS
         {
             Lijek lijek = (Lijek)dgrLekovi.SelectedItems[0];
             LijekService.lijekRepoisitory.ObrisiLek(lijek);
-            odobreniLekovi = LijekService.DobaviOdbijene();
+            
+            odobreniLekovi = LijekService.DobaviPoStatusu(Model.OdobravanjeLekaEnum.Odobren); 
+            
             dgrLekovi.ItemsSource = odobreniLekovi;
         }
     }
