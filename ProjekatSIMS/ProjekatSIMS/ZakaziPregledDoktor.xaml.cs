@@ -35,7 +35,7 @@ namespace ProjekatSIMS
             this.DataContext = this;
 
             List<Prostorija> ordinacije = new List<Prostorija>();
-            ordinacije = prostorijaRepository.DobaviOrdinacije();
+            ordinacije = prostorijaRepository.DobaviPoVrsti(VrstaProstorije.Ordinacija);
             List<Pacijent> pacijenti = new List<Pacijent>();
             pacijenti = pacijentRepository.DobaviSve();
             Ordinacija.ItemsSource = ordinacije;
@@ -81,7 +81,7 @@ namespace ProjekatSIMS
 
         public void ZauzetiTermini(DateTime datum1, IntervalDatuma termin)
         {
-            if (zauzetostTerminaPregledaController.PomjeriPregled(pregled, termin))
+            if (zauzetostTerminaPregledaController.ProvjeraZauzetostiTermina(pregled, termin))
             {
                 List<String> termini = new List<String>();
                 termini = prikazSlobodnihTerminaController.PrikazTermina(pregled, termin);

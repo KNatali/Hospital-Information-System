@@ -11,7 +11,6 @@ namespace Service
         public List<String> PrikazTermina(Pregled pregled, IntervalDatuma termin)
         {
             List<Pregled> pregledi = pregledRepository.DobaviSvePregledeDoktor();
-
             List<Pregled> preglediUIstoVrijeme = PreglediUIstiDan(pregled, pregledi, termin);
             List<DateTime> slobodniTermini = DobavljanjeSLobodnihTermina(termin, preglediUIstoVrijeme, pregled);
             List<KeyValuePair<int, DateTime>> parovi = RacunanjeUdaljenostiTermina(slobodniTermini, termin);

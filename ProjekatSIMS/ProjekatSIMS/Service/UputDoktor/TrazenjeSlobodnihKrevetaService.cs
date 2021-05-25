@@ -15,7 +15,7 @@ namespace Service
         public List<SlobodniKrevetDTO> DobaviSlobodneSobe(IntervalDatuma termin)
         {
 
-            List<Prostorija> sobe = prostorijaRepository.DobaviSobe();
+            List<Prostorija> sobe = prostorijaRepository.DobaviPoVrsti(VrstaProstorije.Soba);
             return SlobodneSobeISlobodniKreveti(termin, sobe);
 
         }
@@ -91,8 +91,9 @@ namespace Service
 
         private static bool DaLiSeTerminiPoklapaju(IntervalDatuma termin, UputBolnickoLijecenje u)
         {
-            return DateTime.Compare(termin.PocetnoVrijeme, u.IntervalPocetak) >= 0 && DateTime.Compare(termin.PocetnoVrijeme, u.IntervalKraj) < 0 ||
-                                     DateTime.Compare(termin.KrajnjeVrijeme, u.IntervalPocetak) > 0 && DateTime.Compare(termin.KrajnjeVrijeme, u.IntervalKraj) <= 0;
+            return (DateTime.Compare(termin.PocetnoVrijeme, u.IntervalPocetak) >= 0 && DateTime.Compare(termin.PocetnoVrijeme, u.IntervalKraj) < 0 ||
+                   DateTime.Compare(termin.KrajnjeVrijeme, u.IntervalPocetak) > 0 && DateTime.Compare(termin.KrajnjeVrijeme, u.IntervalKraj) <= 0 ||
+                   DateTime.Compare(termin.PocetnoVrijeme, u.IntervalPocetak) <= 0 && DateTime.Compare(termin.KrajnjeVrijeme, u.IntervalKraj) >= 0);
         }
 
 

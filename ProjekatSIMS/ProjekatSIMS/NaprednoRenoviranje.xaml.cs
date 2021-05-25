@@ -185,7 +185,7 @@ namespace ProjekatSIMS
 
                     foreach (Prostorija pr in prostorijeZaSpajanje)
                     {
-                        if(ProstorijaService.prostorijaRepository.ObrisiProstoriju(pr.id) == false)
+                        if(ProstorijaService.prostorijaRepository.Obrisi(pr.id) == false)
                         {
                             MessageBox.Show("Greska u brisanju!");
                         }

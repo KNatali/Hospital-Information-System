@@ -33,7 +33,7 @@ namespace Service
 
             IntervalDatuma termin = new IntervalDatuma(terminPocetak, terminPocetak.AddMinutes(TRAJANJE_PREGLEDA));
             List<Pregled> zakazaniPregledi = pregledRepository.DobaviZakazanePreglede();
-            List<Prostorija> ordinacije = prostorijaRepository.DobaviOrdinacije();
+            List<Prostorija> ordinacije = prostorijaRepository.DobaviPoVrsti(VrstaProstorije.Ordinacija);
             List<Prostorija> slobodneOrdinacije = DobaviSlobodneOrdinacije(termin, zakazaniPregledi, ordinacije);
 
             if (slobodneOrdinacije.Count == 0)

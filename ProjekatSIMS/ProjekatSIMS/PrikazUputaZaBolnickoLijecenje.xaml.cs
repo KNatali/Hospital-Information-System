@@ -26,8 +26,8 @@ namespace ProjekatSIMS
         {
             InitializeComponent();
             pacijent = p;
-           
-            ZdravsteniKarton karton = zdravstveniKartonRepository.DobaviZdravstveniKartonZaPacijenta(pacijent);
+            ZdravsteniKarton karton = new ZdravsteniKarton();
+            karton = zdravstveniKartonRepository.DobaviZdravstveniKartonZaPacijenta(pacijent);
              Uputi.ItemsSource = karton.UputiZaBolnickoLijecenje;
         }
 
