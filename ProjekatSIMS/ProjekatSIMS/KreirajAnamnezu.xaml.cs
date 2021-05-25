@@ -18,9 +18,7 @@ using System.Windows.Shapes;
 
 namespace ProjekatSIMS
 {
-    /// <summary>
-    /// Interaction logic for KreirajAnamnezu.xaml
-    /// </summary>
+    
     public partial class KreirajAnamnezu : Page
     {
         public Pacijent Pacijent { get; set; }
@@ -43,44 +41,6 @@ namespace ProjekatSIMS
             ZdravstveniKartonDoktor z = new ZdravstveniKartonDoktor(Pacijent);
 
             this.NavigationService.Navigate(z);
-
-            /* AnamnezaRepository anamnezaRepository = new AnamnezaRepository();
-
-             Anamneza a = new Anamneza();
-             a.OpisAnamneze = Opis.Text;
-             a.Datum = (DateTime)Datum.SelectedDate;
-
-
-             List<ZdravsteniKarton> kartoni = new List<ZdravsteniKarton>();
-
-             using (StreamReader r = new StreamReader(@"..\..\..\Fajlovi\ZdravstveniKarton.txt"))
-             {
-                 string json = r.ReadToEnd();
-                 kartoni = JsonConvert.DeserializeObject<List<ZdravsteniKarton>>(json);
-             }
-             foreach(ZdravsteniKarton k in kartoni)
-             {
-                 if (k.pacijent.Jmbg == pacijent.Jmbg)
-                 {
-                     //a.zdravsteniKarton = k;
-                     if (k.anamneza == null)
-                     {
-                         k.anamneza = new List<Anamneza>();
-                         k.anamneza.Add(a);
-                     }
-
-                     else
-                     {
-                         k.anamneza.Add(a);
-                     }
-
-                 }
-             }
-
-             string newJson = JsonConvert.SerializeObject(kartoni);
-             File.WriteAllText(@"..\..\..\Fajlovi\ZdravstveniKarton.txt", newJson);
-             */
-
 
 
         }

@@ -30,18 +30,7 @@ namespace ProjekatSIMS
             InitializeComponent();
         
             this.DataContext = this;
-            /*List<Lijek> SviLijekovi = new List<Lijek>();
-            List<Lijek> VerifikovaniLijekovi = new List<Lijek>();
-            using (StreamReader r = new StreamReader(@"..\..\..\Fajlovi\Lijek.txt"))
-            {
-                string json = r.ReadToEnd();
-                SviLijekovi = JsonConvert.DeserializeObject<List<Lijek>>(json);
-            }
-            foreach (Lijek l in SviLijekovi)
-            {
-                if (l.Status != OdobravanjeLekaEnum.Ceka)
-                    VerifikovaniLijekovi.Add(l);
-            }*/
+          
             SviLijekovi = new List<Lijek>();
             VerifikovaniLijekovi = new List<Lijek>();
             TipLijekaPremaPrikazu tip = TipLijekaPremaPrikazu.Verifikovan;

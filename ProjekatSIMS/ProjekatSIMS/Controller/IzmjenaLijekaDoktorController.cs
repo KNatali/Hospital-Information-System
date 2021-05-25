@@ -21,9 +21,6 @@ namespace Controller
             return izmjenaLijekaDoktorService.DodavanjeAlternativnihLijekova(noviAlternativniLijek, lijek);
         }
 
-        public void SacuvajIzmjene(Lijek lijek, ItemCollection sastojci, ItemCollection alternativniLijekovi)
-        {
-            izmjenaLijekaDoktorService.SacuvajIzmjene(lijek, sastojci, alternativniLijekovi);
-        }
+        
     }
 }
