@@ -8,21 +8,21 @@
         mc:Ignorable="d"
         Title="OdabirPacijentaHitnoSWindow" Height="568" Width="924" Background="#d1e3ff">
     <Grid>
-        <Label Width="218" VerticalAlignment="Top" Margin="0,88,0,0" Height="50" HorizontalAlignment="Center" FontSize="22" Foreground="#1963bf" FontWeight="Bold" Content="Odaberite pacijenta"/>
-        <Button Content="Otkaži" Click="Otkazi" HorizontalAlignment="Left" Margin="60,440,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
-        <Button Content="Zakaži" Click="Zakazi" HorizontalAlignment="Left" Margin="684,440,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
-        <ComboBox HorizontalAlignment="Center" x:Name="Nalog" FontSize="25" Margin="0,143,0,0" VerticalAlignment="Top" Width="314" Height="38" SelectionChanged="Prikazi" BorderBrush="#1963bf" Foreground="#1963bf">
+        <Label Width="444" VerticalAlignment="Top" Margin="0,88,0,0" Height="50" HorizontalAlignment="Center" FontSize="22" Foreground="#1963bf" FontWeight="Bold" Content="Odaberite pacijenta i specijaliciju doktora"/>
+        <Button Content="Odustani" Click="Odustani" HorizontalAlignment="Left" Style="{StaticResource Dugme}" Margin="60,440,0,0" VerticalAlignment="Top"/>
+        <Button Content="Zakaži" Click="Zakazi_pregled" HorizontalAlignment="Left" Style="{StaticResource Dugme}" Margin="684,440,0,0" VerticalAlignment="Top"/>
+        <ComboBox HorizontalAlignment="Left" x:Name="Nalog" FontSize="25" Margin="429,186,0,0" VerticalAlignment="Top" Width="314" Height="38" SelectionChanged="Prikazi" BorderBrush="#1963bf" Foreground="#1963bf">
             <ComboBoxItem Content="Kreiraj hitan nalog"/>
             <ComboBoxItem Content="Odaberi postojeći nalog"/>
         </ComboBox>
-        <Label Content="JMBG" HorizontalAlignment="Left" x:Name="LabelaJMBG" Visibility="Hidden" FontSize="25" Height="40" Margin="282,214,0,0" VerticalAlignment="Top" Width="89" Foreground="#1963bf" FontWeight="DemiBold"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Jmbg" Visibility="Hidden" FontSize="25" Margin="409,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" BorderBrush="#1963bf" Foreground="#1963bf"/>
-        <Label Content="Ime" HorizontalAlignment="Left" x:Name="LabelaIme" Visibility="Hidden" FontSize="25" Height="40" Margin="282,270,0,0" VerticalAlignment="Top" Width="72" Foreground="#1963bf" FontWeight="DemiBold"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Ime" Visibility="Hidden" FontSize="25" Margin="409,270,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" BorderBrush="#1963bf" Foreground="#1963bf"/>
-        <Label Content="Prezime" HorizontalAlignment="Left" x:Name="LabelaPrezime" Visibility="Hidden" FontSize="25" Height="42" Margin="282,324,0,0" VerticalAlignment="Top" Width="108" Foreground="#1963bf" FontWeight="DemiBold"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Prezime" Visibility="Hidden" FontSize="25" Margin="409,324,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <Label Content="JMBG" HorizontalAlignment="Left" x:Name="LabelaJMBG" Visibility="Hidden" FontSize="25" Height="40" Margin="290,254,0,0" VerticalAlignment="Top" Width="89" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Jmbg" Visibility="Hidden" FontSize="25" Margin="417,254,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <Label Content="Ime" HorizontalAlignment="Left" x:Name="LabelaIme" Visibility="Hidden" FontSize="25" Height="40" Margin="290,310,0,0" VerticalAlignment="Top" Width="72" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Ime" Visibility="Hidden" FontSize="25" Margin="417,310,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <Label Content="Prezime" HorizontalAlignment="Left" x:Name="LabelaPrezime" Visibility="Hidden" FontSize="25" Height="42" Margin="290,364,0,0" VerticalAlignment="Top" Width="108" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Prezime" Visibility="Hidden" FontSize="25" Margin="417,364,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" BorderBrush="#1963bf" Foreground="#1963bf"/>
         <DataGrid x:Name="dataGridPacijenti" ItemsSource="{Binding Pacijenti}" IsReadOnly="True" BorderBrush="#1963bf" Foreground="#1963bf"
-                  SelectionMode="Single" Visibility="Hidden" AutoGenerateColumns="False" Margin="180,201,179,146" FontSize="20">
+                  SelectionMode="Single" Visibility="Hidden" AutoGenerateColumns="False" Margin="180,249,171,125" FontSize="20">
             <DataGrid.Columns>
 
                 <DataGridTextColumn Header="Ime" Binding="{Binding Ime}" Width="*"/>
@@ -44,5 +44,8 @@
             </StackPanel>
         </Label>
         <Label Content="ZDRAVO KORPORACIJA" FontSize="25" Margin="388,34,108,445" Foreground="#1963bf" FontWeight="Bold"/>
+        <ComboBox HorizontalAlignment="Left" x:Name="Oblasti" FontSize="25" Margin="553,138,0,0" VerticalAlignment="Top" Width="190" Height="38" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <Label Content="Odaberite pacijenta" HorizontalAlignment="Left" FontSize="25"  Height="46" Margin="170,182,0,0" VerticalAlignment="Top" Width="235" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <Label Content="Odaberite specijalizaciju doktora" HorizontalAlignment="Left" FontSize="25"  Height="46" Margin="170,131,0,0" VerticalAlignment="Top" Width="379" Foreground="#1963bf" FontWeight="DemiBold"/>
     </Grid>
 </Window>

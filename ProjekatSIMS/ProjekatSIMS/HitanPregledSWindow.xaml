@@ -11,7 +11,7 @@
         <Label Width="306" VerticalAlignment="Top" Margin="319,89,0,0" Height="50" HorizontalAlignment="Left" FontSize="22" Foreground="#1963bf" FontWeight="Bold" Content="Zakazivanje hitnog termina"/>
         <Button Content="Zakaži" Click="Zakazi" HorizontalAlignment="Center" Margin="0,440,0,0" VerticalAlignment="Top" Height="60" Width="179" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
         <ComboBox HorizontalAlignment="Left" x:Name="Oblasti" FontSize="25" Margin="60,150,0,0" VerticalAlignment="Top" Width="190" Height="38" BorderBrush="#1963bf" Foreground="#1963bf"/>
-        <Button Content="Vidi zauzete termine" Click="PrikazZauzetihTerminaIzOdabraneOblasti" HorizontalAlignment="Left" Margin="300,150,0,0" VerticalAlignment="Top" Height="38" Width="246" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <Button Content="Vidi zauzete termine" Click="PrikazZauzetihTerminaIzOdabraneOblasti" Style="{StaticResource Dugme}" HorizontalAlignment="Left" Margin="300,150,0,0" VerticalAlignment="Top" Height="63" Width="252"/>
         <DataGrid x:Name="dataGridPregledi" ItemsSource="{Binding Pregledi}" IsReadOnly="True" Visibility="Hidden"
             SelectionMode="Single" FontSize="15" AutoGenerateColumns="False" Margin="175,218,174,145" BorderBrush="#1963bf" Foreground="#1963bf">
             <DataGrid.Columns>
@@ -23,7 +23,7 @@
 
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Vidi slobodne termine" Click="PrikazSlobodnihTermina" HorizontalAlignment="Left" Margin="591,150,0,0" VerticalAlignment="Top" Height="38" Width="261" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <Button Content="Vidi slobodne termine" Click="PrikazSlobodnihTermina" Style="{StaticResource Dugme}" HorizontalAlignment="Left" Margin="591,150,0,0" VerticalAlignment="Top" Height="63" Width="264"/>
         <DataGrid x:Name="dataGridSlobodniTermini" ItemsSource="{Binding Termini}" IsReadOnly="True" Visibility="Hidden"
             SelectionMode="Single" FontSize="15" AutoGenerateColumns="False" Margin="174,218,174,145" BorderBrush="#1963bf" Foreground="#1963bf">
             <DataGrid.Columns>

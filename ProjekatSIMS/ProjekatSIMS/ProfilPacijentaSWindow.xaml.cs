@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using Controller;
+using Model;
 using Repository;
 using System;
 using System.Collections.Generic;
@@ -18,98 +19,66 @@ namespace ProjekatSIMS
     {
         public OsobaRepository fajl { get; set; }
         public List<Pacijent> Pacijenti { get; set; }
-        public Pacijent pac { get; set; }
-        public ProfilPacijentaSWindow(Pacijent pacijent)
+        public Pacijent pacijent { get; set; }
+        public ProfilPacijentaSWindow(Pacijent p)
         {
             InitializeComponent();
             this.DataContext = this;
-            pac = pacijent;
-            Jmbg.Text = pac.Jmbg;
-            Ime.Text = pac.Ime;
-            Prezime.Text = pac.Prezime;
-            Datum.Text = pac.DatumRodjenja.ToString();
-            Mail.Text = pac.Email;
-            Telefon.Text = pac.BrojTelefona;
-            Adresa.Text = pac.Adresa;
-            /*Pacijenti = new List<Pacijent>();
-            List<Pacijent> ListaPacijenata = new List<Pacijent>();
-            OsobaRepository fajl = new OsobaRepository(@"..\..\..\Fajlovi\Pacijent.txt");
-            ListaPacijenata = fajl.DobaviPacijente();
-            foreach (Pacijent p in ListaPacijenata)
-            {
-                if (p.Ime == ime && p.Prezime == prezime)
-                {
-                    Pacijenti.Add(p);
-                    pac = p;
-                }
-            }*/
+            pacijent = p;
+            Jmbg.Text = pacijent.Jmbg;
+            Ime.Text = pacijent.Ime;
+            Prezime.Text = pacijent.Prezime;
+            Datum.Text = pacijent.DatumRodjenja.ToString();
+            Mail.Text = pacijent.Email;
+            Telefon.Text = pacijent.BrojTelefona;
+            Adresa.Text = pacijent.Adresa;
         }
-        private void Sacuvaj(object sender, RoutedEventArgs e)
+        private void Sacuvaj_izmene(object sender, RoutedEventArgs e)
         {
-            pac.Ime = Ime.Text;
-            pac.Prezime = Prezime.Text;
-            pac.BrojTelefona = Telefon.Text;
-            pac.Email = Mail.Text;
-            pac.Adresa = Adresa.Text;
-            List<Pacijent> ListaPacijenata = new List<Pacijent>();
-            OsobaRepository fajl = new OsobaRepository(@"..\..\..\Fajlovi\Pacijent.txt");
-            ListaPacijenata = fajl.DobaviPacijente();
-            foreach (Pacijent p in ListaPacijenata)
-            {
-                if (pac.Jmbg == p.Jmbg)
-                {
-                    p.Ime = pac.Ime;
-                    p.Prezime = pac.Prezime;
-                    p.BrojTelefona = pac.BrojTelefona;
-                    p.Email = pac.Email;
-                    p.Adresa = pac.Adresa;
-                }
-            }
-            fajl.Sacuvaj(ListaPacijenata);
-
+            PrikupljanjePodatakaPacijentaIzTextBoxa();
+            PacijentController pacijentController = new PacijentController();
+            if (pacijentController.CuvanjeIzmenjenjihPodataka(pacijent) == true)
+                MessageBox.Show("Podaci pacijenta su uspešno izmenjeni.");
             this.Close();
+        }
+        private void PrikupljanjePodatakaPacijentaIzTextBoxa()
+        {
+            pacijent.Ime = Ime.Text;
+            pacijent.Prezime = Prezime.Text;
+            pacijent.BrojTelefona = Telefon.Text;
+            pacijent.Email = Mail.Text;
+            pacijent.Adresa = Adresa.Text;
         }
         private void Nazad(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
-        private void Obrisi(object sender, RoutedEventArgs e)
+        private void Obrisi_profil(object sender, RoutedEventArgs e)
         {
             MessageBoxResult ret = MessageBox.Show("Da li želite da obrišete pacijenta?", "PROVERA", MessageBoxButton.YesNo);
-            switch (ret)
+            if(ret==MessageBoxResult.Yes)
             {
-                case MessageBoxResult.Yes:
-                    if (pac.ObrisiPacijent() == true)
-                    {
-                        OsobaRepository fajl = new OsobaRepository(@"..\..\..\Fajlovi\Pacijent.txt");
-                        List<Pacijent> pacijent = fajl.DobaviPacijente();
-                        foreach (Pacijent pa in pacijent)
-                        {
-                            if (pa.Jmbg == pac.Jmbg)
-                            {
-                                pacijent.Remove(pa);
-                                break;
-                            }
-                        }
-                        fajl.Sacuvaj(pacijent);
-                        MessageBox.Show("Pacijent je uspešno obrisan.", "OBAVEŠTENJE");
-                        this.Close();
-                    }
-                    break;
-                case MessageBoxResult.No:
-                    break;
+                PacijentController pacijentController = new PacijentController();
+                BrisanjePacijenta(pacijentController);
+                this.Close();
             }
         }
+
+        private void BrisanjePacijenta(PacijentController pacijentController)
+        {
+            if (pacijentController.ObrisiPacijenta(pacijent) == true)
+                MessageBox.Show("Pacijent je uspešno obrisan.", "OBAVEŠTENJE");
+        }
+
         private void Lista_alergena(object sender, RoutedEventArgs e)
         {
-            //Pacijent p = (Pacijent)dataGridPacijenti.SelectedItems[0];
-            ListaAlergenaSWindow la = new ListaAlergenaSWindow(pac);
+            ListaAlergenaSWindow la = new ListaAlergenaSWindow(pacijent);
             la.Show();
         }
 
-        private void Zakazi(object sender, RoutedEventArgs e)
+        private void Zakazi_pregled(object sender, RoutedEventArgs e)
         {
-            OdabirPrioritetaSWindow op = new OdabirPrioritetaSWindow(pac);
+            OdabirPrioritetaSWindow op = new OdabirPrioritetaSWindow(pacijent);
             op.Show();
         }
 

@@ -14,9 +14,7 @@ using System.Windows.Shapes;
 
 namespace ProjekatSIMS
 {
-    /// <summary>
-    /// Interaction logic for ZdravstveniKartonDoktor.xaml
-    /// </summary>
+  
     public partial class ZdravstveniKartonDoktor : Page
     {
         public Pacijent Pacijent { get; set; }
@@ -49,6 +47,13 @@ namespace ProjekatSIMS
 
             this.NavigationService.Navigate(a);
         }
+
+        private void PrikazUputa(object sender, RoutedEventArgs e)
+        {
+            PrikazUputaZaBolnickoLijecenje a = new PrikazUputaZaBolnickoLijecenje(Pacijent);
+
+            this.NavigationService.Navigate(a);
+        }
         private void IzdavanjeRecepta(object sender, RoutedEventArgs e)
         {
            IzdajReceptDoktor a = new IzdajReceptDoktor(Pacijent);
@@ -61,6 +66,12 @@ namespace ProjekatSIMS
             PrikazRecepataDoktor a = new PrikazRecepataDoktor(Pacijent);
 
             this.NavigationService.Navigate(a);
+        }
+
+        private void Nazad(object sender, RoutedEventArgs e)
+        {
+
+            this.NavigationService.GoBack();
         }
     }
 }

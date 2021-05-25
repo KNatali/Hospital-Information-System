@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using Controller;
+using Model;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -16,30 +17,29 @@ using System.Windows.Shapes;
 
 namespace ProjekatSIMS
 {
-    /// <summary>
-    /// Interaction logic for AzuriranjeAnamnezeDoktor.xaml
-    /// </summary>
+
     public partial class AzuriranjeAnamnezeDoktor : Page
     {
+        private AzuriranjeAnamnezeController azuriranjeAnamnezeController = new AzuriranjeAnamnezeController();
         public ZdravsteniKarton zk = new ZdravsteniKarton();
         public Pacijent pacijent;
-        public Anamneza a;
+        public Anamneza anamneza;
         public AzuriranjeAnamnezeDoktor(Pacijent p,Anamneza an)
         {
             InitializeComponent();
             this.DataContext = this;
-            Datum.Text = an.datum.ToString();
+            Datum.Text = an.Datum.ToString();
             Opis.Text = an.OpisAnamneze;
             pacijent = p;
-            a = an;
+            anamneza = an;
 
         }
 
         private void Azuriranje(object sender, RoutedEventArgs e)
         {
-
+            azuriranjeAnamnezeController.AzuriranjeAnamneze(anamneza, Opis.Text, pacijent);
             
-            List<ZdravsteniKarton> kartoni = new List<ZdravsteniKarton>();
+           /* List<ZdravsteniKarton> kartoni = new List<ZdravsteniKarton>();
 
             using (StreamReader r = new StreamReader(@"..\..\..\Fajlovi\ZdravstveniKarton.txt"))
             {
@@ -56,9 +56,9 @@ namespace ProjekatSIMS
                         foreach (Anamneza i in k.anamneza)
                         {
 
-                            if (i.OpisAnamneze == a.OpisAnamneze)
+                            if (i.OpisAnamneze == anamneza.OpisAnamneze)
 
-                                i.OpisAnamneze = Opis.Text;
+                                i.OpisAnamneze= Opis.Text;
                                
                         }
                     }
@@ -68,7 +68,7 @@ namespace ProjekatSIMS
 
             string newJson = JsonConvert.SerializeObject(kartoni);
             File.WriteAllText(@"..\..\..\Fajlovi\ZdravstveniKarton.txt", newJson);
-
+           */
             PrikazAnamneza pa = new PrikazAnamneza(pacijent);
 
             this.NavigationService.Navigate(pa);

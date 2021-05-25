@@ -9,7 +9,9 @@ namespace Repository
 
     public class ProstorijaRepository
     {
+
         private const String putanja = @"..\..\..\Fajlovi\Prostorija.txt";
+
 
 
         public ProstorijaRepository()
@@ -80,6 +82,32 @@ namespace Repository
             }
 
             return ordinacije;
+        }
+
+        public List<Prostorija> DobaviSale()
+        {
+            List<Prostorija> sveProstorije = DobaviSveProstorije();
+            List<Prostorija> ordinacije = new List<Prostorija>();
+            foreach (Prostorija p in sveProstorije)
+            {
+                if (p.vrsta == VrstaProstorije.Sala)
+                    ordinacije.Add(p);
+            }
+
+            return ordinacije;
+        }
+
+        public List<Prostorija> DobaviSobe()
+        {
+            List<Prostorija> sveProstorije = DobaviSveProstorije();
+            List<Prostorija> sobe = new List<Prostorija>();
+            foreach (Prostorija p in sveProstorije)
+            {
+                if (p.vrsta == VrstaProstorije.Soba)
+                    sobe.Add(p);
+            }
+
+            return sobe;
         }
 
     }

@@ -1,4 +1,6 @@
+using Service;
 using System;
+using Model;
 using System.Collections.Generic;
 
 namespace Controller
@@ -34,7 +36,17 @@ namespace Controller
          return null;
       }
    
-      public Service.ZdravstvenikartonService zdravstvenikartonService;
-   
-   }
+      public Service.ZdravstvenikartonService zdravstvenikartonService = new ZdravstvenikartonService();
+        public Boolean kreiranjeAlergena(String alergen, Pacijent p)
+        {
+            if (zdravstvenikartonService.kreiranjeAlergena(alergen,p) == true)
+                return true;
+            else
+                return false;
+        }
+        public List<String> DobaviSveAlergene()
+        {
+            return zdravstvenikartonService.DobaviSveAlergene();
+        }
+    }
 }

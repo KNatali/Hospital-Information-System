@@ -1,4 +1,5 @@
 using Model;
+using ProjekatSIMS.Service;
 using Service;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace Controller
    {
 
         public Service.PregledService pregledService = new PregledService();
+        public ZakazivanjePregledaService zakazivanjePregledaService = new ZakazivanjePregledaService();
         public Model.Pregled ZakaziGuestPregledController(DateTime datumPregleda, Model.Pacijent pacijent)
       {
          // TODO: implement
@@ -33,58 +35,20 @@ namespace Controller
             return false;
 
         }
-        public Boolean ZakazivanjePregleda(ComboBox Termin,String jmbg,Prostorija prostorija,DateTime datum1,DateTime datum2)
-      {
-           
-            if (pregledService.ZakazivanjePregleda(Termin,jmbg, prostorija, datum1, datum2))
-                return true;
+        
 
-            return false;
-
-      }
-
-        public Boolean OtkazivanjePregledaDoktor(Pregled p)
-        {
-            if (pregledService.OtkazivanjePregledaDoktor(p))
-                return true;
-
-            return false;
-
-        }
+       
         public Boolean OtkazivanjeSekretar(Pregled p)
         {
             if (pregledService.OtkazivanjeSekretar(p))
                 return true;
             return false;
         }
-        public Boolean IzmjenaPregledaDoktor(Pregled p,DateTime datum)
-        {
-            if (pregledService.IzmjenaPregledaDoktor(p,datum))
-                return true;
+      
 
-            return false;
+       
 
-        }
-
-        public List<DateTime> PrikazSlobodnihTermina(Doktor doktor,DateTime pocetnoVrijeme,DateTime krajnjeVrijeme,int pocetniInterval,int krajnjiInterval)
-        {
-            List<DateTime> termini= pregledService.PrikazSlobodnihTermina(doktor, pocetnoVrijeme, krajnjeVrijeme,pocetniInterval,krajnjiInterval);
-
-            return termini;
-        }
-
-        public Boolean IzdavanjeUputa(Pacijent pacijent, Doktor doktor, DateTime izabraniTermin)
-        {
-            if(pregledService.IzdavanjeUputa(pacijent, doktor, izabraniTermin))
-                return true;
-            return false;
-        }
-
-        public List<Pregled> DobaviSvePreglede()
-        {
-           return pregledService.DobaviSvePreglede();
-
-        }
+      
      public List<Pregled> DobaviSveSekretar()
      {
          return pregledService.DobaviSveSekretar();
@@ -120,7 +84,7 @@ namespace Controller
          return true;
       }
 
-        public Boolean ZakazivanjePregledaPacijent(String ime, String prezime, String imeDoktora, String prezimeDoktora, DateTime datum, String jmbg)
+       /* public Boolean ZakazivanjePregledaPacijent(String ime, String prezime, String imeDoktora, String prezimeDoktora, DateTime datum, String jmbg)
         {
 
             if (pregledService.ZakazivanjePregledaPacijent(ime, prezime, imeDoktora,prezimeDoktora,datum,jmbg))
@@ -128,10 +92,19 @@ namespace Controller
 
             return false;
 
+        } */
+        public Boolean ZakazivanjePregledaPacijent(String ime, String prezime, String imeDoktora, String prezimeDoktora, DateTime datum, String jmbg)
+        {
+
+            if (zakazivanjePregledaService.ZakazivanjePregledaPacijent(ime, prezime, imeDoktora, prezimeDoktora, datum, jmbg))
+                return true;
+
+            return false;
+
         }
         public Boolean DaLiJeTerminZauzet()
         {
-            if(pregledService.OdredjivanjePrioritetaPacijent() == true)
+            if(zakazivanjePregledaService.OdredjivanjePrioritetaPacijent() == true)
             {
                 return true;
             }

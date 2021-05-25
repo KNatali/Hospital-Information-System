@@ -1,0 +1,148 @@
+﻿<Page x:Class="ProjekatSIMS.IzdavanjeUputaSpecijalistiDoktor"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ProjekatSIMS"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="IzdavanjeUputaDoktor">
+
+    <Page.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="FontSize" Value="16"/>
+
+        </Style>
+        <Style  TargetType="TextBox">
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="BorderBrush" Value="#287D7D"/>
+            <Style.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10" />
+
+                </Style>
+            </Style.Resources>
+        </Style>
+
+        <Style TargetType="{x:Type DatePickerTextBox}">
+            <Setter Property="Background" Value="Transparent"></Setter>
+            <Setter Property="BorderBrush" Value="black"></Setter>
+            <Setter Property="BorderThickness" Value="0"></Setter>
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Style.Resources>
+
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10" />
+
+                </Style>
+            </Style.Resources>
+
+        </Style>
+        <Style TargetType="DatePicker">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="BorderBrush" Value="#287D7D"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Background" Value="white"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Style.Resources>
+
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10" />
+
+                </Style>
+            </Style.Resources>
+        </Style>
+        <Style x:Key="styleCalendar" TargetType="{x:Type Calendar}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Calendar}">
+                        <!-- Wrapping in ViewBox will enlarge calendar of that size.-->
+                        <Viewbox Height="270"
+                         Width="270">
+                            <CalendarItem x:Name="PART_CalendarItem"
+                                  Background="{TemplateBinding Background}"
+                                  BorderBrush="{TemplateBinding BorderBrush}"
+                                  BorderThickness="{TemplateBinding BorderThickness}"/>
+                        </Viewbox>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+    </Page.Resources>
+    <Grid Margin="30">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="1.2*"/>
+        </Grid.ColumnDefinitions>
+        
+        <Label Grid.Row="0" Grid.ColumnSpan="3" Content="Izdavanje uputa" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="17" FontWeight="SemiBold"/>
+        <Label Grid.Row="1" Grid.Column="0" Content="Izaberi spacijalizaciju:" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
+        <ComboBox Grid.Row="1" Grid.Column="1"   SelectionChanged="DoktoriOdabraneSpecijalizacije" Name="Specijalizacije" HorizontalAlignment="Stretch"  Height="30"  Style="{StaticResource ComboBoxFlatStyle}" VerticalAlignment="Center" />
+        <Label Grid.Row="2" Grid.Column="0" Content="Izaberi doktora:" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+        <ComboBox  SelectedItem="" Grid.Row="2" Grid.Column="1" Name="Doktori" HorizontalAlignment="Stretch"  VerticalAlignment="Center" Height="30" Style="{StaticResource ComboBoxFlatStyle}"  ItemsSource="{Binding Path=doktoriPrikaz}">
+
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Path=Ime}"/>
+                        <TextBlock Text=" "/>
+                        <TextBlock Text="{Binding Path=Prezime}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Label Grid.Row="3" Grid.Column="0" Content="Pocetno vrijeme:" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <DatePicker Grid.Row="3" Grid.Column="1"  CalendarStyle="{StaticResource styleCalendar}" Name="DatumPocetak" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+        <Label Content="Krajnje vrijeme:"  Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" />
+        <DatePicker Name="DatumKraj" Grid.Row="4" Grid.Column="1" CalendarStyle="{StaticResource styleCalendar}" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+       
+        
+        <ComboBox Margin="30,0,0,0" Grid.Row="3" Grid.Column="2" Name="Termini" HorizontalAlignment="Stretch"  VerticalAlignment="Center" Height="30" Style="{StaticResource ComboBoxFlatStyle}" />
+        <Button Margin="30,0,0,0" Grid.Row="2" Grid.Column="2" Content="Prikazi slobodne termine" Click="PrikazSlobodnihTermina" HorizontalAlignment="Stretch"  VerticalAlignment="Center" Style="{StaticResource btnIstakni}"/>
+
+        <Label Grid.Row="5" Grid.Column="0" Content="Vremenski interval :" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
+        <Grid Grid.Row="5" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+
+            </Grid.ColumnDefinitions>
+            <TextBox  Grid.Column="0"  Name="IntervalPocetak" HorizontalAlignment="Stretch"  Text="" TextWrapping="Wrap" VerticalAlignment="Center"/>
+            <Label   Grid.Column="1" VerticalAlignment="Center" HorizontalContentAlignment="Center">:</Label>
+            <TextBox  Grid.Column="2"  Name="IntervalKraj" HorizontalAlignment="Stretch"  Text="" TextWrapping="Wrap" VerticalAlignment="Center" />
+
+        </Grid>
+
+        <Label  Content="Od"  HorizontalAlignment="Left" Margin="242,344,0,0" VerticalAlignment="Top"/>
+        <Label Content="Do" HorizontalAlignment="Left" Margin="347,344,0,0" VerticalAlignment="Top"/>
+
+        <StackPanel  Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2"  HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
+            <Button Content="Potvrdi" Width="100" Margin="0,0,20,0" Click="IzdavanjeUputa" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnStandard}"/>
+            <Button Content="Odustani" Width="100"  HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnStandard}"/>
+
+        </StackPanel>
+
+
+    </Grid>
+</Page>

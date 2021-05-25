@@ -1,5 +1,7 @@
-﻿using Model;
+﻿using Controller;
+using Model;
 using Newtonsoft.Json;
+using ProjekatSIMS.DTO;
 using ProjekatSIMS.Repository;
 using Repository;
 using System;
@@ -10,18 +12,16 @@ using System.Windows.Controls;
 
 namespace ProjekatSIMS
 {
-    /// <summary>
-    /// Interaction logic for IzdajReceptDoktor.xaml
-    /// </summary>
-    /// 
-
+  
     public partial class IzdajReceptDoktor : Page
     {
         public List<Lijek> Lijekovi { get; set; }
-        public ZdravsteniKarton zk { get; set; }
-        public Lijek l { get; set; }
+        public ZdravsteniKarton zdravstveniKarton { get; set; }
+        public Lijek izabraniLijek { get; set; }
+        private ReceptController receptController = new ReceptController();
         private LijekRepository lijekRepository = new LijekRepository();
         private ReceptRepository receptRepository = new ReceptRepository();
+        private ZdravstveniKartonRepository zdravstveniKartonRepository = new ZdravstveniKartonRepository();
 
         public Pacijent Pacijent { get; set; }
         public IzdajReceptDoktor(Pacijent p)
@@ -38,8 +38,7 @@ namespace ProjekatSIMS
             Ime.Text = p.Ime;
             Prezime.Text = p.Prezime;
             Lijekovi = new List<Lijek>();
-            List<Lijek> lijekovi = new List<Lijek>();
-            lijekovi = lijekRepository.DobaviSve();
+            List<Lijek>  lijekovi = lijekRepository.DobaviSve();
             foreach (Lijek l in lijekovi)
             {
                 Lijekovi.Add(l);
@@ -48,13 +47,17 @@ namespace ProjekatSIMS
 
         private void IzdavanjeRecepta(object sender, RoutedEventArgs e)
         {
-            DateTime datumPrveKonzumacije = FormiranjeVremenaPrveKonzumacije();
+            izabraniLijek = (Lijek)Lijek.SelectedItem;
+            int izabranoTrajanje = Convert.ToInt32(Trajanje.Text);
+            DateTime izabraniDatum = (DateTime)Datum.SelectedDate;
+            String izabraniPeriod = Period.Text;
+            double sat = Convert.ToDouble(Sat.Text);
+            double minut = Convert.ToDouble(Minut.Text);
+            String izabranaKolicina = Kolicina.Text;
 
-            string ucestalostKoriscenja = KreiranjeTekstaZaUputstvo();
-            Recept r = KreiranjeRecepta(datumPrveKonzumacije, ucestalostKoriscenja);
-
-
-            receptRepository.DodajRecept(r);
+            ReceptDTO receptDTO = new ReceptDTO(Pacijent,izabraniLijek.NazivLeka, izabranoTrajanje, izabraniDatum, sat, minut,izabraniPeriod, izabranaKolicina);
+            receptController.IzdavanjeRecepta(receptDTO);
+           
 
             MessageBox.Show("Uspjesno je izdat recept");
             ZdravstveniKartonDoktor z = new ZdravstveniKartonDoktor(Pacijent);
@@ -62,7 +65,7 @@ namespace ProjekatSIMS
 
         }
 
-        private DateTime FormiranjeVremenaPrveKonzumacije()
+       /* private DateTime FormiranjeVremenaPrveKonzumacije()
         {
             DateTime izabraniDatum = (DateTime)Datum.SelectedDate;
             DateTime datum1 = new DateTime();
@@ -78,8 +81,8 @@ namespace ProjekatSIMS
             Recept r = new Recept();
             r.DatumPropisivanjaLeka = datum1;
             r.Kolicina = Kolicina.Text;
-            r.zdravsteniKarton = zk;
-            r.NazivLeka = l.NazivLeka;
+            r.zdravsteniKarton = zdravstveniKarton;
+            r.NazivLeka = izabraniLijek.NazivLeka;
             r.Uputstvo = "Terapija traje " + Trajanje.Text + " dana i lijek se uzima " + ucestalostKoriscenja;
             return r;
         }
@@ -96,40 +99,24 @@ namespace ProjekatSIMS
           
             return ucestalostKoriscenja;
         }
-
+       */
         private void Alergican(object sender, SelectionChangedEventArgs e)
         {
 
-            l = (Lijek)Lijek.SelectedItem;
+            izabraniLijek = (Lijek)Lijek.SelectedItem;
+            if(receptController.IsPacijentAlergican(izabraniLijek, Pacijent))
+                MessageBox.Show("Pacijent je alergican na izabrani lijek. Izaberi novi!");
+           
+            
+            
 
-            List<String> alergeni = new List<String>();
-            //provjera da li je pacijent alergican na to
-            List<ZdravsteniKarton> kartoni = new List<ZdravsteniKarton>();
+        }
 
-            using (StreamReader sr = new StreamReader(@"..\..\..\Fajlovi\ZdravstveniKarton.txt"))
+       /* private void IsPcijentAlergicanNaLijek(List<string> alergeni)
+        {
+            if (izabraniLijek.Alergeni != null)
             {
-                string json = sr.ReadToEnd();
-                kartoni = JsonConvert.DeserializeObject<List<ZdravsteniKarton>>(json);
-            }
-
-            foreach (ZdravsteniKarton k in kartoni)
-            {
-                if (k.pacijent.Jmbg == Pacijent.Jmbg)
-                {
-                    zk = k;
-                    //a.zdravsteniKarton = k;
-                    if (k.Alergeni == null)
-
-                        alergeni = new List<String>();
-                    else
-
-                        alergeni = k.Alergeni;
-
-                }
-            }
-            if (l.Alergeni != null)
-            {
-                foreach (String s in l.Alergeni)
+                foreach (String s in izabraniLijek.Alergeni)
                 {
                     if (alergeni.Contains(s))
                     {
@@ -140,10 +127,24 @@ namespace ProjekatSIMS
 
                 }
             }
-
-
-
         }
 
+        private List<string> DobavljanjeAlergenaPacijenta(List<string> alergeni, List<ZdravsteniKarton> kartoni)
+        {
+            foreach (ZdravsteniKarton k in kartoni)
+            {
+                if (k.pacijent.Jmbg == Pacijent.Jmbg)
+                {
+                    zdravstveniKarton = k;
+                    if (k.Alergeni == null)
+                        alergeni = new List<String>();
+                    else
+                        alergeni = k.Alergeni;
+                    break;
+                }
+            }
+
+            return alergeni;
+        }*/
     }
 }

@@ -13,5 +13,32 @@ namespace Controller
         {
             return pacijentService.DobaviSve();
         }
+        public Boolean ProveraImePrezime(String ime, String prezime)
+        {
+            if (pacijentService.ProveraImePrezime(ime, prezime))
+                return true;
+            return false;
+        }
+        public Boolean KreiranjeProfila(Pacijent pacijent)
+        {
+            if (pacijentService.KreiranjeProfila(pacijent) == true)
+                return true;
+            else
+                return false;
+        }
+        public Boolean CuvanjeIzmenjenjihPodataka(Pacijent stariPodaci)
+        {
+            if (pacijentService.CuvanjeIzmenjenjihPodataka(stariPodaci))
+                return true;
+            else
+                return false;
+        }
+        public Boolean ObrisiPacijenta(Pacijent stariPacijent)
+        {
+            if (pacijentService.ObrisiPacijenta(stariPacijent))
+                return true;
+            else
+                return false;
+        }
     }
 }

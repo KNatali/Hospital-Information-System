@@ -1,5 +1,6 @@
 ﻿using Model;
 using Repository;
+using Controller;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -20,53 +21,50 @@ namespace ProjekatSIMS
         {
             InitializeComponent();
         }
-        private void Otkazi(object sender, RoutedEventArgs e)
+        private void Otkazi_kreiranje(object sender, RoutedEventArgs e)
         {
             MessageBoxResult ret = MessageBox.Show("Da li želite da otkažete kreiranje profila pacijenta?", "PROVERA", MessageBoxButton.YesNo);
-            switch (ret)
+            if (ret == MessageBoxResult.Yes)
+                this.Close();
+        }
+        private void Kreiraj_profil(object sender, RoutedEventArgs e)
+        {
+            Pacijent noviPacijent = new Pacijent();
+            PacijentController pacijentController = new PacijentController();
+            PopunjavanjePoljaZaNovogPacijenta(noviPacijent);
+            if (pacijentController.KreiranjeProfila(noviPacijent) == true)
             {
-                case MessageBoxResult.Yes:
-                    this.Close();
-                    break;
-                case MessageBoxResult.No:
-                    break;
+                PorukaOUspesnomKreiranjuPacijenta(noviPacijent);
             }
         }
-        private void Potvrdi(object sender, RoutedEventArgs e)
-        {
-            String jmbg = Jmbg.Text;
-            String ime = Ime.Text;
-            String prezime = Prezime.Text;
-            String telefon = Telefon.Text;
-            String mail = Mail.Text;
-            String adresa = Adresa.Text;
-            DateTime datum = (DateTime)Datum.SelectedDate;
-            Pacijent p = new Pacijent();
-            p.Jmbg = jmbg;
-            p.Ime = ime;
-            p.Prezime = prezime;
-            p.BrojTelefona = telefon;
-            p.Email = mail;
-            p.Adresa = adresa;
-            p.DatumRodjenja = datum;
-            
-            OsobaRepository fajl = new OsobaRepository(@"..\..\..\Fajlovi\Pacijent.txt");
-            List<Pacijent> pacijenti = fajl.DobaviPacijente();
-            pacijenti.Add(p);
-            fajl.Sacuvaj(pacijenti);
 
+        private void PorukaOUspesnomKreiranjuPacijenta(Pacijent noviPacijent)
+        {
             MessageBoxResult ret = MessageBox.Show("Profil pacijenta je uspešno kreiran. Da li želite da pregledate njegov profil", "OBAVEŠTENJE", MessageBoxButton.YesNo);
-            switch (ret)
+            if (ret == MessageBoxResult.Yes)
             {
-                case MessageBoxResult.Yes:
-                    ProfilPacijentaSWindow pp = new ProfilPacijentaSWindow(p);
-                    this.Close();
-                    pp.Show();
-                    break;
-                case MessageBoxResult.No:
-                    this.Close();
-                    break;
+                PrelazakNaProfilPacijenta(noviPacijent);
             }
+            else
+                this.Close();
+        }
+
+        private void PrelazakNaProfilPacijenta(Pacijent noviPacijent)
+        {
+            ProfilPacijentaSWindow pp = new ProfilPacijentaSWindow(noviPacijent);
+            this.Close();
+            pp.Show();
+        }
+
+        private void PopunjavanjePoljaZaNovogPacijenta(Pacijent noviPacijent)
+        {
+            noviPacijent.Jmbg = Jmbg.Text;
+            noviPacijent.Ime = Ime.Text;
+            noviPacijent.Prezime = Prezime.Text;
+            noviPacijent.DatumRodjenja = (DateTime)Datum.SelectedDate;
+            noviPacijent.BrojTelefona = Telefon.Text;
+            noviPacijent.Email = Mail.Text;
+            noviPacijent.Adresa = Adresa.Text;
         }
     }
 }

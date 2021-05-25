@@ -16,7 +16,7 @@
                   ScrollViewer.CanContentScroll="True" 
                   ScrollViewer.VerticalScrollBarVisibility="Auto">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Datum" Binding="{Binding datum}"/>
+                <DataGridTextColumn Header="Datum" Binding="{Binding Datum}"/>
                 <DataGridTextColumn Header="Opis" Binding="{Binding OpisAnamneze}" Width="*"/>
 
 

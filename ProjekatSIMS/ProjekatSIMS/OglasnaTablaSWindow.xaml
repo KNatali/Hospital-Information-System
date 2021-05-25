@@ -26,16 +26,16 @@
             </DataGrid.ItemContainerStyle>
         </DataGrid>
         <Label Content="Kliknite dva puta na obaveštenje u tabeli kako biste ga pregledali" HorizontalAlignment="Left" Margin="60,127,0,0" VerticalAlignment="Top" FontSize="18" Foreground="#1963bf" Height="39" Width="542"/>
-        <Button Content="Početna strana" Click="Nazad" HorizontalAlignment="Left" Margin="60,480,0,0" VerticalAlignment="Top" Height="50" Width="200" Background="#a2cafc" FontSize="20" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
-        <Button Content="Nova objava" Click="NovaObjava" HorizontalAlignment="Left" Margin="664,480,0,0" VerticalAlignment="Top" Height="50" Width="200" Background="#a2cafc" FontSize="20" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
-        <Label Margin="239,21,401,448">
+        <Button Content="Početna strana" Click="Nazad" HorizontalAlignment="Left" Margin="60,450,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
+        <Button Content="Nova objava" Click="NovaObjava" HorizontalAlignment="Left" Margin="670,450,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
+        <Label Margin="239,21,401,433">
             <StackPanel Orientation="Horizontal">
                 <fa:ImageAwesome Icon="Globe" Width="60" Foreground="#1963bf"/>
                 <fa:ImageAwesome Icon="HSquare" Width="37" Foreground="#b31a0c"/>
                 <fa:ImageAwesome Icon="UserMd" Width="37" Foreground="#1963bf"/>
             </StackPanel>
         </Label>
-        <Label Margin="255,37,381,475">
+        <Label Margin="255,37,381,473">
             <StackPanel Orientation="Horizontal">
                 <fa:ImageAwesome Icon="Heart" Width="15" Foreground="#b31a0c"/>
             </StackPanel>

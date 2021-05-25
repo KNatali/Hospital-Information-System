@@ -13,5 +13,6 @@ namespace Model
         }
         public Pregled ZakazanPregled { get; set; }
         public DateTime DatumIzdavanja { get; set; }
+       
     }
 }

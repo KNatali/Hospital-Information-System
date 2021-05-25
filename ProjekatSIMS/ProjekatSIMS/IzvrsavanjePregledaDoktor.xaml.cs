@@ -46,7 +46,6 @@ namespace ProjekatSIMS
                 if (pr.Id == pregled.Id)
                 {
                     pr.StatusPregleda= StatusPregleda.Zavrsen;
-
                     break;
                 }
             }
@@ -57,7 +56,13 @@ namespace ProjekatSIMS
 
         private void IzdavanjeUputa(object sender, RoutedEventArgs e)
         {
-            IzdavanjeUputaDoktor z = new IzdavanjeUputaDoktor(pregled.pacijent);
+            IzdavanjeUputaSpecijalistiDoktor z = new IzdavanjeUputaSpecijalistiDoktor(pregled.pacijent);
+            // this.NavigationService.Navigate(new Uri("ZdravstveniKartonDoktor.xaml", UriKind.Relative));
+            this.NavigationService.Navigate(z);
+        }
+        private void IzdavanjeUputaBolnickoLijecenje(object sender, RoutedEventArgs e)
+        {
+            UputZaBolnickoLijecenjeDoktor z = new UputZaBolnickoLijecenjeDoktor(pregled.pacijent);
             // this.NavigationService.Navigate(new Uri("ZdravstveniKartonDoktor.xaml", UriKind.Relative));
             this.NavigationService.Navigate(z);
         }
@@ -65,6 +70,13 @@ namespace ProjekatSIMS
         private void IzdavanjeRecepta(object sender, RoutedEventArgs e)
         {
             IzdajReceptDoktor z = new IzdajReceptDoktor(pregled.pacijent);
+            // this.NavigationService.Navigate(new Uri("ZdravstveniKartonDoktor.xaml", UriKind.Relative));
+            this.NavigationService.Navigate(z);
+        }
+
+        private void KreiranjeAnamneze(object sender, RoutedEventArgs e)
+        {
+            KreirajAnamnezu z = new KreirajAnamnezu(pregled.pacijent);
             // this.NavigationService.Navigate(new Uri("ZdravstveniKartonDoktor.xaml", UriKind.Relative));
             this.NavigationService.Navigate(z);
         }

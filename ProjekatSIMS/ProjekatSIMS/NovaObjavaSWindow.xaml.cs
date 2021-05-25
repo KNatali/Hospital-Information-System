@@ -1,6 +1,7 @@
 ﻿using Model;
 using Repository;
 using System;
+using Controller;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -21,27 +22,28 @@ namespace ProjekatSIMS
             InitializeComponent();
         }
 
-        private void Nazad(object sender, RoutedEventArgs e)
+        private void Otkazi_postavljanje(object sender, RoutedEventArgs e)
         {
             MessageBoxResult ret = MessageBox.Show("Da li želite da otkažete postavljanje obaveštenja?", "PROVERA", MessageBoxButton.YesNo);
             if (ret==MessageBoxResult.Yes)
                 this.Close();
         }
-
-        private void Sacuvaj(object sender, RoutedEventArgs e)
+        private void Postavi_obavestenje(object sender, RoutedEventArgs e)
         {
-            String naslov = Naslov.Text;
-            String tekst = Tekst.Text;
-            Notifikacija n = new Notifikacija();
-            n.Naslov = naslov;
-            n.Tekst = tekst;
-            n.Datum = DateTime.Now;
-            NotifikacijaRepository fajl = new NotifikacijaRepository(@"..\..\..\Fajlovi\Vesti.txt");
-            List<Notifikacija> notifikacija = fajl.DobaviSve();
-            notifikacija.Add(n);
-            fajl.Sacuvaj(notifikacija);
-            MessageBox.Show("Obaveštenje je uspešno postavljeno.", "OBAVEŠTENJE");
-            this.Close();
+            Notifikacija novoObavestenje = new Notifikacija();
+            NotifikacijaController notifikacijaController = new NotifikacijaController();
+            PopunjavanjePoljaZaNovoObavestenje(novoObavestenje);
+            if (notifikacijaController.PisanjeObavestenja(novoObavestenje) == true)
+            {
+                MessageBox.Show("Obaveštenje je uspešno postavljeno.", "OBAVEŠTENJE");
+                this.Close();
+            }
+        }
+        private void PopunjavanjePoljaZaNovoObavestenje(Notifikacija novoObavestenje)
+        {
+            novoObavestenje.Naslov = Naslov.Text;
+            novoObavestenje.Tekst = Tekst.Text;
+            novoObavestenje.Datum = DateTime.Now;
         }
     }
 }

@@ -66,8 +66,7 @@ namespace ProjekatSIMS
             }
             Pacijent pacijent = (Pacijent)Pacijenti.SelectedItems[0];
             ZdravstveniKartonDoktor z = new ZdravstveniKartonDoktor(pacijent);
-            // this.NavigationService.Navigate(new Uri("PomjeriPregledDoktor.xaml", UriKind.Relative));
-            this.NavigationService.Navigate(z);
+             this.NavigationService.Navigate(z);
         }
     }
 }

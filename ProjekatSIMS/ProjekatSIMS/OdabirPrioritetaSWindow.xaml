@@ -8,14 +8,14 @@
         mc:Ignorable="d"
         Title="OdabirPrioritetaSWindow" Height="568" Width="924" Background="#d1e3ff">
     <Grid>
-        <ComboBox HorizontalAlignment="Center" x:Name="Tip" FontSize="25" Margin="0,171,0,0" VerticalAlignment="Top" Width="326" BorderBrush="#1963bf" Foreground="#1963bf">
+        <ComboBox HorizontalAlignment="Center" x:Name="Prioritet" FontSize="25" Margin="0,171,0,0" VerticalAlignment="Top" Width="326" BorderBrush="#1963bf" Foreground="#1963bf">
             <ComboBoxItem IsSelected="True" Content="-"/>
             <ComboBoxItem Content="Kod određenog doktora"/>
             <ComboBoxItem Content="U određeno vreme"/>
         </ComboBox>
-        <Button Content="Zakaži termin" Click="Zakazi" HorizontalAlignment="Left" Margin="679,440,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <Button Content="Zakaži termin" Click="Zakazi_termin" HorizontalAlignment="Left" Margin="679,440,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
         <Label Width="328" VerticalAlignment="Top" Margin="323,89,0,0" Height="50" HorizontalAlignment="Left" FontSize="22" Foreground="#1963bf" FontWeight="Bold" Content="Odaberite šta vam je prioritet"/>
-        <Button Content="Otkaži" Click="Otkazi" HorizontalAlignment="Left" Margin="60,440,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="#a2cafc" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <Button Content="Nazad" Click="Nazad" HorizontalAlignment="Left" Margin="60,440,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
         <Label Margin="239,21,401,448">
             <StackPanel Orientation="Horizontal">
                 <fa:ImageAwesome Icon="Globe" Width="60" Foreground="#1963bf"/>

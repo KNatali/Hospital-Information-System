@@ -167,8 +167,28 @@
 
 
 
-        <Label Grid.Row="1" Grid.Column="0" Content="Jmbg pacijenta:" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-        <TextBox  Name="Jmbg" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Text="" TextWrapping="Wrap"  />
+        <Label Grid.Row="1" Grid.Column="0" Content="Izaberi pacijenta:" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <ComboBox  Name="Pacijent"   Grid.Row="1" Grid.Column="1" FontSize="16" FontFamily="Roboto" 
+                Style="{StaticResource ComboBoxFlatStyle}"
+                  VerticalAlignment="Center"   
+                   HorizontalAlignment="Stretch" 
+                   Height="30"
+                  ItemsSource="{Binding Path=Pacijenti}"    
+                >
+
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Path=Jmbg}"/>
+                        <TextBlock Text=" "/>
+                        <TextBlock Text="{Binding Path=Ime}"/>
+                        <TextBlock Text=" "/>
+                        <TextBlock Text="{Binding Path=Prezime}"/>
+
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
         <Label Grid.Row="3" Grid.Column="0" Content="Datum operacije:" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         <DatePicker CalendarStyle="{StaticResource styleCalendar}" Grid.Row="3" Grid.Column="1" Name="Date" HorizontalAlignment="Stretch" VerticalAlignment="Center"  />
 
@@ -208,11 +228,11 @@
 
 
 
-        <ComboBox  Grid.Row="5" Grid.Column="1" Name="Termin" HorizontalAlignment="Left"   
-                 
-                  VerticalAlignment="Center" 
+        <ComboBox  Grid.Row="5" Grid.Column="1" Name="Termin" 
+                  Style="{StaticResource ComboBoxFlatStyle}"
+                HorizontalAlignment="Stretch"  VerticalAlignment="Center" 
                   Visibility="Hidden"
-                  Width="120"   
+                  
                    >
 
 

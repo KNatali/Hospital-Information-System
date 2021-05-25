@@ -1,6 +1,7 @@
 ﻿using Model;
 using Repository;
 using System;
+using Controller;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -18,76 +19,59 @@ namespace ProjekatSIMS
     {
         public OsobaRepository fajl { get; set; }
         public List<Doktor> Doktori { get; set; }
-        public Doktor dok { get; set; }
-        public ProfilDoktoraSWindow(Doktor doktor)
+        public Doktor doktor { get; set; }
+        public ProfilDoktoraSWindow(Doktor d)
         {
             InitializeComponent();
-            dok = doktor;
-            Jmbg.Text = dok.Jmbg;
-            Ime.Text = dok.Ime;
-            Prezime.Text = dok.Prezime;
-            Mail.Text = dok.Email;
-            Telefon.Text = dok.BrojTelefona;
+            doktor = d;
+            Jmbg.Text = doktor.Jmbg;
+            Ime.Text = doktor.Ime;
+            Prezime.Text = doktor.Prezime;
+            Mail.Text = doktor.Email;
+            Telefon.Text = doktor.BrojTelefona;
             Oblasti.ItemsSource = Enum.GetValues(typeof(Specijalizacija));
-            //Oblasti.Text = dok.Specijalizacija.ToString();
-            Od.Text = dok.PocetakRadnogVremena;
-            Do.Text = dok.KrajRadnogVremena;
+            Oblasti.SelectedItem = doktor.Specijalizacija;
+            Od.Text = doktor.PocetakRadnogVremena;
+            Do.Text = doktor.KrajRadnogVremena;
         }
-
-        private void Sacuvaj(object sender, RoutedEventArgs e)
+        private void Sacuvaj_izmene(object sender, RoutedEventArgs e)
         {
-            dok.Ime = Ime.Text;
-            dok.Prezime = Prezime.Text;
-            dok.BrojTelefona = Telefon.Text;
-            dok.Email = Mail.Text;
-            dok.Specijalizacija = (Specijalizacija)Oblasti.SelectedIndex;
-            dok.PocetakRadnogVremena = Od.Text;
-            dok.KrajRadnogVremena = Do.Text;
-            List<Doktor> ListaDoktora = new List<Doktor>();
-            OsobaRepository fajl = new OsobaRepository(@"..\..\..\Fajlovi\Doktor.txt");
-            ListaDoktora = fajl.DobaviDoktore();
-            foreach (Doktor d in ListaDoktora)
-            {
-                if (dok.Jmbg == d.Jmbg)
-                {
-                    d.Ime = dok.Ime;
-                    d.Prezime = dok.Prezime;
-                    d.BrojTelefona = dok.BrojTelefona;
-                    d.Email = dok.Email;
-                    d.Specijalizacija = dok.Specijalizacija;
-                    d.PocetakRadnogVremena = dok.PocetakRadnogVremena;
-                    d.KrajRadnogVremena = dok.KrajRadnogVremena;
-                }
-            }
-            fajl.SacuvajDoktora(ListaDoktora);
-
+            PrikupljanjePodatakaDoktoraIzTextBoxa();
+            DoktorController doktorController = new DoktorController();
+            if (doktorController.CuvanjeIzmenjenjihPodataka(doktor) == true)
+                MessageBox.Show("Podaci doktora su uspešno izmenjeni.");
             this.Close();
         }
+        private void PrikupljanjePodatakaDoktoraIzTextBoxa()
+        {
+            doktor.Ime = Ime.Text;
+            doktor.Prezime = Prezime.Text;
+            doktor.BrojTelefona = Telefon.Text;
+            doktor.Email = Mail.Text;
+            doktor.Specijalizacija = (Specijalizacija)Oblasti.SelectedIndex;
+            doktor.PocetakRadnogVremena = Od.Text;
+            doktor.KrajRadnogVremena = Do.Text;
+        }
 
-        private void Obrisi(object sender, RoutedEventArgs e)
+        private void Obrisi_profil(object sender, RoutedEventArgs e)
         {
             MessageBoxResult ret = MessageBox.Show("Da li želite da obrišete doktora?", "PROVERA", MessageBoxButton.YesNo);
-            if(ret==MessageBoxResult.Yes)
+            if (ret == MessageBoxResult.Yes)
             {
-                OsobaRepository fajl = new OsobaRepository(@"..\..\..\Fajlovi\Doktor.txt");
-                List<Doktor> doktor = fajl.DobaviDoktore();
-                foreach (Doktor d in doktor)
-                {
-                    if (d.Jmbg == dok.Jmbg)
-                    {
-                        doktor.Remove(d);
-                        break;
-                    }
-                }
-                fajl.SacuvajDoktora(doktor);
-                MessageBox.Show("Doktor je uspešno obrisan.", "OBAVEŠTENJE");
+                DoktorController doktorController = new DoktorController();
+                BrisanjeDoktora(doktorController);
                 this.Close();
             }
+        }
+        private void BrisanjeDoktora(DoktorController doktorController)
+        {
+            if (doktorController.ObrisiDoktora(doktor) == true)
+                MessageBox.Show("Doktor je uspešno obrisan.", "OBAVEŠTENJE");
         }
 
         private void Manipulacija(object sender, RoutedEventArgs e)
         {
-            ManipulacijaRadaDoktoraSWindow m = new ManipulacijaRadaDoktoraSWindow(dok);
+            ManipulacijaRadaDoktoraSWindow m = new ManipulacijaRadaDoktoraSWindow(doktor);
             m.Show();
         }
 
