@@ -27,10 +27,20 @@ namespace ProjekatSIMS.Service
             return null;
         }
 
-        public List<Inventar> DobaviStatickiInventar(String idProstorije)
+        public Boolean obrisiProstoriju(String idProstorijeZaBrisanje)
         {
-
-            return null;
+            List<Prostorija> prostorije = prostorijaRepository.DobaviSve();
+            foreach(Prostorija p in prostorije)
+            {
+                if(p.id == idProstorijeZaBrisanje)
+                {
+                    prostorije.Remove(p);
+                    prostorijaRepository.Sacuvaj(prostorije);
+                    return true;
+                }
+            }
+            return false;
+            
         }
         
         
