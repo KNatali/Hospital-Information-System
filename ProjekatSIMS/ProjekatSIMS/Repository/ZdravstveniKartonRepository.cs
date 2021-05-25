@@ -84,17 +84,6 @@ namespace Repository
             }
             SacuvajZdravsteveneKartone(sviKartoni);
         }
-        public List<String> DobaviSveAlergene()
-        {
-            List<String> alergeni = new List<String>();
-            using (StreamReader r = new StreamReader(@"..\..\..\Fajlovi\ZdravstveniKarton.txt"))
-            {
-                string json = r.ReadToEnd();
-                alergeni = JsonConvert.DeserializeObject<List<String>>(json);
-            }
-            return alergeni;
-        }
-
         public void SacuvajAlergen(List<string> alergeni)
         {
             string newJson = JsonConvert.SerializeObject(alergeni);

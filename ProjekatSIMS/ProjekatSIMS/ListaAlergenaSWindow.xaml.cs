@@ -23,24 +23,25 @@ namespace ProjekatSIMS
         public ZdravsteniKarton zdrkarton { get; set; }
         public List<ZdravsteniKarton> Karton { get; set; }
         public List<String> Alergeni1 { get; set; }
-        public Pacijent pac { get; set; }
+        public Pacijent pacijent { get; set; }
         public ListaAlergenaSWindow(Pacijent p)
         {
             InitializeComponent();
             this.DataContext = this;
-            pac = p;
+            pacijent = p;
             List<String> alergeni = new List<String>();
             List<ZdravsteniKarton> kartoni = new List<ZdravsteniKarton>();
             Alergeni1 = new List<String>();
             zdravstveniKartonController = new ZdravstvenikartonController();
-            alergeni = zdravstveniKartonController.DobaviSveAlergene();
+            alergeni = zdravstveniKartonController.DobaviSveAlergene(pacijent);
+            dataGridAlergeni.ItemsSource = alergeni;
 
             /*using (StreamReader sr = new StreamReader(@"..\..\..\Fajlovi\ZdravstveniKarton.txt"))
             {
                 string json = sr.ReadToEnd();
                 kartoni = JsonConvert.DeserializeObject<List<ZdravsteniKarton>>(json);
             }*/
-            ZdravsteniKarton zk = new ZdravsteniKarton();
+            /*ZdravsteniKarton zk = new ZdravsteniKarton();
             foreach (ZdravsteniKarton k in kartoni)
             {
                 if (k.pacijent.Jmbg == p.Jmbg)
@@ -57,7 +58,7 @@ namespace ProjekatSIMS
             foreach (String a in alergeni)
             {
                 Alergeni1.Add(a);
-            }
+            }*/
 
         }
         private void Nazad(object sender, RoutedEventArgs e)
@@ -67,7 +68,7 @@ namespace ProjekatSIMS
         private void Novi_alergen(object sender, RoutedEventArgs e)
         {
             this.Close();
-            NoviAlergenSWindow na = new NoviAlergenSWindow(pac);
+            NoviAlergenSWindow na = new NoviAlergenSWindow(pacijent);
             na.Show();
         }
     }
