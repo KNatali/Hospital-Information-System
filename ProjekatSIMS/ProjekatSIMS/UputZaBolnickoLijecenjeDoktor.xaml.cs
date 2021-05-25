@@ -12,7 +12,8 @@ namespace ProjekatSIMS
     public partial class UputZaBolnickoLijecenjeDoktor : Page
     {
         private Pacijent pacijent { get; set; }
-        private IzdavanjeUputaBolnickoLijecenjeController uputController = new IzdavanjeUputaBolnickoLijecenjeController();
+        private TrazenjeSlobodnihKrevetaController uputController = new TrazenjeSlobodnihKrevetaController();
+        private IzdavanjeUputaBolnickoLijecenjeController izdavanjeUputaBolnickoLijecenjeController = new IzdavanjeUputaBolnickoLijecenjeController();
         private List<SlobodniKrevetDTO> sobeIKreveti = new List<SlobodniKrevetDTO>();
         public UputZaBolnickoLijecenjeDoktor(Pacijent p)
         {
@@ -26,12 +27,13 @@ namespace ProjekatSIMS
         {
             DateTime pocetakIntervala = (DateTime)DatumPocetak.SelectedDate;
             DateTime krajIntervala = (DateTime)DatumKraj.SelectedDate;
+            IntervalDatuma termin = new IntervalDatuma(pocetakIntervala, krajIntervala);
 
-            if ((uputController.DobaviSlobodneSobe(pocetakIntervala, krajIntervala)).Count == 0)
+            if ((uputController.DobaviSlobodneSobe(termin)).Count == 0)
                 MessageBox.Show("Nema slobodnih soba. Izaberi drugi interval");
             else
             {
-                sobeIKreveti = uputController.DobaviSlobodneSobe(pocetakIntervala, krajIntervala);
+                sobeIKreveti = uputController.DobaviSlobodneSobe(termin);
                 SlobodneSobe.ItemsSource = sobeIKreveti;
             }
            
@@ -62,7 +64,7 @@ namespace ProjekatSIMS
             String sobaId = odabranaSoba.Soba;
             int krevetId = (int)SlobodniKreveti.SelectedItem;
             UputBolnickoLijecenje uput = new UputBolnickoLijecenje(pocetakIntervala,krajIntervala,sobaId,krevetId);
-            uputController.CuvanjeUputa(uput, pacijent);
+            izdavanjeUputaBolnickoLijecenjeController.CuvanjeUputa(uput, pacijent);
 
             MessageBox.Show("Uput je uspjesno sacuvan");
             this.NavigationService.GoBack();
