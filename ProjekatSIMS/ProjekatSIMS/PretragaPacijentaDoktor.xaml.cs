@@ -16,9 +16,7 @@ using System.Windows.Shapes;
 
 namespace ProjekatSIMS
 {
-    /// <summary>
-    /// Interaction logic for PretragaPacijentaDoktor.xaml
-    /// </summary>
+ 
     public partial class PretragaPacijentaDoktor : Page
     {
         public PretragaPacijentaDoktor()
@@ -38,8 +36,6 @@ namespace ProjekatSIMS
             view.Filter = UserFilter;
 
 
-            //probavanje tabele
-            //Pacijenti1.ItemsSource = items;
         }
         private bool UserFilter(object item)
         {

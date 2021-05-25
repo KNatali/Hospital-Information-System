@@ -1,20 +1,9 @@
 ﻿using Controller;
 using Model;
-using Newtonsoft.Json;
-using ProjekatSIMS.Model;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace ProjekatSIMS
 {
@@ -29,7 +18,7 @@ namespace ProjekatSIMS
         {
             InitializeComponent();
             this.DataContext = this;
-          
+
             PrikazTabele();
         }
 
@@ -39,17 +28,6 @@ namespace ProjekatSIMS
             LijekoviNaCekanju = new List<Lijek>();
             TipLijekaPremaPrikazu tip = TipLijekaPremaPrikazu.Neverifikovan;
             LijekoviNaCekanju = prikazEvidencijeLijekovaController.PrikazLijekovaPoStatusu(tip);
-           /*using (StreamReader r = new StreamReader(@"..\..\..\Fajlovi\Lijek.txt"))
-            {
-                string json = r.ReadToEnd();
-                SviLijekovi = JsonConvert.DeserializeObject<List<Lijek>>(json);
-            }
-            foreach (Lijek l in SviLijekovi)
-            {
-                if (l.Status == OdobravanjeLekaEnum.Ceka)
-                    LijekoviNaCekanju.Add(l);
-            }*/
-
             dataGridVerifikacija.ItemsSource = LijekoviNaCekanju;
         }
 
@@ -83,21 +61,13 @@ namespace ProjekatSIMS
         {
             Lijek izabraniLijek = (Lijek)dataGridVerifikacija.SelectedItems[0];
             verifikovanjeLijekovaController.OdobriLijek(izabraniLijek);
-          /*  List<Lijek> lijekoviNovi = new List<Lijek>();
-
-            //cuvanje u fajl izmjenjeni lijek
-            SviLijekovi.Find(p => p.NazivLeka ==lijek.NazivLeka).Status =OdobravanjeLekaEnum.Odobren ;
-
-            string newJson = JsonConvert.SerializeObject(SviLijekovi);
-            File.WriteAllText(@"..\..\..\Fajlovi\Lijek.txt", newJson);*/
-
             PrikazTabele();
         }
 
         private void OdbaciLijek(object sender, RoutedEventArgs e)
         {
             Lijek izabraniLijek = (Lijek)dataGridVerifikacija.SelectedItems[0];
-         
+
             this.Opacity = 0.3;
             OdbacivanjePoruka porukaProzor = new OdbacivanjePoruka();
             porukaProzor.ShowDialog();
@@ -106,17 +76,8 @@ namespace ProjekatSIMS
             verifikovanjeLijekovaController.OdbaciLijek(izabraniLijek, porukaProzor.Poruka);
             PrikazTabele();
 
-            //cuvanje u fajl izmjenjeni lijek
-            /* SviLijekovi.Find(p => p.NazivLeka == lijek.NazivLeka).Status = OdobravanjeLekaEnum.Odbijen;
-             SviLijekovi.Find(p => p.NazivLeka == lijek.NazivLeka).PorukaOdbaci =o.Poruka;
-
-             string newJson = JsonConvert.SerializeObject(SviLijekovi);
-             File.WriteAllText(@"..\..\..\Fajlovi\Lijek.txt", newJson);*/
-
-
-
         }
 
-        
+
     }
 }
