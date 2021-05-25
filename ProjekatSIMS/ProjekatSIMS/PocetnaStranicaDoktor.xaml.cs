@@ -13,9 +13,7 @@ using System.Windows.Shapes;
 
 namespace ProjekatSIMS
 {
-    /// <summary>
-    /// Interaction logic for PocetnaStranicaDoktor.xaml
-    /// </summary>
+    
     public partial class PocetnaStranicaDoktor : Page
     {
         public PocetnaStranicaDoktor()

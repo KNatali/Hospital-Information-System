@@ -35,58 +35,20 @@ namespace Controller
             return false;
 
         }
-        public Boolean ZakazivanjePregleda(ComboBox Termin,String jmbg,Prostorija prostorija,DateTime datum1,DateTime datum2)
-      {
-           
-            if (pregledService.ZakazivanjePregleda(Termin,jmbg, prostorija, datum1, datum2))
-                return true;
+        
 
-            return false;
-
-      }
-
-        public Boolean OtkazivanjePregledaDoktor(Pregled p)
-        {
-            if (pregledService.OtkazivanjePregledaDoktor(p))
-                return true;
-
-            return false;
-
-        }
+       
         public Boolean OtkazivanjeSekretar(Pregled p)
         {
             if (pregledService.OtkazivanjeSekretar(p))
                 return true;
             return false;
         }
-        public Boolean IzmjenaPregledaDoktor(Pregled p,DateTime datum)
-        {
-            if (pregledService.IzmjenaPregledaDoktor(p,datum))
-                return true;
+      
 
-            return false;
+       
 
-        }
-
-        /*public List<DateTime> PrikazSlobodnihTermina(Doktor doktor,DateTime pocetnoVrijeme,DateTime krajnjeVrijeme,int pocetniInterval,int krajnjiInterval)
-        {
-            List<DateTime> termini= pregledService.PrikazSlobodnihTermina(doktor, pocetnoVrijeme, krajnjeVrijeme,pocetniInterval,krajnjiInterval);
-
-            return termini;
-        }
-        */
-        public Boolean IzdavanjeUputa(Pacijent pacijent, Doktor doktor, DateTime izabraniTermin)
-        {
-            if(pregledService.IzdavanjeUputa(pacijent, doktor, izabraniTermin))
-                return true;
-            return false;
-        }
-
-        public List<Pregled> DobaviSvePreglede()
-        {
-           return pregledService.DobaviSvePreglede();
-
-        }
+      
      public List<Pregled> DobaviSveSekretar()
      {
          return pregledService.DobaviSveSekretar();

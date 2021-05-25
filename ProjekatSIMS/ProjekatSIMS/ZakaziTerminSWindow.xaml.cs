@@ -2,6 +2,7 @@
 using Model;
 using Newtonsoft.Json;
 using Repository;
+using Controller;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -15,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Tulpep.NotificationWindow;
+using ProjekatSIMS.Controller;
 
 namespace ProjekatSIMS
 {
@@ -63,14 +65,8 @@ namespace ProjekatSIMS
         private void Otkazi(object sender, RoutedEventArgs e)
         {
             MessageBoxResult ret = MessageBox.Show("Da li želite da otkažete zakazivanje pregleda pacijenta?", "PROVERA", MessageBoxButton.YesNo);
-            switch(ret)
-            {
-                case MessageBoxResult.Yes:
-                    this.Close();
-                    break;
-                case MessageBoxResult.No:
-                    break;
-            }
+            if (ret == MessageBoxResult.Yes)
+                this.Close();
         }
         private void Zakazi(object sender, RoutedEventArgs e)
         {
@@ -79,32 +75,20 @@ namespace ProjekatSIMS
             //Prostorija prostorija = (Prostorija)Ordinacija.SelectedItem;
             Prostorija prostorija = new Prostorija();
             DateTime datum = (DateTime)Datum.SelectedDate;
-            /*DateTime neradnoOD = new DateTime(); 
-            neradnoOD = neradniDani.NeradnoOd;
-            DateTime neradnoDO = new DateTime(); 
-            neradnoDO = neradniDani.NeradnoDo;
-            int brojNeradnihDana = (neradnoDO - neradnoOD).Days;
-            if(neradniDani.doktor.Jmbg==p.doktor.Jmbg)
+            
+            NeradniDaniController neradniDaniController = new NeradniDaniController();
+            List<NeradniDani> listaNeradnihDana = neradniDaniController.DobaviSve();
+            foreach (NeradniDani neradniDani in listaNeradnihDana)
             {
-                //if(neradnoOD==datum || neradnoDO==datum)
-                if(datum <= neradniDani.NeradnoDo && datum >= neradniDani.NeradnoOd)
+                if (neradniDani.doktor.Jmbg == p.doktor.Jmbg)
                 {
-                    MessageBox.Show("Ne možete da zakažete pregled kod odabranog doktora.");
-                }
-                if (p.doktor.NeradniDani != null)
-                {
-                    foreach (NeradniDani odmor in p.doktor.NeradniDani)
+                    if(DateTime.Compare(datum, neradniDani.NeradnoOd)>=0 && DateTime.Compare(datum, neradniDani.NeradnoDo)<=0)
                     {
-                        DateTime pocetakOdmora = odmor.NeradnoOd;
-                        DateTime krajOdmora = odmor.NeradnoDo;
-
-                        if (datum <= krajOdmora && datum >= pocetakOdmora)
-                        {
-                            MessageBox.Show("Odabrani doktor je na godišnjem odmoru.");
-                        }
+                        MessageBox.Show("Doktor je na godisnjem odmoru.");
+                        this.Close();
                     }
                 }
-            }*/
+            } // radi samo sto zakazi ako je na godisnjem odmoru
             double sat;
             double minut;
             TipPregleda tippregleda = (TipPregleda)Pregledi.SelectedIndex;
@@ -117,7 +101,7 @@ namespace ProjekatSIMS
                 p.Tip = TipPregleda.Operacija;
             }
 
-                if (Termin.Visibility == Visibility.Visible)
+            if (Termin.Visibility == Visibility.Visible)
             {
                 sat = Convert.ToDouble(Termin.Text.Split(":")[0]);
                 minut = Convert.ToDouble(Termin.Text.Split(":")[1]);
@@ -147,6 +131,33 @@ namespace ProjekatSIMS
             {
                 MessageBox.Show("Niste uspeli da zakažete pregled.");
             }
+            /*DateTime neradnoOD = new DateTime(); 
+            neradnoOD = neradniDani.NeradnoOd;
+            DateTime neradnoDO = new DateTime(); 
+            neradnoDO = neradniDani.NeradnoDo;
+            int brojNeradnihDana = (neradnoDO - neradnoOD).Days;
+            if(neradniDani.doktor.Jmbg==p.doktor.Jmbg)
+            {
+                //if(neradnoOD==datum || neradnoDO==datum)
+                if(datum <= neradniDani.NeradnoDo && datum >= neradniDani.NeradnoOd)
+                {
+                    MessageBox.Show("Ne možete da zakažete pregled kod odabranog doktora.");
+                }
+                if (p.doktor.NeradniDani != null)
+                {
+                    foreach (NeradniDani odmor in p.doktor.NeradniDani)
+                    {
+                        DateTime pocetakOdmora = odmor.NeradnoOd;
+                        DateTime krajOdmora = odmor.NeradnoDo;
+
+                        if (datum <= krajOdmora && datum >= pocetakOdmora)
+                        {
+                            MessageBox.Show("Odabrani doktor je na godišnjem odmoru.");
+                        }
+                    }
+                }
+            }*/
+
         }
 
         /*private void IzborPregleda(object sender, SelectionChangedEventArgs e)

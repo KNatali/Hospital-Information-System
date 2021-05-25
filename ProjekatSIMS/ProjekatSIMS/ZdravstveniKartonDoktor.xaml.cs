@@ -14,9 +14,7 @@ using System.Windows.Shapes;
 
 namespace ProjekatSIMS
 {
-    /// <summary>
-    /// Interaction logic for ZdravstveniKartonDoktor.xaml
-    /// </summary>
+  
     public partial class ZdravstveniKartonDoktor : Page
     {
         public Pacijent Pacijent { get; set; }

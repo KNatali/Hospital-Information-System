@@ -27,7 +27,7 @@
                 </Style>
             </DataGrid.ItemContainerStyle>
         </DataGrid>
-        <Button Content="Otkaži pregled" Click="OtkaziPregled" HorizontalAlignment="Left" Margin="684,440,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
+        <Button Content="Otkaži pregled" Click="Otkazi_pregled" HorizontalAlignment="Left" Margin="684,440,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
         <Label Width="346" VerticalAlignment="Top" Margin="311,79,0,0" Height="50" HorizontalAlignment="Left" FontSize="22" Foreground="#1963bf" FontWeight="Bold" Content="Kalendar svih zakazanih termina"/>
         <Button Content="Početna strana" Click="Nazad" HorizontalAlignment="Left" Margin="60,440,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
         <Label Content="Kliknite dva puta na zakazani termin u tabeli kako biste ga izmenili" HorizontalAlignment="Left" Margin="60,112,0,0" VerticalAlignment="Top" FontSize="18" Foreground="#1963bf" Height="49" Width="550"/>

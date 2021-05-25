@@ -1,26 +1,16 @@
 ﻿using Model;
-using Newtonsoft.Json;
-using System;
+using Repository;
 using System.Collections.Generic;
-using System.IO;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace ProjekatSIMS
 {
-    /// <summary>
-    /// Interaction logic for PrikazZavrsenihPregleda.xaml
-    /// </summary>
+
     public partial class PrikazZavrsenihPregleda : Page
     {
+        private DoktorRepository doktorRepository = new DoktorRepository();
+        private PregledRepository pregledRepository = new PregledRepository();
         public List<Pregled> Pregledi
         {
             get;
@@ -31,25 +21,18 @@ namespace ProjekatSIMS
             InitializeComponent();
             this.DataContext = this;
 
-
-
-            List<Pregled> pregledi = new List<Pregled>();
-            Pregledi = new List<Pregled>();
-            using (StreamReader r = new StreamReader(@"..\..\..\Fajlovi\Pregled.txt"))
+            List<Doktor> doktori = doktorRepository.DobaviSve();
+            Doktor doktor = new Doktor();
+            foreach (Doktor d in doktori)
             {
-                string json = r.ReadToEnd();
-                pregledi = JsonConvert.DeserializeObject<List<Pregled>>(json);
-            }
-            foreach (Pregled p in pregledi)
-            {
-                if (p.doktor.Jmbg == "1511990855023" && p.StatusPregleda == StatusPregleda.Zavrsen)
+                if (d.Jmbg == "1511990855023")
                 {
-                    Pregledi.Add(p);
+                    doktor = d;
+                    break;
                 }
             }
+            Pregledi = pregledRepository.DobaviZakazanePregledeDoktora(doktor);
 
-
-           
         }
 
         private void PrikazProfila(object sender, RoutedEventArgs e)
@@ -58,7 +41,6 @@ namespace ProjekatSIMS
             Pregled p = (Pregled)dataGridPregledi.SelectedItems[0];
 
             ZdravstveniKartonDoktor z = new ZdravstveniKartonDoktor(p.pacijent);
-            // this.NavigationService.Navigate(new Uri("PomjeriPregledDoktor.xaml", UriKind.Relative));
             this.NavigationService.Navigate(z);
 
 

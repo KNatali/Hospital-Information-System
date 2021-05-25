@@ -1,4 +1,6 @@
 ﻿using Model;
+using ProjekatSIMS.Service;
+using Service;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -17,27 +19,21 @@ namespace ProjekatSIMS
     
     public partial class DinamickaOpremaWindow : Window
     {
+        public ProstorijaService ProstorijaService = new ProstorijaService();
+        public List<Prostorija> prostorije { get; set; }
+        public InventarService InventarService = new InventarService();
+        List<Inventar> dinamickaOprema { get; set; }
         public DinamickaOpremaWindow()
         {
             InitializeComponent();
             this.DataContext = this;
-            List<Inventar> oprema = new List<Inventar>();
+            dinamickaOprema  = new List<Inventar>();
+                        
+            prostorije = new List<Prostorija>();
+            prostorije = ProstorijaService.prostorijaRepository.DobaviSve();
+            dinamickaOprema = InventarService.inventarRepository.DobaviInventarIzProstorije("0");
             
-
-
-
-
-            CuvanjeProstorija cuvanje = new CuvanjeProstorija(@"..\..\Fajlovi\Prostorije.txt");
-            List<Prostorija> prostorije = new List<Prostorija>();
-            prostorije= cuvanje.UcitajProstorije();
-            foreach(Prostorija p in prostorije)
-            {
-                if(Convert.ToInt32(p.id) == 0)
-                {
-                    oprema = p.inventar;
-                }
-            }
-            dgrDinamickaOprema.ItemsSource = oprema;
+            dgrDinamickaOprema.ItemsSource = dinamickaOprema;
         }
 
         private void dodaj(object sender, RoutedEventArgs e)
@@ -47,45 +43,35 @@ namespace ProjekatSIMS
             inventar.ime = Ime.Text;
             inventar.kolicina = Convert.ToInt32(Kolicina.Text);
             inventar.Staticka = false;
-            
-            CuvanjeProstorija cuvanje = new CuvanjeProstorija(@"..\..\Fajlovi\Prostorije.txt");
-            List<Prostorija> prostorije = new List<Prostorija>();
-            prostorije = cuvanje.UcitajProstorije();
 
-            foreach (Prostorija p in prostorije)
+
+
+            if (InventarService.pronadjiInventarPoId(Convert.ToInt32(Id.Text)) == null)
             {
-                foreach (Inventar i in p.inventar)
-                {
-                    if (i.id == inventar.id)
-                    {
-                        MessageBox.Show("Vec postoji inventar sa tom sifrom!");
-                        break;
+                dinamickaOprema.Add(inventar);
 
-                    }
-                }
+                MessageBox.Show("Inventar je azuriran.");
+            }
+            else
+            {
+                MessageBox.Show("Vec postoji inventar sa istom ID oznakom!");
             }
 
-            foreach (Prostorija p in prostorije)
+            foreach(Prostorija p in prostorije)
             {
-
-                if (Convert.ToInt32(p.id) == 0)
+                if(p.id == "0")
                 {
-                    foreach(Inventar i in p.inventar)
-                    {
-                        if (Convert.ToInt32(Id.Text) == i.id || Ime.Text == i.ime)
-                        {
-                            MessageBox.Show("Vec postoji inventar sa tim parametrima!");
-                            break;
-                        }
-                    }
-                    
-                    p.inventar.Add(inventar);
-                    
+                    p.inventar = dinamickaOprema;
+                    break;
                 }
             }
-            cuvanje.Sacuvaj(prostorije);
-            MessageBox.Show("Inventar je azuriran.");
-            this.Close();
+            ProstorijaService.prostorijaRepository.Sacuvaj(prostorije);
+
+            prostorije = ProstorijaService.prostorijaRepository.DobaviSve();
+
+            dinamickaOprema = InventarService.inventarRepository.DobaviInventarIzProstorije("0");
+            dgrDinamickaOprema.ItemsSource = dinamickaOprema;
+
 
         }
         private void izmeni(object sender, RoutedEventArgs e)
@@ -94,83 +80,68 @@ namespace ProjekatSIMS
             Inventar inventar = new Inventar();
             inventar = (Inventar)dgrDinamickaOprema.SelectedItems[0];
 
-
-            CuvanjeProstorija cuvanje = new CuvanjeProstorija(@"..\..\Fajlovi\Prostorije.txt");
-            List<Prostorija> prostorije = cuvanje.UcitajProstorije();
-            foreach (Prostorija pros in prostorije)
+            foreach (Prostorija p in prostorije)
 
             {
-                if (Convert.ToInt32(pros.id) == 0)
+                if (p.id == "0")
                 {
-                    foreach (Inventar i in pros.inventar)
+                    foreach (Inventar i in p.inventar)
                     {
                         if (i.id == inventar.id) //pronasli smo trazeni inventar
                         {
                             i.kolicina = Convert.ToInt32(Kolicina.Text);
-
+                            MessageBox.Show("Inventar je rasporedjen!");
+                            break;
                         }
                     }
+                    break;
                 }
             }
+            ProstorijaService.prostorijaRepository.Sacuvaj(prostorije);
+            prostorije = ProstorijaService.prostorijaRepository.DobaviSve();
 
+            dinamickaOprema = InventarService.inventarRepository.DobaviInventarIzProstorije("0");
+            dgrDinamickaOprema.ItemsSource = dinamickaOprema;
 
-
-            cuvanje.Sacuvaj(prostorije);
-
-            MessageBox.Show("Inventar je rasporedjen!");
-            this.Close();
 
         }
         private void obrisi(object sender, RoutedEventArgs e)
         {
-            Inventar inventar = new Inventar();
-            inventar = (Inventar)dgrDinamickaOprema.SelectedItems[0];
+            
+            Inventar inventarZaBrisanje = (Inventar)dgrDinamickaOprema.SelectedItems[0];
 
-
-            CuvanjeProstorija cuvanje = new CuvanjeProstorija(@"..\..\Fajlovi\Prostorije.txt");
-            List<Prostorija> prostorije = cuvanje.UcitajProstorije();
-            foreach (Prostorija pros in prostorije)
+            foreach (Prostorija p in prostorije)
 
             {
-                if (Convert.ToInt32(pros.id) == 0) //pronasli smo magacin
+                if (p.id == "0") 
                 {
-                    foreach (Inventar i in pros.inventar)
+                    foreach (Inventar i in p.inventar)
                     {
-                        if(i.id == inventar.id) //pronasli smo trazeni inventar
+                        if(i.id == inventarZaBrisanje.id) 
                         {
-                            pros.inventar.Remove(i); //brisemo iz liste 
+                            p.inventar.Remove(i);
+                            MessageBox.Show("Uspesno obrisali inventar!");
                             break;
 
                         }
                     }
                 }
             }
-               
+            ProstorijaService.prostorijaRepository.Sacuvaj(prostorije);
+            prostorije = ProstorijaService.prostorijaRepository.DobaviSve();
 
-            
-            cuvanje.Sacuvaj(prostorije); //cuvamo izmenjenu listu 
+            dinamickaOprema = InventarService.inventarRepository.DobaviInventarIzProstorije("0");
+            dgrDinamickaOprema.ItemsSource = dinamickaOprema;
 
-            MessageBox.Show("Inventar je rasporedjen!");
-            this.Close();
 
         }
 
         private void pretrazi(object sender, RoutedEventArgs e)
         {
-            List<Inventar> oprema = new List<Inventar>();
 
-            CuvanjeProstorija cuvanje = new CuvanjeProstorija(@"..\..\Fajlovi\Prostorije.txt");
-            List<Prostorija> prostorije = new List<Prostorija>();
-            prostorije = cuvanje.UcitajProstorije();
-            foreach (Prostorija p in prostorije)
-            {
-                if (Convert.ToInt32(p.id) == 0)
-                {
-                    oprema = p.inventar;
-                }
-            }
+            
             List<Inventar> noviInventar = new List<Inventar>();
-            foreach(Inventar i in oprema)
+            foreach(Inventar i in dinamickaOprema)
             {
               if(i.ime.Equals(Pretraga.Text, StringComparison.OrdinalIgnoreCase))
                 {
@@ -184,24 +155,9 @@ namespace ProjekatSIMS
 
         private void ponisti(object sender, RoutedEventArgs e)
         {
-            List<Inventar> oprema = new List<Inventar>();
-
-
-
-
-
-            CuvanjeProstorija cuvanje = new CuvanjeProstorija(@"..\..\Fajlovi\Prostorije.txt");
-            List<Prostorija> prostorije = new List<Prostorija>();
-            prostorije = cuvanje.UcitajProstorije();
-            foreach (Prostorija p in prostorije)
-            {
-                if (Convert.ToInt32(p.id) == 0)
-                {
-                    oprema = p.inventar;
-                }
-            }
+            
             Pretraga.Text = "";
-            dgrDinamickaOprema.ItemsSource = oprema;
+            dgrDinamickaOprema.ItemsSource = dinamickaOprema;
         }
     }
 }

@@ -9,8 +9,8 @@
         Title="KreiranjeProfilaDoktoraSWindow" Height="568" Width="924" Background="#d1e3ff">
     <Grid>
 
-        <Button Content="Otkaži" Click="Otkazi" HorizontalAlignment="Left" Margin="60,440,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
-        <Button Content="Potvrdi" Click="Potvrdi" HorizontalAlignment="Left" Margin="683,440,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
+        <Button Content="Otkaži" Click="Otkazi_kreiranje" HorizontalAlignment="Left" Margin="60,440,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
+        <Button Content="Potvrdi" Click="Kreiraj_profil" HorizontalAlignment="Left" Margin="683,440,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
         <Label Content="Kreiranje profila pacijenta" FontSize="22" HorizontalAlignment="Left" Height="50" Margin="351,86,0,0" VerticalAlignment="Top" Width="280" FontWeight="Bold" Foreground="#1963bf"/>
         <Label Content="JMBG" HorizontalAlignment="Left" FontSize="25" Height="43" Margin="60,253,0,0" VerticalAlignment="Top" Width="85" Foreground="#1963bf" FontWeight="DemiBold"/>
         <TextBox HorizontalAlignment="Left" x:Name="Jmbg" FontSize="25" Margin="255,259,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="191" BorderBrush="#1963bf" Foreground="#1963bf"/>

@@ -1,6 +1,7 @@
 ﻿using Model;
 using Newtonsoft.Json;
 using Repository;
+using Controller;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -18,6 +19,7 @@ namespace ProjekatSIMS
 {
     public partial class ListaAlergenaSWindow : Window
     {
+        private ZdravstvenikartonController zdravstveniKartonController;
         public ZdravsteniKarton zdrkarton { get; set; }
         public List<ZdravsteniKarton> Karton { get; set; }
         public List<String> Alergeni1 { get; set; }
@@ -30,12 +32,14 @@ namespace ProjekatSIMS
             List<String> alergeni = new List<String>();
             List<ZdravsteniKarton> kartoni = new List<ZdravsteniKarton>();
             Alergeni1 = new List<String>();
+            zdravstveniKartonController = new ZdravstvenikartonController();
+            alergeni = zdravstveniKartonController.DobaviSveAlergene();
 
-            using (StreamReader sr = new StreamReader(@"..\..\..\Fajlovi\ZdravstveniKarton.txt"))
+            /*using (StreamReader sr = new StreamReader(@"..\..\..\Fajlovi\ZdravstveniKarton.txt"))
             {
                 string json = sr.ReadToEnd();
                 kartoni = JsonConvert.DeserializeObject<List<ZdravsteniKarton>>(json);
-            }
+            }*/
             ZdravsteniKarton zk = new ZdravsteniKarton();
             foreach (ZdravsteniKarton k in kartoni)
             {
@@ -60,7 +64,7 @@ namespace ProjekatSIMS
         {
             this.Close();
         }
-        private void Dodavanje(object sender, RoutedEventArgs e)
+        private void Novi_alergen(object sender, RoutedEventArgs e)
         {
             this.Close();
             NoviAlergenSWindow na = new NoviAlergenSWindow(pac);

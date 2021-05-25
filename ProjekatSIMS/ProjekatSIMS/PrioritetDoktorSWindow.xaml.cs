@@ -82,7 +82,9 @@ namespace ProjekatSIMS
         }
         private void Nazad(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            MessageBoxResult ret = MessageBox.Show("Da li želite da otkažete zakazivanje pregleda pacijenta?", "PROVERA", MessageBoxButton.YesNo);
+            if (ret == MessageBoxResult.Yes)
+                this.Close();
         }
         private void Dvoklik(object sender, MouseButtonEventArgs e)
         {

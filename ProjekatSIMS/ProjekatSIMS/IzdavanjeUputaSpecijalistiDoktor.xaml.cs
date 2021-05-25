@@ -4,31 +4,22 @@ using ProjekatSIMS.DTO;
 using Repository;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace ProjekatSIMS
 {
 
-    public partial class IzdavanjeUputaDoktor : Page
+    public partial class IzdavanjeUputaSpecijalistiDoktor : Page
     {
         private OsobaRepository osobaRepository = new OsobaRepository((@"..\..\..\Fajlovi\Doktor.txt"));
-        private PregledController pregledController = new PregledController();
         private SlobodniTerminiUputSpecijelistiController slobodniTerminiUputSpecijelistiController = new SlobodniTerminiUputSpecijelistiController();
-        private Doktor odabraniDoktor = new Doktor();
+        private IzdavanjeUputaSpecijalistiController izdavanjeUputaSpecijalistiController = new IzdavanjeUputaSpecijalistiController();
         private List<Doktor> sviDoktori = new List<Doktor>();
         private List<Doktor> doktoriPrikaz;
         private Pacijent izabraniPacijent;
 
-        public IzdavanjeUputaDoktor(Pacijent pacijent )
+        public IzdavanjeUputaSpecijalistiDoktor(Pacijent pacijent)
         {
             InitializeComponent();
             this.DataContext = this;
@@ -36,20 +27,20 @@ namespace ProjekatSIMS
             sviDoktori = osobaRepository.DobaviDoktore();
             var specijalizacije = Enum.GetValues(typeof(Specijalizacija));
             Specijalizacije.ItemsSource = specijalizacije;
-           
+
         }
 
         private void DoktoriOdabraneSpecijalizacije(object sender, RoutedEventArgs e)
         {
-            Specijalizacija odabranaSpecijalizacija =(Specijalizacija) Specijalizacije.SelectedItem;
+            Specijalizacija odabranaSpecijalizacija = (Specijalizacija)Specijalizacije.SelectedItem;
             doktoriPrikaz = new List<Doktor>();
-            foreach(Doktor d in sviDoktori)
+            foreach (Doktor d in sviDoktori)
             {
                 if (odabranaSpecijalizacija == d.Specijalizacija)
-               
-                     doktoriPrikaz.Add(d);
+
+                    doktoriPrikaz.Add(d);
             }
-           Doktori.ItemsSource =doktoriPrikaz;
+            Doktori.ItemsSource = doktoriPrikaz;
         }
 
         private void PrikazSlobodnihTermina(object sender, RoutedEventArgs e)
@@ -57,9 +48,9 @@ namespace ProjekatSIMS
             Doktor izabraniDoktor = (Doktor)Doktori.SelectedItem;
             IntervalDatuma datumi = new IntervalDatuma((DateTime)DatumPocetak.SelectedDate, (DateTime)DatumKraj.SelectedDate);
             IntervalSati sati = new IntervalSati(Convert.ToInt32(IntervalPocetak.Text), Convert.ToInt32(IntervalKraj.Text));
-         
+
             SlobodniTerminiUputSpecijalistiDTO podaci = new SlobodniTerminiUputSpecijalistiDTO(izabraniDoktor, datumi, sati);
-            List<DateTime> slobodniTermini =slobodniTerminiUputSpecijelistiController.PrikazSlobodnihTermina(podaci);
+            List<DateTime> slobodniTermini = slobodniTerminiUputSpecijelistiController.PrikazSlobodnihTermina(podaci);
             Termini.ItemsSource = slobodniTermini;
         }
 
@@ -68,7 +59,7 @@ namespace ProjekatSIMS
             Doktor izabraniDoktor = (Doktor)Doktori.SelectedItem;
             DateTime izabranTermin = (DateTime)Termini.SelectedItem;
 
-            if (pregledController.IzdavanjeUputa(izabraniPacijent, izabraniDoktor, izabranTermin))
+            if (izdavanjeUputaSpecijalistiController.IzdavanjeUputa(izabraniPacijent, izabraniDoktor, izabranTermin))
             {
                 MessageBox.Show("Uput je uspjesno izdat");
                 this.NavigationService.Navigate(new Uri("PrikazPregledaDoktor.xaml", UriKind.Relative));

@@ -21,6 +21,26 @@ namespace Controller
         {
             return notifikacijaService.DobaviSve();
         }
-
+        public Boolean PisanjeObavestenja(Notifikacija notifikacija)
+        {
+            if (notifikacijaService.PisanjeObavestenja(notifikacija) == true)
+                return true;
+            else
+                return false;
+        }
+        public Boolean CuvanjeIzmenjenjihPodataka(Notifikacija stariPodaci)
+        {
+            if (notifikacijaService.CuvanjeIzmenjenjihPodataka(stariPodaci))
+                return true;
+            else
+                return false;
+        }
+        public Boolean ObrisiObavestenje(Notifikacija notifikacija)
+        {
+            if (notifikacijaService.ObrisiObavestenje(notifikacija))
+                return true;
+            else
+                return false;
+        }
     }
 }

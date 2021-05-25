@@ -13,17 +13,15 @@ namespace Service
 {
     public class PregledService
     {
-        private const int TRAJANJE_PREGLEDA = 20;
+       
         public const int POCETAK_RADNOG_VREMENA = 8;
         public const int KRAJ_RADNOG_VREMENA = 20;
         public int MAKSIMALNO_OTKAZIVANJA = 10;
-       // public bool jesteMaliciozniKorisnik = false;
-      
         public Repository.PregledRepository pregledRepository = new PregledRepository();
         public Repository.ReceptRepository receptRepository;
         
 
-        public ProstorijaRepository prostorijaRepository = new ProstorijaRepository(@"..\..\..\Fajlovi\Prostorija.txt");
+        public ProstorijaRepository prostorijaRepository = new ProstorijaRepository();
         public UputRepository uputRepository = new UputRepository();
 
         public int zauzetPregled = 0;
@@ -36,31 +34,14 @@ namespace Service
 
 
 
-        public List<Pregled> DobaviSvePreglede()
-        {
-            return pregledRepository.DobaviSvePregledeDoktor();
-        }
+       
         public List<Pregled> DobaviSveSekretar()
         {
             return pregledRepository.GetListaPregledaSekretar();
         }
 
 
-        public Boolean OtkazivanjePregledaDoktor(Pregled p)
-        {
-            List<Pregled> pregledi = pregledRepository.DobaviSvePregledeDoktor();
-            foreach (Pregled pr in pregledi)
-            {
-                if (pr.Id == p.Id)
-                {
-                    pregledi.Remove(pr);
-                    break;
-                }
-            }
-            pregledRepository.SacuvajPregledeDoktor(pregledi);
-            return true;
-
-        }
+    
         public Boolean OtkazivanjeSekretar(Pregled p)
         {
             List<Pregled> pregledi = pregledRepository.GetListaPregledaSekretar();
@@ -75,22 +56,7 @@ namespace Service
             pregledRepository.SacuvajPregledSekretar(pregledi);
             return true;
         }
-        public Boolean IzmjenaPregledaDoktor(Pregled p, DateTime datum)
-        {
-            List<Pregled> pregledi = pregledRepository.DobaviSvePregledeDoktor();
-            foreach (Pregled pr in pregledi)
-            {
-                if (pr.Id == p.Id)
-                {
-                    pr.Pocetak = datum;
-
-                    break;
-                }
-            }
-            pregledRepository.SacuvajPregledeDoktor(pregledi);
-            return true;
-
-        }
+       
         public Boolean IzmenaPregledaSekretar(Pregled p, DateTime datum)
         {
             List<Pregled> pregledi = pregledRepository.GetListaPregledaSekretar();
@@ -106,223 +72,13 @@ namespace Service
             return true;
         }
 
-        public Boolean IzdavanjeUputa(Pacijent pacijent, Doktor doktor, DateTime izabraniTermin)
-        {
-            Prostorija slobodnaOrdinacija = NadjiSlobodnuOrdinaciju(izabraniTermin);
-            if (slobodnaOrdinacija == null)
-                return false;
-
-            Pregled p = KreiranjePregleda(pacijent, doktor, izabraniTermin, slobodnaOrdinacija);
-            pregledRepository.SacuvajPregledDoktor(p);
-
-            DateTime vrijemeIzadavanja = DateTime.Now;
-            Uput uput = new Uput(p, vrijemeIzadavanja);
-            uputRepository.SacuvajUput(uput);
-
-            return true;
-        }
-
-
-
-        private static Pregled KreiranjePregleda(Pacijent pacijent, Doktor doktor, DateTime izabraniTermin, Prostorija slobodnaOrdinacija)
-        {
-            Pregled pregled = new Pregled();
-            pregled.pacijent = pacijent;
-            pregled.doktor = doktor;
-            pregled.Pocetak = izabraniTermin;
-            pregled.Trajanje = TRAJANJE_PREGLEDA;
-            pregled.prostorija = slobodnaOrdinacija;
-            pregled.StatusPregleda = StatusPregleda.Zakazan;
-            pregled.Tip = TipPregleda.Standardni;
-            return pregled;
-        }
-
-        /*private static Pregled ZakazivanjePregledaSekretar(Pacijent pacijent, Doktor doktor, DateTime terminPregleda)
-        {
-            Pregled pregled = new Pregled();
-            return pregled;
-        }*/
-        public Prostorija NadjiSlobodnuOrdinaciju(DateTime terminPocetak)
-        {
-            DateTime terminKraj = terminPocetak.AddMinutes(TRAJANJE_PREGLEDA);
-            List<Pregled> zakazaniPregledi = pregledRepository.DobaviZakazanePreglede();
-            List<Prostorija> ordinacije = prostorijaRepository.DobaviOrdinacije();
-            List<Prostorija> slobodneOrdinacije = DobaviSlobodneOrdinacije(terminPocetak, terminKraj, zakazaniPregledi, ordinacije);
-
-            if (slobodneOrdinacije.Count == 0)
-            {
-                MessageBox.Show("Nema slbodnih ordinacija u izabranom terminu. Molimo Vas izaberite neki od drugih ponudjenih termina");
-                return null;
-            }
-
-            return slobodneOrdinacije[0];
-        }
-
-        private static List<Prostorija> DobaviSlobodneOrdinacije(DateTime terminPocetak, DateTime terminKraj, List<Pregled> zakazaniPregledi, List<Prostorija> ordinacije)
-        {
-            List<Prostorija> slobodneOrdinacije = ordinacije;
-            
-            foreach (Pregled p in zakazaniPregledi)
-            {
-                if (DateTime.Compare(terminPocetak, p.Pocetak) >= 0 && DateTime.Compare(terminPocetak, p.Pocetak.AddMinutes(p.Trajanje)) < 0 ||
-                    DateTime.Compare(terminKraj, p.Pocetak) > 0 && DateTime.Compare(terminKraj, p.Pocetak.AddMinutes(p.Trajanje)) <= 0 ||
-                    DateTime.Compare(terminKraj, p.Pocetak) == 0 && DateTime.Compare(terminKraj, p.Pocetak.AddMinutes(p.Trajanje)) == 0)
-                {
-                    for (int i = 0; i < ordinacije.Count; i++)
-                    {
-                        if (ordinacije[i].id == p.prostorija.id)
-                            slobodneOrdinacije.Remove(ordinacije[i]);
-                    }
-                }
-            }
-
-            return slobodneOrdinacije;
-        }
-
-      /*  public List<DateTime> PrikazSlobodnihTermina(Doktor doktor, DateTime pocetnoVrijeme, DateTime krajnjeVrijeme, int pocetniInterval, int krajnjiInerval)
-        {
-
-            List<DateTime> slobodniTermini = DobaviSlobodneTermineDoktora(doktor, pocetnoVrijeme, krajnjeVrijeme, pocetniInterval, krajnjiInerval);
-            if (slobodniTermini.Count != 0)
-                return slobodniTermini;
-            else
-            {
-                MessageBox.Show("Nema slobodnih termina u datom intervalu.Prikazace se najblizi slobodni termini");
-                return PronadjiNoveTermine(doktor, pocetnoVrijeme, krajnjeVrijeme, pocetniInterval, krajnjiInerval);
-            }
-        }
-
-        public List<DateTime> DobaviSlobodneTermineDoktora(Doktor doktor, DateTime pocetnoVrijeme, DateTime krajnjeVrijeme, int pocetniInterval, int krajnjiInterval)
-        {
-            List<Pregled> ZakazaniPreglediDoktora = pregledRepository.DobaviZakazanePregledeDoktora(doktor);
-            List<Pregled> zauzetiPreglediZaInterval = ZauzetostPregledaZaInterval(pocetnoVrijeme, krajnjeVrijeme, ZakazaniPreglediDoktora);
-
-            List<DateTime> slobodniTermini = RacunanjeSlobodnihTermina(zauzetiPreglediZaInterval, pocetnoVrijeme, krajnjeVrijeme, pocetniInterval, krajnjiInterval);
-            return slobodniTermini;
-        }
-
-        public List<DateTime> RacunanjeSlobodnihTermina(List<Pregled> zauzetiPregledi, DateTime pocetnoVrijeme, DateTime krajnjeVrijeme, int pocetniInterval, int krajnjiInterval)
-        {
-
-            List<DateTime> slobodniTermini = new List<DateTime>();
-
-            for (DateTime datum = pocetnoVrijeme; datum <= krajnjeVrijeme; datum = datum.AddDays(1))
-            {
-                DodavanjeSlobodnihTermina(zauzetiPregledi, pocetniInterval, krajnjiInterval, slobodniTermini, datum);
-            }
-
-            return slobodniTermini;
-        }
-
-        private static void DodavanjeSlobodnihTermina(List<Pregled> zauzetiPregledi, int pocetniInterval, int krajnjiInterval, List<DateTime> slobodniTermini, DateTime datum)
-        {
-            DateTime pocetak = new DateTime(datum.Year, datum.Month, datum.Day, pocetniInterval, 0, 0);
-            DateTime kraj = new DateTime(datum.Year, datum.Month, datum.Day, krajnjiInterval, 0, 0);
-
-            for (DateTime terminPocetak = pocetak; terminPocetak < kraj; terminPocetak = terminPocetak.AddMinutes(TRAJANJE_PREGLEDA))
-            {
-                int zauzet = 0;
-                DateTime terminKraj = terminPocetak.AddMinutes(TRAJANJE_PREGLEDA);
-                zauzet = ProvjeravanjeZauzetostiTermina(zauzetiPregledi, terminPocetak, zauzet, terminKraj);
-
-                if (zauzet == 0)
-                    slobodniTermini.Add(terminPocetak);
-            }
-        }
-
-        private static int ProvjeravanjeZauzetostiTermina(List<Pregled> zauzetiPregledi, DateTime terminPocetak, int zauzet, DateTime terminKraj)
-        {
-            foreach (Pregled p in zauzetiPregledi)
-            {
-                zauzet = ProvjeravanjePodudaranjaTerminaSaPregledom(terminPocetak, zauzet, terminKraj, p);
-            }
-
-            return zauzet;
-        }
-
-        private static int ProvjeravanjePodudaranjaTerminaSaPregledom(DateTime terminPocetak, int zauzet, DateTime terminKraj, Pregled p)
-        {
-            if (DateTime.Compare(terminPocetak, p.Pocetak) >= 0 && DateTime.Compare(terminPocetak, p.Pocetak.AddMinutes(p.Trajanje)) < 0 ||
-                DateTime.Compare(terminKraj, p.Pocetak) > 0 && DateTime.Compare(terminKraj, p.Pocetak.AddMinutes(p.Trajanje)) <= 0)
-                zauzet++;
-            return zauzet;
-        }
-
-        public List<DateTime> PronadjiNoveTermine(Doktor doktor, DateTime pocetnoVrijeme, DateTime krajnjeVrijeme, int pocetniInterval, int krajnjiInterval)
-        {
-
-            List<Pregled> ZakazaniPreglediDoktora = pregledRepository.DobaviZakazanePregledeDoktora(doktor);
-            List<Pregled> zauzetiPreglediZaInterval = ZauzetostPregledaZaInterval(pocetnoVrijeme, krajnjeVrijeme, ZakazaniPreglediDoktora);
-
-            DateTime pocetnoVrijemePrije, krajnjeVrijemePrije, pocetnoVrijemePoslije, krajnjeVrijemePoslije;
-            RacunanjeVremenaOkoIntervala(pocetnoVrijeme, krajnjeVrijeme, out pocetnoVrijemePrije, out krajnjeVrijemePrije, out pocetnoVrijemePoslije, out krajnjeVrijemePoslije);
-
-            List<DateTime> slobodniTerminiPrije = RacunanjeSlobodnihTermina(zauzetiPreglediZaInterval, pocetnoVrijemePrije, krajnjeVrijemePrije, pocetniInterval, krajnjiInterval);
-            List<DateTime> slobodniTerminiPoslije = RacunanjeSlobodnihTermina(zauzetiPreglediZaInterval, pocetnoVrijemePoslije, krajnjeVrijemePoslije, pocetniInterval, krajnjiInterval);
-
-            List<KeyValuePair<int, DateTime>> parUdaljenostTermin = new List<KeyValuePair<int, DateTime>>();
-            parUdaljenostTermin = UdaljenostiOdZadatogVremena(parUdaljenostTermin, pocetnoVrijeme, slobodniTerminiPrije);
-            parUdaljenostTermin = UdaljenostiOdZadatogVremena(parUdaljenostTermin, krajnjeVrijeme, slobodniTerminiPoslije);
-
-            return IzlistavanjeNajblizihTermina(parUdaljenostTermin);
-
-        }
-
-        private static List<Pregled> ZauzetostPregledaZaInterval(DateTime pocetnoVrijeme, DateTime krajnjeVrijeme, List<Pregled> ZakazaniPreglediDoktora)
-        {
-            List<Pregled> zauzetiPreglediZaInterval = new List<Pregled>();
-            foreach (Pregled p in ZakazaniPreglediDoktora)
-            {
-                if (p.Pocetak.Date >= pocetnoVrijeme.Date && p.Pocetak.Date <= krajnjeVrijeme.Date)
-                    zauzetiPreglediZaInterval.Add(p);
-            }
-
-            return zauzetiPreglediZaInterval;
-        }
-
-        private static void RacunanjeVremenaOkoIntervala(DateTime pocetnoVrijeme, DateTime krajnjeVrijeme, out DateTime pocetnoVrijemePrije, out DateTime krajnjeVrijemePrije, out DateTime pocetnoVrijemePoslije, out DateTime krajnjeVrijemePoslije)
-        {
-
-            pocetnoVrijemePrije = pocetnoVrijeme.AddDays(-2);
-            krajnjeVrijemePrije = pocetnoVrijeme.AddDays(-1);
-            pocetnoVrijemePoslije = krajnjeVrijeme.AddDays(1);
-            krajnjeVrijemePoslije = krajnjeVrijeme.AddDays(2);
-        }
-
       
-        
-        private static List<DateTime> IzlistavanjeNajblizihTermina(List<KeyValuePair<int, DateTime>> parUdaljenostTermin)
+
+        private static Pregled ZakazivanjePregledaSekretar(Pacijent pacijent, Doktor doktor, DateTime terminPregleda)
         {
-            List<DateTime> slobodniTermini = new List<DateTime>();
-            parUdaljenostTermin.Sort((x, y) => x.Key.CompareTo(y.Key));
-
-            for (int i = 1; i < 100; i++)
-            {
-                if (parUdaljenostTermin.Count < i + 1)
-                    break;
-                slobodniTermini.Add(parUdaljenostTermin[i].Value);
-            }
-
-            List<DateTime> sortiraniSlobodniTermini = slobodniTermini.OrderBy(o => o).ToList();
-
-            return sortiraniSlobodniTermini;
+            Pregled pregled = new Pregled();
+            return pregled;
         }
-
-        private static List<KeyValuePair<int, DateTime>> UdaljenostiOdZadatogVremena(List<KeyValuePair<int, DateTime>> parUdaljenostTermin, DateTime pocetnoVrijeme, List<DateTime> slobodniTermini)
-        {
-
-            foreach (DateTime t in slobodniTermini)
-            {
-                int distanca = (int)((t - pocetnoVrijeme.AddHours(2)).Duration()).TotalSeconds;
-
-                parUdaljenostTermin.Add(new KeyValuePair<int, DateTime>(distanca, t));
-            }
-
-            return parUdaljenostTermin;
-        }
-
-
-        */
 
 
         public Boolean ZakazivanjePregledaSekretar(ComboBox Termin, String jmbg, String jmbgdoktor, Prostorija prostorija, DateTime datum1, DateTime datum2)
@@ -425,93 +181,7 @@ namespace Service
         }
 
 
-        public Boolean ZakazivanjePregleda(ComboBox Termin, String jmbg, Prostorija prostorija, DateTime datum1, DateTime datum2)
-        {
-            Pregled p = new Pregled();
-            List<Pacijent> pacijenti = new List<Pacijent>();
-            using (StreamReader r = new StreamReader(@"..\..\..\Fajlovi\Pacijent.txt"))
-            {
-                string json = r.ReadToEnd();
-                pacijenti = JsonConvert.DeserializeObject<List<Pacijent>>(json);
-            }
-
-            Doktor dr = new Doktor { Jmbg = "1511990855023", Ime = "Marijana", Prezime = "Peric" };
-
-
-            int znak = 0;
-
-            //da i postoji unijeti pacijent     
-            foreach (Pacijent pa in pacijenti)
-            {
-                if (pa.Jmbg == jmbg)
-                {
-                    znak++;
-                    p.pacijent = pa;
-                    break;
-                }
-            }
-            if (znak == 0)
-            {
-                MessageBox.Show("Pacijent nije nadjen!");
-                return false;
-            }
-
-            pregledRepository = new PregledRepository();
-
-            ///DATUMMM i VRIJEMEE
-            List<Pregled> pregledi = pregledRepository.DobaviSvePregledeDoktor();
-
-            foreach (Pregled pr in pregledi)
-            {
-
-                if (pr.StatusPregleda == StatusPregleda.Zakazan)
-                {
-                    if (dr.Jmbg == pr.doktor.Jmbg || pr.prostorija == prostorija)
-                    {
-                        if (pr.Pocetak.Year == datum1.Year && pr.Pocetak.Month == datum1.Month && pr.Pocetak.Day == datum1.Day)
-                        {
-
-                            DateTime datum11 = pr.Pocetak;
-                            DateTime datum22 = pr.Pocetak.AddMinutes(pr.Trajanje);
-                            if (DateTime.Compare(datum1, datum11) >= 0 && DateTime.Compare(datum1, datum22) < 0 ||
-                                DateTime.Compare(datum2, datum11) > 0 && DateTime.Compare(datum2, datum22) <= 0)
-                            {
-                                MessageBox.Show("Dati termin je zauzet");
-                                PrikazTermina(Termin, pregledi, datum1, datum2, dr);
-                                return false;
-                            }
-
-                        }
-                    }
-                }
-            }
-
-
-            p.Pocetak = datum1;
-            p.Trajanje = 20;
-
-            p.Tip = TipPregleda.Standardni;
-            p.StatusPregleda = StatusPregleda.Zakazan;
-            p.prostorija = prostorija;
-
-            p.doktor = dr;
-
-
-
-            if (pregledi.Count == 0)
-            {
-                p.Id = 1;
-            }
-            else
-            {
-                p.Id = pregledi[pregledi.Count - 1].Id + 1;
-            }
-            pregledi.Add(p);
-            pregledRepository.SacuvajPregledeDoktor(pregledi);
-
-
-            return true;
-        }
+       
 
         private void PrikazTermina(ComboBox Termin, List<Pregled> pregledi, DateTime datum1, DateTime datum2, Doktor dr)
         {
@@ -610,36 +280,7 @@ namespace Service
         }
 
 
-      
 
-      /*  private Doktor postojiDoktorUSistemu(String ime,String prezime)
-        {
-            bool doktorPostoji = false;
-            List<Doktor> doktori = new List<Doktor>();
-            using (StreamReader sr = new StreamReader(@"..\..\..\Fajlovi\Doktor.txt"))
-            {
-                string json = sr.ReadToEnd();
-                doktori = JsonConvert.DeserializeObject<List<Doktor>>(json);
-            }
-            foreach (Doktor dr in doktori)
-            {
-                if ((dr.Ime == ime) && (dr.Prezime == prezime))
-                {
-
-                    return dr;
-                    
-                }
-            }
-            if(doktorPostoji == false)
-            {
-                MessageBox.Show("Ne postoji doktor sa tim imenom!");
-                return null;
-                
-            }
-            return null;
-
-            
-        } */
 
     }
 }

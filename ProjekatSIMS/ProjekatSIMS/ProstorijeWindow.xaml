@@ -1,4 +1,5 @@
-﻿<Window x:Class="ProjekatSIMS.ProstorijeWindow"
+﻿
+    <Window x:Class="ProjekatSIMS.ProstorijeWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -39,7 +40,7 @@
         <RadioButton  Content="Ordinacija" Name="Ordinacija" GroupName="vrsta" HorizontalAlignment="Left" Margin="813,299,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.372,0.518" FontSize="16" Width="144" Height="23"/>
         <RadioButton  Content="Kancelarija" Name="Kancelarija" GroupName="vrsta"  HorizontalAlignment="Left" Margin="813,330,0,0" VerticalAlignment="Top" FontSize="16" Height="24" Width="146" />
         <RadioButton  Content="Magacin" Name="Magacin" GroupName="vrsta"  HorizontalAlignment="Left" Margin="813,367,0,0" VerticalAlignment="Top" FontSize="16" Height="29" Width="122" />
-        <Button Content="Pregledaj inventar" Click="Button_Click"  HorizontalAlignment="Left" Margin="255,362,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.328,-0.165" Height="29" Width="124"/>
+        <Button Content="Pregledaj inventar" Click="pregledajInventar"  HorizontalAlignment="Left" Margin="255,362,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.328,-0.165" Height="29" Width="124"/>
         <Label Content="ID" HorizontalAlignment="Left" Margin="741,47,0,0" VerticalAlignment="Top" Width="58" FontSize="20" RenderTransformOrigin="1.557,0.135" Height="36"/>
         <Label Content="Kvadratura" HorizontalAlignment="Left" Margin="695,167,0,0" VerticalAlignment="Top" FontSize="20" RenderTransformOrigin="0.515,-0.081"/>
         <GridSplitter HorizontalAlignment="Left" Height="475" Margin="562,-22,0,0" VerticalAlignment="Top" Width="5"/>

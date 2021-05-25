@@ -17,7 +17,7 @@
             </DataGrid.Columns>
         </DataGrid>
         <Button Content="Profil pacijenta" Click="Nazad" HorizontalAlignment="Left" Margin="60,440,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
-        <Button Content="Dodaj novi" Click="Dodavanje" HorizontalAlignment="Left" Margin="684,440,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
+        <Button Content="Dodaj novi" Click="Novi_alergen" HorizontalAlignment="Left" Margin="684,440,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
 
         <Label Width="265" VerticalAlignment="Top" Margin="362,87,0,0" Height="50" HorizontalAlignment="Left" FontSize="22" Foreground="#1963bf" FontWeight="Bold" Content="Lista alergena pacijenta"/>
         <Label Margin="239,21,401,448">
