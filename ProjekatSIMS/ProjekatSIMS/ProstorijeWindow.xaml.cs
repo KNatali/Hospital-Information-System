@@ -146,7 +146,7 @@ namespace ProjekatSIMS
             foreach(Prostorija p in prostorije)
 
             {
-                if (Convert.ToInt32(Id.Text) == 0)
+                if (Id.Text == "0")
                 {
                     MessageBox.Show("Nemoguce je obrisati glavni magacin!");
                     break;
