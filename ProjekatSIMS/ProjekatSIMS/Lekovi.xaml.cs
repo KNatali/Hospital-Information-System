@@ -12,9 +12,7 @@ using System.Windows.Shapes;
 
 namespace ProjekatSIMS
 {
-    /// <summary>
-    /// Interaction logic for Lekovi.xaml
-    /// </summary>
+    
     public partial class Lekovi : Window
     {
         public Lekovi()

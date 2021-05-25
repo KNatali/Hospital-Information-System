@@ -40,7 +40,9 @@ namespace ProjekatSIMS
         {
             Lijek lijek = (Lijek)dgrLekovi.SelectedItems[0];
             LijekService.lijekRepoisitory.ObrisiLek(lijek);
+            
             odobreniLekovi = LijekService.DobaviOdbijene();
+            
             dgrLekovi.ItemsSource = odobreniLekovi;
         }
     }

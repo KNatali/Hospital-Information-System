@@ -54,6 +54,11 @@ namespace ProjekatSIMS
                     SekretarWindow sekretarWindow = new SekretarWindow();
                     sekretarWindow.Show();
                     break;
+                case Uloga.Upravnik:
+                    UpravnikWindow uw = new UpravnikWindow();
+                    uw.Show();
+                    break;
+                
 
 
             }

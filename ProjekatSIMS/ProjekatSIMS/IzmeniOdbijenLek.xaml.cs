@@ -20,6 +20,7 @@ namespace ProjekatSIMS
         public LijekService LijekService { get; set; }
         public List<Lijek> Lijekovi { get; set; }
         public Lijek Lijek1 { get; set; }
+        public List<Lijek> sviLekovi { get; set; }
         public IzmeniOdbijenLek(Lijek lijek)
         {
             InitializeComponent();
@@ -29,6 +30,8 @@ namespace ProjekatSIMS
 
 
             Lijekovi = new List<Lijek>();
+            sviLekovi = new List<Lijek>();
+            sviLekovi = LijekService.lijekRepoisitory.DobaviSve();
             Lijekovi = LijekService.DobaviOdobrene();
             Sastojci.ItemsSource = Lijek1.Alergeni;
             AlternativniLekovi.ItemsSource = Lijek1.AlternativniLekovi;
@@ -58,7 +61,19 @@ namespace ProjekatSIMS
         }
         private void sacuvaj(object sender, RoutedEventArgs e)
         {
-
+            foreach(Lijek l in sviLekovi)
+            {
+                if(l.NazivLeka == Lijek1.NazivLeka)
+                {
+                    l.Alergeni = Lijek1.Alergeni;
+                    l.AlternativniLekovi = Lijek1.AlternativniLekovi;
+                    l.Opis = Lijek1.Opis;
+                    l.PorukaOdbaci = Lijek1.PorukaOdbaci;
+                    break;
+                }
+            }
+            LijekService.lijekRepoisitory.Sacuvaj(sviLekovi);
+            sviLekovi = LijekService.lijekRepoisitory.DobaviSve();
         }
         private void dodajSastojak(object sender, RoutedEventArgs e)
         {
