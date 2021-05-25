@@ -37,7 +37,7 @@ namespace Repository
         }
         
 
-        public Boolean obrisiProstoriju(String idProstorijeZaBrisanje)
+        public Boolean ObrisiProstoriju(String idProstorijeZaBrisanje)
         {
             List<Prostorija> prostorije = new List<Prostorija>();
             prostorije = DobaviSve();
@@ -109,6 +109,7 @@ namespace Repository
 
             return sobe;
         }
+        
 
     }
 }
