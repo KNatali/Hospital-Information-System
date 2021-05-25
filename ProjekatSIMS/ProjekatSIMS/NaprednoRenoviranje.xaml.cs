@@ -198,6 +198,7 @@ namespace ProjekatSIMS
         {
            
             Prostorija prostorijaZaDeljenje = (Prostorija)Prostorije.SelectedItem;
+
             ProstorijaService.obrisiProstoriju(prostorijaZaDeljenje.id);
             prostorije.AddRange(razdeljeneProstorije);
             ProstorijaService.prostorijaRepository.Sacuvaj(prostorije);

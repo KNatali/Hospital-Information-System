@@ -14,13 +14,13 @@ namespace Service
             List<ZdravsteniKarton> zdravstveniKartoni = zdravstveniKartonRepository.DobaviZdravstveneKartone();
             List<String> alergeniPacijenta = new List<String>();
             alergeniPacijenta = DobavljanjeAlergenaPacijenta(zdravstveniKartoni, pacijent);
-            if (IsPcijentAlergicanNaLijek(izabraniLijek, alergeniPacijenta))
+            if (ProvjeraAlergena(izabraniLijek, alergeniPacijenta))
                 return true;
 
             return false;
         }
 
-        private Boolean IsPcijentAlergicanNaLijek(Lijek lijek, List<string> alergeni)
+        private Boolean ProvjeraAlergena(Lijek lijek, List<string> alergeni)
         {
             if (lijek.Alergeni != null)
             {
