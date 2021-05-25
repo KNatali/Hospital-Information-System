@@ -119,6 +119,19 @@ namespace Repository
             return zakazaniPregledi;
         }
 
+        public List<Pregled> DobaviZavrsenePreglede()
+        {
+            List<Pregled> sviPregledi = DobaviSvePregledeDoktor();
+            List<Pregled> zavrseniPregledi = new List<Pregled>();
+            foreach (Pregled p in sviPregledi)
+            {
+                if (p.StatusPregleda == StatusPregleda.Zavrsen)
+                    zavrseniPregledi.Add(p);
+
+            }
+            return zavrseniPregledi;
+        }
+
         public List<Pregled> DobaviZakazanePregledeDoktora(Doktor doktor)
         {
 
@@ -130,6 +143,20 @@ namespace Repository
                     zakazaniPreglediDoktora.Add(p);
             }
             return zakazaniPreglediDoktora;
+
+        }
+
+        public List<Pregled> DobaviZavrsenePregledeDoktora(Doktor doktor)
+        {
+
+            List<Pregled> zavrseniPregledi = DobaviZavrsenePreglede();
+            List<Pregled> zavrseniPreglediDoktora = new List<Pregled>();
+            foreach (Pregled p in zavrseniPregledi)
+            {
+                if (p.doktor.Jmbg == doktor.Jmbg)
+                    zavrseniPreglediDoktora.Add(p);
+            }
+            return zavrseniPreglediDoktora;
 
         }
 

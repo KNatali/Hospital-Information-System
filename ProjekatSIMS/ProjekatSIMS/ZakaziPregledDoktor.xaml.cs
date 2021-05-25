@@ -1,6 +1,7 @@
 ﻿using Controller;
 using Model;
 using Newtonsoft.Json;
+using Repository;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -17,47 +18,37 @@ using System.Windows.Shapes;
 
 namespace ProjekatSIMS
 {
-    /// <summary>
-    /// Interaction logic for ZakaziPregledDoktor.xaml
-    /// </summary>
+   
     public partial class ZakaziPregledDoktor : Page
     {
-       
-        public List<Prostorija> Ordinacije { get; set; }
+
+        private ProstorijaRepository prostorijaRepository = new ProstorijaRepository();
+        private PacijentRepository pacijentRepository = new PacijentRepository();
+        private ZauzetostTerminaPregledaController zauzetostTerminaPregledaController = new ZauzetostTerminaPregledaController();
+        private PrikazSlobodnihTerminaController prikazSlobodnihTerminaController = new PrikazSlobodnihTerminaController();
+        private ZakaziPregledDoktorController zakaziPregled = new ZakaziPregledDoktorController();
+
+        private Pregled pregled { get; set; }
         public ZakaziPregledDoktor()
         {
             InitializeComponent();
             this.DataContext = this;
 
-            List<Prostorija> prostorije = new List<Prostorija>();
-            Ordinacije = new List<Prostorija>();
-            //ucitavanje ordinacija u combobox
-            using (StreamReader r = new StreamReader(@"..\..\..\Fajlovi\Prostorija.txt"))
-            {
-
-                string json = r.ReadToEnd();
-                prostorije = JsonConvert.DeserializeObject<List<Prostorija>>(json);
-
-            }
-            foreach (Prostorija p in prostorije)
-            {
-                if (p.vrsta == VrstaProstorije.Ordinacija)
-                    Ordinacije.Add(p);
-
-            }
+            List<Prostorija> ordinacije = new List<Prostorija>();
+            ordinacije = prostorijaRepository.DobaviOrdinacije();
+            List<Pacijent> pacijenti = new List<Pacijent>();
+            pacijenti = pacijentRepository.DobaviSve();
+            Ordinacija.ItemsSource = ordinacije;
+            Pacijent.ItemsSource = pacijenti;
         }
 
         private void ZakazivanjePregleda(object sender, RoutedEventArgs e)
         {
 
-            //prikupljam polja iz forme
-            String jmbg = Jmbg.Text;
-            Prostorija prostorija = (Prostorija)Ordinacija.SelectedItem;
+            pregled = new Pregled();
             DateTime datum = (DateTime)Date.SelectedDate;
-
             double sat;
             double minut;
-
             if (Termin.Visibility == Visibility.Visible)
             {
                 sat = Convert.ToDouble(Termin.Text.Split(":")[0]);
@@ -68,25 +59,45 @@ namespace ProjekatSIMS
                 sat = Convert.ToDouble(Sat.Text);
                 minut = Convert.ToDouble(Minut.Text);
             }
-
-            DateTime datum1 = new DateTime();
-            datum1 = datum.AddHours(sat);
-            datum1 = datum1.AddMinutes(minut);
+            DateTime datum1 = datum.AddHours(sat).AddMinutes(minut);
             DateTime datum2 = datum1.AddMinutes(20);
+            IntervalDatuma termin = new IntervalDatuma(datum1, datum2);
+            Doktor dr = new Doktor { Jmbg = "1511990855023", Ime = "Marijana", Prezime = "Peric" };
+            KreiranjePregleda( datum1, termin, dr);
+            ZauzetiTermini(datum1, termin);
+        }
 
+        private void KreiranjePregleda( DateTime datum1, IntervalDatuma termin, Doktor dr)
+        {
+            pregled.Pocetak = datum1;
+            pregled.Trajanje = 20;
+            pregled.Tip = TipPregleda.Operacija;
+            pregled.StatusPregleda = StatusPregleda.Zakazan;
+            pregled.prostorija = (Prostorija)Ordinacija.SelectedItem;
+            pregled.doktor = dr;
+            pregled.pacijent = (Pacijent)Pacijent.SelectedItem;
 
-            PregledController pc = new PregledController();
+        }
 
-            if (pc.ZakazivanjePregleda(Termin, jmbg, prostorija, datum1, datum2) == true)
+        public void ZauzetiTermini(DateTime datum1, IntervalDatuma termin)
+        {
+            if (zauzetostTerminaPregledaController.PomjeriPregled(pregled, termin))
             {
-                MessageBox.Show("Uspjesno je zakazan pregled");
-                this.NavigationService.Navigate(new Uri("PrikazPregledaDoktor.xaml", UriKind.Relative));
+                List<String> termini = new List<String>();
+                termini = prikazSlobodnihTerminaController.PrikazTermina(pregled, termin);
+                MessageBox.Show("Dati termin je zauzet");
+                Termin.Visibility = Visibility.Visible;
+                Izbor.Visibility = Visibility.Visible;
+                Termin.ItemsSource = termini;
             }
             else
             {
-                MessageBox.Show("Neuspjesno zakazan termin!");
+                zakaziPregled.ZakaziPregled(pregled);
+                MessageBox.Show("Operacija je uspjesno zakazana");
+                this.NavigationService.Navigate(new Uri("PrikazPregledaDoktor.xaml", UriKind.Relative));
+
             }
         }
-    
+
     }
 }

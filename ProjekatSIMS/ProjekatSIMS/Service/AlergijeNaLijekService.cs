@@ -2,28 +2,25 @@
 using Repository;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Service
 {
     public class AlergijeNaLijekService
     {
 
-        private ZdravstveniKartonRepository zdravstveniKartonRepository=new ZdravstveniKartonRepository();
-        public Boolean IsPacijentAlergican(Lijek izabraniLijek,Pacijent pacijent)
+        private ZdravstveniKartonRepository zdravstveniKartonRepository = new ZdravstveniKartonRepository();
+        public Boolean IsPacijentAlergican(Lijek izabraniLijek, Pacijent pacijent)
         {
             List<ZdravsteniKarton> zdravstveniKartoni = zdravstveniKartonRepository.DobaviZdravstveneKartone();
-           
             List<String> alergeniPacijenta = new List<String>();
-            alergeniPacijenta = DobavljanjeAlergenaPacijenta(zdravstveniKartoni,pacijent);
-
+            alergeniPacijenta = DobavljanjeAlergenaPacijenta(zdravstveniKartoni, pacijent);
             if (IsPcijentAlergicanNaLijek(izabraniLijek, alergeniPacijenta))
                 return true;
 
             return false;
         }
 
-        private Boolean IsPcijentAlergicanNaLijek(Lijek lijek,List<string> alergeni)
+        private Boolean IsPcijentAlergicanNaLijek(Lijek lijek, List<string> alergeni)
         {
             if (lijek.Alergeni != null)
             {
@@ -36,7 +33,7 @@ namespace Service
             return false;
         }
 
-        private List<string> DobavljanjeAlergenaPacijenta(List<ZdravsteniKarton> kartoni,Pacijent pacijent)
+        private List<string> DobavljanjeAlergenaPacijenta(List<ZdravsteniKarton> kartoni, Pacijent pacijent)
         {
 
             List<String> alergeni = new List<String>();
@@ -44,7 +41,7 @@ namespace Service
             {
                 if (k.pacijent.Jmbg == pacijent.Jmbg)
                 {
-                    if (k.Alergeni!=null)
+                    if (k.Alergeni != null)
                     {
                         alergeni = k.Alergeni;
                         break;

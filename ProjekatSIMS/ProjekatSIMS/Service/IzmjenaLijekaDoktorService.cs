@@ -42,14 +42,14 @@ namespace Service
         public void SacuvajIzmjene(Lijek lijek, ItemCollection sastojci, ItemCollection alternativniLijekovi)
         {
             AzuriranjeSastojaka(lijek, sastojci);
-            NewMethod(lijek, alternativniLijekovi);
+            DodavanjeALternativnihLijekova(lijek, alternativniLijekovi);
 
             List<Lijek> sviLijekovi = AzuriranjeLijeka(lijek);
             lijekRepository.Sacuvaj(sviLijekovi);
 
         }
 
-        private static void NewMethod(Lijek lijek, ItemCollection alternativniLijekovi)
+        private static void DodavanjeALternativnihLijekova(Lijek lijek, ItemCollection alternativniLijekovi)
         {
             lijek.AlternativniLekovi = new List<String>();
             foreach (String i in alternativniLijekovi)

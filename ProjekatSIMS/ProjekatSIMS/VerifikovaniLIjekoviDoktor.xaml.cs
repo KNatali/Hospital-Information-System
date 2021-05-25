@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using Controller;
+using Model;
 using Newtonsoft.Json;
 using ProjekatSIMS.Model;
 using System;
@@ -17,17 +18,19 @@ using System.Windows.Shapes;
 
 namespace ProjekatSIMS
 {
-    /// <summary>
-    /// Interaction logic for VerifikovaniLIjekoviDoktor.xaml
-    /// </summary>
+
     public partial class VerifikovaniLIjekoviDoktor : Page
     {
+        private PrikazEvidencijeLijekovaController prikazEvidencijeLijekovaController = new PrikazEvidencijeLijekovaController();
+        private VerifikovanjeLijekovaController verifikovanjeLijekovaController = new VerifikovanjeLijekovaController();
+        public List<Lijek> SviLijekovi { get; set; }
+        public List<Lijek> VerifikovaniLijekovi { get; set; }
         public VerifikovaniLIjekoviDoktor()
         {
             InitializeComponent();
         
             this.DataContext = this;
-            List<Lijek> SviLijekovi = new List<Lijek>();
+            /*List<Lijek> SviLijekovi = new List<Lijek>();
             List<Lijek> VerifikovaniLijekovi = new List<Lijek>();
             using (StreamReader r = new StreamReader(@"..\..\..\Fajlovi\Lijek.txt"))
             {
@@ -38,7 +41,12 @@ namespace ProjekatSIMS
             {
                 if (l.Status != OdobravanjeLekaEnum.Ceka)
                     VerifikovaniLijekovi.Add(l);
-            }
+            }*/
+            SviLijekovi = new List<Lijek>();
+            VerifikovaniLijekovi = new List<Lijek>();
+            TipLijekaPremaPrikazu tip = TipLijekaPremaPrikazu.Verifikovan;
+            VerifikovaniLijekovi = prikazEvidencijeLijekovaController.PrikazLijekovaPoStatusu(tip);
+
 
             ListCollectionView collectionView = new ListCollectionView(VerifikovaniLijekovi);
             collectionView.GroupDescriptions.Add(new PropertyGroupDescription("Status"));

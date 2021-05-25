@@ -110,6 +110,19 @@ namespace Repository
             return ordinacije;
         }
 
+        public List<Prostorija> DobaviSale()
+        {
+            List<Prostorija> sveProstorije = DobaviSveProstorije();
+            List<Prostorija> ordinacije = new List<Prostorija>();
+            foreach (Prostorija p in sveProstorije)
+            {
+                if (p.vrsta == VrstaProstorije.Sala)
+                    ordinacije.Add(p);
+            }
+
+            return ordinacije;
+        }
+
         public List<Prostorija> DobaviSobe()
         {
             List<Prostorija> sveProstorije = DobaviSveProstorije();

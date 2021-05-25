@@ -16,9 +16,7 @@ using System.Windows.Shapes;
 
 namespace ProjekatSIMS
 {
-    /// <summary>
-    /// Interaction logic for PrikazUputaZaBolnickoLijecenje.xaml
-    /// </summary>
+    
     public partial class PrikazUputaZaBolnickoLijecenje : Page
     {
         private UputBolnickoLijecenjeRepository uputBolnickoLiejecenjeRepository = new UputBolnickoLijecenjeRepository();
@@ -30,9 +28,7 @@ namespace ProjekatSIMS
             pacijent = p;
            
             ZdravsteniKarton karton = zdravstveniKartonRepository.DobaviZdravstveniKartonZaPacijenta(pacijent);
-
-
-            Uputi.ItemsSource = karton.UputiZaBolnickoLijecenje;
+             Uputi.ItemsSource = karton.UputiZaBolnickoLijecenje;
         }
 
         private void ProduziTrajanje(object sender, RoutedEventArgs e)
