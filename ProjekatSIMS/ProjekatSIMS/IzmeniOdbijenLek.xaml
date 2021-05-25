@@ -22,6 +22,15 @@
                   Width="150"   
                   ItemsSource="{Binding Path=Lijekovi}" Height="35"    
                 >
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        
+                        <TextBlock Text="{Binding Path=NazivLeka}"/>
+                        
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
 
 
         </ComboBox>
