@@ -6,11 +6,35 @@
         xmlns:local="clr-namespace:ProjekatSIMS"
         mc:Ignorable="d"
         Title="Login" Height="450" Width="800">
+    <Window.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="FontSize" Value="16"/>
+
+        </Style>
+        <Style  TargetType="TextBox">
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="BorderBrush" Value="#287D7D"/>
+            <Style.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10" />
+
+                </Style>
+            </Style.Resources>
+        </Style>
+    </Window.Resources>
     <Grid Background="#FEF7BB">
-        <Label Margin="281,74,171,299">Unesite svoje podatke za prijavu </Label>
-        <TextBox Name="KorisnickoIme" HorizontalAlignment="Left" Margin="316,135,0,0" Text="Korisnicko ime" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="Lozinka" HorizontalAlignment="Left" Margin="316,199,0,0" Text="Loginka" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Margin="281,74,171,299">Unesite svoje podatke za prijavu</Label>
+        <TextBox Name="KorisnickoIme" HorizontalAlignment="Left" Margin="369,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188" Height="43"/>
+        <TextBox x:Name="Lozinka" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" Width="188" Height="43" Margin="369,215,0,0"/>
         <Button Click="PrijaviSe" Content="Prijavi se" HorizontalAlignment="Left" Margin="636,357,0,0" VerticalAlignment="Top" Background="#FBAF89" Height="33" Width="104"/>
+        <Label Content="Korisničko ime" HorizontalAlignment="Left" FontSize="20" Height="43" Margin="221,150,0,0" VerticalAlignment="Top" Width="244"/>
+        <Label Content="Lozinka" HorizontalAlignment="Left" FontSize="20" Height="43" Margin="221,221,0,0" VerticalAlignment="Top" Width="107"/>
 
 
     </Grid>
