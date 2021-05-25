@@ -20,9 +20,7 @@ namespace ProjekatSIMS
     public partial class ListaAlergenaSWindow : Window
     {
         private ZdravstvenikartonController zdravstveniKartonController;
-        public ZdravsteniKarton zdrkarton { get; set; }
-        public List<ZdravsteniKarton> Karton { get; set; }
-        public List<String> Alergeni1 { get; set; }
+        public List<String> Alergeni { get; set; }
         public Pacijent pacijent { get; set; }
         public ListaAlergenaSWindow(Pacijent p)
         {
@@ -30,36 +28,10 @@ namespace ProjekatSIMS
             this.DataContext = this;
             pacijent = p;
             List<String> alergeni = new List<String>();
-            List<ZdravsteniKarton> kartoni = new List<ZdravsteniKarton>();
-            Alergeni1 = new List<String>();
+            Alergeni = new List<String>();
             zdravstveniKartonController = new ZdravstvenikartonController();
             alergeni = zdravstveniKartonController.DobaviSveAlergene(pacijent);
             dataGridAlergeni.ItemsSource = alergeni;
-
-            /*using (StreamReader sr = new StreamReader(@"..\..\..\Fajlovi\ZdravstveniKarton.txt"))
-            {
-                string json = sr.ReadToEnd();
-                kartoni = JsonConvert.DeserializeObject<List<ZdravsteniKarton>>(json);
-            }*/
-            /*ZdravsteniKarton zk = new ZdravsteniKarton();
-            foreach (ZdravsteniKarton k in kartoni)
-            {
-                if (k.pacijent.Jmbg == p.Jmbg)
-                {
-                    zk = k;
-                    if (k.Alergeni == null)
-
-                        alergeni = new List<String>();
-                    else
-
-                        alergeni = k.Alergeni;
-                }
-            }
-            foreach (String a in alergeni)
-            {
-                Alergeni1.Add(a);
-            }*/
-
         }
         private void Nazad(object sender, RoutedEventArgs e)
         {
