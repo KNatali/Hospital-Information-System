@@ -1,4 +1,6 @@
 ﻿using Model;
+using ProjekatSIMS.Service;
+using Service;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -17,32 +19,29 @@ namespace ProjekatSIMS
     public partial class StatickaOpremaWindow : Window
     {
         public Prostorija prostorija { get; set; }
-        public StatickaOpremaWindow(Prostorija pros)
+        public InventarService InventarService = new InventarService();
+        public ProstorijaService ProstorijaService = new ProstorijaService();
+        public List<Prostorija> prostorije = new List<Prostorija>();
+       public List<Inventar> statickiInventar = new List<Inventar>();
+        public StatickaOpremaWindow(Prostorija prosledjenaProstorija)
         {
             InitializeComponent();
             this.DataContext = this;
+            prostorija = prosledjenaProstorija;
+            List<Inventar> statickiInventar = new List<Inventar>();
+            statickiInventar = InventarService.inventarRepository.DobaviInventarIzProstorije(prostorija.id);
+            prostorije = ProstorijaService.prostorijaRepository.DobaviSve();
             
-            List<Inventar> oprema = new List<Inventar>();
-            CuvanjeProstorija cuvanje = new CuvanjeProstorija(@"..\..\Fajlovi\Prostorije.txt");
-            List<Prostorija> prostorije = new List<Prostorija>();
-            prostorije = cuvanje.UcitajProstorije();
 
-
-            foreach (Prostorija p in prostorije)
-            {
-                if (pros.id == p.id)
-                {
-                    oprema = p.inventar;
-                }
-            }
-            dgrStatickaOprema.ItemsSource = oprema;
-            prostorija = pros;
+            dgrStatickaOprema.ItemsSource = statickiInventar;
+        
             Prostorije.ItemsSource = prostorije;
         }
 
 
-        private void rasporedi1(object sender, RoutedEventArgs e)
+        private void rasporediInventar(object sender, RoutedEventArgs e)
         {
+            /*
           Inventar inventar = (Inventar)dgrStatickaOprema.SelectedItems[0];
             Prostorija p = (Prostorija)Prostorije.SelectedItem;
             DateTime datum = (DateTime)Datum.SelectedDate;
@@ -107,56 +106,45 @@ namespace ProjekatSIMS
                 
             }
             
-
+            */
         }
 
-        private void dodaj1(object sender, RoutedEventArgs e)
+        private void dodajInventar(object sender, RoutedEventArgs e)
         {
             Inventar inventar = new Inventar();
             inventar.id = Convert.ToInt32(Id.Text);
             inventar.ime = Ime.Text;
-            inventar.kolicina = Convert.ToInt32(Kolicina.Text);
-
-            CuvanjeProstorija cuvanje = new CuvanjeProstorija(@"..\..\Fajlovi\Prostorije.txt");
-            List<Prostorija> prostorije = new List<Prostorija>();
-            prostorije = cuvanje.UcitajProstorije();
-
-            foreach (Prostorija p in prostorije)
+            inventar.kolicina = 1;
+            inventar.prostorija = prostorija.id;
+            if (InventarService.pronadjiInventarPoId(Convert.ToInt32(Id.Text)) == null)
             {
-
-                foreach (Inventar i in p.inventar)
+                foreach (Prostorija p in prostorije)
                 {
-                    if (i.id == inventar.id)
+                    if (prostorija.id == p.id)
                     {
-                        MessageBox.Show("Vec postoji inventar sa tom sifrom!");
-                        break;
+                        p.inventar.Add(inventar);
 
+                        MessageBox.Show("Inventar je dodat!");
+                        ProstorijaService.prostorijaRepository.Sacuvaj(prostorije);
+                        prostorije = ProstorijaService.prostorijaRepository.DobaviSve();
+                        statickiInventar = InventarService.inventarRepository.DobaviInventarIzProstorije(p.id);
+                        dgrStatickaOprema.ItemsSource = statickiInventar;
+                        break;
                     }
                 }
-            }
 
-
-            Prostorija item = new Prostorija();
-            foreach (Prostorija p in prostorije)
-            {
-                if (prostorija.id == p.id)
-                {
-                    p.inventar.Add(inventar);
-                    dgrStatickaOprema.ItemsSource = p.inventar;
-                    break;
-                }
             }
-            cuvanje.Sacuvaj(prostorije);
-            Id.Text = "";
-            Kolicina.Text = "";
-            Ime.Text = "";
-            MessageBox.Show("Inventar je rasporedjen!");
             
 
+            Id.Text = "";
+            //Kolicina.Text = "";
+            Ime.Text = "";
+            
+            
         }
 
-        private void obrisi1(object sender, RoutedEventArgs e)
-        {
+        private void obrisiInventar(object sender, RoutedEventArgs e)
+        {/*
             Inventar inventar = (Inventar)dgrStatickaOprema.SelectedItems[0];
             CuvanjeProstorija cuvanje = new CuvanjeProstorija(@"..\..\Fajlovi\Prostorije.txt");
             List<Prostorija> prostorije = new List<Prostorija>();
@@ -188,11 +176,11 @@ namespace ProjekatSIMS
             Ime.Text = "";
             cuvanje.Sacuvaj(prostorije);
             MessageBox.Show("Inventar je obrisan!");
-            
+           */ 
         }
 
-        private void ponisti(object sender, RoutedEventArgs e)
-        {
+        private void ponistiFiltere(object sender, RoutedEventArgs e)
+        {/*
             List<Inventar> oprema = new List<Inventar>();
             CuvanjeProstorija cuvanje = new CuvanjeProstorija(@"..\..\Fajlovi\Prostorije.txt");
             List<Prostorija> prostorije = new List<Prostorija>();
@@ -208,9 +196,9 @@ namespace ProjekatSIMS
             }
             dgrStatickaOprema.ItemsSource = oprema;
             Pretraga.Text = "";
-        }
-        private void pretrazi(object sender, RoutedEventArgs e)
-        {
+        */}
+        private void pretraziInventar(object sender, RoutedEventArgs e)
+        {/*
             
             List<Inventar> noviInventar = new List<Inventar>();
             foreach(Inventar i in prostorija.inventar)
@@ -221,7 +209,7 @@ namespace ProjekatSIMS
                 }
             }
             dgrStatickaOprema.ItemsSource = noviInventar;
-
+            */
         }
 
     }

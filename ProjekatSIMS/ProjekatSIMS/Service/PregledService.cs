@@ -21,7 +21,7 @@ namespace Service
         public Repository.ReceptRepository receptRepository;
         
 
-        public ProstorijaRepository prostorijaRepository = new ProstorijaRepository(@"..\..\..\Fajlovi\Prostorija.txt");
+        public ProstorijaRepository prostorijaRepository = new ProstorijaRepository();
         public UputRepository uputRepository = new UputRepository();
 
         public int zauzetPregled = 0;
@@ -280,7 +280,7 @@ namespace Service
         }
 
 
-      
+
 
     }
 }

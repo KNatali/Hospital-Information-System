@@ -48,8 +48,8 @@ namespace ProjekatSIMS.WindowPacijent
             p.pacijent = pac;
             int trajanje = 30;
             p.Trajanje = trajanje;
-            ProstorijaRepository file = new ProstorijaRepository(@"..\..\..\Fajlovi\Prostorija.txt");
-            List<Prostorija> prostorije = file.DobaviSveProstorije();
+            ProstorijaRepository file = new ProstorijaRepository();
+            List<Prostorija> prostorije = file.DobaviSve();
 
             foreach (Prostorija pr in prostorije)
             {
