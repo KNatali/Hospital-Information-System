@@ -197,7 +197,7 @@ namespace ProjekatSIMS
             double suma = 0;
             Prostorija prostorijaZaDeljenje = (Prostorija)Prostorije.SelectedItem;
             
-            ProstorijaService.obrisiProstoriju(p.id);
+            ProstorijaService.obrisiProstoriju(prostorijaZaDeljenje.id);
             prostorije.AddRange(razdeljeneProstorije);
             ProstorijaService.prostorijaRepository.Sacuvaj(prostorije);
             prostorije = ProstorijaService.prostorijaRepository.DobaviSve();
