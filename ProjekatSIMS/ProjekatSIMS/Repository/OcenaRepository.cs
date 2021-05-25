@@ -49,7 +49,7 @@ namespace ProjekatSIMS.Repository
 
         public List<OcenaLekara> DobaviSveOceneLekara()
         {
-            using (StreamReader sr = new StreamReader(lokacija))
+            using (StreamReader sr = new StreamReader(lokacijaLekar))
             {
                 string json = sr.ReadToEnd();
 
