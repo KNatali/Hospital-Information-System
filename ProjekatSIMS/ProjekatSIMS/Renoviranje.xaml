@@ -1,0 +1,14 @@
+﻿<Window x:Class="ProjekatSIMS.Renoviranje"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjekatSIMS"
+        mc:Ignorable="d"
+        Title="Renoviranje" Height="450" Width="800">
+    <Grid>
+        <Button Content="Napredno renoviranje" Click="naprednoRenoviranje" HorizontalAlignment="Left" Margin="283,272,0,0" VerticalAlignment="Top" Height="60" Width="210"/>
+        <Button Content="Obicno renoviranje" Click="obicnoRenoviranje" HorizontalAlignment="Left" Margin="283,157,0,0" VerticalAlignment="Top" Height="60" Width="210"/>
+
+    </Grid>
+</Window>
