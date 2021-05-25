@@ -9,8 +9,7 @@ namespace Service
     public class ProduzenjeUputaBolnickoLijecenjeService
     {
 
-        private ProstorijaRepository prostorijaRepository = new ProstorijaRepository();
-        private UputBolnickoLijecenjeRepository uputRepository = new UputBolnickoLijecenjeRepository();
+         private UputBolnickoLijecenjeRepository uputRepository = new UputBolnickoLijecenjeRepository();
         private ZdravstveniKartonRepository zdravstveniKartonRepository = new ZdravstveniKartonRepository();
 
         public bool IsProduzavanjeMoguce(UputBolnickoLijecenje uput, DateTime krajIntervala)

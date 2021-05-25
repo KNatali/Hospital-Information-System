@@ -65,14 +65,8 @@ namespace ProjekatSIMS
         private void Otkazi(object sender, RoutedEventArgs e)
         {
             MessageBoxResult ret = MessageBox.Show("Da li želite da otkažete zakazivanje pregleda pacijenta?", "PROVERA", MessageBoxButton.YesNo);
-            switch(ret)
-            {
-                case MessageBoxResult.Yes:
-                    this.Close();
-                    break;
-                case MessageBoxResult.No:
-                    break;
-            }
+            if (ret == MessageBoxResult.Yes)
+                this.Close();
         }
         private void Zakazi(object sender, RoutedEventArgs e)
         {

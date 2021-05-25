@@ -4,6 +4,7 @@
  * Purpose: Definition of the Class RegistrovaniKorisnik
  ***********************************************************************/
 
+using ProjekatSIMS.Model;
 using System;
 
 namespace Model
@@ -24,6 +25,7 @@ namespace Model
    
       public String KorisnickoIme;
       public String Lozinka;
+      public Uloga uloga;
    
    }
 }

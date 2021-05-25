@@ -8,27 +8,26 @@ namespace Service
    public class ZdravstvenikartonService
    {
         public Repository.ZdravstveniKartonRepository zdravstveniKartonRepository = new ZdravstveniKartonRepository(@"..\..\..\Fajlovi\ZdravstveniKarton.txt");
-        public Boolean kreiranjeAlergena(String alergen, Pacijent p)
+        public void kreiranjeAlergena(String alergen, Pacijent pacijent)
         {
-            List<ZdravsteniKarton> kartoni = new List<ZdravsteniKarton>();
-            foreach (ZdravsteniKarton k in kartoni)
-            {
-                if (k.pacijent.Jmbg == p.Jmbg)
-                {
-                    if (k.Alergeni == null)
-                        k.Alergeni.Add(alergen);
-                    else
-                        k.Alergeni.Add(alergen);
-                }
-            }
-            return true;
+            ZdravsteniKarton zdravstveniKarton = new ZdravsteniKarton();
+            zdravstveniKarton = zdravstveniKartonRepository.DobaviZdravstveniKartonZaPacijenta(pacijent);
+            zdravstveniKarton.Alergeni.Add(alergen);
+            zdravstveniKartonRepository.AzurirajKarton(zdravstveniKarton);
         }
-        public List<String> DobaviSveAlergene()
+        
+        public List<String> DobaviSveAlergene(Pacijent pacijent)
         {
-            return zdravstveniKartonRepository.DobaviSveAlergene();
+            ZdravsteniKarton zdravstveniKarton = zdravstveniKartonRepository.DobaviZdravstveniKartonZaPacijenta(pacijent);
+            List<string> sviAlergeniPacijenta = new List<string>();
+            if(zdravstveniKarton.Alergeni!=null)
+                sviAlergeniPacijenta = zdravstveniKarton.Alergeni;
+            return sviAlergeniPacijenta;
         }
+
       
    
+
    
    }
 }

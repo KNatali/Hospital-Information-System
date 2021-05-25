@@ -24,14 +24,8 @@ namespace ProjekatSIMS
         private void Otkazi_kreiranje(object sender, RoutedEventArgs e)
         {
             MessageBoxResult ret = MessageBox.Show("Da li želite da otkažete kreiranje profila pacijenta?", "PROVERA", MessageBoxButton.YesNo);
-            switch (ret)
-            {
-                case MessageBoxResult.Yes:
-                    this.Close();
-                    break;
-                case MessageBoxResult.No:
-                    break;
-            }
+            if (ret == MessageBoxResult.Yes)
+                this.Close();
         }
         private void Kreiraj_profil(object sender, RoutedEventArgs e)
         {
@@ -49,12 +43,17 @@ namespace ProjekatSIMS
             MessageBoxResult ret = MessageBox.Show("Profil pacijenta je uspešno kreiran. Da li želite da pregledate njegov profil", "OBAVEŠTENJE", MessageBoxButton.YesNo);
             if (ret == MessageBoxResult.Yes)
             {
-                ProfilPacijentaSWindow pp = new ProfilPacijentaSWindow(noviPacijent);
-                this.Close();
-                pp.Show();
+                PrelazakNaProfilPacijenta(noviPacijent);
             }
             else
                 this.Close();
+        }
+
+        private void PrelazakNaProfilPacijenta(Pacijent noviPacijent)
+        {
+            ProfilPacijentaSWindow pp = new ProfilPacijentaSWindow(noviPacijent);
+            this.Close();
+            pp.Show();
         }
 
         private void PopunjavanjePoljaZaNovogPacijenta(Pacijent noviPacijent)
