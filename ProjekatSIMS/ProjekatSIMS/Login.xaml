@@ -1,4 +1,4 @@
-﻿<Window x:Class="ProjekatSIMS.MainWindow"
+﻿<Window x:Class="ProjekatSIMS.Login"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,10 +7,11 @@
         mc:Ignorable="d"
         Title="Login" Height="450" Width="800">
     <Grid Background="#FEF7BB">
-        <Label Margin="281,74,171,299">Unesite svoje podatke za prijavu</Label>
+        <Label Margin="281,74,171,299">Unesite svoje podatke za prijavu </Label>
         <TextBox Name="KorisnickoIme" HorizontalAlignment="Left" Margin="316,135,0,0" Text="Korisnicko ime" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="Lozinka" HorizontalAlignment="Left" Margin="316,199,0,0" Text="Lozinka" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button Click="PrijaviSe"  Content="Prijavi se" HorizontalAlignment="Left" Margin="636,357,0,0" VerticalAlignment="Top" Background="#FBAF89" Height="33" Width="104"/>
+        <TextBox x:Name="Lozinka" HorizontalAlignment="Left" Margin="316,199,0,0" Text="Loginka" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button Click="PrijaviSe" Content="Prijavi se" HorizontalAlignment="Left" Margin="636,357,0,0" VerticalAlignment="Top" Background="#FBAF89" Height="33" Width="104"/>
+
 
     </Grid>
 </Window>

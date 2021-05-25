@@ -1,52 +1,78 @@
-﻿using System;
+﻿
+using Model;
+using ProjekatSIMS.Controller;
+using ProjekatSIMS.Model;
+using ProjekatSIMS.Repository;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace ProjekatSIMS
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
+        public List<RegistrovaniKorisnik> RegistrovaniKorisnici
+        {
+            get;
+            set;
+        }
+        public LoginController loginController = new LoginController();
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = this;
+
         }
 
-        private void Upravnik_Click(object sender, RoutedEventArgs e)
+        private void PrijaviSe(object sender, RoutedEventArgs e)
         {
-            UpravnikWindow u = new UpravnikWindow();
-            u.Show();
-        }
+            String korisnickoIme = KorisnickoIme.Text;
+            String lozinka = Lozinka.Text;
+            Uloga uloga = Uloga.Doktor;
+            LoginRepository loginRepository = new LoginRepository();
+            RegistrovaniKorisnici = loginRepository.DobaviSveRegistrovaneKorisnike();
 
-        private void Doktor_Click(object sender, RoutedEventArgs e)
-        {
-            DoktorWindow d = new DoktorWindow();
-            d.Show();
-        }
 
-        private void Sekretar_Click(object sender, RoutedEventArgs e)
-        {
-            SekretarWindow s = new SekretarWindow();
-            s.Show();
-        }
+            foreach (RegistrovaniKorisnik rk in RegistrovaniKorisnici)
+            {
+                if ((rk.KorisnickoIme == korisnickoIme) && (rk.Lozinka == lozinka))
+                {
+                    uloga = rk.uloga;
+                }
+            }
 
-        private void Pacijent_Click(object sender, RoutedEventArgs e)
-        {
-            WindowPacijent.PacijentMainWindow pmw = new WindowPacijent.PacijentMainWindow();
-            pmw.Show();
+            if ((loginController.DaLiJeKorisnikBlokiran(korisnickoIme) == true) && (uloga == Uloga.Pacijent))
+            {
+                MessageBox.Show("Blokirani ste.");
+            }
+            else
+            {
+                switch (uloga)
+                {
+                    case Uloga.Pacijent:
+                        WindowPacijent.PacijentMainWindow pacijentMainWindow = new WindowPacijent.PacijentMainWindow();
+                        pacijentMainWindow.Show();
+                        break;
+                    case Uloga.Sekretar:
+                        SekretarWindow sekretarWindow = new SekretarWindow();
+                        sekretarWindow.Show();
+                        break;
+                    case Uloga.Upravnik:
+                        UpravnikWindow upravnikWindow = new UpravnikWindow();
+                        upravnikWindow.Show();
+                        break;
+                    case Uloga.Doktor:
+                        DoktorWindow doktorWindow = new DoktorWindow();
+                        doktorWindow.Show();
+                        break;
+
+                }
+            }
+
+            
+
+
+
         }
     }
 }
