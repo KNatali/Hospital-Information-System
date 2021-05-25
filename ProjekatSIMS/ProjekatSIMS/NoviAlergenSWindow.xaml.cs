@@ -20,61 +20,18 @@ namespace ProjekatSIMS
 {
     public partial class NoviAlergenSWindow : Window
     {
-        public Pacijent p { get; set; }
-        public NoviAlergenSWindow(Pacijent pac)
+        public Pacijent pacijent { get; set; }
+        public NoviAlergenSWindow(Pacijent p)
         {
             InitializeComponent();
             this.DataContext = this;
-            p = pac;
+            pacijent = p;
         }
         private void Sacuvaj_alergen(object sender, RoutedEventArgs e)
         {
-            /*String alergen = Naziv.Text;
-                                            List<String> alergeni = new List<String>();
-            List<ZdravsteniKarton> kartoni = new List<ZdravsteniKarton>();
-
-            using (StreamReader sr = new StreamReader(@"..\..\..\Fajlovi\ZdravstveniKarton.txt"))
-            {
-                string json = sr.ReadToEnd();
-                kartoni = JsonConvert.DeserializeObject<List<ZdravsteniKarton>>(json);
-            }
-            
-            foreach (ZdravsteniKarton k in kartoni)
-            {
-                if (k.pacijent.Jmbg == p.Jmbg)
-                {
-                    if (k.Alergeni == null)
-                        k.Alergeni.Add(alergen);
-                    else
-                        k.Alergeni.Add(alergen);
-                }
-            }
-            PregledRepository pr = new PregledRepository(@"..\..\..\Fajlovi\ZdravstveniKarton.txt");
-            pr.SacuvajAlergen(kartoni);*/
-
-            List<ZdravsteniKarton> kartoni = new List<ZdravsteniKarton>();
-            ZdravstvenikartonController zdravstveniKartonController = new ZdravstvenikartonController();
-            if(zdravstveniKartonController.kreiranjeAlergena(Naziv.Text,p)==true)
-            {
-                MessageBox.Show("Alergen je dodat u listu alergena.", "OBAVEŠTENJE");
-            }
-            foreach(ZdravsteniKarton zk in kartoni)
-            {
-                zk.Alergeni.Add(Naziv.Text);
-            }
-            
-
-            /*ZdravstveniKarton zk = new ZdravstveniKarton();
-            List<String> lista = new List<String>();
-            lista.Add(alergen);
-            foreach (string item in lista)
-            {
-                ListBoxItem itm = new ListBoxItem();
-                itm.Content = item;
-                //zk.Add(itm);
-            }
-            PregledRepository fajl = new PregledRepository(@"..\..\..\Fajlovi\ZdravstveniKarton.txt");*/
-
+            ZdravstvenikartonController zdravstvenikartonController = new ZdravstvenikartonController();
+            zdravstvenikartonController.kreiranjeAlergena(Naziv.Text, pacijent);
+            MessageBox.Show("Dodali ste alergen.");
             this.Close();
         }
         private void Otkazi_dodavanje(object sender, RoutedEventArgs e)

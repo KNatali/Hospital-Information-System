@@ -8,44 +8,23 @@ namespace Service
    public class ZdravstvenikartonService
    {
         public Repository.ZdravstveniKartonRepository zdravstveniKartonRepository = new ZdravstveniKartonRepository(@"..\..\..\Fajlovi\ZdravstveniKarton.txt");
-        public Boolean kreiranjeAlergena(String alergen, Pacijent p)
+        public void kreiranjeAlergena(String alergen, Pacijent pacijent)
         {
-            /*List<String> sviAlergeni = zdravstveniKartonRepository.DobaviSveAlergene();
-            sviAlergeni.Add(NoviAlergen(alergen));
-            zdravstveniKartonRepository.SacuvajAlergen(sviAlergeni);*/
-
-            List<ZdravsteniKarton> kartoni = new List<ZdravsteniKarton>();
-            foreach (ZdravsteniKarton k in kartoni)
-            {
-                if (k.pacijent.Jmbg == p.Jmbg)
-                {
-                    if (k.Alergeni == null)
-                        k.Alergeni.Add(alergen);
-                    else
-                        k.Alergeni.Add(alergen);
-                }
-            }
-            return true;
+            ZdravsteniKarton zk = new ZdravsteniKarton();
+            zk = zdravstveniKartonRepository.DobaviZdravstveniKartonZaPacijenta(pacijent);
+            zk.Alergeni.Add(alergen);
+            zdravstveniKartonRepository.AzurirajKarton(zk);
         }
-        /*private List<String> NoviAlergen(String poljeAlergen, Pacijent p)
+        
+        public List<String> DobaviSveAlergene(Pacijent pacijent)
         {
-            String alergen = poljeAlergen;
-            List<ZdravsteniKarton> kartoni = new List<ZdravsteniKarton>();
-            foreach (ZdravsteniKarton k in kartoni)
+            ZdravsteniKarton zk = zdravstveniKartonRepository.DobaviZdravstveniKartonZaPacijenta(pacijent);
+            List<string> Alergeni = new List<string>();
+            if(zk.Alergeni!=null)
             {
-                if (k.pacijent.Jmbg == p.Jmbg)
-                {
-                    if (k.Alergeni == null)
-                        k.Alergeni.Add(alergen);
-                    else
-                        k.Alergeni.Add(alergen);
-                }
+                Alergeni = zk.Alergeni;
             }
-            return 
-        }*/
-        public List<String> DobaviSveAlergene()
-        {
-            return zdravstveniKartonRepository.DobaviSveAlergene();
+            return Alergeni;
         }
         public void PregledKartona()
       {
