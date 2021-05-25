@@ -21,7 +21,7 @@ namespace ProjekatSIMS
     public partial class AzuriranjeAnamnezeDoktor : Page
     {
         private AzuriranjeAnamnezeController azuriranjeAnamnezeController = new AzuriranjeAnamnezeController();
-        public ZdravsteniKarton zk = new ZdravsteniKarton();
+
         public Pacijent pacijent;
         public Anamneza anamneza;
         public AzuriranjeAnamnezeDoktor(Pacijent p,Anamneza an)
@@ -38,37 +38,6 @@ namespace ProjekatSIMS
         private void Azuriranje(object sender, RoutedEventArgs e)
         {
             azuriranjeAnamnezeController.AzuriranjeAnamneze(anamneza, Opis.Text, pacijent);
-            
-           /* List<ZdravsteniKarton> kartoni = new List<ZdravsteniKarton>();
-
-            using (StreamReader r = new StreamReader(@"..\..\..\Fajlovi\ZdravstveniKarton.txt"))
-            {
-                string json = r.ReadToEnd();
-                kartoni = JsonConvert.DeserializeObject<List<ZdravsteniKarton>>(json);
-            }
-            foreach (ZdravsteniKarton k in kartoni)
-            {
-                if (k.pacijent.Jmbg == pacijent.Jmbg)
-                {
-                    if (k.anamneza != null)
-                    {
-                        
-                        foreach (Anamneza i in k.anamneza)
-                        {
-
-                            if (i.OpisAnamneze == anamneza.OpisAnamneze)
-
-                                i.OpisAnamneze= Opis.Text;
-                               
-                        }
-                    }
-
-                }
-            }
-
-            string newJson = JsonConvert.SerializeObject(kartoni);
-            File.WriteAllText(@"..\..\..\Fajlovi\ZdravstveniKarton.txt", newJson);
-           */
             PrikazAnamneza pa = new PrikazAnamneza(pacijent);
 
             this.NavigationService.Navigate(pa);

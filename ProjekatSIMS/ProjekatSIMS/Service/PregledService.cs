@@ -26,14 +26,7 @@ namespace Service
 
         public int zauzetPregled = 0;
 
-        public Model.Pregled ZakaziGuestPregledService(DateTime datumPregleda, Model.Pacijent pacijent)
-        {
-            // TODO: implement
-            return null;
-        }
-
-
-
+     
        
         public List<Pregled> DobaviSveSekretar()
         {
@@ -74,12 +67,7 @@ namespace Service
 
       
 
-        private static Pregled ZakazivanjePregledaSekretar(Pacijent pacijent, Doktor doktor, DateTime terminPregleda)
-        {
-            Pregled pregled = new Pregled();
-            return pregled;
-        }
-
+    
 
         public Boolean ZakazivanjePregledaSekretar(ComboBox Termin, String jmbg, String jmbgdoktor, Prostorija prostorija, DateTime datum1, DateTime datum2)
         {
@@ -249,35 +237,7 @@ namespace Service
         }
 
 
-        public List<Pregled> GetListaPregledaService(DateTime zaDan)
-        {
-            // TODO: implement
-            return null;
-        }
-
-        public List<Pregled> GetListaPregledaService(String jmbg)
-        {
-            // TODO: implement
-            return null;
-        }
-
-        public Boolean ProveraTerminaService(DateTime datumVreme)
-        {
-            // TODO: implement
-            return true;
-        }
-
-        public Model.Pregled IzmenaPregledaPacijent(Model.Pregled pregled)
-        {
-            // TODO: implement
-            return null;
-        }
-
-        public Boolean SlobodanTerminPacijent()
-        {
-            // TODO: implement
-            return true;
-        }
+       
 
 
 

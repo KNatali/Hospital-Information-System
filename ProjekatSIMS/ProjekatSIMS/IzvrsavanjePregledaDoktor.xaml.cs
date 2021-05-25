@@ -15,9 +15,7 @@ using System.Windows.Shapes;
 
 namespace ProjekatSIMS
 {
-    /// <summary>
-    /// Interaction logic for IzvrsavanjePregledaDoktor.xaml
-    /// </summary>
+   
     public partial class IzvrsavanjePregledaDoktor : Page
     {
         public Pregled pregled;
@@ -32,7 +30,7 @@ namespace ProjekatSIMS
         private void ZdravstveniKarton(object sender, RoutedEventArgs e)
         {
             ZdravstveniKartonDoktor z = new ZdravstveniKartonDoktor(pregled.pacijent);
-            // this.NavigationService.Navigate(new Uri("ZdravstveniKartonDoktor.xaml", UriKind.Relative));
+          
             this.NavigationService.Navigate(z);
         }
 
@@ -57,27 +55,27 @@ namespace ProjekatSIMS
         private void IzdavanjeUputa(object sender, RoutedEventArgs e)
         {
             IzdavanjeUputaSpecijalistiDoktor z = new IzdavanjeUputaSpecijalistiDoktor(pregled.pacijent);
-            // this.NavigationService.Navigate(new Uri("ZdravstveniKartonDoktor.xaml", UriKind.Relative));
+           
             this.NavigationService.Navigate(z);
         }
         private void IzdavanjeUputaBolnickoLijecenje(object sender, RoutedEventArgs e)
         {
             UputZaBolnickoLijecenjeDoktor z = new UputZaBolnickoLijecenjeDoktor(pregled.pacijent);
-            // this.NavigationService.Navigate(new Uri("ZdravstveniKartonDoktor.xaml", UriKind.Relative));
+        
             this.NavigationService.Navigate(z);
         }
 
         private void IzdavanjeRecepta(object sender, RoutedEventArgs e)
         {
             IzdajReceptDoktor z = new IzdajReceptDoktor(pregled.pacijent);
-            // this.NavigationService.Navigate(new Uri("ZdravstveniKartonDoktor.xaml", UriKind.Relative));
+        
             this.NavigationService.Navigate(z);
         }
 
         private void KreiranjeAnamneze(object sender, RoutedEventArgs e)
         {
             KreirajAnamnezu z = new KreirajAnamnezu(pregled.pacijent);
-            // this.NavigationService.Navigate(new Uri("ZdravstveniKartonDoktor.xaml", UriKind.Relative));
+      
             this.NavigationService.Navigate(z);
         }
 

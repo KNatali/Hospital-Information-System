@@ -24,9 +24,10 @@ namespace Service
                 sviAlergeniPacijenta = zdravstveniKarton.Alergeni;
             return sviAlergeniPacijenta;
         }
+
+      
    
-        public Repository.ReceptRepository receptRepository;
-        public Repository.AnamnezaRepository anamnezaRepository;
+
    
    }
 }
