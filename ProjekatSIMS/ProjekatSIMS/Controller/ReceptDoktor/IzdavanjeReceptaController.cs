@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Controller
 {
-    class ReceptController
+    public class IzdavanjeReceptaController
     {
         private IzdavanjeReceptaService izdavanjeReceptaService = new IzdavanjeReceptaService();
         private AlergijeNaLijekService alergijeNaLijekService = new AlergijeNaLijekService();
@@ -18,12 +18,6 @@ namespace Controller
             
         }
 
-        public Boolean IsPacijentAlergican(Lijek izabraniLijek,Pacijent pacijent)
-        {
-            if(alergijeNaLijekService.IsPacijentAlergican(izabraniLijek,pacijent))
-                 return true;
-            return false;
-
-        }
+       
     }
 }

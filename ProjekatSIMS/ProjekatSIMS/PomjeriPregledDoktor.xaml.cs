@@ -67,7 +67,7 @@ namespace ProjekatSIMS
 
         public void PomjeranjePregleda(DateTime datum1, IntervalDatuma termin)
         {
-            if (pomjeriPregledDoktorController.PomjeriPregled(pregled, termin))
+            if (pomjeriPregledDoktorController.ProvjeraZauzetostiTermina(pregled, termin))
             {
                 List<String> termini = new List<String>();
                 termini = prikazSlobodnihTerminaController.PrikazTermina(pregled, termin);

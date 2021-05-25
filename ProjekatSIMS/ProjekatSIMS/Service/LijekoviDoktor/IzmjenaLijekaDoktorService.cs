@@ -8,11 +8,11 @@ namespace Service
 {
     public class IzmjenaLijekaDoktorService
     {
-        private LijekRepository lijekRepository = new LijekRepository();
+       
         public List<String> DodavanjeSastojka(String noviSastojak, Lijek lijek)
         {
-            DaLiJeUnijetTekst(noviSastojak, lijek);
             List<String> sastojciNovi = new List<String>();
+            DaLiJeUnijetTekst(noviSastojak, lijek);
             foreach (String s in lijek.Alergeni)
                 sastojciNovi.Add(s);
             return sastojciNovi;
@@ -30,11 +30,11 @@ namespace Service
 
         public List<String> DodavanjeAlternativnihLijekova(String noviAlternativniLijek, Lijek lijek)
         {
+            List<String> alternativniNovi = new List<String>();
             if (lijek.AlternativniLekovi == null)
                 lijek.AlternativniLekovi = new List<String>();
             lijek.AlternativniLekovi.Add(noviAlternativniLijek);
-            List<String> alternativniNovi = new List<String>();
-            foreach (String s in lijek.AlternativniLekovi)
+           foreach (String s in lijek.AlternativniLekovi)
                 alternativniNovi.Add(s);
             return alternativniNovi;
         }

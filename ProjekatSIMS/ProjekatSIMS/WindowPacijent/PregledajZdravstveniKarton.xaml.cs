@@ -37,7 +37,7 @@ namespace ProjekatSIMS.WindowPacijent
             Recepti = receptRepository.DobaviSveRecepte();
 
             AnamnezaRepository anamnezaRepository = new AnamnezaRepository();
-            Anamneze = anamnezaRepository.DobaviSveAnamneze();
+            Anamneze = anamnezaRepository.DobaviSve();
 
             UputRepository uputRepository = new UputRepository();
             Uputi = uputRepository.DobaviUpute();

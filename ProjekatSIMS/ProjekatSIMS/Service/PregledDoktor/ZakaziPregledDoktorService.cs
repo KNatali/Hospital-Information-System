@@ -1,8 +1,6 @@
 ﻿using Model;
 using Repository;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Service
 {
@@ -15,8 +13,19 @@ namespace Service
             List<Pregled> sviPregledi = pregledRepository.DobaviSvePregledeDoktor();
             if (sviPregledi == null)
                 sviPregledi = new List<Pregled>();
+            pregled.Id = GenerisiId(sviPregledi);
             sviPregledi.Add(pregled);
             pregledRepository.SacuvajPregledeDoktor(sviPregledi);
+
+        }
+
+        public int GenerisiId(List<Pregled> pregledi)
+        {
+            if (pregledi.Count == 0)
+                return 1;
+
+            else
+                return pregledi[pregledi.Count - 1].Id + 1;
 
         }
     }
