@@ -1,0 +1,38 @@
+﻿<Window x:Class="ProjekatSIMS.NaprednoRenoviranje"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjekatSIMS"
+        mc:Ignorable="d"
+        Title="NaprednoRenoviranje" Height="450" Width="800">
+    <Grid>
+        <ListBox x:Name="ProstorijeZaSpajanje" HorizontalAlignment="Left" Height="99" Margin="44,61,0,0" VerticalAlignment="Top" Width="262"/>
+        <ComboBox  Name="Prostorije" HorizontalAlignment="Left"   
+                  Margin="340,201,0,0"   
+                  VerticalAlignment="Top"   
+                  Width="150"   
+                  ItemsSource="{Binding Path=prostorije}" Height="35"    
+                >
+
+
+        </ComboBox>
+        <Button Content="Obrisi" Click="obrisiProstorijuZaSpajanje" HorizontalAlignment="Center" Margin="0,61,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.516,0.621" Width="70" Height="35"/>
+        <Button Content="Dodaj prostoriju za spajanje" Click="dodajProstorijuZaSpajanje" HorizontalAlignment="Left" Margin="340,125,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.449,0.052" Width="178" Height="35"/>
+        <Label Content="Spajanje prostorija" HorizontalAlignment="Left" Margin="44,30,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.413,-0.18" Width="207"/>
+        <ListBox x:Name="RazdeljeneProstorije" HorizontalAlignment="Left" Height="99" Margin="44,270,0,0" VerticalAlignment="Top" Width="262"/>
+        <Label Content="Id, tip i kvadratura novih prostorija" HorizontalAlignment="Left" Margin="51,239,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="ID"   HorizontalAlignment="Left" Height="30" Margin="400,270,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="179"  Foreground="#FF151515" OpacityMask="#FFD78787" Background="#FFFAF8F8"/>
+        <Button Content="Dodaj novu prostoriju" Click="dodajNovuProstoriju" HorizontalAlignment="Left" Margin="458,378,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.449,0.052" Width="142" Height="34"/>
+        <TextBox x:Name="Kvadratura"   HorizontalAlignment="Left" Height="30" Margin="400,320,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="179"  Foreground="#FF151515" OpacityMask="#FFD78787" Background="#FFFAF8F8"/>
+        <Label Content="ID" HorizontalAlignment="Left" Margin="340,270,0,0" VerticalAlignment="Top"/>
+        <Label Content="Kvadratura" HorizontalAlignment="Left" Margin="317,307,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.501,0.714"/>
+        <Label Content="Vrsta" HorizontalAlignment="Left" Margin="630,228,0,0" VerticalAlignment="Top" FontSize="20" RenderTransformOrigin="0.515,-0.081"/>
+        <RadioButton  Content="Sala" Name="Sala" GroupName="vrsta" HorizontalAlignment="Left" Margin="630,298,0,0" VerticalAlignment="Top"  RenderTransformOrigin="0.272,0.122" Width="74" Height="25" FontSize="16"/>
+        <RadioButton  Content="Soba" Name="Soba" GroupName="vrsta" HorizontalAlignment="Left" Margin="630,270,0,0" VerticalAlignment="Top" Width="66" Height="24" FontSize="16"/>
+        <RadioButton  Content="Ordinacija" Name="Ordinacija" GroupName="vrsta" HorizontalAlignment="Left" Margin="630,317,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.372,0.518" FontSize="16" Width="111" Height="23"/>
+        <RadioButton  Content="Kancelarija" Name="Kancelarija" GroupName="vrsta"  HorizontalAlignment="Left" Margin="630,342,0,0" VerticalAlignment="Top" FontSize="16" Height="24" Width="99" />
+        <RadioButton  Content="Magacin" Name="Magacin" GroupName="vrsta"  HorizontalAlignment="Left" Margin="630,366,0,0" VerticalAlignment="Top" FontSize="16" Height="29" Width="107" />
+
+    </Grid>
+</Window>

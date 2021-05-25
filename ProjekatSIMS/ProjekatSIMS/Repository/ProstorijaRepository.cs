@@ -91,7 +91,7 @@ namespace Repository
 
         public List<Prostorija> DobaviSale()
         {
-            List<Prostorija> sveProstorije = DobaviSveProstorije();
+            List<Prostorija> sveProstorije = DobaviSve();
             List<Prostorija> ordinacije = new List<Prostorija>();
             foreach (Prostorija p in sveProstorije)
             {
@@ -109,7 +109,7 @@ namespace Repository
 
         public List<Prostorija> DobaviSobe()
         {
-            List<Prostorija> sveProstorije = DobaviSveProstorije();
+            List<Prostorija> sveProstorije = DobaviSve();
             List<Prostorija> sobe = new List<Prostorija>();
             foreach (Prostorija p in sveProstorije)
             {

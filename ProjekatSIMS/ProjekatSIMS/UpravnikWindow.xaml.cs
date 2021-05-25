@@ -44,5 +44,10 @@ namespace ProjekatSIMS
             SvaStatickaOprema sso = new SvaStatickaOprema();
             sso.Show();
         }
+        private void renoviranje(object sender, RoutedEventArgs e)
+        {
+            Renoviranje r = new Renoviranje();
+            r.Show();
+        }
     }
 }

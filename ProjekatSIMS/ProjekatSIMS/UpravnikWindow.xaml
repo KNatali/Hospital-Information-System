@@ -9,8 +9,9 @@
     <Grid Width="1000" Height="450">
         <Button Content="Dinamička oprema" Click="dinamicka" HorizontalAlignment="Left" Margin="672,95,0,0" VerticalAlignment="Top" Height="60" Width="210"/>
         <Button Content="Prostorije" Click="prostorije" HorizontalAlignment="Left" Margin="178,95,0,0" VerticalAlignment="Top" Height="60" Width="210"/>
-        <Button Content="Lekovi" HorizontalAlignment="Left" Margin="178,249,0,0" VerticalAlignment="Top" Width="210" Height="60" Click="lekoviClick"/>
-        <Button Content="Staticka oprema" Click="staticka" HorizontalAlignment="Left" Margin="672,244,0,0" VerticalAlignment="Top" Width="210" Height="60" />
+        <Button Content="Lekovi" HorizontalAlignment="Left" Margin="178,214,0,0" VerticalAlignment="Top" Width="210" Height="60" Click="lekoviClick"/>
+        <Button Content="Staticka oprema" Click="staticka" HorizontalAlignment="Left" Margin="672,214,0,0" VerticalAlignment="Top" Width="210" Height="60" />
+        <Button Content="Renoviranje" Click="renoviranje" HorizontalAlignment="Left" Margin="178,351,0,0" VerticalAlignment="Top" Height="60" Width="210"/>
 
     </Grid>
 </Window>

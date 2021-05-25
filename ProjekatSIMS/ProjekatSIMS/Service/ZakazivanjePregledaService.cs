@@ -13,7 +13,7 @@ namespace ProjekatSIMS.Service
         public PregledRepository pregledRepository = new PregledRepository();
         public int zauzetPregled = 0;
         public PacijentRepository pacijentRepository = new PacijentRepository(@"..\..\..\Fajlovi\Pacijent.txt");
-        ProstorijaRepository prostorijaRepository = new ProstorijaRepository(@"..\..\..\Fajlovi\Prostorija.txt");
+        ProstorijaRepository prostorijaRepository = new ProstorijaRepository();
 
         public Boolean ZakazivanjePregledaPacijent(String ime, String prezime, String imeDoktora, String prezimeDoktora, DateTime datum, String jmbg)
         {
