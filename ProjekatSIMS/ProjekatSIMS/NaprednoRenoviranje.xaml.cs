@@ -34,6 +34,7 @@ namespace ProjekatSIMS
             razdeljeneProstorije = new List<Prostorija>();
             prostorija = new Prostorija();
 
+            
             ProstorijeZaSpajanje.ItemsSource = prostorijeZaSpajanje;
             RazdeljeneProstorije.ItemsSource = razdeljeneProstorije;
 
@@ -49,7 +50,7 @@ namespace ProjekatSIMS
                     prostorijeZaSpajanje.Remove(p);
                     MessageBox.Show("Uspesno ste obrisali prostoriju iz liste za spajanje!");
 
-                    ProstorijeZaSpajanje.ItemsSource = prostorijeZaSpajanje;
+                    ProstorijeZaSpajanje.Items.Remove(p);
                 }
             }
         }
@@ -60,6 +61,7 @@ namespace ProjekatSIMS
             if(prostorijeZaSpajanje == null)
             {
                 prostorijeZaSpajanje.Add(prostorijaZaSpajanje);
+                ProstorijeZaSpajanje.Items.Add(prostorijaZaSpajanje);
                 MessageBox.Show("Uspesno ste dodali prostoriju!");
                 ProstorijeZaSpajanje.ItemsSource = prostorijeZaSpajanje;
                
@@ -194,9 +196,9 @@ namespace ProjekatSIMS
         }
         private void izvrsiRazdvajanje(object sender, RoutedEventArgs e)
         {
-            double suma = 0;
+           
             Prostorija prostorijaZaDeljenje = (Prostorija)Prostorije.SelectedItem;
-            
+
             ProstorijaService.obrisiProstoriju(prostorijaZaDeljenje.id);
             prostorije.AddRange(razdeljeneProstorije);
             ProstorijaService.prostorijaRepository.Sacuvaj(prostorije);
