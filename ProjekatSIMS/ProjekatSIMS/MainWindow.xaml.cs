@@ -3,6 +3,7 @@ using Model;
 using ProjekatSIMS.Controller;
 using ProjekatSIMS.Model;
 using ProjekatSIMS.Repository;
+using ProjekatSIMS.ViewDoktor;
 using System;
 using System.Collections.Generic;
 using System.Windows;
@@ -62,7 +63,7 @@ namespace ProjekatSIMS
                         upravnikWindow.Show();
                         break;
                     case Uloga.Doktor:
-                        DoktorWindow doktorWindow = new DoktorWindow();
+                        DoktorWindowView doktorWindow = new DoktorWindowView();
                         doktorWindow.Show();
                         break;
 

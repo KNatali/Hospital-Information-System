@@ -14,15 +14,15 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ProjekatSIMS
+namespace ProjekatSIMS.ViewDoktor
 {
  
-    public partial class PretragaPacijentaDoktor : Page
+    public partial class PretragaPacijentaDoktorView : Page
     {
-        public PretragaPacijentaDoktor()
+        public PretragaPacijentaDoktorView(PretragaPacijentaDoktorViewModel viewModel)
         {
             InitializeComponent();
-
+            this.DataContext = viewModel;
             List<Pacijent> items = new List<Pacijent>();
             using (StreamReader r = new StreamReader(@"..\..\..\Fajlovi\Pacijent.txt"))
             {

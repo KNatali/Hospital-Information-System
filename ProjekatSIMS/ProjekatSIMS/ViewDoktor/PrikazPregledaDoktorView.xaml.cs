@@ -1,14 +1,15 @@
 ﻿using Controller;
 using Model;
+using ProjekatSIMS.ViewModelDoktor;
 using Repository;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace ProjekatSIMS
+namespace ProjekatSIMS.ViewDoktor
 {
 
-    public partial class PrikazPregledaDoktor : Page
+    public partial class PrikazPregledaDoktorView : Page
     {
         private DoktorRepository doktorRepository = new DoktorRepository();
         private PregledRepository pregledRepository = new PregledRepository();
@@ -18,11 +19,11 @@ namespace ProjekatSIMS
             get;
             set;
         }
-        public PrikazPregledaDoktor()
+        public PrikazPregledaDoktorView(PrikazPregledaDoktorViewModel viewModel)
         {
 
             InitializeComponent();
-            this.DataContext = this;
+            this.DataContext = viewModel;
             List<Doktor> doktori = doktorRepository.DobaviSve();
             Doktor doktor = new Doktor();
             foreach (Doktor d in doktori)
@@ -54,8 +55,8 @@ namespace ProjekatSIMS
              MessageBox.Show("Uspjesno ste otkazali pregled");
            
 
-            PrikazPregledaDoktor pd = new PrikazPregledaDoktor();
-            this.NavigationService.Navigate(pd);
+            //PrikazPregledaDoktor pd = new PrikazPregledaDoktor();
+           // this.NavigationService.Navigate(pd);
 
         }
 

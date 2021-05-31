@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+using ProjekatSIMS.ViewModelDoktor;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -11,23 +13,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ProjekatSIMS
+namespace ProjekatSIMS.ViewDoktor
 {
     
-    public partial class PocetnaStranicaDoktor : Page
+    public partial class PocetnaStranicaDoktorView : Page
     {
-        public PocetnaStranicaDoktor()
+        public PocetnaStranicaDoktorView(PocetnaStranicaDoktorViewModel viewModel)
         {
+
             InitializeComponent();
-           
-            
+            this.DataContext = viewModel;
         }
 
-        private void PrikazLijekova(object sender, RoutedEventArgs e)
-        {
-            this.NavigationService.Navigate(new Uri("EvidencijaLijekova.xaml", UriKind.Relative));
-
-
-        }
+       
     }
 }
