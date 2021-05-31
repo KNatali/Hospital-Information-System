@@ -3,6 +3,10 @@ using Model;
 using ProjekatSIMS.Controller;
 using ProjekatSIMS.Model;
 using ProjekatSIMS.Repository;
+<<<<<<< HEAD
+using ProjekatSIMS.UpravnikWindows;
+=======
+>>>>>>> main
 using ProjekatSIMS.ViewDoktor;
 using System;
 using System.Collections.Generic;
@@ -59,6 +63,7 @@ namespace ProjekatSIMS
                         sekretarWindow.Show();
                         break;
                     case Uloga.Upravnik:
+                       
                         UpravnikWindow upravnikWindow = new UpravnikWindow();
                         upravnikWindow.Show();
                         break;
