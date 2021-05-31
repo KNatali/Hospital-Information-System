@@ -1,30 +1,31 @@
 ﻿using Controller;
 using Model;
 using ProjekatSIMS.Repository;
+using ProjekatSIMS.ViewModelDoktor;
 using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace ProjekatSIMS
+namespace ProjekatSIMS.ViewDoktor
 {
 
-    public partial class IzmjenaLijekDoktor : Page
+    public partial class IzmjenaLijekDoktorView : Page
     {
         private LijekRepository lijekRepository = new LijekRepository();
         private IzmjenaLijekaDoktorController izmjenaLijekaController = new IzmjenaLijekaDoktorController();
         private CuvanjeIzmjenaLijekaDoktorController cuvanjeIzmjenaLijekaDoktorController = new CuvanjeIzmjenaLijekaDoktorController();
         public Lijek lijek { get; set; }
         public List<Lijek> Lijekovi { get; set; }
-        public IzmjenaLijekDoktor(Lijek l)
+        public IzmjenaLijekDoktorView(IzmjenaLijekDoktorViewModel viewModel)
         {
             InitializeComponent();
-            this.DataContext = this;
-            lijek = l;
-            Naziv.Text = l.NazivLeka;
-            Opis.Text = l.Opis;
-            Sastojci.ItemsSource = l.Alergeni;
-            AlternativniLijekovi.ItemsSource = l.AlternativniLekovi;
+            this.DataContext = viewModel;
+            //lijek = l;
+           // Naziv.Text = l.NazivLeka;
+           // Opis.Text = l.Opis;
+            //Sastojci.ItemsSource = l.Alergeni;
+           // AlternativniLijekovi.ItemsSource = l.AlternativniLekovi;
             Lijekovi = lijekRepository.DobaviSve();
             SviLijekovi.ItemsSource = Lijekovi;
         }
