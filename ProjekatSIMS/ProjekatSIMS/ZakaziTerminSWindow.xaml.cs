@@ -75,20 +75,8 @@ namespace ProjekatSIMS
             //Prostorija prostorija = (Prostorija)Ordinacija.SelectedItem;
             Prostorija prostorija = new Prostorija();
             DateTime datum = (DateTime)Datum.SelectedDate;
-            
-            NeradniDaniController neradniDaniController = new NeradniDaniController();
-            List<NeradniDani> listaNeradnihDana = neradniDaniController.DobaviSve();
-            foreach (NeradniDani neradniDani in listaNeradnihDana)
-            {
-                if (neradniDani.doktor.Jmbg == p.doktor.Jmbg)
-                {
-                    if(DateTime.Compare(datum, neradniDani.NeradnoOd)>=0 && DateTime.Compare(datum, neradniDani.NeradnoDo)<=0)
-                    {
-                        MessageBox.Show("Doktor je na godisnjem odmoru.");
-                        this.Close();
-                    }
-                }
-            } // radi samo sto zakazi ako je na godisnjem odmoru
+
+            DaLiJeDoktorNaGodisnjemOdmoru(p, datum); // radi samo sto zakaze iako je na godisnjem odmoru
             double sat;
             double minut;
             TipPregleda tippregleda = (TipPregleda)Pregledi.SelectedIndex;
@@ -158,6 +146,29 @@ namespace ProjekatSIMS
                 }
             }*/
 
+        }
+
+        private void DaLiJeDoktorNaGodisnjemOdmoru(Pregled p, DateTime datum)
+        {
+            NeradniDaniController neradniDaniController = new NeradniDaniController();
+            List<NeradniDani> listaNeradnihDana = neradniDaniController.DobaviSve();
+            foreach (NeradniDani neradniDani in listaNeradnihDana)
+            {
+                if (neradniDani.doktor.Jmbg == p.doktor.Jmbg)
+                    PoredjenjeDatumaPregledaSaGodisnjimOdmoromDoktora(datum, neradniDani);
+            }
+        }
+
+        private void PoredjenjeDatumaPregledaSaGodisnjimOdmoromDoktora(DateTime datum, NeradniDani neradniDani)
+        {
+            if (DateTime.Compare(datum, neradniDani.NeradnoOd) >= 0 && DateTime.Compare(datum, neradniDani.NeradnoDo) <= 0)
+                PorukaOGodisnjemOdmoruDoktora();
+        }
+
+        private void PorukaOGodisnjemOdmoruDoktora()
+        {
+            MessageBox.Show("Izabrani doktor je na godišnjem odmoru u ovom terminu.");
+            this.Close();
         }
 
         /*private void IzborPregleda(object sender, SelectionChangedEventArgs e)

@@ -70,29 +70,9 @@ namespace Repository
             return pregledi;
         }
 
-        public Model.Pregled SacuvajGuestPregledRepository(DateTime datumPregleda, Model.Pacijent pacijent)
-      {
-         // TODO: implement
-         return null;
-      }
-
-      public List<Pregled> GetListaPregledaRepository(DateTime zaDan)
-      {
-         // TODO: implement
-         return null;
-      }
+       
       
-      public List<Pregled> GetListaPregledaRepository(String jmbg)
-      {
-         // TODO: implement
-         return null;
-      }
-      
-      public Model.Pregled GetDatumRepository(DateTime datum)
-      {
-         // TODO: implement
-         return null;
-      }
+     
       
       
       public List<Pregled> DobaviSvePregledeDoktor()

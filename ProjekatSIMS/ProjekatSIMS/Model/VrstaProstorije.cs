@@ -1,5 +1,5 @@
 
-// Purpose: Definition of Enum VrstaProstorije
+
 
 using System;
 
