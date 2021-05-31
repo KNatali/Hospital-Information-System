@@ -15,16 +15,41 @@ using System.Windows.Shapes;
 
 namespace ProjekatSIMS.ViewDoktor
 {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD:ProjekatSIMS/ProjekatSIMS/HelpUpravnik.xaml.cs
+    /// <summary>
+    /// Interaction logic for HelpUpravnik.xaml
+    /// </summary>
+    public partial class HelpUpravnik : Page
+    {
+        public HelpUpravnik()
+=======
+>>>>>>> main
     
     public partial class PocetnaStranicaDoktorView : Page
     {
         public PocetnaStranicaDoktorView(PocetnaStranicaDoktorViewModel viewModel)
+<<<<<<< HEAD
         {
 
             InitializeComponent();
+=======
+>>>>>>> main:ProjekatSIMS/ProjekatSIMS/ViewDoktor/PocetnaStranicaDoktorView.xaml.cs
+        {
+
+            InitializeComponent();
+<<<<<<< HEAD:ProjekatSIMS/ProjekatSIMS/HelpUpravnik.xaml.cs
+        }
+=======
+>>>>>>> main
             this.DataContext = viewModel;
         }
 
        
+<<<<<<< HEAD
+=======
+>>>>>>> main:ProjekatSIMS/ProjekatSIMS/ViewDoktor/PocetnaStranicaDoktorView.xaml.cs
+>>>>>>> main
     }
 }
