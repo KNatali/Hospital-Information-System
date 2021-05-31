@@ -69,8 +69,8 @@ namespace ProjekatSIMS
         private void IzmijeniLijek(object sender, RoutedEventArgs e)
         {
             Lijek lijek = (Lijek)dataGridVerifikovani.SelectedItems[0];
-            IzmjenaLijekDoktor i = new IzmjenaLijekDoktor(lijek);
-             this.NavigationService.Navigate(i);
+            //IzmjenaLijekDoktor i = new IzmjenaLijekDoktor(lijek);
+            // this.NavigationService.Navigate(i);
         }
 
 

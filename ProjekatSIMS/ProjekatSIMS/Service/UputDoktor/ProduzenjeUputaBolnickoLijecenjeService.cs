@@ -19,7 +19,8 @@ namespace Service
             foreach (UputBolnickoLijecenje u in sviUputi)
             {
                 if ((DateTime.Compare(uput.IntervalPocetak, u.IntervalPocetak) >= 0 && DateTime.Compare(uput.IntervalPocetak, u.IntervalKraj) < 0 ||
-                     DateTime.Compare(krajIntervala, u.IntervalPocetak) > 0 && DateTime.Compare(krajIntervala, u.IntervalKraj) <= 0) && u.KrevetId == uput.KrevetId)
+                     DateTime.Compare(krajIntervala, u.IntervalPocetak) > 0 && DateTime.Compare(krajIntervala, u.IntervalKraj) <= 0 ||
+                     DateTime.Compare(uput.IntervalPocetak, u.IntervalPocetak) <= 0 && DateTime.Compare(krajIntervala, u.IntervalKraj) >= 0) && u.KrevetId == uput.KrevetId)
                 {
                     if (!(uput.IntervalPocetak == u.IntervalPocetak && uput.IntervalKraj == u.IntervalKraj && uput.KrevetId == u.KrevetId))
                         return false;

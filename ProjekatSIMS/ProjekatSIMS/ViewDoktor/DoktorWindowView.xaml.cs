@@ -10,20 +10,32 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Navigation;
+using ProjekatSIMS.ViewModelDoktor;
 
-namespace ProjekatSIMS
+namespace ProjekatSIMS.ViewDoktor
 {
-    /// <summary>
-    /// Interaction logic for DoktorWindow.xaml
-    /// </summary>
-    public partial class DoktorWindow : Window
+    
+    public partial class DoktorWindowView : Window
     {
+        private DoktorWindowViewModel viewModel;
         private NavigationService NavigationService { get; set; }
-
-        public DoktorWindow()
+        public DoktorWindowViewModel _ViewModel
         {
+            get { return viewModel; }
+            set
+            {
+                viewModel = value;
+            }
+        }
+
+        public DoktorWindowView()
+        {
+
             InitializeComponent();
-            DoktorFrame.Content = new PocetnaStranicaDoktor();
+            this.viewModel = new DoktorWindowViewModel(this.DoktorFrame.NavigationService);
+            this.DataContext = this.viewModel;
+
+
         }
 
         private void ZakaziPregled(object sender, RoutedEventArgs e)
@@ -40,7 +52,7 @@ namespace ProjekatSIMS
 
         private void PrikazPregleda(object sender, RoutedEventArgs e)
         {
-            DoktorFrame.Content = new PrikazPregledaDoktor();
+            // DoktorFrame.Content = new PrikazPregledaDoktor();
 
         }
         private void PrikazZavrsenihPregleda(object sender, RoutedEventArgs e)
@@ -51,16 +63,16 @@ namespace ProjekatSIMS
 
         private void PretraziPacijenta(object sender, RoutedEventArgs e)
         {
-            DoktorFrame.Content = new PretragaPacijentaDoktor();
- 
+            // DoktorFrame.Content = new PretragaPacijentaDoktor();
+
 
         }
 
         private void PocetnaStranica(object sender, RoutedEventArgs e)
         {
-            DoktorFrame.Content = new PocetnaStranicaDoktor();
+            // DoktorFrame.Content = new PocetnaStranicaDoktorView();
 
-            
+
         }
 
         private void MojProfil(object sender, RoutedEventArgs e)

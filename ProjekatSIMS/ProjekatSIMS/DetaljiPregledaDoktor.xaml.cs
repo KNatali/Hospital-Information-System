@@ -37,7 +37,7 @@ namespace ProjekatSIMS
             otkazivanjePregledaDoktorController.OtkazivanjePregleda(pregled);
             MessageBox.Show("Uspjesno ste otkazali pregled");
 
-            PrikazPregledaDoktor pd = new PrikazPregledaDoktor();
+            //PrikazPregledaDoktor pd = new PrikazPregledaDoktor();
             //  this.NavigationService.Navigate(pd);
             // NavigationService navService = NavigationService.GetNavigationService(this)navService.Navigate = (newSystem.Uri("Page2.xaml", UriKind.RelativeOrAbsolute);
 

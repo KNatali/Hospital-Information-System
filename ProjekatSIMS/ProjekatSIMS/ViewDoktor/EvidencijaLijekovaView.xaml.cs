@@ -1,23 +1,24 @@
 ﻿using Controller;
 using Model;
+using ProjekatSIMS.ViewModelDoktor;
 using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace ProjekatSIMS
+namespace ProjekatSIMS.ViewDoktor
 {
 
-    public partial class EvidencijaLIjekova : Page
+    public partial class EvidencijaLijekovaView : Page
     {
         private PrikazEvidencijeLijekovaController prikazEvidencijeLijekovaController = new PrikazEvidencijeLijekovaController();
         private VerifikovanjeLijekovaController verifikovanjeLijekovaController = new VerifikovanjeLijekovaController();
         public List<Lijek> SviLijekovi { get; set; }
         public List<Lijek> LijekoviNaCekanju { get; set; }
-        public EvidencijaLIjekova()
+        public EvidencijaLijekovaView(EvidencijaLijekovaViewModel viewModel)
         {
             InitializeComponent();
-            this.DataContext = this;
+            this.DataContext = viewModel;
 
             PrikazTabele();
         }
@@ -53,8 +54,8 @@ namespace ProjekatSIMS
         private void IzmijeniLijek(object sender, RoutedEventArgs e)
         {
             Lijek lijek = (Lijek)dataGridVerifikacija.SelectedItems[0];
-            IzmjenaLijekDoktor i = new IzmjenaLijekDoktor(lijek);
-            this.NavigationService.Navigate(i);
+           // IzmjenaLijekDoktor i = new IzmjenaLijekDoktor(lijek);
+            //this.NavigationService.Navigate(i);
         }
 
         private void PrihvatiLijek(object sender, RoutedEventArgs e)
