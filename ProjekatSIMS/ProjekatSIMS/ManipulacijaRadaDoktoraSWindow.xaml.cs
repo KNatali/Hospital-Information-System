@@ -45,18 +45,6 @@ namespace ProjekatSIMS
 
         private void Odobri_neradneDane(object sender, RoutedEventArgs e)
         {
-            /*NeradniDani nd = new NeradniDani();
-            nd.NeradnoOd = (DateTime)Od.SelectedDate;
-            nd.NeradnoDo = (DateTime)Do.SelectedDate;
-            nd.Vrsta = (VrsteNeradnihDana)Obrazlozenje.SelectedIndex;
-            nd.doktor = dok;
-             
-            NeradniDaniRepository fajl = new NeradniDaniRepository(@"..\..\..\Fajlovi\NeradniDani.txt");
-            List<NeradniDani> ListaDana = fajl.DobaviNeradneDane();
-            ListaDana.Add(nd);
-            fajl.SacuvajNeradanDan(ListaDana);
-            dataGridNeradniDani.ItemsSource = ListaDana;
-            //this.Close();*/
             NeradniDani novoOdobrenje = new NeradniDani();
             neradniDaniController = new NeradniDaniController();
             PopunjavanjePoljaZaGodisnjiOdmor(novoOdobrenje);

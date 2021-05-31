@@ -170,7 +170,7 @@ namespace ProjekatSIMS
         {
             
             Prostorija p = (Prostorija)dgrProstorije.SelectedItems[0];
-            if(Convert.ToInt32(p.id) == 0)
+            if(p.id == "0")
             {
                 DinamickaOpremaWindow din = new DinamickaOpremaWindow();
                 din.ShowDialog();

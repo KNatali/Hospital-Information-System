@@ -40,10 +40,7 @@ namespace Service
             karton.UputiZaBolnickoLijecenje = AzuriranjeUputa(karton.UputiZaBolnickoLijecenje, uput, krajIntervala);
             zdravstveniKartonRepository.AzurirajKarton(karton);
 
-
-
-
-        }
+         }
 
         public List<UputBolnickoLijecenje> AzuriranjeUputa(List<UputBolnickoLijecenje> uputi, UputBolnickoLijecenje uput, DateTime krajIntervala)
         {

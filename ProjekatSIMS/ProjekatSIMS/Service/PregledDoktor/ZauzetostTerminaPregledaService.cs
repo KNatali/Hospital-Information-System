@@ -38,8 +38,9 @@ namespace Service
 
         private static bool IsIspunjenoPreklapanje(Pregled zakazanPregled, IntervalDatuma termin)
         {
-            return DateTime.Compare(termin.PocetnoVrijeme, zakazanPregled.Pocetak) >= 0 && DateTime.Compare(termin.PocetnoVrijeme, zakazanPregled.Pocetak.AddMinutes(zakazanPregled.Trajanje)) < 0 ||
-                    DateTime.Compare(termin.KrajnjeVrijeme, zakazanPregled.Pocetak) > 0 && DateTime.Compare(termin.KrajnjeVrijeme, zakazanPregled.Pocetak.AddMinutes(zakazanPregled.Trajanje)) <= 0;
+            return (DateTime.Compare(termin.PocetnoVrijeme, zakazanPregled.Pocetak) >= 0 && DateTime.Compare(termin.PocetnoVrijeme, zakazanPregled.Pocetak.AddMinutes(zakazanPregled.Trajanje)) < 0 ||
+                    DateTime.Compare(termin.KrajnjeVrijeme, zakazanPregled.Pocetak) > 0 && DateTime.Compare(termin.KrajnjeVrijeme, zakazanPregled.Pocetak.AddMinutes(zakazanPregled.Trajanje)) <= 0 ||
+                    DateTime.Compare(termin.PocetnoVrijeme, zakazanPregled.Pocetak) <= 0 && DateTime.Compare(termin.KrajnjeVrijeme, zakazanPregled.Pocetak.AddMinutes(zakazanPregled.Trajanje)) >= 0 );
         }
 
        

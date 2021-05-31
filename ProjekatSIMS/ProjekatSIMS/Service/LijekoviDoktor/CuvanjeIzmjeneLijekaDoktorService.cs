@@ -12,10 +12,9 @@ namespace Service
         private LijekRepository lijekRepository = new LijekRepository();
         public void SacuvajIzmjene(Lijek lijek, ItemCollection sastojci, ItemCollection alternativniLijekovi)
         {
-            AzuriranjeSastojaka(lijek, sastojci);
+            DodavanjeSastojaka(lijek, sastojci);
             DodavanjeALternativnihLijekova(lijek, alternativniLijekovi);
-
-            List<Lijek> sviLijekovi = AzuriranjeLijeka(lijek);
+             List<Lijek> sviLijekovi = AzuriranjeLijeka(lijek);
             lijekRepository.Sacuvaj(sviLijekovi);
 
         }
@@ -27,7 +26,7 @@ namespace Service
                 lijek.AlternativniLekovi.Add(i);
         }
 
-        private static void AzuriranjeSastojaka(Lijek lijek, ItemCollection sastojci)
+        private static void DodavanjeSastojaka(Lijek lijek, ItemCollection sastojci)
         {
             lijek.Alergeni = new List<String>();
             foreach (String i in sastojci)
