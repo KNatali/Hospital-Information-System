@@ -5,13 +5,97 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjekatSIMS"
         mc:Ignorable="d"
-        Title="UpravnikWindow" Height="500" Width="1000">
-    <Grid Width="1000" Height="450">
-        <Button Content="Dinamička oprema" Click="dinamicka" HorizontalAlignment="Left" Margin="672,95,0,0" VerticalAlignment="Top" Height="60" Width="210"/>
-        <Button Content="Prostorije" Click="prostorije" HorizontalAlignment="Left" Margin="178,95,0,0" VerticalAlignment="Top" Height="60" Width="210"/>
-        <Button Content="Lekovi" HorizontalAlignment="Left" Margin="178,214,0,0" VerticalAlignment="Top" Width="210" Height="60" Click="lekoviClick"/>
-        <Button Content="Staticka oprema" Click="staticka" HorizontalAlignment="Left" Margin="672,214,0,0" VerticalAlignment="Top" Width="210" Height="60" />
-        <Button Content="Renoviranje" Click="renoviranje" HorizontalAlignment="Left" Margin="178,351,0,0" VerticalAlignment="Top" Height="60" Width="210"/>
+        Title="UpravnikWindow" Height="500" Width="1000"
+        >
+
+    <Window.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+    </Window.Resources>
+
+
+
+    <Grid >
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="230"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto" MinHeight="62"/>
+
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Column="0" Grid.Row="0" Background="#C0FCA9">
+            <Image Source="SlikeUpravnik/upravnikLogo.png" Height="46" Width="51" Margin="0,10,0,0"/>
+
+
+            <Label  Foreground="black" Content="Upravnik" HorizontalAlignment="Center" FontSize="18" FontWeight="SemiBold" Margin="0,0,0,10" />
+
+        </StackPanel>
+        <StackPanel Grid.Column="0" Grid.Row="1" Background="#C0FCA9" Grid.RowSpan="2" >
+            <Button  Click="PocetnaStranica"  Background="#A4E98A"  >
+                <StackPanel Orientation="Horizontal" Margin="7,0,0,0">
+                    <Image Source="SlikeUpravnik/upravnikHome.png" Height="46" Width="51" />
+
+                    <TextBlock Text="Početna stranica" VerticalAlignment="Center" />
+                </StackPanel>
+            </Button>
+            <Button  Click="Lekovi"  Background="#A4E98A"  >
+                <StackPanel Orientation="Horizontal" Margin="7,0,0,0">
+                    <Image Source="SlikeUpravnik/upravnikLekovi.png" Height="46" Width="51" Margin="0,10,0,0"/>
+
+                    <TextBlock Text="Lekovi" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                </StackPanel>
+            </Button>
+            <Button  Click="Inventar"  Background="#A4E98A"  >
+                <StackPanel Orientation="Horizontal" Margin="7,0,0,0">
+                    <Image Source="SlikeUpravnik/upravnikInventar.png" Height="46" Width="51" Margin="0,10,0,0"/>
+
+                    <TextBlock Text="Inventar" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                </StackPanel>
+            </Button>
+            <Button Click="Prostorije"   Background="#A4E98A"  >
+                <StackPanel Orientation="Horizontal" Margin="7,0,0,0">
+                    <Image Source="SlikeUpravnik/upravnikProstorije.png" Height="46" Width="51" Margin="0,10,0,0"/>
+
+                    <TextBlock Text="Prostorije" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                </StackPanel>
+            </Button>
+            <Button Click="Renoviranje"   Background="#A4E98A"  >
+                <StackPanel Orientation="Horizontal" Margin="7,0,0,0">
+                    <Image Source="SlikeUpravnik/upravnikRenoviranje.png" Height="46" Width="51" Margin="0,10,0,0"/>
+
+                    <TextBlock Text="Renoviranje" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                </StackPanel>
+            </Button>
+
+
+
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="0">
+            <Button  Click="Pomoc"  Background="#A4E98A"  >
+                <StackPanel Orientation="Horizontal" Margin="7,0,0,0">
+                    <Image Source="SlikeUpravnik/upravnikHelp.png" Height="46" Width="51" Margin="0,10,0,0"/>
+
+                    <TextBlock Text="Pomoc" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+
+        <Frame  x:Name="UpravnikFrame" NavigationUIVisibility="Hidden"  Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" Background="#CDFEBB" />
+
+
+
 
     </Grid>
+
 </Window>

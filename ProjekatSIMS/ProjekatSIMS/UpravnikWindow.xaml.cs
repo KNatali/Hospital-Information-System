@@ -8,6 +8,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace ProjekatSIMS
@@ -15,39 +16,40 @@ namespace ProjekatSIMS
     
     public partial class UpravnikWindow : Window
     {
+
+        private NavigationService NavigationService { get; set; }
         public UpravnikWindow()
         {
             InitializeComponent();
         }
 
-        private void dinamicka(object sender, RoutedEventArgs e)
-        {
-            DinamickaOpremaWindow d = new DinamickaOpremaWindow();
-            d.Show();
-        }
-
         
-        private void prostorije(object sender, RoutedEventArgs e)
+
+        private void Inventar(object sender, RoutedEventArgs e)
         {
-            ProstorijeWindow p = new ProstorijeWindow();
-            p.Show();
+            UpravnikFrame.Content = new PregledInventaraUpravnik();
+        }
+        private void Lekovi(object sender, RoutedEventArgs e)
+        {
+            UpravnikFrame.Content = new PregledLekovaUpravnik();
         }
 
-        private void lekoviClick(object sender, RoutedEventArgs e)
+        private void PocetnaStranica(object sender, RoutedEventArgs e)
         {
-            Lekovi lw = new Lekovi();
-            lw.Show();
-        }
 
-        private void staticka(object sender, RoutedEventArgs e)
-        {
-            SvaStatickaOprema sso = new SvaStatickaOprema();
-            sso.Show();
         }
-        private void renoviranje(object sender, RoutedEventArgs e)
+        private void Prostorije(object sender, RoutedEventArgs e)
         {
-            Renoviranje r = new Renoviranje();
-            r.Show();
+            UpravnikFrame.Content = new PregledProstorijaUpravnik();
+
+        }
+        private void Renoviranje(object sender, RoutedEventArgs e)
+        {
+            UpravnikFrame.Content = new RenoviranjeUpravnik();
+        }
+        private void Pomoc(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
