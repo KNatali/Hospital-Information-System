@@ -34,7 +34,7 @@ namespace ProjekatSIMS
             this.DataContext = this;
             pac = p;
             danasnjiDatum = DateTime.Now;
-            Oblasti.ItemsSource = Enum.GetValues(typeof(Specijalizacija));
+            //Oblasti.ItemsSource = Enum.GetValues(typeof(Specijalizacija));
             Pregledi = new List<Pregled>();
             PregledRepository fajl = new PregledRepository(@"..\..\..\Fajlovi\Pregled.txt");
             Pregledi = fajl.GetListaPregledaSekretar();
@@ -53,8 +53,8 @@ namespace ProjekatSIMS
             dataGridPregledi.Visibility = Visibility.Visible;
             dataGridSlobodniTermini.Visibility = Visibility.Hidden;
 
-            Specijalizacija spec = (Specijalizacija)Oblasti.SelectedIndex;
-            OdabirOblastiLekara(spec, ListaPregleda);
+            //Specijalizacija spec = (Specijalizacija)Oblasti.SelectedIndex;
+            //OdabirOblastiLekara(spec, ListaPregleda);
         }
         public void OdabirOblastiLekara(Specijalizacija specijalizacija, List<Pregled> listaPregleda)
         {

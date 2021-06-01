@@ -33,6 +33,21 @@
 
 
 
+    <PackageReference Include="LiveCharts" Version="0.9.7" />
+
+
+
+
+    <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
+
+
+
+
+    <PackageReference Include="MaterialDesignThemes" Version="4.1.0" />
+
+
+
+
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" Version="7.0.1" />
     <PackageReference Include="Tulpep.NotificationWindow" Version="1.1.38" />
