@@ -27,21 +27,17 @@ namespace ProjekatSIMS
             Prostorije = ProstorijaService.prostorijaRepository.DobaviSve();
             dgrProstorije.ItemsSource = Prostorije;
         }
-        private void PrikaziProstoriju(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
         private void ObrisiProstoriju(object sender, RoutedEventArgs e)
         {
+            Prostorija prosrtorijaZaBrisanje = (Prostorija)dgrProstorije.SelectedItems[0];
+            ProstorijaService.obrisiProstoriju(prosrtorijaZaBrisanje.id);
+            MessageBox.Show("Uspesno ste obrisali prostoriju!");
+            Prostorije = ProstorijaService.prostorijaRepository.DobaviSve();
+            dgrProstorije.ItemsSource = Prostorije;
 
         }
-        private void IzmeniProstoriju(object sender, RoutedEventArgs e)
-        {
-
-        }
-        private void KreirajProstoriju(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
+        
     }
 }

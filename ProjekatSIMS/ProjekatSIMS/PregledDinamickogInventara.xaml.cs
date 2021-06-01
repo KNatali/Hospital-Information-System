@@ -16,27 +16,24 @@ using System.Windows.Shapes;
 namespace ProjekatSIMS
 {
     
-    public partial class PregledInventaraUpravnik : Page
+    public partial class PregledDinamickogInventara : Page
     {
         public List<Inventar> Oprema = new List<Inventar>();
         public InventarService InventarService = new InventarService();
-        public PregledInventaraUpravnik()
+        public PregledDinamickogInventara()
         {
             InitializeComponent();
             this.DataContext = this;
-            Oprema = InventarService.inventarRepository.DobaviInventarPoVrsti(true);
+            Oprema = InventarService.inventarRepository.DobaviInventarPoVrsti(false);
             dgrInventar.ItemsSource = Oprema;
         }
-        
-        
         private void ObrisiOpremu(object sender, RoutedEventArgs e)
         {
             Inventar inventarZaBrisanje = (Inventar)dgrInventar.SelectedItems[0];
             InventarService.inventarRepository.ObrisiInventar(inventarZaBrisanje.id, inventarZaBrisanje.prostorija);
 
-            Oprema = InventarService.inventarRepository.DobaviInventarPoVrsti(true);
+            Oprema = InventarService.inventarRepository.DobaviInventarPoVrsti(false);
             dgrInventar.ItemsSource = Oprema;
         }
-        
     }
 }

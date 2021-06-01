@@ -3,10 +3,7 @@ using Model;
 using ProjekatSIMS.Controller;
 using ProjekatSIMS.Model;
 using ProjekatSIMS.Repository;
-<<<<<<< HEAD
-using ProjekatSIMS.UpravnikWindows;
-=======
->>>>>>> main
+
 using ProjekatSIMS.ViewDoktor;
 using System;
 using System.Collections.Generic;
