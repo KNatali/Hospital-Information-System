@@ -24,20 +24,21 @@
         </Label>
         <Label Content="ZDRAVO KORPORACIJA" FontSize="25" Margin="388,34,-16,327" Foreground="#1963bf" FontWeight="Bold"/>
         <Label Width="329" VerticalAlignment="Top" Margin="309,90,0,0" Height="50" HorizontalAlignment="Left" FontSize="22" Foreground="#1963bf" FontWeight="Bold" Content="Izveštaj o zauzetosti prostorija"/>
-        <Label Content="Za period:" Grid.Column="0" FontSize="25" HorizontalAlignment="Left" Height="40" Margin="140,150,0,0" VerticalAlignment="Top" Width="133" Foreground="#1963bf" FontWeight="DemiBold"/>
-        <Label Content="Od" Grid.Column="0" FontSize="25" HorizontalAlignment="Left" Height="40" Margin="60,220,0,0" VerticalAlignment="Top" Width="66" Foreground="#1963bf" FontWeight="DemiBold"/>
-        <Label Content="Do" Grid.Column="0" FontSize="25" HorizontalAlignment="Left" Height="40" Margin="60,280,0,0" VerticalAlignment="Top" Width="66" Foreground="#1963bf" FontWeight="DemiBold"/>
-        <DatePicker x:Name="Datum" HorizontalAlignment="Left" FontSize="25" Margin="140,220,0,0" VerticalAlignment="Top" Width="192" BorderBrush="#1963bf" Foreground="#1963bf"/>
-        <DatePicker x:Name="Datum_Copy" HorizontalAlignment="Left" FontSize="25" Margin="140,280,0,0" VerticalAlignment="Top" Width="192" BorderBrush="#1963bf" Foreground="#1963bf"/>
-        <Button Content="Štampaj izveštaj" Click="Stampaj" HorizontalAlignment="Left" Margin="90,350,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}" Width="234"/>
-        <Button Content="Nazad na početnu" Click="Nazad" HorizontalAlignment="Left" Margin="90,440,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}" Width="234"/>
-        <lvc:CartesianChart Series="{Binding SeriesCollection}" LegendLocation="Left" Margin="360,150,60,60">
+        <Label Content="Za period:" Grid.Column="0" FontSize="25" HorizontalAlignment="Left" Height="40" Margin="120,130,0,0" VerticalAlignment="Top" Width="133" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <Label Content="Od" Grid.Column="0" FontSize="25" HorizontalAlignment="Left" Height="40" Margin="40,180,0,0" VerticalAlignment="Top" Width="66" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <Label Content="Do" Grid.Column="0" FontSize="25" HorizontalAlignment="Left" Height="40" Margin="40,240,0,0" VerticalAlignment="Top" Width="66" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <DatePicker x:Name="DatumOD" HorizontalAlignment="Left" FontSize="25" Margin="120,180,0,0" VerticalAlignment="Top" Width="192" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <DatePicker x:Name="DatumDO" HorizontalAlignment="Left" FontSize="25" Margin="120,239,0,0" VerticalAlignment="Top" Width="192" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <Button Content="Štampaj izveštaj" Click="Stampaj" HorizontalAlignment="Left" Margin="60,380,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}" Width="234"/>
+        <Button Content="Nazad na početnu" Click="Nazad" HorizontalAlignment="Left" Margin="60,460,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}" Width="234"/>
+        <lvc:CartesianChart Series="{Binding SeriesCollection}" x:Name="Dijagram" LegendLocation="Left" Margin="317,150,40,30" Foreground="#1963bf" FontWeight="DemiBold" FontSize="15">
             <lvc:CartesianChart.AxisX>
-                <lvc:Axis Title="Datumi" Labels="{Binding Datumi}"/>
+                <lvc:Axis Title="Datumi" Labels="{Binding Datumi}" Foreground="#1963bf" FontWeight="DemiBold" FontSize="15"/>
             </lvc:CartesianChart.AxisX>
             <lvc:CartesianChart.AxisY>
-                <lvc:Axis Title="Zauzetost" LabelFormatter="{Binding Zauzetost}"/>
+                <lvc:Axis Title="Zauzetost" LabelFormatter="{Binding Zauzetost}" Foreground="#1963bf" FontWeight="DemiBold" FontSize="15"/>
             </lvc:CartesianChart.AxisY>
         </lvc:CartesianChart>
+        <Button Content="Prikaži dijagram" Click="Prikazi" HorizontalAlignment="Left" Margin="60,300,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}" Width="234"/>
     </Grid>
 </Window>
