@@ -23,33 +23,89 @@ namespace ProjekatSIMS
             InitializeComponent();
         }
 
-        
-
-        private void Inventar(object sender, RoutedEventArgs e)
-        {
-            UpravnikFrame.Content = new PregledInventaraUpravnik();
-        }
-        private void Lekovi(object sender, RoutedEventArgs e)
-        {
-            UpravnikFrame.Content = new PregledLekovaUpravnik();
-        }
+       
 
         private void PocetnaStranica(object sender, RoutedEventArgs e)
         {
 
         }
-        private void Prostorije(object sender, RoutedEventArgs e)
-        {
-            UpravnikFrame.Content = new PregledProstorijaUpravnik();
-
-        }
+       //Renoviranje
         private void Renoviranje(object sender, RoutedEventArgs e)
         {
             UpravnikFrame.Content = new RenoviranjeUpravnik();
         }
+        private void NaprednoRenoviranje(object sender, RoutedEventArgs e)
+        {
+            UpravnikFrame.Content = new RenoviranjeUpravnik();
+        }
+
+
+        //Pomoc
         private void Pomoc(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        //Lekovi
+        private void PregledajLekove(object sender, RoutedEventArgs e)
+        {
+            //pretraga
+            UpravnikFrame.Content = new PregledLekovaUpravnik();
+        }
+        private void IzmeniLek(object sender, RoutedEventArgs e)
+        {
+
+            UpravnikFrame.Content = new IzmenaLekaUpravnik();
+        }
+        private void KreirajLek(object sender, RoutedEventArgs e)
+        {
+
+            UpravnikFrame.Content = new PregledProstorijaUpravnik();
+        }
+
+        // Prostorije
+        private void PregledajProstorije(object sender, RoutedEventArgs e)
+        {
+
+            UpravnikFrame.Content = new PregledProstorijaUpravnik();
+            //omoguci pretragu
+        }
+        private void IzmeniProstoriju(object sender, RoutedEventArgs e)
+        {
+
+            UpravnikFrame.Content = new IzmenaProstorije(); 
+            //odraditi validaciju
+        }
+        private void KreirajProstoriju(object sender, RoutedEventArgs e)
+        {
+            //odraditi validaciju
+            UpravnikFrame.Content = new PregledProstorijaUpravnik();
+        }
+        // Inventar
+        private void PregledajInventar(object sender, RoutedEventArgs e)
+        {
+            //omoguci pretragu
+            UpravnikFrame.Content = new PregledInventaraUpravnik();
+        }
+        private void DinamickiInventar(object sender, RoutedEventArgs e)
+        {
+            //omoguci pretragu
+            UpravnikFrame.Content = new PregledDinamickogInventara();
+        }
+        private void KreirajDinamicki(object sender, RoutedEventArgs e)
+        {
+
+            UpravnikFrame.Content = new PregledProstorijaUpravnik();
+        }
+        private void KreirajStaticki(object sender, RoutedEventArgs e)
+        {
+
+            UpravnikFrame.Content = new PregledProstorijaUpravnik();
+        }
+        private void IzmeniInventar(object sender, RoutedEventArgs e)
+        {
+
+            UpravnikFrame.Content = new PregledProstorijaUpravnik();
         }
     }
 }

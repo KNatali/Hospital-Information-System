@@ -35,11 +35,8 @@
 
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Prikazi" Click="PrikaziProstoriju" Grid.Column="1" HorizontalAlignment="Left" Margin="98,18,0,0" Grid.Row="2" VerticalAlignment="Top" Height="35" Width="70"/>
-        <Button Content="Kreiraj prostoriju" Click="KreirajProstoriju" Grid.Column="1" HorizontalAlignment="Left" Margin="253,18,0,0" Grid.Row="2" VerticalAlignment="Top" Height="35" Width="70"/>
 
-        <Button Content="Obrisi" Click="IzmeniProstoriju" Grid.Column="1" HorizontalAlignment="Left" Margin="572,18,0,0" Grid.Row="2" VerticalAlignment="Top" Height="35" Width="70"/>
-        <Button Content="Izmeni" Click="ObrisiProstoriju" Grid.Column="1" HorizontalAlignment="Left" Margin="404,18,0,0" Grid.Row="2" VerticalAlignment="Top" Height="36" Width="70"/>
+        <Button Content="Obrisi" Click="ObrisiProstoriju" Grid.Column="1" HorizontalAlignment="Left" Margin="572,18,0,0" Grid.Row="2" VerticalAlignment="Top" Height="35" Width="70"/>
         <TextBox Grid.Column="1" HorizontalAlignment="Left" Margin="522,40,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
 

@@ -27,6 +27,20 @@ namespace ProjekatSIMS.Service
             }
             return trazeniLekovi;
         }
+
+        public Lijek DobaviLijekPoNazivu(String nazivLeka)
+        {
+            List<Lijek> lijekovi = new List<Lijek>();
+            lijekovi = lijekRepoisitory.DobaviSve();
+            foreach(Lijek l in lijekovi)
+            {
+                if(l.NazivLeka == nazivLeka)
+                {
+                    return l;
+                }
+            }
+            return null;
+        }
         
 
     }
