@@ -19,7 +19,7 @@ namespace ProjekatSIMS.ViewSekretar
         public PretragaPacijenataView(PretragaPacijenataViewModel viewModel)
         {
             InitializeComponent();
-            this.DataContext = new ProjekatSIMS.ViewModelSekretar.PretragaPacijenataViewModel(this.navService);
+            this.DataContext = viewModel;
         }
     }
 }

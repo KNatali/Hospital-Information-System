@@ -12,6 +12,13 @@ namespace ProjekatSIMS.ViewModelSekretar
         public RelayCommand<string> NavCommand { get; private set; }
         private BindableBase currentViewModel;
         private NavigationService navService;
+        public Pocetna(NavigationService navService)
+        {
+
+            NavCommand = new RelayCommand<string>(OnNav);
+            this.navService = navService;
+
+        }
         public NavigationService NavService
         {
             get { return navService; }
