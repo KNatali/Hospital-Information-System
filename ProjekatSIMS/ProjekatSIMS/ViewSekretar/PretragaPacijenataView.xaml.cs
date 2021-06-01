@@ -1,4 +1,4 @@
-﻿using ProjekatSIMS.ViewModelDoktor;
+﻿using ProjekatSIMS.ViewModelSekretar;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,25 +12,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ProjekatSIMS.ViewDoktor
+namespace ProjekatSIMS.ViewSekretar
 {
-
-
-
-
-    public partial class PocetnaStranicaDoktorView : Page
+    public partial class PretragaPacijenataView : Window
     {
-        public PocetnaStranicaDoktorView(PocetnaStranicaDoktorViewModel viewModel)
-
+        public PretragaPacijenataView(PretragaPacijenataViewModel viewModel)
         {
-
             InitializeComponent();
-
-
-            this.DataContext = viewModel;
+            this.DataContext = new ProjekatSIMS.ViewModelSekretar.PretragaPacijenataViewModel(this.navService);
         }
-
-
-
     }
 }

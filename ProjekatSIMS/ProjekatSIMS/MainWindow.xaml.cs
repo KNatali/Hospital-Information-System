@@ -3,11 +3,9 @@ using Model;
 using ProjekatSIMS.Controller;
 using ProjekatSIMS.Model;
 using ProjekatSIMS.Repository;
-<<<<<<< HEAD
-using ProjekatSIMS.UpravnikWindows;
-=======
->>>>>>> main
+
 using ProjekatSIMS.ViewDoktor;
+using ProjekatSIMS.ViewSekretar;
 using System;
 using System.Collections.Generic;
 using System.Windows;
@@ -59,11 +57,13 @@ namespace ProjekatSIMS
                         pacijentMainWindow.Show();
                         break;
                     case Uloga.Sekretar:
+                        //Pocetna pocetna = new Pocetna();
+                        //pocetna.Show();
                         SekretarWindow sekretarWindow = new SekretarWindow();
                         sekretarWindow.Show();
                         break;
                     case Uloga.Upravnik:
-                       
+
                         UpravnikWindow upravnikWindow = new UpravnikWindow();
                         upravnikWindow.Show();
                         break;
@@ -75,7 +75,7 @@ namespace ProjekatSIMS
                 }
             }
 
-            
+
 
 
 

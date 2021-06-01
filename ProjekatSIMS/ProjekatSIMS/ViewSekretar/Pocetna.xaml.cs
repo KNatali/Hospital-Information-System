@@ -9,17 +9,25 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ProjekatSIMS.ViewModelSekretar;
 
 namespace ProjekatSIMS.ViewSekretar
 {
-    /// <summary>
-    /// Interaction logic for Pocetna.xaml
-    /// </summary>
     public partial class Pocetna : Window
     {
+        private Pocetna viewModel;
         public Pocetna()
         {
             InitializeComponent();
+            this.DataContext = new ProjekatSIMS.ViewModelSekretar.Pocetna();
+        }
+        public Pocetna _ViewModel
+        {
+            get { return viewModel; }
+            set
+            {
+                viewModel = value;
+            }
         }
     }
 }
