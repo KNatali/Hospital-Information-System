@@ -11,7 +11,7 @@ namespace ProjekatSIMS.Service
     {
         public ProstorijaRepository prostorijaRepository = new ProstorijaRepository();
         public ProstorijaService() { }
-
+        
         public Prostorija pronadjiProstorijuPoId(String idTrazeneProstorije)
         {
             List<Prostorija> prostorije = prostorijaRepository.DobaviSve();
