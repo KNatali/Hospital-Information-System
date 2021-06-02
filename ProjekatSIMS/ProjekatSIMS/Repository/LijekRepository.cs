@@ -35,14 +35,15 @@ namespace ProjekatSIMS.Repository
             File.WriteAllText(putanja, json);
         }
 
-        public Boolean ObrisiLek(Lijek lek)
+        public Boolean ObrisiLek(String nazivLeka)
         {
             List<Lijek> lekovi = new List<Lijek>();
             lekovi = DobaviSve();
             foreach(Lijek l in lekovi)
             {
-                if (lek.NazivLeka == l.NazivLeka)
+                if (l.NazivLeka == nazivLeka)
                 {
+                   
                     lekovi.Remove(l);
                    Sacuvaj(lekovi);
                     return true;

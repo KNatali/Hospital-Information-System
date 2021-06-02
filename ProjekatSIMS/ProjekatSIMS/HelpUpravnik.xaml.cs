@@ -16,22 +16,12 @@ using System.Windows.Shapes;
 namespace ProjekatSIMS.ViewDoktor
 {
 
-   
-
-    
-    public partial class PocetnaStranicaDoktorView : Page
+    public partial class HelpUpravnik : Page
     {
-        public PocetnaStranicaDoktorView(PocetnaStranicaDoktorViewModel viewModel)
-
+        public HelpUpravnik()
         {
-
-            InitializeComponent();
-        
-
-            this.DataContext = viewModel;
+            //InitializeComponent();
         }
-
-       
 
     }
 }

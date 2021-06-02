@@ -1,7 +1,11 @@
 ﻿using Model;
 using ProjekatSIMS.Model;
 using ProjekatSIMS.Repository;
+
 using Repository;
+
+using ProjekatSIMS.UpravnikWindows;
+
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -72,7 +76,7 @@ namespace ProjekatSIMS
                     sekretarWindow.Show();
                     break;
                 case Uloga.Upravnik:
-                    UpravnikWindow uw = new UpravnikWindow();
+                    Upravnik uw = new Upravnik();
                     uw.Show();
                     break;
                
