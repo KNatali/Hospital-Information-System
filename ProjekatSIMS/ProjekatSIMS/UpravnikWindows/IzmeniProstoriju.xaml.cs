@@ -14,15 +14,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ProjekatSIMS
+namespace ProjekatSIMS.UpravnikWindows
 {
     
-    public partial class IzmenaProstorije : Page
+    public partial class IzmeniProstoriju : Page
     {
         public ProstorijaController prostorijaController { get; set; }
         public ProstorijaService prostorijaService { get; set; }
         public List<Prostorija> prostorije { get; set; }
-        public IzmenaProstorije()
+        public List<String> vrste { get; set; }
+        public IzmeniProstoriju()
         {
             InitializeComponent();
             this.DataContext = this;
@@ -30,15 +31,26 @@ namespace ProjekatSIMS
             prostorijaService = new ProstorijaService();
             prostorijaController = new ProstorijaController();
             prostorije = prostorijaService.prostorijaRepository.DobaviSve();
+            vrste = new List<String> { "Magacin", "Ordinacija", "Sala", "Soba", "Kancelarija" };
             
-
         }
 
         private void Izmeni(object sender, RoutedEventArgs e)
         {
             Prostorija prostorijaZaIzmenu = (Prostorija)Prostorije.SelectedItem;
-            prostorijaController.IzmeniProstoriju(prostorijaZaIzmenu.id, Vrsta.Text, Convert.ToInt32(Sprat.Text), Convert.ToDouble(Kvadratura.Text));
-            
+            String Vrsta = (String)vrstaProstorije.SelectedItem;
+            if(prostorijaController.IzmeniProstoriju(prostorijaZaIzmenu.id, Vrsta, Convert.ToInt32(Sprat.Text), Convert.ToDouble(Kvadratura.Text)))
+            {
+                MessageBox.Show("Uspesno ste izmenili prostoriju!");
+                Upravnik uw = (Upravnik)Window.GetWindow(this);
+                uw.UpravnikFrame.Content = new PregledProstorija();
+            }
+            else
+            {
+                MessageBox.Show("Greska pri odabiru vrste prostorije, morate izabrati vrstu!");
+            }
+
         }
+
     }
 }
