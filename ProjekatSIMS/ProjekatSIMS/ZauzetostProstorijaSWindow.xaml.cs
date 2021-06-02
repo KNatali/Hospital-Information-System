@@ -78,7 +78,8 @@ namespace ProjekatSIMS
 
         private void Stampaj(object sender, RoutedEventArgs e)
         {
-
+            IzvestajZauzetihProstorijaSWindow izp = new IzvestajZauzetihProstorijaSWindow();
+            izp.Show();
         }
 
         private void Nazad(object sender, RoutedEventArgs e)
