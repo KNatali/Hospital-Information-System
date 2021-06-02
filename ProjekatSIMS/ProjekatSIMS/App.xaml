@@ -6,12 +6,6 @@
     
     <Application.Resources>
 
-
-      
-
-
-
-
         <Style  TargetType="Frame">
 
             <Setter Property="Background" Value="#C7E5DD"/>
@@ -411,7 +405,7 @@
             </Setter>
             
         </Style>
-        
+
         <Style TargetType="Button" x:Key="Hitno">
             <Setter Property="Background" Value="#f09e8d"/>
             <Setter Property="Foreground" Value="#b31a0c"/>

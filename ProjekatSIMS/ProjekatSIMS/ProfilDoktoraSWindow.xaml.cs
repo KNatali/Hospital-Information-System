@@ -75,11 +75,6 @@ namespace ProjekatSIMS
             m.Show();
         }
 
-        private void Kalendar(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void Nazad(object sender, RoutedEventArgs e)
         {
             this.Close();

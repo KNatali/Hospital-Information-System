@@ -35,7 +35,7 @@ namespace ProjekatSIMS
         private void PrijaviSe(object sender, RoutedEventArgs e)
         {
             String korisnickoIme = KorisnickoIme.Text;
-            String lozinka = Lozinka.Text;
+            String lozinka = Lozinka.Password;
             Uloga uloga = Uloga.Doktor;
             LoginRepository loginRepository = new LoginRepository();
             RegistrovaniKorisnici = loginRepository.DobaviSveRegistrovaneKorisnike();

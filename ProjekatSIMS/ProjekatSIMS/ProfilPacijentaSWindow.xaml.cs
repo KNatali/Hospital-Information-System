@@ -81,10 +81,5 @@ namespace ProjekatSIMS
             OdabirPrioritetaSWindow op = new OdabirPrioritetaSWindow(pacijent);
             op.Show();
         }
-
-        private void Kalendar(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

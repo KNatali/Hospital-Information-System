@@ -11,7 +11,7 @@ namespace ProjekatSIMS.Model
         public String PrezimeLekara { get; set; }
         public String Ocena { get; set; }
         public String Komentar { get; set; }
-        public Pacijent pacijent { get; set; }
+        public String pacijent { get; set; }
         public OcenaLekara()
         {
 
