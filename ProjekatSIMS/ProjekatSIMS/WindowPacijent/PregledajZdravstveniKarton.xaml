@@ -10,7 +10,7 @@
 
     <Grid Background="#CDFEBB">
         <DataGrid x:Name="dataGridAnamneza" ItemsSource="{Binding Anamneze}" IsReadOnly="True"
-                  SelectionMode="Single" AutoGenerateColumns="False" Margin="94,0,491,274" Height="142" VerticalAlignment="Bottom">
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="19,50,429,0" Height="170" VerticalAlignment="Top" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Opis anamneze" Binding="{Binding OpisAnamneze}"/>
                 <DataGridTextColumn Header="Datum" Binding="{Binding datum}"/>
@@ -18,7 +18,7 @@
             </DataGrid.Columns>
         </DataGrid>
         <DataGrid x:Name="dataGridRecept" ItemsSource="{Binding Recepti}" IsReadOnly="True"
-                  SelectionMode="Single" AutoGenerateColumns="False" Margin="488,34,91,0" Height="173" VerticalAlignment="Top">
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="19,256,429,0" Height="173" VerticalAlignment="Top">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Naziv leka" Binding="{Binding NazivLeka}"/>
                 <DataGridTextColumn Header="Kolicina" Binding="{Binding Kolicina}"/>
@@ -28,7 +28,7 @@
             </DataGrid.Columns>
         </DataGrid>
         <DataGrid x:Name="dataGridUput" ItemsSource="{Binding Uputi}" IsReadOnly="True"
-                  SelectionMode="Single" AutoGenerateColumns="False" Margin="488,267,91,0" Height="173" VerticalAlignment="Top">
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="433,267,37,0" Height="173" VerticalAlignment="Top">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Datum" Binding="{Binding DatumIzdavanja}"/>
                 <DataGridTextColumn Header="Pocetak" Binding="{Binding ZakazanPregled.Pocetak}"/>
@@ -36,7 +36,7 @@
             </DataGrid.Columns>
         </DataGrid>
         <DataGrid x:Name="dataGridUputBolnicko" ItemsSource="{Binding UputiBolnickoLecenje}" IsReadOnly="True"
-                  SelectionMode="Single" AutoGenerateColumns="False" Margin="73,267,491,0" Height="173" VerticalAlignment="Top">
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="433,50,37,0" Height="170" VerticalAlignment="Top">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Pocetak" Binding="{Binding IntervalPocetak}"/>
                 <DataGridTextColumn Header="Kraj" Binding="{Binding IntervalKraj}"/>
@@ -45,9 +45,9 @@
 
             </DataGrid.Columns>
         </DataGrid>
-        <Label Content="Anamneze" HorizontalAlignment="Left" Margin="164,3,0,0" VerticalAlignment="Top"/>
-        <Label Content="Recepti" HorizontalAlignment="Left" Margin="598,16,0,0" VerticalAlignment="Top"/>
-        <Label Content="Uputi za bolnicko lecenje" HorizontalAlignment="Left" Margin="126,225,0,0" VerticalAlignment="Top"/>
-        <Label Content="Uputi za specijalisticke preglede" HorizontalAlignment="Left" Margin="509,233,0,0" VerticalAlignment="Top"/>
+        <Label Content="Anamneze" HorizontalAlignment="Left" Margin="120,3,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="20"/>
+        <Label Content="Recepti" HorizontalAlignment="Left" Margin="134,218,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="20"/>
+        <Label Content="Uputi za bolnicko lecenje" HorizontalAlignment="Left" Margin="500,3,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="20"/>
+        <Label Content="Uputi za specijalisticke preglede" HorizontalAlignment="Left" Margin="468,225,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="20"/>
     </Grid>
 </Page>

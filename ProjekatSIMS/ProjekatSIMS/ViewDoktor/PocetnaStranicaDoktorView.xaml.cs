@@ -15,9 +15,15 @@ using System.Windows.Shapes;
 namespace ProjekatSIMS.ViewDoktor
 {
 
+<<<<<<< HEAD
 
 
 
+=======
+   
+
+    
+>>>>>>> 0c9c932dbfdbde1c49801edad5a64c0a398363ee
     public partial class PocetnaStranicaDoktorView : Page
     {
         public PocetnaStranicaDoktorView(PocetnaStranicaDoktorViewModel viewModel)
@@ -25,12 +31,20 @@ namespace ProjekatSIMS.ViewDoktor
         {
 
             InitializeComponent();
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 0c9c932dbfdbde1c49801edad5a64c0a398363ee
 
             this.DataContext = viewModel;
         }
 
+<<<<<<< HEAD
 
+=======
+       
+>>>>>>> 0c9c932dbfdbde1c49801edad5a64c0a398363ee
 
     }
 }

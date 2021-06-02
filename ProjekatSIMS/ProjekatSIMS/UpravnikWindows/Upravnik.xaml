@@ -4,152 +4,109 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjekatSIMS.UpravnikWindows"
+        
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
         mc:Ignorable="d"
         Title="Upravnik" Height="450" Width="800">
-
     <Window.Resources>
-        <Style TargetType="Menu" x:Key="MenuStyle">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Menu}">
-                        <Border BorderThickness="1">
-                            <Border.BorderBrush>
-                                <LinearGradientBrush StartPoint="0,0"
-                                 EndPoint="0,1">
-                                    <LinearGradientBrush.GradientStops>
-                                        <GradientStopCollection>
-                                            <GradientStop Color="#FF888888"
-                                                Offset="0.0" />
-                                            <GradientStop Color="#FF888888"
-                                                Offset="1.0" />
-                                        </GradientStopCollection>
-                                    </LinearGradientBrush.GradientStops>
-                                </LinearGradientBrush>
-
-                            </Border.BorderBrush>
-                            <Border.Background>
-                                <LinearGradientBrush EndPoint="0.5,1"
-                                 StartPoint="0.5,0">
-                                    <GradientStop Color="#FF888888"
-                                        Offset="0" />
-                                    <GradientStop Color="#FF888888"
-                                        Offset="1" />
-                                </LinearGradientBrush>
-                            </Border.Background>
-                            <StackPanel ClipToBounds="True"
-                                Orientation="Vertical"
-                                IsItemsHost="True" />
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <Style TargetType="MenuItem" x:Key="BaseMenuItem">
-            <Setter Property="FontSize" Value="25" />
-            <Setter Property="Width" Value="33" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="MenuItem">
-                        <Grid x:Name="MenuItemGrid">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="30" />
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
-                            <Border x:Name="MenuItemBorder" Grid.ColumnSpan="2">
-                                <Border.BorderBrush>
-                                    <LinearGradientBrush StartPoint="0,0"
-                                 EndPoint="0,1">
-                                        <LinearGradientBrush.GradientStops>
-                                            <GradientStopCollection>
-                                                <GradientStop Color="#FF888888"
-                                                Offset="0.0" />
-                                                <GradientStop Color="#FF888888"
-                                                Offset="1.0" />
-                                            </GradientStopCollection>
-                                        </LinearGradientBrush.GradientStops>
-                                    </LinearGradientBrush>
-
-                                </Border.BorderBrush>
-                                <Border.Background>
-                                    <LinearGradientBrush EndPoint="0.5,1"
-                                 StartPoint="0.5,0">
-                                        <GradientStop Color="#FF888888"
-                                        Offset="0" />
-                                        <GradientStop Color="#FF888888"
-                                        Offset="1" />
-                                    </LinearGradientBrush>
-                                </Border.Background>
-                                <StackPanel ClipToBounds="True"
-                                    Orientation="Horizontal"
-                                    IsItemsHost="True" />
-                            </Border>
-                            <ContentPresenter x:Name="IconPresenter"  ContentSource="Icon"/>
-                            <ContentPresenter ContentSource="Header"
-                                          Margin="7, 1, 7, 1" Grid.Column="1" />
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="MenuItemBorder" Property="Background" Value="CadetBlue" />
-                            </Trigger>
-                            <DataTrigger Binding="{Binding Path=Checker}" Value="True">
-                                <DataTrigger.EnterActions>
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <DoubleAnimation Duration="0:0:1" Storyboard.TargetProperty="Width" From="33" To="150" />
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </DataTrigger.EnterActions>
-                            </DataTrigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="FontSize" Value="16"/>
         </Style>
 
-
+        <Style TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
     </Window.Resources>
-    <DockPanel>
-        <Menu DockPanel.Dock="Left" Style="{StaticResource MenuStyle}">
-            <MenuItem Header="Profil" Command="{Binding OpenHomeCommand}" Margin="0, 10, 0, 0">
-                <MenuItem.Icon>
-                    <Image Source="Slike/upravnikLogo.png" />
-                </MenuItem.Icon>
-            </MenuItem>
-            <MenuItem Header="Prostorije"  Command="{Binding OpenRoomCommand}">
-                <MenuItem.Icon>
-                    <Image Source="Slike/upravnikProstorije.png" />
-                </MenuItem.Icon>
-            </MenuItem>
-            <MenuItem Header="Inventar" Command="{Binding OpenInventoryCommand}">
-                <MenuItem.Icon>
-                    <Image Source="Slike/upravnikInventar.png" />
-                </MenuItem.Icon>
-            </MenuItem>
-            <MenuItem Header="Renoviranje" Command="{Binding OpenRenovationCommand}">
-                <MenuItem.Icon>
-                    <Image Source="Slike/upravnikRenoviranje.png" />
-                </MenuItem.Icon>
-            </MenuItem>
-            <MenuItem Header="Lekovi" Command="{Binding OpenMedicineCommand}">
-                <MenuItem.Icon>
-                    <Image Source="Slike/upravnikLekovi.png" />
-                </MenuItem.Icon>
-            </MenuItem>
-            <MenuItem Header="Pomoc" Command="{Binding OpenHelpCommand}">
-                <MenuItem.Icon>
-                    <Image Source="Slike/upravnikHelp.png" />
-                </MenuItem.Icon>
-            </MenuItem>
-            
-        </Menu>
-        <Frame  x:Name="UpravnikFrame" NavigationUIVisibility="Hidden"  Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" Background="#CDFEBB" />
 
-    </DockPanel>
+
+
+    <Grid >
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+
+
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Background="MediumAquamarine" Margin="0,0,0,0" Height="auto" >
 
 
 
 
+            <Menu x:Name="Meni" Height="40"  >
+                <MenuItem Header="Profil" Height="auto"  Background="MediumAquamarine" >
+                    <MenuItem.Icon>
+                        <fa:ImageAwesome Icon="User" Width="40" />
+
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Pocetna stranica" Height="auto"  Background="MediumAquamarine" >
+                    <MenuItem.Icon>
+                        <fa:ImageAwesome Icon="Home" Width="15" />
+
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Lekovi" Height="40"  Background="MediumAquamarine">
+                    <MenuItem.Icon>
+                        <fa:ImageAwesome Icon="Medkit" Width="15" Height="auto" />
+                    </MenuItem.Icon>
+                    <MenuItem Header="Pregledaj lekove" Background="MediumAquamarine" Click="PregledajLekove" />
+                    <MenuItem Header="Kreiraj lek" Background="MediumAquamarine"  Click="KreirajLek"/>
+                    <MenuItem Header="Izmeni lek" Background="MediumAquamarine"  Click="IzmeniLek"/>
+                </MenuItem>
+                <MenuItem Header="Prostorije" Background="MediumAquamarine"  Height="auto" >
+                    <MenuItem.Icon>
+                        <fa:ImageAwesome Icon="HospitalOutline" Width="27" />
+                    </MenuItem.Icon>
+                    <MenuItem Header="Pregledaj prostorije" Background="MediumAquamarine" Click="PregledajProstorije" />
+                    <MenuItem Header="Kreiraj prostoriju" Background="MediumAquamarine"  Click="KreirajProstoriju"/>
+                    <MenuItem Header="Izmeni prostoriju" Background="MediumAquamarine" Click="IzmeniProstoriju"/>
+                </MenuItem>
+                <MenuItem Header="Inventar" Background="MediumAquamarine"  Height="auto" >
+                    <MenuItem.Icon>
+                        <fa:ImageAwesome Icon="ListAlt" Width="15" />
+                    </MenuItem.Icon>
+                    <MenuItem Header="Pregledaj inventar" Background="MediumAquamarine" Click="PregledajInventar" />
+                    <MenuItem Header="Pregledaj dinamicki inventar" Background="MediumAquamarine" Click="DinamickiInventar" />
+                    <MenuItem Header="Kreiraj dinamicki inventar" Background="MediumAquamarine"  Click="KreirajDinamicki"/>
+                    <MenuItem Header="Kreiraj staticki inventar" Background="MediumAquamarine" Click="KreirajStaticki"/>
+                    <MenuItem Header="Izmeni inventar" Background="MediumAquamarine" Click="IzmeniInventar"/>
+
+                </MenuItem>
+                <MenuItem Header="Renoviranje" Background="MediumAquamarine" Height="auto"  >
+                    <MenuItem.Icon>
+                        <fa:ImageAwesome Icon="Retweet" Width="15" />
+                    </MenuItem.Icon>
+                    <MenuItem Header="Renoviranje" Background="MediumAquamarine" Click="Renoviranje"/>
+                    <MenuItem Header="Napredno renoviranje" Background="MediumAquamarine" Click="NaprednoRenoviranje"/>
+                </MenuItem>
+                <MenuItem Header="Pomoc" Background="MediumAquamarine" Width="auto" Height="auto"    >
+                    <MenuItem.Icon>
+                        <fa:ImageAwesome Icon="Question" Width="35" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                
+                <MenuItem Header="Odjavi se" Background="MediumAquamarine" Width="auto" Height="auto"    >
+                    <MenuItem.Icon>
+                        <fa:ImageAwesome Icon="SignOut" Width="15" />
+                    </MenuItem.Icon>
+                </MenuItem>
+
+            </Menu>
+
+        </StackPanel>
+        <Frame  x:Name="UpravnikFrame" NavigationUIVisibility="Hidden" Grid.Row="1" Grid.Column="1"  Background="Azure" Navigated="UpravnikFrame_Navigated"  />
 
 
-    
+
+
+
+
+    </Grid>
+
 </Window>

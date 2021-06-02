@@ -1,5 +1,4 @@
-﻿using ProjekatSIMS.UpravnikWindows.ViewModelUpravnik;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -12,17 +11,15 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ProjekatSIMS.UpravnikWindows.Views
+namespace ProjekatSIMS
 {
-    /// <summary>
-    /// Interaction logic for Prostorije.xaml
-    /// </summary>
-    public partial class Prostorije : Page
+    
+    public partial class KreirajStatickiInventar : Page
     {
-        public Prostorije()
+
+        public KreirajStatickiInventar()
         {
             InitializeComponent();
-            this.DataContext = new ProstorijeViewModel();
         }
     }
 }

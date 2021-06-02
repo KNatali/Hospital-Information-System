@@ -7,17 +7,69 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="OceniLekaraPacijent">
+    <Page.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="FontSize" Value="16"/>
+
+        </Style>
+        <Style  TargetType="TextBox">
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="BorderBrush" Value="#287D7D"/>
+            <Style.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10" />
+
+                </Style>
+            </Style.Resources>
+        </Style>
+        <Style x:Key="RoundedButton" TargetType="{x:Type Button}">
+            <Style.Setters>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border x:Name="button" CornerRadius="5" BorderBrush="Black" BorderThickness="1" Background="#A4E98A">
+                                <TextBlock  Text="{TemplateBinding Button.Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="button" Property="BorderBrush" Value="Black" />
+                                    <Setter TargetName="button" Property="Background"  Value="#365835"/>
+                                    <Setter Property="Foreground" Value="White" />
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter TargetName="button"  Property="Background" Value="#365835"/>
+                                </Trigger>
+                                <Trigger Property="IsFocused" Value="True">
+                                    <Setter TargetName="button" Property="BorderBrush" Value="#FF282828" />
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter TargetName="button" Property="Opacity" Value="0.7" />
+                                    <Setter Property="Foreground" Value="#365835" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style.Setters>
+        </Style>
+    </Page.Resources>
 
     <Grid Background="#CDFEBB">
-        <Label Content="Upisite ime lekara: " HorizontalAlignment="Left" Margin="41,55,0,0" VerticalAlignment="Top"/>
-        <Label Content="Upisite prezime lekara: " HorizontalAlignment="Left" Margin="41,105,0,0" VerticalAlignment="Top"/>
-        <Label Content="Upisite ocenu lekara: " HorizontalAlignment="Left" Margin="41,165,0,0" VerticalAlignment="Top"/>
+        <Label Content="Upisite ime lekara: " HorizontalAlignment="Left" Margin="117,71,0,0" VerticalAlignment="Top"/>
+        <Label Content="Upisite prezime lekara: " HorizontalAlignment="Left" Margin="87,116,0,0" VerticalAlignment="Top"/>
+        <Label Content="Upisite ocenu lekara: " HorizontalAlignment="Left" Margin="100,165,0,0" VerticalAlignment="Top"/>
         <Label Content="Upisite Vas komentar o lekaru: " HorizontalAlignment="Left" Margin="33,229,0,0" VerticalAlignment="Top"/>
-        <Button Content="Prosledite ocenu" HorizontalAlignment="Left" Margin="645,344,0,0" VerticalAlignment="Top" Click="Oceni"  Background="#A4E98A"/>
-        <TextBox HorizontalAlignment="Left" Name="Ocena" Margin="211,199,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" />
-        <TextBox HorizontalAlignment="Left" Name="Komentar" Margin="211,229,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="239" Height="135"/>
-        <TextBox HorizontalAlignment="Left" Name="Ime" Margin="211,68,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Name="Prezime" Margin="211,118,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Prosledite ocenu" HorizontalAlignment="Left" Margin="642,364,0,0" VerticalAlignment="Top" Click="Oceni"  Background="#A4E98A" IsDefault="True" Style="{DynamicResource RoundedButton }" Height="38" Width="104"/>
+        <TextBox HorizontalAlignment="Left" Name="Ocena" Margin="280,164,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" />
+        <TextBox HorizontalAlignment="Center" Name="Komentar" Margin="0,214,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="240" Height="135"/>
+        <TextBox HorizontalAlignment="Left" Name="Ime" Margin="280,70,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Name="Prezime" Margin="280,120,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
 
     </Grid>

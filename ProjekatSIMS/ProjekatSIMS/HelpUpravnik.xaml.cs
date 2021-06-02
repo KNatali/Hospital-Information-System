@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+using ProjekatSIMS.ViewModelDoktor;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -11,16 +13,15 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ProjekatSIMS.UpravnikWindows.Views
+namespace ProjekatSIMS.ViewDoktor
 {
-    /// <summary>
-    /// Interaction logic for Lekovi.xaml
-    /// </summary>
-    public partial class Lekovi : Page
+
+    public partial class HelpUpravnik : Page
     {
-        public Lekovi()
+        public HelpUpravnik()
         {
-            InitializeComponent();
+            //InitializeComponent();
         }
+
     }
 }
