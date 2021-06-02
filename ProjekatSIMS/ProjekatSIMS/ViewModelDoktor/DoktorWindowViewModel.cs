@@ -75,14 +75,19 @@ namespace ProjekatSIMS.ViewModelDoktor
                     PretragaPacijentaDoktorView pretraga = new PretragaPacijentaDoktorView(pp);
                     this.NavService.Navigate(pretraga);
                     break;
-                    /* case "zakazivanjePregleda":
-                         this.NavService.Navigate(
-                    new Uri("Views/PrikazPregledaDoktorView.xaml", UriKind.Relative));
-                         break;
-                     case "zakazivanjeOperacije":
-                         this.NavService.Navigate(
-                    new Uri("Views/PrikazPregledaDoktorView.xaml", UriKind.Relative));
-                         break;*/
+                /* case "zakazivanjePregleda":
+                     this.NavService.Navigate(
+                new Uri("Views/PrikazPregledaDoktorView.xaml", UriKind.Relative));
+                     break;
+                 case "zakazivanjeOperacije":
+                     this.NavService.Navigate(
+                new Uri("Views/PrikazPregledaDoktorView.xaml", UriKind.Relative));
+                     break;*/
+                case "mojProfil":
+                    ProfilDoktorViewModel pr = new ProfilDoktorViewModel(this.NavService);
+                    ProfilDoktorView d = new ProfilDoktorView(pr);
+                    this.NavService.Navigate(d);
+                    break;
 
             }
         }

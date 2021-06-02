@@ -45,7 +45,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Label Content="Izvrsavanje pregleda" Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center"  VerticalAlignment="Top" FontSize="17" FontWeight="SemiBold" />
-        <Button Content="Pregled zdravstvenog kartona" Margin="0,0,20,0" Grid.Row="1" Grid.Column="0" Click="ZdravstveniKarton" Style="{StaticResource btnStandard}"/>
+        <Button Content="Pregled zdravstvenog kartona" Margin="0,0,20,0" Grid.Row="1" Grid.Column="0" Click="ZdravstveniKarton" Style="{StaticResource btnIstakni}"/>
         <Button Content="Kreiraj anamnezu"  Grid.Row="1" Grid.Column="1"  Margin="20,0,0,0"  Click="KreiranjeAnamneze" Style="{StaticResource btnStandard}"/>
         <Button Content="Uput za specijalisticki pregled" Grid.Row="2" Grid.Column="1"  Margin="20,0,0,0" Click="IzdavanjeUputa" Style="{StaticResource btnStandard}"/>
         <Button Content="Uput za bolnicko lijecenje" Grid.Row="2" Grid.Column="0"  Margin="0,0,20,0" Click="IzdavanjeUputaBolnickoLijecenje" Style="{StaticResource btnStandard}"/>

@@ -32,7 +32,7 @@ namespace ProjekatSIMS
 
         }
 
-        private void ZdravstveniKarton(object sender, RoutedEventArgs e)
+        private void Nazad(object sender, RoutedEventArgs e)
         {
             ZdravstveniKartonDoktor z = new ZdravstveniKartonDoktor(pacijent);
             this.NavigationService.Navigate(z);
