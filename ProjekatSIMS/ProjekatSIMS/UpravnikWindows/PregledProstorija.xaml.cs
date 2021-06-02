@@ -13,21 +13,23 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ProjekatSIMS
+namespace ProjekatSIMS.UpravnikWindows
 {
-    
-    public partial class PregledProstorijaUpravnik : Page
+    /// <summary>
+    /// Interaction logic for PregledProstorija.xaml
+    /// </summary>
+    public partial class PregledProstorija : Page
     {
         public List<Prostorija> Prostorije = new List<Prostorija>();
         public ProstorijaService ProstorijaService = new ProstorijaService();
-        public PregledProstorijaUpravnik()
+        public PregledProstorija()
         {
             InitializeComponent();
+
             this.DataContext = this;
             Prostorije = ProstorijaService.prostorijaRepository.DobaviSve();
             dgrProstorije.ItemsSource = Prostorije;
         }
-        
         private void ObrisiProstoriju(object sender, RoutedEventArgs e)
         {
             Prostorija prosrtorijaZaBrisanje = (Prostorija)dgrProstorije.SelectedItems[0];
@@ -37,7 +39,11 @@ namespace ProjekatSIMS
             dgrProstorije.ItemsSource = Prostorije;
 
         }
-        
-        
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            String pretraga = Pretraga.Text;
+            // List<Prostorija> prostorije = 
+        }
     }
 }
