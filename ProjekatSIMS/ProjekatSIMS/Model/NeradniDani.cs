@@ -7,7 +7,7 @@ namespace Model
 {
     public class NeradniDani
     {
-        public Doktor doktor { get; set; }
+        public String doktor { get; set; }
         public DateTime NeradnoOd { get; set; }
         public DateTime NeradnoDo { get; set; }
         public VrsteNeradnihDana Vrsta { get; set; }

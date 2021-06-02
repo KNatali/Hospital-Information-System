@@ -154,7 +154,7 @@ namespace ProjekatSIMS
             List<NeradniDani> listaNeradnihDana = neradniDaniController.DobaviSve();
             foreach (NeradniDani neradniDani in listaNeradnihDana)
             {
-                if (neradniDani.doktor.Jmbg == p.doktor.Jmbg)
+                if (neradniDani.doktor == p.doktor.Jmbg)
                     PoredjenjeDatumaPregledaSaGodisnjimOdmoromDoktora(datum, neradniDani);
             }
         }

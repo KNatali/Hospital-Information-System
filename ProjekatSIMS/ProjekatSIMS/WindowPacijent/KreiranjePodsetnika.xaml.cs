@@ -27,7 +27,7 @@ namespace ProjekatSIMS.WindowPacijent
             String prezime = Prezime.Text;
 
             PodsetnikController podsetnikController = new PodsetnikController();
-            if (podsetnikController.KreiranjePodsetnika(naziv, opis, datumPocetka, datumKraja, ime, prezime) == true)
+            if (podsetnikController.KreiranjePodsetnika(naziv, opis, datumPocetka, datumKraja, "5555") == true)
             {
                 MessageBox.Show("Uspesno ste kreirali svoj podsetnik");
                 

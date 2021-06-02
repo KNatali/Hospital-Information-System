@@ -46,55 +46,7 @@ namespace Model
       
       public Prostorija prostorija { get; set; }
       public Doktor doktor { get; set; }
-      
-     
-      public Doktor GetDoktor()
-
-      {
-         return doktor;
-      }
-      
-      public void SetDoktor(Doktor newDoktor)
-      {
-         if (this.doktor != newDoktor)
-         {
-            if (this.doktor != null)
-            {
-               Doktor oldDoktor = this.doktor;
-               this.doktor = null;
-               oldDoktor.RemovePregled(this);
-            }
-            if (newDoktor != null)
-            {
-               this.doktor = newDoktor;
-               this.doktor.AddPregled(this);
-            }
-         }
-      }
         public Pacijent pacijent { get; set; }
-    
-      public Pacijent GetPacijent()
-      {
-         return pacijent;
-      }
-     
-      public void SetPacijent(Pacijent newPacijent)
-      {
-         if (this.pacijent != newPacijent)
-         {
-            if (this.pacijent != null)
-            {
-               Pacijent oldPacijent = this.pacijent;
-               this.pacijent = null;
-               oldPacijent.RemovePregled(this);
-            }
-            if (newPacijent != null)
-            {
-               this.pacijent = newPacijent;
-               this.pacijent.AddPregled(this);
-            }
-         }
-      }
    
    }
 }

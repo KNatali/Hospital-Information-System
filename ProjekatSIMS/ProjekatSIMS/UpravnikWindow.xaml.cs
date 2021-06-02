@@ -41,8 +41,8 @@ namespace ProjekatSIMS
 
         private void staticka(object sender, RoutedEventArgs e)
         {
-            SvaStatickaOprema sso = new SvaStatickaOprema();
-            sso.Show();
+            //SvaStatickaOprema sso = new SvaStatickaOprema();
+            //sso.Show();
         }
         private void renoviranje(object sender, RoutedEventArgs e)
         {
