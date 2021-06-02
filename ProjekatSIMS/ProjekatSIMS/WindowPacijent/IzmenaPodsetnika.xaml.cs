@@ -40,5 +40,20 @@ namespace ProjekatSIMS.WindowPacijent
             File.WriteAllText(@"..\..\..\Fajlovi\Podsetnik.txt", newJson);
             MessageBox.Show("Podsetnik je uspesno izmenjen.");
         }
+
+        private void Izmeni_Click(object sender, RoutedEventArgs e)
+        {
+            Podsetnik podsetnik = (Podsetnik)dataGridPodsetnik.SelectedItems[0];
+            string ime = Ime.Text;
+            string opis = Opis.Text;
+            DateTime pocetak = (DateTime)Pocetak.SelectedDate;
+            DateTime kraj = (DateTime)Kraj.SelectedDate;
+            Podsetnici.Remove(podsetnik);
+            podsetnik = new Podsetnik { nazivPodsetika = ime, opisPodsetnika = opis, datumPocetkaObavestenja = pocetak, datumZavrsetkaObavestenja = kraj };
+            Podsetnici.Add(podsetnik);
+            string newJson = JsonConvert.SerializeObject(Podsetnici);
+            File.WriteAllText(@"..\..\..\Fajlovi\Podsetnik.txt", newJson);
+            MessageBox.Show("Podsetnik je uspesno izmenjen.");
+        }
     }
 }

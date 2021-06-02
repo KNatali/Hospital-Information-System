@@ -16,19 +16,23 @@ namespace ProjekatSIMS.WindowPacijent
         public int prioritetDoktor = 0;
         public int MAKSIMAMLNO_OTKAZIVANJA = 10;
         public List<Pacijent> Pacijenti { get; set; }
-        public ZakaziPregled()
+        public Pacijent trenutniPacijent { get; set; }
+        public ZakaziPregled(Pacijent pacijent)
         {
             InitializeComponent();
             this.DataContext = this;
+            trenutniPacijent = pacijent;
+
         }
         private void Zakazi_Pregled(object sender, RoutedEventArgs e)
         {
+            
             Pregled p = new Pregled();
-            String ime = Ime.Text;
-            String prezime = Prezime.Text;
+            String ime = trenutniPacijent.Ime;
+            String prezime = trenutniPacijent.Prezime;
             String imeDoktora = ImeDoktora.Text;
             String prezimeDoktora = PrezimeDoktora.Text;
-            String jmbg = Jmbg.Text;
+            String jmbg = trenutniPacijent.Jmbg;
             DateTime datum = (DateTime)Date.SelectedDate;
             double sati = Convert.ToDouble(Sati.Text);
             double minuti = Convert.ToDouble(Minuti.Text);
@@ -41,7 +45,7 @@ namespace ProjekatSIMS.WindowPacijent
 
             PregledController pregCont = new PregledController();
 
-            if (pregCont.ZakazivanjePregledaPacijent(ime, prezime, imeDoktora, prezime, datum1, jmbg) == true)
+            if (pregCont.ZakazivanjePregledaPacijent(ime, prezime, imeDoktora, prezimeDoktora, datum1, jmbg) == true)
             {
                 MessageBox.Show("Pregled je uspesno zakazan!");
                 //this.NavigationService.Navigate(new Uri("VidiWindow.xaml", UriKind.Relative));
@@ -84,6 +88,11 @@ namespace ProjekatSIMS.WindowPacijent
         {
             DoktorPrioritet.Foreground = Brushes.Blue;
             VremePrioritet.Foreground = Brushes.Blue;
+
+        }
+
+        private void Nazad_Click(object sender, RoutedEventArgs e)
+        {
 
         }
     }

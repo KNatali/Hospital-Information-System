@@ -13,7 +13,7 @@
         </Style>
     </Window.Resources>
     <Grid Background="#FEF7BB">
-        <Button Click="PrijaviSe"  Content="Prijavi se" HorizontalAlignment="Left" Margin="636,357,0,0" VerticalAlignment="Top" Background="#FBAF89" Height="33" Width="104"/>
+        <Button Click="PrijaviSe"  Content="Prijavi se" HorizontalAlignment="Left" Margin="636,357,0,0" VerticalAlignment="Top" Background="#FBAF89" Height="33" Width="104" IsDefault="True"/>
         <Label Margin="281,74,171,299" Content="Unesite svoje podatke za prijavu"/>
         <TextBox x:Name="KorisnickoIme" HorizontalAlignment="Left" Margin="369,154,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188" Height="30" FontSize="16"/>
         <Label Content="Korisničko ime" HorizontalAlignment="Left" FontSize="20" Height="43" Margin="221,150,0,0" VerticalAlignment="Top" Width="244"/>

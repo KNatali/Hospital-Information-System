@@ -11,14 +11,14 @@ namespace Repository
    {
 
         private const string putanja = @"..\..\..\Fajlovi\Anamneza.txt";
-        public void SacuvajAnamnezu(List<Anamneza> anamneze)
+        public void Sacuvaj(List<Anamneza> anamneze)
         {
             string newJson = JsonConvert.SerializeObject(anamneze);
             File.WriteAllText(putanja, newJson);
         }
     
       
-      public List<Anamneza> DobaviSveAnamneze()
+      public List<Anamneza> DobaviSve()
       {
 
             List<Anamneza> anamneze = new List<Anamneza>();

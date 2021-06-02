@@ -42,7 +42,7 @@ namespace Repository
         }
         
 
-        public Boolean ObrisiProstoriju(String idProstorijeZaBrisanje)
+        public Boolean Obrisi(String idProstorijeZaBrisanje)
         {
             List<Prostorija> prostorije = new List<Prostorija>();
             prostorije = DobaviSve();
@@ -59,7 +59,7 @@ namespace Repository
             return false;
         }
 
-        public Prostorija pronadjiProstoriju(String Id)
+        public Prostorija Pronadji(String Id)
         {
             List<Prostorija> prostorije = new List<Prostorija>();
             prostorije = DobaviSve();
@@ -74,51 +74,21 @@ namespace Repository
             return null;
 
         }
-
-
-        public List<Prostorija> DobaviOrdinacije()
+        public List<Prostorija> DobaviPoVrsti(VrstaProstorije vrsta)
         {
             List<Prostorija> sveProstorije = DobaviSve();
-            List<Prostorija> ordinacije = new List<Prostorija>();
-            foreach(Prostorija p in sveProstorije)
-            {
-                if (p.vrsta == VrstaProstorije.Ordinacija)
-                    ordinacije.Add(p);
-            }
-
-            return ordinacije;
-        }
-
-        public List<Prostorija> DobaviSale()
-        {
-            List<Prostorija> sveProstorije = DobaviSve();
-            List<Prostorija> ordinacije = new List<Prostorija>();
+            List<Prostorija> prostorije = new List<Prostorija>();
             foreach (Prostorija p in sveProstorije)
             {
-                if (p.vrsta == VrstaProstorije.Sala)
-                    ordinacije.Add(p);
+                if (p.vrsta == vrsta)
+                    prostorije.Add(p);
             }
 
-            return ordinacije;
+            return prostorije;
         }
 
-        internal List<Prostorija> DobaviSveProstorije()
-        {
-            throw new NotImplementedException();
-        }
+      
 
-        public List<Prostorija> DobaviSobe()
-        {
-            List<Prostorija> sveProstorije = DobaviSve();
-            List<Prostorija> sobe = new List<Prostorija>();
-            foreach (Prostorija p in sveProstorije)
-            {
-                if (p.vrsta == VrstaProstorije.Soba)
-                    sobe.Add(p);
-            }
-
-            return sobe;
-        }
         
 
     }

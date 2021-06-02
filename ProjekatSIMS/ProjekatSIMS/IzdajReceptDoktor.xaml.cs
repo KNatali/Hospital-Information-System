@@ -18,7 +18,8 @@ namespace ProjekatSIMS
         public List<Lijek> Lijekovi { get; set; }
         public ZdravsteniKarton zdravstveniKarton { get; set; }
         public Lijek izabraniLijek { get; set; }
-        private ReceptController receptController = new ReceptController();
+        private IzdavanjeReceptaController receptController = new IzdavanjeReceptaController();
+        private AlergijeNaLijekController alergijeNaLijekController = new AlergijeNaLijekController();
         private LijekRepository lijekRepository = new LijekRepository();
      
 
@@ -69,7 +70,7 @@ namespace ProjekatSIMS
         {
 
             izabraniLijek = (Lijek)Lijek.SelectedItem;
-            if(receptController.IsPacijentAlergican(izabraniLijek, Pacijent))
+            if(alergijeNaLijekController.IsPacijentAlergican(izabraniLijek, Pacijent))
                 MessageBox.Show("Pacijent je alergican na izabrani lijek. Izaberi novi!");
            
          }
