@@ -68,5 +68,11 @@ namespace ProjekatSIMS
                 MessageBox.Show("Neuspjesno izdavanje uputa");
 
         }
+
+        private void Odustani(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
+
+        }
     }
 }

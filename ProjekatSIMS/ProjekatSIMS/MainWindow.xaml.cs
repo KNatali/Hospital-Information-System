@@ -4,6 +4,7 @@ using ProjekatSIMS.Controller;
 using ProjekatSIMS.Model;
 using ProjekatSIMS.Repository;
 using ProjekatSIMS.ViewDoktor;
+using ProjekatSIMS.ViewModelDoktor;
 using System;
 using System.Collections.Generic;
 using System.Windows;
@@ -38,6 +39,10 @@ namespace ProjekatSIMS
             {
                 if ((rk.KorisnickoIme == korisnickoIme) && (rk.Lozinka == lozinka))
                 {
+                    RegistrovaniKorisnik korisnik = new RegistrovaniKorisnik();
+                    korisnik.KorisnickoIme = korisnickoIme;
+                    korisnik.Lozinka = lozinka;
+                    korisnik.uloga = rk.uloga;
                     uloga = rk.uloga;
                 }
             }
@@ -63,7 +68,8 @@ namespace ProjekatSIMS
                         upravnikWindow.Show();
                         break;
                     case Uloga.Doktor:
-                        DoktorWindowView doktorWindow = new DoktorWindowView();
+                        
+                        TutorijalDoktorView1 doktorWindow = new TutorijalDoktorView1();
                         doktorWindow.Show();
                         break;
 

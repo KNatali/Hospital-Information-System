@@ -1,6 +1,8 @@
 ﻿using Controller;
 using Model;
 using ProjekatSIMS.Commands;
+using ProjekatSIMS.Controller.PregledDoktor;
+using ProjekatSIMS.ViewDoktor;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,7 +15,7 @@ namespace ProjekatSIMS.ViewModelDoktor
     public class PrikazPregledaDoktorViewModel : BindableBase
     {
         public ObservableCollection<Pregled> Pregledi { get; set; }
-        private PregledController pregledController;
+        private PrikazPregledaDoktorController prikazPregledaDoktorController = new PrikazPregledaDoktorController();
         private Pregled selectedPregled;
         public RelayCommand Detalji { get; set; }
 
@@ -29,12 +31,7 @@ namespace ProjekatSIMS.ViewModelDoktor
             }
         }
 
-        public PrikazPregledaDoktorViewModel(NavigationService service)
-        {
-            this.navService = service;
-            UcitajPreglede();
-            Detalji = new RelayCommand(OnPogledaj, CanPogledaj);
-        }
+       
 
         public Pregled SelectedPregled
         {
@@ -48,40 +45,41 @@ namespace ProjekatSIMS.ViewModelDoktor
 
         public void UcitajPreglede()
         {
-
-            List<Pregled> pregledi = new List<Pregled>();
             Pregledi = new ObservableCollection<Pregled>();
-
-
-            pregledController = (Application.Current as App).PregledController;
-
-
-
-            /*pregledi = pregledController.();
-            foreach (Pregled p in pregledi)
+            List<Pregled> pregledi =  prikazPregledaDoktorController.PrikazPregleda();
+            foreach(Pregled p in pregledi)
             {
-                if (p.doktor.Jmbg == "1511990855023" && p.StatusPregleda == StatusPregleda.Zakazan)
-                {
-                    Pregledi.Add(p);
-                }
-            }*/
+                Pregledi.Add(p);
+            }
+
+           
 
 
 
         }
-        private bool CanPogledaj()
+      /*  private bool CanPogledaj()
         {
             return SelectedPregled != null;
-        }
+        }*/
 
         private void OnPogledaj()
         {
-            Pregledi.Remove(SelectedPregled);
-            MessageBox.Show("ehhe");
-            DetaljiPregledaDoktor d = new DetaljiPregledaDoktor(SelectedPregled);
+            // Pregledi.Remove(SelectedPregled);
+
+            DetaljiPregledaDoktorViewModel e = new DetaljiPregledaDoktorViewModel(this.NavService, selectedPregled) ;
+            DetaljiPregledaDoktorView lijekovi = new DetaljiPregledaDoktorView(e);
+            //this.NavService.Navigate(lijekovi);
+           // DetaljiPregledaDoktor d = new DetaljiPregledaDoktor(SelectedPregled);
             // this.Opacity = 0.3;
-            d.ShowDialog();
+            lijekovi.ShowDialog();
             // this.Opacity = 1;
+        }
+
+        public PrikazPregledaDoktorViewModel(NavigationService service)
+        {
+            this.navService = service;
+            UcitajPreglede();
+            Detalji = new RelayCommand(OnPogledaj);
         }
 
     }

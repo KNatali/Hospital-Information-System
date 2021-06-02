@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows;
 using System.Windows.Navigation;
+using Model;
 
 namespace ProjekatSIMS.ViewModelDoktor
 {
@@ -36,7 +37,7 @@ namespace ProjekatSIMS.ViewModelDoktor
         public void Executed_PrikazLijekova()
         {
 
-            EvidencijaLijekovaViewModel e = new EvidencijaLijekovaViewModel(this.NavService);
+            EvidencijaLijekovaViewModel e = new EvidencijaLijekovaViewModel(this.NavService,TipLijekaPremaPrikazu.Neverifikovan);
             EvidencijaLijekovaView lijekovi = new EvidencijaLijekovaView(e);
             this.NavService.Navigate(lijekovi);
 

@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows.Controls;
 using Model;
 using ProjekatSIMS.Repository;
+using ProjekatSIMS.ViewModelDoktor;
 
 namespace Service
 {
     public class CuvanjeIzmjeneLijekaDoktorService
     {
         private LijekRepository lijekRepository = new LijekRepository();
-        public void SacuvajIzmjene(Lijek lijek, ItemCollection sastojci, ItemCollection alternativniLijekovi)
+        public void SacuvajIzmjene(Lijek lijek, ObservableCollection<StringWrapper> sastojci, ObservableCollection<StringWrapper> alternativniLijekovi)
         {
             DodavanjeSastojaka(lijek, sastojci);
             DodavanjeALternativnihLijekova(lijek, alternativniLijekovi);
@@ -19,18 +21,18 @@ namespace Service
 
         }
 
-        private static void DodavanjeALternativnihLijekova(Lijek lijek, ItemCollection alternativniLijekovi)
+        private static void DodavanjeALternativnihLijekova(Lijek lijek, ObservableCollection<StringWrapper> alternativniLijekovi)
         {
             lijek.AlternativniLekovi = new List<String>();
-            foreach (String i in alternativniLijekovi)
-                lijek.AlternativniLekovi.Add(i);
+            foreach (StringWrapper i in alternativniLijekovi)
+                lijek.AlternativniLekovi.Add(i.Text);
         }
 
-        private static void DodavanjeSastojaka(Lijek lijek, ItemCollection sastojci)
+        private static void DodavanjeSastojaka(Lijek lijek, ObservableCollection<StringWrapper> sastojci)
         {
             lijek.Alergeni = new List<String>();
-            foreach (String i in sastojci)
-                lijek.Alergeni.Add(i);
+            foreach (StringWrapper i in sastojci)
+                lijek.Alergeni.Add(i.Text);
         }
 
         private List<Lijek> AzuriranjeLijeka(Lijek lijek)

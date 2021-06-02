@@ -17,6 +17,8 @@
             <Setter Property="Background" Value="#C7E5DD"/>
         </Style>
 
+       
+
         <Style TargetType="{x:Type Button}" x:Key="btnBlue">
             <Setter Property="Background" Value="#287D7D"/>
             <Setter Property="Foreground" Value="white"/>

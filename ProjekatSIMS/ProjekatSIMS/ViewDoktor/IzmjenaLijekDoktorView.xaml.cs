@@ -21,18 +21,12 @@ namespace ProjekatSIMS.ViewDoktor
         {
             InitializeComponent();
             this.DataContext = viewModel;
-            //lijek = l;
-           // Naziv.Text = l.NazivLeka;
-           // Opis.Text = l.Opis;
-            //Sastojci.ItemsSource = l.Alergeni;
-           // AlternativniLijekovi.ItemsSource = l.AlternativniLekovi;
-            Lijekovi = lijekRepository.DobaviSve();
-            SviLijekovi.ItemsSource = Lijekovi;
+           
         }
 
 
 
-        private void DodajSastojak(object sender, RoutedEventArgs e)
+       /* private void DodajSastojak(object sender, RoutedEventArgs e)
         {
             String noviSastojak = Sastojak.Text;
             Sastojci.ItemsSource = izmjenaLijekaController.DodavanjeSastojka(noviSastojak, lijek);
@@ -47,8 +41,8 @@ namespace ProjekatSIMS.ViewDoktor
             AlternativniLijekovi.ItemsSource = izmjenaLijekaController.DodavanjeALternativnihLijekova(noviAlternativniLijek, lijek);
 
         }
-
-        private void SacuvajPromjene(object sender, RoutedEventArgs e)
+       */
+        /*private void SacuvajPromjene(object sender, RoutedEventArgs e)
         {
             Lijek l = new Lijek();
             l.NazivLeka = Naziv.Text;
@@ -58,7 +52,7 @@ namespace ProjekatSIMS.ViewDoktor
             cuvanjeIzmjenaLijekaDoktorController.SacuvajIzmjene(l, Sastojci.Items, AlternativniLijekovi.Items);
             this.NavigationService.GoBack();
 
-        }
+        }*/
 
         private void Odustani(object sender, RoutedEventArgs e)
         {

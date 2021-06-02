@@ -7,7 +7,7 @@ using System.IO;
 using System.Text;
 using System.Windows.Navigation;
 
-namespace ProjekatSIMS.ViewDoktor
+namespace ProjekatSIMS.ViewModelDoktor
 {
     public class PretragaPacijentaDoktorViewModel : BindableBase
     {

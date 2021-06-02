@@ -15,8 +15,9 @@
         <DatePicker Name="Datum" HorizontalAlignment="Left" Margin="204,110,0,0" VerticalAlignment="Top"/>
         <Label Content="Datum:" HorizontalAlignment="Left" Margin="74,108,0,0" VerticalAlignment="Top"/>
         <Label Content="Zapazanja nakon pregleda:" HorizontalAlignment="Left" Margin="74,161,0,0" VerticalAlignment="Top"/>
-
         <Button Content="Sacuvaj" Click="KreiranjeAnamneze" HorizontalAlignment="Left" Margin="626,362,0,0" VerticalAlignment="Top" Height="37" Width="92" Background="#FFB5CDE2"/>
+
+        <Button Content="Odustani" Click="Odustani" HorizontalAlignment="Left" Margin="482,362,0,0" VerticalAlignment="Top" Height="37" Width="92" Background="#FFB5CDE2"/>
         <TextBox Name="Opis" HorizontalAlignment="Center" Margin="0,192,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="644" Height="132"/>
 
 

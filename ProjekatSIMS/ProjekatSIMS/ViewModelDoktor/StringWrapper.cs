@@ -6,6 +6,6 @@ namespace ProjekatSIMS.ViewModelDoktor
 {
     public class StringWrapper
     {
-        public String Naziv { get; set; }
+        public String Text { get; set; }
     }
 }

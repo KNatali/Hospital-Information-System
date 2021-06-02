@@ -79,6 +79,11 @@ namespace ProjekatSIMS
             this.NavigationService.Navigate(z);
         }
 
+        private void Odustani(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
+        }
+
         public PregledRepository pregledRepository;
     }
 

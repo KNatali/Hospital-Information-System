@@ -12,8 +12,7 @@ namespace ProjekatSIMS.ViewModelDoktor
     {
 
         public RelayCommand<string> NavCommand { get; private set; }
-        // private PocetnaStranicaDoktorViewModel pocetnaViewModel = new PocetnaStranicaDoktorViewModel();
-        // private PrikazPregledaDoktorViewModel preglediViewModel = new PrikazPregledaDoktorViewModel();
+    
 
         private BindableBase currentViewModel;
         private NavigationService navService;

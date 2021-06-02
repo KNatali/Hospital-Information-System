@@ -24,21 +24,21 @@ namespace ProjekatSIMS.ViewDoktor
 
             InitializeComponent();
             this.DataContext = viewModel;
-            List<Doktor> doktori = doktorRepository.DobaviSve();
+           /* List<Doktor> doktori = doktorRepository.DobaviSve();
             Doktor doktor = new Doktor();
             foreach (Doktor d in doktori)
             {
                 if (d.Jmbg == "1511990855023")
                 {
                     doktor = d;
-                    break;
+                    break; 
                 }
             }
-            Pregledi = pregledRepository.DobaviZakazanePregledeDoktora(doktor);
+            Pregledi = pregledRepository.DobaviZakazanePregledeDoktora(doktor);*/
 
         }
 
-        private void DetaljiPregleda(object sender, RoutedEventArgs e)
+        /*private void DetaljiPregleda(object sender, RoutedEventArgs e)
         {
             Pregled p = (Pregled)dataGridPregledi.SelectedItems[0];
             DetaljiPregledaDoktor d = new DetaljiPregledaDoktor(p);
@@ -46,7 +46,7 @@ namespace ProjekatSIMS.ViewDoktor
             d.ShowDialog();
             this.Opacity = 1;
 
-         }
+         }*/
 
         private void OtkaziPregled(object sender, RoutedEventArgs e)
         {
