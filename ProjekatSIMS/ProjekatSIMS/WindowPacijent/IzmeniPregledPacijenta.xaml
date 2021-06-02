@@ -18,10 +18,17 @@
                 <DataGridTextColumn Header="Prezime doktora" Binding="{Binding doktor.Prezime}"/>
                 <DataGridTextColumn Header="Prostorija" Binding="{Binding prostorija.id}"/>
                 <DataGridTextColumn Header="Sprat" Binding="{Binding prostorija.sprat}"/>
+                <DataGridTemplateColumn Header="Izmeni pregled" Width="150*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="Izmeni" Content="Izmeni" Click="Izmeni_Click"  IsDefault="True" Background="#A4E98A"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
         <Label  Content="Izaberite novi datum pregleda: " Margin="26,277,585,147"/>
-        <DatePicker x:Name="Datum"  HorizontalAlignment="Left" Margin="235,279,0,0" VerticalAlignment="Top"/>
+        <DatePicker x:Name="Datum"  HorizontalAlignment="Left" Margin="235,279,0,0" VerticalAlignment="Top" IsDropDownOpen="True"/>
 
         <Label  Content="Izaberite novo vreme pregleda: " Margin="26,317,585,107"/>
         <TextBox  x:Name="Sati" HorizontalAlignment="Left" Margin="235,319,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="42" Height="19"/>
@@ -34,12 +41,6 @@
         <Label  Content="Izaberite prioritet:" HorizontalAlignment="Left" Margin="26,379,0,0" VerticalAlignment="Top"/>
         <RadioButton x:Name="DoktorPrioritet" Margin="0,402,570,-373" GroupName="Prioritet" HorizontalAlignment="Right"  Checked="Btn1_Checked" Click="button1_Click" >Doktor</RadioButton>
         <RadioButton x:Name="VremePrioritet" Margin="0,385,571,-336" GroupName="Prioritet" HorizontalAlignment="Right"  Checked="Btn1_Checked" Click="button1_Click" >Vreme</RadioButton>
-
-
-
-
-
-        <Button Margin="654,380,56,36" Content="Izmeni" Click="Izmeni"  Background="#A4E98A" ></Button>
 
 
     </Grid>
