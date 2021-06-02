@@ -5,13 +5,106 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjekatSIMS"
         mc:Ignorable="d"
-        Title="UpravnikWindow" Height="500" Width="1000">
-    <Grid Width="1000" Height="450">
-        <Button Content="Dinamička oprema" Click="dinamicka" HorizontalAlignment="Left" Margin="672,95,0,0" VerticalAlignment="Top" Height="60" Width="210"/>
-        <Button Content="Prostorije" Click="prostorije" HorizontalAlignment="Left" Margin="178,95,0,0" VerticalAlignment="Top" Height="60" Width="210"/>
-        <Button Content="Lekovi" HorizontalAlignment="Left" Margin="178,214,0,0" VerticalAlignment="Top" Width="210" Height="60" Click="lekoviClick"/>
-        <Button Content="Staticka oprema" Click="staticka" HorizontalAlignment="Left" Margin="672,214,0,0" VerticalAlignment="Top" Width="210" Height="60" />
-        <Button Content="Renoviranje" Click="renoviranje" HorizontalAlignment="Left" Margin="178,351,0,0" VerticalAlignment="Top" Height="60" Width="210"/>
+        Title="UpravnikWindow" Height="500" Width="1000"
+        >
+
+    <Window.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+    </Window.Resources>
+
+
+
+    <Grid >
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="*"/>
+
+
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Background="#C0FCA9" Margin="0,0,1,0"  >
+            <Image Source="SlikeUpravnik/upravnikLogo.png" Height="46" Width="51" Margin="0,10,0,0"/>
+            <Label  Foreground="black" Content="Upravnik" FontSize="18" FontWeight="SemiBold" Height="32" />
+
+
+
+
+            <Menu x:Name="Meni" Height="auto" Width="auto">
+                <MenuItem Header="Pocetna stranica" Height="80" Width="150" Background="#A4E98A" >
+                    <MenuItem.Icon>
+                        <Image Source="SlikeUpravnik/upravnikHome.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Lekovi" Height="80" Width="100" Background="#A4E98A">
+                    <MenuItem.Icon>
+                        <Image Source="SlikeUpravnik/upravnikLekovi.png"></Image>
+                    </MenuItem.Icon>
+                    <MenuItem Header="Pregledaj lekove" Click="PregledajLekove" />
+                    <MenuItem Header="Kreiraj lek"  Click="KreirajLek"/>
+                    <MenuItem Header="Izmeni lek"  Click="IzmeniLek"/>
+                </MenuItem>
+                <MenuItem Header="Prostorije" Width="100" Height="80" Background="#A4E98A">
+                    <MenuItem.Icon>
+                        <Image Source="SlikeUpravnik/upravnikProstorije.png"/>
+                    </MenuItem.Icon>
+                    <MenuItem Header="Pregledaj prostorije" Click="PregledajProstorije" />
+                    <MenuItem Header="Kreiraj prostoriju"  Click="KreirajProstoriju"/>
+                    <MenuItem Header="Izmeni prostoriju"  Click="IzmeniProstoriju"/>
+                </MenuItem>
+                <MenuItem Header="Inventar" Width="100" Height="80" Background="#A4E98A" >
+                    <MenuItem.Icon>
+                        <Image Source="SlikeUpravnik/upravnikInventar.png"/>
+                    </MenuItem.Icon>
+                    <MenuItem Header="Pregledaj inventar" Click="PregledajInventar" />
+                    <MenuItem Header="Pregledaj dinamicki inventar" Click="DinamickiInventar" />
+                    <MenuItem Header="Kreiraj dinamicki inventar"  Click="KreirajDinamicki"/>
+                    <MenuItem Header="Kreiraj staticki inventar"  Click="KreirajStaticki"/>
+                    <MenuItem Header="Izmeni inventar"  Click="IzmeniInventar"/>
+
+                </MenuItem>
+                <MenuItem Header="Renoviranje" Width="100" Height="80" Background="#A4E98A" >
+                    <MenuItem.Icon>
+                        <Image Source="SlikeUpravnik/upravnikRenoviranje.png"/>
+                    </MenuItem.Icon>
+                    <MenuItem Header="Renoviranje"  Click="Renoviranje"/>
+                    <MenuItem Header="Napredno renoviranje"  Click="NaprednoRenoviranje"/>
+                </MenuItem>
+                <MenuItem Header="Pomoc" Width="100" Height="80" Background="#A4E98A" >
+                    <MenuItem.Icon>
+                        <Image Source="SlikeUpravnik/upravnikHelp.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+
+            </Menu>
+
+
+
+
+
+
+
+
+
+
+        </StackPanel>
+        <Frame  x:Name="UpravnikFrame" NavigationUIVisibility="Hidden"  Grid.Column="1" Grid.Row="1"  Background="#CDFEBB" />
+
+
+
+
+
 
     </Grid>
+
 </Window>

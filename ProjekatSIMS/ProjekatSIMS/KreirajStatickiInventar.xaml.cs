@@ -1,6 +1,4 @@
-﻿
-using ProjekatSIMS.ViewModelDoktor;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -13,25 +11,15 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ProjekatSIMS.ViewDoktor
+namespace ProjekatSIMS
 {
-
-   
-
     
-    public partial class PocetnaStranicaDoktorView : Page
+    public partial class KreirajStatickiInventar : Page
     {
-        public PocetnaStranicaDoktorView(PocetnaStranicaDoktorViewModel viewModel)
 
+        public KreirajStatickiInventar()
         {
-
             InitializeComponent();
-        
-
-            this.DataContext = viewModel;
         }
-
-       
-
     }
 }

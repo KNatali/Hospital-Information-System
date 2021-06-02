@@ -1,6 +1,4 @@
-﻿
-using ProjekatSIMS.ViewModelDoktor;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -13,25 +11,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ProjekatSIMS.ViewDoktor
+namespace ProjekatSIMS.UpravnikWindows.Views
 {
-
-   
-
-    
-    public partial class PocetnaStranicaDoktorView : Page
+    /// <summary>
+    /// Interaction logic for Lekovi.xaml
+    /// </summary>
+    public partial class Lekovi : Page
     {
-        public PocetnaStranicaDoktorView(PocetnaStranicaDoktorViewModel viewModel)
-
+        public Lekovi()
         {
-
             InitializeComponent();
-        
-
-            this.DataContext = viewModel;
         }
-
-       
-
     }
 }

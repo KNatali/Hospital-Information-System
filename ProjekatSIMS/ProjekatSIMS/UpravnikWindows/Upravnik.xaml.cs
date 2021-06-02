@@ -1,6 +1,4 @@
-﻿
-using ProjekatSIMS.ViewModelDoktor;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -10,28 +8,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ProjekatSIMS.ViewDoktor
+namespace ProjekatSIMS.UpravnikWindows
 {
-
-   
-
-    
-    public partial class PocetnaStranicaDoktorView : Page
+    /// <summary>
+    /// Interaction logic for Upravnik.xaml
+    /// </summary>
+    public partial class Upravnik : Window
     {
-        public PocetnaStranicaDoktorView(PocetnaStranicaDoktorViewModel viewModel)
-
+        public Upravnik()
         {
-
             InitializeComponent();
-        
-
-            this.DataContext = viewModel;
         }
-
-       
-
     }
 }

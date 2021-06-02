@@ -8,6 +8,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace ProjekatSIMS
@@ -15,39 +16,96 @@ namespace ProjekatSIMS
     
     public partial class UpravnikWindow : Window
     {
+
+        private NavigationService NavigationService { get; set; }
         public UpravnikWindow()
         {
             InitializeComponent();
         }
 
-        private void dinamicka(object sender, RoutedEventArgs e)
+       
+
+        private void PocetnaStranica(object sender, RoutedEventArgs e)
         {
-            DinamickaOpremaWindow d = new DinamickaOpremaWindow();
-            d.Show();
+
+        }
+       //Renoviranje
+        private void Renoviranje(object sender, RoutedEventArgs e)
+        {
+            UpravnikFrame.Content = new RenoviranjeUpravnik();
+        }
+        private void NaprednoRenoviranje(object sender, RoutedEventArgs e)
+        {
+            UpravnikFrame.Content = new RenoviranjeUpravnik();
         }
 
-        
-        private void prostorije(object sender, RoutedEventArgs e)
+
+        //Pomoc
+        private void Pomoc(object sender, RoutedEventArgs e)
         {
-            ProstorijeWindow p = new ProstorijeWindow();
-            p.Show();
+
         }
 
-        private void lekoviClick(object sender, RoutedEventArgs e)
+        //Lekovi
+        private void PregledajLekove(object sender, RoutedEventArgs e)
         {
-            Lekovi lw = new Lekovi();
-            lw.Show();
+            //pretraga
+            UpravnikFrame.Content = new PregledLekovaUpravnik();
+        }
+        private void IzmeniLek(object sender, RoutedEventArgs e)
+        {
+
+            UpravnikFrame.Content = new IzmenaLekaUpravnik();
+        }
+        private void KreirajLek(object sender, RoutedEventArgs e)
+        {
+
+            UpravnikFrame.Content = new PregledProstorijaUpravnik();
         }
 
-        private void staticka(object sender, RoutedEventArgs e)
+        // Prostorije
+        private void PregledajProstorije(object sender, RoutedEventArgs e)
         {
-            SvaStatickaOprema sso = new SvaStatickaOprema();
-            sso.Show();
+
+            UpravnikFrame.Content = new PregledProstorijaUpravnik();
+            //omoguci pretragu
         }
-        private void renoviranje(object sender, RoutedEventArgs e)
+        private void IzmeniProstoriju(object sender, RoutedEventArgs e)
         {
-            Renoviranje r = new Renoviranje();
-            r.Show();
+
+            UpravnikFrame.Content = new IzmenaProstorije(); 
+            //odraditi validaciju
+        }
+        private void KreirajProstoriju(object sender, RoutedEventArgs e)
+        {
+            //odraditi validaciju
+            UpravnikFrame.Content = new PregledProstorijaUpravnik();
+        }
+        // Inventar
+        private void PregledajInventar(object sender, RoutedEventArgs e)
+        {
+            //omoguci pretragu
+            UpravnikFrame.Content = new PregledInventaraUpravnik();
+        }
+        private void DinamickiInventar(object sender, RoutedEventArgs e)
+        {
+            //omoguci pretragu
+            UpravnikFrame.Content = new PregledDinamickogInventara();
+        }
+        private void KreirajDinamicki(object sender, RoutedEventArgs e)
+        {
+
+            UpravnikFrame.Content = new PregledProstorijaUpravnik();
+        }
+        private void KreirajStaticki(object sender, RoutedEventArgs e)
+        {
+
+            UpravnikFrame.Content = new PregledProstorijaUpravnik();
+        }
+        private void IzmeniInventar(object sender, RoutedEventArgs e)
+        {
+
+            UpravnikFrame.Content = new PregledProstorijaUpravnik();
         }
     }
 }
