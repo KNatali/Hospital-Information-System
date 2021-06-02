@@ -7,26 +7,85 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="IzmenaPodsetnika">
+    <Page.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="FontSize" Value="16"/>
+
+        </Style>
+        <Style  TargetType="TextBox">
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="BorderBrush" Value="#287D7D"/>
+            <Style.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10" />
+
+                </Style>
+            </Style.Resources>
+        </Style>
+        <Style x:Key="RoundedButton" TargetType="{x:Type Button}">
+            <Style.Setters>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border x:Name="button" CornerRadius="5" BorderBrush="Black" BorderThickness="1" Background="#A4E98A">
+                                <TextBlock  Text="{TemplateBinding Button.Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="button" Property="BorderBrush" Value="Black" />
+                                    <Setter TargetName="button" Property="Background"  Value="#365835"/>
+                                    <Setter Property="Foreground" Value="White" />
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter TargetName="button"  Property="Background" Value="#365835"/>
+                                </Trigger>
+                                <Trigger Property="IsFocused" Value="True">
+                                    <Setter TargetName="button" Property="BorderBrush" Value="#FF282828" />
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter TargetName="button" Property="Opacity" Value="0.7" />
+                                    <Setter Property="Foreground" Value="#365835" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style.Setters>
+        </Style>
+    </Page.Resources>
 
     <Grid Background="#CDFEBB">
         <DataGrid x:Name="dataGridPodsetnik" ItemsSource="{Binding Podsetnici}" IsReadOnly="True"
-                  SelectionMode="Single" AutoGenerateColumns="False" Margin="10,52,293,0" Height="318" VerticalAlignment="Top">
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="10,25,10,0" Height="254" VerticalAlignment="Top" IsSynchronizedWithCurrentItem="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Naziv" Binding="{Binding nazivPodsetika}"/>
                 <DataGridTextColumn Header="Opis" Binding="{Binding opisPodsetnika}"/>
                 <DataGridTextColumn Header="Datum pocetka" Binding="{Binding datumPocetkaObavestenja}"/>
                 <DataGridTextColumn Header="Datum kraja" Binding="{Binding datumZavrsetkaObavestenja}"/>
+                <DataGridTemplateColumn Header="Izmeni podsetnik" Width="150*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="Izmeni" Content="Izmeni" Click="Izmeni_Click"  IsDefault="True" Background="#A4E98A" Style="{DynamicResource RoundedButton}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
 
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Izmeni" HorizontalAlignment="Left" Margin="671,379,0,0" VerticalAlignment="Top" Background="#A4E98A" Height="34" Width="97" Click="Izmeni"/>
-        <Label Content="Ime:" HorizontalAlignment="Left" Margin="550,83,0,0" VerticalAlignment="Top"/>
-        <Label Content="Opis:" HorizontalAlignment="Left" Margin="550,134,0,0" VerticalAlignment="Top"/>
-        <Label Content="Datum pocetka:" HorizontalAlignment="Left" Margin="550,193,0,0" VerticalAlignment="Top"/>
-        <Label Content="Datum kraja:" HorizontalAlignment="Left" Margin="550,251,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="662,87,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Name="Ime"/>
-        <TextBox HorizontalAlignment="Left" Margin="662,134,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Name="Opis"/>
-        <DatePicker HorizontalAlignment="Left" Margin="666,194,0,0" VerticalAlignment="Top" Name="Pocetak"/>
-        <DatePicker HorizontalAlignment="Left" Margin="666,253,0,0" VerticalAlignment="Top" Name="Kraj"/>
+
+        <Label Content="Naziv:" HorizontalAlignment="Left" Margin="31,310,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.975,0.485"/>
+        <Label Content="Opis:" HorizontalAlignment="Left" Margin="34,365,0,0" VerticalAlignment="Top"/>
+        <Label Content="Datum pocetka:" HorizontalAlignment="Left" Margin="324,311,0,0" VerticalAlignment="Top"/>
+        <Label Content="Datum kraja:" HorizontalAlignment="Left" Margin="346,365,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="136,311,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Name="Ime"/>
+        <TextBox HorizontalAlignment="Left" Margin="136,370,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Name="Opis" Height="70"/>
+        <DatePicker HorizontalAlignment="Left" Margin="476,315,0,0" VerticalAlignment="Top" Name="Pocetak" />
+        <DatePicker HorizontalAlignment="Left" Margin="476,370,0,0" VerticalAlignment="Top" Name="Kraj" />
     </Grid>
 </Page>

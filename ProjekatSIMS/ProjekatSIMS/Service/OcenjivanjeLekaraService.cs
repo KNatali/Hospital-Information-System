@@ -66,5 +66,17 @@ namespace ProjekatSIMS.Service
                 return false;
             }
         }
+        public Boolean DaLiJeUnetaOcena(String imeLekara, String prezimeLekara,String ocena,String komentar)
+        {
+            List<OcenaLekara> oceneLekara = ocenaRepositoryLekar.DobaviSveOceneLekara();
+            if ((DaLiSeLekarMozeOceniti(imeLekara, prezimeLekara) == true) && (DaLiPostojiZavrsenPregled() == true))
+            {
+                oceneLekara.Add(PostavljanjeOceneLekara(imeLekara, prezimeLekara, ocena, komentar));
+                ocenaRepositoryLekar.SacuvajOcenuLekara(oceneLekara);
+                return true;
+
+            }
+            return false;
+        }
     }
 }
