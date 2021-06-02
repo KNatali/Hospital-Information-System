@@ -39,31 +39,48 @@ namespace ProjekatSIMS.ViewModelSekretar
         {
             switch (destination)
             {
+                case "kreiranjePacijenta":
+                    KreiranjePacijentaViewModel kpa = new KreiranjePacijentaViewModel(this.NavService);
+                    KreiranjePacijentaView kreiranjePacijenta = new KreiranjePacijentaView(kpa);
+                    kreiranjePacijenta.Show();
+                    break;
+                case "kreiranjeDoktora":
+                    KreiranjeDoktoraViewModel kd = new KreiranjeDoktoraViewModel(this.NavService);
+                    KreiranjeDoktoraView kreiranjeDoktora = new KreiranjeDoktoraView(kd);
+                    kreiranjeDoktora.Show();
+                    break;
                 case "pretragaPacijenta":
                     PretragaPacijenataViewModel pp = new PretragaPacijenataViewModel(this.NavService);
-                    PretragaPacijenataView pretraga = new PretragaPacijenataView(pp);
-                    pretraga.Show();
-                    //this.NavService.Navigate(pretraga);
+                    PretragaPacijenataView pretragaPacijenata = new PretragaPacijenataView(pp);
+                    pretragaPacijenata.Show();
                     break;
-                /*case "prikazPregleda":
-                    PrikazPregledaDoktorViewModel vm1 = new PrikazPregledaDoktorViewModel(this.NavService);
-                    PrikazPregledaDoktorView kalendar = new PrikazPregledaDoktorView(vm1);
-                    this.NavService.Navigate(kalendar);
+                case "pretragaDoktora":
+                    PretragaDoktoraViewModel pd = new PretragaDoktoraViewModel(this.NavService);
+                    PretragaDoktoraView pretragaDoktora = new PretragaDoktoraView(pd);
+                    pretragaDoktora.Show();
                     break;
-                case "pretragaPacijenta":
-                    PretragaPacijentaDoktorViewModel pp = new PretragaPacijentaDoktorViewModel(this.NavService);
-                    PretragaPacijentaDoktorView pretraga = new PretragaPacijentaDoktorView(pp);
-                    this.NavService.Navigate(pretraga);
+                case "hitno":
+                    HitnoZakazivanjeViewModel hz = new HitnoZakazivanjeViewModel(this.NavService);
+                    HitnoZakazivanjeView hitnoZakazivanje = new HitnoZakazivanjeView(hz);
+                    hitnoZakazivanje.Show();
                     break;
-                    /* case "zakazivanjePregleda":
-                         this.NavService.Navigate(
-                    new Uri("Views/PrikazPregledaDoktorView.xaml", UriKind.Relative));
-                         break;
-                     case "zakazivanjeOperacije":
-                         this.NavService.Navigate(
-                    new Uri("Views/PrikazPregledaDoktorView.xaml", UriKind.Relative));
-                         break;*/
-
+                case "kalendarPregleda":
+                    KalendarPregledaViewModel kp = new KalendarPregledaViewModel(this.NavService);
+                    KalendarPregledaView kalendarPregleda = new KalendarPregledaView(kp);
+                    kalendarPregleda.Show();
+                    break;
+                case "zauzetostProstorija":
+                    ZauzetostProstorijaViewModel zp = new ZauzetostProstorijaViewModel(this.NavService);
+                    ZauzetostProstorijaView zauzetostProstorija = new ZauzetostProstorijaView(zp);
+                    zauzetostProstorija.Show();
+                    break;
+                case "oglasnaTabla":
+                    OglasnaTablaViewModel ot = new OglasnaTablaViewModel(this.NavService);
+                    OglasnaTablaView oglasnaTabla = new OglasnaTablaView(ot);
+                    oglasnaTabla.Show();
+                    break;
+                /*case "odjavljivanje":
+                    break;*/
             }
         }
     }
