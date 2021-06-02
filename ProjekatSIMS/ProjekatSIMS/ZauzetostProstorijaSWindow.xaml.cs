@@ -84,7 +84,7 @@ namespace ProjekatSIMS
 
         private void Nazad(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
 
         private void Prikazi(object sender, RoutedEventArgs e)

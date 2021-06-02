@@ -39,5 +39,7 @@
                 </DataGrid>
             </Canvas>
         </Border>
+        <Button Content="Odustani" Click="Nazad" HorizontalAlignment="Left" Margin="10,463,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
+        <Button Content="Štampaj" Click="Stampanje" HorizontalAlignment="Left" Margin="729,463,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
     </Grid>
 </Window>

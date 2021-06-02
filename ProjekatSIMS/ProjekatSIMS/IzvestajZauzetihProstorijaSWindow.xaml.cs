@@ -21,5 +21,16 @@ namespace ProjekatSIMS
         {
             InitializeComponent();
         }
+
+        private void Stampanje(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Izveštaj se štampa u PDF formatu.","OBAVEŠTENJE");
+            this.Close();
+        }
+
+        private void Nazad(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
