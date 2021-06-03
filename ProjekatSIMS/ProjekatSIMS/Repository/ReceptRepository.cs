@@ -35,6 +35,18 @@ namespace Repository
             return recepti;
         }
 
+        public List<Recept> DobaviRecepteZaKarton(int id)
+        {
+            List<Recept> recepti = new List<Recept>();
+            List<Recept>  sviRecepti = DobaviSveRecepte();
+            foreach(Recept r in sviRecepti)
+            {
+                if (r.IdKartona == id)
+                    recepti.Add(r);
+            }
+            return recepti;
+        }
+
         public void DodajRecept(Recept recept)
         {
             recepti = DobaviSveRecepte();

@@ -23,7 +23,7 @@ namespace Service
         {
             if (pregledi.Count == 0)
                 return 1;
-
+             
             else
                 return pregledi[pregledi.Count - 1].Id + 1;
 

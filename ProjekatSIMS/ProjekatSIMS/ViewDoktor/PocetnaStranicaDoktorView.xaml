@@ -53,7 +53,7 @@
         </StackPanel>
         <StackPanel  Grid.Row="0" Grid.Column="0" Margin="20,10,20,10" HorizontalAlignment="Left">
             <Label >Radni kalendar:</Label>
-            <Viewbox MaxHeight="220" MaxWidth="300"  >
+            <Viewbox MaxHeight="220" MaxWidth="320"  >
                 <Calendar >
                     <Calendar.Background>
                         <SolidColorBrush Color="white"  Opacity="0.5"/>

@@ -1,6 +1,9 @@
 ﻿using Controller;
 using Model;
 using Newtonsoft.Json;
+using ProjekatSIMS.Model;
+using ProjekatSIMS.ViewDoktor;
+using ProjekatSIMS.ViewModelDoktor;
 using Repository;
 using System;
 using System.Collections.Generic;
@@ -24,6 +27,7 @@ namespace ProjekatSIMS
 
         private ProstorijaRepository prostorijaRepository = new ProstorijaRepository();
         private PacijentRepository pacijentRepository = new PacijentRepository();
+        private DoktorRepository doktorRepository = new DoktorRepository();
         private ZauzetostTerminaPregledaController zauzetostTerminaPregledaController = new ZauzetostTerminaPregledaController();
         private PrikazSlobodnihTerminaController prikazSlobodnihTerminaController = new PrikazSlobodnihTerminaController();
         private ZakaziPregledDoktorController zakaziPregled = new ZakaziPregledDoktorController();
@@ -62,7 +66,7 @@ namespace ProjekatSIMS
             DateTime datum1 = datum.AddHours(sat).AddMinutes(minut);
             DateTime datum2 = datum1.AddMinutes(20);
             IntervalDatuma termin = new IntervalDatuma(datum1, datum2);
-            Doktor dr = new Doktor { Jmbg = "1511990855023", Ime = "Marijana", Prezime = "Peric" };
+            Doktor dr = doktorRepository.DobaviByRegistracija(UlogovaniKorisnik.KorisnickoIme, UlogovaniKorisnik.Lozinka);
             KreiranjePregleda( datum1, termin, dr);
             ZauzetiTermini(datum1, termin);
         }
@@ -93,8 +97,10 @@ namespace ProjekatSIMS
             else
             {
                 zakaziPregled.ZakaziPregled(pregled);
-                MessageBox.Show("Operacija je uspjesno zakazana");
-                this.NavigationService.Navigate(new Uri("PrikazPregledaDoktor.xaml", UriKind.Relative));
+                MessageBox.Show("Pregled je uspjesno zakazan");
+                PrikazPregledaDoktorViewModel vm1 = new PrikazPregledaDoktorViewModel(this.NavigationService);
+                PrikazPregledaDoktorView kalendar = new PrikazPregledaDoktorView(vm1);
+                this.NavigationService.Navigate(kalendar);
 
             }
         }

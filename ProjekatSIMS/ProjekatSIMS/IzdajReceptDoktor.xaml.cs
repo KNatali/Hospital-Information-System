@@ -75,6 +75,13 @@ namespace ProjekatSIMS
            
          }
 
-     
+        private void Odustani(object sender, RoutedEventArgs e)
+        {
+
+            this.NavigationService.GoBack();
+
+        }
+
+
     }
 }

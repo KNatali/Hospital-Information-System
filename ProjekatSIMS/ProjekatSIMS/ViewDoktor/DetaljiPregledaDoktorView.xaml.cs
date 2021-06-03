@@ -2,22 +2,23 @@
 using Model;
 using System;
 using System.Windows;
+using ProjekatSIMS.ViewModelDoktor;
 
-namespace ProjekatSIMS
+namespace ProjekatSIMS.ViewDoktor
 {
 
-    public partial class DetaljiPregledaDoktor : Window
+    public partial class DetaljiPregledaDoktorView : Window
     {
         private Pregled pregled { get; set; }
 
         private OtkazivanjePregledaDoktorController otkazivanjePregledaDoktorController = new OtkazivanjePregledaDoktorController();
         private PregledController pregledController;
-        public DetaljiPregledaDoktor(Pregled p)
+        public DetaljiPregledaDoktorView(DetaljiPregledaDoktorViewModel viewModel)
         {
             InitializeComponent();
-            this.DataContext = this;
-            pregled = p;
-            UcitavanjePodatakaZaPrikaz(p);
+            this.DataContext = viewModel;
+            /*pregled = p;
+            UcitavanjePodatakaZaPrikaz(p);*/
 
         }
 
@@ -31,7 +32,7 @@ namespace ProjekatSIMS
             Vrijeme.Text = p.Pocetak.Hour.ToString() + ":" + p.Pocetak.Minute.ToString() + "-" + kraj.Hour.ToString() + ":" + kraj.Minute.ToString();
         }
 
-        private void OtkaziPregled(object sender, RoutedEventArgs e)
+       /* private void OtkaziPregled(object sender, RoutedEventArgs e)
         {
 
             otkazivanjePregledaDoktorController.OtkazivanjePregleda(pregled);
@@ -40,10 +41,10 @@ namespace ProjekatSIMS
             //PrikazPregledaDoktor pd = new PrikazPregledaDoktor();
             //  this.NavigationService.Navigate(pd);
             // NavigationService navService = NavigationService.GetNavigationService(this)navService.Navigate = (newSystem.Uri("Page2.xaml", UriKind.RelativeOrAbsolute);
+       
+        }*/
 
-        }
-
-        private void IzmijeniPregled(object sender, RoutedEventArgs e)
+        /*private void IzmijeniPregled(object sender, RoutedEventArgs e)
         {
 
 
@@ -52,9 +53,9 @@ namespace ProjekatSIMS
             // this.NavigationService.Navigate(po);
 
 
-        }
+        }*/
 
-        private void PrikazProfila(object sender, RoutedEventArgs e)
+       /* private void PrikazProfila(object sender, RoutedEventArgs e)
         {
 
 
@@ -64,9 +65,9 @@ namespace ProjekatSIMS
             // this.NavigationService.Navigate(z);
 
 
-        }
+        }*/
 
-        private void ZapocniPregled(object sender, RoutedEventArgs e)
+        /*private void ZapocniPregled(object sender, RoutedEventArgs e)
         {
 
             IzvrsavanjePregledaDoktor i = new IzvrsavanjePregledaDoktor(pregled);
@@ -74,6 +75,6 @@ namespace ProjekatSIMS
             // this.NavigationService.Navigate(i);
 
 
-        }
+        }*/
     }
 }

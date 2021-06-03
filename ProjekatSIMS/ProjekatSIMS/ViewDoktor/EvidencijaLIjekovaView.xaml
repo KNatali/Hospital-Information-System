@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:ProjekatSIMS.ViewDoktor"
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="780"
-      Title="EvidencijaLIjekova"
+      Title="EvidencijaLIjekova" Opacity="{Binding Opacity, Mode=TwoWay}"
       >
     <Page.Resources>
         <Style TargetType="Label">
@@ -44,7 +44,7 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
-           
+
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Label Content="Evidencija lijekova" Grid.Row="0" Grid.ColumnSpan="4" FontSize="17"  FontWeight="SemiBold" HorizontalAlignment="Center"  VerticalAlignment="Top"/>
@@ -55,47 +55,55 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Label Grid.Row="0" Content="Neverifikovani lijekovi:"></Label>
-            <DataGrid  Grid.Row="1" Name="dataGridVerifikacija" SelectionMode="Single" AutoGenerateColumns="False" Style="{StaticResource Tabela}" IsReadOnly="True"
+            <DataGrid  Grid.Row="1" Name="dataGridVerifikacija" ItemsSource="{Binding Lijekovi}"  SelectedItem="{Binding SelectedLijek}" SelectionMode="Single" AutoGenerateColumns="False" Style="{StaticResource Tabela}" IsReadOnly="True"
 
                   ScrollViewer.CanContentScroll="True" 
-                  ScrollViewer.VerticalScrollBarVisibility="Auto">
-           
-            <DataGrid.Columns >
-                <DataGridTextColumn Header="Naziv lijeka" Binding="{Binding Path='NazivLeka'}" IsReadOnly="True"  />
+                  ScrollViewer.VerticalScrollBarVisibility="Auto" SelectionChanged="dataGridVerifikacija_SelectionChanged">
+
+                <DataGrid.Columns >
+                    <DataGridTextColumn Header="Naziv lijeka" Binding="{Binding Path='NazivLeka'}" IsReadOnly="True"  />
 
 
-                <DataGridTemplateColumn Header="Detalji" >
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button Name="Detalji" Content="Detalji" Click="PrikazDetaljaLijeka"  Style="{StaticResource btnStandard}"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Detalji" >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button  Content="Detalji"  Command="{Binding Path=DataContext.PrikazDetaljaLijeka,       
+ RelativeSource= {RelativeSource FindAncestor,
+  AncestorType={x:Type DataGrid}}}"  Style="{StaticResource btnStandard}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
 
-                <DataGridTemplateColumn Header="Izmijeni">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button Name="Izmijeni" Content="Izmijeni" Click="IzmijeniLijek"  Style="{StaticResource btnStandard}"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Prihvati">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button Name="Prihvati" Content="Prihvati" Click="PrihvatiLijek"  Style="{StaticResource btnStandard}" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Odbaci" Width="*">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button Name="Odbaci" Content="Odbaci" Click="OdbaciLijek"  Style="{StaticResource btnStandard}" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-           
-        </DataGrid>
+                    <DataGridTemplateColumn Header="Izmijeni">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Name="Izmijeni" Content="Izmijeni"   Command="{Binding Path=DataContext.IzmijeniLijek,       
+ RelativeSource= {RelativeSource FindAncestor,
+  AncestorType={x:Type DataGrid}}}" Style="{StaticResource btnStandard}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Prihvati">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Command="{      Binding Path=DataContext.PrihvatiLijek,       
+ RelativeSource= {RelativeSource FindAncestor,
+  AncestorType={x:Type DataGrid}}}" Content="Prihvati"  Style="{StaticResource btnStandard}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Odbaci" Width="*">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Name="Odbaci" Content="Odbaci" Command="{      Binding Path=DataContext.OdbaciLijek,       
+ RelativeSource= {RelativeSource FindAncestor,
+  AncestorType={x:Type DataGrid}}}" CommandParameter="{Binding}" Style="{StaticResource btnStandard}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+
+            </DataGrid>
         </Grid>
 
 
@@ -106,13 +114,10 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Label Content="Opis:"></Label>
-            <TextBox Name="Opis" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Margin="5"
+            <TextBox Name="Opis" Text="{Binding Opis}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Margin="5"
                        VerticalAlignment="Stretch" 
                       HorizontalAlignment="Stretch"
-                       
-                       
-                        Text=""
-                TextWrapping="Wrap"/>
+                     TextWrapping="Wrap"/>
         </Grid>
 
         <Grid  Grid.Row="1" Grid.Column="2" >
@@ -121,14 +126,14 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Label Content="Sastojci:"></Label>
-            <DataGrid x:Name="Sastojci" Margin="5,0,0,2" IsReadOnly="True" Grid.Row="1" Grid.Column="2"  Style="{StaticResource Tabela}"
-
-                  SelectionMode="Single" AutoGenerateColumns="False" 
-
+            <DataGrid x:Name="Sastojci" Margin="5,0,0,2"  ItemsSource="{Binding Sastojci}" IsReadOnly="True" Grid.Row="1" Grid.Column="2"  Style="{StaticResource Tabela}"
+                    AutoGenerateColumns="False"
+                  SelectionMode="Single" 
                   ScrollViewer.CanContentScroll="True" 
                   ScrollViewer.VerticalScrollBarVisibility="Auto">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Naziv sastojka" Binding="{Binding}" Width="*"/>
+                    
+                    <DataGridTextColumn Header="Naziv sastojka" Binding="{Binding Text}" Width="*" />
 
                 </DataGrid.Columns>
             </DataGrid>
@@ -141,23 +146,22 @@
             </Grid.RowDefinitions>
             <Label Content="Alternativni lijekovi:"></Label>
             <DataGrid x:Name="AlternativniLijekovi" Margin="5,2,0,5" IsReadOnly="True"  Grid.Row="2" Grid.Column="2"  Style="{StaticResource Tabela}"
-
+                    ItemsSource="{Binding AlternativniLijekovi}"
                   SelectionMode="Single" AutoGenerateColumns="False" 
 
                   ScrollViewer.CanContentScroll="True" 
                   ScrollViewer.VerticalScrollBarVisibility="Auto">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Naziv lijeka" Binding="{Binding}"  Width="*"/>
+                    <DataGridTextColumn Header="Naziv lijeka"  Binding="{Binding Text}" Width="*"/>
 
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
 
 
-        <Button Content="Verifikovani lijekovi" Grid.Row="4" Grid.ColumnSpan="3" Click="PregledVerifikovanihLijekova" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnStandard}"/>
-        <Button Content="Nazad" Grid.Row="4"  Width="100" Grid.ColumnSpan="3"  HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource btnStandard}"/>
-
-
+        <Button Content="Verifikovani lijekovi" Command="{Binding Path=VerifikovaniLijekovi}" Grid.Row="4" Grid.ColumnSpan="3"  HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnStandard}"/>
+        <Button Content="Nazad"  Command="{Binding Path=Nazad}" Grid.Row="4"   Width="100" Grid.ColumnSpan="3"  HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource btnStandard}"/>
+        
     </Grid>
 
 

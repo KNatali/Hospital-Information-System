@@ -1,4 +1,5 @@
 ﻿using Model;
+using ProjekatSIMS.DTO;
 using Service;
 using System;
 using System.Collections.Generic;
@@ -10,9 +11,9 @@ namespace Controller
     public class IzdavanjeAnamnezeController
     {
         private IzdavanjeAnamnezeService izdavanjeAnamnezeService = new IzdavanjeAnamnezeService();
-        public void KreiranjeAnamneze(String opis,DateTime datumIzdavanja, Pacijent pacijent)
+        public void KreiranjeAnamneze(AnamnezaDTO anamneza)
         {
-            izdavanjeAnamnezeService.KreiranjeAnamneze(opis,datumIzdavanja,pacijent);
+            izdavanjeAnamnezeService.KreiranjeAnamneze(anamneza);
         }
     }
 }

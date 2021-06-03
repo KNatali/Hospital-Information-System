@@ -20,8 +20,8 @@ namespace ProjekatSIMS
             pacijent = p;
 
             uputStari = uput;
-            IntervalPocetak.Text = uput.IntervalPocetak.ToString("dd/MM/yyyy");
-            KrajInterval.SelectedDate = uput.IntervalKraj;
+            IntervalPocetak.Text = uput.Interval.PocetnoVrijeme.ToString("dd/MM/yyyy");
+            KrajInterval.SelectedDate = uput.Interval.KrajnjeVrijeme;
             Soba.Text = uput.SobaId;
             Krevet.Text = uput.KrevetId.ToString();
 

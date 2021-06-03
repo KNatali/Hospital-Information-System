@@ -2,6 +2,7 @@
 using Model;
 using Newtonsoft.Json;
 using ProjekatSIMS.Model;
+using ProjekatSIMS.ViewModelDoktor;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -16,22 +17,22 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ProjekatSIMS
+namespace ProjekatSIMS.ViewDoktor
 {
 
-    public partial class VerifikovaniLIjekoviDoktor : Page
+    public partial class VerifikovaniLijekoviDoktorView : Page
     {
         private PrikazEvidencijeLijekovaController prikazEvidencijeLijekovaController = new PrikazEvidencijeLijekovaController();
         private VerifikovanjeLijekovaController verifikovanjeLijekovaController = new VerifikovanjeLijekovaController();
         public List<Lijek> SviLijekovi { get; set; }
         public List<Lijek> VerifikovaniLijekovi { get; set; }
-        public VerifikovaniLIjekoviDoktor()
+        public VerifikovaniLijekoviDoktorView(EvidencijaLijekovaViewModel viewModel)
         {
             InitializeComponent();
         
-            this.DataContext = this;
+            this.DataContext = viewModel;
           
-            SviLijekovi = new List<Lijek>();
+            /*SviLijekovi = new List<Lijek>();
             VerifikovaniLijekovi = new List<Lijek>();
             TipLijekaPremaPrikazu tip = TipLijekaPremaPrikazu.Verifikovan;
             VerifikovaniLijekovi = prikazEvidencijeLijekovaController.PrikazLijekovaPoStatusu(tip);
@@ -41,10 +42,10 @@ namespace ProjekatSIMS
             collectionView.GroupDescriptions.Add(new PropertyGroupDescription("Status"));
 
 
-            dataGridVerifikovani.ItemsSource = collectionView;
+            dataGridVerifikovani.ItemsSource = collectionView;*/
         }
 
-        private void PrikaziDetaljaLijeka(object sender, RoutedEventArgs e)
+       /* private void PrikaziDetaljaLijeka(object sender, RoutedEventArgs e)
         {
 
             Poruka.Visibility = Visibility.Hidden;
@@ -62,7 +63,7 @@ namespace ProjekatSIMS
                Poruka1.Text = lijek.PorukaOdbaci;
             }
 
-        }
+        }*/
 
 
 
@@ -83,4 +84,4 @@ namespace ProjekatSIMS
 
     
 
-}
+} 

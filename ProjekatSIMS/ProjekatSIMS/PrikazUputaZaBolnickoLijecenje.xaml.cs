@@ -22,18 +22,19 @@ namespace ProjekatSIMS
         private UputBolnickoLijecenjeRepository uputBolnickoLiejecenjeRepository = new UputBolnickoLijecenjeRepository();
         private ZdravstveniKartonRepository zdravstveniKartonRepository = new ZdravstveniKartonRepository();
         private Pacijent pacijent = new Pacijent();
+        public List<UputBolnickoLijecenje> Uputi { get; set; }
         public PrikazUputaZaBolnickoLijecenje(Pacijent p)
         {
             InitializeComponent();
             pacijent = p;
             ZdravsteniKarton karton = new ZdravsteniKarton();
-            karton = zdravstveniKartonRepository.DobaviZdravstveniKartonZaPacijenta(pacijent);
-             Uputi.ItemsSource = karton.UputiZaBolnickoLijecenje;
+            Uputi1.ItemsSource= uputBolnickoLiejecenjeRepository.DobaviUputZaKarton(p.IdKartona);
+            //MessageBox.Show(Uputi.Count.ToString());
         }
 
         private void ProduziTrajanje(object sender, RoutedEventArgs e)
         {
-            UputBolnickoLijecenje izabraniUput = (UputBolnickoLijecenje)Uputi.SelectedItem;
+            UputBolnickoLijecenje izabraniUput = (UputBolnickoLijecenje)Uputi1.SelectedItem;
             ProduziBolnickoLijecenje p = new ProduziBolnickoLijecenje(izabraniUput,pacijent);
             this.NavigationService.Navigate(p);
         }
