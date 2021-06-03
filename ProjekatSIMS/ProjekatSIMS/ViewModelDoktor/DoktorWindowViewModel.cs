@@ -1,4 +1,5 @@
-﻿using ProjekatSIMS.Commands;
+﻿using Model;
+using ProjekatSIMS.Commands;
 using ProjekatSIMS.ViewDoktor;
 
 using System;
@@ -84,7 +85,8 @@ namespace ProjekatSIMS.ViewModelDoktor
                 new Uri("Views/PrikazPregledaDoktorView.xaml", UriKind.Relative));
                      break;*/
                 case "mojProfil":
-                    ProfilDoktorViewModel pr = new ProfilDoktorViewModel(this.NavService);
+                    Doktor doktor = new Doktor();
+                    ProfilDoktorViewModel pr = new ProfilDoktorViewModel(this.NavService,doktor);
                     ProfilDoktorView d = new ProfilDoktorView(pr);
                     this.NavService.Navigate(d);
                     break;
