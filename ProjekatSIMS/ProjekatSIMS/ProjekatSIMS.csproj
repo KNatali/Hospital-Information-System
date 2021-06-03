@@ -8,13 +8,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+
+    <None Remove="Resources\podesavanje.png" />
+    <None Remove="Resources\upravnikProfil.png" />
+
     <Compile Remove="ViewModel\**" />
     <EmbeddedResource Remove="ViewModel\**" />
     <None Remove="ViewModel\**" />
     <Page Remove="ViewModel\**" />
-  </ItemGroup>
 
-  <ItemGroup>
+
     <None Remove="ViewDoktor\Slike\calendar.png" />
     <None Remove="ViewDoktor\Slike\calendar1.png" />
     <None Remove="ViewDoktor\Slike\date.png" />
@@ -64,6 +67,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\podesavanje.png" />
+    <Resource Include="Resources\upravnikProfil.png" />
     <Resource Include="ViewDoktor\Slike\calendar.png" />
     <Resource Include="ViewDoktor\Slike\calendar1.png" />
     <Resource Include="ViewDoktor\Slike\date.png" />

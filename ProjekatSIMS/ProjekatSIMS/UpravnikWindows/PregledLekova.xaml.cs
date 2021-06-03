@@ -13,22 +13,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ProjekatSIMS
+namespace ProjekatSIMS.UpravnikWindows
 {
-
-    public partial class PregledLekovaUpravnik : Page
+    
+    public partial class PregledLekova : Page
     {
-
-        public List<Lijek> Lekovi = new List<Lijek>();
-        public LijekService LijekService = new LijekService();
-        public PregledLekovaUpravnik()
+        public List<Lijek> Lekovi { get; set; }
+        public LijekService LijekService { get; set; }
+        public PregledLekova()
         {
             InitializeComponent();
-            this.DataContext = this;
-            Lekovi = LijekService.lijekRepoisitory.DobaviSve();
+            LijekService = new LijekService();
+            Lekovi = new List<Lijek>(LijekService.lijekRepoisitory.DobaviSve());
             dgrLekovi.ItemsSource = Lekovi;
+
         }
-        
         private void ObrisiLek(object sender, RoutedEventArgs e)
         {
             Lijek lekZaBrisanje = (Lijek)dgrLekovi.SelectedItems[0];
@@ -37,6 +36,11 @@ namespace ProjekatSIMS
             Lekovi = LijekService.lijekRepoisitory.DobaviSve();
             dgrLekovi.ItemsSource = Lekovi;
         }
-       
+        private void IzmeniLek(object sender, RoutedEventArgs e)
+        {
+            Lijek l = (Lijek)dgrLekovi.SelectedItems[0];
+            Upravnik uw = (Upravnik)Window.GetWindow(this);
+            uw.UpravnikFrame.Content = new IzmeniLek(l);
+        }
     }
 }

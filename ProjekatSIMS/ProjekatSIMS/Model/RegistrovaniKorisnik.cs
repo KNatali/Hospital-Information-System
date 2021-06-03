@@ -23,9 +23,16 @@ namespace Model
          return true;
       }
    
-      public String KorisnickoIme;
-      public String Lozinka;
-      public Uloga uloga;
-   
-   }
+      public String KorisnickoIme { get; set; }
+      public String Lozinka { get; set; }
+      public Uloga uloga { get; set; }
+
+    public RegistrovaniKorisnik() { }
+    public RegistrovaniKorisnik(String korisnickoIme, String lozinka, Uloga uloga) 
+    {
+            this.KorisnickoIme = korisnickoIme;
+            this.Lozinka = lozinka;
+            this.uloga = uloga;
+    }
+    }
 }

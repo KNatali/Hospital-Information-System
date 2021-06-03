@@ -77,8 +77,12 @@ namespace ProjekatSIMS
                         //sekretarWindow.Show();
                         break;
                     case Uloga.Upravnik:
-                        Upravnik upravnikWindow = new Upravnik();
+
+
+                        Upravnik upravnikWindow = new Upravnik(korisnickoIme, lozinka, uloga) ;
+
                         upravnikWindow.Show();
+                        this.Close();
                         break;
                     case Uloga.Doktor:
                         DoktorWindowView doktorWindow = new DoktorWindowView();

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Model;
+using ProjekatSIMS.Model;
+using ProjekatSIMS.Repository;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -18,11 +21,17 @@ namespace ProjekatSIMS.UpravnikWindows
     {
         private NavigationService NavigationService { get; set; }
         public ResizeMode ResizeMode { get; set; }
-        public Upravnik()
+        public RegistrovaniKorisnik korisnik { get; set; }
+        public LoginRepository LoginRepository { get; set; }
+        public Upravnik(String korisnickoIme, String lozinka, Uloga uloga)
         {
             InitializeComponent();
 
             this.ResizeMode = ResizeMode.CanResizeWithGrip;
+            korisnik = new RegistrovaniKorisnik();
+            korisnik.KorisnickoIme = korisnickoIme;
+            korisnik.Lozinka = lozinka;
+            korisnik.uloga = uloga;
         }
         private void PocetnaStranica(object sender, RoutedEventArgs e)
         {
@@ -49,17 +58,13 @@ namespace ProjekatSIMS.UpravnikWindows
         private void PregledajLekove(object sender, RoutedEventArgs e)
         {
             //pretraga
-           // UpravnikFrame.Content = new PregledLekovaUpravnik();
+           UpravnikFrame.Content = new PregledLekova();
         }
-        private void IzmeniLek(object sender, RoutedEventArgs e)
-        {
-
-            //UpravnikFrame.Content = new IzmenaLekaUpravnik();
-        }
+        
         private void KreirajLek(object sender, RoutedEventArgs e)
         {
 
-           // UpravnikFrame.Content = new PregledProstorijaUpravnik();
+           UpravnikFrame.Content = new KreirajLek();
         }
 
         // Prostorije
@@ -69,17 +74,14 @@ namespace ProjekatSIMS.UpravnikWindows
             UpravnikFrame.Content = new PregledProstorija();
             //omoguci pretragu
         }
-        private void IzmeniProstoriju(object sender, RoutedEventArgs e)
-        {
-
-            UpravnikFrame.Content = new IzmeniProstoriju();
-            //odraditi validaciju
-        }
+        
         private void KreirajProstoriju(object sender, RoutedEventArgs e)
         {
             //odraditi validaciju
-           // UpravnikFrame.Content = new PregledProstorijaUpravnik();
+           UpravnikFrame.Content = new KreirajProstoriju();
         }
+
+
         // Inventar
         private void PregledajInventar(object sender, RoutedEventArgs e)
         {
@@ -101,15 +103,17 @@ namespace ProjekatSIMS.UpravnikWindows
 
            // UpravnikFrame.Content = new PregledProstorijaUpravnik();
         }
-        private void IzmeniInventar(object sender, RoutedEventArgs e)
-        {
-
-           // UpravnikFrame.Content = new PregledProstorijaUpravnik();
-        }
+        
 
         private void UpravnikFrame_Navigated(object sender, NavigationEventArgs e)
         {
 
+        }
+
+        private void Profil(object sender, RoutedEventArgs e)
+        {
+            UpravnikFrame.Content = new Profil(korisnik);
+            
         }
     }
 }
