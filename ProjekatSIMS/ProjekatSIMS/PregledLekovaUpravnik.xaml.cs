@@ -28,21 +28,15 @@ namespace ProjekatSIMS
             Lekovi = LijekService.lijekRepoisitory.DobaviSve();
             dgrLekovi.ItemsSource = Lekovi;
         }
-        private void PrikaziLek(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
         private void ObrisiLek(object sender, RoutedEventArgs e)
         {
+            Lijek lekZaBrisanje = (Lijek)dgrLekovi.SelectedItems[0];
+            LijekService.lijekRepoisitory.ObrisiLek(lekZaBrisanje.NazivLeka);
 
+            Lekovi = LijekService.lijekRepoisitory.DobaviSve();
+            dgrLekovi.ItemsSource = Lekovi;
         }
-        private void IzmeniLek(object sender, RoutedEventArgs e)
-        {
-
-        }
-        private void KreirajLek(object sender, RoutedEventArgs e)
-        {
-
-        }
+       
     }
 }

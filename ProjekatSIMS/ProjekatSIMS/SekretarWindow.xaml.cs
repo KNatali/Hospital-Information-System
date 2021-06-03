@@ -44,14 +44,10 @@ namespace ProjekatSIMS
             pd.Show();
         }
 
-        private void Naplata(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void Zauzetost(object sender, RoutedEventArgs e)
         {
-
+            ZauzetostProstorijaSWindow zp = new ZauzetostProstorijaSWindow();
+            zp.Show();
         }
 
         private void Oglasi(object sender, RoutedEventArgs e)

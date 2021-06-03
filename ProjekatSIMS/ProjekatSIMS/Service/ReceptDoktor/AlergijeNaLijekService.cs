@@ -39,7 +39,7 @@ namespace Service
             List<String> alergeni = new List<String>();
             foreach (ZdravsteniKarton k in kartoni)
             {
-                if (k.pacijent.Jmbg == pacijent.Jmbg)
+                if (k.IdPacijent == pacijent.Jmbg)
                 {
                     if (k.Alergeni != null)
                     {

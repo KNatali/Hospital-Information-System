@@ -1,0 +1,45 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjekatSIMS"
+        xmlns:fa="http://schemas.fontawesome.io/icons/" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="ProjekatSIMS.IzvestajZauzetihProstorijaSWindow"
+        mc:Ignorable="d"
+        Title="IzvestajZauzetihProstorijaSWindow" Height="568" Width="924" Background="#d1e3ff">
+    <Grid>
+        <Border BorderThickness="1" Margin="200,0,200,0" BorderBrush="Black" Background="White">
+            <Canvas>
+                <Label Margin="239,21,277,330">
+                    <StackPanel Orientation="Horizontal"/>
+                </Label>
+                <Label Margin="255,37,257,357">
+                    <StackPanel Orientation="Horizontal"/>
+                </Label>
+                <Label Content="ZDRAVO KORPORACIJA" FontSize="25" Margin="388,34,-16,327" Foreground="#1963bf" FontWeight="Bold" Canvas.Left="-198" Canvas.Top="-11"/>
+                <Label Width="329" Margin="309,90,0,0" Height="50" FontSize="22" Foreground="#1963bf" FontWeight="Bold" Content="Izveštaj o zauzetosti prostorija" Canvas.Left="-217" Canvas.Top="-15"/>
+                <Label Width="329" Margin="370,120,0,0" Height="50" FontSize="22" Foreground="#1963bf" FontWeight="Bold" Content="za određeni period" Canvas.Left="-217" Canvas.Top="-15"/>
+                <Label Width="551" Margin="300,180,0,0" Height="50" FontSize="18" Content="Prikaz zauzetih prostorija za period od __________________________________ godine" Canvas.Left="-294" Canvas.Top="-15"/>
+                <Label Width="551" Margin="300,220,0,0" Height="50" FontSize="18" Content="do __________________________________ godine." Canvas.Left="-294" Canvas.Top="-15"/>
+                <Label Width="551" Margin="300,490,0,0" Height="50" FontSize="18" Content="Novi Sad," Canvas.Left="-294" Canvas.Top="-15"/>
+                <Label Width="551" Margin="300,520,0,0" Height="50" FontSize="18" Content="_____________________________________ godine" Canvas.Left="-294" Canvas.Top="-15"/>
+                <Label Width="551" Margin="660,490,0,0" Height="50" FontSize="18" Content="Sekretar" Canvas.Left="-294" Canvas.Top="-15"/>
+                <Label Width="551" Margin="610,520,0,0" Height="50" FontSize="18" Content="_____________________________________________" Canvas.Left="-294" Canvas.Top="-15"/>
+                <fa:ImageAwesome Icon="Globe" Width="60" Foreground="#1963bf" Canvas.Left="46" Canvas.Top="11"/>
+                <fa:ImageAwesome Icon="Heart" Width="15" Foreground="#b31a0c" Canvas.Left="61" Canvas.Top="29"/>
+                <fa:ImageAwesome Icon="HSquare" Width="37" Foreground="#b31a0c" Canvas.Left="111" Canvas.Top="23"/>
+                <fa:ImageAwesome Icon="UserMd" Width="37" Foreground="#1963bf" Canvas.Left="151" Canvas.Top="21"/>
+                <DataGrid x:Name="dataGridPregledi" ItemsSource="{Binding Prostorije}" IsReadOnly="True"
+                  SelectionMode="Single" FontSize="20" AutoGenerateColumns="False" Margin="60,148,60,137" Canvas.Left="-48" Canvas.Top="98" Width="497" Height="224">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Zauzeto od" Binding="{Binding DatumOd}" Width="*"/>
+                        <DataGridTextColumn Header="Zauzeto do" Binding="{Binding DatumDo}" Width="*"/>
+                        <DataGridTextColumn Header="Prostorija" Binding="{Binding Naziv}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Canvas>
+        </Border>
+        <Button Content="Odustani" Click="Nazad" HorizontalAlignment="Left" Margin="10,463,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
+        <Button Content="Štampaj" Click="Stampanje" HorizontalAlignment="Left" Margin="729,463,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
+    </Grid>
+</Window>

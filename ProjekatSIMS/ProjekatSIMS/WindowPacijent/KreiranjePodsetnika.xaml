@@ -7,20 +7,69 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="KreiranjePodsetnika">
+    <Page.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="FontSize" Value="16"/>
+
+        </Style>
+        <Style  TargetType="TextBox">
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="BorderBrush" Value="#287D7D"/>
+            <Style.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10" />
+
+                </Style>
+            </Style.Resources>
+        </Style>
+        <Style x:Key="RoundedButton" TargetType="{x:Type Button}">
+            <Style.Setters>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border x:Name="button" CornerRadius="5" BorderBrush="Black" BorderThickness="1" Background="#A4E98A">
+                                <TextBlock  Text="{TemplateBinding Button.Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="button" Property="BorderBrush" Value="Black" />
+                                    <Setter TargetName="button" Property="Background"  Value="#365835"/>
+                                    <Setter Property="Foreground" Value="White" />
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter TargetName="button"  Property="Background" Value="#365835"/>
+                                </Trigger>
+                                <Trigger Property="IsFocused" Value="True">
+                                    <Setter TargetName="button" Property="BorderBrush" Value="#FF282828" />
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter TargetName="button" Property="Opacity" Value="0.7" />
+                                    <Setter Property="Foreground" Value="#365835" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style.Setters>
+        </Style>
+    </Page.Resources>
 
     <Grid Background="#CDFEBB">
-        <Button Content="Kreiraj podsetnik" HorizontalAlignment="Left" Margin="667,381,0,0" VerticalAlignment="Top" Click="Kreiraj"  Background="#A4E98A"/>
-        <DatePicker HorizontalAlignment="Left" Margin="254,321,0,0" VerticalAlignment="Top" Name="DatumKraja" />
-        <DatePicker HorizontalAlignment="Left" Margin="254,241,0,0" VerticalAlignment="Top" Name="DatumPocetka" />
-        <TextBox HorizontalAlignment="Left" Margin="254,86,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Name="Naziv"/>
-        <TextBox HorizontalAlignment="Left" Margin="254,142,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="94" Name="Opis" />
-        <Label Content="Unesite naziv podsetnika:" HorizontalAlignment="Left" Margin="28,78,0,0" VerticalAlignment="Top"  />
-        <Label Content="Unesite opis podsetnika:" HorizontalAlignment="Left" Margin="28,142,0,0" VerticalAlignment="Top"/>
-        <Label Content="Unesite datum pocetka:" HorizontalAlignment="Left" Margin="28,227,0,0" VerticalAlignment="Top"/>
-        <Label Content="Unesite datum kraja:" HorizontalAlignment="Left" Margin="28,319,0,0" VerticalAlignment="Top"/>
-        <Label Content="Unesite svoje ime: " HorizontalAlignment="Left" Margin="28,10,0,0" VerticalAlignment="Top"/>
-        <Label Content="Unesite svoje prezime: " HorizontalAlignment="Left" Margin="28,43,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="254,14,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Name="Ime" />
-        <TextBox HorizontalAlignment="Left" Margin="254,51,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Name="Prezime"/>
+        <Button Content="Kreiraj podsetnik" HorizontalAlignment="Left" Margin="647,381,0,0" VerticalAlignment="Top" Click="Kreiraj"  Background="#A4E98A" Style="{DynamicResource RoundedButton}" Height="34" Width="111"/>
+        <DatePicker HorizontalAlignment="Left" Margin="374,307,0,0" VerticalAlignment="Top" Name="DatumKraja" />
+        <DatePicker HorizontalAlignment="Left" Margin="374,263,0,0" VerticalAlignment="Top" Name="DatumPocetka" />
+        <TextBox HorizontalAlignment="Left" Margin="356,85,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Name="Naziv"/>
+        <TextBox HorizontalAlignment="Left" Margin="356,146,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="94" Name="Opis" />
+        <Label Content="Unesite naziv podsetnika:" HorizontalAlignment="Left" Margin="117,85,0,0" VerticalAlignment="Top"  />
+        <Label Content="Unesite opis podsetnika:" HorizontalAlignment="Left" Margin="124,146,0,0" VerticalAlignment="Top"/>
+        <Label Content="Unesite datum pocetka:" HorizontalAlignment="Left" Margin="123,246,0,0" VerticalAlignment="Top"/>
+        <Label Content="Unesite datum kraja:" HorizontalAlignment="Left" Margin="134,300,0,0" VerticalAlignment="Top"/>
+
     </Grid>
 </Page>

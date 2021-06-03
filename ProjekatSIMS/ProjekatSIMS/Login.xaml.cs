@@ -1,7 +1,11 @@
 ﻿using Model;
 using ProjekatSIMS.Model;
 using ProjekatSIMS.Repository;
-using ProjekatSIMS.ViewSekretar;
+
+using Repository;
+
+using ProjekatSIMS.UpravnikWindows;
+
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -23,6 +27,11 @@ namespace ProjekatSIMS
             get;
             set;
         }
+        public List<Pacijent> Pacijenti
+        {
+            get;
+            set;
+        }
         public Login()
         {
             InitializeComponent();
@@ -32,12 +41,15 @@ namespace ProjekatSIMS
 
         private void PrijaviSe(object sender, RoutedEventArgs e)
         {
+            Pacijent pacijent = new Pacijent();
             String korisnickoIme = KorisnickoIme.Text;
             String lozinka = Lozinka.Text;
             Uloga uloga = Uloga.Pacijent;
             LoginRepository loginRepository = new LoginRepository();
+            PacijentRepository pacijentRepository = new PacijentRepository();
             RegistrovaniKorisnici = loginRepository.DobaviSveRegistrovaneKorisnike();
-
+            Pacijenti = pacijentRepository.DobaviSve();
+            
             foreach (RegistrovaniKorisnik rk in RegistrovaniKorisnici)
             {
                 if((rk.KorisnickoIme == korisnickoIme) && (rk.Lozinka == lozinka))
@@ -45,10 +57,18 @@ namespace ProjekatSIMS
                     uloga = rk.uloga;
                 }
             }
+            foreach (Pacijent p in Pacijenti)
+            {
+                if (p.Jmbg == korisnickoIme)
+                {
+                    pacijent = p;
+                }
+            }
+
             switch (uloga)
             {
                 case Uloga.Pacijent:
-                    WindowPacijent.PacijentMainWindow pacijentMainWindow = new WindowPacijent.PacijentMainWindow();
+                    WindowPacijent.PacijentMainWindow pacijentMainWindow = new WindowPacijent.PacijentMainWindow(pacijent);
                     pacijentMainWindow.Show();
                     break;
                 case Uloga.Sekretar:
@@ -56,16 +76,15 @@ namespace ProjekatSIMS
                     sekretarWindow.Show();
                     break;
                 case Uloga.Upravnik:
-                    UpravnikWindow uw = new UpravnikWindow();
+                    Upravnik uw = new Upravnik();
                     uw.Show();
                     break;
-                
-
-
+               
             }
 
-
+            
 
         }
+       
     }
 }

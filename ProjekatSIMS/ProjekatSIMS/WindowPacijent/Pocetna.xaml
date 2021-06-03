@@ -1,0 +1,50 @@
+﻿<Page x:Class="ProjekatSIMS.WindowPacijent.Pocetna"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ProjekatSIMS.WindowPacijent"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Pocetna">
+    <Page.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="FontSize" Value="16"/>
+
+        </Style>
+        <Style  TargetType="TextBox">
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="BorderBrush" Value="#287D7D"/>
+            <Style.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10" />
+
+                </Style>
+            </Style.Resources>
+        </Style>
+       
+    </Page.Resources>
+
+    <Grid Background="#CDFEBB">
+
+        <Label Margin="371,48,-371,-48" FontFamily="Arial" FontSize="20" >Nedeljni raspored terapije</Label>
+        <DataGrid Margin="332,91,127,0" x:Name="DataGridTerapije" ItemsSource="{Binding Recepti}" IsReadOnly="True" 
+                  SelectionMode="Single" AutoGenerateColumns="False" Height="349" VerticalAlignment="Top" IsEnabled="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Naziv leka" Binding="{Binding NazivLeka}"/>
+                <DataGridTextColumn Header="Uputstvo" Binding="{Binding Uputstvo}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Margin="119,91,561,309" Background="#A4E98A" Foreground="White" Click="OceniBolnicu" IsDefault="True" Height="50" Width="120" Style="{StaticResource RoundedButton}">Oceni bolnicu</Button>
+        <Button Margin="119,175,561,225" Background="#A4E98A" Foreground="White" Click="OceniLekara" IsDefault="True" Height="50" Width="120" Style="{StaticResource RoundedButton}">Oceni lekara</Button>
+        <Button Margin="119,250,561,150" Background="#A4E98A" Foreground="White" Click="KreirajPodsetnik" IsDefault="True" Height="50" Width="120" Style="{StaticResource RoundedButton}">Kreiraj podsetnik</Button>
+        <Button Margin="119,327,561,73" Background="#A4E98A" Foreground="White" Click="IzmeniPodsetnik"  IsDefault="True" Height="50" Width="120" Style="{StaticResource RoundedButton}">Izmeni podsetnik</Button>
+
+    </Grid>
+</Page>

@@ -30,9 +30,9 @@
     </Window.Resources>
     <Grid Background="#FEF7BB">
         <Label Margin="281,74,171,299">Unesite svoje podatke za prijavu</Label>
-        <TextBox Name="KorisnickoIme" HorizontalAlignment="Left" Margin="369,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188" Height="43"/>
-        <TextBox x:Name="Lozinka" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" Width="188" Height="43" Margin="369,215,0,0"/>
-        <Button Click="PrijaviSe" Content="Prijavi se" HorizontalAlignment="Left" Margin="636,357,0,0" VerticalAlignment="Top" Background="#FBAF89" Height="33" Width="104"/>
+        <TextBox Name="KorisnickoIme" HorizontalAlignment="Left" Margin="369,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188" Height="43" />
+        <TextBox x:Name="Lozinka" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" Width="188" Height="43" Margin="369,215,0,0" />
+        <Button Click="PrijaviSe" Content="Prijavi se" HorizontalAlignment="Left" Margin="636,357,0,0" VerticalAlignment="Top" Background="#FBAF89" Height="33" Width="104" IsDefault="True"/>
         <Label Content="Korisničko ime" HorizontalAlignment="Left" FontSize="20" Height="43" Margin="221,150,0,0" VerticalAlignment="Top" Width="244"/>
         <Label Content="Lozinka" HorizontalAlignment="Left" FontSize="20" Height="43" Margin="221,221,0,0" VerticalAlignment="Top" Width="107"/>
 

@@ -24,24 +24,19 @@ namespace ProjekatSIMS
         {
             InitializeComponent();
             this.DataContext = this;
-            Oprema = InventarService.inventarRepository.DobaviSavInventar();
+            Oprema = InventarService.inventarRepository.DobaviInventarPoVrsti(true);
             dgrInventar.ItemsSource = Oprema;
         }
-        private void KreirajStatickuOpremu(object sender, RoutedEventArgs e)
-        {
-
-        }
-        private void KreirajDinamickuOpremu(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
+        
         private void ObrisiOpremu(object sender, RoutedEventArgs e)
         {
+            Inventar inventarZaBrisanje = (Inventar)dgrInventar.SelectedItems[0];
+            InventarService.inventarRepository.ObrisiInventar(inventarZaBrisanje.id, inventarZaBrisanje.prostorija);
 
+            Oprema = InventarService.inventarRepository.DobaviInventarPoVrsti(true);
+            dgrInventar.ItemsSource = Oprema;
         }
-        private void IzmeniOpremu(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
     }
 }
