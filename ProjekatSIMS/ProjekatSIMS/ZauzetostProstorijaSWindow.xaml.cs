@@ -78,7 +78,7 @@ namespace ProjekatSIMS
 
         private void Stampaj(object sender, RoutedEventArgs e)
         {
-            IzvestajZauzetihProstorijaSWindow izp = new IzvestajZauzetihProstorijaSWindow();
+            IzvestajZauzetihProstorijaSWindow izp = new IzvestajZauzetihProstorijaSWindow((DateTime)DatumOD.SelectedDate,(DateTime)DatumDO.SelectedDate);
             izp.Show();
         }
 

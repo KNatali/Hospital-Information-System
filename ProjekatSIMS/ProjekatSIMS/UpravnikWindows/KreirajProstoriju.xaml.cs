@@ -17,51 +17,40 @@ using System.Windows.Shapes;
 namespace ProjekatSIMS.UpravnikWindows
 {
     
-    public partial class IzmeniProstoriju : Page
+    public partial class KreirajProstoriju : Page
     {
         public ProstorijaController prostorijaController { get; set; }
+      
         public List<Prostorija> prostorije { get; set; }
         public List<String> vrste { get; set; }
-        public Prostorija prostorijaZaIzmenu { get; set; }
-
-        public IzmeniProstoriju(Prostorija p)
+        public KreirajProstoriju()
         {
             InitializeComponent();
             this.DataContext = this;
-            prostorijaZaIzmenu = p;
-            prostorije = new List<Prostorija>();
             prostorijaController = new ProstorijaController();
-            prostorije = prostorijaController.prostorijaService.prostorijaRepository.DobaviSve();
-            vrste = new List<String> { "Magacin", "Ordinacija", "Sala", "Soba", "Kancelarija" };
-            
-        }
+            prostorije = new List<Prostorija>(prostorijaController.prostorijaService.prostorijaRepository.DobaviSve());
+            vrste = new List<string> { "Magacin", "Ordinacija", "Sala", "Soba", "Kancelarija" };
 
-        private void Izmeni(object sender, RoutedEventArgs e)
+        }
+        private void Kreiraj(object sender, RoutedEventArgs e)
         {
             String vrsta = (String)vrstaProstorije.SelectedItem;
-            if (vrstaProstorije.SelectedItem == null || prostorijaZaIzmenu.id == "0")
+            if(prostorijaController.KreirajProstoriju(Id.Text, vrsta, Convert.ToInt32(Sprat.Text), Convert.ToDouble(Kvadratura.Text)) == false)
             {
-                vrsta = Vrsta.Text;
-            }
-            
-            
-            if(prostorijaController.IzmeniProstoriju(prostorijaZaIzmenu.id, vrsta, Convert.ToInt32(Sprat.Text), Convert.ToDouble(Kvadratura.Text)))
-            {
-                MessageBox.Show("Uspesno ste izmenili prostoriju!");
-                Upravnik uw = (Upravnik)Window.GetWindow(this);
-                uw.UpravnikFrame.Content = new PregledProstorija();
+                MessageBox.Show("Uneta sifra vec postoji!");
             }
             else
             {
-                MessageBox.Show("Greska pri odabiru vrste prostorije, morate izabrati vrstu!");
+                MessageBox.Show("Uspesno ste kreirali prostoriju!");
+                Upravnik uw = (Upravnik)Window.GetWindow(this);
+                uw.UpravnikFrame.Content = new PregledProstorija();
             }
-
         }
+
         private void Odustani(object sender, RoutedEventArgs e)
         {
             Upravnik uw = (Upravnik)Window.GetWindow(this);
             uw.UpravnikFrame.Content = new PregledProstorija();
         }
-
-        }
+    }
 }

@@ -7,7 +7,7 @@
         
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         mc:Ignorable="d"
-        Title="Upravnik" Height="450" Width="800">
+        Title="Upravnik" Height="550" Width="850">
     <Window.Resources>
         <Style TargetType="Label">
             <Setter Property="FontFamily" Value="Roboto"/>
@@ -18,28 +18,29 @@
             <Setter Property="FontFamily" Value="Roboto"/>
             <Setter Property="FontSize" Value="16"/>
         </Style>
+        
     </Window.Resources>
 
 
 
-    <Grid >
+    <Grid Background="MediumAquamarine" >
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
+            <RowDefinition  Height="40"/>
             <RowDefinition Height="*"/>
 
 
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Background="MediumAquamarine" Margin="0,0,0,0" Height="auto" >
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Background="MediumAquamarine"  Height="auto" HorizontalAlignment="Left" >
 
 
 
 
             <Menu x:Name="Meni" Height="40"  >
-                <MenuItem Header="Profil" Height="auto"  Background="MediumAquamarine" >
+                <MenuItem Header="Profil" Click="Profil" Height="auto"  Background="MediumAquamarine" >
                     <MenuItem.Icon>
                         <fa:ImageAwesome Icon="User" Width="40" />
 
@@ -57,7 +58,6 @@
                     </MenuItem.Icon>
                     <MenuItem Header="Pregledaj lekove" Background="MediumAquamarine" Click="PregledajLekove" />
                     <MenuItem Header="Kreiraj lek" Background="MediumAquamarine"  Click="KreirajLek"/>
-                    <MenuItem Header="Izmeni lek" Background="MediumAquamarine"  Click="IzmeniLek"/>
                 </MenuItem>
                 <MenuItem Header="Prostorije" Background="MediumAquamarine"  Height="auto" >
                     <MenuItem.Icon>
@@ -65,17 +65,15 @@
                     </MenuItem.Icon>
                     <MenuItem Header="Pregledaj prostorije" Background="MediumAquamarine" Click="PregledajProstorije" />
                     <MenuItem Header="Kreiraj prostoriju" Background="MediumAquamarine"  Click="KreirajProstoriju"/>
-                    <MenuItem Header="Izmeni prostoriju" Background="MediumAquamarine" Click="IzmeniProstoriju"/>
                 </MenuItem>
                 <MenuItem Header="Inventar" Background="MediumAquamarine"  Height="auto" >
                     <MenuItem.Icon>
                         <fa:ImageAwesome Icon="ListAlt" Width="15" />
                     </MenuItem.Icon>
-                    <MenuItem Header="Pregledaj inventar" Background="MediumAquamarine" Click="PregledajInventar" />
+                    <MenuItem Header="Pregledaj staticki inventar" Background="MediumAquamarine" Click="PregledajInventar" />
                     <MenuItem Header="Pregledaj dinamicki inventar" Background="MediumAquamarine" Click="DinamickiInventar" />
                     <MenuItem Header="Kreiraj dinamicki inventar" Background="MediumAquamarine"  Click="KreirajDinamicki"/>
                     <MenuItem Header="Kreiraj staticki inventar" Background="MediumAquamarine" Click="KreirajStaticki"/>
-                    <MenuItem Header="Izmeni inventar" Background="MediumAquamarine" Click="IzmeniInventar"/>
 
                 </MenuItem>
                 <MenuItem Header="Renoviranje" Background="MediumAquamarine" Height="auto"  >
@@ -85,21 +83,27 @@
                     <MenuItem Header="Renoviranje" Background="MediumAquamarine" Click="Renoviranje"/>
                     <MenuItem Header="Napredno renoviranje" Background="MediumAquamarine" Click="NaprednoRenoviranje"/>
                 </MenuItem>
-                <MenuItem Header="Pomoc" Background="MediumAquamarine" Width="auto" Height="auto"    >
-                    <MenuItem.Icon>
-                        <fa:ImageAwesome Icon="Question" Width="35" />
-                    </MenuItem.Icon>
-                </MenuItem>
                 
-                <MenuItem Header="Odjavi se" Background="MediumAquamarine" Width="auto" Height="auto"    >
-                    <MenuItem.Icon>
-                        <fa:ImageAwesome Icon="SignOut" Width="15" />
-                    </MenuItem.Icon>
-                </MenuItem>
 
             </Menu>
 
         </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Background="MediumAquamarine" Margin="650,0,0,0" Height="auto" HorizontalAlignment="Right" >
+            <Menu x:Name="Meni2"  Height="40">
+                <MenuItem Header="Pomoc" Background="MediumAquamarine" Width="auto" Height="40"    >
+                    <MenuItem.Icon>
+                        <fa:ImageAwesome Icon="Question" Width="35" />
+                    </MenuItem.Icon>
+                </MenuItem>
+
+                <MenuItem Header="Odjavi se" Background="MediumAquamarine" Height="auto" Width="78"    >
+                    <MenuItem.Icon>
+                        <fa:ImageAwesome Icon="SignOut" Width="15" />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </Menu>
+        </StackPanel>
+
         <Frame  x:Name="UpravnikFrame" NavigationUIVisibility="Hidden" Grid.Row="1" Grid.Column="1"  Background="Azure" Navigated="UpravnikFrame_Navigated"  />
 
 

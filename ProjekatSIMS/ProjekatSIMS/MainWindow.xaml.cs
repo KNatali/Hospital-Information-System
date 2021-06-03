@@ -2,7 +2,6 @@
 using Model;
 using ProjekatSIMS.Controller;
 using ProjekatSIMS.Model;
-using ProjekatSIMS.Repository;
 using ProjekatSIMS.UpravnikWindows;
 using ProjekatSIMS.ViewDoktor;
 using Repository;
@@ -82,12 +81,18 @@ namespace ProjekatSIMS
                         pacijentMainWindow.Show();
                         break;
                     case Uloga.Sekretar:
-                        SekretarWindow sekretarWindow = new SekretarWindow();
-                        sekretarWindow.Show();
+                        Pocetna pocetna = new Pocetna();
+                        pocetna.Show();
+                        //SekretarWindow sekretarWindow = new SekretarWindow();
+                        //sekretarWindow.Show();
                         break;
                     case Uloga.Upravnik:
-                        Upravnik upravnikWindow = new Upravnik();
+
+
+                        Upravnik upravnikWindow = new Upravnik(korisnickoIme, lozinka, uloga) ;
+
                         upravnikWindow.Show();
+                        this.Close();
                         break;
                     case Uloga.Doktor:
                         RegistrovaniKorisnik korisnik = new RegistrovaniKorisnik();
