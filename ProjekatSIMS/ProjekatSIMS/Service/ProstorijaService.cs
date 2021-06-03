@@ -105,7 +105,10 @@ namespace ProjekatSIMS.Service
             
 
         }
-        
-        
+        public List<Prostorija> DobaviSve()
+        {
+            return prostorijaRepository.DobaviSve();
+        }
+
     }
 }
