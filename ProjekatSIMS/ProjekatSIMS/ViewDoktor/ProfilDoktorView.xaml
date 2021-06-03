@@ -81,13 +81,13 @@
                     <Label Grid.Row="5" Content="Email:" HorizontalAlignment="Stretch"/>
                     <Label Grid.Row="6" Content="Broj telefona:" HorizontalAlignment="Stretch"/>
                     <Label Grid.Row="7" Content="Broj slobodnih dana:" HorizontalAlignment="Stretch"/>
-                    <TextBox Name="Ime" Grid.Row="1" Grid.Column="1" IsReadOnly="True" HorizontalAlignment="Stretch"  Text="" TextWrapping="Wrap"/>
-                    <TextBox Name="Jmbg" IsReadOnly="True" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch"  Text="" TextWrapping="Wrap"/>
-                    <TextBox Name="Prezime" Grid.Row="2" Grid.Column="1" IsReadOnly="True" HorizontalAlignment="Stretch"  Text="" TextWrapping="Wrap"/>
-                    <TextBox Name="Datum" Grid.Row="3" Grid.Column="1" IsReadOnly="True" HorizontalAlignment="Stretch"  Text="" TextWrapping="Wrap"/>
-                    <TextBox Name="Email" Grid.Row="4" Grid.Column="1" IsReadOnly="True" HorizontalAlignment="Stretch"  Text="" TextWrapping="Wrap"/>
-                    <TextBox Name="Adresa" Grid.Row="5" Grid.Column="1" IsReadOnly="True" HorizontalAlignment="Stretch"  Text="" TextWrapping="Wrap"/>
-                    <TextBox Name="Broj" Grid.Row="6" Grid.Column="1" IsReadOnly="True" HorizontalAlignment="Stretch"  Text="" TextWrapping="Wrap"/>
+                    <TextBox Name="Ime" Grid.Row="1" Grid.Column="1" IsReadOnly="True" HorizontalAlignment="Stretch"  Text="{Binding Ime}" TextWrapping="Wrap"/>
+                    <TextBox Name="Jmbg" IsReadOnly="True" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" Text="{Binding Jmbg}" TextWrapping="Wrap"/>
+                    <TextBox Name="Prezime" Grid.Row="2" Grid.Column="1" IsReadOnly="True" HorizontalAlignment="Stretch" Text="{Binding Prezime}" TextWrapping="Wrap"/>
+                    <TextBox Name="Datum" Grid.Row="3" Grid.Column="1" IsReadOnly="True" HorizontalAlignment="Stretch"  Text="{Binding DatumRodjenja}" TextWrapping="Wrap"/>
+                    <TextBox Name="Email" Grid.Row="4" Grid.Column="1" IsReadOnly="True" HorizontalAlignment="Stretch"  Text="{Binding Email}" TextWrapping="Wrap"/>
+                    <TextBox Name="Adresa" Grid.Row="5" Grid.Column="1" IsReadOnly="True" HorizontalAlignment="Stretch"  Text="{Binding Adresa}" TextWrapping="Wrap"/>
+                    <TextBox Name="Broj" Grid.Row="6" Grid.Column="1" IsReadOnly="True" HorizontalAlignment="Stretch" Text="{Binding BrojTelefona}" TextWrapping="Wrap"/>
                     <TextBox Name="SlobodniDani" Grid.Row="7" Grid.Column="1" IsReadOnly="True" HorizontalAlignment="Stretch"  Text="" TextWrapping="Wrap"/>
 
                 </Grid>

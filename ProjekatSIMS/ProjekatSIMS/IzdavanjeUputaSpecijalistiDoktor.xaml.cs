@@ -1,6 +1,8 @@
 ﻿using Controller;
 using Model;
 using ProjekatSIMS.DTO;
+using ProjekatSIMS.ViewDoktor;
+using ProjekatSIMS.ViewModelDoktor;
 using Repository;
 using System;
 using System.Collections.Generic;
@@ -62,7 +64,9 @@ namespace ProjekatSIMS
             if (izdavanjeUputaSpecijalistiController.IzdavanjeUputa(izabraniPacijent, izabraniDoktor, izabranTermin))
             {
                 MessageBox.Show("Uput je uspjesno izdat");
-                this.NavigationService.Navigate(new Uri("PrikazPregledaDoktor.xaml", UriKind.Relative));
+                PrikazPregledaDoktorViewModel vm1 = new PrikazPregledaDoktorViewModel(this.NavigationService);
+                PrikazPregledaDoktorView kalendar = new PrikazPregledaDoktorView(vm1);
+                this.NavigationService.Navigate(kalendar);
             }
             else
                 MessageBox.Show("Neuspjesno izdavanje uputa");

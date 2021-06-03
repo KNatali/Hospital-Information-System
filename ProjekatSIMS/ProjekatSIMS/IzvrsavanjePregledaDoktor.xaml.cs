@@ -15,22 +15,28 @@ using System.Windows.Shapes;
 
 namespace ProjekatSIMS
 {
-   
+
     public partial class IzvrsavanjePregledaDoktor : Page
     {
         public Pregled pregled;
+        private PacijentRepository pacijentRepository = new PacijentRepository();
+        public Pacijent Pacijent{get; set;}
         public IzvrsavanjePregledaDoktor(Pregled p)
         {
             InitializeComponent();
             pregled = p;
+            Pacijent = p.pacijent;
+           // Pacijent = pacijentRepository.DobaviById(p.Pacijent);
             this.DataContext = this;
            
         }
 
         private void ZdravstveniKarton(object sender, RoutedEventArgs e)
         {
+            //ZdravstveniKartonDoktor z = new ZdravstveniKartonDoktor(pregled.Pacijent);
             ZdravstveniKartonDoktor z = new ZdravstveniKartonDoktor(pregled.pacijent);
-          
+
+
             this.NavigationService.Navigate(z);
         }
 
@@ -54,27 +60,27 @@ namespace ProjekatSIMS
 
         private void IzdavanjeUputa(object sender, RoutedEventArgs e)
         {
-            IzdavanjeUputaSpecijalistiDoktor z = new IzdavanjeUputaSpecijalistiDoktor(pregled.pacijent);
+            IzdavanjeUputaSpecijalistiDoktor z = new IzdavanjeUputaSpecijalistiDoktor(Pacijent);
            
             this.NavigationService.Navigate(z);
         }
         private void IzdavanjeUputaBolnickoLijecenje(object sender, RoutedEventArgs e)
         {
-            UputZaBolnickoLijecenjeDoktor z = new UputZaBolnickoLijecenjeDoktor(pregled.pacijent);
+            UputZaBolnickoLijecenjeDoktor z = new UputZaBolnickoLijecenjeDoktor(Pacijent);
         
             this.NavigationService.Navigate(z);
         }
 
         private void IzdavanjeRecepta(object sender, RoutedEventArgs e)
         {
-            IzdajReceptDoktor z = new IzdajReceptDoktor(pregled.pacijent);
+            IzdajReceptDoktor z = new IzdajReceptDoktor(Pacijent);
         
             this.NavigationService.Navigate(z);
         }
 
         private void KreiranjeAnamneze(object sender, RoutedEventArgs e)
         {
-            KreirajAnamnezu z = new KreirajAnamnezu(pregled.pacijent);
+            KreirajAnamnezu z = new KreirajAnamnezu(Pacijent);
       
             this.NavigationService.Navigate(z);
         }

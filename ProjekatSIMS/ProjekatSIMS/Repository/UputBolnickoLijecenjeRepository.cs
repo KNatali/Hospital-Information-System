@@ -36,5 +36,18 @@ namespace Repository
             sviUputi.Add(uput);
             SacuvajUpute(sviUputi);
         }
+
+        public List<UputBolnickoLijecenje> DobaviUputZaKarton(int id)
+        {
+            List<UputBolnickoLijecenje> sviUputi = DobaviSveUpute();
+            List<UputBolnickoLijecenje> uputi = new List<UputBolnickoLijecenje>();
+            foreach(UputBolnickoLijecenje u in sviUputi)
+            {
+                if (u.IdKartona == id)
+                    uputi.Add(u);
+            }
+
+            return uputi;
+        }
     }
 }

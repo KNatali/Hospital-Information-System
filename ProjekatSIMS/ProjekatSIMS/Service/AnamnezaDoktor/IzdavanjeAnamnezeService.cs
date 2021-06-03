@@ -32,7 +32,7 @@ namespace Service
 
         public int GenerisiId(List<Anamneza> anamneze)
         {
-            if (anamneze.Count == 0)
+            if (anamneze ==null)
                 return 1;
 
             else

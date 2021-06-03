@@ -202,7 +202,7 @@
             <Setter Property="RowStyle">
                 <Setter.Value>
                     <Style TargetType="DataGridRow">
-                        <Setter Property="Height" Value="65"/>
+                        <!--<Setter Property="Height" Value="65"/>-->
                         <Style.Triggers>
                             <!-- Highlight a grid row as the mouse passes over -->
                             <Trigger Property="IsMouseOver" Value="True">

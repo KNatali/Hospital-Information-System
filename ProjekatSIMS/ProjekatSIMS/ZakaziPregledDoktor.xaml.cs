@@ -1,6 +1,8 @@
 ﻿using Controller;
 using Model;
 using Newtonsoft.Json;
+using ProjekatSIMS.ViewDoktor;
+using ProjekatSIMS.ViewModelDoktor;
 using Repository;
 using System;
 using System.Collections.Generic;
@@ -93,8 +95,10 @@ namespace ProjekatSIMS
             else
             {
                 zakaziPregled.ZakaziPregled(pregled);
-                MessageBox.Show("Operacija je uspjesno zakazana");
-                this.NavigationService.Navigate(new Uri("PrikazPregledaDoktor.xaml", UriKind.Relative));
+                MessageBox.Show("Pregled je uspjesno zakazan");
+                PrikazPregledaDoktorViewModel vm1 = new PrikazPregledaDoktorViewModel(this.NavigationService);
+                PrikazPregledaDoktorView kalendar = new PrikazPregledaDoktorView(vm1);
+                this.NavigationService.Navigate(kalendar);
 
             }
         }

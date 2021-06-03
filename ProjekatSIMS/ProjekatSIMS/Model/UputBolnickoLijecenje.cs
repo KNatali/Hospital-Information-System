@@ -18,7 +18,7 @@ namespace Model
         }
         public UputBolnickoLijecenje(int id,IntervalDatuma interval, string sobaId, int krevetId,int idKartona)
         {
-            this.id = id;
+            this.Id = id;
             this.Interval = interval;
             this.SobaId = sobaId;
             this.KrevetId = krevetId;

@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Windows;
 
 namespace Repository
 {
@@ -42,7 +43,11 @@ namespace Repository
             foreach (ZdravsteniKarton z in sviKartoni)
             {
                 if (z.IdPacijent == pacijent.Jmbg)
+                {
+                    MessageBox.Show("Nadjen");
                     return z;
+                }
+                   
             }
             return null;
 

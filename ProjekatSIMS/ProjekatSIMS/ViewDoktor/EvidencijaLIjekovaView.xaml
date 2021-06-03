@@ -129,11 +129,11 @@
             <DataGrid x:Name="Sastojci" Margin="5,0,0,2"  ItemsSource="{Binding Sastojci}" IsReadOnly="True" Grid.Row="1" Grid.Column="2"  Style="{StaticResource Tabela}"
                     AutoGenerateColumns="False"
                   SelectionMode="Single" 
-
                   ScrollViewer.CanContentScroll="True" 
                   ScrollViewer.VerticalScrollBarVisibility="Auto">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Naziv sastojka" Binding="{Binding Text}" Width="*"/>
+                    
+                    <DataGridTextColumn Header="Naziv sastojka" Binding="{Binding Text}" Width="*" />
 
                 </DataGrid.Columns>
             </DataGrid>
@@ -145,14 +145,14 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Label Content="Alternativni lijekovi:"></Label>
-            <DataGrid x:Name="AlternativniLijekovi"  ItemsSource="{Binding AlternativniLijekovi}" Margin="5,2,0,5" IsReadOnly="True"  Grid.Row="2" Grid.Column="2"  Style="{StaticResource Tabela}"
-
+            <DataGrid x:Name="AlternativniLijekovi" Margin="5,2,0,5" IsReadOnly="True"  Grid.Row="2" Grid.Column="2"  Style="{StaticResource Tabela}"
+                    ItemsSource="{Binding AlternativniLijekovi}"
                   SelectionMode="Single" AutoGenerateColumns="False" 
 
                   ScrollViewer.CanContentScroll="True" 
                   ScrollViewer.VerticalScrollBarVisibility="Auto">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Naziv lijeka" Binding="{Binding Text}"  Width="*"/>
+                    <DataGridTextColumn Header="Naziv lijeka"  Binding="{Binding Text}" Width="*"/>
 
                 </DataGrid.Columns>
             </DataGrid>

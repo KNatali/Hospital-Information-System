@@ -40,7 +40,8 @@ namespace ProjekatSIMS
             AnamnezaDTO anamneza = new AnamnezaDTO(Opis.Text, (DateTime)Datum.SelectedDate, Pacijent.IdKartona);
             izdavanjeAnamnezeController.KreiranjeAnamneze(anamneza);
             MessageBox.Show("Uspjesno je sacuvana anamneza");
-            ZdravstveniKartonDoktor z = new ZdravstveniKartonDoktor(Pacijent);
+            // ZdravstveniKartonDoktor z = new ZdravstveniKartonDoktor(Pacijent.Jmbg);
+            ZdravstveniKartonDoktor z = new ZdravstveniKartonDoktor(Pacijent );
 
             this.NavigationService.Navigate(z);
 
