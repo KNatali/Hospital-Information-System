@@ -25,6 +25,17 @@ namespace Repository
             LokacijaFajla = lokacija;
         }
 
+        public ZdravsteniKarton DobaviZdravstveniKartonById(int id)
+        {
+            sviKartoni = DobaviZdravstveneKartone();
+            foreach (ZdravsteniKarton z in sviKartoni)
+            {
+                if (z.Id == id)
+                    return z;
+            }
+            return null;
+        }
+
         public ZdravsteniKarton DobaviZdravstveniKartonZaPacijenta(Pacijent pacijent)
         {
             sviKartoni = DobaviZdravstveneKartone();

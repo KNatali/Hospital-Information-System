@@ -37,7 +37,7 @@ namespace ProjekatSIMS
 
         private void Azuriranje(object sender, RoutedEventArgs e)
         {
-            azuriranjeAnamnezeController.AzuriranjeAnamneze(anamneza, Opis.Text, pacijent);
+            azuriranjeAnamnezeController.AzuriranjeAnamneze(anamneza, Opis.Text);
             PrikazAnamneza pa = new PrikazAnamneza(pacijent);
 
             this.NavigationService.Navigate(pa);

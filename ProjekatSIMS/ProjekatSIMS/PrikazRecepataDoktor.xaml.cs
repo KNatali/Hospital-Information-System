@@ -1,4 +1,5 @@
 ﻿using Model;
+using ProjekatSIMS.Controller.ReceptDoktor;
 using Repository;
 using System.Collections.Generic;
 using System.Windows;
@@ -13,6 +14,7 @@ namespace ProjekatSIMS
         public List<Recept> Recepti { get; set; }
         public Pacijent pacijent { get; set; }
         private ZdravstveniKartonRepository zdravstveniKartonRepository = new ZdravstveniKartonRepository();
+        private PrikazRecepataController prikazRecepataController = new PrikazRecepataController();
 
 
         public PrikazRecepataDoktor(Pacijent p)
@@ -22,13 +24,14 @@ namespace ProjekatSIMS
             Recepti = new List<Recept>();
             pacijent = p;
             List<Recept> recepti;
-            ZdravsteniKarton zdravstveniKarton = zdravstveniKartonRepository.DobaviZdravstveniKartonZaPacijenta(pacijent);
+            /*ZdravsteniKarton zdravstveniKarton = zdravstveniKartonRepository.DobaviZdravstveniKartonZaPacijenta(pacijent);
             if (zdravstveniKarton.Recepti == null)
                 recepti = new List<Recept>();
             else
                 recepti = zdravstveniKarton.Recepti;
             foreach (Recept r in recepti)
-                Recepti.Add(r);
+                Recepti.Add(r);*/
+            Recepti= prikazRecepataController.PrikazRecepata(p.IdKartona);
 
         }
 

@@ -91,9 +91,9 @@ namespace Service
 
         private static bool DaLiSeTerminiPoklapaju(IntervalDatuma termin, UputBolnickoLijecenje u)
         {
-            return (DateTime.Compare(termin.PocetnoVrijeme, u.IntervalPocetak) >= 0 && DateTime.Compare(termin.PocetnoVrijeme, u.IntervalKraj) < 0 ||
-                   DateTime.Compare(termin.KrajnjeVrijeme, u.IntervalPocetak) > 0 && DateTime.Compare(termin.KrajnjeVrijeme, u.IntervalKraj) <= 0 ||
-                   DateTime.Compare(termin.PocetnoVrijeme, u.IntervalPocetak) <= 0 && DateTime.Compare(termin.KrajnjeVrijeme, u.IntervalKraj) >= 0);
+            return (DateTime.Compare(termin.PocetnoVrijeme, u.Interval.PocetnoVrijeme) >= 0 && DateTime.Compare(termin.PocetnoVrijeme, u.Interval.KrajnjeVrijeme) < 0 ||
+                   DateTime.Compare(termin.KrajnjeVrijeme, u.Interval.PocetnoVrijeme) > 0 && DateTime.Compare(termin.KrajnjeVrijeme, u.Interval.KrajnjeVrijeme) <= 0 ||
+                   DateTime.Compare(termin.PocetnoVrijeme, u.Interval.PocetnoVrijeme) <= 0 && DateTime.Compare(termin.KrajnjeVrijeme, u.Interval.KrajnjeVrijeme) >= 0);
         }
 
 

@@ -1,6 +1,7 @@
 ﻿using Controller;
 using Model;
 using Newtonsoft.Json;
+using ProjekatSIMS.DTO;
 using Repository;
 using System;
 using System.Collections.Generic;
@@ -36,7 +37,8 @@ namespace ProjekatSIMS
 
         private void KreiranjeAnamneze(object sender, RoutedEventArgs e)
         {
-            izdavanjeAnamnezeController.KreiranjeAnamneze(Opis.Text, (DateTime)Datum.SelectedDate, Pacijent);
+            AnamnezaDTO anamneza = new AnamnezaDTO(Opis.Text, (DateTime)Datum.SelectedDate, Pacijent.IdKartona);
+            izdavanjeAnamnezeController.KreiranjeAnamneze(anamneza);
             MessageBox.Show("Uspjesno je sacuvana anamneza");
             ZdravstveniKartonDoktor z = new ZdravstveniKartonDoktor(Pacijent);
 

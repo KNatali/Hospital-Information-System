@@ -1,4 +1,5 @@
 ﻿using Model;
+using ProjekatSIMS.DTO;
 using Repository;
 using System;
 using System.Collections.Generic;
@@ -10,10 +11,21 @@ namespace Service
     {
         private UputBolnickoLijecenjeRepository uputRepository = new UputBolnickoLijecenjeRepository();
         private ZdravstveniKartonRepository zdravstveniKartonRepository = new ZdravstveniKartonRepository();
-        public void CuvanjeUputa(UputBolnickoLijecenje uput, Pacijent pacijent)
+        public void CuvanjeUputa(UputBolnickoLijecenjeDTO uput, Pacijent pacijent)
         {
-            uputRepository.SacuvajUput(uput);
-            DodavanjeUputaUZdravstveniKarton(uput, pacijent);
+            List<UputBolnickoLijecenje> sviUputi = uputRepository.DobaviSveUpute();
+            UputBolnickoLijecenje noviUput = new UputBolnickoLijecenje(GenerisiId(sviUputi), uput.Interval,uput.SobaId, uput.KrevetId, uput.IdKartona);
+            uputRepository.SacuvajUput(noviUput);
+            DodavanjeUputaUZdravstveniKarton(noviUput, pacijent);
+        }
+        public int GenerisiId(List<UputBolnickoLijecenje> uputi)
+        {
+            if (uputi.Count == 0)
+                return 1;
+
+            else
+                return uputi[uputi.Count - 1].Id + 1;
+
         }
 
         public void DodavanjeUputaUZdravstveniKarton(UputBolnickoLijecenje uput, Pacijent pacijent)
@@ -21,8 +33,8 @@ namespace Service
             ZdravsteniKarton zdravstveniKarton = zdravstveniKartonRepository.DobaviZdravstveniKartonZaPacijenta(pacijent);
 
             if (zdravstveniKarton.UputiZaBolnickoLijecenje == null)
-                zdravstveniKarton.UputiZaBolnickoLijecenje = new List<UputBolnickoLijecenje>();
-            zdravstveniKarton.UputiZaBolnickoLijecenje.Add(uput);
+                zdravstveniKarton.UputiZaBolnickoLijecenje = new List<int>();
+            zdravstveniKarton.UputiZaBolnickoLijecenje.Add(uput.Id);
             zdravstveniKartonRepository.AzurirajKarton(zdravstveniKarton);
         }
     }
