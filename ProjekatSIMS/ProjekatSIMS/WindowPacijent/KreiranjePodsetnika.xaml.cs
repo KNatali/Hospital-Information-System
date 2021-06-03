@@ -1,4 +1,5 @@
 ﻿using Controller;
+using Model;
 using ProjekatSIMS.Model;
 using System;
 using System.Collections.Generic;
@@ -10,10 +11,12 @@ namespace ProjekatSIMS.WindowPacijent
 {
     public partial class KreiranjePodsetnika : Page
     {
-        public KreiranjePodsetnika()
+        public Pacijent trenutniPacijent { get; set; }
+        public KreiranjePodsetnika(Pacijent pacijent)
         {
             InitializeComponent();
             this.DataContext = this;
+            trenutniPacijent = pacijent;
         }
 
         private void Kreiraj(object sender, RoutedEventArgs e)
@@ -23,11 +26,11 @@ namespace ProjekatSIMS.WindowPacijent
             String opis = Opis.Text;
             DateTime datumPocetka = (DateTime)DatumPocetka.SelectedDate;
             DateTime datumKraja = (DateTime)DatumKraja.SelectedDate;
-            String ime = Ime.Text;
-            String prezime = Prezime.Text;
+            String ime = trenutniPacijent.Ime;
+            String prezime = trenutniPacijent.Prezime;
 
             PodsetnikController podsetnikController = new PodsetnikController();
-            if (podsetnikController.KreiranjePodsetnika(naziv, opis, datumPocetka, datumKraja, ime, prezime) == true)
+            if (podsetnikController.KreiranjePodsetnika(naziv, opis, datumPocetka, datumKraja, "5555") == true)
             {
                 MessageBox.Show("Uspesno ste kreirali svoj podsetnik");
                 

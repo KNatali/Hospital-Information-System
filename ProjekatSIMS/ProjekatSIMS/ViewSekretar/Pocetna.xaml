@@ -1,0 +1,80 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjekatSIMS.ViewSekretar"
+        xmlns:viewModel="clr-namespace:ProjekatSIMS.ViewModelSekretar"
+        xmlns:fa="http://schemas.fontawesome.io/icons/" x:Class="ProjekatSIMS.ViewSekretar.Pocetna"
+        mc:Ignorable="d"
+        Title="Pocetna" Height="568" Width="924" Background="#d1e3ff">
+    <Grid>
+        <Label Margin="239,21,401,445">
+            <StackPanel Orientation="Horizontal">
+                <fa:ImageAwesome Icon="Globe" Width="60" Foreground="#1963bf"/>
+                <fa:ImageAwesome Icon="HSquare" Width="37" Foreground="#b31a0c"/>
+                <fa:ImageAwesome Icon="UserMd" Width="37" Foreground="#1963bf"/>
+            </StackPanel>
+        </Label>
+        <Label Margin="255,37,381,445">
+            <StackPanel Orientation="Horizontal">
+                <fa:ImageAwesome Icon="Heart" Width="15" Foreground="#b31a0c"/>
+            </StackPanel>
+        </Label>
+        <Label Content="ZDRAVO KORPORACIJA" FontSize="25" Margin="388,34,108,462" Foreground="#1963bf" FontWeight="Bold"/>
+        <Button Command="{Binding NavCommand}" CommandParameter="kreiranjePacijenta" HorizontalAlignment="Left" Margin="100,120,0,0" VerticalAlignment="Top" Height="60" Width="330" Style="{StaticResource Dugme}">
+            <StackPanel Orientation="Horizontal">
+                <fa:ImageAwesome Icon="UserPlus" Width="30" Foreground="#1963bf"/>
+                <TextBlock Text=" Kreirajte profil pacijenta"/>
+            </StackPanel>
+        </Button>
+        <Button Command="{Binding NavCommand}" CommandParameter="pretragaPacijenta" HorizontalAlignment="Left" Margin="100,200,0,0" VerticalAlignment="Top" Height="60" Width="330" Style="{StaticResource Dugme}">
+            <StackPanel Orientation="Horizontal">
+                <fa:ImageAwesome Icon="Users" Width="30" Foreground="#1963bf"/>
+                <TextBlock Text=" Pretražite pacijente"/>
+            </StackPanel>
+        </Button>
+        <Button Command="{Binding NavCommand}" CommandParameter="hitno" HorizontalAlignment="Center" Style="{StaticResource Hitno}" VerticalAlignment="Top" Height="60" Width="330" Margin="0,280,0,0">
+            <StackPanel Orientation="Horizontal">
+                <fa:ImageAwesome Icon="Heartbeat" Width="30" Foreground="#b31a0c"/>
+                <TextBlock Text=" Zakažite hitnu operaciju"/>
+            </StackPanel>
+        </Button>
+        <Button Command="{Binding NavCommand}" CommandParameter="oglasnaTabla" HorizontalAlignment="Left" Margin="100,440,0,0" VerticalAlignment="Top" Height="60" Width="330" Style="{StaticResource Dugme}">
+            <StackPanel Orientation="Horizontal">
+                <fa:ImageAwesome Icon="Commenting" Width="30" Foreground="#1963bf"/>
+                <TextBlock Text=" Vesti na oglasnoj tabli"/>
+            </StackPanel>
+        </Button>
+        <Button Command="{Binding NavCommand}" CommandParameter="kalendarPregleda" HorizontalAlignment="Left" Margin="100,360,0,0" VerticalAlignment="Top" Height="60" Width="330" Style="{StaticResource Dugme}">
+            <StackPanel Orientation="Horizontal">
+                <fa:ImageAwesome Icon="Calendar" Width="30" Foreground="#1963bf"/>
+                <TextBlock Text=" Svi zakazani termini"/>
+            </StackPanel>
+        </Button>
+        <Button Command="{Binding NavCommand}" CommandParameter="pretragaDoktora" HorizontalAlignment="Left" Margin="500,200,0,0" VerticalAlignment="Top" Height="60" Width="330" Style="{StaticResource Dugme}">
+            <StackPanel Orientation="Horizontal">
+                <fa:ImageAwesome Icon="UserMd" Width="30" Foreground="#1963bf"/>
+                <TextBlock Text=" Pretražite doktore"/>
+            </StackPanel>
+        </Button>
+        <Button Command="{Binding NavCommand}" CommandParameter="zauzetostProstorija" HorizontalAlignment="Left" Margin="500,360,0,0" VerticalAlignment="Top" Height="60" Width="330" Style="{StaticResource Dugme}">
+            <StackPanel Orientation="Horizontal">
+                <fa:ImageAwesome Icon="FileText" Width="30" Foreground="#1963bf"/>
+                <TextBlock Text=" Zauzetost prostorija"/>
+            </StackPanel>
+        </Button>
+        <Button Command="{Binding NavCommand}" CommandParameter="odjavljivanje" HorizontalAlignment="Left" Margin="500,440,0,0" Foreground="#b31a0c" VerticalAlignment="Top" Height="60" Width="330" Style="{StaticResource Dugme}">
+            <StackPanel Orientation="Horizontal">
+                <fa:ImageAwesome Icon="SignOut" Width="30" Foreground="#b31a0c"/>
+                <TextBlock Text=" Odjavite se"/>
+            </StackPanel>
+        </Button>
+        <Button Command="{Binding NavCommand}" CommandParameter="kreiranjeDoktora" HorizontalAlignment="Left" Margin="500,120,0,0" VerticalAlignment="Top" Height="60" Width="330" Style="{StaticResource Dugme}">
+            <StackPanel Orientation="Horizontal">
+                <fa:ImageAwesome Icon="UserPlus" Width="30" Foreground="#1963bf"/>
+                <TextBlock Text=" Kreirajte profil doktora"/>
+            </StackPanel>
+        </Button>
+    </Grid>
+</Window>

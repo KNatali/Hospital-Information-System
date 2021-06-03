@@ -4,11 +4,20 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
   <ItemGroup>
+
     <None Remove="Resources\podesavanje.png" />
     <None Remove="Resources\upravnikProfil.png" />
+
+    <Compile Remove="ViewModel\**" />
+    <EmbeddedResource Remove="ViewModel\**" />
+    <None Remove="ViewModel\**" />
+    <Page Remove="ViewModel\**" />
+
+
     <None Remove="ViewDoktor\Slike\calendar.png" />
     <None Remove="ViewDoktor\Slike\calendar1.png" />
     <None Remove="ViewDoktor\Slike\date.png" />
@@ -31,6 +40,21 @@
 
 
     <PackageReference Include="FontAwesome.WPF" Version="4.7.0.9" />
+
+
+
+
+    <PackageReference Include="LiveCharts" Version="0.9.7" />
+
+
+
+
+    <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
+
+
+
+
+    <PackageReference Include="MaterialDesignThemes" Version="4.1.0" />
 
 
 
@@ -77,6 +101,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="ViewModelPacijent\" />
+    <Folder Include="ViewPacijent\" />
     <Folder Include="ViewModel\" />
     <Folder Include="WindowPacijent\Slike\" />
   </ItemGroup>

@@ -3,35 +3,97 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:fa="http://schemas.fontawesome.io/icons/"
       xmlns:local="clr-namespace:ProjekatSIMS"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ZakaziPregledPacijent">
+    <Page.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="FontSize" Value="16"/>
+
+        </Style>
+        <Style  TargetType="TextBox">
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="BorderBrush" Value="#287D7D"/>
+            <Style.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10" />
+
+                </Style>
+            </Style.Resources>
+        </Style>
+        <Style x:Key="RoundedButton" TargetType="{x:Type Button}">
+            <Style.Setters>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border x:Name="button" CornerRadius="5" BorderBrush="Black" BorderThickness="1" Background="#A4E98A">
+                                <TextBlock  Text="{TemplateBinding Button.Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="button" Property="BorderBrush" Value="Black" />
+                                    <Setter TargetName="button" Property="Background"  Value="#365835"/>
+                                    <Setter Property="Foreground" Value="White" />
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter TargetName="button"  Property="Background" Value="#365835"/>
+                                </Trigger>
+                                <Trigger Property="IsFocused" Value="True">
+                                    <Setter TargetName="button" Property="BorderBrush" Value="#FF282828" />
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter TargetName="button" Property="Opacity" Value="0.7" />
+                                    <Setter Property="Foreground" Value="#365835" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style.Setters>
+        </Style>
+    </Page.Resources>
 
     <Grid Background="#CDFEBB" >
-        <Label Content="Zakazivanje pregleda" HorizontalAlignment="Left" Margin="34,33,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-        <Label Content="Odaberite datum:" HorizontalAlignment="Left" Margin="32,225,0,0" VerticalAlignment="Top" FontStyle="Italic"/>
-        <DatePicker Name="Date" HorizontalAlignment="Left" Margin="174,227,0,0" VerticalAlignment="Top"/>
-        <Label Content="Vreme pregleda: " HorizontalAlignment="Left" Margin="35,267,0,0" VerticalAlignment="Top" FontWeight="Normal"/>
 
-        <Label Content="Ime doktora:" HorizontalAlignment="Left" Margin="34,298,0,0" VerticalAlignment="Top" FontStyle="Italic"/>
 
-        <Button Content="Zakazi" IsDefault="True" Width="100" Height="40" HorizontalAlignment="Left" Margin="674,386,0,0" VerticalAlignment="Top" Click="Zakazi_Pregled" Background="#A4E98A"/>
-        <Label Content="Upisite svoje ime: " HorizontalAlignment="Left" Margin="35,143,0,0" VerticalAlignment="Top" FontStyle="Italic"/>
-        <TextBox Name="Ime"  HorizontalAlignment="Left" Margin="174,147,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Upisite svoje prezime: " HorizontalAlignment="Left" Margin="34,174,0,0" VerticalAlignment="Top" FontStyle="Italic"/>
-        <TextBox Name="Prezime"  HorizontalAlignment="Left" Margin="174,178,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label  FontFamily="Arial" FontSize="20" Content="Zakazivanje pregleda" HorizontalAlignment="Left" Margin="53,57,0,0" VerticalAlignment="Top" FontWeight="Bold" />
 
-        <TextBox  Name="Sati" HorizontalAlignment="Left" Margin="174,271,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="42" Height="22"/>
-        <TextBox Name="Minuti" HorizontalAlignment="Left" Margin="234,272,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Height="20"/>
-        <TextBox Name="ImeDoktora" HorizontalAlignment="Left" Margin="174,306,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="PrezimeDoktora" HorizontalAlignment="Left" Margin="174,337,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Prezime doktora" HorizontalAlignment="Left" Margin="32,329,0,0" VerticalAlignment="Top" FontStyle="Italic"/>
-        <Label Content="Upisite svoj JMBG: " HorizontalAlignment="Left" Margin="35,112,0,0" VerticalAlignment="Top" FontStyle="Italic"/>
-        <TextBox Name="Jmbg" HorizontalAlignment="Left" Margin="174,116,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label  FontFamily="Arial" FontSize="15" Content="Odaberite datum:" HorizontalAlignment="Left" Margin="69,125,0,0" VerticalAlignment="Top" />
+        <DatePicker Name="Date" HorizontalAlignment="Left" Margin="234,128,0,0" VerticalAlignment="Top" IsDropDownOpen="True" />
 
-        <Label FontWeight="Bold" Content="Izaberite prioritet:" HorizontalAlignment="Left" Margin="34,373,0,0" VerticalAlignment="Top"/>
-        <RadioButton x:Name="DoktorPrioritet" Margin="0,406,572,-369" GroupName="Prioritet" HorizontalAlignment="Right"  Checked="Btn1_Checked" Click="Button_Click" >Doktor</RadioButton>
-        <RadioButton x:Name="VremePrioritet" Margin="0,386,575,-325" GroupName="Prioritet" HorizontalAlignment="Right"  Checked="Btn1_Checked" Click="Button_Click" >Vreme</RadioButton>
+        <Label  FontFamily="Arial" FontSize="15" Content="Vreme pregleda: " HorizontalAlignment="Left" Margin="69,172,0,0" VerticalAlignment="Top" FontWeight="Normal" />
+        <TextBox  Name="Sati" HorizontalAlignment="Left" Margin="234,180,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="42" Height="22"/>
+        <TextBox Name="Minuti" HorizontalAlignment="Left" Margin="294,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="42" Height="22"/>
+
+        <Label  FontFamily="Arial" FontSize="15" Content="Ime doktora:" HorizontalAlignment="Left" Margin="85,217,0,0" VerticalAlignment="Top" />
+        <TextBox Name="ImeDoktora" HorizontalAlignment="Left" Margin="234,225,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="102" Height="22"/>
+
+        <TextBox Name="PrezimeDoktora" HorizontalAlignment="Left" Margin="234,269,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="102" Height="22"/>
+        <Label   FontFamily="Arial" FontSize="15" Content="Prezime doktora:" HorizontalAlignment="Left" Margin="69,261,0,0" VerticalAlignment="Top" />
+
+        <Label FontFamily="Arial" FontSize="15" Content="Izaberite prioritet:" HorizontalAlignment="Left" Margin="66,326,0,0" VerticalAlignment="Top" />
+        <RadioButton x:Name="DoktorPrioritet" Margin="0,355,511,-318" GroupName="Prioritet" HorizontalAlignment="Right"  Checked="Btn1_Checked" Click="Button_Click">Doktor</RadioButton>
+        <RadioButton x:Name="VremePrioritet" Margin="0,333,513,-272" GroupName="Prioritet" HorizontalAlignment="Right"  Checked="Btn1_Checked" Click="Button_Click" >Vreme</RadioButton>
+
+        <Button Content="Zakazi" IsDefault="True" Width="100" Height="40" HorizontalAlignment="Left" Margin="674,386,0,0" VerticalAlignment="Top" Click="Zakazi_Pregled" Background="#A4E98A" Style="{DynamicResource RoundedButton}" />
+        <Label Content=":" HorizontalAlignment="Left" Margin="276,176,0,0" VerticalAlignment="Top"/>
+
+
+
+
+
+
+
+
+
+
     </Grid>
 </Page>

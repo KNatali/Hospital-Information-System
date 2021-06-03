@@ -102,8 +102,24 @@ namespace ProjekatSIMS.Service
             
 
         }
-        
-        
-        
+
+        public void KreiranjeProstorije(String id, VrstaProstorije vrsta, int sprat, double kvadratura)
+        {
+            List<Prostorija> prostorije = prostorijaRepository.DobaviSve();
+            Prostorija novaProstorija = new Prostorija();
+            novaProstorija.id = id;
+            novaProstorija.vrsta = vrsta;
+            novaProstorija.kvadratura = kvadratura;
+            novaProstorija.sprat = sprat;
+            novaProstorija.slobodna = true;
+            novaProstorija.inventar = null;
+            
+
+        }
+        public List<Prostorija> DobaviSve()
+        {
+            return prostorijaRepository.DobaviSve();
+        }
+
     }
 }

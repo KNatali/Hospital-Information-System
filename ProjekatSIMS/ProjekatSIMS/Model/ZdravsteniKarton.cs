@@ -9,13 +9,12 @@ namespace Model
       public List<Anamneza> anamneza { get; set;}
       
    
-      public Pacijent pacijent { get; set; }
+      public String IdPacijent { get; set; }
    
       public List<String> Alergeni { get; set; }
-      public List<String> Terapija { get; set; }
 
         public List<UputBolnickoLijecenje> UputiZaBolnickoLijecenje { get; set; }
-
+        public int Id { get; set; }
    
    }
 }

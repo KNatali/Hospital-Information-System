@@ -27,27 +27,6 @@ namespace ProjekatSIMS.Repository
             File.WriteAllText(putanja, newJson);
         }
 
-        public List<Podsetnik> DobaviSvePodsetnikeZaPacijenta(String ime,String prezime)
-        {
-
-            List<Podsetnik> podsetnici = new List<Podsetnik>();
-            List<Podsetnik> podsetniciZaPacijenta = new List<Podsetnik>();
-
-            using (StreamReader r = new StreamReader(putanja))
-            {
-                string json = r.ReadToEnd();
-                podsetnici = JsonConvert.DeserializeObject<List<Podsetnik>>(json);
-            }
-            foreach (Podsetnik pod in podsetnici)
-            {
-                if ((pod.pacijent.Ime == ime) && (pod.pacijent.Prezime == prezime))
-                {
-                    podsetniciZaPacijenta.Add(pod);
-                }
-            }
-
-            return podsetniciZaPacijenta;
-        }
 
         public List<Podsetnik> DobaviSvePodsetnikeZaJmbg(String jmbg)
         {
@@ -62,7 +41,7 @@ namespace ProjekatSIMS.Repository
             }
             foreach (Podsetnik pod in podsetnici)
             {
-                if (pod.pacijent.Jmbg == jmbg)
+                if (pod.pacijent == jmbg)
                 {
                     podsetniciZaPacijenta.Add(pod);
                 }

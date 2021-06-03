@@ -1,5 +1,4 @@
-﻿
-using ProjekatSIMS.ViewModelDoktor;
+﻿using ProjekatSIMS.ViewModelDoktor;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -15,23 +14,13 @@ using System.Windows.Shapes;
 
 namespace ProjekatSIMS.ViewDoktor
 {
-
-   
-
-    
     public partial class PocetnaStranicaDoktorView : Page
     {
         public PocetnaStranicaDoktorView(PocetnaStranicaDoktorViewModel viewModel)
 
         {
-
             InitializeComponent();
-        
-
             this.DataContext = viewModel;
         }
-
-       
-
     }
 }

@@ -33,5 +33,9 @@ namespace ProjekatSIMS.Controller
             prostorijaService.prostorijaRepository.KreirajProstoriju(id, prostorijaService.KojaJeVrsta(vrsta), sprat, kvadratura);
             return true;
         }
+        public List<Prostorija> DobaviSve()
+        {
+            return prostorijaService.DobaviSve();
+        }
     }
 }
