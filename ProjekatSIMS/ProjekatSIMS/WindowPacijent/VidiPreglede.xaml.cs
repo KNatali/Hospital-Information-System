@@ -23,10 +23,11 @@ namespace ProjekatSIMS.WindowPacijent
             get; 
             set; 
         }
+        public Pacijent trenutniPacijent { get; set; }
 
         public int prioritetVreme = 0;
         public int prioritetDoktor = 0;
-        public VidiPreglede()
+        public VidiPreglede(Pacijent pacijent)
         {
             InitializeComponent();
             this.DataContext = this;
@@ -38,15 +39,15 @@ namespace ProjekatSIMS.WindowPacijent
             Pacijenti = new List<Pacijent>();
             PacijentRepository file = new PacijentRepository(@"..\..\..\Fajlovi\Pacijent.txt");
             Pacijenti = file.DobaviSve();
+            trenutniPacijent = pacijent;
             
     }
         private void Zatvori(object sender, RoutedEventArgs e)
         {
-            PacijentMainWindow pmw = new PacijentMainWindow();
-            //this.NavigationService.Navigate(pmw);
+            Pocetna pmw = new Pocetna(trenutniPacijent);
+            this.NavigationService.Navigate(pmw);
         }
-
-        private void OtkaziPregled(object sender, RoutedEventArgs e)
+        private void Otkazi_Click(object sender, RoutedEventArgs e)
         {
             Pregled odabraniPregled = (Pregled)dataGridPregledi.SelectedItems[0]; //ovo je odabrani pregled za otkazivanje
             string ime;
@@ -71,7 +72,5 @@ namespace ProjekatSIMS.WindowPacijent
             File.WriteAllText(@"..\..\..\Fajlovi\Pregled.txt", newJson);
             MessageBox.Show("Vas pregled je otkazan.");
         }
-
-        
     }
 }

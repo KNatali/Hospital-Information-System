@@ -4,6 +4,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
   <ItemGroup>
@@ -29,6 +30,21 @@
 
 
     <PackageReference Include="FontAwesome.WPF" Version="4.7.0.9" />
+
+
+
+
+    <PackageReference Include="LiveCharts" Version="0.9.7" />
+
+
+
+
+    <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
+
+
+
+
+    <PackageReference Include="MaterialDesignThemes" Version="4.1.0" />
 
 
 
@@ -73,6 +89,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="ViewModelPacijent\" />
+    <Folder Include="ViewPacijent\" />
+    <Folder Include="ViewModel\" />
     <Folder Include="WindowPacijent\Slike\" />
   </ItemGroup>
 

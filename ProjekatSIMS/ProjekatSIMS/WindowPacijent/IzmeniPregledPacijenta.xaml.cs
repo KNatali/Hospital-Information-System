@@ -34,7 +34,32 @@ namespace ProjekatSIMS.WindowPacijent
             Pacijenti = file.DobaviSve();
         }
 
-        private void Izmeni(object sender, RoutedEventArgs e)
+       
+
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            if (DoktorPrioritet.IsChecked == true)
+            {
+                MessageBox.Show("Odabrali ste doktora kao prioritet u slucaju da Vas termin nije slobodan.");
+                prioritetDoktor = 1;
+            }
+            else if (VremePrioritet.IsChecked == true)
+            {
+                MessageBox.Show("Odabrali ste vreme kao prioritet u slucaju da Vas doktor nije slobodan.");
+                prioritetVreme = 1;
+            }
+
+        }
+
+        private void Btn1_Checked(object sender, RoutedEventArgs e)
+        {
+            DoktorPrioritet.Foreground = Brushes.Blue;
+            VremePrioritet.Foreground = Brushes.Blue;
+
+        }
+
+        private void Izmeni_Click(object sender, RoutedEventArgs e)
         {
             Pregled p = (Pregled)dataGridPregledi.SelectedItems[0]; //pregled koji je izabran za izmenu
 
@@ -100,28 +125,5 @@ namespace ProjekatSIMS.WindowPacijent
                 }
             }
         }
-
-        private void button1_Click(object sender, RoutedEventArgs e)
-        {
-            if (DoktorPrioritet.IsChecked == true)
-            {
-                MessageBox.Show("Odabrali ste doktora kao prioritet u slucaju da Vas termin nije slobodan.");
-                prioritetDoktor = 1;
-            }
-            else if (VremePrioritet.IsChecked == true)
-            {
-                MessageBox.Show("Odabrali ste vreme kao prioritet u slucaju da Vas doktor nije slobodan.");
-                prioritetVreme = 1;
-            }
-
-        }
-
-        private void Btn1_Checked(object sender, RoutedEventArgs e)
-        {
-            DoktorPrioritet.Foreground = Brushes.Blue;
-            VremePrioritet.Foreground = Brushes.Blue;
-
-        }
-
     }
 }

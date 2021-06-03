@@ -60,10 +60,11 @@ namespace ProjekatSIMS
         {
             DateTime pocetakIntervala = (DateTime)DatumPocetak.SelectedDate;
             DateTime krajIntervala = (DateTime)DatumKraj.SelectedDate;
+            IntervalDatuma interval = new IntervalDatuma(pocetakIntervala, krajIntervala);
             SlobodniKrevetDTO odabranaSoba = (SlobodniKrevetDTO)SlobodneSobe.SelectedItem;
             String sobaId = odabranaSoba.Soba;
             int krevetId = (int)SlobodniKreveti.SelectedItem;
-            UputBolnickoLijecenje uput = new UputBolnickoLijecenje(pocetakIntervala,krajIntervala,sobaId,krevetId);
+            UputBolnickoLijecenjeDTO uput = new  UputBolnickoLijecenjeDTO(interval,sobaId,krevetId,pacijent.IdKartona);
             izdavanjeUputaBolnickoLijecenjeController.CuvanjeUputa(uput, pacijent);
 
             MessageBox.Show("Uput je uspjesno sacuvan");

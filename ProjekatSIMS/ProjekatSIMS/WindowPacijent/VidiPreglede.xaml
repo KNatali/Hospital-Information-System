@@ -10,7 +10,7 @@
 
     <Grid Background="#CDFEBB">
         <DataGrid x:Name="dataGridPregledi" ItemsSource="{Binding Pregledi}" IsReadOnly="True"
-                  SelectionMode="Single" AutoGenerateColumns="False" Margin="42,10,236,0" Height="317" VerticalAlignment="Top">
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="42,10,162,0" Height="317" VerticalAlignment="Top">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Pocetak" Binding="{Binding Pocetak}"/>
                 <DataGridTextColumn Header="Trajanje" Binding="{Binding Trajanje}"/>
@@ -19,11 +19,18 @@
                 <DataGridTextColumn Header="Prezime doktora" Binding="{Binding doktor.Prezime}"/>
                 <DataGridTextColumn Header="Prostorija" Binding="{Binding prostorija.id}"/>
                 <DataGridTextColumn Header="Sprat" Binding="{Binding prostorija.sprat}"/>
+                <DataGridTemplateColumn Header="Otkazi pregled" Width="150*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="Otkazi" Content="Otkazi" Click="Otkazi_Click" IsDefault="True" Background="#A4E98A"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
 
             </DataGrid.Columns>
         </DataGrid>
         <Button Content="Zatvori" IsDefault="True" HorizontalAlignment="Left" Margin="664,377,0,0" VerticalAlignment="Top" Height="33" Width="78" Click="Zatvori" Background="#A4E98A"/>
-        <Button Content="Otkazi pregled" HorizontalAlignment="Left" Margin="80,360,0,0" VerticalAlignment="Top" Background="#A4E98A" Height="34" Width="97" Click="OtkaziPregled"/>
+        
 
     </Grid>
 

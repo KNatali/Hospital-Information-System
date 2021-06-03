@@ -25,12 +25,23 @@ namespace Repository
             LokacijaFajla = lokacija;
         }
 
+        public ZdravsteniKarton DobaviZdravstveniKartonById(int id)
+        {
+            sviKartoni = DobaviZdravstveneKartone();
+            foreach (ZdravsteniKarton z in sviKartoni)
+            {
+                if (z.Id == id)
+                    return z;
+            }
+            return null;
+        }
+
         public ZdravsteniKarton DobaviZdravstveniKartonZaPacijenta(Pacijent pacijent)
         {
             sviKartoni = DobaviZdravstveneKartone();
             foreach (ZdravsteniKarton z in sviKartoni)
             {
-                if (z.pacijent.Jmbg == pacijent.Jmbg)
+                if (z.IdPacijent == pacijent.Jmbg)
                     return z;
             }
             return null;
@@ -70,12 +81,11 @@ namespace Repository
             sviKartoni = DobaviZdravstveneKartone();
             foreach (ZdravsteniKarton z in sviKartoni)
             {
-                if (z.pacijent.Jmbg == zdravstveniKarton.pacijent.Jmbg)
+                if (z.IdPacijent == zdravstveniKarton.IdPacijent)
                 {
                     z.Recepti = zdravstveniKarton.Recepti;
                     z.Alergeni = zdravstveniKarton.Alergeni;
                     z.anamneza = zdravstveniKarton.anamneza;
-                    z.Terapija = zdravstveniKarton.Terapija;
                     z.UputiZaBolnickoLijecenje = zdravstveniKarton.UputiZaBolnickoLijecenje;
                 }
                    

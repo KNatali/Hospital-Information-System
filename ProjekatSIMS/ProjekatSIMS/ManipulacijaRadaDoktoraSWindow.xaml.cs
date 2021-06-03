@@ -33,7 +33,7 @@ namespace ProjekatSIMS
             tabelaNeradnihDana = neradniDaniController.DobaviSve();
             foreach (NeradniDani n in tabelaNeradnihDana)
             {
-                if (n.doktor.Jmbg == d.Jmbg)
+                if (n.doktor == d.Jmbg)
                     NeradniDani.Add(n);
             }
         }
@@ -59,7 +59,7 @@ namespace ProjekatSIMS
             novoOdobrenje.NeradnoOd = (DateTime)Od.SelectedDate;
             novoOdobrenje.NeradnoDo = (DateTime)Do.SelectedDate;
             novoOdobrenje.Vrsta = (VrsteNeradnihDana)Obrazlozenje.SelectedIndex;
-            novoOdobrenje.doktor = doktor;
+            novoOdobrenje.doktor = doktor.Jmbg;
         }
     }
 }

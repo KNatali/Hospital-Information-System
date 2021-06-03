@@ -21,6 +21,8 @@ namespace Model
         public List<Inventar> inventar { get; set; }
 
         public bool slobodna { get; set; }
+        public DateTime ZauzetaOd { get; set; }
+        public DateTime ZauzetaDo { get; set; }
 
         public Prostorija(String id, int sprat, VrstaProstorije prostorija, double kvadratura) {
             this.id =id;

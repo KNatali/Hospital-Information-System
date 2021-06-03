@@ -7,7 +7,7 @@ namespace ProjekatSIMS.Model
     {
         public String Ocena { get; set; }
         public String Komentar { get; set; }
-        public Pacijent Pacijent { get; set; }
+        public String Pacijent { get; set; }
 
         public OcenaBolnice()
         {
