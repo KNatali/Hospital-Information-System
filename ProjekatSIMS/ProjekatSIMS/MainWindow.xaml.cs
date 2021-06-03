@@ -2,8 +2,10 @@
 using Model;
 using ProjekatSIMS.Controller;
 using ProjekatSIMS.Model;
+using ProjekatSIMS.Repository;
 using ProjekatSIMS.UpravnikWindows;
 using ProjekatSIMS.ViewDoktor;
+using ProjekatSIMS.ViewSekretar;
 using Repository;
 using System;
 using System.Collections.Generic;
