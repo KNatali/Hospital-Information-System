@@ -56,8 +56,9 @@ namespace ProjekatSIMS
                     sekretarWindow.Show();
                     break;
                 case Uloga.Upravnik:
-                    Upravnik uw = new Upravnik();
+                    Upravnik uw = new Upravnik(korisnickoIme, lozinka, uloga);
                     uw.Show();
+                    this.Close();
                     break;
                 
 

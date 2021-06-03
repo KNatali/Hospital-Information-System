@@ -129,7 +129,7 @@ namespace ProjekatSIMS
 
 
             
-            if(ProstorijaService.pronadjiProstorijuPoId(novaProstorija.id) == null)
+            if(ProstorijaService.PronadjiProstorijuPoId(novaProstorija.id) == null)
             {
                 foreach (Prostorija p in razdeljeneProstorije)
                 {
@@ -162,7 +162,7 @@ namespace ProjekatSIMS
             else
             {
                 novaProstorija.id = ID.Text;
-                if (ProstorijaService.pronadjiProstorijuPoId(ID.Text) == null)
+                if (ProstorijaService.PronadjiProstorijuPoId(ID.Text) == null)
                 {
                     foreach (Prostorija p in prostorijeZaSpajanje)
                     {
@@ -219,7 +219,7 @@ namespace ProjekatSIMS
             }
             else
             {
-                ProstorijaService.obrisiProstoriju(prostorijaZaDeljenje.id);
+                ProstorijaService.ObrisiProstoriju(prostorijaZaDeljenje.id);
                 prostorije.AddRange(razdeljeneProstorije);
                 ProstorijaService.prostorijaRepository.Sacuvaj(prostorije);
                 prostorije = ProstorijaService.prostorijaRepository.DobaviSve();

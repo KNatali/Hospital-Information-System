@@ -27,6 +27,9 @@ namespace Model
             this.sprat = sprat;
             this.vrsta = prostorija;
             this.kvadratura = kvadratura;
+            this.pregled = null;
+            this.slobodna = true;
+            this.inventar = null;
         }
         public Prostorija() 
         {
