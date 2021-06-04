@@ -15,22 +15,22 @@ namespace ProjekatSIMS.Controller
 
         public Boolean IzmeniProstoriju(String idProstorijeZaIzmenu, String vrsta, int sprat, double kvadratura)
         {
-            Prostorija prostorijaZaIzmenu = prostorijaService.pronadjiProstorijuPoId(idProstorijeZaIzmenu);
-            if(prostorijaService.daLiJeGlavniMagacin(idProstorijeZaIzmenu, vrsta))
+            Prostorija prostorijaZaIzmenu = prostorijaService.PronadjiProstorijuPoId(idProstorijeZaIzmenu);
+            if(prostorijaService.DaLiJeGlavniMagacin(idProstorijeZaIzmenu))
             {
-                return false;
+                vrsta = VrstaProstorije.GlavniMagacin.ToString();
             }
-            prostorijaService.IzmenaProstorije(idProstorijeZaIzmenu, prostorijaService.kojaJeVrsta(vrsta), sprat, kvadratura);
+            prostorijaService.IzmenaProstorije(idProstorijeZaIzmenu, prostorijaService.KojaJeVrsta(vrsta), sprat, kvadratura);
             return true;
 
         }
         public bool KreirajProstoriju(String id, String vrsta, int sprat, double kvadratura)
         {
-            if(prostorijaService.pronadjiProstorijuPoId(id) != null)
+            if(prostorijaService.PronadjiProstorijuPoId(id) != null)
             {
                 return false;
             }
-            prostorijaService.KreiranjeProstorije(id, prostorijaService.kojaJeVrsta(vrsta), sprat, kvadratura);
+            prostorijaService.prostorijaRepository.KreirajProstoriju(id, prostorijaService.KojaJeVrsta(vrsta), sprat, kvadratura);
             return true;
         }
         public List<Prostorija> DobaviSve()

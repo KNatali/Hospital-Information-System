@@ -15,9 +15,7 @@ using System.Windows.Shapes;
 
 namespace ProjekatSIMS.UpravnikWindows
 {
-    /// <summary>
-    /// Interaction logic for PregledProstorija.xaml
-    /// </summary>
+    
     public partial class PregledProstorija : Page
     {
         public List<Prostorija> Prostorije = new List<Prostorija>();
@@ -33,11 +31,24 @@ namespace ProjekatSIMS.UpravnikWindows
         private void ObrisiProstoriju(object sender, RoutedEventArgs e)
         {
             Prostorija prosrtorijaZaBrisanje = (Prostorija)dgrProstorije.SelectedItems[0];
-            ProstorijaService.obrisiProstoriju(prosrtorijaZaBrisanje.id);
-            MessageBox.Show("Uspesno ste obrisali prostoriju!");
-            Prostorije = ProstorijaService.prostorijaRepository.DobaviSve();
-            dgrProstorije.ItemsSource = Prostorije;
+            if(ProstorijaService.ObrisiProstoriju(prosrtorijaZaBrisanje.id))
+            {
+                MessageBox.Show("Uspesno ste obrisali prostoriju!");
+                Prostorije = ProstorijaService.prostorijaRepository.DobaviSve();
+                dgrProstorije.ItemsSource = Prostorije;
+            }
+            else
+            {
+                MessageBox.Show("Ne mozete obrisati skladiste dinamicke opreme - glavni magacin!");
+            }
+            
 
+        }
+        private void IzmeniProstoriju(object sender, RoutedEventArgs e)
+        {
+            Prostorija p = (Prostorija)dgrProstorije.SelectedItems[0];
+            Upravnik uw = (Upravnik)Window.GetWindow(this);
+            uw.UpravnikFrame.Content = new IzmeniProstoriju(p);
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)

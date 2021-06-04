@@ -29,8 +29,8 @@ namespace Service
         {
             ZdravsteniKarton zdravstveniKarton = zdravstveniKartonRepository.DobaviZdravstveniKartonZaPacijenta(pacijent);
             if (zdravstveniKarton.Recepti == null)
-                zdravstveniKarton.Recepti = new List<Recept>();
-            zdravstveniKarton.Recepti.Add(recept);
+                zdravstveniKarton.Recepti = new List<int>();
+            zdravstveniKarton.Recepti.Add(recept.Id);
             zdravstveniKartonRepository.AzurirajKarton(zdravstveniKarton);
         }
         private DateTime FormiranjeVremenaPrveKonzumacije(ReceptDTO receptDTO)

@@ -41,6 +41,42 @@ namespace ProjekatSIMS.Service
             }
             return null;
         }
+
+        public Boolean IzmeniLek(String StariNaziv, String NazivLeka, String Opis, List<String> Sastojci, List<String> SlicniLekovi)
+        {
+            List<Lijek> lijekovi = new List<Lijek>();
+            lijekovi = lijekRepoisitory.DobaviSve();
+            if(DobaviLijekPoNazivu(NazivLeka) != null)
+            {
+                return false;
+            }
+            foreach (Lijek l in lijekovi)
+            {
+                if (l.NazivLeka == StariNaziv)
+                {
+                    l.NazivLeka = NazivLeka;
+                    l.Opis = Opis;
+                    l.Alergeni = Sastojci;
+                    l.AlternativniLekovi = SlicniLekovi;
+                }
+            }
+            return true;
+        }
+        public Boolean KreirajLek(String NazivLeka, String Opis, List<String> Sastojci, List<String> SlicniLekovi)
+        {
+            if(DobaviLijekPoNazivu(NazivLeka) != null)
+            {
+                return false;
+            }
+            Lijek noviLek = new Lijek(NazivLeka, Opis, Sastojci, SlicniLekovi);
+            List<Lijek> lijekovi = new List<Lijek>();
+            lijekovi = lijekRepoisitory.DobaviSve();
+            lijekovi.Add(noviLek);
+            lijekRepoisitory.Sacuvaj(lijekovi);
+
+
+            return true;
+        }
         
 
     }

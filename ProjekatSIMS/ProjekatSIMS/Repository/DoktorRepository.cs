@@ -29,6 +29,16 @@ namespace Repository
             return doktori;
         }
 
+        public Doktor DobaviByRegistracija(String korisnickoIme,String lozinka)
+        {
+            List<Doktor> svi = DobaviSve();
+            foreach(Doktor d in doktori)
+            {
+                if (d.registrovaniKorisnik.KorisnickoIme == korisnickoIme && d.registrovaniKorisnik.Lozinka == lozinka)
+                    return d;
+            }
+            return null;
+        }
         public void Sacuvaj(List<Doktor> doktor)
         {
             string newJson = JsonConvert.SerializeObject(doktor);

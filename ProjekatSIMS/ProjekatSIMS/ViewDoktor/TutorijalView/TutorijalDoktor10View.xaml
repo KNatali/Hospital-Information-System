@@ -1,0 +1,74 @@
+﻿<Page x:Class="ProjekatSIMS.ViewDoktor.TutorijalView.TutorijalDoktor10View"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ProjekatSIMS.ViewDoktor.TutorijalView"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      x:Name="FinishPage"
+      Title="TutorijalDoktor10View">
+
+    <Page.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="FontSize" Value="20"/>
+
+        </Style>
+        <Style  TargetType="TextBox">
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="BorderBrush" Value="#287D7D"/>
+            <Style.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10" />
+
+                </Style>
+            </Style.Resources>
+        </Style>
+
+
+    </Page.Resources>
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="7*"/>
+
+            <RowDefinition Height="1*"/>
+
+
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="0" Margin="30">
+
+            <TextBox/>
+            <TextBox/>
+            <TextBox/>
+            <TextBox TextWrapping="Wrap" HorizontalAlignment="Center" >Uspješno ste završili ovaj vodič kroz aplikaciju!</TextBox>
+            <TextBox/>
+            <TextBox HorizontalAlignment="Center" TextWrapping="Wrap" >Klikom na dugme "FInish" završavate uvodni dio
+            i možete početi sa korišćenjem.</TextBox>
+            <TextBox/>
+            <TextBox TextWrapping="Wrap" HorizontalAlignment="Center">Srećno sa radom!</TextBox>
+            <TextBox/>
+           
+
+        </StackPanel>
+
+        <Grid Grid.Row="7"  Background="white" >
+            <StackPanel  Grid.Row="7"   HorizontalAlignment="Right" Margin="0,0,20,0" VerticalAlignment="Center" Orientation="Horizontal">
+                <Button Content="Back"  Command="{Binding Path=Back}" Width="100" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource btnStandard}"/>
+                <Button Content="Finish" Command="{Binding Path=Finish}" CommandParameter="{Binding ElementName=FinishPage}" Width="100" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource btnStandard}"/>
+
+            </StackPanel>
+        </Grid>
+
+    </Grid>
+</Page>

@@ -18,11 +18,11 @@ namespace Service
 
             foreach (UputBolnickoLijecenje u in sviUputi)
             {
-                if ((DateTime.Compare(uput.IntervalPocetak, u.IntervalPocetak) >= 0 && DateTime.Compare(uput.IntervalPocetak, u.IntervalKraj) < 0 ||
-                     DateTime.Compare(krajIntervala, u.IntervalPocetak) > 0 && DateTime.Compare(krajIntervala, u.IntervalKraj) <= 0 ||
-                     DateTime.Compare(uput.IntervalPocetak, u.IntervalPocetak) <= 0 && DateTime.Compare(krajIntervala, u.IntervalKraj) >= 0) && u.KrevetId == uput.KrevetId)
+                if ((DateTime.Compare(uput.Interval.PocetnoVrijeme, u.Interval.PocetnoVrijeme) >= 0 && DateTime.Compare(uput.Interval.PocetnoVrijeme, u.Interval.KrajnjeVrijeme) < 0 ||
+                     DateTime.Compare(krajIntervala, u.Interval.PocetnoVrijeme) > 0 && DateTime.Compare(krajIntervala, u.Interval.KrajnjeVrijeme) <= 0 ||
+                     DateTime.Compare(uput.Interval.PocetnoVrijeme, u.Interval.PocetnoVrijeme) <= 0 && DateTime.Compare(krajIntervala, u.Interval.KrajnjeVrijeme) >= 0) && u.KrevetId == uput.KrevetId)
                 {
-                    if (!(uput.IntervalPocetak == u.IntervalPocetak && uput.IntervalKraj == u.IntervalKraj && uput.KrevetId == u.KrevetId))
+                    if (!(uput.Interval.PocetnoVrijeme == u.Interval.PocetnoVrijeme && uput.Interval.KrajnjeVrijeme == u.Interval.KrajnjeVrijeme && uput.KrevetId == u.KrevetId))
                         return false;
                 }
 
@@ -37,9 +37,9 @@ namespace Service
             sviUputi = AzuriranjeUputa(sviUputi, uput, krajIntervala);
             uputRepository.SacuvajUpute(sviUputi);
 
-            ZdravsteniKarton karton = zdravstveniKartonRepository.DobaviZdravstveniKartonZaPacijenta(pacijent);
+           /* ZdravsteniKarton karton = zdravstveniKartonRepository.DobaviZdravstveniKartonZaPacijenta(pacijent);
             karton.UputiZaBolnickoLijecenje = AzuriranjeUputa(karton.UputiZaBolnickoLijecenje, uput, krajIntervala);
-            zdravstveniKartonRepository.AzurirajKarton(karton);
+            zdravstveniKartonRepository.AzurirajKarton(karton);*/
 
          }
 
@@ -48,9 +48,9 @@ namespace Service
 
             foreach (UputBolnickoLijecenje u in uputi)
             {
-                if (u.IntervalPocetak == uput.IntervalPocetak && u.IntervalKraj == uput.IntervalKraj && u.KrevetId == uput.KrevetId)
+                if (u.Interval.PocetnoVrijeme == uput.Interval.PocetnoVrijeme && u.Interval.KrajnjeVrijeme == uput.Interval.KrajnjeVrijeme && u.KrevetId == uput.KrevetId)
                 {
-                    u.IntervalKraj = krajIntervala;
+                    u.Interval.KrajnjeVrijeme = krajIntervala;
                     break;
                 }
             }

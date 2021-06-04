@@ -1,4 +1,5 @@
-﻿using ProjekatSIMS.Commands;
+﻿using Model;
+using ProjekatSIMS.Commands;
 using ProjekatSIMS.ViewDoktor;
 
 using System;
@@ -12,8 +13,7 @@ namespace ProjekatSIMS.ViewModelDoktor
     {
 
         public RelayCommand<string> NavCommand { get; private set; }
-        // private PocetnaStranicaDoktorViewModel pocetnaViewModel = new PocetnaStranicaDoktorViewModel();
-        // private PrikazPregledaDoktorViewModel preglediViewModel = new PrikazPregledaDoktorViewModel();
+    
 
         private BindableBase currentViewModel;
         private NavigationService navService;
@@ -76,14 +76,20 @@ namespace ProjekatSIMS.ViewModelDoktor
                     PretragaPacijentaDoktorView pretraga = new PretragaPacijentaDoktorView(pp);
                     this.NavService.Navigate(pretraga);
                     break;
-                    /* case "zakazivanjePregleda":
-                         this.NavService.Navigate(
-                    new Uri("Views/PrikazPregledaDoktorView.xaml", UriKind.Relative));
-                         break;
-                     case "zakazivanjeOperacije":
-                         this.NavService.Navigate(
-                    new Uri("Views/PrikazPregledaDoktorView.xaml", UriKind.Relative));
-                         break;*/
+                /* case "zakazivanjePregleda":
+                     this.NavService.Navigate(
+                new Uri("Views/PrikazPregledaDoktorView.xaml", UriKind.Relative));
+                     break;
+                 case "zakazivanjeOperacije":
+                     this.NavService.Navigate(
+                new Uri("Views/PrikazPregledaDoktorView.xaml", UriKind.Relative));
+                     break;*/
+                case "mojProfil":
+                    Doktor doktor = new Doktor();
+                    ProfilDoktorViewModel pr = new ProfilDoktorViewModel(this.NavService,doktor);
+                    ProfilDoktorView d = new ProfilDoktorView(pr);
+                    this.NavService.Navigate(d);
+                    break;
 
             }
         }

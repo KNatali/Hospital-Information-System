@@ -28,9 +28,18 @@ namespace Model
             this.Alergeni =aler;
             this.AlternativniLekovi = al;
         }
+        public Lijek(String naziv, String opis, List<String> sastojci, List<String> alternativni)
+        {
+            this.NazivLeka = naziv;
+            this.Opis = opis;
+            this.Status = OdobravanjeLekaEnum.Ceka;
+            this.Alergeni = sastojci;
+            this.AlternativniLekovi = alternativni;
+            this.PorukaOdbaci = "";
+
+        }
 
 
-        
 
 
 

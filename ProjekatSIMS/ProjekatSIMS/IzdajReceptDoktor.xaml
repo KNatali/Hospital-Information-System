@@ -151,15 +151,15 @@
             </ComboBox>
             <Label Grid.Row="3" Grid.Column="0" Content="Kolicina:" HorizontalAlignment="Left" VerticalAlignment="Center" />
             <TextBox Grid.Row="3" Grid.Column="1" Name="Kolicina"  HorizontalAlignment="Stretch" Text="" TextWrapping="Wrap" VerticalAlignment="Center" />
-            <Label Grid.Row="4" Grid.Column="0"  Content="Trajanje terapije(dani):" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <TextBox Grid.Row="4" Grid.Column="1" Name="Trajanje" HorizontalAlignment="Left" Text="" TextWrapping="Wrap" VerticalAlignment="Center" Width="80" />
-            <Label Grid.Row="5" Grid.Column="0" Content="Datum prve upotrebe lijeka:" HorizontalAlignment="Left" VerticalAlignment="Center" />
-            <DatePicker Grid.Row="5" Grid.Column="1" Name="Datum" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+            <Label Grid.Row="6" Grid.Column="0"  Content="Trajanje terapije(dani):" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <TextBox Grid.Row="6" Grid.Column="1" Name="Trajanje" HorizontalAlignment="Left" Text="" TextWrapping="Wrap" VerticalAlignment="Center" Width="80" />
+            <Label Grid.Row="4" Grid.Column="0" Content="Datum prve upotrebe lijeka:" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <DatePicker Grid.Row="4" Grid.Column="1" Name="Datum" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
             <TextBlock Grid.Row="7" Grid.Column="0" HorizontalAlignment="Left"  Text="Vremenski period izmedju dvije koznumacije(dani)" VerticalAlignment="Center" TextWrapping="Wrap"/>
             <TextBox Grid.Row="7" Grid.Column="1" Name="Period" HorizontalAlignment="Left" Text="" TextWrapping="Wrap" VerticalAlignment="Center" Width="80"/>
 
-            <Label  Grid.Row="6" Grid.Column="0"  Content="Vrijeme(Sati i minuti):" HorizontalAlignment="Left" VerticalAlignment="Center" />
-            <Grid Grid.Row="6" Grid.Column="1">
+            <Label  Grid.Row="5" Grid.Column="0"  Content="Vrijeme(Sati i minuti):" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <Grid Grid.Row="5" Grid.Column="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
@@ -178,7 +178,7 @@
             </Grid>
             <StackPanel  Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2"  HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
                 <Button Content="Sacuvaj" Width="100" Margin="0,0,20,0" Click="IzdavanjeRecepta" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnStandard}"/>
-                <Button Content="Odustani" Width="100"  HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnStandard}"/>
+                <Button Content="Odustani" Width="100" Click="Odustani" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnStandard}"/>
 
             </StackPanel>
         </Grid>
