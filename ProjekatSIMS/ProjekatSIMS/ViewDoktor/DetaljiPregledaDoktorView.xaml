@@ -1,0 +1,98 @@
+﻿<Window x:Class="ProjekatSIMS.ViewDoktor.DetaljiPregledaDoktorView"
+        x:Name="DetaljiWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjekatSIMS.ViewDoktor"
+        mc:Ignorable="d"
+      
+        Title="DetaljiPregledaDoktor" Height="370" Width="600" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+
+        <Style  TargetType="TextBox">
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="16"/>
+          
+          
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderThickness" Value="0"/>
+
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2.5*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="1" Grid.Row="0"   VerticalAlignment="Center" Margin="20">
+            <Button   Style="{StaticResource btnIstakni}" Content="Započni pregled" Command="{Binding Path=ZapocniPregled}" CommandParameter="{Binding ElementName=DetaljiWindow}"/>
+            <Button    Style="{StaticResource btnStandard}" Content="Otkaži pregled"  Command="{Binding Path=OtkaziPregled}" CommandParameter="{Binding ElementName=DetaljiWindow}"/>
+            <Button    Style="{StaticResource btnStandard}" Content="Pomjeri pregled"  Command="{Binding Path=PomjeriPregled}" CommandParameter="{Binding ElementName=DetaljiWindow}"/>
+
+        </StackPanel>
+
+        <StackPanel Grid.Column="0" Grid.Row="1"  Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20" Orientation="Horizontal">
+            <Button   Style="{StaticResource btnStandard}"  Command="{Binding Path=ZdravstveniKarton}" CommandParameter="{Binding ElementName=DetaljiWindow}" Content="Zdravstveni karton" MinWidth="150"/>
+            <Button    Style="{StaticResource btnStandard}" Content="Nazad" Command="{Binding ZatvoriProzor, Mode=OneWay}" 
+CommandParameter="{Binding ElementName=DetaljiWindow}"  MinWidth="150" />
+
+
+        </StackPanel>
+        <StackPanel Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="0*" />
+                    <RowDefinition Height="0*" />
+                    <RowDefinition Height="0*" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+               
+
+                <Label Content="Pacijent:" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="0"/>
+                <TextBox Name="Pacijent" Text="{Binding Pacijent}"  IsReadOnly="True"  Grid.Row="0" Grid.Column="1" TextWrapping="Wrap" />
+
+
+
+                <Label Content="Sala:"  HorizontalAlignment="Left"  Grid.Row="1" Grid.Column="0" />
+                <TextBox Name="Sala" Text="{Binding Pregled.prostorija}"  IsReadOnly="True"   Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" />
+
+                <Label Content="Tip pregleda:" HorizontalAlignment="Left"  Grid.Row="2" Grid.Column="0" />
+                <TextBox Name="Tip" Text="{Binding Pregled.Tip}"  IsReadOnly="True"  Grid.Row="2" Grid.Column="1" TextWrapping="Wrap" />
+
+                <Label Content="Datum:" HorizontalAlignment="Left"  Grid.Row="3" Grid.Column="0"  />
+                <TextBox Name="Datum" Text="{Binding Datum}"  IsReadOnly="True"  Grid.Row="3" Grid.Column="1" TextWrapping="Wrap"/>
+
+                <Label Content="Vrijeme:" HorizontalAlignment="Left"   Grid.Row="4" Grid.Column="0"/>
+                <TextBox Name="Vrijeme" Text="{Binding Vrijeme}"   IsReadOnly="True"  Grid.Row="4" Grid.Column="1" TextWrapping="Wrap"  />
+
+            </Grid>
+
+
+
+
+          
+            
+           
+
+        </StackPanel>
+
+    </Grid>
+</Window>

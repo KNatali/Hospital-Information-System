@@ -99,7 +99,7 @@
 
         </StackPanel>
         <StackPanel Grid.Column="0" Grid.Row="2" Background="#287D7D" VerticalAlignment="Bottom">
-            <Button  Click="MojProfil" Style="{StaticResource btnBlue}">
+            <Button  Command="{Binding NavCommand}"  CommandParameter="mojProfil" Style="{StaticResource btnBlue}">
                 <StackPanel  Orientation="Horizontal" Margin="7,0,0,0" >
                     <fa:ImageAwesome Icon="UserMd" Width="27" Foreground="{Binding Path=Foreground,  RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Button}}}"/>
 

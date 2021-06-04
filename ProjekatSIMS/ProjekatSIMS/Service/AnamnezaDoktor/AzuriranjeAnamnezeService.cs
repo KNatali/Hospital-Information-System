@@ -8,16 +8,20 @@ namespace Service
     public class AzuriranjeAnamnezeService
     {
         private ZdravstveniKartonRepository zdravstveniKartonRepository = new ZdravstveniKartonRepository();
+        private AnamnezaRepository anamnezaRepository = new AnamnezaRepository();
 
-        public void AzuriranjeAnamneze(Anamneza staraAnamneza, String noviOpis, Pacijent pacijent)
+        public void AzuriranjeAnamneze(Anamneza staraAnamneza, String noviOpis)
         {
-            ZdravsteniKarton kartonPacijenta = zdravstveniKartonRepository.DobaviZdravstveniKartonZaPacijenta(pacijent);
+            staraAnamneza.OpisAnamneze = noviOpis;
+            anamnezaRepository.AzurirajAnamnezu(staraAnamneza);
+
+           /* ZdravsteniKarton kartonPacijenta = zdravstveniKartonRepository.DobaviZdravstveniKartonZaPacijenta(pacijent);
             kartonPacijenta.anamneza = PostavljanjeNovogOpisaZaIzabranuAnamnezu(staraAnamneza, noviOpis, kartonPacijenta);
-            zdravstveniKartonRepository.AzurirajKarton(kartonPacijenta);
+            zdravstveniKartonRepository.AzurirajKarton(kartonPacijenta);*/
 
         }
 
-        private List<Anamneza> PostavljanjeNovogOpisaZaIzabranuAnamnezu(Anamneza staraAnamneza, string noviOpis, ZdravsteniKarton kartonPacijenta)
+        /*private List<Anamneza> PostavljanjeNovogOpisaZaIzabranuAnamnezu(Anamneza staraAnamneza, string noviOpis, ZdravsteniKarton kartonPacijenta)
         {
             List<Anamneza> anamnezePacijenta = kartonPacijenta.anamneza;
 
@@ -27,6 +31,6 @@ namespace Service
                     a.OpisAnamneze = noviOpis;
             }
             return anamnezePacijenta;
-        }
+        }*/
     }
 }

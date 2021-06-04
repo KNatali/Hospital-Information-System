@@ -1,4 +1,5 @@
 ﻿using Model;
+using ProjekatSIMS.DTO;
 using Repository;
 using System;
 using System.Collections.Generic;
@@ -9,15 +10,33 @@ namespace Service
     public class IzdavanjeAnamnezeService
     {
         private ZdravstveniKartonRepository zdravstveniKartonRepository = new ZdravstveniKartonRepository();
-        public void KreiranjeAnamneze(String opis, DateTime datumIzdavanja,Pacijent pacijent )
+        private AnamnezaRepository anamnezaRepository = new AnamnezaRepository();
+        public void KreiranjeAnamneze(AnamnezaDTO anamnezaDTO )
         {
-            Anamneza novaAnamneza = new Anamneza(opis,datumIzdavanja);
-            ZdravsteniKarton zdravstveniKartonPacijenta=zdravstveniKartonRepository.DobaviZdravstveniKartonZaPacijenta(pacijent);
-            if (zdravstveniKartonPacijenta.anamneza == null)
-               zdravstveniKartonPacijenta.anamneza = new List<Anamneza>();
-            zdravstveniKartonPacijenta.anamneza.Add(novaAnamneza);
-            zdravstveniKartonRepository.AzurirajKarton(zdravstveniKartonPacijenta);
+            List<Anamneza> sve = anamnezaRepository.DobaviSve();
+            Anamneza novaAnamneza = new Anamneza(GenerisiId(sve), anamnezaDTO.Opis, anamnezaDTO.Datum, anamnezaDTO.IdKartona); ;
+            DodavanjeAnamnezeUKarton(anamnezaDTO, novaAnamneza);
+            anamnezaRepository.Sacuvaj(novaAnamneza);
 
+
+        }
+
+        private void DodavanjeAnamnezeUKarton(AnamnezaDTO anamnezaDTO, Anamneza novaAnamneza)
+        {
+            ZdravsteniKarton zdravstveniKartonPacijenta = zdravstveniKartonRepository.DobaviZdravstveniKartonById(anamnezaDTO.IdKartona);
+            if (zdravstveniKartonPacijenta.anamneza == null)
+                zdravstveniKartonPacijenta.anamneza = new List<int>();
+            zdravstveniKartonPacijenta.anamneza.Add(novaAnamneza.Id);
+            zdravstveniKartonRepository.AzurirajKarton(zdravstveniKartonPacijenta);
+        }
+
+        public int GenerisiId(List<Anamneza> anamneze)
+        {
+            if (anamneze ==null)
+                return 1;
+
+            else
+                return anamneze[anamneze.Count - 1].Id + 1;
 
         }
     }

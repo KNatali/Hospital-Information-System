@@ -1,0 +1,73 @@
+﻿<Window x:Class="ProjekatSIMS.ViewDoktor.TutorijalDoktorView1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjekatSIMS.ViewDoktor"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        mc:Ignorable="d"
+        x:Name="TutorijalWindow"
+        Title="TutorijalDoktorView1" Height="600" Width="1000"
+         WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+
+
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+    </Window.Resources>
+
+
+
+    <Grid >
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="230"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+          
+            <RowDefinition Height="*"/>
+           
+
+        </Grid.RowDefinitions>
+        <Grid  Grid.Column="0" Grid.RowSpan="8" Background="#287D7D">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+               
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="7*"/>
+                <RowDefinition Height="1*"/>
+               
+
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Column="0"  Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,15,0">
+                <StackPanel Grid.Column="0"  VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Label  Foreground="white" Content="ZDRAVO" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="24" FontWeight="SemiBold" Margin="0,0,5,-5"/>
+                <Label  Foreground="white" Content="Korporacija" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,5,-15" FontSize="22" FontWeight="SemiBold"  />
+               
+
+            </StackPanel>
+                <fa:ImageAwesome Icon="HospitalOutline" Width="60" Foreground="white" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </StackPanel>
+            <Grid Grid.Row="1" Background="white"/>
+
+        </Grid>
+
+
+        <Frame  x:Name="TutorijalFrame" NavigationUIVisibility="Hidden" Grid.Column="1" Grid.Row="0"  Grid.RowSpan="2" />
+
+
+
+
+    </Grid>
+
+</Window>

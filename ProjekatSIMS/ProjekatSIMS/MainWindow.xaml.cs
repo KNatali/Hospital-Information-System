@@ -5,6 +5,7 @@ using ProjekatSIMS.Model;
 using ProjekatSIMS.Repository;
 using ProjekatSIMS.UpravnikWindows;
 using ProjekatSIMS.ViewDoktor;
+using ProjekatSIMS.ViewSekretar;
 using Repository;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,7 @@ namespace ProjekatSIMS
             set;
         }
         public LoginController loginController = new LoginController();
+        private IstorijaLogovanjaRepository istorijaLogovanjaRepository = new IstorijaLogovanjaRepository();
         public MainWindow()
         {
             InitializeComponent();
@@ -48,7 +50,16 @@ namespace ProjekatSIMS
             {
                 if ((rk.KorisnickoIme == korisnickoIme) && (rk.Lozinka == lozinka))
                 {
+                   /* RegistrovaniKorisnik korisnik = new RegistrovaniKorisnik();
+                    korisnik.KorisnickoIme = korisnickoIme;
+                    korisnik.Lozinka = lozinka;
+                    korisnik.uloga = rk.uloga;*/
                     uloga = rk.uloga;
+
+                    UlogovaniKorisnik.KorisnickoIme = korisnickoIme;
+                    UlogovaniKorisnik.Lozinka = lozinka;
+                    UlogovaniKorisnik.Uloga = rk.uloga;
+                    
                 }
             }
             foreach (Pacijent p in Pacijenti)
@@ -72,17 +83,37 @@ namespace ProjekatSIMS
                         pacijentMainWindow.Show();
                         break;
                     case Uloga.Sekretar:
-                        SekretarWindow sekretarWindow = new SekretarWindow();
-                        sekretarWindow.Show();
+                       /* Pocetna pocetna = new Pocetna();
+                        pocetna.Show();*/
+                       // SekretarWindow sekretarWindow = new SekretarWindow();
+                        //sekretarWindow.Show();
                         break;
                     case Uloga.Upravnik:
-                        Upravnik upravnikWindow = new Upravnik();
+
+
+                        Upravnik upravnikWindow = new Upravnik(korisnickoIme, lozinka, uloga) ;
+
                         upravnikWindow.Show();
+                        this.Close();
                         break;
                     case Uloga.Doktor:
-                        DoktorWindowView doktorWindow = new DoktorWindowView();
-                        doktorWindow.Show();
+                        RegistrovaniKorisnik korisnik = new RegistrovaniKorisnik();
+                        korisnik.KorisnickoIme = korisnickoIme;
+                        korisnik.Lozinka = lozinka;
+                        korisnik.uloga = uloga;
+                        if (istorijaLogovanjaRepository.IsLogovan(korisnik))
+                        {
+                            DoktorWindowView doktor = new DoktorWindowView();
+                            doktor.Show();
+                        }
+                        else
+                        {
+                            TutorijalDoktorView1 doktorWindow = new TutorijalDoktorView1();
+                            doktorWindow.Show();
+                            
+                        }
                         break;
+                        
 
                 }
             }

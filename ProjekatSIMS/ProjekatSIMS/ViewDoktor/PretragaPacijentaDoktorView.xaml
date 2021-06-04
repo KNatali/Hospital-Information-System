@@ -64,7 +64,7 @@
                 <DataGridTemplateColumn Header="Zdravstveni karton" Width="150*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Name="Pogledaj" Content="Zadravstveni karton" Click="PrikazZdravstvenogKartona"  Style="{StaticResource btnStandard}"/>
+                            <Button Name="Pogledaj" Content="Zdravstveni karton" Click="PrikazZdravstvenogKartona"  Style="{StaticResource btnStandard}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

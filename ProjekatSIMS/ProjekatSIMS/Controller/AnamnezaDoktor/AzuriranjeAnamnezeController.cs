@@ -10,9 +10,9 @@ namespace Controller
     {
         private AzuriranjeAnamnezeService azuriranjeAnamnezeService = new AzuriranjeAnamnezeService();
 
-        public void AzuriranjeAnamneze(Anamneza staraAnamneza,String noviOpis,Pacijent pacijent)
+        public void AzuriranjeAnamneze(Anamneza staraAnamneza,String noviOpis)
         {
-            azuriranjeAnamnezeService.AzuriranjeAnamneze(staraAnamneza,noviOpis,pacijent);
+            azuriranjeAnamnezeService.AzuriranjeAnamneze(staraAnamneza,noviOpis);
         }
     }
 }

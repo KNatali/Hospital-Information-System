@@ -20,26 +20,32 @@ namespace ProjekatSIMS.UpravnikWindows
     public partial class IzmeniProstoriju : Page
     {
         public ProstorijaController prostorijaController { get; set; }
-        public ProstorijaService prostorijaService { get; set; }
         public List<Prostorija> prostorije { get; set; }
         public List<String> vrste { get; set; }
-        public IzmeniProstoriju()
+        public Prostorija prostorijaZaIzmenu { get; set; }
+
+        public IzmeniProstoriju(Prostorija p)
         {
             InitializeComponent();
             this.DataContext = this;
+            prostorijaZaIzmenu = p;
             prostorije = new List<Prostorija>();
-            prostorijaService = new ProstorijaService();
             prostorijaController = new ProstorijaController();
-            prostorije = prostorijaService.prostorijaRepository.DobaviSve();
+            prostorije = prostorijaController.prostorijaService.prostorijaRepository.DobaviSve();
             vrste = new List<String> { "Magacin", "Ordinacija", "Sala", "Soba", "Kancelarija" };
             
         }
 
         private void Izmeni(object sender, RoutedEventArgs e)
         {
-            Prostorija prostorijaZaIzmenu = (Prostorija)Prostorije.SelectedItem;
-            String Vrsta = (String)vrstaProstorije.SelectedItem;
-            if(prostorijaController.IzmeniProstoriju(prostorijaZaIzmenu.id, Vrsta, Convert.ToInt32(Sprat.Text), Convert.ToDouble(Kvadratura.Text)))
+            String vrsta = (String)vrstaProstorije.SelectedItem;
+            if (vrstaProstorije.SelectedItem == null || prostorijaZaIzmenu.id == "0")
+            {
+                vrsta = Vrsta.Text;
+            }
+            
+            
+            if(prostorijaController.IzmeniProstoriju(prostorijaZaIzmenu.id, vrsta, Convert.ToInt32(Sprat.Text), Convert.ToDouble(Kvadratura.Text)))
             {
                 MessageBox.Show("Uspesno ste izmenili prostoriju!");
                 Upravnik uw = (Upravnik)Window.GetWindow(this);
@@ -51,6 +57,11 @@ namespace ProjekatSIMS.UpravnikWindows
             }
 
         }
+        private void Odustani(object sender, RoutedEventArgs e)
+        {
+            Upravnik uw = (Upravnik)Window.GetWindow(this);
+            uw.UpravnikFrame.Content = new PregledProstorija();
+        }
 
-    }
+        }
 }

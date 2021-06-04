@@ -87,6 +87,23 @@ namespace Repository
             return prostorije;
         }
 
+        public Boolean KreirajProstoriju(String idNoveProstorije, VrstaProstorije vrsta, int sprat, double kvadratura)
+        {
+            if(Pronadji(idNoveProstorije) != null)
+            {
+                return false;
+            }
+           
+            Prostorija novaProstorija = new Prostorija(idNoveProstorije, sprat, vrsta, kvadratura);
+                
+            List<Prostorija> prostorije = DobaviSve();
+            prostorije.Add(novaProstorija);
+            Sacuvaj(prostorije);
+            return true;
+
+            
+        }
+
       
 
         

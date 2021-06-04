@@ -6,13 +6,16 @@ namespace Model
 {
     public class Uput
     {
-        public Uput(Pregled pregled,DateTime datum)
+        public Uput() { }
+        public Uput(int id,int idPregleda,DateTime datum)
         {
-            ZakazanPregled = pregled;
+            Id = id;
+            IdPregleda = idPregleda;
             DatumIzdavanja = datum;
         }
-        public Pregled ZakazanPregled { get; set; }
+        public int IdPregleda { get; set; }
         public DateTime DatumIzdavanja { get; set; }
+        public int Id { get; set; }
        
     }
 }

@@ -11,6 +11,8 @@
             <Setter Property="Background" Value="#C7E5DD"/>
         </Style>
 
+       
+
         <Style TargetType="{x:Type Button}" x:Key="btnBlue">
             <Setter Property="Background" Value="#287D7D"/>
             <Setter Property="Foreground" Value="white"/>
@@ -200,6 +202,7 @@
             <Setter Property="RowStyle">
                 <Setter.Value>
                     <Style TargetType="DataGridRow">
+                        <!--<Setter Property="Height" Value="65"/>-->
                         <Style.Triggers>
                             <!-- Highlight a grid row as the mouse passes over -->
                             <Trigger Property="IsMouseOver" Value="True">
@@ -209,6 +212,7 @@
                                 <Setter Property="Background" Value="#81B9B9" />
                                 <Setter Property="BorderBrush" Value="Transparent" />
                                 <Setter Property="Foreground" Value="Black" />
+                                
                             </Trigger>
                         </Style.Triggers>
                         

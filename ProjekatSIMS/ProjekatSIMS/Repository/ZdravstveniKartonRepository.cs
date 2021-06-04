@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Windows;
 
 namespace Repository
 {
@@ -25,13 +26,28 @@ namespace Repository
             LokacijaFajla = lokacija;
         }
 
+        public ZdravsteniKarton DobaviZdravstveniKartonById(int id)
+        {
+            sviKartoni = DobaviZdravstveneKartone();
+            foreach (ZdravsteniKarton z in sviKartoni)
+            {
+                if (z.Id == id)
+                    return z;
+            }
+            return null;
+        }
+
         public ZdravsteniKarton DobaviZdravstveniKartonZaPacijenta(Pacijent pacijent)
         {
             sviKartoni = DobaviZdravstveneKartone();
             foreach (ZdravsteniKarton z in sviKartoni)
             {
                 if (z.IdPacijent == pacijent.Jmbg)
+                {
+                    MessageBox.Show("Nadjen");
                     return z;
+                }
+                   
             }
             return null;
 

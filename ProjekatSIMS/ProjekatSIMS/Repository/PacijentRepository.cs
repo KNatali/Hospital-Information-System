@@ -36,6 +36,18 @@ namespace Repository
 
         }
 
+        public Pacijent DobaviById(String id)
+        {
+            List<Pacijent> pacijenti = DobaviSve();
+            foreach(Pacijent p in pacijenti)
+            {
+                if (p.Jmbg == id)
+                    return p;
+            }
+
+            return null;
+        }
+
         public void Sacuvaj(List<Pacijent> pacijenti)
         {
             string newJson = JsonConvert.SerializeObject(pacijenti);

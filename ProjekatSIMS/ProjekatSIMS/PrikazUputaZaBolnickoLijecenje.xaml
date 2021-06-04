@@ -50,14 +50,14 @@
             <TextBox Name="Filter" Grid.Column="1"  HorizontalAlignment="Stretch"  TextWrapping="Wrap" VerticalAlignment="Center" />
             <Label  Grid.Column="0" Content="Pretraži uput:"  VerticalAlignment="Center"></Label>
         </Grid>
-        <DataGrid Grid.Row="2" Grid.ColumnSpan="2" x:Name="Uputi" Style="{StaticResource Tabela}"  Height="Auto"  IsReadOnly="True"
+        <DataGrid Grid.Row="2" Grid.ColumnSpan="2" x:Name="Uputi1" Style="{StaticResource Tabela}" ItemsSource="{Binding Uputi}" Height="Auto"  IsReadOnly="True"
                   SelectionMode="Single" AutoGenerateColumns="False" 
                   ScrollViewer.CanContentScroll="True" 
                   ScrollViewer.VerticalScrollBarVisibility="Auto"  BorderBrush="{x:Null}" GridLinesVisibility="All">
 
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Pocinje" Binding="{Binding IntervalPocetak}" Width="100*" />
-                <DataGridTextColumn Header="Zavrsava" Binding="{Binding IntervalKraj}" Width="100*"/>
+                <DataGridTextColumn Header="Pocinje" Binding="{Binding Interval.PocetnoVrijeme}" Width="100*" />
+                <DataGridTextColumn Header="Zavrsava" Binding="{Binding Interval.KrajnjeVrijeme}" Width="100*"/>
                 <DataGridTextColumn Header="Soba" Binding="{Binding SobaId}" Width="100*"/>
                 <DataGridTextColumn Header="Krevet" Binding="{Binding KrevetId}" Width="100*"/>
 

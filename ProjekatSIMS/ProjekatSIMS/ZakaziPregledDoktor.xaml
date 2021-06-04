@@ -240,7 +240,7 @@
         <Label Visibility="Hidden" Name="Izbor" Grid.Row="5" Grid.Column="0" Content="Izaberi jedan od ponudjenih termina:" HorizontalAlignment="Left" VerticalAlignment="Center"/>
 
         <StackPanel  Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2"  HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
-            <Button Content="Zakazi" Width="100" Margin="0,0,20,0" Click="ZakazivanjePregleda" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnStandard}"/>
+            <Button Content="Zakazi" Width="100" Margin="0,5,20,5" Click="ZakazivanjePregleda" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnStandard}"/>
             <Button Content="Odustani" Width="100" Click="ZakazivanjePregleda" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnStandard}"/>
 
         </StackPanel>

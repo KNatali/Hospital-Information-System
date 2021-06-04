@@ -1,0 +1,55 @@
+﻿<Page x:Class="ProjekatSIMS.UpravnikWindows.Profil"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ProjekatSIMS.UpravnikWindows"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Profil">
+    <Page.Resources>
+        <Style x:Key="Buttons" TargetType="Button">
+            <Setter Property="Background" Value="MediumAquamarine"></Setter>
+
+        </Style>
+    </Page.Resources>
+    <Grid Background="Azure">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="35"/>
+
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="45"/>
+
+            <RowDefinition Height="0.5*"/>
+
+        </Grid.RowDefinitions>
+        <Border Grid.Column="2" Grid.Row="1" Height="150" Width="135" BorderBrush="MediumAquamarine" BorderThickness="5, 5, 5, 5" >
+            <Image HorizontalAlignment="Center" VerticalAlignment="Center" Height="153" >
+                <Image.Source>
+                    <BitmapImage UriSource="/Resources/podesavanje.png"></BitmapImage>
+                </Image.Source>
+            </Image>
+        </Border>
+        <Label Content="Podaci o korisniku" FontSize="22" Grid.Column="2" HorizontalAlignment="Center" Margin="0,0,0,0" Grid.Row="2" VerticalAlignment="Center"/>
+        <Label Content="Korisnicko ime" Grid.Column="2" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="3" VerticalAlignment="Top"/>
+        <TextBox Grid.Column="2" HorizontalAlignment="Left" Margin="180,14,0,0" Grid.Row="3" Name="korisnickoIme" DataContext="{Binding Path=registrovaniKorisnik}" Text="{Binding KorisnickoIme}" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Unesite staru lozinku" Grid.Column="1" HorizontalAlignment="Left" Margin="93,40,0,0" Grid.Row="3" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <Label Content="Unesite novu lozinku" Grid.Column="2" HorizontalAlignment="Left" Margin="0,74,0,0" Grid.Row="3" VerticalAlignment="Top"/>
+        <Label Content="Potvrdite novu lozinku" Grid.Column="1" HorizontalAlignment="Left" Margin="93,104,0,0" Grid.Row="3" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <Button Style="{StaticResource Buttons}" Content="Izmeni" Click="IzmeniLozinku" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="4"  Height="24" Width="96" Margin="2,2,2,2"/>
+        <PasswordBox x:Name="StaraLozinka" Grid.Column="2" HorizontalAlignment="Left" Margin="180,48,0,0" Grid.Row="3" VerticalAlignment="Top" Width="120"/>
+        <PasswordBox x:Name="NovaLozinka1" Grid.Column="2" HorizontalAlignment="Left" Margin="180,78,0,0" Grid.Row="3" VerticalAlignment="Top" Width="120"/>
+        <PasswordBox x:Name="NovaLozinka2" Grid.Column="2" HorizontalAlignment="Left" Margin="180,108,0,0" Grid.Row="3" VerticalAlignment="Top" Width="120"/>
+
+
+    </Grid>
+</Page>

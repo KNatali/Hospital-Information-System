@@ -36,5 +36,11 @@ namespace ProjekatSIMS
             AzuriranjeAnamnezeDoktor a = new AzuriranjeAnamnezeDoktor(pacijent, an);
             this.NavigationService.Navigate(a);
         }
+        private void Odustani(object sender, RoutedEventArgs e)
+        {
+
+
+            this.NavigationService.GoBack();
+        }
     }
 }
