@@ -5,7 +5,7 @@ using ProjekatSIMS.Model;
 using ProjekatSIMS.Repository;
 using ProjekatSIMS.UpravnikWindows;
 using ProjekatSIMS.ViewDoktor;
-using ProjekatSIMS.ViewModelSekretar;
+using ProjekatSIMS.ViewSekretar;
 using Repository;
 using System;
 using System.Collections.Generic;
