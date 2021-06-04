@@ -25,8 +25,8 @@
         <Label Content="ZDRAVO KORPORACIJA" FontSize="25" Margin="388,34,108,445" Foreground="#1963bf" FontWeight="Bold"/>
         <Label Content="Slobodan od:" HorizontalAlignment="Left" FontSize="25" Height="51" Margin="60,313,0,0" VerticalAlignment="Top" Width="174" Foreground="#1963bf" FontWeight="DemiBold"/>
         <DatePicker HorizontalAlignment="Left" x:Name="Od" FontSize="25" Margin="240,319,0,0" VerticalAlignment="Top" Width="201" Height="40" BorderBrush="#1963bf" Foreground="#1963bf"/>
-        <Label Content="Slobodan do:" HorizontalAlignment="Left" FontSize="25" Height="50" Margin="483,313,0,0" VerticalAlignment="Top" Width="174" Foreground="#1963bf" FontWeight="DemiBold"/>
-        <DatePicker HorizontalAlignment="Left" x:Name="Do" FontSize="25" Margin="663,319,0,0" VerticalAlignment="Top" Width="201" Height="40" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <Label Content="Slobodan do:" HorizontalAlignment="Left" FontSize="25" Height="50" Margin="469,313,0,0" VerticalAlignment="Top" Width="174" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <DatePicker HorizontalAlignment="Left" x:Name="Do" FontSize="25" Margin="649,319,0,0" VerticalAlignment="Top" Width="201" Height="40" BorderBrush="#1963bf" Foreground="#1963bf"/>
         <Label Content="Obrazloženje" HorizontalAlignment="Left" FontSize="25" Height="49" Margin="244,379,0,0" VerticalAlignment="Top" Width="160" Foreground="#1963bf" FontWeight="DemiBold"/>
         <ComboBox x:Name="Obrazlozenje" HorizontalAlignment="Left"   
                   Margin="438,384,0,0"   

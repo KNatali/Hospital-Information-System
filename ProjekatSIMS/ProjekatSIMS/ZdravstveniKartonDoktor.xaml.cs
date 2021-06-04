@@ -1,4 +1,5 @@
 ﻿using Model;
+using Repository;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -18,12 +19,15 @@ namespace ProjekatSIMS
     public partial class ZdravstveniKartonDoktor : Page
     {
         public Pacijent Pacijent { get; set; }
-        public ZdravstveniKartonDoktor(Pacijent p)
+        private PacijentRepository pacijentRepository = new PacijentRepository();
+        public ZdravstveniKartonDoktor(Pacijent pacijent)
         {
             InitializeComponent();
           
             this.DataContext = this;
-            Pacijent = p;
+
+            //Pacijent = pacijentRepository.DobaviById(idPacijenta);
+            Pacijent = pacijent;
             Jmbg.Text = Pacijent.Jmbg;
             Ime.Text = Pacijent.Ime;
             Prezime.Text = Pacijent.Prezime;

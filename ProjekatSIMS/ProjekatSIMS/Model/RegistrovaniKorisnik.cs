@@ -11,21 +11,26 @@ namespace Model
 {
    public class RegistrovaniKorisnik
    {
-      public Boolean Logovanje()
-      {
-         // TODO: implement
-         return true;
-      }
-      
-      public Boolean Odjvljivanje()
-      {
-         // TODO: implement
-         return true;
-      }
+
+        public RegistrovaniKorisnik()
+        {
+
+        }
+     
    
-      public String KorisnickoIme;
-      public String Lozinka;
-      public Uloga uloga;
-   
-   }
+
+        public RegistrovaniKorisnik(string korisnickoIme, string lozinka, Uloga uloga)
+        {
+            KorisnickoIme = korisnickoIme;
+            Lozinka = lozinka;
+            this.uloga = uloga;
+        }
+
+      public String KorisnickoIme { get; set; }
+      public String Lozinka { get; set; }
+      public Uloga uloga { get; set; }
+
+  
+    
+    }
 }

@@ -56,7 +56,7 @@
             <TextBox Name="Filter" Grid.Column="1" HorizontalAlignment="Stretch"   TextWrapping="Wrap"  VerticalAlignment="Center" VerticalContentAlignment="Center"/>
             <Label  Grid.Column="0" Content="Pretraži pregled:"  VerticalAlignment="Center"></Label>
         </Grid>
-        <DataGrid Grid.Row="2" Grid.ColumnSpan="2" x:Name="dataGridPregledi" Style="{StaticResource Tabela}" ItemsSource="{Binding Pregledi}" IsReadOnly="True"
+        <DataGrid Grid.Row="2" Grid.ColumnSpan="2" x:Name="dataGridPregledi" Style="{StaticResource Tabela}" ItemsSource="{Binding Pregledi}"  SelectedItem="{Binding SelectedPregled}" IsReadOnly="True"
                   SelectionMode="Single" AutoGenerateColumns="False" 
                   ScrollViewer.CanContentScroll="True" 
                   ScrollViewer.VerticalScrollBarVisibility="Auto"  BorderBrush="{x:Null}" GridLinesVisibility="All">
@@ -73,7 +73,9 @@
                 <DataGridTemplateColumn Header="Detalji" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Name="Pogledaj" Content="Pogledaj" Click="DetaljiPregleda" Style="{StaticResource btnStandard}"/>
+                            <Button Name="Pogledaj" Content="Pogledaj" Command="{Binding Path=DataContext.Detalji,       
+ RelativeSource= {RelativeSource FindAncestor,
+  AncestorType={x:Type DataGrid}}}" Style="{StaticResource btnStandard}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -81,13 +83,13 @@
             </DataGrid.Columns>
             
         </DataGrid>
-        <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+       <!-- <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Button Content="Otkazi Pregled" Click="OtkaziPregled" Style="{StaticResource btnStandard}"/>
         <Button Content="Pomjeri Pregled" Click="IzmijeniPregled"  />
         <Button Content="Zdravstveni karton" Click="PrikazProfila"  HorizontalAlignment="Left" />
         <Button Content="Zapocni pregled" Click="ZapocniPregled"  HorizontalAlignment="Left"/>
 
-        </StackPanel>
+        </StackPanel>-->
         
         
 

@@ -1,30 +1,48 @@
-﻿using Model;
-using Newtonsoft.Json;
+﻿using Controller;
+using Model;
 using ProjekatSIMS.Commands;
-using ProjekatSIMS.Model;
+using ProjekatSIMS.Controller.LijekoviDoktor;
+using ProjekatSIMS.DTO;
 using ProjekatSIMS.ViewDoktor;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
-using System.Text;
 using System.Windows.Navigation;
 
 namespace ProjekatSIMS.ViewModelDoktor
 {
     public class EvidencijaLijekovaViewModel : BindableBase
     {
-
+        private PrikazEvidencijeLijekovaController prikazEvidencijeLijekovaController = new PrikazEvidencijeLijekovaController();
+        private PrikazDetaljaLijekController prikazDetaljaLijekController = new PrikazDetaljaLijekController();
+        private VerifikovanjeLijekovaController verifikovanjeLijekovaController = new VerifikovanjeLijekovaController();
         private NavigationService navService;
+
+        private Lijek selectedLijek;
+        private String opis;
+        private String poruka;
+        private double opacity=1;
+        public TipLijekaPremaPrikazu Tip { get; set; }
         public ObservableCollection<Lijek> Lijekovi { get; set; }
         public ObservableCollection<StringWrapper> Sastojci { get; set; }
         public ObservableCollection<StringWrapper> AlternativniLijekovi { get; set; }
+
         private RelayCommand prikazDetaljaLijeka;
         private RelayCommand izmijeniLijek;
-        private Lijek selectedLijek;
-        private String opis;
+        private RelayCommand verifikovaniLijekovi;
+        private RelayCommand prihvatiLijek;
+        private RelayCommand odbaciLijek;
+        private RelayCommand nazad;
 
 
+        public NavigationService NavService
+        {
+            get { return navService; }
+            set
+            {
+                navService = value;
+            }
+        }
 
 
         public string Opis
@@ -40,6 +58,35 @@ namespace ProjekatSIMS.ViewModelDoktor
             }
         }
 
+        public string Poruka
+        {
+            get { return poruka; }
+            set
+            {
+                if (poruka != value)
+                {
+                    poruka = value;
+                    OnPropertyChanged("Poruka");
+                }
+            }
+        }
+
+        /*public ObservableCollection<StringWrapper> Sastojci
+        {
+            get { return sastojci; }
+            set
+            {
+                if (sastojci != value)
+                {
+                    sastojci = value;
+                    OnPropertyChanged("Sastojci");
+                }
+            }
+        }*/
+
+
+
+
         public Lijek SelectedLijek
         {
             get { return selectedLijek; }
@@ -49,6 +96,17 @@ namespace ProjekatSIMS.ViewModelDoktor
                 PrikazDetaljaLijeka.RaiseCanExecuteChanged();
             }
         }
+
+        public double Opacity
+        {
+            get { return opacity; }
+            set
+            {
+                opacity = value;
+                OnPropertyChanged("Opacity");
+            }
+        }
+
         public RelayCommand PrikazDetaljaLijeka
         {
             get { return prikazDetaljaLijeka; }
@@ -66,91 +124,152 @@ namespace ProjekatSIMS.ViewModelDoktor
             }
         }
 
-
-
-        public NavigationService NavService
+        public RelayCommand VerifikovaniLijekovi
         {
-            get { return navService; }
+            get { return verifikovaniLijekovi; }
             set
             {
-                navService = value;
+                verifikovaniLijekovi = value;
             }
         }
 
-        public void PrikazLijekova()
+        public RelayCommand PrihvatiLijek
         {
-            List<Lijek> sviLijekovi = new List<Lijek>();
+            get { return prihvatiLijek; }
+            set
+            {
+                prihvatiLijek = value;
+            }
+        }
+
+        public RelayCommand OdbaciLijek
+        {
+            get { return odbaciLijek; }
+            set
+            {
+                odbaciLijek = value;
+            }
+        }
+
+        public RelayCommand Nazad
+        {
+            get { return nazad; }
+            set
+            {
+                nazad = value;
+            }
+        }
+
+
+        public void PrikazLijekova(TipLijekaPremaPrikazu tip)
+        {
+
+            List<Lijek> lijekoviNaCekanju = prikazEvidencijeLijekovaController.PrikazLijekovaPoStatusu(tip);
             Lijekovi = new ObservableCollection<Lijek>();
-            using (StreamReader r = new StreamReader(@"..\..\..\Fajlovi\Lijek.txt"))
+            foreach (Lijek l in lijekoviNaCekanju)
             {
-                string json = r.ReadToEnd();
-                sviLijekovi = JsonConvert.DeserializeObject<List<Lijek>>(json);
+                Lijekovi.Add(l);
             }
-            foreach (Lijek l in sviLijekovi)
-            {
-                if (l.Status == OdobravanjeLekaEnum.Ceka)
-                    Lijekovi.Add(l);
-            }
-            Sastojci = new ObservableCollection<StringWrapper>();
             AlternativniLijekovi = new ObservableCollection<StringWrapper>();
+            Sastojci = new ObservableCollection<StringWrapper>();
+
+
+
 
 
         }
 
         public void Executed_PrikazDetalja()
         {
-            List<String> sastojci = SelectedLijek.Alergeni;
-            // Sastojci = new ObservableCollection<StringWrapper>();
-            Sastojci.Clear();
             AlternativniLijekovi.Clear();
-
-            List<String> alternativni = SelectedLijek.AlternativniLekovi;
-
-            foreach (String s in sastojci)
+            Sastojci.Clear();
+            LijekDetaljiDTO detalji = prikazDetaljaLijekController.PrikazDetalja(SelectedLijek);
+            Opis = detalji.Opis;
+            Poruka = detalji.Poruka;
+            foreach (StringWrapper s in detalji.Sastojci)
             {
-                StringWrapper sw = new StringWrapper();
-                sw.Naziv = s;
-                Sastojci.Add(sw);
+                Sastojci.Add(s);
             }
-            foreach (String a in alternativni)
+            foreach (StringWrapper s in detalji.AlternativniLijekovi)
             {
-                StringWrapper sw = new StringWrapper();
-                sw.Naziv = a;
-                AlternativniLijekovi.Add(sw);
+                AlternativniLijekovi.Add(s);
             }
 
-            //Sastojci = new ObservableCollection<String>(sastojci);
 
-            Opis = SelectedLijek.Opis;
+
         }
 
         public bool CanExecute_PrikazDetalja()
         {
             return true;
-            //return SelectedLijek != null;
+
         }
 
         public void Executed_IzmijeniLijek()
         {
-
-
             IzmjenaLijekDoktorViewModel il = new IzmjenaLijekDoktorViewModel(this.NavService, SelectedLijek);
             IzmjenaLijekDoktorView izmjena = new IzmjenaLijekDoktorView(il);
             this.NavService.Navigate(izmjena);
         }
 
+        public void Executed_VerifikovaniLijekovi()
+        {
+            EvidencijaLijekovaViewModel e = new EvidencijaLijekovaViewModel(this.NavService, TipLijekaPremaPrikazu.Verifikovan);
+            VerifikovaniLijekoviDoktorView lijekovi = new VerifikovaniLijekoviDoktorView(e);
+            this.NavService.Navigate(lijekovi);
+        }
+
+        public void Executed_PrihvatiLijek()
+        {
+
+            verifikovanjeLijekovaController.OdobriLijek(SelectedLijek);
+            Lijekovi.Remove(SelectedLijek);
+
+        }
+
+        public void Executed_OdbaciLijek()
+        {
+           
+            this.Opacity = 0.3;
+            OdbacivanjePoruka porukaProzor = new OdbacivanjePoruka();
+            porukaProzor.ShowDialog();
+            this.Opacity = 1;
+
+            verifikovanjeLijekovaController.OdbaciLijek(SelectedLijek, porukaProzor.Poruka);
+            Lijekovi.Remove(SelectedLijek);
+
+        }
+
+        public void Executed_Nazad()
+        {
+            if (Tip == TipLijekaPremaPrikazu.Neverifikovan)
+            {
+                PocetnaStranicaDoktorViewModel e = new PocetnaStranicaDoktorViewModel(this.NavService);
+                PocetnaStranicaDoktorView pocetna = new PocetnaStranicaDoktorView(e);
+                this.NavService.Navigate(pocetna);
+            }
+            else
+                this.NavService.GoBack();
+           
+        }
 
 
+    
 
 
-
-        public EvidencijaLijekovaViewModel(NavigationService service)
+        public EvidencijaLijekovaViewModel(NavigationService service, TipLijekaPremaPrikazu tip)
         {
             this.navService = service;
-            PrikazLijekova();
+            Tip = tip;
+            PrikazLijekova(tip);
 
             this.PrikazDetaljaLijeka = new RelayCommand(Executed_PrikazDetalja, CanExecute_PrikazDetalja);
             this.IzmijeniLijek = new RelayCommand(Executed_IzmijeniLijek);
+            this.VerifikovaniLijekovi = new RelayCommand(Executed_VerifikovaniLijekovi);
+            this.PrihvatiLijek = new RelayCommand(Executed_PrihvatiLijek);
+            this.OdbaciLijek = new RelayCommand(Executed_OdbaciLijek);
+            this.Nazad = new RelayCommand(Executed_Nazad);
+
         }
 
     }

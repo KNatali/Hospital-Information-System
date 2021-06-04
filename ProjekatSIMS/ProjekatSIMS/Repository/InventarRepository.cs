@@ -1,7 +1,9 @@
 using Model;
+using Newtonsoft.Json;
 using ProjekatSIMS.Service;
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Repository
 {
@@ -58,6 +60,27 @@ namespace Repository
             }
             
             return inventar;
+        }
+        public void Sacuvaj(List<Inventar> inventar)
+        {
+            string json = JsonConvert.SerializeObject(inventar);
+            File.WriteAllText(putanja, json);
+        }
+        public Boolean ObrisiInventar(int id)
+        {
+            List<Inventar> inventar = new List<Inventar>();
+            inventar = DobaviSavInventar();
+            foreach (Inventar i in inventar)
+            {
+                if (i.id == id)
+                {
+
+                    inventar.Remove(i);
+                    Sacuvaj(inventar);
+                    return true;
+                }
+            }
+            return false;
         }
 
 

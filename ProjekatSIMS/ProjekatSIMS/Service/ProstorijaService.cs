@@ -12,7 +12,7 @@ namespace ProjekatSIMS.Service
         public ProstorijaRepository prostorijaRepository = new ProstorijaRepository();
         public ProstorijaService() { }
         
-        public Prostorija pronadjiProstorijuPoId(String idTrazeneProstorije)
+        public Prostorija PronadjiProstorijuPoId(String idTrazeneProstorije)
         {
             List<Prostorija> prostorije = prostorijaRepository.DobaviSve();
             
@@ -27,9 +27,13 @@ namespace ProjekatSIMS.Service
             return null;
         }
 
-        public Boolean obrisiProstoriju(String idProstorijeZaBrisanje)
+        public Boolean ObrisiProstoriju(String idProstorijeZaBrisanje)
         {
             List<Prostorija> prostorije = prostorijaRepository.DobaviSve();
+            if(DaLiJeGlavniMagacin(idProstorijeZaBrisanje))
+            {
+                return false;
+            }
             foreach(Prostorija p in prostorije)
             {
                 if(p.id == idProstorijeZaBrisanje)
@@ -42,16 +46,22 @@ namespace ProjekatSIMS.Service
             return false;
             
         }
-        public bool daLiJeGlavniMagacin(String id, String vrsta)
+        public bool DaLiJeGlavniMagacin(String id)
         {
-            Prostorija p = pronadjiProstorijuPoId(id);
-            if(p.vrsta == VrstaProstorije.GlavniMagacin)
+            List<Prostorija> prostorije = prostorijaRepository.DobaviSve();
+            foreach(Prostorija p in prostorije)
             {
-                return true;
+                if(p.id == id)
+                {
+                    if(p.vrsta == VrstaProstorije.GlavniMagacin)
+                    {
+                        return true;
+                    }
+                }
             }
             return false;
         }
-        public VrstaProstorije kojaJeVrsta(String vrsta)
+        public VrstaProstorije KojaJeVrsta(String vrsta)
         {
             if (vrsta == VrstaProstorije.GlavniMagacin.ToString())
             {
@@ -92,6 +102,7 @@ namespace ProjekatSIMS.Service
             
 
         }
+
         public void KreiranjeProstorije(String id, VrstaProstorije vrsta, int sprat, double kvadratura)
         {
             List<Prostorija> prostorije = prostorijaRepository.DobaviSve();
@@ -105,7 +116,10 @@ namespace ProjekatSIMS.Service
             
 
         }
-        
-        
+        public List<Prostorija> DobaviSve()
+        {
+            return prostorijaRepository.DobaviSve();
+        }
+
     }
 }

@@ -1,6 +1,8 @@
 ﻿using Controller;
 using Model;
 using Newtonsoft.Json;
+using ProjekatSIMS.ViewDoktor;
+using ProjekatSIMS.ViewModelDoktor;
 using Repository;
 using System;
 using System.Collections.Generic;
@@ -34,6 +36,9 @@ namespace ProjekatSIMS
             pregled = new Pregled();
             Pregledi.Add(p);
             pregled = p;
+            ImeiPrezime.Text = p.pacijent.Ime + " " + p.pacijent.Prezime;
+            Sala.Text = p.prostorija.id.ToString();
+            Tip.Text = p.Tip.ToString();
             Date.SelectedDate = pregled.Pocetak;
             Sati.Text = pregled.Pocetak.Hour.ToString();
             Minuti.Text = pregled.Pocetak.Minute.ToString();
@@ -80,10 +85,20 @@ namespace ProjekatSIMS
             {
                 izmjenaPregledaDoktorController.IzmjeniPregled(pregled, datum1);
                 MessageBox.Show("Uspjesno je izmjenjen termin");
-                this.NavigationService.Navigate(new Uri("PrikazPregledaDoktor.xaml", UriKind.Relative));
+                PrikazPregledaDoktorViewModel vm1 = new PrikazPregledaDoktorViewModel(this.NavigationService);
+                PrikazPregledaDoktorView kalendar = new PrikazPregledaDoktorView(vm1);
+                this.NavigationService.Navigate(kalendar);
 
             }
         }
+
+        private void Odustani(object sender, RoutedEventArgs e)
+        {
+
+            this.NavigationService.GoBack();
+
+        }
+
 
 
 

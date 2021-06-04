@@ -20,12 +20,27 @@ namespace Service
 
             Pregled p = KreiranjePregleda(pacijent, doktor, izabraniTermin, slobodnaOrdinacija);
             pregledRepository.SacuvajPregledDoktor(p);
-
-            DateTime vrijemeIzadavanja = DateTime.Now;
-            Uput uput = new Uput(p, vrijemeIzadavanja);
-            uputRepository.SacuvajUput(uput);
+            KreiranjeUputa(1);
 
             return true;
+        }
+
+        public void KreiranjeUputa(int  idPregleda)
+        {
+            List<Uput> sviUputi = uputRepository.DobaviUpute();
+            Uput uput = new Uput(GenerisiId(sviUputi), idPregleda, DateTime.Now);
+            uputRepository.SacuvajUput(uput);
+
+        }
+
+        public int GenerisiId(List<Uput> uputi)
+        {
+            if (uputi.Count == 0)
+                return 1;
+
+            else
+                return uputi[uputi.Count - 1].Id + 1;
+
         }
 
         public Prostorija NadjiSlobodnuOrdinaciju(DateTime terminPocetak)

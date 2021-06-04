@@ -1,6 +1,8 @@
-﻿using Model;
+﻿using Controller;
+using Model;
 using Newtonsoft.Json;
 using ProjekatSIMS.Commands;
+using ProjekatSIMS.Repository;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -18,6 +20,10 @@ namespace ProjekatSIMS.ViewModelDoktor
         private String naziv;
         private String noviSastojak;
         public Lijek alternativniLijek;
+
+        private LijekRepository lijekRepository = new LijekRepository();
+        private IzmjenaLijekaDoktorController izmjenaLijekaController = new IzmjenaLijekaDoktorController();
+        private CuvanjeIzmjenaLijekaDoktorController cuvanjeIzmjenaLijekaDoktorController = new CuvanjeIzmjenaLijekaDoktorController();
         public ObservableCollection<Lijek> SviLijekovi { get; set; }
         public ObservableCollection<StringWrapper> Sastojci { get; set; }
         public ObservableCollection<StringWrapper> AlternativniLijekovi { get; set; }
@@ -25,6 +31,7 @@ namespace ProjekatSIMS.ViewModelDoktor
         private RelayCommand dodajSastojak;
         private RelayCommand dodajALternativniLijek;
         private RelayCommand sacuvaj;
+        private RelayCommand odustani;
 
         public RelayCommand DodajSastojak
         {
@@ -32,6 +39,15 @@ namespace ProjekatSIMS.ViewModelDoktor
             set
             {
                 dodajSastojak = value;
+            }
+        }
+
+        public RelayCommand Odustani
+        {
+            get { return odustani; }
+            set
+            {
+                odustani = value;
             }
         }
 
@@ -122,35 +138,25 @@ namespace ProjekatSIMS.ViewModelDoktor
             }
         }
 
-        public void Ucitaj()
+        public void Ucitaj(Lijek izabraniLijek)
         {
             Sastojci = new ObservableCollection<StringWrapper>();
             AlternativniLijekovi = new ObservableCollection<StringWrapper>();
-            Naziv = IzabraniLijek.NazivLeka;
-            Opis = IzabraniLijek.Opis;
-            List<String> sastojci = IzabraniLijek.Alergeni;
-            List<String> alternativni = IzabraniLijek.AlternativniLekovi;
-
-
-            foreach (String s in sastojci)
+            Naziv=izabraniLijek.NazivLeka;
+            Opis = izabraniLijek.Opis;
+            foreach(String l in izabraniLijek.Alergeni)
             {
-                StringWrapper sw = new StringWrapper();
-                sw.Naziv = s;
-                Sastojci.Add(sw);
+                StringWrapper s = new StringWrapper();
+                s.Text = l;
+                Sastojci.Add(s);
             }
-            foreach (String a in alternativni)
+            foreach (String a in izabraniLijek.AlternativniLekovi)
             {
-                StringWrapper sw = new StringWrapper();
-                sw.Naziv = a;
-                AlternativniLijekovi.Add(sw);
+                StringWrapper s = new StringWrapper();
+                s.Text = a;
+                AlternativniLijekovi.Add(s);
             }
-            List<Lijek> lijekovi = new List<Lijek>();
-            //dobavljanje svih iljekova
-            using (StreamReader r = new StreamReader(@"..\..\..\Fajlovi\Lijek.txt"))
-            {
-                string json = r.ReadToEnd();
-                lijekovi = JsonConvert.DeserializeObject<List<Lijek>>(json);
-            }
+            List<Lijek> lijekovi = lijekRepository.DobaviSve();
             SviLijekovi = new ObservableCollection<Lijek>(lijekovi);
 
         }
@@ -163,8 +169,7 @@ namespace ProjekatSIMS.ViewModelDoktor
             IzabraniLijek.Alergeni.Add(NoviSastojak);
 
             StringWrapper sw = new StringWrapper();
-            sw.Naziv = NoviSastojak;
-
+            sw.Text = NoviSastojak;
             Sastojci.Add(sw);
 
         }
@@ -177,13 +182,14 @@ namespace ProjekatSIMS.ViewModelDoktor
 
         public void Executed_DodajAlternativniLijek()
         {
+
+           // IzabraniLijek.AlternativniLekovi = izmjenaLijekaController.DodavanjeALternativnihLijekova(IzabraniLijek.NazivLeka, IzabraniLijek);
             if (IzabraniLijek.AlternativniLekovi == null)
                 IzabraniLijek.AlternativniLekovi = new List<String>();
             IzabraniLijek.AlternativniLekovi.Add(AlternativniLijek.NazivLeka);
-
+           
             StringWrapper sw = new StringWrapper();
-            sw.Naziv = AlternativniLijek.NazivLeka;
-
+            sw.Text = AlternativniLijek.NazivLeka;
             AlternativniLijekovi.Add(sw);
         }
 
@@ -196,51 +202,29 @@ namespace ProjekatSIMS.ViewModelDoktor
         public void Executed_Sacuvaj()
         {
             Lijek l = new Lijek();
-            l.NazivLeka = IzabraniLijek.NazivLeka;
+            l.NazivLeka = Naziv;
             l.Opis = Opis;
             l.Status = IzabraniLijek.Status;
-            l.Alergeni = new List<String>();
-            l.AlternativniLekovi = new List<String>();
 
-            foreach (StringWrapper i in Sastojci)
+            cuvanjeIzmjenaLijekaDoktorController.SacuvajIzmjene(l, Sastojci, AlternativniLijekovi);
+            this.NavService.GoBack();
 
-            {
-                l.Alergeni.Add(i.Naziv);
+          
+        }
 
-            }
-
-
-            foreach (StringWrapper i in AlternativniLijekovi)
-            {
-                l.AlternativniLekovi.Add(i.Naziv);
-
-            }
-
-            foreach (Lijek li in SviLijekovi)
-
-            {
-                if (li.NazivLeka == l.NazivLeka)
-                {
-                    li.Opis = l.Opis;
-                    li.Alergeni = l.Alergeni;
-                    li.AlternativniLekovi = l.AlternativniLekovi;
-                }
-
-            }
-            //upisivanje u fajl
-            string newJson = JsonConvert.SerializeObject(SviLijekovi);
-            File.WriteAllText(@"..\..\..\Fajlovi\Lijek.txt", newJson);
-
+        public void Executed_Odustani()
+        {
             this.NavService.GoBack();
         }
         public IzmjenaLijekDoktorViewModel(NavigationService service, Lijek lijek)
         {
             this.navService = service;
             this.izabraniLijek = lijek;
-            Ucitaj();
+            Ucitaj(lijek);
             this.DodajSastojak = new RelayCommand(Executed_DodajSastojak, CanExecute_DodajSastojak);
             this.DodajAlternativniLijek = new RelayCommand(Executed_DodajAlternativniLijek, CanExecute_DodajAlternativniLijek);
             this.Sacuvaj = new RelayCommand(Executed_Sacuvaj);
+            this.Odustani = new RelayCommand(Executed_Odustani);
         }
     }
 }

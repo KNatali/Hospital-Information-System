@@ -15,11 +15,11 @@ namespace Service
         {
             List<Lijek> sviLijekovi = new List<Lijek>();
             sviLijekovi = lijekRepository.DobaviSve();
-            List<Lijek> lijekoviZaPrikaz = DovavljanjeLijekovaPremaStatusu(tip, sviLijekovi);
+            List<Lijek> lijekoviZaPrikaz = DobavljanjeLijekovaPremaStatusu(tip, sviLijekovi);
             return lijekoviZaPrikaz;
 
         }
-        public List<Lijek> DovavljanjeLijekovaPremaStatusu(TipLijekaPremaPrikazu tip,List<Lijek> sviLijekovi)
+        public List<Lijek> DobavljanjeLijekovaPremaStatusu(TipLijekaPremaPrikazu tip,List<Lijek> sviLijekovi)
         {
             List<Lijek> lijekoviIzabranaogStatusa = new List<Lijek>();
             foreach (Lijek l in sviLijekovi)
@@ -37,5 +37,6 @@ namespace Service
             else
                 return lijek.Status == OdobravanjeLekaEnum.Ceka;
         }
+
     }
 }
