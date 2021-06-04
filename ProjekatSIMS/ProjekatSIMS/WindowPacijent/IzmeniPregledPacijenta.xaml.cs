@@ -1,5 +1,6 @@
 ﻿using Model;
 using Newtonsoft.Json;
+using ProjekatSIMS.Controller.PregledPacijent;
 using ProjekatSIMS.Service;
 using Repository;
 using System;
@@ -13,25 +14,30 @@ namespace ProjekatSIMS.WindowPacijent
 {
     public partial class IzmeniPregledPacijenta : Page
     {
-        public IzmenaPregledaService izmenaPregledaService = new IzmenaPregledaService();
+        public BrojacOtkazivanjaController brojacOtkazivanjaController = new BrojacOtkazivanjaController();
+        public IzmenaPregledaController izmenaPregledaController = new IzmenaPregledaController();
         public List<Pregled> Pregledi { get; set; }
         public List<Pacijent> Pacijenti { get; set; }
         
         public int prioritetVreme = 0;
         public int prioritetDoktor = 0;
-        public IzmeniPregledPacijenta()
+        public Pacijent trenutniPacijent { get; set; }
+        public Pregled p { get; set; }
+        public IzmeniPregledPacijenta(Pacijent pacijent)
         {
             
             InitializeComponent();
             this.DataContext = this;
+            trenutniPacijent = pacijent;
 
             Pregledi = new List<Pregled>();
             PregledRepository fajl = new PregledRepository(@"..\..\..\Fajlovi\Pregled.txt");
-            Pregledi = fajl.DobaviSvePregledePacijent();
+            Pregledi = fajl.DobaviPregledeZaPacijenta(trenutniPacijent);
 
             Pacijenti = new List<Pacijent>();
             PacijentRepository file = new PacijentRepository(@"..\..\..\Fajlovi\Pacijent.txt");
             Pacijenti = file.DobaviSve();
+            
         }
 
        
@@ -59,9 +65,15 @@ namespace ProjekatSIMS.WindowPacijent
 
         }
 
+        private void Izaberi_Click(object sender, RoutedEventArgs e)
+        {
+           p = (Pregled)dataGridPregledi.SelectedItems[0];
+           
+        }
+
         private void Izmeni_Click(object sender, RoutedEventArgs e)
         {
-            Pregled p = (Pregled)dataGridPregledi.SelectedItems[0]; //pregled koji je izabran za izmenu
+            //Pregled p = (Pregled)dataGridPregledi.SelectedItems[0]; //pregled koji je izabran za izmenu
 
             double sati = Convert.ToDouble(Sati.Text);
             double minuti = Convert.ToDouble(Minuti.Text);
@@ -72,58 +84,44 @@ namespace ProjekatSIMS.WindowPacijent
             String imeDoktora = ImeDoktora.Text;
             String prezimeDoktora = PrezimeDoktora.Text;
 
-            izmenaPregledaService.BrojacOtkazivanjaPregleda(p.pacijent.Ime, p.pacijent.Prezime);
+            brojacOtkazivanjaController.BrojacOtkazivanjaPregleda(trenutniPacijent);
+            if(izmenaPregledaController.IzmeniPregled(datumNovi, p) == true)
+            {
+                if (izmenaPregledaController.ProveraZauzetostiTermina(datumNovi) == 1)
+                {
+                    if (prioritetVreme == 1)
+                    {
+                        VremePrioritet vp = new VremePrioritet(datumNovi, trenutniPacijent);
+                        this.NavigationService.Navigate(vp);
+                    }
+                    else if (prioritetDoktor == 1)
+                    {
+                        DoktorPrioritet dp = new DoktorPrioritet(imeDoktora, prezimeDoktora,trenutniPacijent);
+                        this.NavigationService.Navigate(dp);
+                    }
+                }
 
+            }else 
+            {
+                Pregledi.Remove(p);
+                Doktor doktor = new Doktor { Ime = imeDoktora, Prezime = prezimeDoktora };
+                p = new Pregled { Pocetak = datumNovi, doktor = doktor, };
+                Pregledi.Add(p);
+                string newJson = JsonConvert.SerializeObject(Pregledi);
+                File.WriteAllText(@"..\..\..\Fajlovi\Pregled.txt", newJson);
+                MessageBox.Show("Pregled je uspesno izmenjen.");
+            }
             string newJ = JsonConvert.SerializeObject(Pacijenti);
             File.WriteAllText(@"..\..\..\Fajlovi\Pacijent.txt", newJ);
 
+           
+           
+        }
 
-            int slobodanTerminFlag = 0;
-
-
-            if ((p.Pocetak.AddHours(24) > datumNovi))
-            {
-                MessageBox.Show("Pregled se moze izmeniti najmanje 24h pre zakazanog termina!");
-            }
-            else if (p.Pocetak.AddHours(48) <= datumNovi)
-            {
-                MessageBox.Show("Pregled se moze pomeriti najvise za dva dana unapred.");
-            }
-            else
-            {
-                foreach (Pregled pregled in Pregledi)
-                {
-                    if (pregled.Pocetak == datumNovi)
-                    {
-                        MessageBox.Show("Ovaj termin je zauzet. Ponudicemo Vam novi termin spram Vaseg prioriteta.");
-                        slobodanTerminFlag = 1;
-                        if (prioritetVreme == 1)
-                        {
-                            VremePrioritetWindow vpw = new VremePrioritetWindow(datumNovi, p.pacijent.Ime, p.pacijent.Prezime);
-                            vpw.Show();
-                        }
-                        else if (prioritetDoktor == 1)
-                        {
-                            DoktorPrioritetWindow dpw = new DoktorPrioritetWindow(imeDoktora, prezimeDoktora, p.pacijent.Ime, p.pacijent.Prezime);
-                            dpw.Show();
-                        }
-
-                        break;
-                    }
-
-                }
-
-                if (slobodanTerminFlag == 0)
-                {
-                    Pregledi.Remove(p);
-                    Doktor doktor = new Doktor { Ime = imeDoktora, Prezime = prezimeDoktora };
-                    p = new Pregled { Pocetak = datumNovi, doktor = doktor, };
-                    Pregledi.Add(p);
-                    string newJson = JsonConvert.SerializeObject(Pregledi);
-                    File.WriteAllText(@"..\..\..\Fajlovi\Pregled.txt", newJson);
-                    MessageBox.Show("Pregled je uspesno izmenjen.");
-                }
-            }
+        private void Odustani(object sender, RoutedEventArgs e)
+        {
+            Pocetna pocetna = new Pocetna(trenutniPacijent);
+            this.NavigationService.Navigate(pocetna);
         }
     }
 }

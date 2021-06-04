@@ -5,6 +5,7 @@ using ProjekatSIMS.Model;
 using ProjekatSIMS.Repository;
 using ProjekatSIMS.UpravnikWindows;
 using ProjekatSIMS.ViewDoktor;
+using ProjekatSIMS.ViewPacijent;
 using Repository;
 using System;
 using System.Collections.Generic;
@@ -68,6 +69,8 @@ namespace ProjekatSIMS
                 switch (uloga)
                 {
                     case Uloga.Pacijent:
+                        //PacijentMainView pmw = new PacijentMainView();
+                        //pmw.Show();
                         WindowPacijent.PacijentMainWindow pacijentMainWindow = new WindowPacijent.PacijentMainWindow(pacijent);
                         pacijentMainWindow.Show();
                         break;

@@ -9,8 +9,8 @@
       Title="OceniBolnicuPacijent">
     <Page.Resources>
         <Style TargetType="Label">
-            <Setter Property="FontFamily" Value="Roboto"/>
-            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontFamily" Value="Arial"/>
+            <Setter Property="FontSize" Value="20"/>
 
         </Style>
         <Style  TargetType="TextBox">
@@ -61,12 +61,13 @@
     </Page.Resources>
 
     <Grid Background="#CDFEBB">
-        <Label Content="Upisite ocenu bolnice: " HorizontalAlignment="Left" Margin="62,124,0,0" VerticalAlignment="Top"/>
-        <Label Content="Upisite Vas komentar o bolnici: " HorizontalAlignment="Left" Margin="0,197,0,0" VerticalAlignment="Top"/>
-        <Button Content="Prosledite ocenu" HorizontalAlignment="Left" Margin="643,381,0,0" VerticalAlignment="Top" Click="Oceni"  Background="#A4E98A" IsDefault="True" Style="{DynamicResource RoundedButton}" Height="30" Width="104"/>
-        <TextBox HorizontalAlignment="Left" Name="Ocena" Margin="271,128,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Name="Komentar" Margin="271,197,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="239" Height="135"/>
-
+        <Label HorizontalAlignment="Center" Margin="0,10,0,-10">Ocenite bolnicu</Label>
+        <Label Content="Upisite ocenu bolnice: " HorizontalAlignment="Left" Margin="99,129,0,0" VerticalAlignment="Top"/>
+        <Label Content="Upisite Vas komentar o bolnici: " HorizontalAlignment="Left" Margin="22,197,0,0" VerticalAlignment="Top"/>
+        <Button Content="Prosledite ocenu" HorizontalAlignment="Left" Margin="537,393,0,17"  Click="Oceni"  Background="#A4E98A" IsDefault="True" Style="{DynamicResource RoundedButton}" Height="40" Width="100"/>
+        <TextBox HorizontalAlignment="Left" Name="Ocena" Margin="352,132,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
+        <TextBox HorizontalAlignment="Left" Name="Komentar" Margin="352,197,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Height="135"/>
+        <Button Width="100" Height="40" Style="{StaticResource RoundedButton}" Click="Odustani" Margin="664,393,36,17">Odustani</Button>
 
 
     </Grid>

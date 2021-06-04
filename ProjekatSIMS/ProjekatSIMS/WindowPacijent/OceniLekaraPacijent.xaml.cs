@@ -39,5 +39,10 @@ namespace ProjekatSIMS.WindowPacijent
                 MessageBox.Show("Lekara mozete oceniti samo ako ste prethodno bili na pregledu kod njega. ");
             }
         }
+
+        private void Odustani(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
+        }
     }
 }

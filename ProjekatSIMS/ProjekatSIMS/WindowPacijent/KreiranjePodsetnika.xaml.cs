@@ -36,5 +36,10 @@ namespace ProjekatSIMS.WindowPacijent
                 
             }
         }
+
+        private void Odustani(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
+        }
     }
 }

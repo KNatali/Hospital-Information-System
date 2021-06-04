@@ -48,24 +48,25 @@ namespace ProjekatSIMS.WindowPacijent
             if (pregCont.ZakazivanjePregledaPacijent(ime, prezime, imeDoktora, prezimeDoktora, datum1, jmbg) == true)
             {
                 MessageBox.Show("Pregled je uspesno zakazan!");
-                //this.NavigationService.Navigate(new Uri("VidiWindow.xaml", UriKind.Relative));
+                this.NavigationService.GoBack();
             }
             else if (pregCont.DaLiJeTerminZauzet() == true)
             {
                 if (DoktorPrioritet.IsChecked == true)
                 {
-                    DoktorPrioritetWindow dpw = new DoktorPrioritetWindow(imeDoktora, prezimeDoktora, ime, prezime);
-                    dpw.Show();
+                    DoktorPrioritet dp = new DoktorPrioritet(imeDoktora, prezimeDoktora, trenutniPacijent);
+                    this.NavigationService.Navigate(dp);
                 }
                 else
                 {
-                    VremePrioritetWindow vpw = new VremePrioritetWindow(datum1, ime, prezime);
-                    vpw.Show();
+                    VremePrioritet vp = new VremePrioritet(datum1, trenutniPacijent);
+                    this.NavigationService.Navigate(vp);
                 }
             }
             else
             {
                 MessageBox.Show("Pregled nije zakazan.");
+                this.NavigationService.GoBack();
 
             }
         }
@@ -91,9 +92,9 @@ namespace ProjekatSIMS.WindowPacijent
 
         }
 
-        private void Nazad_Click(object sender, RoutedEventArgs e)
+        private void Odustani(object sender, RoutedEventArgs e)
         {
-
+            this.NavigationService.GoBack();
         }
     }
 }

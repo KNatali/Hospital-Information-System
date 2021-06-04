@@ -73,8 +73,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ViewModelPacijent\" />
-    <Folder Include="ViewPacijent\" />
     <Folder Include="ViewModel\" />
     <Folder Include="WindowPacijent\Slike\" />
   </ItemGroup>

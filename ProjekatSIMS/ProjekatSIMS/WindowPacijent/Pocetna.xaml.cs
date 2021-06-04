@@ -54,11 +54,10 @@ namespace ProjekatSIMS.WindowPacijent
             KreiranjePodsetnika kp = new KreiranjePodsetnika(trenutniPacijent);
             this.NavigationService.Navigate(kp);
         }
-
-        private void IzmeniPodsetnik(object sender, RoutedEventArgs e)
+        private void PregledLekara(object sender, RoutedEventArgs e)
         {
-            IzmenaPodsetnika ip = new IzmenaPodsetnika();
-            this.NavigationService.Navigate(ip);
+            PregledLekara pl = new PregledLekara();
+            this.NavigationService.Navigate(pl);
         }
     }
 }

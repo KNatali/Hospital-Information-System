@@ -7,10 +7,73 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="IzmeniPregled">
+    <Page.Resources>
+        <Style  TargetType="TextBox">
+            <Setter Property="FontFamily" Value="Arial"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="BorderBrush" Value="#287D7D"/>
+            <Style.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10" />
+
+                </Style>
+            </Style.Resources>
+        </Style>
+        <Style TargetType="{x:Type DatePickerTextBox}">
+            <Setter Property="Background" Value="Transparent"></Setter>
+            <Setter Property="BorderBrush" Value="black"></Setter>
+            <Setter Property="BorderThickness" Value="0"></Setter>
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Style.Resources>
+
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10" />
+
+                </Style>
+            </Style.Resources>
+
+        </Style>
+        <Style TargetType="DatePicker">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="BorderBrush" Value="#287D7D"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Background" Value="white"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Style.Resources>
+
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10" />
+
+                </Style>
+            </Style.Resources>
+        </Style>
+        <Style x:Key="styleCalendar" TargetType="{x:Type Calendar}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Calendar}">
+                        <!-- Wrapping in ViewBox will enlarge calendar of that size.-->
+                        <Viewbox Height="270"
+                         Width="270">
+                            <CalendarItem x:Name="PART_CalendarItem"
+                                  Background="{TemplateBinding Background}"
+                                  BorderBrush="{TemplateBinding BorderBrush}"
+                                  BorderThickness="{TemplateBinding BorderThickness}"/>
+                        </Viewbox>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
 
     <Grid Background="#CDFEBB">
         <DataGrid x:Name="dataGridPregledi" ItemsSource="{Binding Pregledi}" IsReadOnly="True"
-                  SelectionMode="Single" AutoGenerateColumns="False" Margin="26,10,312,0" Height="251" VerticalAlignment="Top">
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="76,21,36,0" Height="230" VerticalAlignment="Top" Width="600" GridLinesVisibility="Vertical">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Vreme pocetka" Binding="{Binding Pocetak}"/>
                 <DataGridTextColumn Header="Trajanje" Binding="{Binding Trajanje}"/>
@@ -21,27 +84,30 @@
                 <DataGridTemplateColumn Header="Izmeni pregled" Width="150*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Name="Izmeni" Content="Izmeni" Click="Izmeni_Click"  IsDefault="True" Background="#A4E98A"/>
+                            <Button Name="Izaberi" Content="Izaberi" Click="Izaberi_Click"  IsDefault="True" Background="#A4E98A" Style="{StaticResource RoundedButton}" Width="50" Height="30"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Label  Content="Izaberite novi datum pregleda: " Margin="26,277,585,147"/>
-        <DatePicker x:Name="Datum"  HorizontalAlignment="Left" Margin="235,279,0,0" VerticalAlignment="Top" IsDropDownOpen="True"/>
+        <Label  Content="Izaberite novi datum pregleda: " Margin="127,268,424,152" FontFamily="Arial" FontSize="15"/>
+        <DatePicker x:Name="Datum"  HorizontalAlignment="Left" Margin="368,268,0,0" VerticalAlignment="Top" IsDropDownOpen="True" Width="200" Height="30"/>
 
-        <Label  Content="Izaberite novo vreme pregleda: " Margin="26,317,585,107"/>
-        <TextBox  x:Name="Sati" HorizontalAlignment="Left" Margin="235,319,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="42" Height="19"/>
-        <TextBox  x:Name="Minuti" HorizontalAlignment="Left" Margin="295,319,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="42" Height="20" />
+        <Label  Content="Izaberite novo vreme pregleda: " Margin="127,317,437,97" FontFamily="Arial" FontSize="15"/>
+        <TextBox  x:Name="Sati" HorizontalAlignment="Left" Margin="368,316,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="27"/>
+        <TextBox  x:Name="Minuti" HorizontalAlignment="Left" Margin="488,316,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="27" />
+        <Label Content=":" HorizontalAlignment="Left" Margin="462,312,0,0" VerticalAlignment="Top" Height="26"/>
 
-        <Label  Content="Unesite doktora:" HorizontalAlignment="Left" Margin="26,348,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="ImeDoktora" HorizontalAlignment="Left" Margin="176,356,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="PrezimeDoktora" HorizontalAlignment="Left" Margin="307,356,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
-        <Label  Content="Izaberite prioritet:" HorizontalAlignment="Left" Margin="26,379,0,0" VerticalAlignment="Top"/>
-        <RadioButton x:Name="DoktorPrioritet" Margin="0,402,570,-373" GroupName="Prioritet" HorizontalAlignment="Right"  Checked="Btn1_Checked" Click="button1_Click" >Doktor</RadioButton>
-        <RadioButton x:Name="VremePrioritet" Margin="0,385,571,-336" GroupName="Prioritet" HorizontalAlignment="Right"  Checked="Btn1_Checked" Click="button1_Click" >Vreme</RadioButton>
+        <Label FontFamily="Arial" FontSize="15" Content="Unesite doktora:" HorizontalAlignment="Left" Margin="218,346,0,0" VerticalAlignment="Top" Height="28"/>
+        <TextBox Name="ImeDoktora" HorizontalAlignment="Left" Margin="368,353,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="90" Height="27"/>
+        <TextBox Name="PrezimeDoktora" HorizontalAlignment="Left" Margin="478,353,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="90" Height="27"/>
 
+        <Label FontFamily="Arial" FontSize="15" Content="Izaberite prioritet:" HorizontalAlignment="Left" Margin="211,378,0,0" VerticalAlignment="Top" Height="28"/>
+        <RadioButton x:Name="DoktorPrioritet" Margin="0,411,0,-387" GroupName="Prioritet" HorizontalAlignment="Center"  Checked="Btn1_Checked" Click="button1_Click" FontFamily="Arial" FontSize="15">Doktor</RadioButton>
+        <RadioButton x:Name="VremePrioritet" Margin="0,393,0,-349" GroupName="Prioritet" HorizontalAlignment="Center"  Checked="Btn1_Checked" Click="button1_Click" FontFamily="Arial" FontSize="15">Vreme</RadioButton>
+        <Button Name="Izmeni" Content="Izmeni" Click="Izmeni_Click"  IsDefault="True" Background="#A4E98A" Style="{StaticResource RoundedButton}" Height="40" Width="100" Margin="528,393,172,17"/>
+        <Button Width="100" Height="40" Style="{StaticResource RoundedButton}" Click="Odustani" Margin="659,393,41,17">Odustani</Button>
 
     </Grid>
 </Page>

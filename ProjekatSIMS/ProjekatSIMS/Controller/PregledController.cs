@@ -1,8 +1,10 @@
 using Model;
 using ProjekatSIMS.Service;
+using Repository;
 using Service;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows.Controls;
 
 namespace Controller
@@ -14,6 +16,7 @@ namespace Controller
 
         public Service.PregledService pregledService = new PregledService();
         public ZakazivanjePregledaService zakazivanjePregledaService = new ZakazivanjePregledaService();
+        public PregledRepository pregledRepository = new PregledRepository();
         public Model.Pregled ZakaziGuestPregledController(DateTime datumPregleda, Model.Pacijent pacijent)
       {
          // TODO: implement
@@ -111,5 +114,13 @@ namespace Controller
             return false;
         }
 
+        public List<Pregled> DobaviPregledeZaPacijenta(Pacijent pacijent)
+        {
+            return pregledRepository.DobaviPregledeZaPacijenta(pacijent);
+        }
+        public ObservableCollection<Pregled> DobaviPregledeZaPacijentaOC(Pacijent pacijent)
+        {
+            return pregledRepository.DobaviPregledeZaPacijentaOC(pacijent);
+        }
     }
 }

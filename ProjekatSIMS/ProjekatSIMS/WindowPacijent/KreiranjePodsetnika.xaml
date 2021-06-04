@@ -28,48 +28,67 @@
                 </Style>
             </Style.Resources>
         </Style>
-        <Style x:Key="RoundedButton" TargetType="{x:Type Button}">
-            <Style.Setters>
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type Button}">
-                            <Border x:Name="button" CornerRadius="5" BorderBrush="Black" BorderThickness="1" Background="#A4E98A">
-                                <TextBlock  Text="{TemplateBinding Button.Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            </Border>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter TargetName="button" Property="BorderBrush" Value="Black" />
-                                    <Setter TargetName="button" Property="Background"  Value="#365835"/>
-                                    <Setter Property="Foreground" Value="White" />
-                                </Trigger>
-                                <Trigger Property="IsPressed" Value="True">
-                                    <Setter TargetName="button"  Property="Background" Value="#365835"/>
-                                </Trigger>
-                                <Trigger Property="IsFocused" Value="True">
-                                    <Setter TargetName="button" Property="BorderBrush" Value="#FF282828" />
-                                </Trigger>
-                                <Trigger Property="IsEnabled" Value="False">
-                                    <Setter TargetName="button" Property="Opacity" Value="0.7" />
-                                    <Setter Property="Foreground" Value="#365835" />
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style.Setters>
+        <Style TargetType="{x:Type DatePickerTextBox}">
+            <Setter Property="Background" Value="Transparent"></Setter>
+            <Setter Property="BorderBrush" Value="black"></Setter>
+            <Setter Property="BorderThickness" Value="0"></Setter>
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Style.Resources>
+
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10" />
+
+                </Style>
+            </Style.Resources>
+
+        </Style>
+        <Style TargetType="DatePicker">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="BorderBrush" Value="#287D7D"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Background" Value="white"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Style.Resources>
+
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10" />
+
+                </Style>
+            </Style.Resources>
+        </Style>
+        <Style x:Key="styleCalendar" TargetType="{x:Type Calendar}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Calendar}">
+                        <!-- Wrapping in ViewBox will enlarge calendar of that size.-->
+                        <Viewbox Height="270"
+                         Width="270">
+                            <CalendarItem x:Name="PART_CalendarItem"
+                                  Background="{TemplateBinding Background}"
+                                  BorderBrush="{TemplateBinding BorderBrush}"
+                                  BorderThickness="{TemplateBinding BorderThickness}"/>
+                        </Viewbox>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
     </Page.Resources>
 
     <Grid Background="#CDFEBB">
-        <Button Content="Kreiraj podsetnik" HorizontalAlignment="Left" Margin="647,381,0,0" VerticalAlignment="Top" Click="Kreiraj"  Background="#A4E98A" Style="{DynamicResource RoundedButton}" Height="34" Width="111"/>
-        <DatePicker HorizontalAlignment="Left" Margin="374,307,0,0" VerticalAlignment="Top" Name="DatumKraja" />
-        <DatePicker HorizontalAlignment="Left" Margin="374,263,0,0" VerticalAlignment="Top" Name="DatumPocetka" />
-        <TextBox HorizontalAlignment="Left" Margin="356,85,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Name="Naziv"/>
-        <TextBox HorizontalAlignment="Left" Margin="356,146,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="94" Name="Opis" />
-        <Label Content="Unesite naziv podsetnika:" HorizontalAlignment="Left" Margin="117,85,0,0" VerticalAlignment="Top"  />
-        <Label Content="Unesite opis podsetnika:" HorizontalAlignment="Left" Margin="124,146,0,0" VerticalAlignment="Top"/>
-        <Label Content="Unesite datum pocetka:" HorizontalAlignment="Left" Margin="123,246,0,0" VerticalAlignment="Top"/>
-        <Label Content="Unesite datum kraja:" HorizontalAlignment="Left" Margin="134,300,0,0" VerticalAlignment="Top"/>
+        <Label FontFamily="Arial" FontSize="20" HorizontalAlignment="Center" Margin="0,10,0,-10">Kreiranje podsetnika</Label>
+
+        <DatePicker  CalendarStyle="{DynamicResource styleCalendar}" HorizontalAlignment="Left" Margin="365,324,0,0" VerticalAlignment="Top" Name="DatumKraja" Width="200" />
+        <DatePicker CalendarStyle="{DynamicResource styleCalendar}" HorizontalAlignment="Left" Margin="365,263,0,0" VerticalAlignment="Top" Name="DatumPocetka" Width="200" />
+        <TextBox HorizontalAlignment="Left" Margin="365,81,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Name="Naziv"/>
+        <TextBox HorizontalAlignment="Left" Margin="365,146,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Height="94" Name="Opis" />
+        <Label Content="Unesite naziv podsetnika:" HorizontalAlignment="Left" Margin="91,77,0,0" VerticalAlignment="Top" FontSize="20" />
+        <Label Content="Unesite opis podsetnika:" HorizontalAlignment="Left" Margin="91,146,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Label Content="Unesite datum pocetka:" HorizontalAlignment="Left" Margin="94,258,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Label Content="Unesite datum kraja:" HorizontalAlignment="Left" Margin="122,319,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Button Content="Kreiraj" HorizontalAlignment="Left" Margin="537,393,0,17"  Click="Kreiraj"  Background="#A4E98A" Style="{DynamicResource RoundedButton}" Height="40" Width="100"/>
+        <Button Height="40" Width="100" Style="{StaticResource RoundedButton}" Click="Odustani" Margin="659,393,41,17">Odustani</Button>
 
     </Grid>
 </Page>

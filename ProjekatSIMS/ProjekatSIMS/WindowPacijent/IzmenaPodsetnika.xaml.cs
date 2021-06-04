@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Model;
+using Newtonsoft.Json;
 using ProjekatSIMS.Model;
 using ProjekatSIMS.Repository;
 using System;
@@ -16,19 +17,25 @@ namespace ProjekatSIMS.WindowPacijent
             get;
             set;
         }
-        public IzmenaPodsetnika()
+        public Podsetnik podsetnik { get; set; }
+        public Pacijent trenutniPacijent { get; set; }
+        public IzmenaPodsetnika(Pacijent pacijent)
         {
 
             InitializeComponent();
             this.DataContext = this;
+            trenutniPacijent = pacijent;
             Podsetnici = new List<Podsetnik>();
             PodsetnikRepository fajl = new PodsetnikRepository(@"..\..\..\Fajlovi\Podsetnik.txt");
             Podsetnici = fajl.DobaviSvePodsetnike();
         }
-
+        private void Izaberi_Click(object sender, RoutedEventArgs e)
+        {
+            podsetnik = (Podsetnik)dataGridPodsetnik.SelectedItems[0];
+        }
         private void Izmeni(object sender, RoutedEventArgs e)
         {
-            Podsetnik podsetnik = (Podsetnik)dataGridPodsetnik.SelectedItems[0];
+            podsetnik = (Podsetnik)dataGridPodsetnik.SelectedItems[0];
             string ime = Ime.Text;
             string opis = Opis.Text;
             DateTime pocetak = (DateTime)Pocetak.SelectedDate;
@@ -38,22 +45,13 @@ namespace ProjekatSIMS.WindowPacijent
             Podsetnici.Add(podsetnik);
             string newJson = JsonConvert.SerializeObject(Podsetnici);
             File.WriteAllText(@"..\..\..\Fajlovi\Podsetnik.txt", newJson);
-            MessageBox.Show("Podsetnik je uspesno izmenjen.");
+            MessageBox.Show("Podsetnik je uspesno izmenjen."); 
         }
 
-        private void Izmeni_Click(object sender, RoutedEventArgs e)
+        private void Odustani(object sender, RoutedEventArgs e)
         {
-            Podsetnik podsetnik = (Podsetnik)dataGridPodsetnik.SelectedItems[0];
-            string ime = Ime.Text;
-            string opis = Opis.Text;
-            DateTime pocetak = (DateTime)Pocetak.SelectedDate;
-            DateTime kraj = (DateTime)Kraj.SelectedDate;
-            Podsetnici.Remove(podsetnik);
-            podsetnik = new Podsetnik { nazivPodsetika = ime, opisPodsetnika = opis, datumPocetkaObavestenja = pocetak, datumZavrsetkaObavestenja = kraj };
-            Podsetnici.Add(podsetnik);
-            string newJson = JsonConvert.SerializeObject(Podsetnici);
-            File.WriteAllText(@"..\..\..\Fajlovi\Podsetnik.txt", newJson);
-            MessageBox.Show("Podsetnik je uspesno izmenjen.");
+            Pocetna pocetna = new Pocetna(trenutniPacijent);
+            this.NavigationService.Navigate(pocetna);
         }
     }
 }

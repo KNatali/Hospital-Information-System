@@ -28,11 +28,14 @@ namespace ProjekatSIMS.WindowPacijent
             get;
             set;
         }
-        public PregledajZdravstveniKarton()
+        public Pacijent trenutniPacijent { get; set; }
+        public PregledajZdravstveniKarton(Pacijent pacijent)
         {
             InitializeComponent();
             this.DataContext = this;
-          
+
+            trenutniPacijent = pacijent;
+
             ReceptRepository receptRepository = new ReceptRepository();
             Recepti = receptRepository.DobaviSveRecepte();
 

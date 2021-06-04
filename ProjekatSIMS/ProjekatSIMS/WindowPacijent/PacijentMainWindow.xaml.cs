@@ -86,7 +86,7 @@ namespace ProjekatSIMS.WindowPacijent
 
         private void IzmeniPregled(object sender, RoutedEventArgs e)
         {
-            PacijentFrame.Content = new IzmeniPregledPacijenta();
+            PacijentFrame.Content = new IzmeniPregledPacijenta(trenutniPacijent);
         }
 
         private void OceniBolnicu(object sender, RoutedEventArgs e)
@@ -97,11 +97,6 @@ namespace ProjekatSIMS.WindowPacijent
         private void OceniLekara(object sender, RoutedEventArgs e)
         {
             PacijentFrame.Content = new OceniLekaraPacijent();
-        }
-
-        private void VidiOcene(object sender, RoutedEventArgs e)
-        {
-            PacijentFrame.Content = new VidiOcenePacijent();
         }
 
         private void KreirajPodsetnik(object sender, RoutedEventArgs e)
@@ -116,12 +111,12 @@ namespace ProjekatSIMS.WindowPacijent
 
         private void IzmeniPodsetnik(object sender, RoutedEventArgs e)
         {
-            PacijentFrame.Content = new IzmenaPodsetnika();
+            PacijentFrame.Content = new IzmenaPodsetnika(trenutniPacijent);
         }
 
         private void PregledajKarton(object sender, RoutedEventArgs e)
         {
-            PacijentFrame.Content = new PregledajZdravstveniKarton();
+            PacijentFrame.Content = new PregledajZdravstveniKarton(trenutniPacijent);
         }
         private void PocetnaStranica(object sender, RoutedEventArgs e)
         {
@@ -155,6 +150,11 @@ namespace ProjekatSIMS.WindowPacijent
         private void OdjaviSe(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void VidiOcene(object sender, RoutedEventArgs e)
+        {
+            PacijentFrame.Content = new VidiOcenePacijent();
         }
     }
 }

@@ -30,5 +30,10 @@ namespace ProjekatSIMS.WindowPacijent
                 MessageBox.Show("Molimo Vas unesite ocenu bolnice.");
             }
         }
+
+        private void Odustani(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
+        }
     }
 }

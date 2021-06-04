@@ -7,10 +7,10 @@ using System.Text;
 
 namespace ProjekatSIMS.Repository
 {
-    class SlobodanTerminRepository
+    public class SlobodanTerminRepository
 
     {
-        private String LokacijaFajla;
+        private String LokacijaFajla = @"..\..\..\Fajlovi\SlobodniTermini.txt";
         private List<SlobodanTermin> termini;
         private List<SlobodanTermin> terminiTmp;
         private SlobodanTermin st = new SlobodanTermin();
@@ -20,6 +20,11 @@ namespace ProjekatSIMS.Repository
         {
             LokacijaFajla = lokacija;
         }
+
+        public SlobodanTerminRepository()
+        {
+        }
+
         public List<SlobodanTermin> DobaviSveSlobodneTermine()
         {
             using (StreamReader sr = new StreamReader(LokacijaFajla))

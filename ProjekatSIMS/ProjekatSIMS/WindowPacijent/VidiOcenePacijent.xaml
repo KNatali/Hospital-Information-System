@@ -9,16 +9,18 @@
       Title="VidiOcenePacijent">
 
     <Grid Background="#CDFEBB">
+        <Label FontFamily="Arial" FontSize="20" Margin="0,0,400,0" HorizontalAlignment="Center">Ocene bolnice</Label>
         <DataGrid x:Name="dataGridOceneBolnice" ItemsSource="{Binding OceneBolnice}" IsReadOnly="True"
-                  SelectionMode="Single" AutoGenerateColumns="False" Margin="30,0,437,0" Height="318" VerticalAlignment="Center">
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="5,30,405,0" Height="330" Width="390" VerticalAlignment="Top" GridLinesVisibility="Vertical">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Ocena" Binding="{Binding Ocena}"/>
                 <DataGridTextColumn Header="Komentar" Binding="{Binding Komentar}"/>
 
             </DataGrid.Columns>
         </DataGrid>
+        <Label Margin="400,0,0,0" FontFamily="Arial" FontSize="20" HorizontalAlignment="Center">Ocene lekara</Label>
         <DataGrid x:Name="dataGridOceneLekara" ItemsSource="{Binding OceneLekara}" IsReadOnly="True"
-                  SelectionMode="Single" AutoGenerateColumns="False" Margin="427,0,40,0" Height="317" VerticalAlignment="Center">
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="410,30,0,0" Height="330" Width="390" VerticalAlignment="Top" GridLinesVisibility="Vertical" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Ime lekara" Binding="{Binding ImeLekara}"/>
                 <DataGridTextColumn Header="Prezime lekara" Binding="{Binding PrezimeLekara}"/>
@@ -27,5 +29,6 @@
 
             </DataGrid.Columns>
         </DataGrid>
+        <Button Width="100" Height="40" Style="{StaticResource RoundedButton}" Margin="665,393,35,17">Zatvori</Button>
     </Grid>
 </Page>
