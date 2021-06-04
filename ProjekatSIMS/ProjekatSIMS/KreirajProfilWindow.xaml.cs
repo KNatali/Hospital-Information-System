@@ -12,14 +12,43 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.ComponentModel;
 
 namespace ProjekatSIMS
 {
-    public partial class KreirajProfilWindow : Window
+    public partial class KreirajProfilWindow : Window, INotifyPropertyChanged
     {
+        private string ime;
+        private string prezime;
+        private string jmbg;
+        public event PropertyChangedEventHandler PropertyChanged;
         public KreirajProfilWindow()
         {
             InitializeComponent();
+            this.DataContext = this;
+            ime = Ime.Text;
+        }
+        protected virtual void OnPropertyChanged(string name)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
+            }
+        }
+        public string ValidationIme
+        {
+            get
+            {
+                return ime;
+            }
+            set
+            {
+                if (value != ime)
+                {
+                    ime = value;
+                    OnPropertyChanged("ValidationIme");
+                }
+            }
         }
         private void Otkazi_kreiranje(object sender, RoutedEventArgs e)
         {

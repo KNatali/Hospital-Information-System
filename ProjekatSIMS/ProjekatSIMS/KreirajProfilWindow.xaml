@@ -14,7 +14,7 @@
         <Label Content="JMBG" HorizontalAlignment="Left" FontSize="25" Height="43" Margin="60,253,0,0" VerticalAlignment="Top" Width="85" Foreground="#1963bf" FontWeight="DemiBold"/>
         <TextBox HorizontalAlignment="Left" x:Name="Jmbg" FontSize="25" Margin="255,259,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="191" BorderBrush="#1963bf" Foreground="#1963bf"/>
         <Label Content="Ime" HorizontalAlignment="Left" FontSize="25" Height="40" Margin="60,165,0,0" VerticalAlignment="Top" Width="73" Foreground="#1963bf" FontWeight="DemiBold"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Ime" FontSize="25" Margin="255,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="191" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Ime" FontSize="25" Margin="255,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="191" BorderBrush="#1963bf" Foreground="#1963bf" Text="{Binding ValidationIme, UpdateSourceTrigger=PropertyChanged}"/>
         <Label Content="Prezime" HorizontalAlignment="Left" FontSize="25" Height="40" Margin="60,208,0,0" VerticalAlignment="Top" Width="107" Foreground="#1963bf" FontWeight="DemiBold"/>
         <TextBox HorizontalAlignment="Left" x:Name="Prezime" FontSize="25" Margin="255,216,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="191" BorderBrush="#1963bf" Foreground="#1963bf"/>
         <Label Content="Broj telefona" HorizontalAlignment="Left" FontSize="25" Height="41" Margin="470,165,0,0" VerticalAlignment="Top" Width="156" Foreground="#1963bf" FontWeight="DemiBold"/>
