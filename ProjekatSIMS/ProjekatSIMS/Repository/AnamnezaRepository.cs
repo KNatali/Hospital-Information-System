@@ -2,6 +2,7 @@ using Model;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Windows;
 
@@ -35,6 +36,18 @@ namespace Repository
                 anamneze = JsonConvert.DeserializeObject<List<Anamneza>>(json);
             }
            
+            return anamneze;
+        }
+        public ObservableCollection<Anamneza> DobaviSveOC()
+        {
+
+            ObservableCollection<Anamneza> anamneze = new ObservableCollection<Anamneza>();
+            using (StreamReader r = new StreamReader(putanja))
+            {
+                string json = r.ReadToEnd();
+                anamneze = JsonConvert.DeserializeObject<ObservableCollection<Anamneza>>(json);
+            }
+
             return anamneze;
         }
 

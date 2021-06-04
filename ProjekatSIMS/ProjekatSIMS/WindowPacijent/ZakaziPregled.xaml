@@ -100,7 +100,7 @@
         <RadioButton x:Name="DoktorPrioritet" Margin="0,343,364,-306" GroupName="Prioritet" HorizontalAlignment="Right"  Checked="Btn1_Checked" Click="Button_Click" FontSize="15">Doktor</RadioButton>
         <RadioButton x:Name="VremePrioritet" Margin="0,312,367,-251" GroupName="Prioritet" HorizontalAlignment="Right"  Checked="Btn1_Checked" Click="Button_Click" FontSize="15">Vreme</RadioButton>
         <Button IsDefault="True" Width="100" Height="40" Style="{StaticResource RoundedButton}" Margin="659,393,41,17" Click="Odustani">Odustani</Button>
-        <Button Content="Zakazi" IsDefault="True" Width="100" Height="40" HorizontalAlignment="Left" Margin="537,393,0,17"  Click="Zakazi_Pregled" Background="#A4E98A" Style="{DynamicResource RoundedButton}" />
+        <Button Content="Zakaži" IsDefault="True" Width="100" Height="40" HorizontalAlignment="Left" Margin="537,393,0,17"  Click="Zakazi_Pregled" Background="#A4E98A" Style="{DynamicResource RoundedButton}" />
         <Label Content=":" HorizontalAlignment="Left" Margin="464,139,0,0" VerticalAlignment="Top"/>
 
 

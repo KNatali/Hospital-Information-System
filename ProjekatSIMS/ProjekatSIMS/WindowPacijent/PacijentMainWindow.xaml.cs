@@ -4,6 +4,7 @@ using Microsoft.Toolkit.Uwp.Notifications;
 using Model;
 using ProjekatSIMS.Model;
 using ProjekatSIMS.Repository;
+using ProjekatSIMS.ViewPacijent;
 using Repository;
 using System;
 using System.Collections.Generic;
@@ -116,7 +117,8 @@ namespace ProjekatSIMS.WindowPacijent
 
         private void PregledajKarton(object sender, RoutedEventArgs e)
         {
-            PacijentFrame.Content = new PregledajZdravstveniKarton(trenutniPacijent);
+            PacijentFrame.Content = new PregledajZdravstveniKartonView();
+           // PacijentFrame.Content = new PregledajZdravstveniKarton(trenutniPacijent);
         }
         private void PocetnaStranica(object sender, RoutedEventArgs e)
         {
@@ -154,7 +156,7 @@ namespace ProjekatSIMS.WindowPacijent
 
         private void VidiOcene(object sender, RoutedEventArgs e)
         {
-            PacijentFrame.Content = new VidiOcenePacijent();
+            PacijentFrame.Content = new VidiOcenePacijent(trenutniPacijent);
         }
     }
 }

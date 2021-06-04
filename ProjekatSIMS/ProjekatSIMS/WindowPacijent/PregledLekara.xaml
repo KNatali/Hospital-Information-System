@@ -16,7 +16,7 @@
                 <DataGridTextColumn Header="Ime lekara" Binding="{Binding Ime}"/>
                 <DataGridTextColumn Header="Prezime lekara" Binding="{Binding Prezime}"/>
                 <DataGridTextColumn Header="Specijalizacija" Binding="{Binding Specijalizacija}"/>
-                <DataGridTemplateColumn Header="Odaberi za porodicnog lekara" Width="150*">
+                <DataGridTemplateColumn Header="Odaberi za porodičnog lekara" Width="150*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button Name="Odaberi" Content="Odaberi" IsDefault="True" Background="#A4E98A" Style="{StaticResource RoundedButton}" Width="50" Height="30"/>

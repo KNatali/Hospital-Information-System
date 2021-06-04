@@ -85,7 +85,7 @@
         <TextBox HorizontalAlignment="Left" Margin="365,146,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Height="94" Name="Opis" />
         <Label Content="Unesite naziv podsetnika:" HorizontalAlignment="Left" Margin="91,77,0,0" VerticalAlignment="Top" FontSize="20" />
         <Label Content="Unesite opis podsetnika:" HorizontalAlignment="Left" Margin="91,146,0,0" VerticalAlignment="Top" FontSize="20"/>
-        <Label Content="Unesite datum pocetka:" HorizontalAlignment="Left" Margin="94,258,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Label Content="Unesite datum početka:" HorizontalAlignment="Left" Margin="94,258,0,0" VerticalAlignment="Top" FontSize="20"/>
         <Label Content="Unesite datum kraja:" HorizontalAlignment="Left" Margin="122,319,0,0" VerticalAlignment="Top" FontSize="20"/>
         <Button Content="Kreiraj" HorizontalAlignment="Left" Margin="537,393,0,17"  Click="Kreiraj"  Background="#A4E98A" Style="{DynamicResource RoundedButton}" Height="40" Width="100"/>
         <Button Height="40" Width="100" Style="{StaticResource RoundedButton}" Click="Odustani" Margin="659,393,41,17">Odustani</Button>

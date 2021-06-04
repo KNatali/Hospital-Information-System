@@ -29,6 +29,6 @@
 
             </DataGrid.Columns>
         </DataGrid>
-        <Button Width="100" Height="40" Style="{StaticResource RoundedButton}" Margin="665,393,35,17">Zatvori</Button>
+        <Button Width="100" Height="40" Style="{StaticResource RoundedButton}" Margin="665,393,35,17" Click="Zatvori">Zatvori</Button>
     </Grid>
 </Page>

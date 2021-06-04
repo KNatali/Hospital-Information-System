@@ -91,7 +91,7 @@
             </DataGrid.Columns>
         </DataGrid>
         <Label  Content="Izaberite novi datum pregleda: " Margin="127,268,424,152" FontFamily="Arial" FontSize="15"/>
-        <DatePicker x:Name="Datum"  HorizontalAlignment="Left" Margin="368,268,0,0" VerticalAlignment="Top" IsDropDownOpen="True" Width="200" Height="30"/>
+        <DatePicker x:Name="Datum"  HorizontalAlignment="Left" Margin="368,268,0,0" VerticalAlignment="Top"  Width="200" Height="30"/>
 
         <Label  Content="Izaberite novo vreme pregleda: " Margin="127,317,437,97" FontFamily="Arial" FontSize="15"/>
         <TextBox  x:Name="Sati" HorizontalAlignment="Left" Margin="368,316,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="27"/>
