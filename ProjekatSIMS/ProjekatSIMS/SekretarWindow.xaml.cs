@@ -67,5 +67,11 @@ namespace ProjekatSIMS
             KreiranjeProfilaDoktoraSWindow kd = new KreiranjeProfilaDoktoraSWindow();
             kd.Show();
         }
+
+        private void Naplati_pregled(object sender, RoutedEventArgs e)
+        {
+            NaplataPregledaSWindow np = new NaplataPregledaSWindow();
+            np.Show();
+        }
     }
 }
