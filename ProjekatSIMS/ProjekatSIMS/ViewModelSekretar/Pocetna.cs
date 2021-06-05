@@ -41,7 +41,7 @@ namespace ProjekatSIMS.ViewModelSekretar
             {
                 case "kreiranjePacijenta":
                     KreiranjePacijentaViewModel kpa = new KreiranjePacijentaViewModel(this.NavService);
-                    KreiranjePacijentaView kreiranjePacijenta = new KreiranjePacijentaView(kpa);
+                    KreiranjePacijentaView kreiranjePacijenta = new KreiranjePacijentaView();
                     kreiranjePacijenta.Show();
                     break;
                 case "kreiranjeDoktora":
