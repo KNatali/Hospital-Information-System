@@ -85,8 +85,8 @@ namespace ProjekatSIMS
                     case Uloga.Sekretar:
                        /* Pocetna pocetna = new Pocetna();
                         pocetna.Show();*/
-                       // SekretarWindow sekretarWindow = new SekretarWindow();
-                        //sekretarWindow.Show();
+                        SekretarWindow sekretarWindow = new SekretarWindow();
+                        sekretarWindow.Show();
                         break;
                     case Uloga.Upravnik:
 
