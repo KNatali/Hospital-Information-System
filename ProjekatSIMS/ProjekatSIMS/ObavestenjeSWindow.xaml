@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ProjekatSIMS"
         xmlns:fa="http://schemas.fontawesome.io/icons/" x:Class="ProjekatSIMS.ObavestenjeSWindow"
         mc:Ignorable="d"
-        Title="ObavestenjeSWindow" Height="568" Width="924" Background="#d1e3ff">
+        Title="ObavestenjeSWindow" WindowStartupLocation="CenterScreen" Height="568" Width="924" Background="#d1e3ff">
     <Grid>
         <Label Margin="388,91,322,398">
             <StackPanel Orientation="Horizontal">

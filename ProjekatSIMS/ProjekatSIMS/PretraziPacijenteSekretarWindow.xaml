@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ProjekatSIMS"
         xmlns:fa="http://schemas.fontawesome.io/icons/" x:Class="ProjekatSIMS.PretraziPacijenteSekretarWindow"
         mc:Ignorable="d"
-        Title="PretraziPacijenteSekretarWindow" Height="568" Width="924" Background="#d1e3ff">
+        Title="PretraziPacijenteSekretarWindow" WindowStartupLocation="CenterScreen" Height="568" Width="924" Background="#d1e3ff">
     <Grid>
         <Button Content="Početna strana" Click="Nazad" HorizontalAlignment="Left" Margin="399,450,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
         <Button Content="Pretraži" Click="Pretraga" HorizontalAlignment="Left" Margin="129,282,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>

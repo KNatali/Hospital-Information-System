@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ProjekatSIMS"
         xmlns:fa="http://schemas.fontawesome.io/icons/" x:Class="ProjekatSIMS.NaplataPregledaSWindow"
         mc:Ignorable="d"
-        Title="NaplataPregledaSWindow" Height="568" Width="924" Background="#d1e3ff">
+        Title="NaplataPregledaSWindow" WindowStartupLocation="CenterScreen" Height="568" Width="924" Background="#d1e3ff">
     <Grid>
 
         <Label Content="Naplata pregleda pacijenta" FontSize="22" HorizontalAlignment="Left" Height="50" Margin="345,86,0,0" VerticalAlignment="Top" Width="299" FontWeight="Bold" Foreground="#1963bf"/>
@@ -56,9 +56,9 @@
         <Label Content="Cena pregleda" HorizontalAlignment="Left" FontSize="25" Height="43" Margin="470,165,0,0" VerticalAlignment="Top" Width="195" Foreground="#1963bf" FontWeight="DemiBold"/>
         <TextBox HorizontalAlignment="Left" x:Name="Cena" FontSize="25" Margin="691,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" BorderBrush="#1963bf" Foreground="#1963bf"/>
         <Label Content="Popust" HorizontalAlignment="Left" FontSize="25" Height="43" Margin="470,222,0,0" VerticalAlignment="Top" Width="127" Foreground="#1963bf" FontWeight="DemiBold"/>
-        <CheckBox Content="5%" HorizontalAlignment="Left" FontSize="25" Margin="571,230,0,0" VerticalAlignment="Top" BorderBrush="#1963bf" Foreground="#1963bf"/>
-        <CheckBox Content="10%" HorizontalAlignment="Left" FontSize="25" Margin="633,230,0,0" VerticalAlignment="Top" BorderBrush="#1963bf" Foreground="#1963bf"/>
-        <CheckBox Content="50%" HorizontalAlignment="Left" FontSize="25" Margin="710,230,0,0" VerticalAlignment="Top" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <CheckBox Content="5%" HorizontalAlignment="Left" FontSize="25" Margin="571,230,0,0" VerticalAlignment="Top" BorderBrush="#1963bf" Foreground="#1963bf" IsEnabled="False"/>
+        <CheckBox Content="10%" HorizontalAlignment="Left" FontSize="25" Margin="633,230,0,0" VerticalAlignment="Top" BorderBrush="#1963bf" Foreground="#1963bf" IsEnabled="False"/>
+        <CheckBox Content="50%" HorizontalAlignment="Left" FontSize="25" Margin="710,230,0,0" VerticalAlignment="Top" BorderBrush="#1963bf" Foreground="#1963bf" IsEnabled="False"/>
         <CheckBox Content="nema" HorizontalAlignment="Left" FontSize="25" Margin="780,230,0,0" VerticalAlignment="Top" BorderBrush="#1963bf" Foreground="#1963bf"/>
         <Label Content="Cena sa popustom" HorizontalAlignment="Left" FontSize="25" Height="43" Margin="470,275,0,0" VerticalAlignment="Top" Width="227" Foreground="#1963bf" FontWeight="DemiBold"/>
         <TextBox HorizontalAlignment="Left" x:Name="Cena_sa_popustom" FontSize="25" Margin="691,280,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" BorderBrush="#1963bf" Foreground="#1963bf"/>

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ProjekatSIMS"
         xmlns:fa="http://schemas.fontawesome.io/icons/" x:Class="ProjekatSIMS.OdabirPrioritetaSWindow"
         mc:Ignorable="d"
-        Title="OdabirPrioritetaSWindow" Height="568" Width="924" Background="#d1e3ff">
+        Title="OdabirPrioritetaSWindow" WindowStartupLocation="CenterScreen" Height="568" Width="924" Background="#d1e3ff">
     <Grid>
         <ComboBox HorizontalAlignment="Center" x:Name="Prioritet" FontSize="25" Margin="0,171,0,0" VerticalAlignment="Top" Width="326" BorderBrush="#1963bf" Foreground="#1963bf">
             <ComboBoxItem IsSelected="True" Content="-"/>

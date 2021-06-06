@@ -7,7 +7,7 @@
         xmlns:viewModel="clr-namespace:ProjekatSIMS.ViewModelSekretar"
         xmlns:fa="http://schemas.fontawesome.io/icons/" x:Class="ProjekatSIMS.ViewSekretar.Pocetna"
         mc:Ignorable="d"
-        Title="Pocetna" Height="568" Width="924" Background="#d1e3ff">
+        Title="Pocetna" Height="568" Width="924" Background="#d1e3ff" WindowStartupLocation="CenterScreen">
     <Grid>
         <Label Margin="239,21,401,445">
             <StackPanel Orientation="Horizontal">
@@ -16,12 +16,12 @@
                 <fa:ImageAwesome Icon="UserMd" Width="37" Foreground="#1963bf"/>
             </StackPanel>
         </Label>
-        <Label Margin="255,37,381,445">
+        <Label Margin="255,37,381,410">
             <StackPanel Orientation="Horizontal">
                 <fa:ImageAwesome Icon="Heart" Width="15" Foreground="#b31a0c"/>
             </StackPanel>
         </Label>
-        <Label Content="ZDRAVO KORPORACIJA" FontSize="25" Margin="388,34,108,462" Foreground="#1963bf" FontWeight="Bold"/>
+        <Label Content="ZDRAVO KORPORACIJA" FontSize="25" Margin="388,34,108,440" Foreground="#1963bf" FontWeight="Bold"/>
         <Button Command="{Binding NavCommand}" CommandParameter="kreiranjePacijenta" HorizontalAlignment="Left" Margin="100,120,0,0" VerticalAlignment="Top" Height="60" Width="330" Style="{StaticResource Dugme}">
             <StackPanel Orientation="Horizontal">
                 <fa:ImageAwesome Icon="UserPlus" Width="30" Foreground="#1963bf"/>

@@ -1,31 +1,35 @@
-﻿<Window
+﻿<Window x:Class="ProjekatSIMS.ViewSekretar.ProfilPacijentaView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ProjekatSIMS"
-        xmlns:fa="http://schemas.fontawesome.io/icons/" x:Class="ProjekatSIMS.ProfilPacijentaSWindow"
+        xmlns:local="clr-namespace:ProjekatSIMS.ViewSekretar"
+        xmlns:viewModel="clr-namespace:ProjekatSIMS.ViewModelSekretar"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
         mc:Ignorable="d"
-        Title="ProfilPacijentaSWindow" WindowStartupLocation="CenterScreen" Height="568" Width="924" Background="#d1e3ff">
+        Title="ProfilPacijentaView" WindowStartupLocation="CenterScreen"  Height="568" Width="924" Background="#d1e3ff">
+    <Window.DataContext>
+        <viewModel:ProfilPacijentaViewModel></viewModel:ProfilPacijentaViewModel>
+    </Window.DataContext>
     <Grid>
         <Button Content="Obriši profil" Click="Obrisi_profil" HorizontalAlignment="Left" Margin="60,295,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}" Height="50" Width="150"/>
         <Button Content="Početna stranica" Click="Nazad" HorizontalAlignment="Left" Margin="600,460,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}" Height="50" Width="250"/>
         <Button Content="Sačuvaj izmene" Click="Sacuvaj_izmene" HorizontalAlignment="Left" Margin="600,360,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}" Height="50" Width="250"/>
         <Button Content="Lista alergena" Click="Lista_alergena" HorizontalAlignment="Left" Margin="600,260,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}" Height="50" Width="250"/>
         <Label Content="Ime" Grid.Column="0" FontSize="25" HorizontalAlignment="Left" Height="40" Margin="239,158,0,0" VerticalAlignment="Top" Width="72" Foreground="#1963bf" FontWeight="DemiBold"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Ime" FontSize="25" Margin="357,161,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <TextBox HorizontalAlignment="Left" Text="{Binding Ime}" x:Name="Ime" FontSize="25" Margin="357,161,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" BorderBrush="#1963bf" Foreground="#1963bf"/>
         <Label Content="Prezime" Grid.Column="0" FontSize="25" HorizontalAlignment="Left" Height="39" Margin="239,208,0,0" VerticalAlignment="Top" Width="112" Foreground="#1963bf" FontWeight="DemiBold"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Prezime" FontSize="25" Margin="357,210,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <TextBox HorizontalAlignment="Left" Text="{Binding Prezime}" x:Name="Prezime" FontSize="25" Margin="357,210,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" BorderBrush="#1963bf" Foreground="#1963bf"/>
         <Label Content="JMBG" Grid.Column="0" FontSize="25" HorizontalAlignment="Left" Height="37" Margin="239,260,0,0" VerticalAlignment="Top" Width="84" Foreground="#1963bf" FontWeight="DemiBold"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Jmbg" FontSize="25" Margin="357,260,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <TextBox HorizontalAlignment="Left" Text="{Binding Jmbg}"  x:Name="Jmbg" FontSize="25" Margin="357,260,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" BorderBrush="#1963bf" Foreground="#1963bf"/>
         <Label Content="Broj telefona" Grid.Column="0" FontSize="25"  HorizontalAlignment="Left" Height="49" Margin="60,366,0,0" VerticalAlignment="Top" Width="157" Foreground="#1963bf" FontWeight="DemiBold"/>
         <Label Content="Datum rođenja" Grid.Column="0" FontSize="25" HorizontalAlignment="Left" Height="40" Margin="239,305,0,0" VerticalAlignment="Top" Width="90" Foreground="#1963bf" FontWeight="DemiBold"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Datum" FontSize="25" Margin="357,310,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="202" BorderBrush="#1963bf" Foreground="#1963bf"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Telefon" FontSize="25" Margin="271,373,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="288" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <TextBox HorizontalAlignment="Left" Text="{Binding DatumRodjenja}" x:Name="Datum" FontSize="25" Margin="357,310,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="202" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <TextBox HorizontalAlignment="Left" Text="{Binding Telefon}" x:Name="Telefon" FontSize="25" Margin="271,373,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="288" BorderBrush="#1963bf" Foreground="#1963bf"/>
         <Label Content="E-mail" HorizontalAlignment="Left" FontSize="25"  Height="43" Margin="60,475,0,0" VerticalAlignment="Top" Width="97" Foreground="#1963bf" FontWeight="DemiBold"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Mail" FontSize="25" Margin="271,475,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="288" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <TextBox HorizontalAlignment="Left" Text="{Binding Mail}" x:Name="Mail" FontSize="25" Margin="271,475,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="288" BorderBrush="#1963bf" Foreground="#1963bf"/>
         <Label Content="Adresa" HorizontalAlignment="Left" FontSize="25"  Height="48" Margin="60,421,0,0" VerticalAlignment="Top" Width="97" Foreground="#1963bf" FontWeight="DemiBold"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Adresa" FontSize="25" Margin="271,425,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="288" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <TextBox HorizontalAlignment="Left" Text="{Binding Adresa}" x:Name="Adresa" FontSize="25" Margin="271,425,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="288" BorderBrush="#1963bf" Foreground="#1963bf"/>
         <fa:ImageAwesome Icon="UserCircle" Margin="68,148,722,270" Foreground="#88bcfc"/>
 
         <Label Width="182" VerticalAlignment="Top" Margin="399,90,0,0" Height="50" HorizontalAlignment="Left" FontSize="22" Foreground="#1963bf" FontWeight="Bold" Content="Profil pacijenta"/>
@@ -43,5 +47,6 @@
             </StackPanel>
         </Label>
         <Label Content="ZDRAVO KORPORACIJA" FontSize="25" Margin="388,34,108,445" Foreground="#1963bf" FontWeight="Bold"/>
+
     </Grid>
 </Window>

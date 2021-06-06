@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ProjekatSIMS"
         xmlns:fa="http://schemas.fontawesome.io/icons/" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="ProjekatSIMS.IzvestajZauzetihProstorijaSWindow"
         mc:Ignorable="d"
-        Title="IzvestajZauzetihProstorijaSWindow" Height="568" Width="924" Background="#d1e3ff">
+        Title="IzvestajZauzetihProstorijaSWindow" WindowStartupLocation="CenterScreen" Height="568" Width="924" Background="#d1e3ff">
     <Grid>
         <Border BorderThickness="1" Margin="200,0,200,0" BorderBrush="Black" Background="White">
             <Canvas>
