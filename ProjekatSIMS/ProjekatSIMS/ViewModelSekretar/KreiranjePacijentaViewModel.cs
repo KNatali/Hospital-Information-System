@@ -22,6 +22,13 @@ namespace ProjekatSIMS.ViewModelSekretar
         private String mail;
         private String adresa;
         private Window thisWindow;
+        private string imeError;
+        private string prezimeError;
+        private string jmbgError;
+        private string datumError;
+        private string telefonError;
+        private string mailError;
+        private string adresaError;
         private PacijentController pacijentController = new PacijentController();
         public RelayCommand<string> NavCommand { get; private set; }
         public NavigationService NavService
@@ -132,24 +139,67 @@ namespace ProjekatSIMS.ViewModelSekretar
                 }
             }
         }
-        private string _imeError;
         public string ImeError
         {
-            get { return _imeError; }
+            get { return imeError; }
             set
             {
-                _imeError = value;
+                imeError = value;
                 OnPropertyChanged("ImeError");
             }
         }
-        private string _jmbgError;
+        public string PrezimeError
+        {
+            get { return prezimeError; }
+            set
+            {
+                prezimeError = value;
+                OnPropertyChanged("PrezimeError");
+            }
+        }
         public string JmbgError
         {
-            get { return _jmbgError; }
+            get { return jmbgError; }
             set 
             {
-                _jmbgError = value;
+                jmbgError = value;
                 OnPropertyChanged("JmbgError");
+            }
+        }
+        public string DatumError
+        {
+            get { return datumError; }
+            set
+            {
+                datumError = value;
+                OnPropertyChanged("DatumError");
+            }
+        }
+        public string TelefonError
+        {
+            get { return telefonError; }
+            set
+            {
+                telefonError = value;
+                OnPropertyChanged("TelefonError");
+            }
+        }
+        public string MailError
+        {
+            get { return mailError; }
+            set
+            {
+                mailError = value;
+                OnPropertyChanged("MailError");
+            }
+        }
+        public string AdresaError
+        {
+            get { return adresaError; }
+            set
+            {
+                adresaError = value;
+                OnPropertyChanged("AdresaError");
             }
         }
         public KreiranjePacijentaViewModel()
@@ -182,59 +232,110 @@ namespace ProjekatSIMS.ViewModelSekretar
                 window.Show();
                 thisWindow.Close();
             }
-            //else
-                //this.NavService.GoBack();
+            else
+                thisWindow.Close();
         }
 
         private void BrisiTextBlokove()
         {
             this.ImeError = "";
+            this.PrezimeError = "";
+            this.JmbgError = "";
+            this.DatumError = "";
+            this.TelefonError = "";
+            this.MailError = "";
+            this.AdresaError = "";
         }
 
         private bool Validacije()
         {
             if (ImeValidacija() == false) return false;
+            if (PrezimeValidacija() == false) return false;
             if (JmbgValidacija() == false) return false;
+            if (DatumValidacija() == false) return false;
+            if (TelefonValidacija() == false) return false;
+            if (AdresaValidacija() == false) return false;
+            if (MailValidacija() == false) return false;
             return true;
         }
-
+        private bool ImeValidacija()
+        {
+            if (Ime == null)
+            {
+                this.ImeError = "Morate da unesete ime pacijenta.";
+                return false;
+            }
+            return true;
+        }
+        private bool PrezimeValidacija()
+        {
+            if (Prezime == null)
+            {
+                this.PrezimeError = "Morate da unesete prezime pacijenta.";
+                return false;
+            }
+            return true;
+        }
         private bool JmbgValidacija()
         {
             if (PrazanJmbg() == false) return false;
             if (CifreJmbg() == false) return false;
             return true;
         }
-
         private bool CifreJmbg()
         {
             if(Jmbg.Length != 13)
             {
-                this.JmbgError = "Greska u broju cifara";
+                this.JmbgError = "Jmbg mora da ima 13 cifara.";
                 return false;
             }
             return true;
         }
-
         private bool PrazanJmbg()
         {
             if(Jmbg == null)
             {
-                this.JmbgError = "Greska jmbg";
+                this.JmbgError = "Morate da unesete jmbg pacijenta.";
                 return false;
             }
             return true;
         }
-
-        private bool ImeValidacija()
+        private bool DatumValidacija()
         {
-            if (Ime == null)
+            if (Datum == null)
             {
-                this.ImeError = "Greska u imenun";
+                this.PrezimeError = "Morate da odaberete datum rođenja pacijenta.";
                 return false;
             }
             return true;
         }
-
+        private bool TelefonValidacija()
+        {
+            if (Telefon == null)
+            {
+                this.TelefonError = "Morate da unesete broj telefona pacijenta.";
+                return false;
+            }
+            return true;
+        }
+        private bool AdresaValidacija()
+        {
+            if (Adresa == null)
+            {
+                this.AdresaError = "Morate da unesete adresu pacijenta.";
+                return false;
+            }
+            return true;
+        }
+        private bool MailValidacija()
+        {
+            if (Mail == null)
+            {
+                this.MailError = "Morate da unesete email adresu pacijenta.";
+                return false;
+            }
+            return true;
+        }
         public void Executed_Odustani()
         {
             thisWindow.Close();

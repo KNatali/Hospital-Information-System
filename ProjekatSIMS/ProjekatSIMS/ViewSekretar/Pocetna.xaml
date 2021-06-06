@@ -7,7 +7,7 @@
         xmlns:viewModel="clr-namespace:ProjekatSIMS.ViewModelSekretar"
         xmlns:fa="http://schemas.fontawesome.io/icons/" x:Class="ProjekatSIMS.ViewSekretar.Pocetna"
         mc:Ignorable="d"
-        Title="Pocetna" Height="568" Width="924" Background="#d1e3ff">
+        Title="Pocetna" Height="568" Width="924" Background="#d1e3ff" WindowStartupLocation="CenterScreen">
     <Grid>
         <Label Margin="239,21,401,445">
             <StackPanel Orientation="Horizontal">

@@ -7,28 +7,28 @@
         xmlns:viewModel="clr-namespace:ProjekatSIMS.ViewModelSekretar"
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         mc:Ignorable="d"
-        Title="KreiranjePacijentaView" Height="568" Width="924" Background="#d1e3ff">
+        Title="KreiranjePacijentaView" Height="568" Width="924" Background="#d1e3ff" WindowStartupLocation="CenterScreen">
     <Window.DataContext>
         <viewModel:KreiranjePacijentaViewModel></viewModel:KreiranjePacijentaViewModel>
     </Window.DataContext>
     <Grid>
-        <Button Content="Otkaži" Command="{Binding Otkazi_kreiranje}" HorizontalAlignment="Left" Margin="60,440,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}" Click="Otkazi"/>
-        <Button Content="Potvrdi" Command="{Binding Kreiraj_profil}" HorizontalAlignment="Left" Margin="683,440,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}" Click="Kreiraj"/>
+        <Button Content="Otkaži" Command="{Binding Otkazi_kreiranje}" HorizontalAlignment="Left" Margin="60,466,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}" Click="Otkazi"/>
+        <Button Content="Potvrdi" Command="{Binding Kreiraj_profil}" HorizontalAlignment="Left" Margin="683,466,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}" Click="Kreiraj"/>
         <Label Content="Kreiranje profila pacijenta" FontSize="22" HorizontalAlignment="Left" Height="50" Margin="351,86,0,0" VerticalAlignment="Top" Width="280" FontWeight="Bold" Foreground="#1963bf"/>
-        <Label Content="JMBG" HorizontalAlignment="Left" FontSize="25" Height="43" Margin="60,253,0,0" VerticalAlignment="Top" Width="85" Foreground="#1963bf" FontWeight="DemiBold"/>
-        <TextBox HorizontalAlignment="Left" Text="{Binding Jmbg}" FontSize="25" Margin="255,259,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="191" BorderBrush="#1963bf" Foreground="#1963bf"/>
-        <Label Content="Ime" HorizontalAlignment="Left" FontSize="25" Height="40" Margin="60,165,0,0" VerticalAlignment="Top" Width="73" Foreground="#1963bf" FontWeight="DemiBold"/>
-        <TextBox HorizontalAlignment="Left" Text="{Binding Ime}" FontSize="25" Margin="255,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="191" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <Label Content="JMBG" HorizontalAlignment="Left" FontSize="25" Height="43" Margin="60,285,0,0" VerticalAlignment="Top" Width="85" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <TextBox HorizontalAlignment="Left" Text="{Binding Jmbg}" FontSize="25" Margin="255,290,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="191" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <Label Content="Ime" HorizontalAlignment="Left" FontSize="25" Height="40" Margin="60,147,0,0" VerticalAlignment="Top" Width="73" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <TextBox HorizontalAlignment="Left" Text="{Binding Ime}" FontSize="25" Margin="255,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="191" BorderBrush="#1963bf" Foreground="#1963bf"/>
         <Label Content="Prezime" HorizontalAlignment="Left" FontSize="25" Height="40" Margin="60,208,0,0" VerticalAlignment="Top" Width="107" Foreground="#1963bf" FontWeight="DemiBold"/>
-        <TextBox HorizontalAlignment="Left" Text="{Binding Prezime}" FontSize="25" Margin="255,216,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="191" BorderBrush="#1963bf" Foreground="#1963bf"/>
-        <Label Content="Broj telefona" HorizontalAlignment="Left" FontSize="25" Height="41" Margin="470,165,0,0" VerticalAlignment="Top" Width="156" Foreground="#1963bf" FontWeight="DemiBold"/>
-        <TextBox HorizontalAlignment="Left" Text="{Binding Telefon}" FontSize="25" Margin="672,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="191" BorderBrush="#1963bf" Foreground="#1963bf"/>
-        <Label Content="E-mail" HorizontalAlignment="Left" FontSize="25" Height="39" Margin="470,258,0,0" VerticalAlignment="Top" Width="145" Foreground="#1963bf" FontWeight="DemiBold"/>
-        <TextBox HorizontalAlignment="Left" Text="{Binding Mail}" FontSize="25" Margin="672,261,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="191" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <TextBox HorizontalAlignment="Left" Text="{Binding Prezime}" FontSize="25" Margin="255,220,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="191" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <Label Content="Broj telefona" HorizontalAlignment="Left" FontSize="25" Height="41" Margin="470,147,0,0" VerticalAlignment="Top" Width="156" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <TextBox HorizontalAlignment="Left" Text="{Binding Telefon}" FontSize="25" Margin="672,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="191" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <Label Content="E-mail" HorizontalAlignment="Left" FontSize="25" Height="39" Margin="470,285,0,0" VerticalAlignment="Top" Width="145" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <TextBox HorizontalAlignment="Left" Text="{Binding Mail}" FontSize="25" Margin="672,289,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="191" BorderBrush="#1963bf" Foreground="#1963bf"/>
         <Label Content="Adresa" HorizontalAlignment="Left" FontSize="25" Height="40" Margin="470,214,0,0" VerticalAlignment="Top" Width="145" Foreground="#1963bf" FontWeight="DemiBold"/>
         <TextBox HorizontalAlignment="Left" Text="{Binding Adresa}" FontSize="25" Margin="672,216,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="191" BorderBrush="#1963bf" Foreground="#1963bf"/>
-        <Label Content="Datum rodjenja" HorizontalAlignment="Left" FontSize="25" Height="49" Margin="60,299,0,0" VerticalAlignment="Top" Width="199" Foreground="#1963bf" FontWeight="DemiBold"/>
-        <DatePicker Text="{Binding Datum}" HorizontalAlignment="Left" FontSize="25" Margin="255,303,0,0" VerticalAlignment="Top" Width="192" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <Label Content="Datum rodjenja" HorizontalAlignment="Left" FontSize="25" Height="49" Margin="60,357,0,0" VerticalAlignment="Top" Width="199" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <DatePicker Text="{Binding Datum}" HorizontalAlignment="Left" FontSize="25" Margin="255,361,0,0" VerticalAlignment="Top" Width="192" BorderBrush="#1963bf" Foreground="#1963bf"/>
         <Label Margin="239,21,401,448">
             <StackPanel Orientation="Horizontal">
                 <fa:ImageAwesome Icon="Globe" Width="60" Foreground="#1963bf"/>
@@ -42,11 +42,16 @@
             </StackPanel>
         </Label>
         <Label Content="ZDRAVO KORPORACIJA" FontSize="25" Margin="388,34,108,445" Foreground="#1963bf" FontWeight="Bold"/>
-        <Label Content="Želi da mu stižu obaveštenja o:" HorizontalAlignment="Left" FontSize="25" Height="43" Margin="470,302,0,0" VerticalAlignment="Top" Width="393" Foreground="#1963bf" FontWeight="DemiBold"/>
-        <CheckBox Content="Zakazanom pregledu" HorizontalAlignment="Left" FontSize="23" Margin="60,363,0,0" VerticalAlignment="Top" BorderBrush="#1963bf" Foreground="#1963bf" Width="267"/>
-        <CheckBox Content="Otkazanom/izmenjenom pregledu" HorizontalAlignment="Left" FontSize="23" Margin="300,363,0,0" VerticalAlignment="Top" BorderBrush="#1963bf" Foreground="#1963bf"/>
-        <CheckBox Content="Vreme za terapiju" HorizontalAlignment="Left" FontSize="23" Margin="670,363,0,0" VerticalAlignment="Top" BorderBrush="#1963bf" Foreground="#1963bf" Width="209"/>
-        <TextBlock  HorizontalAlignment="Left" Height="29" Margin="255,141,0,0" Text="{Binding ImeError}" TextWrapping="Wrap" VerticalAlignment="Top" Width="191"/>
-        <TextBlock  HorizontalAlignment="Left" Height="29" Margin="136,264,0,0" Text="{Binding JmbgError}" TextWrapping="Wrap" VerticalAlignment="Top" Width="114"/>
+        <Label Content="Želi da mu stižu obaveštenja o:" HorizontalAlignment="Left" FontSize="25" Height="43" Margin="470,360,0,0" VerticalAlignment="Top" Width="393" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <CheckBox Content="Zakazanom pregledu" HorizontalAlignment="Left" FontSize="23" Margin="60,415,0,0" VerticalAlignment="Top" BorderBrush="#1963bf" Foreground="#1963bf" Width="267"/>
+        <CheckBox Content="Otkazanom/izmenjenom pregledu" HorizontalAlignment="Left" FontSize="23" Margin="300,415,0,0" VerticalAlignment="Top" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <CheckBox Content="Vreme za terapiju" HorizontalAlignment="Left" FontSize="23" Margin="670,415,0,0" VerticalAlignment="Top" BorderBrush="#1963bf" Foreground="#1963bf" Width="209"/>
+        <TextBlock FontSize="18" Foreground="#b31a0c" HorizontalAlignment="Left" Height="28" Margin="65,123,0,0" Text="{Binding ImeError}" TextWrapping="Wrap" VerticalAlignment="Top" Width="387"/>
+        <TextBlock FontSize="18" Foreground="#b31a0c" HorizontalAlignment="Left" Height="28" Margin="65,188,0,0" Text="{Binding PrezimeError}" TextWrapping="Wrap" VerticalAlignment="Top" Width="387"/>
+        <TextBlock FontSize="18" Foreground="#b31a0c" HorizontalAlignment="Left" Height="28" Margin="65,257,0,0" Text="{Binding JmbgError}" TextWrapping="Wrap" VerticalAlignment="Top" Width="387"/>
+        <TextBlock FontSize="18" Foreground="#b31a0c" HorizontalAlignment="Left" Height="28" Margin="65,328,0,0" Text="{Binding DatumError}" TextWrapping="Wrap" VerticalAlignment="Top" Width="386"/>
+        <TextBlock FontSize="18" Foreground="#b31a0c" HorizontalAlignment="Left" Height="28" Margin="475,123,0,0" Text="{Binding TelefonError}" TextWrapping="Wrap" VerticalAlignment="Top" Width="393"/>
+        <TextBlock FontSize="18" Foreground="#b31a0c" HorizontalAlignment="Left" Height="28" Margin="475,188,0,0" Text="{Binding AdresaError}" TextWrapping="Wrap" VerticalAlignment="Top" Width="393"/>
+        <TextBlock FontSize="18" Foreground="#b31a0c" HorizontalAlignment="Left" Height="28" Margin="475,257,0,0" Text="{Binding MailError}" TextWrapping="Wrap" VerticalAlignment="Top" Width="393"/>
     </Grid>
 </Window>

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ProjekatSIMS.ViewSekretar"
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         mc:Ignorable="d"
-        Title="KalendarPregledaView" Height="568" Width="924" Background="#d1e3ff">
+        Title="KalendarPregledaView" Height="568" Width="924" Background="#d1e3ff" WindowStartupLocation="CenterScreen">
     <Grid>
         <DataGrid x:Name="dataGridPregledi" ItemsSource="{Binding Pregledi}" IsReadOnly="True" BorderBrush="#1963bf" Foreground="#1963bf"
                   SelectionMode="Single" FontSize="20" AutoGenerateColumns="False" Margin="60,148,60,137">
