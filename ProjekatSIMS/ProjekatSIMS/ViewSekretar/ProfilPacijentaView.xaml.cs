@@ -13,9 +13,6 @@ using Model;
 
 namespace ProjekatSIMS.ViewSekretar
 {
-    /// <summary>
-    /// Interaction logic for ProfilPacijentaView.xaml
-    /// </summary>
     public partial class ProfilPacijentaView : Window
     {
         private Pacijent pacijent;

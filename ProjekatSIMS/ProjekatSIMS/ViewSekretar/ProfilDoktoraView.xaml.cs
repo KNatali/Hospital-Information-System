@@ -1,8 +1,7 @@
-﻿using Model;
-using ProjekatSIMS.ViewModelSekretar;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Model;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -14,23 +13,16 @@ using System.Windows.Shapes;
 
 namespace ProjekatSIMS.ViewSekretar
 {
-    public partial class KreiranjeDoktoraView : Window
+    public partial class ProfilDoktoraView : Window
     {
-        public KreiranjeDoktoraView()
+        private Doktor doktor;
+        public ProfilDoktoraView(Doktor doktor)
         {
             InitializeComponent();
-            this.DataContext = new ViewModelSekretar.KreiranjeDoktoraViewModel(this);
+            this.DataContext = new ViewModelSekretar.ProfilDoktoraViewModel(doktor, this);
             Oblasti.ItemsSource = Enum.GetValues(typeof(Specijalizacija));
+            Oblasti.SelectedItem = doktor.Specijalizacija;
         }
 
-        private void Otkazi_kreiranje(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Kreiraj_profil(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

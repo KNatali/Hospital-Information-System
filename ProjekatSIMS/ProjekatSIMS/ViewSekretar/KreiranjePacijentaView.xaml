@@ -21,7 +21,7 @@
         <TextBox HorizontalAlignment="Left" Text="{Binding Ime}" FontSize="25" Margin="255,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="191" BorderBrush="#1963bf" Foreground="#1963bf"/>
         <Label Content="Prezime" HorizontalAlignment="Left" FontSize="25" Height="40" Margin="60,208,0,0" VerticalAlignment="Top" Width="107" Foreground="#1963bf" FontWeight="DemiBold"/>
         <TextBox HorizontalAlignment="Left" Text="{Binding Prezime}" FontSize="25" Margin="255,220,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="191" BorderBrush="#1963bf" Foreground="#1963bf"/>
-        <Label Content="Broj telefona" HorizontalAlignment="Left" FontSize="25" Height="41" Margin="470,147,0,0" VerticalAlignment="Top" Width="156" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <Label Content="Broj telefona" HorizontalAlignment="Left" FontSize="25" Height="62" Margin="470,147,0,0" VerticalAlignment="Top" Width="156" Foreground="#1963bf" FontWeight="DemiBold"/>
         <TextBox HorizontalAlignment="Left" Text="{Binding Telefon}" FontSize="25" Margin="672,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="191" BorderBrush="#1963bf" Foreground="#1963bf"/>
         <Label Content="E-mail" HorizontalAlignment="Left" FontSize="25" Height="39" Margin="470,285,0,0" VerticalAlignment="Top" Width="145" Foreground="#1963bf" FontWeight="DemiBold"/>
         <TextBox HorizontalAlignment="Left" Text="{Binding Mail}" FontSize="25" Margin="672,289,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="191" BorderBrush="#1963bf" Foreground="#1963bf"/>

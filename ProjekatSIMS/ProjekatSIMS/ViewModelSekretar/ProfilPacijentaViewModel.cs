@@ -14,8 +14,8 @@ namespace ProjekatSIMS.ViewModelSekretar
         public string Prezime { get; set; }
         public string Jmbg { get; set; }
         public DateTime DatumRodjenja { get; set; }
-        public string BrojTelefona { get; set; }
-        public string Email { get; set; }
+        public string Telefon { get; set; }
+        public string Mail { get; set; }
         public string Adresa { get; set; }
         public ProfilPacijentaViewModel()
         {
@@ -32,11 +32,11 @@ namespace ProjekatSIMS.ViewModelSekretar
         {
             Ime = pacijent.Ime;
             Prezime = pacijent.Prezime;
-            BrojTelefona = pacijent.BrojTelefona;
+            Telefon = pacijent.BrojTelefona;
             Adresa = pacijent.Adresa;
             Jmbg = pacijent.Jmbg;
             DatumRodjenja = pacijent.DatumRodjenja;
-            Email = pacijent.Email;
+            Mail = pacijent.Email;
         }
     }
 }
