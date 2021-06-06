@@ -31,13 +31,15 @@
         <DatePicker x:Name="DatumDO" HorizontalAlignment="Left" FontSize="25" Margin="120,279,0,0" VerticalAlignment="Top" Width="192" BorderBrush="#1963bf" Foreground="#1963bf"/>
         <Button Content="Štampaj izveštaj" Click="Stampaj" HorizontalAlignment="Left" Margin="60,360,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}" Width="234"/>
         <Button Content="Nazad na početnu" Click="Nazad" HorizontalAlignment="Left" Margin="60,450,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}" Width="234"/>
-        <lvc:CartesianChart Series="{Binding SeriesCollection}" x:Name="Dijagram" LegendLocation="Left" Margin="317,170,40,50" Foreground="#1963bf" FontWeight="DemiBold" FontSize="15">
-            <lvc:CartesianChart.AxisX>
-                <lvc:Axis Title="Datumi" Labels="{Binding Datumi}" Foreground="#1963bf" FontWeight="DemiBold" FontSize="15"/>
-            </lvc:CartesianChart.AxisX>
-            <lvc:CartesianChart.AxisY>
-                <lvc:Axis Title="Zauzetost" LabelFormatter="{Binding Zauzetost}" Foreground="#1963bf" FontWeight="DemiBold" FontSize="15"/>
-            </lvc:CartesianChart.AxisY>
-        </lvc:CartesianChart>
+        <lvc:PieChart LegendLocation="Bottom" Margin="317,170,40,50" Foreground="#1963bf" FontWeight="DemiBold" FontSize="15">
+            <lvc:PieChart.Series>
+                <lvc:PieSeries Title="Sala" DataLabels="True" Values="15" LabelPoint="{Binding PointLabel}" Foreground="#1963bf" FontWeight="DemiBold" FontSize="15"/>
+                <lvc:PieSeries Title="Soba" DataLabels="True" Values="25" LabelPoint="{Binding PointLabel}" Foreground="#1963bf" FontWeight="DemiBold" FontSize="15"/>
+                <lvc:PieSeries Title="Ordinacija" DataLabels="True" Values="20" LabelPoint="{Binding PointLabel}" Foreground="#1963bf" FontWeight="DemiBold" FontSize="15"/>
+                <lvc:PieSeries Title="Kancelarija" DataLabels="True" Values="10" LabelPoint="{Binding PointLabel}" Foreground="#1963bf" FontWeight="DemiBold" FontSize="15"/>
+                <lvc:PieSeries Title="Magacin" DataLabels="True" Values="5" LabelPoint="{Binding PointLabel}" Foreground="#1963bf" FontWeight="DemiBold" FontSize="15"/>
+                <lvc:PieSeries Title="Glavni magacin" DataLabels="True" Values="8" LabelPoint="{Binding PointLabel}" Foreground="#1963bf" FontWeight="DemiBold" FontSize="15"/>
+            </lvc:PieChart.Series>
+        </lvc:PieChart>
     </Grid>
 </Window>

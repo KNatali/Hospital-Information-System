@@ -70,9 +70,8 @@ namespace ProjekatSIMS.ViewModelSekretar
                     kalendarPregleda.Show();
                     break;
                 case "zauzetostProstorija":
-                    ZauzetostProstorijaViewModel zp = new ZauzetostProstorijaViewModel(this.NavService);
-                    ZauzetostProstorijaView zauzetostProstorija = new ZauzetostProstorijaView(zp);
-                    zauzetostProstorija.Show();
+                    ZauzetostProstorijaSWindow zp = new ZauzetostProstorijaSWindow();
+                    zp.Show();
                     break;
                 case "oglasnaTabla":
                     OglasnaTablaViewModel ot = new OglasnaTablaViewModel(this.NavService);
