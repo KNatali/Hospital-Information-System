@@ -88,6 +88,10 @@ namespace ProjekatSIMS.ViewModelSekretar
                     OglasnaTablaSWindow ot = new OglasnaTablaSWindow();
                     ot.Show();
                     break;
+                case "naplataPregleda":
+                    NaplataPregledaSWindow np = new NaplataPregledaSWindow();
+                    np.Show();
+                    break;
                 /*case "odjavljivanje":
                     break;*/
             }
