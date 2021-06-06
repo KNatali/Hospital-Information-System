@@ -8,7 +8,7 @@
         xmlns:fa="http://schemas.fontawesome.io/icons/" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="ProjekatSIMS.ZauzetostProstorijaSWindow"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance local:ZauzetostProstorijaSWindow}"
-        Title="ZauzetostProstorijaSWindow" Height="568" Width="924" Background="#d1e3ff">
+        Title="ZauzetostProstorijaSWindow" WindowStartupLocation="CenterScreen" Height="568" Width="924" Background="#d1e3ff">
     <Grid>
         <Label Margin="239,21,277,330">
             <StackPanel Orientation="Horizontal">

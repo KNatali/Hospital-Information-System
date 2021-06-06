@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ProjekatSIMS"
         xmlns:fa="http://schemas.fontawesome.io/icons/" x:Class="ProjekatSIMS.ListaAlergenaSWindow"
         mc:Ignorable="d"
-        Title="ListaAlergenaSWindow" Height="568" Width="924" Background="#d1e3ff">
+        Title="ListaAlergenaSWindow" WindowStartupLocation="CenterScreen" Height="568" Width="924" Background="#d1e3ff">
     <Grid>
         <DataGrid x:Name="dataGridAlergeni" ItemsSource="{Binding Alergeni}" IsReadOnly="True" FontSize="25"
                   SelectionMode="Single" AutoGenerateColumns="False" Margin="60,142,60,161" BorderBrush="#1963bf" Foreground="#1963bf">

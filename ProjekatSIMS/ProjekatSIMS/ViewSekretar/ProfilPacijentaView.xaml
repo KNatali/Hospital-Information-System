@@ -12,10 +12,10 @@
         <viewModel:ProfilPacijentaViewModel></viewModel:ProfilPacijentaViewModel>
     </Window.DataContext>
     <Grid>
-        <!--<Button Content="Obriši profil" Click="Obrisi_profil" HorizontalAlignment="Left" Margin="60,295,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}" Height="50" Width="150"/>
+        <Button Content="Obriši profil" Click="Obrisi_profil" HorizontalAlignment="Left" Margin="60,295,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}" Height="50" Width="150"/>
         <Button Content="Početna stranica" Click="Nazad" HorizontalAlignment="Left" Margin="600,460,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}" Height="50" Width="250"/>
         <Button Content="Sačuvaj izmene" Click="Sacuvaj_izmene" HorizontalAlignment="Left" Margin="600,360,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}" Height="50" Width="250"/>
-        <Button Content="Lista alergena" Click="Lista_alergena" HorizontalAlignment="Left" Margin="600,260,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}" Height="50" Width="250"/> -->
+        <Button Content="Lista alergena" Click="Lista_alergena" HorizontalAlignment="Left" Margin="600,260,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}" Height="50" Width="250"/>
         <Label Content="Ime" Grid.Column="0" FontSize="25" HorizontalAlignment="Left" Height="40" Margin="239,158,0,0" VerticalAlignment="Top" Width="72" Foreground="#1963bf" FontWeight="DemiBold"/>
         <TextBox HorizontalAlignment="Left" Text="{Binding Ime}" x:Name="Ime" FontSize="25" Margin="357,161,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" BorderBrush="#1963bf" Foreground="#1963bf"/>
         <Label Content="Prezime" Grid.Column="0" FontSize="25" HorizontalAlignment="Left" Height="39" Margin="239,208,0,0" VerticalAlignment="Top" Width="112" Foreground="#1963bf" FontWeight="DemiBold"/>
@@ -33,7 +33,7 @@
         <fa:ImageAwesome Icon="UserCircle" Margin="68,148,722,270" Foreground="#88bcfc"/>
 
         <Label Width="182" VerticalAlignment="Top" Margin="399,90,0,0" Height="50" HorizontalAlignment="Left" FontSize="22" Foreground="#1963bf" FontWeight="Bold" Content="Profil pacijenta"/>
-        <!--<Button Content="Zakaži pregled" Click="Zakazi_pregled" HorizontalAlignment="Left" Margin="600,158,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}" Height="50" Width="250"/>-->
+        <Button Content="Zakaži pregled" Click="Zakazi_pregled" HorizontalAlignment="Left" Margin="600,158,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}" Height="50" Width="250"/>
         <Label Margin="239,21,401,448">
             <StackPanel Orientation="Horizontal">
                 <fa:ImageAwesome Icon="Globe" Width="60" Foreground="#1963bf"/>

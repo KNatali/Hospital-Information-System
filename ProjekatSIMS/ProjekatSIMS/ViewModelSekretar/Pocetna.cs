@@ -50,33 +50,43 @@ namespace ProjekatSIMS.ViewModelSekretar
                     kreiranjeDoktora.Show();
                     break;
                 case "pretragaPacijenta":
-                    PretragaPacijenataViewModel pp = new PretragaPacijenataViewModel(this.NavService);
+                    /*PretragaPacijenataViewModel pp = new PretragaPacijenataViewModel(this.NavService);
                     PretragaPacijenataView pretragaPacijenata = new PretragaPacijenataView(pp);
-                    pretragaPacijenata.Show();
+                    pretragaPacijenata.Show();*/
+                    PretraziPacijenteSWindow pp = new PretraziPacijenteSWindow();
+                    pp.Show();
                     break;
                 case "pretragaDoktora":
-                    PretragaDoktoraViewModel pd = new PretragaDoktoraViewModel(this.NavService);
-                    PretragaDoktoraView pretragaDoktora = new PretragaDoktoraView(pd);
-                    pretragaDoktora.Show();
+                    /*PretragaDoktoraViewModel pd = new PretragaDoktoraViewModel(this.NavService);
+                    PretragaDoktoraView pretragaDoktora = new PretragaDoktoraView();
+                    pretragaDoktora.Show();*/
+                    PretraziDoktoreSWindow pd = new PretraziDoktoreSWindow();
+                    pd.Show();
                     break;
                 case "hitno":
-                    HitnoZakazivanjeViewModel hz = new HitnoZakazivanjeViewModel(this.NavService);
+                    /*HitnoZakazivanjeViewModel hz = new HitnoZakazivanjeViewModel(this.NavService);
                     HitnoZakazivanjeView hitnoZakazivanje = new HitnoZakazivanjeView(hz);
-                    hitnoZakazivanje.Show();
+                    hitnoZakazivanje.Show();*/
+                    OdabirPacijentaHitnoSWindow op = new OdabirPacijentaHitnoSWindow();
+                    op.Show();
                     break;
                 case "kalendarPregleda":
-                    KalendarPregledaViewModel kp = new KalendarPregledaViewModel(this.NavService);
+                    /*KalendarPregledaViewModel kp = new KalendarPregledaViewModel(this.NavService);
                     KalendarPregledaView kalendarPregleda = new KalendarPregledaView(kp);
-                    kalendarPregleda.Show();
+                    kalendarPregleda.Show();*/
+                    KalendarPregledaSWindow kp = new KalendarPregledaSWindow();
+                    kp.Show();
                     break;
                 case "zauzetostProstorija":
                     ZauzetostProstorijaSWindow zp = new ZauzetostProstorijaSWindow();
                     zp.Show();
                     break;
                 case "oglasnaTabla":
-                    OglasnaTablaViewModel ot = new OglasnaTablaViewModel(this.NavService);
+                    /*OglasnaTablaViewModel ot = new OglasnaTablaViewModel(this.NavService);
                     OglasnaTablaView oglasnaTabla = new OglasnaTablaView(ot);
-                    oglasnaTabla.Show();
+                    oglasnaTabla.Show();*/
+                    OglasnaTablaSWindow ot = new OglasnaTablaSWindow();
+                    ot.Show();
                     break;
                 /*case "odjavljivanje":
                     break;*/

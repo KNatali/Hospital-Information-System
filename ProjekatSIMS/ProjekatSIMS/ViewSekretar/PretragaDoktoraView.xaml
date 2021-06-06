@@ -5,10 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         xmlns:local="clr-namespace:ProjekatSIMS.ViewSekretar"
+        xmlns:viewModel="clr-namespace:ProjekatSIMS.ViewModelSekretar"
         mc:Ignorable="d"
         Title="PretragaDoktoraView" Height="568" Width="924" Background="#d1e3ff" WindowStartupLocation="CenterScreen">
+    <Window.DataContext>
+        <viewModel:PretragaDoktoraViewModel></viewModel:PretragaDoktoraViewModel>
+    </Window.DataContext>
     <Grid>
-        <Button Content="Početna strana" Click="Nazad" HorizontalAlignment="Left" Margin="353,450,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
+        <Button Content="Početna strana" Command="{Binding Nazad}" Click="Nazad" HorizontalAlignment="Left" Margin="353,450,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
         <Label Content="Ime" HorizontalAlignment="Left" FontSize="25" Height="43" Margin="169,146,0,0" VerticalAlignment="Top" Width="72" Foreground="#1963bf" FontWeight="DemiBold"/>
         <TextBox HorizontalAlignment="Left" x:Name="Ime" TextChanged="refreshTabele" FontSize="25" Margin="259,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" BorderBrush="#1963bf" Foreground="#1963bf"/>
         <Label Content="Prezime" HorizontalAlignment="Left" FontSize="25" Height="55" Margin="459,142,0,0" VerticalAlignment="Top" Width="110" Foreground="#1963bf" FontWeight="DemiBold"/>

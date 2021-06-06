@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ProjekatSIMS"
         xmlns:fa="http://schemas.fontawesome.io/icons/" x:Class="ProjekatSIMS.ManipulacijaRadaDoktoraSWindow"
         mc:Ignorable="d"
-        Title="ManipulacijaRadaDoktoraSWindow" Height="568" Width="924" Background="#d1e3ff">
+        Title="ManipulacijaRadaDoktoraSWindow" WindowStartupLocation="CenterScreen" Height="568" Width="924" Background="#d1e3ff">
     <Grid>
 
         <Label Width="288" VerticalAlignment="Top" Margin="0,90,0,0" Height="50" HorizontalAlignment="Center" FontSize="22" Foreground="#1963bf" FontWeight="Bold" Content="Manipulacija rada doktora"/>

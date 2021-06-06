@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ProjekatSIMS"
         xmlns:fa="http://schemas.fontawesome.io/icons/" x:Class="ProjekatSIMS.IzmenaPregledaSWindow"
         mc:Ignorable="d"
-        Title="IzmenaPregledaSWindow" Height="568" Width="924" Background="#d1e3ff">
+        Title="IzmenaPregledaSWindow" WindowStartupLocation="CenterScreen" Height="568" Width="924" Background="#d1e3ff">
     <Grid Grid.Column="0" Grid.Row="1" DataContext="{Binding SelectedItem, ElementName=dataGridPacijenti}">
         <Button Content="Otkaži" Click="Otkazi" HorizontalAlignment="Left" Margin="60,440,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
         <Button Content="Sačuvaj" Click="Sacuvaj" HorizontalAlignment="Left" Margin="684,440,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>

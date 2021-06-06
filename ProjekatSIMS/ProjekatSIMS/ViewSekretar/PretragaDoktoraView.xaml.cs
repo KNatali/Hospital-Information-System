@@ -18,10 +18,10 @@ namespace ProjekatSIMS.ViewSekretar
 {
     public partial class PretragaDoktoraView : Window
     {
-        public PretragaDoktoraView(PretragaDoktoraViewModel viewModel)
+        public PretragaDoktoraView()
         {
             InitializeComponent();
-            this.DataContext = viewModel;
+            this.DataContext = new ViewModelSekretar.PretragaDoktoraViewModel(this);
             List<Doktor> doktori = new List<Doktor>();
             using (StreamReader r = new StreamReader(@"..\..\..\Fajlovi\Doktor.txt"))
             {
