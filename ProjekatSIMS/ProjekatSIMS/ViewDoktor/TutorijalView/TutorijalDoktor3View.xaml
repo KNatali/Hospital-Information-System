@@ -46,6 +46,11 @@
            
 
         </Grid.ColumnDefinitions>
+        <Image Grid.Row="1">
+            <Image.Source>
+                <BitmapImage UriSource="../../ViewDoktor/Slike/Bez naslova.png"/>
+            </Image.Source>
+        </Image>
 
         <StackPanel Grid.Row="0" Grid.Column="1" Margin="30,30,30,0">
 

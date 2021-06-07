@@ -48,7 +48,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <TextBox Name="Filter" Grid.Column="1"  HorizontalAlignment="Stretch"  TextWrapping="Wrap" VerticalAlignment="Center" />
+            <TextBox ToolTip="Pretražite recepte po lijeku ili datumu" Name="Filter" Grid.Column="1"  HorizontalAlignment="Stretch"  TextWrapping="Wrap" VerticalAlignment="Center" />
             <Label  Grid.Column="0" Content="Pretraži recept:"  VerticalAlignment="Center"></Label>
         </Grid>
         <DataGrid Grid.Row="2" Grid.ColumnSpan="2" x:Name="dataGridAnamneze" ItemsSource="{Binding Recepti}" Style="{StaticResource Tabela}"  Height="Auto"  IsReadOnly="True"
@@ -58,7 +58,7 @@
 
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Naziv lijeka" Binding="{Binding NazivLeka}"/>
-                <DataGridTextColumn Header="Kolicina" Binding="{Binding Kolicina}"/>
+                <DataGridTextColumn Header="Količina" Binding="{Binding Kolicina}"/>
                 <DataGridTextColumn Header="Datum prve doze" Binding="{Binding DatumPropisivanjaLeka}"/>
                 <DataGridTextColumn Header="Uputstvo" Binding="{Binding Uputstvo}" Width="*"/>
 
@@ -70,7 +70,7 @@
 
         <StackPanel  Grid.Row="3" Grid.Column="1"   HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
 
-            <Button Content="Nazad" Width="100" Click="Nazad"  HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnStandard}"/>
+            <Button Content="Nazad" Width="100" Click="Nazad"  HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnNazad}"/>
 
         </StackPanel>
 

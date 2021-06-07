@@ -47,21 +47,29 @@ namespace ProjekatSIMS
 
         private void IzdavanjeRecepta(object sender, RoutedEventArgs e)
         {
-            izabraniLijek = (Lijek)Lijek.SelectedItem;
-            int izabranoTrajanje = Convert.ToInt32(Trajanje.Text);
-            DateTime izabraniDatum = (DateTime)Datum.SelectedDate;
-            String izabraniPeriod = Period.Text;
-            double sat = Convert.ToDouble(Sat.Text);
-            double minut = Convert.ToDouble(Minut.Text);
-            String izabranaKolicina = Kolicina.Text;
+            try
+            {
+                izabraniLijek = (Lijek)Lijek.SelectedItem;
+                int izabranoTrajanje = Convert.ToInt32(Trajanje.Text);
+                DateTime izabraniDatum = (DateTime)Datum.SelectedDate;
+                String izabraniPeriod = Period.Text;
+                double sat = Convert.ToDouble(Sat.Text);
+                double minut = Convert.ToDouble(Minut.Text);
+                String izabranaKolicina = Kolicina.Text;
 
-            ReceptDTO receptDTO = new ReceptDTO(Pacijent,izabraniLijek.NazivLeka, izabranoTrajanje, izabraniDatum, sat, minut,izabraniPeriod, izabranaKolicina);
-            receptController.IzdavanjeRecepta(receptDTO);
+                ReceptDTO receptDTO = new ReceptDTO(Pacijent, izabraniLijek.NazivLeka, izabranoTrajanje, izabraniDatum, sat, minut, izabraniPeriod, izabranaKolicina);
+                receptController.IzdavanjeRecepta(receptDTO);
+
+
+                MessageBox.Show("Uspjesno je izdat recept");
+                ZdravstveniKartonDoktor z = new ZdravstveniKartonDoktor(Pacijent);
+                this.NavigationService.Navigate(z);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Popunite sve podatke");
+            }
            
-
-            MessageBox.Show("Uspjesno je izdat recept");
-            ZdravstveniKartonDoktor z = new ZdravstveniKartonDoktor(Pacijent);
-            this.NavigationService.Navigate(z);
 
         }
 

@@ -6,6 +6,7 @@ namespace Model
 {
     public class Lijek
     {
+        public String Id { get; set; }
         public String NazivLeka { get; set; } 
         public List<String> Alergeni { get; set; }
         public String Opis{get; set;}
@@ -20,8 +21,9 @@ namespace Model
         public String PorukaOdbaci { get; set; }
 
         public Lijek(){ }
-        public Lijek(String n, String o, List<String> al, List<String> aler, OdobravanjeLekaEnum od)
+        public Lijek(String i,String n, String o, List<String> al, List<String> aler, OdobravanjeLekaEnum od)
         {
+            this.Id = i;
             this.NazivLeka = n;
             this.Opis = o;
             this.Status = od;

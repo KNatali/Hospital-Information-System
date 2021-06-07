@@ -1,4 +1,6 @@
 ﻿using Model;
+using ProjekatSIMS.ViewDoktor;
+using ProjekatSIMS.ViewModelDoktor;
 using Repository;
 using System;
 using System.Collections.Generic;
@@ -54,7 +56,9 @@ namespace ProjekatSIMS
                 }
             }
             pregledRepository.SacuvajPregledeDoktor(pregledi);
-            this.NavigationService.Navigate(new Uri("PrikazPregledaDoktor.xaml", UriKind.Relative));
+            PrikazPregledaDoktorViewModel vm1 = new PrikazPregledaDoktorViewModel(this.NavigationService);
+            PrikazPregledaDoktorView kalendar = new PrikazPregledaDoktorView(vm1);
+            this.NavigationService.Navigate(kalendar);
 
         }
 
@@ -62,6 +66,13 @@ namespace ProjekatSIMS
         {
             IzdavanjeUputaSpecijalistiDoktor z = new IzdavanjeUputaSpecijalistiDoktor(Pacijent);
            
+            this.NavigationService.Navigate(z);
+        }
+
+        private void IzdavanjeOpravdanja(object sender, RoutedEventArgs e)
+        {
+            IzdavanjeOpravdanja z = new IzdavanjeOpravdanja(Pacijent);
+
             this.NavigationService.Navigate(z);
         }
         private void IzdavanjeUputaBolnickoLijecenje(object sender, RoutedEventArgs e)

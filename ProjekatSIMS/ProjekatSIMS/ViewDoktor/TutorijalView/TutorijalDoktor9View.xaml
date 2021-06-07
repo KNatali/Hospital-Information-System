@@ -34,8 +34,8 @@
     </Page.Resources>
     <Grid >
         <Grid.RowDefinitions>
-            <RowDefinition Height="3*"/>
-            <RowDefinition Height="4*"/>
+            <RowDefinition Height="2.5*"/>
+            <RowDefinition Height="4.5*"/>
 
             <RowDefinition Height="1*"/>
 
@@ -48,6 +48,11 @@
 
         </Grid.ColumnDefinitions>
 
+        <Image Grid.Row="1">
+            <Image.Source>
+                <BitmapImage UriSource="../../ViewDoktor/Slike/forma.png"/>
+            </Image.Source>
+        </Image>
         <StackPanel Grid.Row="0" Grid.Column="1" Margin="30,30,30,0">
 
 

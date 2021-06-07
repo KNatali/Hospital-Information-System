@@ -3,6 +3,7 @@ using Model;
 using Newtonsoft.Json;
 using ProjekatSIMS.Commands;
 using ProjekatSIMS.Repository;
+using ProjekatSIMS.ViewDoktor;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -20,6 +21,8 @@ namespace ProjekatSIMS.ViewModelDoktor
         private String naziv;
         private String noviSastojak;
         public Lijek alternativniLijek;
+        private StringWrapper selectedSastojak;
+        private StringWrapper selectedAlternativniLijek;
 
         private LijekRepository lijekRepository = new LijekRepository();
         private IzmjenaLijekaDoktorController izmjenaLijekaController = new IzmjenaLijekaDoktorController();
@@ -32,7 +35,28 @@ namespace ProjekatSIMS.ViewModelDoktor
         private RelayCommand dodajALternativniLijek;
         private RelayCommand sacuvaj;
         private RelayCommand odustani;
+        private RelayCommand ukloniSastojak;
+        private RelayCommand ukloniAlternativiLijek;
 
+        public StringWrapper SelectedSastojak
+        {
+            get { return selectedSastojak; }
+            set
+            {
+                selectedSastojak = value;
+                //ukloniSastojak.RaiseCanExecuteChanged();
+            }
+        }
+
+        public StringWrapper SelectedAlternativniLijek
+        {
+            get { return selectedAlternativniLijek; }
+            set
+            {
+                selectedAlternativniLijek = value;
+                //ukloniSastojak.RaiseCanExecuteChanged();
+            }
+        }
         public RelayCommand DodajSastojak
         {
             get { return dodajSastojak; }
@@ -65,6 +89,24 @@ namespace ProjekatSIMS.ViewModelDoktor
             set
             {
                 dodajALternativniLijek = value;
+            }
+        }
+
+        public RelayCommand UkloniSastojak
+        {
+            get { return ukloniSastojak; }
+            set
+            {
+                ukloniSastojak = value;
+            }
+        }
+
+        public RelayCommand UkloniAlternativiLijek
+        {
+            get { return ukloniAlternativiLijek; }
+            set
+            {
+                ukloniAlternativiLijek = value;
             }
         }
 
@@ -180,6 +222,16 @@ namespace ProjekatSIMS.ViewModelDoktor
 
         }
 
+        public void  Executed_UkloniSastojak()
+        {
+            Sastojci.Remove(SelectedSastojak);
+        }
+
+        public void Executed_UkloniAlternativniLijek()
+        {
+            AlternativniLijekovi.Remove(SelectedAlternativniLijek);
+        }
+
         public void Executed_DodajAlternativniLijek()
         {
 
@@ -214,7 +266,21 @@ namespace ProjekatSIMS.ViewModelDoktor
 
         public void Executed_Odustani()
         {
-            this.NavService.GoBack();
+            if (IzabraniLijek.Status == Model.OdobravanjeLekaEnum.Ceka)
+            {
+                EvidencijaLijekovaNovoViewModel ev = new EvidencijaLijekovaNovoViewModel(this.NavService, TipLijekaPremaPrikazu.Neverifikovan);
+                EvidencijaLIjekovaNovo n = new EvidencijaLIjekovaNovo(ev);
+                this.NavService.Navigate(n);
+
+            }
+            else
+            {
+                EvidencijaLijekovaNovoViewModel ev = new EvidencijaLijekovaNovoViewModel(this.NavService, TipLijekaPremaPrikazu.Neverifikovan);
+
+                VerifikovaniLijekoviNovo v = new VerifikovaniLijekoviNovo(ev);
+                this.NavService.Navigate(v);
+            }
+           
         }
         public IzmjenaLijekDoktorViewModel(NavigationService service, Lijek lijek)
         {
@@ -225,6 +291,9 @@ namespace ProjekatSIMS.ViewModelDoktor
             this.DodajAlternativniLijek = new RelayCommand(Executed_DodajAlternativniLijek, CanExecute_DodajAlternativniLijek);
             this.Sacuvaj = new RelayCommand(Executed_Sacuvaj);
             this.Odustani = new RelayCommand(Executed_Odustani);
+            this.UkloniSastojak = new RelayCommand(Executed_UkloniSastojak);
+            this.UkloniAlternativiLijek = new RelayCommand(Executed_UkloniAlternativniLijek);
         }
     }
 }
+ 

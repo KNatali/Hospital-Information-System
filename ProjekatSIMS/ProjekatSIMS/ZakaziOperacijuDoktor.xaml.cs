@@ -1,5 +1,6 @@
 ﻿using Controller;
 using Model;
+using ProjekatSIMS.Model;
 using ProjekatSIMS.ViewDoktor;
 using ProjekatSIMS.ViewModelDoktor;
 using Repository;
@@ -14,6 +15,7 @@ namespace ProjekatSIMS
     public partial class ZakaziOperacijuDoktor : Page
     {
         private ProstorijaRepository prostorijaRepository = new ProstorijaRepository();
+        private DoktorRepository doktorRepository = new DoktorRepository();
         private PacijentRepository pacijentRepository = new PacijentRepository();
         private ZauzetostTerminaPregledaController zauzetostTerminaPregledaController = new ZauzetostTerminaPregledaController();
         private PrikazSlobodnihTerminaController prikazSlobodnihTerminaController = new PrikazSlobodnihTerminaController();
@@ -35,27 +37,36 @@ namespace ProjekatSIMS
 
         private void ZakazivanjeOperacije(object sender, RoutedEventArgs e)
         {
-            pregled = new Pregled();
-            DateTime datum = (DateTime)Date.SelectedDate;
-            double sat;
-            double minut;
-            if (Termin.Visibility == Visibility.Visible)
+            try
             {
-                sat = Convert.ToDouble(Termin.Text.Split(":")[0]);
-                minut = Convert.ToDouble(Termin.Text.Split(":")[1]);
+                pregled = new Pregled();
+                DateTime datum = (DateTime)Date.SelectedDate;
+                double sat;
+                double minut;
+                if (Termin.Visibility == Visibility.Visible)
+                {
+                    sat = Convert.ToDouble(Termin.Text.Split(":")[0]);
+                    minut = Convert.ToDouble(Termin.Text.Split(":")[1]);
+                }
+                else
+                {
+                    sat = Convert.ToDouble(Sat.Text);
+                    minut = Convert.ToDouble(Minut.Text);
+                }
+                int trajanje = Convert.ToInt32(Trajanje.Text);
+                DateTime datum1 = datum.AddHours(sat).AddMinutes(minut);
+                DateTime datum2 = datum1.AddMinutes(trajanje);
+                IntervalDatuma termin = new IntervalDatuma(datum1, datum2);
+                Doktor dr = doktorRepository.DobaviByRegistracija(UlogovaniKorisnik.KorisnickoIme, UlogovaniKorisnik.Lozinka);
+                KreiranjePregleda(trajanje, datum1, termin, dr);
+                ZauzetiTermini(datum1, termin);
             }
-            else
+            catch(Exception ex)
             {
-                sat = Convert.ToDouble(Sat.Text);
-                minut = Convert.ToDouble(Minut.Text);
+                MessageBox.Show("Popunite sve podatke");
             }
-            int trajanje = Convert.ToInt32(Trajanje.Text);
-            DateTime datum1 = datum.AddHours(sat).AddMinutes(minut);
-            DateTime datum2 = datum1.AddMinutes(trajanje);
-            IntervalDatuma termin = new IntervalDatuma(datum1, datum2);
-            Doktor dr = new Doktor { Jmbg = "1511990855023", Ime = "Marijana", Prezime = "Peric" };
-            KreiranjePregleda(trajanje, datum1, termin, dr);
-            ZauzetiTermini(datum1, termin);
+
+           
         }
 
         private void KreiranjePregleda(int trajanje, DateTime datum1, IntervalDatuma termin, Doktor dr)
@@ -109,6 +120,13 @@ namespace ProjekatSIMS
 
 
             }
+        }
+
+        private void Odustani(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
+
+
         }
     }
 }

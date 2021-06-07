@@ -35,9 +35,8 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="5*"/>
-            <RowDefinition Height="1*"/>
-
+            <RowDefinition Height="6*"/>
+          
 
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -53,7 +52,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <TextBox Name="Filter" Grid.Column="1" HorizontalAlignment="Stretch"   TextWrapping="Wrap"  VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+            <TextBox ToolTip="Pretražite preglede po datumu ili pcijentu" Name="Filter" Grid.Column="1" HorizontalAlignment="Stretch"   TextWrapping="Wrap"  VerticalAlignment="Center" VerticalContentAlignment="Center"/>
             <Label  Grid.Column="0" Content="Pretraži pregled:"  VerticalAlignment="Center"></Label>
         </Grid>
         <DataGrid Grid.Row="2" Grid.ColumnSpan="2" x:Name="dataGridPregledi" Style="{StaticResource Tabela}" ItemsSource="{Binding Pregledi}"  SelectedItem="{Binding SelectedPregled}" IsReadOnly="True"
@@ -73,7 +72,7 @@
                 <DataGridTemplateColumn Header="Detalji" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Name="Pogledaj" Content="Pogledaj" Command="{Binding Path=DataContext.Detalji,       
+                            <Button Name="Pogledaj" ToolTip="Prikažite detalje pregleda" Content="Pogledaj" Command="{Binding Path=DataContext.Detalji,       
  RelativeSource= {RelativeSource FindAncestor,
   AncestorType={x:Type DataGrid}}}" Style="{StaticResource btnStandard}"/>
                         </DataTemplate>

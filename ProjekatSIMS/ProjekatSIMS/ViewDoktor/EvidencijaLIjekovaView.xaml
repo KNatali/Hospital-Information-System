@@ -160,7 +160,7 @@
 
 
         <Button Content="Verifikovani lijekovi" Command="{Binding Path=VerifikovaniLijekovi}" Grid.Row="4" Grid.ColumnSpan="3"  HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnStandard}"/>
-        <Button Content="Nazad"  Command="{Binding Path=Nazad}" Grid.Row="4"   Width="100" Grid.ColumnSpan="3"  HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource btnStandard}"/>
+        <Button Content="Nazad"  Command="{Binding Path=Nazad}" Grid.Row="4"   Width="100" Grid.ColumnSpan="3"  HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource btnNazad}"/>
         
     </Grid>
 

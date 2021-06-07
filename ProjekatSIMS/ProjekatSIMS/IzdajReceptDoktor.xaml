@@ -149,14 +149,14 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <Label Grid.Row="3" Grid.Column="0" Content="Kolicina:" HorizontalAlignment="Left" VerticalAlignment="Center" />
-            <TextBox Grid.Row="3" Grid.Column="1" Name="Kolicina"  HorizontalAlignment="Stretch" Text="" TextWrapping="Wrap" VerticalAlignment="Center" />
+            <Label Grid.Row="3" Grid.Column="0" Content="Količina:" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <TextBox Grid.Row="3" Grid.Column="1" ToolTip="Unesite količinu lijeka na recept" Name="Kolicina"  HorizontalAlignment="Stretch" Text="" TextWrapping="Wrap" VerticalAlignment="Center" />
             <Label Grid.Row="6" Grid.Column="0"  Content="Trajanje terapije(dani):" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <TextBox Grid.Row="6" Grid.Column="1" Name="Trajanje" HorizontalAlignment="Left" Text="" TextWrapping="Wrap" VerticalAlignment="Center" Width="80" />
+            <TextBox Grid.Row="6" Grid.Column="1" ToolTip="Trajanje terpaije u danima" Name="Trajanje" HorizontalAlignment="Left" Text="" TextWrapping="Wrap" VerticalAlignment="Center" Width="80" />
             <Label Grid.Row="4" Grid.Column="0" Content="Datum prve upotrebe lijeka:" HorizontalAlignment="Left" VerticalAlignment="Center" />
-            <DatePicker Grid.Row="4" Grid.Column="1" Name="Datum" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+            <DatePicker Grid.Row="4" Grid.Column="1"  ToolTip="Klikite na kalendar za odabir datuma" Name="Datum" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
             <TextBlock Grid.Row="7" Grid.Column="0" HorizontalAlignment="Left"  Text="Vremenski period izmedju dvije koznumacije(dani)" VerticalAlignment="Center" TextWrapping="Wrap"/>
-            <TextBox Grid.Row="7" Grid.Column="1" Name="Period" HorizontalAlignment="Left" Text="" TextWrapping="Wrap" VerticalAlignment="Center" Width="80"/>
+            <TextBox Grid.Row="7" Grid.Column="1" Name="Period"  ToolTip="Dani između uzastonih upotreba" HorizontalAlignment="Left" Text="" TextWrapping="Wrap" VerticalAlignment="Center" Width="80"/>
 
             <Label  Grid.Row="5" Grid.Column="0"  Content="Vrijeme(Sati i minuti):" HorizontalAlignment="Left" VerticalAlignment="Center" />
             <Grid Grid.Row="5" Grid.Column="1">
@@ -168,17 +168,17 @@
 
                 </Grid.ColumnDefinitions>
 
-                <TextBox  Grid.Column="0"  Name="Sat" HorizontalAlignment="Stretch" Text="" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                <TextBox  Grid.Column="0" ToolTip="Sati upotrebe" Name="Sat" HorizontalAlignment="Stretch" Text="" TextWrapping="Wrap" VerticalAlignment="Center"/>
 
 
                 <Label   Grid.Column="1" VerticalAlignment="Center" HorizontalContentAlignment="Center">:</Label>
-                <TextBox  Grid.Column="2"  Name="Minut" HorizontalAlignment="Stretch"  Text="" TextWrapping="Wrap" VerticalAlignment="Center" />
+                <TextBox  Grid.Column="2" ToolTip="Minuti upotrebe"  Name="Minut" HorizontalAlignment="Stretch"  Text="" TextWrapping="Wrap" VerticalAlignment="Center" />
 
                 
             </Grid>
             <StackPanel  Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2"  HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
-                <Button Content="Sacuvaj" Width="100" Margin="0,0,20,0" Click="IzdavanjeRecepta" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnStandard}"/>
-                <Button Content="Odustani" Width="100" Click="Odustani" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnStandard}"/>
+                <Button Content="Sačuvaj" Width="100" ToolTip="Sačuvajte novi recept" Margin="0,0,20,0" Click="IzdavanjeRecepta" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnStandard}"/>
+                <Button Content="Odustani" Width="100" Click="Odustani" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnNazad}"/>
 
             </StackPanel>
         </Grid>

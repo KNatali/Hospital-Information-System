@@ -48,7 +48,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <TextBox Name="Filter" Grid.Column="1"  HorizontalAlignment="Stretch"  TextWrapping="Wrap" VerticalAlignment="Center" />
+            <TextBox ToolTip="Pretražite anamneze po datumu ili opisu" Name="Filter" Grid.Column="1"  HorizontalAlignment="Stretch"  TextWrapping="Wrap" VerticalAlignment="Center" />
             <Label  Grid.Column="0" Content="Pretraži anamnezu:"  VerticalAlignment="Center"></Label>
         </Grid>
         <DataGrid Grid.Row="2" Grid.ColumnSpan="2" x:Name="dataGridAnamneze" ItemsSource="{Binding Anamneze}" Style="{StaticResource Tabela}"  Height="Auto"  IsReadOnly="True"
@@ -61,10 +61,10 @@
                 <DataGridTextColumn Header="Opis" Binding="{Binding OpisAnamneze}" Width="200*"/>
 
                 <!-- <DataGridTextColumn Header="Status pregleda" Binding="{Binding StatusPregleda}" Width="*"/>-->
-                <DataGridTemplateColumn Header="Azuriraj" Width="80*">
+                <DataGridTemplateColumn Header="Ažuriraj" Width="80*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Name="Pogledaj" Content="Azuriraj" Click="AzuriranjeAnamneze"  Style="{StaticResource btnStandard}"/>
+                            <Button Name="Pogledaj" Content="Ažuriraj" Click="AzuriranjeAnamneze"  Style="{StaticResource btnStandard}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -75,8 +75,8 @@
         <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontSize="17" FontWeight="SemiBold" Content="Pregled anamneza:" HorizontalAlignment="Center"/>
 
         <StackPanel  Grid.Row="3" Grid.Column="1"   HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
-           
-            <Button Content="Nazad" Width="100" Click="Odustani"  HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnStandard}"/>
+
+            <Button Content="Nazad" Width="100" Click="Odustani"  HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnNazad}"/>
 
         </StackPanel>
 

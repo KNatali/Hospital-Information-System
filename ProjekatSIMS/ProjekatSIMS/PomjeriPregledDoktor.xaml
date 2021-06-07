@@ -176,7 +176,7 @@
         <TextBox IsReadOnly="True" Grid.Column="1" Grid.Row="3"  Name="Tip" HorizontalAlignment="Stretch"  Text="" TextWrapping="Wrap" VerticalAlignment="Center"/>
 
         <Label Grid.Row="4" Grid.Column="0" Content="Novi datum:" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-        <DatePicker CalendarStyle="{StaticResource styleCalendar}" Grid.Row="4" Grid.Column="1" Name="Date" HorizontalAlignment="Stretch" VerticalAlignment="Center"  />
+        <DatePicker  ToolTip="Klikite na kalendar za odabir datuma" CalendarStyle="{StaticResource styleCalendar}" Grid.Row="4" Grid.Column="1" Name="Date" HorizontalAlignment="Stretch" VerticalAlignment="Center"  />
 
 
 
@@ -191,9 +191,9 @@
                 <ColumnDefinition/>
 
             </Grid.ColumnDefinitions>
-            <TextBox  Grid.Column="0"  Name="Sati" HorizontalAlignment="Stretch"  Text="" TextWrapping="Wrap" VerticalAlignment="Center"/>
+            <TextBox ToolTip="Sati novog termina"  Grid.Column="0"  Name="Sati"  Text="" TextWrapping="Wrap" VerticalAlignment="Center" Margin="-2,0,2,0"/>
             <Label   Grid.Column="1" VerticalAlignment="Center" HorizontalContentAlignment="Center">:</Label>
-            <TextBox  Grid.Column="2"  Name="Minuti" HorizontalAlignment="Stretch"  Text="" TextWrapping="Wrap" VerticalAlignment="Center" />
+            <TextBox  ToolTip="Minuti novog termina"  Grid.Column="2"  Name="Minuti" HorizontalAlignment="Stretch"  Text="" TextWrapping="Wrap" VerticalAlignment="Center" />
 
         </Grid>
 
@@ -214,8 +214,8 @@
         <TextBox Visibility="Hidden" Name="Izbor" Grid.Row="6" TextWrapping="Wrap" Grid.Column="0" Text="Izaberi jedan od ponudjenih termina:"  HorizontalAlignment="Left" VerticalAlignment="Center"/>
 
         <StackPanel  Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2"  HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
-            <Button Content="Pomjeri" Width="100" Margin="0,5,20,5" Click="PotvrdiIzmjenu" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnStandard}"/>
-            <Button Content="Odustani" Width="100" Click="Odustani" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnStandard}"/>
+            <Button ToolTip="Sačuvajte promjene termina" Content="Pomjeri" Width="100" Margin="0,0,20,0" Click="PotvrdiIzmjenu" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnStandard}"/>
+            <Button Content="Odustani" Width="100" Click="Odustani" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnNazad}"/>
 
         </StackPanel>
     </Grid>
