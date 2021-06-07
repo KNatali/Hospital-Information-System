@@ -20,7 +20,7 @@ using System.Windows.Shapes;
 
 namespace ProjekatSIMS.WindowPacijent
 {
-    public partial class Pocetna : Page
+    public partial class PocetnaPacijent : Page
     {
         public OtkazivanjePregledaService otkazivanjePregledaService = new OtkazivanjePregledaService();
 
@@ -30,7 +30,7 @@ namespace ProjekatSIMS.WindowPacijent
        
         public Pacijent trenutniPacijent { get; set; }
 
-        public Pocetna(Pacijent pacijent)
+        public PocetnaPacijent(Pacijent pacijent)
         {
             InitializeComponent();
             this.DataContext = this;

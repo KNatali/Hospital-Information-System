@@ -42,6 +42,14 @@ namespace ProjekatSIMS.WindowPacijent
             string opis = Opis.Text;
             DateTime pocetak = (DateTime)Pocetak.SelectedDate;
             DateTime kraj = (DateTime)Kraj.SelectedDate;
+            double sati = Convert.ToDouble(Sati.Text);
+            double minuti = Convert.ToDouble(Minuti.Text);
+            pocetak.AddHours(sati);
+            pocetak.AddMinutes(minuti);
+            kraj.AddHours(sati);
+            kraj.AddMinutes(minuti);
+            
+
             Podsetnici.Remove(podsetnik);
             podsetnik = new Podsetnik { nazivPodsetika = ime, opisPodsetnika = opis, datumPocetkaObavestenja = pocetak, datumZavrsetkaObavestenja = kraj };
             Podsetnici.Add(podsetnik);
@@ -52,7 +60,7 @@ namespace ProjekatSIMS.WindowPacijent
 
         private void Odustani(object sender, RoutedEventArgs e)
         {
-            Pocetna pocetna = new Pocetna(trenutniPacijent);
+            PocetnaPacijent pocetna = new PocetnaPacijent(trenutniPacijent);
             this.NavigationService.Navigate(pocetna);
         }
 

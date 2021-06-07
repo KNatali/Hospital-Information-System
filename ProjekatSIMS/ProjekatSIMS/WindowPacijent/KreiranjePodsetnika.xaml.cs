@@ -28,9 +28,15 @@ namespace ProjekatSIMS.WindowPacijent
             DateTime datumKraja = (DateTime)DatumKraja.SelectedDate;
             String ime = trenutniPacijent.Ime;
             String prezime = trenutniPacijent.Prezime;
+            double sati = Convert.ToDouble(Sati.Text);
+            double minuti = Convert.ToDouble(Minuti.Text);
+            datumPocetka.AddHours(sati);
+            datumPocetka.AddMinutes(minuti);
+            datumKraja.AddHours(sati);
+            datumKraja.AddMinutes(minuti);
 
             PodsetnikController podsetnikController = new PodsetnikController();
-            if (podsetnikController.KreiranjePodsetnika(naziv, opis, datumPocetka, datumKraja, "5555") == true)
+            if (podsetnikController.KreiranjePodsetnika(naziv, opis, datumPocetka, datumKraja, trenutniPacijent.Jmbg) == true)
             {
                 MessageBox.Show("Uspesno ste kreirali svoj podsetnik");
                 

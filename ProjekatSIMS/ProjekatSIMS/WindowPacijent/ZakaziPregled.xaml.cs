@@ -62,7 +62,7 @@ namespace ProjekatSIMS.WindowPacijent
             if (pregCont.ZakazivanjePregledaPacijent(ime, prezime, imeDoktora, prezimeDoktora, datum1, jmbg) == true)
             {
                 MessageBox.Show("Pregled je uspesno zakazan!");
-                Pocetna pocetna = new Pocetna(trenutniPacijent);
+                PocetnaPacijent pocetna = new PocetnaPacijent(trenutniPacijent);
                 this.NavigationService.Navigate(pocetna);
                // this.NavigationService.GoBack();
             }
@@ -86,7 +86,7 @@ namespace ProjekatSIMS.WindowPacijent
             else
             {
                 MessageBox.Show("Pregled nije zakazan.");
-                Pocetna pocetna = new Pocetna(trenutniPacijent);
+                PocetnaPacijent pocetna = new PocetnaPacijent(trenutniPacijent);
                 this.NavigationService.Navigate(pocetna);
                 //this.NavigationService.GoBack();
 
@@ -104,7 +104,7 @@ namespace ProjekatSIMS.WindowPacijent
 
         private void Odustani(object sender, RoutedEventArgs e)
         {
-            Pocetna pocetna = new Pocetna(trenutniPacijent);
+            PocetnaPacijent pocetna = new PocetnaPacijent(trenutniPacijent);
             this.NavigationService.Navigate(pocetna);
             //this.NavigationService.GoBack();
         }
