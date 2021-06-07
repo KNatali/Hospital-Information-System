@@ -33,7 +33,7 @@ namespace ProjekatSIMS.WindowPacijent
             this.DataContext = this;
             trenutniPacijent = pacijent;
             imePrezime = trenutniPacijent.Ime + " " + trenutniPacijent.Prezime;
-            PacijentFrame.Content = new Pocetna(trenutniPacijent);
+            PacijentFrame.Content = new PocetnaPacijent(trenutniPacijent);
             List<Podsetnik> podsetnici = podsetnikRepository.DobaviSvePodsetnike();
             List<Pregled> pregledi = pregledRepository.DobaviPregledeZaPacijenta(trenutniPacijent);
             List<Recept>Recepti = receptRepository.DobaviSveRecepte();
@@ -66,7 +66,7 @@ namespace ProjekatSIMS.WindowPacijent
                        .Show(
                             toast =>
                             {
-                                toast.ExpirationTime = DateTime.UtcNow.AddHours(5);
+                                toast.ExpirationTime = DateTime.UtcNow.AddMinutes(10);
                             }
                             );
                     }
@@ -146,7 +146,7 @@ namespace ProjekatSIMS.WindowPacijent
         }
         private void PocetnaStranica(object sender, RoutedEventArgs e)
         {
-            PacijentFrame.Content = new Pocetna(trenutniPacijent);
+            PacijentFrame.Content = new PocetnaPacijent(trenutniPacijent);
         }
 
         private void Window_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)

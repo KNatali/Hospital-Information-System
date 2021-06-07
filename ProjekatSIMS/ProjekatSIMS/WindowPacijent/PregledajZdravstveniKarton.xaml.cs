@@ -53,7 +53,7 @@ namespace ProjekatSIMS.WindowPacijent
 
         private void Zatvori(object sender, System.Windows.RoutedEventArgs e)
         {
-            Pocetna pocetna = new Pocetna(trenutniPacijent);
+            PocetnaPacijent pocetna = new PocetnaPacijent(trenutniPacijent);
             this.NavigationService.Navigate(pocetna);
             //this.NavigationService.GoBack();
         }

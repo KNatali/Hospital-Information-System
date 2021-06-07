@@ -46,7 +46,7 @@ namespace ProjekatSIMS.WindowPacijent
     }
         private void Zatvori(object sender, RoutedEventArgs e)
         {
-            Pocetna pmw = new Pocetna(trenutniPacijent);
+            PocetnaPacijent pmw = new PocetnaPacijent(trenutniPacijent);
             this.NavigationService.Navigate(pmw);
         }
         private void Otkazi_Click(object sender, RoutedEventArgs e)
