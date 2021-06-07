@@ -89,15 +89,18 @@ namespace ProjekatSIMS
         {
             if (novoOdobrenje.doktor == p.doktor.Jmbg)
             {
-                OtkazivanjeZakazanogPregleda(p);
+                PomeranjeZakazanogTermina(p);
             }
         }
-        private void OtkazivanjeZakazanogPregleda(Pregled p)
+        private void PomeranjeZakazanogTermina(Pregled p)
         {
-            if (pregledController.OtkazivanjeSekretar(p))
-            {
-                MessageBox.Show("Otkazani su pregledi koje je doktor imao u periodu odobrenog godišnjeg odmora.", "OBAVEŠTENJE");
-            }
+            //if (pregledController.OtkazivanjeSekretar(p))
+            //{
+                if(pregledController.IzmenaPregledaSekretar(p, p.Pocetak.AddDays(1)))
+                {
+                    MessageBox.Show("Pomereni su pregledi koje je doktor imao u periodu odobrenog godišnjeg odmora.", "OBAVEŠTENJE");
+                }
+            //}
         }
     }
 }

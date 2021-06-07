@@ -50,12 +50,17 @@ namespace Controller
                 return true;
             return false;
         }
-      
 
-       
+        public Boolean IzmenaPregledaSekretar(Pregled p, DateTime datum)
+        {
+            if (pregledService.IzmenaPregledaSekretar(p, datum))
+                return true;
+            return false;
+        }
 
-      
-     public List<Pregled> DobaviSveSekretar()
+
+
+        public List<Pregled> DobaviSveSekretar()
      {
          return pregledService.DobaviSveSekretar();
      }
