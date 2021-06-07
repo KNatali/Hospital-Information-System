@@ -11,10 +11,9 @@ namespace Service
         private ZdravstveniKartonRepository zdravstveniKartonRepository = new ZdravstveniKartonRepository();
         public Boolean IsPacijentAlergican(Lijek izabraniLijek, Pacijent pacijent)
         {
-            List<ZdravsteniKarton> zdravstveniKartoni = zdravstveniKartonRepository.DobaviZdravstveneKartone();
-            List<String> alergeniPacijenta = new List<String>();
-            alergeniPacijenta = DobavljanjeAlergenaPacijenta(zdravstveniKartoni, pacijent);
-            if (ProvjeraAlergena(izabraniLijek, alergeniPacijenta))
+
+            List<String> alergeniPacijenta = zdravstveniKartonRepository.DobaviAlergene(pacijent);
+             if (ProvjeraAlergena(izabraniLijek, alergeniPacijenta))
                 return true;
 
             return false;
@@ -33,23 +32,6 @@ namespace Service
             return false;
         }
 
-        private List<string> DobavljanjeAlergenaPacijenta(List<ZdravsteniKarton> kartoni, Pacijent pacijent)
-        {
-
-            List<String> alergeni = new List<String>();
-            foreach (ZdravsteniKarton k in kartoni)
-            {
-                if (k.IdPacijent == pacijent.Jmbg)
-                {
-                    if (k.Alergeni != null)
-                    {
-                        alergeni = k.Alergeni;
-                        break;
-                    }
-                }
-            }
-
-            return alergeni;
-        }
+       
     }
 }

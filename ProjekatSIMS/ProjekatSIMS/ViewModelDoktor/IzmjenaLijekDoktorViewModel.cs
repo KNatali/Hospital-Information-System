@@ -26,8 +26,7 @@ namespace ProjekatSIMS.ViewModelDoktor
 
         private LijekRepository lijekRepository = new LijekRepository();
         private IzmjenaLijekaDoktorController izmjenaLijekaController = new IzmjenaLijekaDoktorController();
-        private CuvanjeIzmjenaLijekaDoktorController cuvanjeIzmjenaLijekaDoktorController = new CuvanjeIzmjenaLijekaDoktorController();
-        public ObservableCollection<Lijek> SviLijekovi { get; set; }
+         public ObservableCollection<Lijek> SviLijekovi { get; set; }
         public ObservableCollection<StringWrapper> Sastojci { get; set; }
         public ObservableCollection<StringWrapper> AlternativniLijekovi { get; set; }
 
@@ -270,7 +269,7 @@ namespace ProjekatSIMS.ViewModelDoktor
             l.Opis = Opis;
             l.Status = IzabraniLijek.Status;
 
-            cuvanjeIzmjenaLijekaDoktorController.SacuvajIzmjene(l, Sastojci, AlternativniLijekovi);
+            izmjenaLijekaController.SacuvajIzmjene(l, Sastojci, AlternativniLijekovi);
             this.NavService.GoBack();
 
           

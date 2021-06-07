@@ -1,10 +1,11 @@
 ﻿using Model;
 using Repository;
+using System;
 using System.Collections.Generic;
 
 namespace Service
 {
-    public class ZakaziPregledDoktorService
+    public class ManipulacijaPregledomService
     {
         private PregledRepository pregledRepository = new PregledRepository();
 
@@ -26,6 +27,18 @@ namespace Service
              
             else
                 return pregledi[pregledi.Count - 1].Id + 1;
+
+        }
+
+        public void IzmjeniPregled(Pregled stariPregled, DateTime noviTermin)
+        {
+
+            List<Pregled> sviPregledi = pregledRepository.DobaviSvePregledeDoktor();
+            Pregled pregled = pregledRepository.DobaviPregledById(stariPregled.Id);
+            sviPregledi.Find(p => p.Id == stariPregled.Id).Pocetak = noviTermin;
+            pregledRepository.SacuvajPregledeDoktor(sviPregledi);
+
+
 
         }
     }

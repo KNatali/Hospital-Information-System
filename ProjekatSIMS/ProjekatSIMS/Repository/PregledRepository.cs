@@ -177,6 +177,18 @@ namespace Repository
 
         }
 
+        public Pregled DobaviPregledById(int id)
+        {
+            List<Pregled> sviPregledi = DobaviSvePregledeDoktor();
+            foreach (Pregled p in sviPregledi)
+            {
+                if (p.Id == id)
+                    return p;
+            }
+
+            return null;
+        }
+
         public void SacuvajPregledPacijent(List<Pregled> pregledi)
         {
             string newJson = JsonConvert.SerializeObject(pregledi);
@@ -208,7 +220,8 @@ namespace Repository
             sviPregledi.Add(pregled);
             SacuvajPregledeDoktor(sviPregledi);
         }
-   
+
+       
 }
 
 }

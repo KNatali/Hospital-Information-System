@@ -1,7 +1,9 @@
 ﻿using Model;
+using ProjekatSIMS.ViewModelDoktor;
 using Service;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows.Controls;
 
@@ -21,6 +23,11 @@ namespace Controller
             return izmjenaLijekaDoktorService.DodavanjeAlternativnihLijekova(noviAlternativniLijek, lijek);
         }
 
-        
+        public void SacuvajIzmjene(Lijek lijek, ObservableCollection<StringWrapper> sastojci, ObservableCollection<StringWrapper> alternativniLijekovi)
+        {
+            izmjenaLijekaDoktorService.SacuvajIzmjene(lijek, sastojci, alternativniLijekovi);
+        }
+
+
     }
 }

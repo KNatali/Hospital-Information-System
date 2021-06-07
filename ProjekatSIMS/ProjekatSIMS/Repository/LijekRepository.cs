@@ -52,6 +52,30 @@ namespace ProjekatSIMS.Repository
             return false;
         }
 
+        public void AzurirajLijek(Lijek lijek)
+        {
+            List<Lijek> sviLijekovi = DobaviSve();
+            foreach (Lijek l in sviLijekovi)
+
+            {
+                if (l.NazivLeka == lijek.NazivLeka)
+                {
+                    l.Opis = lijek.Opis;
+                    l.Alergeni = lijek.Alergeni;
+                    l.AlternativniLekovi = lijek.AlternativniLekovi;
+                }
+            }
+
+            Sacuvaj(sviLijekovi);
+
+        }
+           
+
+        
+        
+
+        
+
        
 
 

@@ -43,10 +43,9 @@ namespace Repository
             foreach (ZdravsteniKarton z in sviKartoni)
             {
                 if (z.IdPacijent == pacijent.Jmbg)
-                {
-                    //MessageBox.Show("Nadjen");
-                    return z;
-                }
+                
+                   return z;
+                
                    
             }
             return null;
@@ -103,6 +102,11 @@ namespace Repository
         {
             string newJson = JsonConvert.SerializeObject(alergeni);
             File.WriteAllText(putanja, newJson);
+        }
+
+        public List<String> DobaviAlergene(Pacijent pacijent)
+        {
+            return DobaviZdravstveniKartonZaPacijenta(pacijent).Alergeni;
         }
 
     }

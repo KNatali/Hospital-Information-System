@@ -20,7 +20,7 @@ namespace ProjekatSIMS
         public PregledRepository pregledRepository = new PregledRepository();
         private ZauzetostTerminaPregledaController pomjeriPregledDoktorController = new ZauzetostTerminaPregledaController();
         private PrikazSlobodnihTerminaController prikazSlobodnihTerminaController = new PrikazSlobodnihTerminaController();
-        private IzmjenaPregledaDoktorController izmjenaPregledaDoktorController = new IzmjenaPregledaDoktorController();
+        private ManipulacijaPregledomController zakaziPregledDoktorController = new ManipulacijaPregledomController();
         public Pregled pregled { get; set; }
         
         public List<Pregled> Pregledi
@@ -83,7 +83,7 @@ namespace ProjekatSIMS
             }
             else
             {
-                izmjenaPregledaDoktorController.IzmjeniPregled(pregled, datum1);
+                zakaziPregledDoktorController.IzmjeniPregled(pregled, datum1);
                 MessageBox.Show("Uspjesno je izmjenjen termin");
                 PrikazPregledaDoktorViewModel vm1 = new PrikazPregledaDoktorViewModel(this.NavigationService);
                 PrikazPregledaDoktorView kalendar = new PrikazPregledaDoktorView(vm1);
