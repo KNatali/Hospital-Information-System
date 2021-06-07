@@ -1,6 +1,7 @@
 ﻿using Controller;
 using Model;
 using Newtonsoft.Json;
+using ProjekatSIMS.Controller.PregledPacijent;
 using ProjekatSIMS.Service;
 using Repository;
 using System;
@@ -13,7 +14,6 @@ namespace ProjekatSIMS.WindowPacijent
 {
     public partial class VidiPreglede : Page
     {
-        public OtkazivanjePregledaService otkazivanjePregledaService = new OtkazivanjePregledaService();
         public PregledController pregledController = new PregledController();
         public List<Pregled> Pregledi
         {
@@ -29,6 +29,7 @@ namespace ProjekatSIMS.WindowPacijent
 
         public int prioritetVreme = 0;
         public int prioritetDoktor = 0;
+        public OtkazivanjePregledaController otkazivanjePregledaController = new OtkazivanjePregledaController();
         public VidiPreglede(Pacijent pacijent)
         {
             InitializeComponent();
@@ -57,12 +58,12 @@ namespace ProjekatSIMS.WindowPacijent
             ime = odabraniPregled.pacijent.Ime;
             prezime = odabraniPregled.pacijent.Prezime;
 
-            otkazivanjePregledaService.BrojacOtkazivanjaPregleda(ime, prezime);
+            otkazivanjePregledaController.BrojacOtkazivanjaPregleda(ime, prezime);
             string newJ = JsonConvert.SerializeObject(Pacijenti);
             File.WriteAllText(@"..\..\..\Fajlovi\Pacijent.txt", newJ);
             DateTime danasnjiDatum = DateTime.UtcNow;
 
-            otkazivanjePregledaService.ProveraVremenaZakazivanja(danasnjiDatum);
+            otkazivanjePregledaController.ProveraVremenaZakazivanja(danasnjiDatum);
 
             using (StreamReader file = new StreamReader(@"..\..\..\Fajlovi\Pregled.txt"))
             {

@@ -22,7 +22,6 @@ namespace ProjekatSIMS.WindowPacijent
 {
     public partial class PocetnaPacijent : Page
     {
-        public OtkazivanjePregledaService otkazivanjePregledaService = new OtkazivanjePregledaService();
 
         public NedeljnaTerapijaController nedeljnaTerapijaController = new NedeljnaTerapijaController();
 

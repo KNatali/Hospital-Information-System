@@ -1,5 +1,6 @@
 ﻿using Model;
 using ProjekatSIMS.Service;
+using ProjekatSIMS.Service.PreglediPacijent;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,6 +11,8 @@ namespace ProjekatSIMS.Controller.PregledPacijent
     {
         public IzmenaPregledaService izmenaPregledaService = new IzmenaPregledaService();
 
+        public ZauzetiTerminiService zauzetiTermini = new ZauzetiTerminiService();
+
         public Boolean IzmeniPregled(DateTime noviDatum,Pregled p)
         {
             if (izmenaPregledaService.IzmeniPregled(noviDatum, p) == true)
@@ -19,7 +22,7 @@ namespace ProjekatSIMS.Controller.PregledPacijent
         }
         public int ProveraZauzetostiTermina(DateTime noviDatum)
         {
-            if (izmenaPregledaService.ProveraZauzetostiTermina(noviDatum) == 1)
+            if (zauzetiTermini.DaLiJeTerminZauzet(noviDatum) == true)
                 return 1;
             else
                 return 0;

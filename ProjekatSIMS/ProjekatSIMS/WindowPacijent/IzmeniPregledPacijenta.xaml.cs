@@ -42,9 +42,6 @@ namespace ProjekatSIMS.WindowPacijent
             
         }
 
-       
-
-
         private void button1_Click(object sender, RoutedEventArgs e)
         {
             if (DoktorPrioritet.IsChecked == true)
@@ -73,10 +70,26 @@ namespace ProjekatSIMS.WindowPacijent
            
         }
 
+        public void PrioritetProzor(DateTime datumNovi, String imeDoktora,String prezimeDoktora)
+        {
+            if (izmenaPregledaController.ProveraZauzetostiTermina(datumNovi) == 1)
+            {
+                if (prioritetVreme == 1)
+                {
+                    VremePrioritetWindow vp = new VremePrioritetWindow(datumNovi, trenutniPacijent);
+                    vp.Show();
+                }
+                else if (prioritetDoktor == 1)
+                {
+                    DoktorPrioritetWindow dp = new DoktorPrioritetWindow(imeDoktora, prezimeDoktora, trenutniPacijent);
+                    dp.Show();
+
+                }
+            }
+        }
+
         private void Izmeni_Click(object sender, RoutedEventArgs e)
         {
-            //Pregled p = (Pregled)dataGridPregledi.SelectedItems[0]; //pregled koji je izabran za izmenu
-
             double sati = Convert.ToDouble(Sati.Text);
             double minuti = Convert.ToDouble(Minuti.Text);
             DateTime datum = (DateTime)Datum.SelectedDate;
@@ -89,24 +102,7 @@ namespace ProjekatSIMS.WindowPacijent
             brojacOtkazivanjaController.BrojacOtkazivanjaPregleda(trenutniPacijent);
             if(izmenaPregledaController.IzmeniPregled(datumNovi, p) == true)
             {
-                if (izmenaPregledaController.ProveraZauzetostiTermina(datumNovi) == 1)
-                {
-                    if (prioritetVreme == 1)
-                    {
-                        VremePrioritetWindow vp = new VremePrioritetWindow(datumNovi,trenutniPacijent);
-                        vp.Show();
-                       // VremePrioritet vp = new VremePrioritet(datumNovi, trenutniPacijent);
-                       // this.NavigationService.Navigate(vp);
-                    }
-                    else if (prioritetDoktor == 1)
-                    {
-                        DoktorPrioritetWindow dp = new DoktorPrioritetWindow( imeDoktora,prezimeDoktora,trenutniPacijent);
-                        dp.Show();
-                        //DoktorPrioritet dp = new DoktorPrioritet(imeDoktora, prezimeDoktora,trenutniPacijent);
-                        //this.NavigationService.Navigate(dp);
-
-                    }
-                }
+                PrioritetProzor(datumNovi,imeDoktora,prezimeDoktora);
 
             }else 
             {
