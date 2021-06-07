@@ -61,7 +61,7 @@ namespace ProjekatSIMS.Service
             }
             return prostorija;
         }
-        private Boolean DaLiJeTerminZauzet(DateTime datum)
+        public Boolean DaLiJeTerminZauzet(DateTime datum)
         {
             List<Pregled> pregledi = pregledRepository.DobaviSvePregledePacijent();
             foreach (Pregled pregled in pregledi)
@@ -70,6 +70,7 @@ namespace ProjekatSIMS.Service
                 {
                     MessageBox.Show("Odabrali ste termin koji je zauzet, na osnovu Vaseg prioriteta cemo Vam predloziti slobodne termine.");
                     return true;
+                    
                 }
             }
             return false;

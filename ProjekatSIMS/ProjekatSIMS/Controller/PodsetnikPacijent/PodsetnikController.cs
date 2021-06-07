@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Model;
+using ProjekatSIMS.Model;
+using ProjekatSIMS.Repository;
 using ProjekatSIMS.Service;
 using Service;
 
@@ -10,6 +13,7 @@ namespace Controller
     {
         public PrikazivanjePodsetnikaService prikazivanjePodsetnikaService = new PrikazivanjePodsetnikaService();
         public KreiranjePodsetnikaService kreiranjePodsetnikaService = new KreiranjePodsetnikaService();
+        public PodsetnikRepository podsetnikRepository = new PodsetnikRepository();
         public Boolean KreiranjePodsetnika(String naziv, String opis, DateTime pocetakObavestenja, DateTime krajObavestenja, String jmbgPacijenta)
         {
             if (kreiranjePodsetnikaService.kreiranjePodsetnika(naziv, opis, pocetakObavestenja, krajObavestenja, jmbgPacijenta) == true)
@@ -28,6 +32,11 @@ namespace Controller
                 return true;
             }
             return false;
+        }
+
+        public List<Podsetnik> DobaviSvePodsetnikeZaPacijenta(Pacijent pacijent)
+        {
+            return podsetnikRepository.DobaviSvePodsetnikeZaPacijenta(pacijent);
         }
     }
 }

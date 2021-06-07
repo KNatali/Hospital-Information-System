@@ -1,0 +1,1 @@
+[{"Ponedeljak": "Panadol 1 kapsula","Utorak":"Andol 2x2 kapsule","Sreda":"Imunoglukan 1 kapsula","Cetvrtak":null,"Petak":"Cafetin 1 kapsula","Subota":"Herbiko 2 kasike","Nedelja":null}]

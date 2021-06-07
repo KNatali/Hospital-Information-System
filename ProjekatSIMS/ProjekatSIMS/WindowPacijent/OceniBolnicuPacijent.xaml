@@ -63,11 +63,15 @@
     <Grid Background="#CDFEBB">
         <Label HorizontalAlignment="Center" Margin="0,10,0,-10">Ocenite bolnicu</Label>
         <Label Content="Upišite ocenu bolnice: " HorizontalAlignment="Left" Margin="99,129,0,0" VerticalAlignment="Top"/>
-        <Label Content="Upišite Vaš komentar o bolnici: " HorizontalAlignment="Left" Margin="22,197,0,0" VerticalAlignment="Top"/>
-        <Button Content="Prosledite ocenu" HorizontalAlignment="Left" Margin="537,393,0,17"  Click="Oceni"  Background="#A4E98A" IsDefault="True" Style="{DynamicResource RoundedButton}" Height="40" Width="100"/>
         <TextBox HorizontalAlignment="Left" Name="Ocena" Margin="352,132,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
+
+
+        <Label Content="Upišite Vaš komentar o bolnici: " HorizontalAlignment="Left" Margin="22,197,0,0" VerticalAlignment="Top"/>
         <TextBox HorizontalAlignment="Left" Name="Komentar" Margin="352,197,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Height="135"/>
-        <Button Width="100" Height="40" Style="{StaticResource RoundedButton}" Click="Odustani" Margin="664,393,36,17">Odustani</Button>
+        
+        <Button Content="Prosledi ocenu" HorizontalAlignment="Left" Margin="554,393,0,17"  Click="Oceni"  Background="#A4E98A" IsDefault="True" Style="{DynamicResource RoundedButton}" Height="40" Width="100"/>
+       
+        <Button Width="100" Height="40" Style="{StaticResource RoundedButton}" Click="Odustani" Margin="659,393,41,17">Odustani</Button>
 
 
     </Grid>

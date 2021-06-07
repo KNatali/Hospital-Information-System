@@ -4,7 +4,6 @@ using Microsoft.Toolkit.Uwp.Notifications;
 using Model;
 using ProjekatSIMS.Model;
 using ProjekatSIMS.Repository;
-using ProjekatSIMS.ViewPacijent;
 using Repository;
 using System;
 using System.Collections.Generic;
@@ -21,6 +20,7 @@ namespace ProjekatSIMS.WindowPacijent
         public PodsetnikRepository podsetnikRepository = new PodsetnikRepository();
         public PodsetnikController podsetnikController = new PodsetnikController();
         public ReceptRepository receptRepository = new ReceptRepository(@"..\..\..\Fajlovi\Recept.txt");
+        public PregledRepository pregledRepository = new PregledRepository(@"..\..\..\Fajlovi\Pregled.txt");
         public Pacijent trenutniPacijent { get; set; }
         public String imePrezime { get; set; }
         
@@ -35,7 +35,25 @@ namespace ProjekatSIMS.WindowPacijent
             imePrezime = trenutniPacijent.Ime + " " + trenutniPacijent.Prezime;
             PacijentFrame.Content = new Pocetna(trenutniPacijent);
             List<Podsetnik> podsetnici = podsetnikRepository.DobaviSvePodsetnike();
+            List<Pregled> pregledi = pregledRepository.DobaviPregledeZaPacijenta(trenutniPacijent);
             List<Recept>Recepti = receptRepository.DobaviSveRecepte();
+
+            foreach(Pregled preg in pregledi)
+            {
+                int vremePregleda = DateTime.Compare(preg.Pocetak.AddDays(-1), DateTime.UtcNow);
+                if(vremePregleda == 0)
+                {
+                    {
+                        new ToastContentBuilder()
+                        .AddArgument("action", "viewConversation")
+                        .AddText("Imate zakazan pregled u ")
+                        .AddText(preg.Pocetak.ToString())
+                        .Show();
+                    }
+                }
+            }
+
+
             foreach (Podsetnik p in podsetnici)
             {
                 if (podsetnikController.DaLiTrebaPoslatiObavestenje(p.datumZavrsetkaObavestenja, p.datumPocetkaObavestenja) == true)
@@ -45,8 +63,12 @@ namespace ProjekatSIMS.WindowPacijent
                        .AddArgument("action", "viewConversation")
                        .AddText(p.nazivPodsetika)
                        .AddText(p.opisPodsetnika)
-                       .Show();
-
+                       .Show(
+                            toast =>
+                            {
+                                toast.ExpirationTime = DateTime.UtcNow.AddHours(5);
+                            }
+                            );
                     }
                 }
             }
@@ -72,6 +94,8 @@ namespace ProjekatSIMS.WindowPacijent
                     }
                 }
             }
+
+
 
         }
 
@@ -117,8 +141,8 @@ namespace ProjekatSIMS.WindowPacijent
 
         private void PregledajKarton(object sender, RoutedEventArgs e)
         {
-            PacijentFrame.Content = new PregledajZdravstveniKartonView();
-           // PacijentFrame.Content = new PregledajZdravstveniKarton(trenutniPacijent);
+         //PacijentFrame.Content = new PregledajZdravstveniKartonView();
+           PacijentFrame.Content = new PregledajZdravstveniKarton(trenutniPacijent);
         }
         private void PocetnaStranica(object sender, RoutedEventArgs e)
         {

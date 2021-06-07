@@ -9,10 +9,19 @@ namespace ProjekatSIMS.Commands
     {
         Action _TargetExecuteMethod;
         Func<bool> _TargetCanExecuteMethod;
+        readonly Action<object> _execute;
+        readonly Predicate<object> _canExecute;
 
         public RelayCommand(Action executeMethod)
         {
             _TargetExecuteMethod = executeMethod;
+        }
+        public RelayCommand(Action<Object> execute, Predicate<object> canExecute)
+        {
+            if (execute == null)
+                throw new Exception("execute");
+            _execute = execute;
+            _canExecute = canExecute;
         }
 
         public RelayCommand(Action executeMethod, Func<bool> canExecuteMethod)
@@ -20,6 +29,7 @@ namespace ProjekatSIMS.Commands
             _TargetExecuteMethod = executeMethod;
             _TargetCanExecuteMethod = canExecuteMethod;
         }
+
 
         public void RaiseCanExecuteChanged()
         {

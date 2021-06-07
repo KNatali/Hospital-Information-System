@@ -101,6 +101,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="ViewPacijent\" />
     <Folder Include="ViewModel\" />
     <Folder Include="WindowPacijent\Slike\" />
   </ItemGroup>

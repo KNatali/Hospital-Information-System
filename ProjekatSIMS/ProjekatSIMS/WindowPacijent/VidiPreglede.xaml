@@ -30,7 +30,7 @@
 
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Zatvori" IsDefault="True" HorizontalAlignment="Left" Margin="659,393,41,17" Height="40" Width="100" Click="Zatvori" Background="#A4E98A" Style="{StaticResource RoundedButton}"/>
+        <Button Content="Zatvori" IsDefault="True"  Margin="659,393,41,17" Height="40" Width="100" Click="Zatvori" Background="#A4E98A" Style="{StaticResource RoundedButton}"/>
 
 
     </Grid>

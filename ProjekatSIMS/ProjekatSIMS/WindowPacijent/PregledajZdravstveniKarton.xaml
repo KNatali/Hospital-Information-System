@@ -9,42 +9,46 @@
       Title="PregledajZdravstveniKarton">
 
     <Grid Background="#CDFEBB">
+        <Button Content="Zatvori" Width="100" Height="40" Margin="659,393,41,17" Style="{StaticResource RoundedButton}" Click="Zatvori" IsDefault="True"/>
         <Label FontFamily="Arial" FontSize="20" Margin="0,0,400,0" HorizontalAlignment="Center">Anamneze</Label>
         <DataGrid x:Name="dataGridAnamneza" ItemsSource="{Binding Anamneze}" IsReadOnly="True"
-                  SelectionMode="Single" AutoGenerateColumns="False" Margin="0,55,400,0" Height="170" Width="390" VerticalAlignment="Top" IsSynchronizedWithCurrentItem="True" GridLinesVisibility="Vertical">
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="5,37,405,0" Height="170" Width="390" VerticalAlignment="Top" IsSynchronizedWithCurrentItem="True" GridLinesVisibility="Vertical" >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Opis anamneze" Binding="{Binding OpisAnamneze}"/>
-                <DataGridTextColumn Header="Datum" Binding="{Binding datum}"/>
+                <DataGridTextColumn Header="Opis anamneze" Binding="{Binding OpisAnamneze}" Width="220"/>
+                <DataGridTextColumn Header="Datum" Binding="{Binding datum}"  Width="170"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Label FontFamily="Arial" FontSize="20" Margin="161,230,0,-230" HorizontalAlignment="Left">Recepti</Label>
+        <Label FontFamily="Arial" FontSize="20" Margin="161,210,0,-210" HorizontalAlignment="Left">Recepti</Label>
         <DataGrid x:Name="dataGridRecept" ItemsSource="{Binding Recepti}" IsReadOnly="True"
-                  SelectionMode="Single" AutoGenerateColumns="False" Margin="5,270,405,0" Height="170" VerticalAlignment="Top" Width="390" IsSynchronizedWithCurrentItem="True" GridLinesVisibility="Vertical" RenderTransformOrigin="0.502,0.646">
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="5,243,405,0" Height="170" VerticalAlignment="Top" Width="390" IsSynchronizedWithCurrentItem="True" GridLinesVisibility="Vertical" RenderTransformOrigin="0.502,0.646">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Naziv leka" Binding="{Binding NazivLeka}"/>
-                <DataGridTextColumn Header="Kolicina" Binding="{Binding Kolicina}"/>
+                <DataGridTextColumn Header="Količina" Binding="{Binding Kolicina}"/>
                 <DataGridTextColumn Header="Datum izdavanja" Binding="{Binding DatumPropisivanjaLeka}"/>
                 <DataGridTextColumn Header="Uputstvo" Binding="{Binding Uputstvo}"/>
             </DataGrid.Columns>
         </DataGrid>
         <Label FontFamily="Arial" FontSize="20" Margin="400,0,0,0" HorizontalAlignment="Center" >Uputi</Label>
         <DataGrid x:Name="dataGridUput" ItemsSource="{Binding Uputi}" IsReadOnly="True"
-                  SelectionMode="Single" AutoGenerateColumns="False" Margin="405,55,5,0" Height="170" Width="390" VerticalAlignment="Top" IsSynchronizedWithCurrentItem="True" GridLinesVisibility="Vertical">
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="405,37,5,0" Height="170" Width="390" VerticalAlignment="Top" IsSynchronizedWithCurrentItem="True" GridLinesVisibility="Vertical">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Datum" Binding="{Binding DatumIzdavanja}"/>
-                <DataGridTextColumn Header="Pocetak" Binding="{Binding ZakazanPregled.Pocetak}"/>
+                <DataGridTextColumn Header="Datum" Binding="{Binding DatumIzdavanja}"  Width="195"/>
+                <DataGridTextColumn Header="Početak" Binding="{Binding ZakazanPregled.Pocetak}"  Width="195"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Label FontFamily="Arial" FontSize="20" Margin="484,233,0,-233" HorizontalAlignment="Left">Uputi za bolničko lečenje</Label>
+        <Label FontFamily="Arial" FontSize="20" Margin="484,210,0,57" HorizontalAlignment="Left">Uputi za bolničko lečenje</Label>
         <DataGrid x:Name="dataGridUputBolnicko" ItemsSource="{Binding UputiBolnickoLecenje}" IsReadOnly="True"
-                  SelectionMode="Single" AutoGenerateColumns="False" Margin="405,270,5,0" Height="170" Width="390" VerticalAlignment="Top" IsSynchronizedWithCurrentItem="True" GridLinesVisibility="Vertical">
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="405,243,5,0" Height="170" Width="390" VerticalAlignment="Top" IsSynchronizedWithCurrentItem="True" GridLinesVisibility="Vertical">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Pocetak" Binding="{Binding IntervalPocetak}"/>
-                <DataGridTextColumn Header="Kraj" Binding="{Binding IntervalKraj}"/>
-                <DataGridTextColumn Header="Soba" Binding="{Binding SobaId}"/>
-                <DataGridTextColumn Header="Krevet" Binding="{Binding KrevetId}"/>
+                <DataGridTextColumn Header="Početak" Binding="{Binding IntervalPocetak}"  Width="98"/>
+                <DataGridTextColumn Header="Kraj" Binding="{Binding IntervalKraj}" Width="98"/>
+                <DataGridTextColumn Header="Soba" Binding="{Binding SobaId}" Width="97"/>
+                <DataGridTextColumn Header="Krevet" Binding="{Binding KrevetId}" Width="97"/>
 
             </DataGrid.Columns>
         </DataGrid>
+
+       
+
     </Grid>
 </Page>

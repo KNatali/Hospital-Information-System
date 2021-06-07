@@ -79,15 +79,23 @@
     <Grid Background="#CDFEBB">
         <Label FontFamily="Arial" FontSize="20" HorizontalAlignment="Center" Margin="0,10,0,-10">Kreiranje podsetnika</Label>
 
-        <DatePicker  CalendarStyle="{DynamicResource styleCalendar}" HorizontalAlignment="Left" Margin="365,324,0,0" VerticalAlignment="Top" Name="DatumKraja" Width="200" />
-        <DatePicker CalendarStyle="{DynamicResource styleCalendar}" HorizontalAlignment="Left" Margin="365,263,0,0" VerticalAlignment="Top" Name="DatumPocetka" Width="200" />
+       
         <TextBox HorizontalAlignment="Left" Margin="365,81,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Name="Naziv"/>
         <TextBox HorizontalAlignment="Left" Margin="365,146,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Height="94" Name="Opis" />
+        
         <Label Content="Unesite naziv podsetnika:" HorizontalAlignment="Left" Margin="91,77,0,0" VerticalAlignment="Top" FontSize="20" />
+       
         <Label Content="Unesite opis podsetnika:" HorizontalAlignment="Left" Margin="91,146,0,0" VerticalAlignment="Top" FontSize="20"/>
+        
         <Label Content="Unesite datum početka:" HorizontalAlignment="Left" Margin="94,258,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Label Content="(mm/dd/yyyy)" Margin="137,284,502,114" FontFamily="Arial" FontSize="20"/>
+        <Label Content="(mm/dd/yyyy)" Margin="137,339,502,59" FontFamily="Arial" FontSize="20"/>
+        <DatePicker  HorizontalAlignment="Left" Margin="365,263,0,0" VerticalAlignment="Top" Name="DatumPocetka" Width="200" />
+        <DatePicker   HorizontalAlignment="Left" Margin="365,324,0,0" VerticalAlignment="Top" Name="DatumKraja" Width="200" />
+        
+
         <Label Content="Unesite datum kraja:" HorizontalAlignment="Left" Margin="122,319,0,0" VerticalAlignment="Top" FontSize="20"/>
-        <Button Content="Kreiraj" HorizontalAlignment="Left" Margin="537,393,0,17"  Click="Kreiraj"  Background="#A4E98A" Style="{DynamicResource RoundedButton}" Height="40" Width="100"/>
+        <Button Content="Kreiraj" Margin="528,393,172,17"  Click="Kreiraj"  Background="#A4E98A" Style="{DynamicResource RoundedButton}" Height="40" Width="100"/>
         <Button Height="40" Width="100" Style="{StaticResource RoundedButton}" Click="Odustani" Margin="659,393,41,17">Odustani</Button>
 
     </Grid>

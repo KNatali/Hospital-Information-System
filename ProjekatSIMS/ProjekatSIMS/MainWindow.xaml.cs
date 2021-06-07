@@ -6,11 +6,11 @@ using ProjekatSIMS.Repository;
 using ProjekatSIMS.UpravnikWindows;
 using ProjekatSIMS.ViewDoktor;
 using ProjekatSIMS.ViewSekretar;
-using ProjekatSIMS.ViewPacijent;
 using Repository;
 using System;
 using System.Collections.Generic;
 using System.Windows;
+using ProjekatSIMS.WindowPacijent;
 
 namespace ProjekatSIMS
 {
@@ -80,8 +80,8 @@ namespace ProjekatSIMS
                 switch (uloga)
                 {
                     case Uloga.Pacijent:
-                        //PacijentMainView pmw = new PacijentMainView();
-                        //pmw.Show();
+                        //PacijentMain pm = new PacijentMain();
+                        //pm.Show();
                         WindowPacijent.PacijentMainWindow pacijentMainWindow = new WindowPacijent.PacijentMainWindow(pacijent);
                         pacijentMainWindow.Show();
                         break;
