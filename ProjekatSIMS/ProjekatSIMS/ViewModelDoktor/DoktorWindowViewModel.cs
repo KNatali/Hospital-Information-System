@@ -28,6 +28,7 @@ namespace ProjekatSIMS.ViewModelDoktor
             {
                 navService = value;
             }
+        }
 
         public RelayCommand<Window> Odjavljivanje
         {
