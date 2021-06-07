@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using Controller;
+using Model;
 using Newtonsoft.Json;
 using ProjekatSIMS.Model;
 using ProjekatSIMS.Repository;
@@ -19,6 +20,8 @@ namespace ProjekatSIMS.WindowPacijent
         }
         public Podsetnik podsetnik { get; set; }
         public Pacijent trenutniPacijent { get; set; }
+        public PodsetnikController podsetnikController = new PodsetnikController();
+        
         public IzmenaPodsetnika(Pacijent pacijent)
         {
 
@@ -26,8 +29,7 @@ namespace ProjekatSIMS.WindowPacijent
             this.DataContext = this;
             trenutniPacijent = pacijent;
             Podsetnici = new List<Podsetnik>();
-            PodsetnikRepository fajl = new PodsetnikRepository(@"..\..\..\Fajlovi\Podsetnik.txt");
-            Podsetnici = fajl.DobaviSvePodsetnike();
+            Podsetnici = podsetnikController.DobaviSvePodsetnikeZaPacijenta(trenutniPacijent);
         }
         private void Izaberi_Click(object sender, RoutedEventArgs e)
         {
@@ -40,6 +42,14 @@ namespace ProjekatSIMS.WindowPacijent
             string opis = Opis.Text;
             DateTime pocetak = (DateTime)Pocetak.SelectedDate;
             DateTime kraj = (DateTime)Kraj.SelectedDate;
+            double sati = Convert.ToDouble(Sati.Text);
+            double minuti = Convert.ToDouble(Minuti.Text);
+            pocetak.AddHours(sati);
+            pocetak.AddMinutes(minuti);
+            kraj.AddHours(sati);
+            kraj.AddMinutes(minuti);
+            
+
             Podsetnici.Remove(podsetnik);
             podsetnik = new Podsetnik { nazivPodsetika = ime, opisPodsetnika = opis, datumPocetkaObavestenja = pocetak, datumZavrsetkaObavestenja = kraj };
             Podsetnici.Add(podsetnik);
@@ -50,8 +60,28 @@ namespace ProjekatSIMS.WindowPacijent
 
         private void Odustani(object sender, RoutedEventArgs e)
         {
-            Pocetna pocetna = new Pocetna(trenutniPacijent);
+            PocetnaPacijent pocetna = new PocetnaPacijent(trenutniPacijent);
             this.NavigationService.Navigate(pocetna);
+        }
+
+        private void Obrisi(object sender, RoutedEventArgs e)
+        {
+            Podsetnik odabraniPodsetnik = (Podsetnik)dataGridPodsetnik.SelectedItems[0];
+            string naziv;
+            string opis;
+            naziv = odabraniPodsetnik.nazivPodsetika;
+            opis = odabraniPodsetnik.opisPodsetnika;
+
+            using (StreamReader file = new StreamReader(@"..\..\..\Fajlovi\Pregled.txt"))
+            {
+                Podsetnici.Remove(odabraniPodsetnik);
+
+            }
+            string newJson = JsonConvert.SerializeObject(Podsetnici);
+            File.WriteAllText(@"..\..\..\Fajlovi\Podsetnik.txt", newJson);
+            MessageBox.Show("Podsetnik je obrisan.");
+            IzmenaPodsetnika ip = new IzmenaPodsetnika(trenutniPacijent);
+            this.NavigationService.Navigate(ip);
         }
     }
 }

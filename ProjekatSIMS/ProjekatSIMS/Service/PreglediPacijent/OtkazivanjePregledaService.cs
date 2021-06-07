@@ -10,6 +10,7 @@ namespace ProjekatSIMS.Service
     {
         public static PacijentRepository pacijentRepository = new PacijentRepository(@"..\..\..\Fajlovi\Pacijent.txt");
         public List<Pacijent> Pacijenti = pacijentRepository.DobaviSve();
+        public PregledRepository pregledRepository = new PregledRepository();
         public void ProveraVremenaZakazivanja(DateTime sadasnjeVreme)
         {
             foreach (Pacijent pacijent in Pacijenti)
@@ -40,6 +41,18 @@ namespace ProjekatSIMS.Service
                 if ((pacijent.Prezime == prezime) && (pacijent.Ime == ime))
                 {
                     pacijent.otkazaoPregled++;
+                }
+            }
+        }
+
+        public void OtkazivanjeZakazanihPregleda(Pacijent pac)
+        {
+            List<Pregled> pregledi = pregledRepository.DobaviSvePregledePacijent();
+            foreach (Pregled pregled in pregledi)
+            {
+                if ((pregled.pacijent.Jmbg == pac.Jmbg))
+                {
+                    pregled.StatusPregleda = StatusPregleda.Otkazan;
                 }
             }
         }

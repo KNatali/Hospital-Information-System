@@ -1,0 +1,237 @@
+﻿<Page x:Class="ProjekatSIMS.ZahtjevZaGodisnjiOdmor"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ProjekatSIMS"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ZahtjevZaGodisnjiOdmor">
+
+    <Page.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+
+        <Style  TargetType="TextBox">
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="BorderBrush" Value="#287D7D"/>
+            <Style.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10" />
+
+                </Style>
+            </Style.Resources>
+        </Style>
+
+        <Style TargetType="{x:Type DatePickerTextBox}">
+            <Setter Property="Background" Value="Transparent"></Setter>
+            <Setter Property="BorderBrush" Value="black"></Setter>
+            <Setter Property="BorderThickness" Value="0"></Setter>
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Style.Resources>
+
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10" />
+
+                </Style>
+            </Style.Resources>
+
+        </Style>
+        <Style TargetType="DatePicker">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="BorderBrush" Value="#287D7D"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Background" Value="white"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Style.Resources>
+
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10" />
+
+                </Style>
+            </Style.Resources>
+        </Style>
+        <Style x:Key="styleCalendar" TargetType="{x:Type Calendar}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Calendar}">
+                        <!-- Wrapping in ViewBox will enlarge calendar of that size.-->
+                        <Viewbox Height="270"
+                         Width="270">
+                            <CalendarItem x:Name="PART_CalendarItem"
+                                  Background="{TemplateBinding Background}"
+                                  BorderBrush="{TemplateBinding BorderBrush}"
+                                  BorderThickness="{TemplateBinding BorderThickness}"/>
+                        </Viewbox>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+
+
+
+        <SolidColorBrush x:Key="ComboBoxNormalBorderBrush" Color="#e3e9ef" />
+        <SolidColorBrush x:Key="ComboBoxNormalBackgroundBrush" Color="#fff" />
+        <SolidColorBrush x:Key="ComboBoxDisabledForegroundBrush" Color="#888" />
+        <SolidColorBrush x:Key="ComboBoxDisabledBackgroundBrush" Color="#eee" />
+        <SolidColorBrush x:Key="ComboBoxDisabledBorderBrush" Color="#888" />
+
+        <ControlTemplate TargetType="ToggleButton" x:Key="ComboBoxToggleButtonTemplate">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="20" />
+                </Grid.ColumnDefinitions>
+                <Border Grid.ColumnSpan="2" Name="Border"
+              BorderBrush="#287D7D" 
+              CornerRadius="10,10,10,10" BorderThickness="1" 
+              Background="white" />
+                <Border Grid.Column="1" Margin="1, 1, 1, 1" BorderBrush="red" Name="ButtonBorder"
+              CornerRadius="10" BorderThickness="0" 
+              Background="{StaticResource ComboBoxNormalBackgroundBrush}" />
+
+                <Path Name="Arrow" Grid.Column="1" 
+            Data="M0,0 L0,2 L4,6 L8,2 L8,0 L4,4 z"
+            HorizontalAlignment="Center" Fill="#444"
+            VerticalAlignment="Center" />
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                    <Setter Property="Panel.Background" TargetName="ButtonBorder" Value="WhiteSmoke"/>
+
+                </Trigger>
+                <Trigger Property="ToggleButton.IsChecked" Value="True">
+                    <Setter Property="Panel.Background" TargetName="ButtonBorder" Value="WhiteSmoke"/>
+                    <Setter Property="Shape.Fill" TargetName="Arrow" Value="#FF8D979E"/>
+                </Trigger>
+                <Trigger Property="UIElement.IsEnabled" Value="False">
+                    <Setter Property="Panel.Background" TargetName="Border" Value="{StaticResource ComboBoxDisabledBackgroundBrush}"/>
+                    <Setter Property="Panel.Background" TargetName="ButtonBorder" Value="{StaticResource ComboBoxDisabledBackgroundBrush}"/>
+                    <Setter Property="Border.BorderBrush" TargetName="ButtonBorder" Value="{StaticResource ComboBoxDisabledBorderBrush}"/>
+                    <Setter Property="TextElement.Foreground" Value="{StaticResource ComboBoxDisabledForegroundBrush}"/>
+                    <Setter Property="Shape.Fill" TargetName="Arrow" Value="#999"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+
+
+
+
+    </Page.Resources>
+
+
+    <Grid Margin="30">
+        <!-- <ComboBox  Name="Pacijenti" HorizontalAlignment="Left"   
+                  Margin="477,48,0,0"   
+                  VerticalAlignment="Top"   
+                  Width="120"   
+                  ItemsSource="{Binding Path=Pacijenti}"    
+                 DisplayMemberPath="Ime"
+                   
+                   IsTextSearchEnabled="True" 
+                   IsEditable="True"
+                  />-->
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="*"/>
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.4*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="0.4*"/>
+
+        </Grid.ColumnDefinitions>
+
+
+        <Label FontSize="17" FontWeight="SemiBold" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Content="Zahtjev za godišnji odmor:" HorizontalAlignment="Center"/>
+
+
+
+
+
+
+        <Label Content="Trenutni broj slobodnih dana:"  Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
+        <TextBox IsReadOnly="True" Grid.Column="2" Grid.Row="2"  Name="SlobodniDani"  Text="20" TextWrapping="Wrap" VerticalAlignment="Center" Margin="68,0,10,0" RenderTransformOrigin="0.5,0.5">
+            <TextBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.17"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBox.RenderTransform>
+        </TextBox>
+
+
+
+        <Label  Grid.Row="4" Grid.Column="1" Content="Izaberite vrijeme odmora:" HorizontalAlignment="Left"  VerticalAlignment="Center" />
+
+
+        <Grid Grid.Row="5" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+
+
+            </Grid.ColumnDefinitions>
+            <Label   Grid.Column="0" VerticalAlignment="Center" HorizontalContentAlignment="Left">Od:</Label>
+
+            <DatePicker  ToolTip="Klikite na kalendar za odabir datuma" CalendarStyle="{StaticResource styleCalendar}" Name="Date" Margin="68,0,10,0" Grid.ColumnSpan="2"  />
+
+        </Grid>
+        <Grid Grid.Row="5" Grid.Column="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+
+
+            </Grid.ColumnDefinitions>
+            <Label   Grid.Column="0" VerticalAlignment="Center" HorizontalContentAlignment="Left">Do:</Label>
+            <DatePicker  ToolTip="Klikite na kalendar za odabir datuma"  CalendarStyle="{StaticResource styleCalendar}" Name="Dte" Grid.ColumnSpan="2" Margin="66,0,10,0"  />
+
+        </Grid>
+
+
+
+
+
+
+        <ComboBox  Grid.Row="5" Grid.Column="1" Name="Termin" 
+                  Style="{StaticResource ComboBoxFlatStyle}"
+                HorizontalAlignment="Stretch"  VerticalAlignment="Center" 
+                  Visibility="Hidden"
+                  
+                   >
+
+
+        </ComboBox>
+        <Label Visibility="Hidden" Name="Izbor" Grid.Row="5" Grid.Column="0" Content="Izaberi jedan od ponudjenih termina:" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+        <StackPanel  Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="3"  HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
+            <Button Content="Pošalji" ToolTip="Pošalite zahtjev za godišnji odmor" Width="100" Margin="0,5,20,5" Click="Nazad" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnStandard}"/>
+            <Button Content="Odustani" Width="100" Click="Nazad"  HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnNazad}"/>
+
+        </StackPanel>
+    </Grid>
+</Page>

@@ -102,7 +102,7 @@
 
             </Grid.ColumnDefinitions>
 
-            <Label Grid.Row="0" Grid.ColumnSpan="3" Content="Produzenje uputa za bolnicko lijecenje" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="17" FontWeight="SemiBold"/>
+            <Label Grid.Row="0" Grid.ColumnSpan="3" Content="Prodženje uputa za bolničko liječenje" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="17" FontWeight="SemiBold"/>
 
             
             <Label Grid.Row="1" Grid.Column="0" Content="Razlog hospitalizacije" HorizontalAlignment="Left" VerticalAlignment="Center" />
@@ -110,7 +110,7 @@
             <Label Content="U periodu od:" Grid.Row="2" VerticalAlignment="Center"></Label>
             <TextBox  IsReadOnly="True"  Name="IntervalPocetak" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" Text="" TextWrapping="Wrap" VerticalAlignment="Center"/>
             <Label Content="Izaberi novi datum:" Grid.Row="3" VerticalAlignment="Center"></Label>
-            <DatePicker Grid.Row="3" Grid.Column="1"  CalendarStyle="{StaticResource styleCalendar}" Name="KrajInterval" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+            <DatePicker  ToolTip="Klikite na kalendar za odabir datuma" Grid.Row="3" Grid.Column="1"  CalendarStyle="{StaticResource styleCalendar}" Name="KrajInterval" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
             <Label Content="Soba:" Grid.Row="4" VerticalAlignment="Center"></Label>
 
             <TextBox Name="Soba" IsReadOnly="True" Grid.Row="4" Grid.Column="1"  HorizontalAlignment="Stretch" Text="" TextWrapping="Wrap" VerticalAlignment="Center"/>
@@ -123,8 +123,8 @@
 
 
             <StackPanel  Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2"  HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
-                <Button Content="Sacuvaj" Click="ProduziUput"  Width="100" Margin="0,0,20,0" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnStandard}"/>
-                <Button Content="Odustani" Click="Odustani" Width="100"  HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnStandard}"/>
+                <Button Content="Sačuvaj" ToolTip="Produžite trajanje uputa" Click="ProduziUput"  Width="100" Margin="0,0,20,0" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnStandard}"/>
+                <Button Content="Odustani" Click="Odustani" Width="100"  HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnNazad}"/>
 
             </StackPanel>
 

@@ -48,28 +48,41 @@ namespace ProjekatSIMS
         private void PrikazSlobodnihTermina(object sender, RoutedEventArgs e)
         {
             Doktor izabraniDoktor = (Doktor)Doktori.SelectedItem;
+            if( DatumPocetak.SelectedDate==null || DatumKraj.SelectedDate==null || IntervalPocetak.Text=="" || IntervalKraj.Text=="" ){
+                MessageBox.Show("Izaberite datume i vrijeme");
+                return;
+            }
             IntervalDatuma datumi = new IntervalDatuma((DateTime)DatumPocetak.SelectedDate, (DateTime)DatumKraj.SelectedDate);
             IntervalSati sati = new IntervalSati(Convert.ToInt32(IntervalPocetak.Text), Convert.ToInt32(IntervalKraj.Text));
 
             SlobodniTerminiUputSpecijalistiDTO podaci = new SlobodniTerminiUputSpecijalistiDTO(izabraniDoktor, datumi, sati);
             List<DateTime> slobodniTermini = slobodniTerminiUputSpecijelistiController.PrikazSlobodnihTermina(podaci);
             Termini.ItemsSource = slobodniTermini;
+            Termini.Visibility = Visibility.Visible;
         }
 
         private void IzdavanjeUputa(object sender, RoutedEventArgs e)
         {
-            Doktor izabraniDoktor = (Doktor)Doktori.SelectedItem;
-            DateTime izabranTermin = (DateTime)Termini.SelectedItem;
-
-            if (izdavanjeUputaSpecijalistiController.IzdavanjeUputa(izabraniPacijent, izabraniDoktor, izabranTermin))
+            try
             {
-                MessageBox.Show("Uput je uspjesno izdat");
-                PrikazPregledaDoktorViewModel vm1 = new PrikazPregledaDoktorViewModel(this.NavigationService);
-                PrikazPregledaDoktorView kalendar = new PrikazPregledaDoktorView(vm1);
-                this.NavigationService.Navigate(kalendar);
+                Doktor izabraniDoktor = (Doktor)Doktori.SelectedItem;
+                DateTime izabranTermin = (DateTime)Termini.SelectedItem;
+
+                if (izdavanjeUputaSpecijalistiController.IzdavanjeUputa(izabraniPacijent, izabraniDoktor, izabranTermin))
+                {
+                    MessageBox.Show("Uput je uspjesno izdat");
+                    PrikazPregledaDoktorViewModel vm1 = new PrikazPregledaDoktorViewModel(this.NavigationService);
+                    PrikazPregledaDoktorView kalendar = new PrikazPregledaDoktorView(vm1);
+                    this.NavigationService.Navigate(kalendar);
+                }
+                else
+                    MessageBox.Show("Neuspjesno izdavanje uputa");
             }
-            else
-                MessageBox.Show("Neuspjesno izdavanje uputa");
+            catch(Exception ex)
+            {
+                MessageBox.Show("Popunite sve podatke");
+            }
+          
 
         }
 

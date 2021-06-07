@@ -46,8 +46,8 @@
         
 
         <StackPanel Grid.Column="1" Grid.Row="0"   VerticalAlignment="Center" Margin="20">
-            <Button   Style="{StaticResource btnStandard}" Content="Izvještaj o potrošenim lijekovima" />
-            <Button    Style="{StaticResource btnStandard}" Content="Modifikacija inventara"  />
+            <Button  Command="{Binding Path=IzvjestajLijekova}" Style="{StaticResource btnStandard}" Content="Izvještaj o potrošenim lijekovima" />
+            <Button Command="{Binding Path=ModifikacijaInventara}"   Style="{StaticResource btnStandard}" Content="Modifikacija inventara"  />
             <Button  Command="{Binding Path=PrikazLijekova}"  Style="{StaticResource btnStandard}" Content="Evidencija lijekova"  />
        
         </StackPanel>

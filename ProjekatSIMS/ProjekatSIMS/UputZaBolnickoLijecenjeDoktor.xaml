@@ -103,7 +103,7 @@
 
             </Grid.ColumnDefinitions>
 
-            <Label Grid.Row="0" Grid.ColumnSpan="3" Content="Uput za bolnicko lijecenje" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="17" FontWeight="SemiBold"/>
+            <Label Grid.Row="0" Grid.ColumnSpan="3" Content="Uput za bolničko liječenje" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="17" FontWeight="SemiBold"/>
 
             <Border Grid.Row="1" Grid.ColumnSpan="3" CornerRadius="10" Background="white">
                 <Grid  Grid.Row="1" Grid.ColumnSpan="2"  Margin="10">
@@ -132,11 +132,11 @@
             <Label Content="U periodu od:" Grid.Row="3" VerticalAlignment="Center"></Label>
             <DatePicker Grid.Row="3" Grid.Column="1"  CalendarStyle="{StaticResource styleCalendar}" Name="DatumPocetak" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
             <Label Content="Do:" Grid.Row="4" VerticalAlignment="Center"></Label>
-            <DatePicker Grid.Row="4" Grid.Column="1"  CalendarStyle="{StaticResource styleCalendar}" Name="DatumKraj" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
-            <Button  Grid.Row="5" Grid.Column="0" Content="Prikazi slobodne sobe" Click="PrikazSlobodnihSoba" HorizontalAlignment="Left"  VerticalAlignment="Center" Style="{StaticResource btnIstakni}"/>
+            <DatePicker Grid.Row="4" Grid.Column="1" CalendarStyle="{StaticResource styleCalendar}" Name="DatumKraj" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+            <Button ToolTip="+Prikažite slobodne sobe za termin"  Grid.Row="5" Grid.Column="0" Content="Prikaži slobodne sobe" Click="PrikazSlobodnihSoba" HorizontalAlignment="Left"  VerticalAlignment="Center" Style="{StaticResource btnIstakni}"/>
 
 
-            <ComboBox  Grid.Row="5" Grid.Column="1"  Name="SlobodneSobe" HorizontalAlignment="Stretch"   
+            <ComboBox Visibility="Hidden"  Grid.Row="5" Grid.Column="1"  Name="SlobodneSobe" HorizontalAlignment="Stretch"   
                  Style="{StaticResource ComboBoxFlatStyle}"
                 VerticalAlignment="Center"
                 SelectionChanged="KrevetiZaSobu"
@@ -153,7 +153,7 @@
             </ComboBox>
 
 
-            <ComboBox  Grid.Row="6" Grid.Column="1"  Name="SlobodniKreveti" HorizontalAlignment="Stretch"   
+            <ComboBox Visibility="Hidden" Grid.Row="6" Grid.Column="1"  Name="SlobodniKreveti" HorizontalAlignment="Stretch"   
                  Style="{StaticResource ComboBoxFlatStyle}"
                 VerticalAlignment="Center"
                 SelectedItem=""
@@ -175,8 +175,8 @@
 
 
             <StackPanel  Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2"  HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
-                <Button Content="Sacuvaj" Click="SacuvajUput"  Width="100" Margin="0,0,20,0" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnStandard}"/>
-                <Button Content="Odustani" Click="Odustani" Width="100"  HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnStandard}"/>
+                <Button Content="Sačuvaj" Click="SacuvajUput"  Width="100" Margin="0,0,20,0" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnStandard}"/>
+                <Button Content="Odustani" ToolTip="Sačuvajte promjene na uputu"  Click="Odustani" Width="100"  HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnNazad}"/>
 
             </StackPanel>
 

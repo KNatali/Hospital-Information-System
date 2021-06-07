@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:cc="clr-namespace:ProjekatSIMS"
       xmlns:local="clr-namespace:ProjekatSIMS.ViewDoktor"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
@@ -76,7 +77,7 @@
                     <Label Grid.Row="0" Content="Jmbg:" HorizontalAlignment="Stretch" />
                     <Label Grid.Row="1" Content="Ime:" HorizontalAlignment="Stretch"/>
                     <Label Grid.Row="2" Content="Prezime:" HorizontalAlignment="Stretch"/>
-                    <Label Grid.Row="3" Content="Datum rodjenja:" HorizontalAlignment="Stretch"/>
+                    <Label Grid.Row="3" Content="Datum rođenja:" HorizontalAlignment="Stretch"/>
                     <Label Grid.Row="4" Content="Adresa stanovanja:" HorizontalAlignment="Stretch"/>
                     <Label Grid.Row="5" Content="Email:" HorizontalAlignment="Stretch"/>
                     <Label Grid.Row="6" Content="Broj telefona:" HorizontalAlignment="Stretch"/>
@@ -84,11 +85,11 @@
                     <TextBox Name="Ime" Grid.Row="1" Grid.Column="1" IsReadOnly="True" HorizontalAlignment="Stretch"  Text="{Binding Ime}" TextWrapping="Wrap"/>
                     <TextBox Name="Jmbg" IsReadOnly="True" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" Text="{Binding Jmbg}" TextWrapping="Wrap"/>
                     <TextBox Name="Prezime" Grid.Row="2" Grid.Column="1" IsReadOnly="True" HorizontalAlignment="Stretch" Text="{Binding Prezime}" TextWrapping="Wrap"/>
-                    <TextBox Name="Datum" Grid.Row="3" Grid.Column="1" IsReadOnly="True" HorizontalAlignment="Stretch"  Text="{Binding DatumRodjenja}" TextWrapping="Wrap"/>
+                    <TextBox Name="DatumRodjenja" Grid.Row="3" Grid.Column="1" IsReadOnly="True" HorizontalAlignment="Stretch"  Text="{Binding DatumRodjenja}" TextWrapping="Wrap"/>
                     <TextBox Name="Email" Grid.Row="4" Grid.Column="1" IsReadOnly="True" HorizontalAlignment="Stretch"  Text="{Binding Email}" TextWrapping="Wrap"/>
                     <TextBox Name="Adresa" Grid.Row="5" Grid.Column="1" IsReadOnly="True" HorizontalAlignment="Stretch"  Text="{Binding Adresa}" TextWrapping="Wrap"/>
-                    <TextBox Name="Broj" Grid.Row="6" Grid.Column="1" IsReadOnly="True" HorizontalAlignment="Stretch" Text="{Binding BrojTelefona}" TextWrapping="Wrap"/>
-                    <TextBox Name="SlobodniDani" Grid.Row="7" Grid.Column="1" IsReadOnly="True" HorizontalAlignment="Stretch"  Text="" TextWrapping="Wrap"/>
+                    <TextBox Name="BrojTelefona" Grid.Row="6" Grid.Column="1" IsReadOnly="True" HorizontalAlignment="Stretch" Text="{Binding BrojTelefona}" TextWrapping="Wrap"/>
+                    <TextBox Name="BrojSlobodnihDana" Grid.Row="7" Grid.Column="1" IsReadOnly="True" HorizontalAlignment="Stretch"  Text="20" TextWrapping="Wrap"/>
 
                 </Grid>
 
@@ -96,9 +97,9 @@
         </Border>
 
 
-        <Button Grid.Column="2" Grid.Row="2"  Content="Zahtjev za godisnji odmor"  Style="{StaticResource btnStandard}"/>
+        <Button Grid.Column="2" Command="{Binding Path=ZahtjevZaOdmor}" Grid.Row="2"  Content="Zahtjev za godišnji odmor"  Style="{StaticResource btnStandard}"/>
 
-        <Button Grid.Column="2" Grid.Row="3"  Content="Izmijeni profil"  Style="{StaticResource btnStandard}"/>
+        <CheckBox Margin="30,0,0,0" Grid.Column="0" Grid.Row="5"  Content="Uključi pomoć?" HorizontalAlignment="Left" VerticalAlignment="Center" IsChecked="True"  FontSize="16" FontFamily="Roboto" />
 
 
 

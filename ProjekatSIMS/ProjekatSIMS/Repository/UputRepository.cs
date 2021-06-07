@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Text;
 
@@ -44,6 +45,17 @@ namespace Repository
             }
             return sviUputi;
         }
+        public ObservableCollection<Uput> DobaviUputeOC()
+        {
+            ObservableCollection<Uput> sviUputi = new ObservableCollection<Uput>();
+            using (StreamReader r = new StreamReader(putanja))
+            {
+                string json = r.ReadToEnd();
+                sviUputi = JsonConvert.DeserializeObject<ObservableCollection<Uput>>(json);
+            }
+            return sviUputi;
+        }
+
 
     }
 }

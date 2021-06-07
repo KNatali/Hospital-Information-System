@@ -22,5 +22,10 @@ namespace ProjekatSIMS.ViewDoktor
             InitializeComponent();
             this.DataContext = viewModel;
         }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

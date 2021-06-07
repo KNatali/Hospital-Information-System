@@ -9,14 +9,15 @@
       Title="PregledLekara">
 
     <Grid Background="#CDFEBB">
+        <Button Width="100" Height="40" Style="{StaticResource RoundedButton}" Click="Zatvori" Margin="659,393,41,17" IsDefault="True">Zatvori</Button>
         <Label FontFamily="Arial" FontSize="20" Margin="83,0,248,42">Lekari</Label>
-        <DataGrid Margin="83,49,248,0" x:Name="DataGridDoktori" ItemsSource="{Binding doktori}" IsReadOnly="True" 
-                  SelectionMode="Single" AutoGenerateColumns="False" Height="392" VerticalAlignment="Top" IsEnabled="True">
+        <DataGrid Margin="83,49,195,0" x:Name="DataGridDoktori" ItemsSource="{Binding doktori}" IsReadOnly="True" 
+                  SelectionMode="Single" AutoGenerateColumns="False" Height="375" VerticalAlignment="Top" IsEnabled="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Ime lekara" Binding="{Binding Ime}"/>
                 <DataGridTextColumn Header="Prezime lekara" Binding="{Binding Prezime}"/>
                 <DataGridTextColumn Header="Specijalizacija" Binding="{Binding Specijalizacija}"/>
-                <DataGridTemplateColumn Header="Odaberi za porodicnog lekara" Width="150*">
+                <DataGridTemplateColumn Header="Odaberi za porodičnog lekara" Width="150*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button Name="Odaberi" Content="Odaberi" IsDefault="True" Background="#A4E98A" Style="{StaticResource RoundedButton}" Width="50" Height="30"/>
@@ -25,6 +26,6 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Width="100" Height="40" Style="{StaticResource RoundedButton}" Click="Zatvori" Margin="667,416,33,94">Zatvori</Button>
+       
     </Grid>
 </Page>

@@ -2,6 +2,7 @@
 using Controller;
 using Microsoft.Toolkit.Uwp.Notifications;
 using Model;
+using ProjekatSIMS.Controller.ReceptPacijent;
 using ProjekatSIMS.Model;
 using ProjekatSIMS.Repository;
 using Repository;
@@ -17,9 +18,9 @@ namespace ProjekatSIMS.WindowPacijent
     public partial class PacijentMainWindow : Window
     {
         private NavigationService NavigationService { get; set; }
-        public PodsetnikRepository podsetnikRepository = new PodsetnikRepository();
         public PodsetnikController podsetnikController = new PodsetnikController();
-        public ReceptRepository receptRepository = new ReceptRepository(@"..\..\..\Fajlovi\Recept.txt");
+        public ReceptiPacijentController receptiController = new ReceptiPacijentController();
+        public PregledController pregledController = new PregledController();
         public Pacijent trenutniPacijent { get; set; }
         public String imePrezime { get; set; }
         
@@ -32,9 +33,27 @@ namespace ProjekatSIMS.WindowPacijent
             this.DataContext = this;
             trenutniPacijent = pacijent;
             imePrezime = trenutniPacijent.Ime + " " + trenutniPacijent.Prezime;
-            PacijentFrame.Content = new Pocetna(trenutniPacijent);
-            List<Podsetnik> podsetnici = podsetnikRepository.DobaviSvePodsetnike();
-            List<Recept>Recepti = receptRepository.DobaviSveRecepte();
+            PacijentFrame.Content = new PocetnaPacijent(trenutniPacijent);
+            List<Podsetnik> podsetnici = podsetnikController.DobaviSvePodsetnike();
+            List<Pregled> pregledi = pregledController.DobaviPregledeZaPacijenta(trenutniPacijent);
+            List<Recept>Recepti = receptiController.DobaviSveRecepte();
+
+            foreach(Pregled preg in pregledi)
+            {
+                int vremePregleda = DateTime.Compare(preg.Pocetak.AddDays(-1), DateTime.UtcNow);
+                if(vremePregleda == 0)
+                {
+                    {
+                        new ToastContentBuilder()
+                        .AddArgument("action", "viewConversation")
+                        .AddText("Imate zakazan pregled u ")
+                        .AddText(preg.Pocetak.ToString())
+                        .Show();
+                    }
+                }
+            }
+
+
             foreach (Podsetnik p in podsetnici)
             {
                 if (podsetnikController.DaLiTrebaPoslatiObavestenje(p.datumZavrsetkaObavestenja, p.datumPocetkaObavestenja) == true)
@@ -44,8 +63,12 @@ namespace ProjekatSIMS.WindowPacijent
                        .AddArgument("action", "viewConversation")
                        .AddText(p.nazivPodsetika)
                        .AddText(p.opisPodsetnika)
-                       .Show();
-
+                       .Show(
+                            toast =>
+                            {
+                                toast.ExpirationTime = DateTime.UtcNow.AddMinutes(10);
+                            }
+                            );
                     }
                 }
             }
@@ -71,6 +94,8 @@ namespace ProjekatSIMS.WindowPacijent
                     }
                 }
             }
+
+
 
         }
 
@@ -116,35 +141,11 @@ namespace ProjekatSIMS.WindowPacijent
 
         private void PregledajKarton(object sender, RoutedEventArgs e)
         {
-            PacijentFrame.Content = new PregledajZdravstveniKarton(trenutniPacijent);
+           PacijentFrame.Content = new PregledajZdravstveniKarton(trenutniPacijent);
         }
         private void PocetnaStranica(object sender, RoutedEventArgs e)
         {
-            PacijentFrame.Content = new Pocetna(trenutniPacijent);
-        }
-
-        private void Window_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
-        {
-            /*if (e.Key == Key.A)
-                ButtonA.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-           else if (e.Key == Key.B)
-                ButtonB.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-            else if (e.Key == Key.C)
-                ButtonC.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-            else if (e.Key == Key.D)
-                ButtonD.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-            else if (e.Key == Key.E)
-                ButtonE.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-            else if (e.Key == Key.F)
-                ButtonF.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-            else if (e.Key == Key.G)
-                ButtonG.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-            else if (e.Key == Key.H)
-                ButtonH.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-            else if (e.Key == Key.I)
-                ButtonI.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-            else if (e.Key == Key.J)
-                ButtonJ.RaiseEvent(new RoutedEventArgs(Button.ClickEvent)); */
+            PacijentFrame.Content = new PocetnaPacijent(trenutniPacijent);
         }
 
         private void OdjaviSe(object sender, RoutedEventArgs e)
@@ -154,7 +155,7 @@ namespace ProjekatSIMS.WindowPacijent
 
         private void VidiOcene(object sender, RoutedEventArgs e)
         {
-            PacijentFrame.Content = new VidiOcenePacijent();
+            PacijentFrame.Content = new VidiOcenePacijent(trenutniPacijent);
         }
     }
 }

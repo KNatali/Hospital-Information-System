@@ -16,22 +16,30 @@
     <EmbeddedResource Remove="ViewModel\**" />
     <None Remove="ViewModel\**" />
     <Page Remove="ViewModel\**" />
+    <None Remove="ViewDoktor\Slike\Bez naslova.png" />
 
 
     <None Remove="ViewDoktor\Slike\calendar.png" />
     <None Remove="ViewDoktor\Slike\calendar1.png" />
     <None Remove="ViewDoktor\Slike\date.png" />
     <None Remove="ViewDoktor\Slike\date1.png" />
+    <None Remove="ViewDoktor\Slike\detalji.png" />
     <None Remove="ViewDoktor\Slike\doctor.png" />
     <None Remove="ViewDoktor\Slike\doctor1.png" />
+    <None Remove="ViewDoktor\Slike\forma.png" />
     <None Remove="ViewDoktor\Slike\help.png" />
     <None Remove="ViewDoktor\Slike\help1.png" />
     <None Remove="ViewDoktor\Slike\home.png" />
     <None Remove="ViewDoktor\Slike\home1.png" />
+    <None Remove="ViewDoktor\Slike\kalendar.png" />
     <None Remove="ViewDoktor\Slike\log-out.png" />
     <None Remove="ViewDoktor\Slike\log-out1.png" />
     <None Remove="ViewDoktor\Slike\patients.png" />
     <None Remove="ViewDoktor\Slike\patients1.png" />
+    <None Remove="ViewDoktor\Slike\pocetna.png" />
+    <None Remove="ViewDoktor\Slike\pomoc.png" />
+    <None Remove="ViewDoktor\Slike\tooltip.png" />
+    <None Remove="ViewDoktor\Slike\zavrsi.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -69,20 +77,28 @@
   <ItemGroup>
     <Resource Include="Resources\podesavanje.png" />
     <Resource Include="Resources\upravnikProfil.png" />
+    <Resource Include="ViewDoktor\Slike\Bez naslova.png" />
     <Resource Include="ViewDoktor\Slike\calendar.png" />
     <Resource Include="ViewDoktor\Slike\calendar1.png" />
     <Resource Include="ViewDoktor\Slike\date.png" />
     <Resource Include="ViewDoktor\Slike\date1.png" />
+    <Resource Include="ViewDoktor\Slike\detalji.png" />
     <Resource Include="ViewDoktor\Slike\doctor.png" />
     <Resource Include="ViewDoktor\Slike\doctor1.png" />
+    <Resource Include="ViewDoktor\Slike\forma.png" />
     <Resource Include="ViewDoktor\Slike\help.png" />
     <Resource Include="ViewDoktor\Slike\help1.png" />
     <Resource Include="ViewDoktor\Slike\home.png" />
     <Resource Include="ViewDoktor\Slike\home1.png" />
+    <Resource Include="ViewDoktor\Slike\kalendar.png" />
     <Resource Include="ViewDoktor\Slike\log-out.png" />
     <Resource Include="ViewDoktor\Slike\log-out1.png" />
     <Resource Include="ViewDoktor\Slike\patients.png" />
     <Resource Include="ViewDoktor\Slike\patients1.png" />
+    <Resource Include="ViewDoktor\Slike\pocetna.png" />
+    <Resource Include="ViewDoktor\Slike\pomoc.png" />
+    <Resource Include="ViewDoktor\Slike\tooltip.png" />
+    <Resource Include="ViewDoktor\Slike\zavrsi.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -101,6 +117,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="ViewPacijent\" />
+    <Folder Include="ViewModel\" />
     <Folder Include="WindowPacijent\Slike\" />
   </ItemGroup>
 

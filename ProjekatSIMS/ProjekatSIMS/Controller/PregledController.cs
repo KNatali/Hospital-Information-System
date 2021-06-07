@@ -1,5 +1,6 @@
 using Model;
 using ProjekatSIMS.Service;
+using ProjekatSIMS.Service.PreglediPacijent;
 using Repository;
 using Service;
 using System;
@@ -17,6 +18,8 @@ namespace Controller
         public Service.PregledService pregledService = new PregledService();
         public ZakazivanjePregledaService zakazivanjePregledaService = new ZakazivanjePregledaService();
         public PregledRepository pregledRepository = new PregledRepository();
+
+        public ZauzetiTerminiService zauzetiTermini = new ZauzetiTerminiService();
         public Model.Pregled ZakaziGuestPregledController(DateTime datumPregleda, Model.Pacijent pacijent)
       {
          // TODO: implement
@@ -96,18 +99,18 @@ namespace Controller
             return false;
 
         } */
-        public Boolean ZakazivanjePregledaPacijent(String ime, String prezime, String imeDoktora, String prezimeDoktora, DateTime datum, String jmbg)
+        public Boolean ZakazivanjePregledaPacijent( String imeDoktora, String prezimeDoktora, DateTime datum, Pacijent pac)
         {
 
-            if (zakazivanjePregledaService.ZakazivanjePregledaPacijent(ime, prezime, imeDoktora, prezimeDoktora, datum, jmbg))
+            if (zakazivanjePregledaService.ZakazivanjePregledaPacijent(imeDoktora, prezimeDoktora, datum, pac))
                 return true;
 
             return false;
 
         }
-        public Boolean DaLiJeTerminZauzet()
+        public Boolean DaLiJeTerminZauzet(DateTime datum)
         {
-            if(zakazivanjePregledaService.OdredjivanjePrioritetaPacijent() == true)
+            if(zauzetiTermini.DaLiJeTerminZauzet(datum))
             {
                 return true;
             }

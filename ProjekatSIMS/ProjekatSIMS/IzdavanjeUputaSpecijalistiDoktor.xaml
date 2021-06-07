@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ProjekatSIMS"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="700" d:DesignWidth="800"
       Title="IzdavanjeUputaDoktor">
 
     <Page.Resources>
@@ -93,9 +93,9 @@
                 <RowDefinition  MinHeight="80"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="1.3*"/>
                 <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="1.2*"/>
             </Grid.ColumnDefinitions>
             <Border Grid.Row="1" Grid.ColumnSpan="3" CornerRadius="10" Background="white" >
                 <Grid  Grid.Row="1" Grid.ColumnSpan="2"  Margin="10">
@@ -120,11 +120,11 @@
                 </Grid>
             </Border>
 
-            <Label Grid.Row="0" Content="Izdavanje uputa za specijalisticki pregled" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="17" FontWeight="SemiBold" Grid.ColumnSpan="3"/>
+            <Label Grid.Row="0" Content="Izdavanje uputa za specijalistički pregled" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="17" FontWeight="SemiBold" Grid.ColumnSpan="3"/>
             <Label Grid.Row="2" Grid.Column="0" Content="Izaberi spacijalizaciju:" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
-            <ComboBox Grid.Row="2" Grid.Column="1"   SelectionChanged="DoktoriOdabraneSpecijalizacije" Name="Specijalizacije"  Height="30"  Style="{StaticResource ComboBoxFlatStyle}" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,0,271,0" />
+            <ComboBox Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch"  SelectionChanged="DoktoriOdabraneSpecijalizacije" Name="Specijalizacije"  Height="30"  Style="{StaticResource ComboBoxFlatStyle}" VerticalAlignment="Center" />
             <Label Grid.Row="3" Grid.Column="0" Content="Izaberi doktora:" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,0,226,0"/>
-            <ComboBox  SelectedItem="" Grid.Row="3" Grid.Column="1" Name="Doktori"  VerticalAlignment="Center" Height="30" Style="{StaticResource ComboBoxFlatStyle}"  ItemsSource="{Binding Path=doktoriPrikaz}" Grid.ColumnSpan="2" Margin="0,0,271,0">
+            <ComboBox HorizontalAlignment="Stretch"  SelectedItem="" Grid.Row="3" Grid.Column="1" Name="Doktori"  VerticalAlignment="Center" Height="30" Style="{StaticResource ComboBoxFlatStyle}"  ItemsSource="{Binding Path=doktoriPrikaz}">
 
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
@@ -136,14 +136,14 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <Label Grid.Row="4" Grid.Column="0" Content="Pocetno vrijeme:" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <DatePicker Grid.Row="4" Grid.Column="1"  CalendarStyle="{StaticResource styleCalendar}" Name="DatumPocetak" Grid.ColumnSpan="2" Margin="0,0,271,0"/>
+            <Label Grid.Row="4" Grid.Column="0" Content="Početno vrijeme:" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <DatePicker HorizontalAlignment="Stretch"  ToolTip="Klikite na kalendar za odabir datuma"  Grid.Row="4" Grid.Column="1"  CalendarStyle="{StaticResource styleCalendar}" Name="DatumPocetak" />
             <Label Content="Krajnje vrijeme:"  Grid.Row="5" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" />
-            <DatePicker Name="DatumKraj" Grid.Row="5" Grid.Column="1" CalendarStyle="{StaticResource styleCalendar}" Grid.ColumnSpan="2" Margin="0,0,271,0"/>
+            <DatePicker Name="DatumKraj" Grid.Row="5" Grid.Column="1"  ToolTip="Klikite na kalendar za odabir datuma" CalendarStyle="{StaticResource styleCalendar}" HorizontalAlignment="Stretch" />
 
 
-            <ComboBox Margin="30,0,0,0" Grid.Row="6" Grid.Column="2" Name="Termini"  VerticalAlignment="Center" Height="30" Style="{StaticResource ComboBoxFlatStyle}" />
-            <Button Margin="30,0,0,0" Grid.Row="5" Grid.Column="2" Content="Prikazi slobodne termine" Click="PrikazSlobodnihTermina"  VerticalAlignment="Center" Style="{StaticResource btnIstakni}"/>
+            <ComboBox Grid.Row="7" Grid.Column="1"  Visibility="Hidden" Name="Termini"  VerticalAlignment="Center" Height="30" Style="{StaticResource ComboBoxFlatStyle}" />
+            <Button ToolTip="Kliknite za prikaz termina" Grid.Row="7" Grid.Column="0" Content="Prikaži slobodne termine" Click="PrikazSlobodnihTermina"  VerticalAlignment="Center" Style="{StaticResource btnIstakni}" Margin="5,0,84,0"/>
 
             <Label Grid.Row="6" Grid.Column="0" Content="Vremenski interval :" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
             <Grid Grid.Row="6" Grid.Column="1"  Grid.RowSpan="1">
@@ -153,16 +153,16 @@
                     <ColumnDefinition/>
 
                 </Grid.ColumnDefinitions>
-                <TextBox  Grid.Column="0"  Name="IntervalPocetak" HorizontalAlignment="Stretch"  Text="" TextWrapping="Wrap" VerticalAlignment="Center"/>
-                <Label   Grid.Column="1" VerticalAlignment="Center" HorizontalContentAlignment="Center">:</Label>
+                <TextBox   Grid.Column="0"  Name="IntervalPocetak" HorizontalAlignment="Stretch"  Text="" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                <Label  ToolTip="Unesite sate za kraj intervala" Grid.Column="1" VerticalAlignment="Center" HorizontalContentAlignment="Center">:</Label>
                 <TextBox  Grid.Column="2"  Name="IntervalKraj" HorizontalAlignment="Stretch"  Text="" TextWrapping="Wrap" VerticalAlignment="Center" />
 
             </Grid>
 
-          
-            <StackPanel  Grid.Row="8" Grid.Column="2"  HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal" Margin="41,0,0,0">
-                <Button Content="Potvrdi" Width="100" Margin="0,0,20,0" Click="IzdavanjeUputa" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnStandard}"/>
-                <Button Content="Odustani" Width="100" Click="Odustani" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnStandard}"/>
+
+            <StackPanel  Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3"  HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal" >
+                <Button Content="Potvrdi" ToolTip="Sačuvajte novi uput" Width="100" Margin="0,0,20,0" Click="IzdavanjeUputa" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnStandard}"/>
+                <Button Content="Odustani" Width="100" Click="Odustani" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnNazad}"/>
 
             </StackPanel>
 

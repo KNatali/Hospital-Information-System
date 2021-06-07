@@ -47,7 +47,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <TextBox Name="Filter" Grid.Column="1"  HorizontalAlignment="Stretch"  TextChanged="txtFilter_TextChanged" TextWrapping="Wrap" VerticalAlignment="Center" />
+            <TextBox ToolTip="Pretražite pacijente po jmbg,imenu ili prezimenu" Name="Filter" Grid.Column="1"  HorizontalAlignment="Stretch"  TextChanged="txtFilter_TextChanged" TextWrapping="Wrap" VerticalAlignment="Center" />
             <Label  Grid.Column="0" Content="Pretraži pacijenta:"  VerticalAlignment="Center"></Label>
          </Grid>
     <DataGrid Grid.Row="2" Grid.ColumnSpan="2" x:Name="Pacijenti" Style="{StaticResource Tabela}"  Height="Auto"  IsReadOnly="True"

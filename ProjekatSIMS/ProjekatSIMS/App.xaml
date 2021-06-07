@@ -96,6 +96,52 @@
             </Style.Triggers>
         </Style>
 
+        <Style TargetType="Button" x:Key="btnNazad">
+            <Setter Property="Background" Value="white"/>
+            <Setter Property="Foreground" Value="black"/>
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Height" Value="45"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                            CornerRadius="10"
+                            BorderThickness="2"
+                           BorderBrush="#287D7D"
+                            Padding="5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
+
+                            </ContentPresenter>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#287D7D"/>
+                    <Setter Property="Foreground" Value="white"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}"
+                            CornerRadius="10"
+                            BorderThickness="2"
+                           BorderBrush="#287D7D"
+                           >
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
+
+                                    </ContentPresenter>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Cursor" Value="Hand"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
 
         <Style TargetType="Button" x:Key="btnIstakni">
             <Setter Property="Background" Value="#56A27C"/>
@@ -466,6 +512,38 @@
                 </Setter>
             </Style.Setters>
         </Style>
+
+        <Style x:Key="RoundedButtonRed" TargetType="{x:Type Button}">
+            <Style.Setters>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border x:Name="button" CornerRadius="5" BorderBrush="Black" BorderThickness="1" Background="#A4E98A">
+                                <TextBlock  Text="{TemplateBinding Button.Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="button" Property="BorderBrush" Value="Black" />
+                                    <Setter TargetName="button" Property="Background"  Value="#365835"/>
+                                    <Setter Property="Foreground" Value="White" />
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter TargetName="button"  Property="Background" Value="Red"/>
+                                </Trigger>
+                                <Trigger Property="IsFocused" Value="True">
+                                    <Setter TargetName="button" Property="BorderBrush" Value="#FF282828" />
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter TargetName="button" Property="Opacity" Value="0.7" />
+                                    <Setter Property="Foreground" Value="#365835" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style.Setters>
+        </Style>
+
 
 
 

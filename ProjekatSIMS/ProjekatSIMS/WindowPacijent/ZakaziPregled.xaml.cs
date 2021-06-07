@@ -24,6 +24,20 @@ namespace ProjekatSIMS.WindowPacijent
             trenutniPacijent = pacijent;
 
         }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (DoktorPrioritet.IsChecked == true)
+            {
+                MessageBox.Show("Odabrali ste doktora kao prioritet u slucaju da Vas termin nije slobodan.");
+                prioritetDoktor = 1;
+            }
+            else if (VremePrioritet.IsChecked == true)
+            {
+                MessageBox.Show("Odabrali ste vreme kao prioritet u slucaju da Vas doktor nije slobodan.");
+                prioritetVreme = 1;
+            }
+
+        }
         private void Zakazi_Pregled(object sender, RoutedEventArgs e)
         {
             
@@ -45,46 +59,36 @@ namespace ProjekatSIMS.WindowPacijent
 
             PregledController pregCont = new PregledController();
 
-            if (pregCont.ZakazivanjePregledaPacijent(ime, prezime, imeDoktora, prezimeDoktora, datum1, jmbg) == true)
+            if (pregCont.ZakazivanjePregledaPacijent(imeDoktora, prezimeDoktora, datum1, trenutniPacijent) == true)
             {
                 MessageBox.Show("Pregled je uspesno zakazan!");
-                this.NavigationService.GoBack();
+                PocetnaPacijent pocetna = new PocetnaPacijent(trenutniPacijent);
+                this.NavigationService.Navigate(pocetna);
             }
-            else if (pregCont.DaLiJeTerminZauzet() == true)
+            else if (pregCont.DaLiJeTerminZauzet(datum1) == true)
             {
-                if (DoktorPrioritet.IsChecked == true)
+                if (prioritetDoktor == 1)
                 {
-                    DoktorPrioritet dp = new DoktorPrioritet(imeDoktora, prezimeDoktora, trenutniPacijent);
-                    this.NavigationService.Navigate(dp);
+                    DoktorPrioritetWindow dp = new DoktorPrioritetWindow(imeDoktora, prezimeDoktora, trenutniPacijent);
+                    dp.Show();
                 }
-                else
+                else if(prioritetVreme == 1)
                 {
-                    VremePrioritet vp = new VremePrioritet(datum1, trenutniPacijent);
-                    this.NavigationService.Navigate(vp);
+                    VremePrioritetWindow vp = new VremePrioritetWindow(datum1, trenutniPacijent);
+                    vp.Show();
                 }
             }
             else
             {
                 MessageBox.Show("Pregled nije zakazan.");
-                this.NavigationService.GoBack();
+                PocetnaPacijent pocetna = new PocetnaPacijent(trenutniPacijent);
+                this.NavigationService.Navigate(pocetna);
 
             }
+            
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            if (DoktorPrioritet.IsChecked == true)
-            {
-                MessageBox.Show("Odabrali ste doktora kao prioritet u slucaju da Vas termin nije slobodan.");
-                prioritetDoktor = 1;
-            }
-            else if (VremePrioritet.IsChecked == true)
-            {
-                MessageBox.Show("Odabrali ste vreme kao prioritet u slucaju da Vas doktor nije slobodan.");
-                prioritetVreme = 1;
-            }
-
-        }
+      
         private void Btn1_Checked(object sender, RoutedEventArgs e)
         {
             DoktorPrioritet.Foreground = Brushes.Blue;
@@ -94,7 +98,8 @@ namespace ProjekatSIMS.WindowPacijent
 
         private void Odustani(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.GoBack();
+            PocetnaPacijent pocetna = new PocetnaPacijent(trenutniPacijent);
+            this.NavigationService.Navigate(pocetna);
         }
     }
 }
