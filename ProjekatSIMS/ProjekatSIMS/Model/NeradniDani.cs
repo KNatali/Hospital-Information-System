@@ -17,8 +17,8 @@ namespace Model
         }
         public NeradniDani(DateTime neradnoOd, DateTime neradnoDo)
         {
-            NeradnoOd = neradnoOd;
-            NeradnoDo = neradnoDo;
+            NeradnoOd = neradnoOd.Date;
+            NeradnoDo = neradnoDo.Date;
         }
     }
 }
