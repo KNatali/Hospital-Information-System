@@ -84,14 +84,34 @@
                 <DataGridTemplateColumn Header="Izmeni pregled" Width="150*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Name="Izaberi" Content="Izaberi" Click="Izaberi_Click"  IsDefault="True" Background="#A4E98A" Style="{StaticResource RoundedButton}" Width="50" Height="30"/>
+                            <Button Name="Izaberi" Content="Izaberi" Click="Izaberi_Click"  IsDefault="True" Background="#A4E98A" Width="50" Height="30">
+                                <Button.Style>
+                                    <Style TargetType="Button" BasedOn="{StaticResource RoundedButtonRed}">
+                                        
+                                        <Style.Triggers>
+                                            <Trigger Property="IsPressed" Value="True">
+                                                <Trigger.EnterActions>
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <ColorAnimation Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" To="Red"/>
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </Trigger.EnterActions>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                        
+                                    </Style>
+
+                                </Button.Style>
+                            </Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
         <Label  Content="Izaberite novi datum pregleda: " Margin="127,268,424,152" FontFamily="Arial" FontSize="15"/>
-        <DatePicker x:Name="Datum"  HorizontalAlignment="Left" Margin="368,268,0,0" VerticalAlignment="Top" IsDropDownOpen="True" Width="200" Height="30"/>
+        <Label Content="(mm/dd/yyyy)" Margin="176,286,463,112" FontFamily="Arial" FontSize="15"/>
+        <DatePicker x:Name="Datum"  HorizontalAlignment="Left" Margin="368,268,0,0" VerticalAlignment="Top"  Width="200" Height="30"/>
 
         <Label  Content="Izaberite novo vreme pregleda: " Margin="127,317,437,97" FontFamily="Arial" FontSize="15"/>
         <TextBox  x:Name="Sati" HorizontalAlignment="Left" Margin="368,316,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="27"/>
@@ -103,9 +123,10 @@
         <TextBox Name="ImeDoktora" HorizontalAlignment="Left" Margin="368,353,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="90" Height="27"/>
         <TextBox Name="PrezimeDoktora" HorizontalAlignment="Left" Margin="478,353,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="90" Height="27"/>
 
-        <Label FontFamily="Arial" FontSize="15" Content="Izaberite prioritet:" HorizontalAlignment="Left" Margin="211,378,0,0" VerticalAlignment="Top" Height="28"/>
-        <RadioButton x:Name="DoktorPrioritet" Margin="0,411,0,-387" GroupName="Prioritet" HorizontalAlignment="Center"  Checked="Btn1_Checked" Click="button1_Click" FontFamily="Arial" FontSize="15">Doktor</RadioButton>
-        <RadioButton x:Name="VremePrioritet" Margin="0,393,0,-349" GroupName="Prioritet" HorizontalAlignment="Center"  Checked="Btn1_Checked" Click="button1_Click" FontFamily="Arial" FontSize="15">Vreme</RadioButton>
+        <Label FontFamily="Arial" FontSize="15" Content="   U slučaju nedostupnosti&#xA; termina, izaberite prioritet&#xA;            sledećeg pregleda:" HorizontalAlignment="Left" Margin="158,374,0,0" VerticalAlignment="Top" Height="72"/>
+        <RadioButton x:Name="VremePrioritet" Margin="386,393,0,-349" GroupName="Prioritet" HorizontalAlignment="Left"  Checked="Btn1_Checked" Click="button1_Click" FontFamily="Arial" FontSize="15">Isto vreme</RadioButton>
+        <RadioButton x:Name="DoktorPrioritet" Margin="386,414,0,-390" GroupName="Prioritet" HorizontalAlignment="Left"  Checked="Btn1_Checked" Click="button1_Click" FontFamily="Arial" FontSize="15">Isti doktor</RadioButton>
+        
         <Button Name="Izmeni" Content="Izmeni" Click="Izmeni_Click"  IsDefault="True" Background="#A4E98A" Style="{StaticResource RoundedButton}" Height="40" Width="100" Margin="528,393,172,17"/>
         <Button Width="100" Height="40" Style="{StaticResource RoundedButton}" Click="Odustani" Margin="659,393,41,17">Odustani</Button>
 

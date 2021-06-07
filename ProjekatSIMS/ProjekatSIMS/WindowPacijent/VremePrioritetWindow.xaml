@@ -5,18 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjekatSIMS.WindowPacijent"
         mc:Ignorable="d"
-        Title="VremePrioritetWindow" Height="450" Width="800">
-    <Grid>
+        Title="VremePrioritetWindow" Height="500" Width="900">
+    <Grid Background="#CDFEBB">
         <DataGrid x:Name="dataGridSlobodniTermini" ItemsSource="{Binding Termini}" IsReadOnly="True"
-                  SelectionMode="Single" AutoGenerateColumns="False" Margin="32,0,514,0" Height="317" VerticalAlignment="Center">
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="100,35,100,0" Height="318" VerticalAlignment="Top" Width="600">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Termin" Binding="{Binding Termin}"/>
-                <DataGridTextColumn Header="Ime doktora" Binding="{Binding ImeDoktora}"/>
-                <DataGridTextColumn Header="Prezime doktora" Binding="{Binding PrezimeDoktora}"/>
+                <DataGridTextColumn Header="Termin" Binding="{Binding Termin}" Width="200"/>
+                <DataGridTextColumn Header="Ime doktora" Binding="{Binding ImeDoktora}" Width="200"/>
+                <DataGridTextColumn Header="Prezime doktora" Binding="{Binding PrezimeDoktora}" Width="200"/>
 
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Odaberi termin" IsDefault="True" HorizontalAlignment="Left" Margin="595,342,0,0" VerticalAlignment="Top" Height="34" Width="91" Click="Odaberi_Click"/>
-
+        <Button Height="40" Width="100" Style="{StaticResource RoundedButton}" Click="Odaberi" Margin="525,374,175,20">Odaberi</Button>
+        <Button Width="100" Height="40" Style="{StaticResource RoundedButton}" Click="Odustani" Margin="659,374,41,20" >Odustani</Button>
+       
     </Grid>
+
 </Window>

@@ -4,7 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjekatSIMS"
-         xmlns:views="clr-namespace:ProjekatSIMS.ViewPacijent"
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         mc:Ignorable="d"
         Title="PacijentMainWindow" Height="600" Width="1100" KeyDown="Window_KeyDown"
@@ -19,36 +18,7 @@
             <Setter Property="FontFamily" Value="Roboto"/>
             <Setter Property="FontSize" Value="16"/>
         </Style>
-        <Style x:Key="RoundedButton" TargetType="{x:Type Button}">
-            <Style.Setters>
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type Button}">
-                            <Border x:Name="button" CornerRadius="5" BorderBrush="Black" BorderThickness="1" Background="Azure">
-                                <TextBlock  Text="{TemplateBinding Button.Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            </Border>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter TargetName="button" Property="BorderBrush" Value="#FF5798d8" />
-                                    <Setter TargetName="button" Property="Background"  Value="Red"/>
-                                    <Setter Property="Foreground" Value="White" />
-                                </Trigger>
-                                <Trigger Property="IsPressed" Value="True">
-                                    <Setter TargetName="button"  Property="Background" Value="Green"/>
-                                </Trigger>
-                                <Trigger Property="IsFocused" Value="True">
-                                    <Setter TargetName="button" Property="BorderBrush" Value="#FF282828" />
-                                </Trigger>
-                                <Trigger Property="IsEnabled" Value="False">
-                                    <Setter TargetName="button" Property="Opacity" Value="0.7" />
-                                    <Setter Property="Foreground" Value="Gray" />
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style.Setters>
-        </Style>
+
     </Window.Resources>
 
 
@@ -69,7 +39,7 @@
             <fa:ImageAwesome Icon="HospitalOutline"  Width="27" Foreground=" #365835"/>
 
             <Label  Foreground="#365835" Content="{Binding Path=imePrezime, UpdateSourceTrigger=PropertyChanged}"  HorizontalAlignment="Center" FontSize="18" FontWeight="SemiBold" Margin="0,0,0,10"  />
-           
+
         </StackPanel>
         <StackPanel Grid.Column="0" Grid.Row="1" Background="#C0FCA9"  >
             <Button Style="{StaticResource btnBlue}" Click="PocetnaStranica"  Background="#A4E98A" Name="ButtonA" IsDefault="True">
@@ -121,14 +91,8 @@
 
 
         </StackPanel>
-        <StackPanel Grid.Column="0" Grid.Row="2" Background="#C0FCA9" VerticalAlignment="Center" Height="110">
-            <Button Style="{StaticResource btnBlue}"  Background="#A4E98A">
-                <StackPanel  Orientation="Horizontal" Margin="7,0,0,0" >
-                    <fa:ImageAwesome Icon="User" Width="27" Foreground="#365835"/>
+        <StackPanel Grid.Column="0" Grid.Row="2" Background="#C0FCA9" VerticalAlignment="Center" Height="70">
 
-                    <TextBlock Text="Profil" Foreground="#365835" VerticalAlignment="Center" Margin="10,0,0,0"/>
-                </StackPanel>
-            </Button>
             <Button Style="{StaticResource btnBlue}"  Background="#A4E98A" Click="OdjaviSe">
                 <StackPanel Orientation="Horizontal" Margin="7,0,0,0">
                     <fa:ImageAwesome Icon="SignOut"  Width="27" Foreground="#365835"/>
@@ -142,7 +106,7 @@
         </StackPanel>
 
 
-        <Frame  x:Name="PacijentFrame" NavigationUIVisibility="Hidden"  Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" Background="#CDFEBB" />
+        <Frame  x:Name="PacijentFrame"   NavigationUIVisibility="Hidden"  Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" Background="#CDFEBB" />
 
 
 

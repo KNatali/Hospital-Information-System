@@ -15,5 +15,7 @@ namespace Model
 
         public int IdKartona { get; set; }
 
+        public int TrajanjeTerapije { get; set; }
+
     }
 }

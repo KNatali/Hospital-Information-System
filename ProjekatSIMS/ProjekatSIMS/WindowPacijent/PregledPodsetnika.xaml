@@ -19,6 +19,6 @@
 
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Obrisi" HorizontalAlignment="Left" Margin="624,225,0,0" VerticalAlignment="Top" Background="#A4E98A" Height="34" Width="97" Click="Obrisi"/>
+        <Button Content="Obriši" HorizontalAlignment="Left" Margin="624,225,0,0" VerticalAlignment="Top" Background="#A4E98A" Height="34" Width="97" Click="Obrisi"/>
     </Grid>
 </Page>

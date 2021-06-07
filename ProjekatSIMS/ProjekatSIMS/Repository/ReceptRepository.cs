@@ -2,6 +2,7 @@ using Model;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 
 namespace Repository
@@ -31,6 +32,16 @@ namespace Repository
             {
                 string json = sr.ReadToEnd();
                 recepti = JsonConvert.DeserializeObject<List<Recept>>(json);
+            }
+            return recepti;
+        }
+        public ObservableCollection<Recept> DobaviSveRecepteOC()
+        {
+            ObservableCollection<Recept> recepti = new ObservableCollection<Recept>();
+            using (StreamReader sr = new StreamReader(LokacijaFajla))
+            {
+                string json = sr.ReadToEnd();
+                recepti = JsonConvert.DeserializeObject<ObservableCollection<Recept>>(json);
             }
             return recepti;
         }
