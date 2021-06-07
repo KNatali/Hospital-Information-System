@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.ComponentModel;
 
 namespace ProjekatSIMS
 {
@@ -20,6 +21,7 @@ namespace ProjekatSIMS
         public KreirajProfilWindow()
         {
             InitializeComponent();
+            this.DataContext = this;
         }
         private void Otkazi_kreiranje(object sender, RoutedEventArgs e)
         {

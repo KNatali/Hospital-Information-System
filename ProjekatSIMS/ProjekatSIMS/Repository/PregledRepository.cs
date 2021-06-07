@@ -2,6 +2,7 @@ using Model;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 
 namespace Repository
@@ -13,6 +14,7 @@ namespace Repository
         private List<ZdravsteniKarton> zk;
 
         private List<Pregled> pregledi;
+        private ObservableCollection<Pregled> preglediOC;
 
       
         private const string putanja = @"..\..\..\Fajlovi\Pregled.txt";
@@ -69,8 +71,43 @@ namespace Repository
             }
             return pregledi;
         }
+        public ObservableCollection<Pregled> DobaviSvePregledePacijentOC()
+        {
+            using (StreamReader sr = new StreamReader(lokacija))
+            {
+                string json = sr.ReadToEnd();
 
-       
+                pregledi = JsonConvert.DeserializeObject<List<Pregled>>(json);
+            }
+            return preglediOC;
+        }
+        public List<Pregled> DobaviPregledeZaPacijenta(Pacijent pacijent)
+        {
+            List<Pregled> pregledi = DobaviSvePregledePacijent();
+            List<Pregled> preglediZaPacijenta = new List<Pregled>();
+            foreach(Pregled p in pregledi)
+            {
+                if(p.pacijent.Jmbg == pacijent.Jmbg)
+                {
+                    preglediZaPacijenta.Add(p);
+                }
+            }
+            return preglediZaPacijenta; 
+        }
+
+       public ObservableCollection<Pregled> DobaviPregledeZaPacijentaOC(Pacijent pacijent)
+        {
+            ObservableCollection<Pregled> pregledi = DobaviSvePregledePacijentOC();
+            ObservableCollection<Pregled> preglediZaPacijenta = new ObservableCollection<Pregled>();
+            foreach (Pregled p in pregledi)
+            {
+                if (p.pacijent.Jmbg == pacijent.Jmbg)
+                {
+                    preglediZaPacijenta.Add(p);
+                }
+            }
+            return preglediZaPacijenta;
+        }
       
      
       

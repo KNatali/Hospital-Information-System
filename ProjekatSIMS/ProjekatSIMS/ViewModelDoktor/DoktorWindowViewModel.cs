@@ -20,14 +20,15 @@ namespace ProjekatSIMS.ViewModelDoktor
         private NavigationService navService;
 
 
-        public NavigationService NavService
+       
+ public NavigationService NavService
         {
             get { return navService; }
             set
             {
                 navService = value;
             }
-        }
+
         public RelayCommand<Window> Odjavljivanje
         {
             get { return odjavljivanje; }
@@ -45,6 +46,7 @@ namespace ProjekatSIMS.ViewModelDoktor
 
 
         }
+
 
         public void Prikaz()
         {

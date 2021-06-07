@@ -4,13 +4,14 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ProjekatSIMS.WindowPacijent"
+     
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="VidiPreglede">
 
     <Grid Background="#CDFEBB">
         <DataGrid x:Name="dataGridPregledi" ItemsSource="{Binding Pregledi}" IsReadOnly="True"
-                  SelectionMode="Single" AutoGenerateColumns="False" Margin="42,10,162,0" Height="317" VerticalAlignment="Top">
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="76,21,36,0" Height="317" VerticalAlignment="Top" GridLinesVisibility="Vertical">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Pocetak" Binding="{Binding Pocetak}"/>
                 <DataGridTextColumn Header="Trajanje" Binding="{Binding Trajanje}"/>
@@ -22,15 +23,15 @@
                 <DataGridTemplateColumn Header="Otkazi pregled" Width="150*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Name="Otkazi" Content="Otkazi" Click="Otkazi_Click" IsDefault="True" Background="#A4E98A"/>
+                            <Button Name="Otkazi" Content="Otkaži" Click="Otkazi_Click" IsDefault="True" Background="#A4E98A" Style="{StaticResource RoundedButton}" Width="50" Height="30"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
 
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Zatvori" IsDefault="True" HorizontalAlignment="Left" Margin="664,377,0,0" VerticalAlignment="Top" Height="33" Width="78" Click="Zatvori" Background="#A4E98A"/>
-        
+        <Button Content="Zatvori" IsDefault="True"  Margin="659,393,41,17" Height="40" Width="100" Click="Zatvori" Background="#A4E98A" Style="{StaticResource RoundedButton}"/>
+
 
     </Grid>
 

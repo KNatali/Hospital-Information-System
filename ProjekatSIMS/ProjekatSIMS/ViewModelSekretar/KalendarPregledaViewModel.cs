@@ -1,16 +1,20 @@
-﻿using ProjekatSIMS.Commands;
+﻿using Controller;
+using Model;
+using ProjekatSIMS.Commands;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows.Navigation;
 
 namespace ProjekatSIMS.ViewModelSekretar
 {
-    public class KalendarPregledaViewModel
+    public class KalendarPregledaViewModel : BindableBase
     {
-        public RelayCommand<string> NavCommand { get; private set; }
-        private BindableBase currentViewModel;
+        private PregledController pregledController = new PregledController();
         private NavigationService navService;
+        public ObservableCollection<Pregled> Pregledi { get; set; }
+        public RelayCommand Detalji { get; set; }
         public NavigationService NavService
         {
             get { return navService; }
@@ -22,6 +26,14 @@ namespace ProjekatSIMS.ViewModelSekretar
         public KalendarPregledaViewModel(NavigationService service)
         {
             this.navService = service;
+            UcitajPreglede();
+        }
+        public void UcitajPreglede()
+        {
+            Pregledi = new ObservableCollection<Pregled>();
+            List<Pregled> tabelaPregleda = pregledController.DobaviSveSekretar();
+            foreach (Pregled p in tabelaPregleda)
+                Pregledi.Add(p);
         }
     }
 }

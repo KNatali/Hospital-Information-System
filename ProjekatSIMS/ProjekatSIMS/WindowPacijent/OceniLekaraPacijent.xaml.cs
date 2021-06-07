@@ -11,6 +11,9 @@ namespace ProjekatSIMS.WindowPacijent
     public partial class OceniLekaraPacijent : Page
     {
         public OcenaController ocenaController = new OcenaController();
+        public string OcenaLekara { get; set; }
+
+       
         public List<Pregled> pregledi
         {
             get;
@@ -24,7 +27,6 @@ namespace ProjekatSIMS.WindowPacijent
 
         private void Oceni(object sender, RoutedEventArgs e)
         {
-            OcenaLekara ol = new OcenaLekara();
             String imeLekara = Ime.Text;
             String prezimeLekara = Prezime.Text;
             String ocenaLekara = Ocena.Text;
@@ -33,11 +35,17 @@ namespace ProjekatSIMS.WindowPacijent
             if (ocenaController.ProsledjenaOcenaLekara(imeLekara, prezimeLekara, ocenaLekara, komentar) == true)
             {
                 MessageBox.Show("Hvala Vam sto ste izdvojili vreme da ocenite lekara!");
+                this.NavigationService.GoBack();
             }
             else
             {
                 MessageBox.Show("Lekara mozete oceniti samo ako ste prethodno bili na pregledu kod njega. ");
             }
+        }
+
+        private void Odustani(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
         }
     }
 }

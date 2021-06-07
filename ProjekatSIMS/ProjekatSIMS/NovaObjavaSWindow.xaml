@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ProjekatSIMS"
         xmlns:fa="http://schemas.fontawesome.io/icons/" x:Class="ProjekatSIMS.NovaObjavaSWindow"
         mc:Ignorable="d"
-        Title="NovaObjavaSWindow" Height="568" Width="924" Background="#d1e3ff">
+        Title="NovaObjavaSWindow" WindowStartupLocation="CenterScreen" Height="568" Width="924" Background="#d1e3ff">
     <Grid>
         <Label Margin="362,89,260,381">
             <StackPanel Orientation="Horizontal">

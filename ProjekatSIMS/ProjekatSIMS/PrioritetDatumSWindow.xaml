@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ProjekatSIMS"
         xmlns:fa="http://schemas.fontawesome.io/icons/" x:Class="ProjekatSIMS.PrioritetDatumSWindow"
         mc:Ignorable="d"
-        Title="PrioritetDatumSWindow" Height="568" Width="924" Background="#d1e3ff">
+        Title="PrioritetDatumSWindow" WindowStartupLocation="CenterScreen" Height="568" Width="924" Background="#d1e3ff">
     <Grid>
         <Button Content="Zakaži termin" Click="Zakazi" HorizontalAlignment="Left" Margin="683,461,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
         <Button Content="Otkaži" Click="Nazad" HorizontalAlignment="Left" Margin="60,461,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>

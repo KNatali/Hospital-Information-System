@@ -5,11 +5,12 @@ using ProjekatSIMS.Model;
 using ProjekatSIMS.Repository;
 using ProjekatSIMS.UpravnikWindows;
 using ProjekatSIMS.ViewDoktor;
-using ProjekatSIMS.ViewModelSekretar;
+using ProjekatSIMS.ViewSekretar;
 using Repository;
 using System;
 using System.Collections.Generic;
 using System.Windows;
+using ProjekatSIMS.WindowPacijent;
 
 namespace ProjekatSIMS
 {
@@ -79,14 +80,16 @@ namespace ProjekatSIMS
                 switch (uloga)
                 {
                     case Uloga.Pacijent:
+                        //PacijentMain pm = new PacijentMain();
+                        //pm.Show();
                         WindowPacijent.PacijentMainWindow pacijentMainWindow = new WindowPacijent.PacijentMainWindow(pacijent);
                         pacijentMainWindow.Show();
                         break;
                     case Uloga.Sekretar:
-                       /* Pocetna pocetna = new Pocetna();
-                        pocetna.Show();*/
-                       // SekretarWindow sekretarWindow = new SekretarWindow();
-                        //sekretarWindow.Show();
+                       Pocetna pocetna = new Pocetna();
+                       pocetna.Show();
+                       //SekretarWindow sekretarWindow = new SekretarWindow();
+                       //sekretarWindow.Show();
                         break;
                     case Uloga.Upravnik:
 

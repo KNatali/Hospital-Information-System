@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ProjekatSIMS"
         xmlns:fa="http://schemas.fontawesome.io/icons/" x:Class="ProjekatSIMS.KreirajProfilWindow"
         mc:Ignorable="d"
-        Title="KreirajProfilWindow" Height="568" Width="924" Background="#d1e3ff">
+        Title="KreirajProfilWindow" WindowStartupLocation="CenterScreen" Height="568" Width="924" Background="#d1e3ff">
     <Grid>
         <Button Content="Otkaži" Click="Otkazi_kreiranje" HorizontalAlignment="Left" Margin="60,440,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
         <Button Content="Potvrdi" Click="Kreiraj_profil" HorizontalAlignment="Left" Margin="683,440,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
@@ -38,5 +38,9 @@
             </StackPanel>
         </Label>
         <Label Content="ZDRAVO KORPORACIJA" FontSize="25" Margin="388,34,108,445" Foreground="#1963bf" FontWeight="Bold"/>
+        <Label Content="Želi da mu stižu obaveštenja o:" HorizontalAlignment="Left" FontSize="25" Height="43" Margin="470,302,0,0" VerticalAlignment="Top" Width="393" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <CheckBox Content="Zakazanom pregledu" HorizontalAlignment="Left" FontSize="23" Margin="60,363,0,0" VerticalAlignment="Top" BorderBrush="#1963bf" Foreground="#1963bf" Width="267"/>
+        <CheckBox Content="Otkazanom/izmenjenom pregledu" HorizontalAlignment="Left" FontSize="23" Margin="300,363,0,0" VerticalAlignment="Top" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <CheckBox Content="Vreme za terapiju" HorizontalAlignment="Left" FontSize="23" Margin="670,363,0,0" VerticalAlignment="Top" BorderBrush="#1963bf" Foreground="#1963bf" Width="209"/>
     </Grid>
 </Window>

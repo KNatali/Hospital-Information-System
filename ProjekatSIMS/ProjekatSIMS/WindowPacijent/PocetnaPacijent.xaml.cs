@@ -1,5 +1,7 @@
 ﻿using Model;
 using Newtonsoft.Json;
+using ProjekatSIMS.Controller;
+using ProjekatSIMS.Model;
 using ProjekatSIMS.Service;
 using Repository;
 using System;
@@ -18,21 +20,24 @@ using System.Windows.Shapes;
 
 namespace ProjekatSIMS.WindowPacijent
 {
-    public partial class Pocetna : Page
+    public partial class PocetnaPacijent : Page
     {
-        public OtkazivanjePregledaService otkazivanjePregledaService = new OtkazivanjePregledaService();
 
-        public List<Recept> Recepti{ get; set; }
+        public NedeljnaTerapijaController nedeljnaTerapijaController = new NedeljnaTerapijaController();
+
+        public List<NedeljnaTerapija> Terapija { get; set; }
+       
         public Pacijent trenutniPacijent { get; set; }
 
-        public Pocetna(Pacijent pacijent)
+        public PocetnaPacijent(Pacijent pacijent)
         {
             InitializeComponent();
             this.DataContext = this;
-            Recepti = new List<Recept>();
-            ReceptRepository fajl = new ReceptRepository(@"..\..\..\Fajlovi\Recept.txt");
-            Recepti = fajl.DobaviSveRecepte();
             trenutniPacijent = pacijent;
+
+            Terapija = nedeljnaTerapijaController.DobaviSve();
+
+            
         }
 
         private void OceniBolnicu(object sender, RoutedEventArgs e)
@@ -54,11 +59,15 @@ namespace ProjekatSIMS.WindowPacijent
             KreiranjePodsetnika kp = new KreiranjePodsetnika(trenutniPacijent);
             this.NavigationService.Navigate(kp);
         }
-
-        private void IzmeniPodsetnik(object sender, RoutedEventArgs e)
+        private void PregledLekara(object sender, RoutedEventArgs e)
         {
-            IzmenaPodsetnika ip = new IzmenaPodsetnika();
-            this.NavigationService.Navigate(ip);
+            PregledLekara pl = new PregledLekara();
+            this.NavigationService.Navigate(pl);
+        }
+
+        private void Button_MouseMove(object sender, MouseEventArgs e)
+        {
+            MessageBox.Show("Vidite lekare");
         }
     }
 }

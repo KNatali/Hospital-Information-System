@@ -1,4 +1,6 @@
-﻿using ProjekatSIMS.Service;
+﻿using ProjekatSIMS.Model;
+using ProjekatSIMS.Repository;
+using ProjekatSIMS.Service;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,6 +11,7 @@ namespace ProjekatSIMS.Controller
     {
         public OcenjivanjeBolniceService ocenjivanjeBolniceService = new OcenjivanjeBolniceService();
         public OcenjivanjeLekaraService ocenjivanjeLekaraService = new OcenjivanjeLekaraService();
+        public OcenaRepository ocenaRepository = new OcenaRepository();
 
         public Boolean ProsledjenaOcenaBolnice(String ocena, String komentar)
         {
@@ -33,6 +36,16 @@ namespace ProjekatSIMS.Controller
                 return false;
             }
             
+        }
+
+        public List<OcenaBolnice> DobaviSveOceneBolnice()
+        {
+            return ocenaRepository.DobaviSveOceneBolnice();
+        }
+
+        public List<OcenaLekara> DobaviSveOceneLekara()
+        {
+            return ocenaRepository.DobaviSveOceneLekara();
         }
     }
 }

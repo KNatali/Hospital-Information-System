@@ -24,11 +24,17 @@ namespace ProjekatSIMS.WindowPacijent
             if (ocenaCont.ProsledjenaOcenaBolnice(ocena, komentar) == true)
             {
                 MessageBox.Show("Hvala Vam sto ste izdvojili vreme da ocenite nasu bolnicu!");
+                this.NavigationService.GoBack();
             }
             else
             {
-                MessageBox.Show("Molimo Vas unesite ocenu bolnice.");
+                MessageBox.Show("Bolnicu mozete oceniti samo ako ste do sada bili na nekom pregledu.");
             }
+        }
+
+        private void Odustani(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
         }
     }
 }

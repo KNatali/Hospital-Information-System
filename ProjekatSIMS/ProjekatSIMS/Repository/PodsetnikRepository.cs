@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Model;
+using Newtonsoft.Json;
 using ProjekatSIMS.Model;
 using System;
 using System.Collections.Generic;
@@ -42,6 +43,27 @@ namespace ProjekatSIMS.Repository
             foreach (Podsetnik pod in podsetnici)
             {
                 if (pod.pacijent == jmbg)
+                {
+                    podsetniciZaPacijenta.Add(pod);
+                }
+            }
+
+            return podsetniciZaPacijenta;
+        }
+        public List<Podsetnik> DobaviSvePodsetnikeZaPacijenta(Pacijent pacijent)
+        {
+
+            List<Podsetnik> podsetnici = new List<Podsetnik>();
+            List<Podsetnik> podsetniciZaPacijenta = new List<Podsetnik>();
+
+            using (StreamReader r = new StreamReader(putanja))
+            {
+                string json = r.ReadToEnd();
+                podsetnici = JsonConvert.DeserializeObject<List<Podsetnik>>(json);
+            }
+            foreach (Podsetnik pod in podsetnici)
+            {
+                if (pod.pacijent == pacijent.Jmbg)
                 {
                     podsetniciZaPacijenta.Add(pod);
                 }

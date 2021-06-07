@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ProjekatSIMS"
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         mc:Ignorable="d"
-        Title="PacijentMainWindow" Height="600" Width="1100" KeyDown="Window_KeyDown"
+        Title="PacijentMainWindow" Height="600" Width="1100" 
         >
     <Window.Resources>
         <Style TargetType="Label">
@@ -18,36 +18,7 @@
             <Setter Property="FontFamily" Value="Roboto"/>
             <Setter Property="FontSize" Value="16"/>
         </Style>
-        <Style x:Key="RoundedButton" TargetType="{x:Type Button}">
-            <Style.Setters>
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type Button}">
-                            <Border x:Name="button" CornerRadius="5" BorderBrush="Black" BorderThickness="1" Background="Azure">
-                                <TextBlock  Text="{TemplateBinding Button.Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            </Border>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter TargetName="button" Property="BorderBrush" Value="#FF5798d8" />
-                                    <Setter TargetName="button" Property="Background"  Value="Red"/>
-                                    <Setter Property="Foreground" Value="White" />
-                                </Trigger>
-                                <Trigger Property="IsPressed" Value="True">
-                                    <Setter TargetName="button"  Property="Background" Value="Green"/>
-                                </Trigger>
-                                <Trigger Property="IsFocused" Value="True">
-                                    <Setter TargetName="button" Property="BorderBrush" Value="#FF282828" />
-                                </Trigger>
-                                <Trigger Property="IsEnabled" Value="False">
-                                    <Setter TargetName="button" Property="Opacity" Value="0.7" />
-                                    <Setter Property="Foreground" Value="Gray" />
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style.Setters>
-        </Style>
+
     </Window.Resources>
 
 
@@ -65,69 +36,68 @@
 
         </Grid.RowDefinitions>
         <StackPanel Grid.Column="0" Grid.Row="0" Background="#C0FCA9" >
-            <fa:ImageAwesome Icon="HospitalOutline" Width="27" Foreground="{Binding Path=Foreground,  RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Button}}}"/>
-
+            <fa:ImageAwesome Icon="HospitalOutline"  Width="27" Foreground=" #365835"/>
 
             <Label  Foreground="#365835" Content="{Binding Path=imePrezime, UpdateSourceTrigger=PropertyChanged}"  HorizontalAlignment="Center" FontSize="18" FontWeight="SemiBold" Margin="0,0,0,10"  />
-           
+
         </StackPanel>
         <StackPanel Grid.Column="0" Grid.Row="1" Background="#C0FCA9"  >
             <Button Style="{StaticResource btnBlue}" Click="PocetnaStranica"  Background="#A4E98A" Name="ButtonA" IsDefault="True">
                 <StackPanel  Orientation="Horizontal" Margin="7,0,0,0">
 
-                    <fa:ImageAwesome Icon="Home" Width="27" Foreground="{Binding Path=Foreground,  RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Button}}}"/>
+                    <fa:ImageAwesome Icon="Home" Width="27" Foreground="#365835"/>
 
-                    <TextBlock Text="Pocetna" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="#365835"/>
+                    <TextBlock Text="Početna" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="#365835"/>
                 </StackPanel>
             </Button>
             <Button Style="{StaticResource btnBlue}" Click="ZakaziPregled" Background="#A4E98A" Name="ButtonB" IsDefault="True">
                 <StackPanel  Orientation="Horizontal" Margin="7,0,0,0">
 
-                    <fa:ImageAwesome Icon="Calendar" Width="27" Foreground="{Binding Path=Foreground,  RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Button}}}"/>
+                    <fa:ImageAwesome Icon="Calendar" Width="27" Foreground="#365835"/>
 
-                    <TextBlock Text="Zakazi pregled" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                    <TextBlock Text="Zakaži pregled" Foreground="#365835" VerticalAlignment="Center" Margin="10,0,0,0"/>
                 </StackPanel>
             </Button>
             <Button Style="{StaticResource btnBlue}" Click="VidiPreglede"  Background="#A4E98A" Name="ButtonC">
                 <StackPanel Orientation="Horizontal" Margin="7,0,0,0">
-                    <fa:ImageAwesome Icon="Hourglass1"  Width="27" Foreground="{Binding Path=Foreground,  RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Button}}}"/>
-                    <TextBlock Text="Vidi preglede" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                    <fa:ImageAwesome Icon="Hourglass1"  Width="27" Foreground="#365835"/>
+                    <TextBlock Text="Vidi preglede" Foreground="#365835" VerticalAlignment="Center" Margin="10,0,0,0"/>
                 </StackPanel>
             </Button>
             <Button Style="{StaticResource btnBlue}" Click="IzmeniPregled"  Background="#A4E98A" Name="ButtonD">
                 <StackPanel Orientation="Horizontal" Margin="7,0,0,0">
-                    <fa:ImageAwesome Icon="ClockOutline"  Width="27" Foreground="{Binding Path=Foreground,  RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Button}}}"/>
-                    <TextBlock Text="Izmeni preglede" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                    <fa:ImageAwesome Icon="ClockOutline"  Width="27" Foreground="#365835"/>
+                    <TextBlock Text="Izmeni preglede" Foreground="#365835" VerticalAlignment="Center" Margin="10,0,0,0"/>
                 </StackPanel>
             </Button>
             <Button Style="{StaticResource btnBlue}" Click="IzmeniPodsetnik"  Background="#A4E98A" Name="ButtonI">
                 <StackPanel Orientation="Horizontal" Margin="7,0,0,0">
-                    <fa:ImageAwesome Icon="Pencil"  Width="27" Foreground="{Binding Path=Foreground,  RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Button}}}"/>
-                    <TextBlock Text="Izmeni podsetnik" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                    <fa:ImageAwesome Icon="Pencil"  Width="27" Foreground="#365835"/>
+                    <TextBlock Text="Izmeni podsetnik" Foreground="#365835" VerticalAlignment="Center" Margin="10,0,0,0"/>
                 </StackPanel>
             </Button>
             <Button Style="{StaticResource btnBlue}" Click="PregledajKarton"  Background="#A4E98A" Name="ButtonF">
                 <StackPanel Orientation="Horizontal" Margin="7,0,0,0">
-                    <fa:ImageAwesome Icon="Book"  Width="27" Foreground="{Binding Path=Foreground,  RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Button}}}"/>
-                    <TextBlock Text="Zdravstveni karton" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                    <fa:ImageAwesome Icon="Book"  Width="27" Foreground="#365835"/>
+                    <TextBlock Text="Zdravstveni karton" Foreground="#365835" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                </StackPanel>
+            </Button>
+            <Button Style="{StaticResource btnBlue}" Click="VidiOcene"  Background="#A4E98A" Name= "ButtonG">
+                <StackPanel Orientation="Horizontal" Margin="7,0,0,0">
+                    <fa:ImageAwesome Icon="Plus"  Width="27" Foreground="#365835"/>
+                    <TextBlock Text="Vidi ocene" Foreground="#365835" VerticalAlignment="Center" Margin="10,0,0,0"/>
                 </StackPanel>
             </Button>
 
 
         </StackPanel>
-        <StackPanel Grid.Column="0" Grid.Row="2" Background="#C0FCA9" VerticalAlignment="Center" Height="110">
-            <Button Style="{StaticResource btnBlue}"  Background="#A4E98A">
-                <StackPanel  Orientation="Horizontal" Margin="7,0,0,0" >
-                    <fa:ImageAwesome Icon="User" Width="27" Foreground="{Binding Path=Foreground,  RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Button}}}"/>
+        <StackPanel Grid.Column="0" Grid.Row="2" Background="#C0FCA9" VerticalAlignment="Center" Height="70">
 
-                    <TextBlock Text="Profil" VerticalAlignment="Center" Margin="10,0,0,0"/>
-                </StackPanel>
-            </Button>
             <Button Style="{StaticResource btnBlue}"  Background="#A4E98A" Click="OdjaviSe">
                 <StackPanel Orientation="Horizontal" Margin="7,0,0,0">
-                    <fa:ImageAwesome Icon="SignOut" Width="27" Foreground="{Binding Path=Foreground,  RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Button}}}"/>
+                    <fa:ImageAwesome Icon="SignOut"  Width="27" Foreground="#365835"/>
 
-                    <TextBlock Text="Odjavi se " VerticalAlignment="Center" Margin="10,0,0,0"/>
+                    <TextBlock Text="Odjavi se "  Foreground="#365835" VerticalAlignment="Center" Margin="10,0,0,0"/>
                 </StackPanel>
             </Button>
 
@@ -136,7 +106,7 @@
         </StackPanel>
 
 
-        <Frame  x:Name="PacijentFrame" NavigationUIVisibility="Hidden"  Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" Background="#CDFEBB" />
+        <Frame  x:Name="PacijentFrame"   NavigationUIVisibility="Hidden"  Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" Background="#CDFEBB" />
 
 
 

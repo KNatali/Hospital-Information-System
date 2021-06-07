@@ -1,6 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using Controller;
+using Newtonsoft.Json;
 using ProjekatSIMS.Model;
-using ProjekatSIMS.Repository;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -17,13 +17,13 @@ namespace ProjekatSIMS.WindowPacijent
             get;
             set;
         }
+        public PodsetnikController podsetnikController = new PodsetnikController();
         public PregledPodsetnika()
         {
             InitializeComponent();
             this.DataContext = this;
             Podsetnici = new List<Podsetnik>();
-            PodsetnikRepository fajl = new PodsetnikRepository(@"..\..\..\Fajlovi\Podsetnik.txt");
-            Podsetnici = fajl.DobaviSvePodsetnike();
+            Podsetnici = podsetnikController.DobaviSvePodsetnike();
 
         }
 

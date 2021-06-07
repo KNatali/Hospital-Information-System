@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ProjekatSIMS"
         xmlns:fa="http://schemas.fontawesome.io/icons/" x:Class="ProjekatSIMS.OglasnaTablaSWindow"
         mc:Ignorable="d"
-        Title="OglasnaTablaSWindow" Height="568" Width="924" Background="#d1e3ff">
+        Title="OglasnaTablaSWindow" WindowStartupLocation="CenterScreen" Height="568" Width="924" Background="#d1e3ff">
     <Grid>
 
         <Label Width="160" VerticalAlignment="Top" Margin="386,87,0,0" Height="50" HorizontalAlignment="Left" FontSize="22" Foreground="#1963bf" FontWeight="Bold" Content="Oglasna tabla"/>

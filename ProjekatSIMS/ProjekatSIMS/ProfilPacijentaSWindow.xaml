@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ProjekatSIMS"
         xmlns:fa="http://schemas.fontawesome.io/icons/" x:Class="ProjekatSIMS.ProfilPacijentaSWindow"
         mc:Ignorable="d"
-        Title="ProfilPacijentaSWindow" Height="568" Width="924" Background="#d1e3ff">
+        Title="ProfilPacijentaSWindow" WindowStartupLocation="CenterScreen" Height="568" Width="924" Background="#d1e3ff">
     <Grid>
         <Button Content="Obriši profil" Click="Obrisi_profil" HorizontalAlignment="Left" Margin="60,295,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}" Height="50" Width="150"/>
         <Button Content="Početna stranica" Click="Nazad" HorizontalAlignment="Left" Margin="600,460,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}" Height="50" Width="250"/>

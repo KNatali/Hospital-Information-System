@@ -28,7 +28,7 @@ namespace ProjekatSIMS
             listaProstorija = prostorijaController.DobaviSve();
             foreach (Prostorija p in listaProstorija)
             {
-                if (p.ZauzetaOd == datumOd || p.ZauzetaDo == datumDo)
+                if (p.ZauzetaOd == datumOd && p.ZauzetaDo == datumDo)
                     Prostorije.Add(p);
             }
         }

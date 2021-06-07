@@ -15,10 +15,20 @@ namespace ProjekatSIMS.ViewSekretar
 {
     public partial class KreiranjePacijentaView : Window
     {
-        public KreiranjePacijentaView(KreiranjePacijentaViewModel viewModel)
+        public KreiranjePacijentaView()
         {
             InitializeComponent();
-            this.DataContext = viewModel;
+            this.DataContext = new ViewModelSekretar.KreiranjePacijentaViewModel(this);
+        }
+
+        private void Otkazi(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Kreiraj(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

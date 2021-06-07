@@ -44,7 +44,7 @@ namespace Repository
             {
                 if (z.IdPacijent == pacijent.Jmbg)
                 {
-                    MessageBox.Show("Nadjen");
+                    //MessageBox.Show("Nadjen");
                     return z;
                 }
                    

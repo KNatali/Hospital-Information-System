@@ -1,0 +1,74 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjekatSIMS"
+        xmlns:fa="http://schemas.fontawesome.io/icons/" x:Class="ProjekatSIMS.NaplataPregledaSWindow"
+        mc:Ignorable="d"
+        Title="NaplataPregledaSWindow" WindowStartupLocation="CenterScreen" Height="568" Width="924" Background="#d1e3ff">
+    <Grid>
+
+        <Label Content="Naplata pregleda pacijenta" FontSize="22" HorizontalAlignment="Left" Height="50" Margin="345,86,0,0" VerticalAlignment="Top" Width="299" FontWeight="Bold" Foreground="#1963bf"/>
+        <Label Margin="239,21,401,448">
+            <StackPanel Orientation="Horizontal">
+                <fa:ImageAwesome Icon="Globe" Width="60" Foreground="#1963bf"/>
+                <fa:ImageAwesome Icon="HSquare" Width="37" Foreground="#b31a0c"/>
+                <fa:ImageAwesome Icon="UserMd" Width="37" Foreground="#1963bf"/>
+            </StackPanel>
+        </Label>
+        <Label Margin="255,37,381,475">
+            <StackPanel Orientation="Horizontal">
+                <fa:ImageAwesome Icon="Heart" Width="15" Foreground="#b31a0c"/>
+            </StackPanel>
+        </Label>
+        <Label Content="ZDRAVO KORPORACIJA" FontSize="25" Margin="388,34,108,445" Foreground="#1963bf" FontWeight="Bold"/>
+        <Label Content="JMBG" HorizontalAlignment="Left" FontSize="25" Height="43" Margin="60,273,0,0" VerticalAlignment="Top" Width="85" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Jmbg" FontSize="25" Margin="255,278,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="191" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <Label Content="Ime" HorizontalAlignment="Left" FontSize="25" Height="40" Margin="60,165,0,0" VerticalAlignment="Top" Width="73" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Ime" FontSize="25" Margin="255,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="191" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <Label Content="Prezime" HorizontalAlignment="Left" FontSize="25" Height="40" Margin="60,218,0,0" VerticalAlignment="Top" Width="107" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Prezime" FontSize="25" Margin="255,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="191" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <Label Content="Doktor" HorizontalAlignment="Left" FontSize="25" Height="40" Margin="60,387,0,0" VerticalAlignment="Top" Width="107" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <ComboBox  x:Name="Doktor" HorizontalAlignment="Left" 
+            Margin="255,393,0,0"   
+            VerticalAlignment="Top"   
+            Width="444" FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf"
+            ItemsSource="{Binding Doktori}">
+
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Ime}"/>
+                        <TextBlock Text=" "/>
+                        <TextBlock Text="{Binding Prezime}"/>
+                        <TextBlock Text=" - "/>
+                        <TextBlock Text="{Binding Specijalizacija}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Label Content="Vrsta pregleda" HorizontalAlignment="Left" FontSize="25" Height="47" Margin="60,329,0,0" VerticalAlignment="Top" Width="195" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <ComboBox x:Name="Pregledi" HorizontalAlignment="Left"   
+            Margin="255,335,0,0"   
+            VerticalAlignment="Top" BorderBrush="#1963bf" Foreground="#1963bf"
+            Width="191" FontSize="25"/>
+        <Label Content="Cena pregleda" HorizontalAlignment="Left" FontSize="25" Height="43" Margin="470,165,0,0" VerticalAlignment="Top" Width="195" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Cena" FontSize="25" Margin="691,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <Label Content="Popust" HorizontalAlignment="Left" FontSize="25" Height="43" Margin="470,222,0,0" VerticalAlignment="Top" Width="127" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <CheckBox Content="5%" HorizontalAlignment="Left" FontSize="25" Margin="571,230,0,0" VerticalAlignment="Top" BorderBrush="#1963bf" Foreground="#1963bf" IsEnabled="False"/>
+        <CheckBox Content="10%" HorizontalAlignment="Left" FontSize="25" Margin="633,230,0,0" VerticalAlignment="Top" BorderBrush="#1963bf" Foreground="#1963bf" IsEnabled="False"/>
+        <CheckBox Content="50%" HorizontalAlignment="Left" FontSize="25" Margin="710,230,0,0" VerticalAlignment="Top" BorderBrush="#1963bf" Foreground="#1963bf" IsEnabled="False"/>
+        <CheckBox Content="nema" HorizontalAlignment="Left" FontSize="25" Margin="780,230,0,0" VerticalAlignment="Top" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <Label Content="Cena sa popustom" HorizontalAlignment="Left" FontSize="25" Height="43" Margin="470,275,0,0" VerticalAlignment="Top" Width="227" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Cena_sa_popustom" FontSize="25" Margin="691,280,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <Label Content="Način plaćanja" HorizontalAlignment="Left" FontSize="25" Height="47" Margin="470,329,0,0" VerticalAlignment="Top" Width="195" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <ComboBox HorizontalAlignment="Left" x:Name="Prioritet" FontSize="25" Margin="691,335,0,0" VerticalAlignment="Top" Width="170" BorderBrush="#1963bf" Foreground="#1963bf">
+            <ComboBoxItem IsSelected="True" Content="Gotovina"/>
+            <ComboBoxItem Content="Kartica"/>
+        </ComboBox>
+        <Button Content="Otkaži" Click="Otkazi" HorizontalAlignment="Left" Margin="60,460,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
+        <Button Content="Potvrdi" Click="Potvrdi" HorizontalAlignment="Left" Margin="681,460,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
+
+    </Grid>
+</Window>
