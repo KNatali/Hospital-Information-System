@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ProjekatSIMS"
         xmlns:fa="http://schemas.fontawesome.io/icons/" x:Class="ProjekatSIMS.PretraziDoktoreSWindow"
         mc:Ignorable="d"
-        Title="PretraziDoktoreSWindow" Height="568" Width="924" Background="#d1e3ff">
+        Title="PretraziDoktoreSWindow" WindowStartupLocation="CenterScreen" Height="568" Width="924" Background="#d1e3ff">
     <Grid>
         <Button Content="Početna strana" Click="Nazad" HorizontalAlignment="Left" Margin="353,450,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
         <Label Content="Ime" HorizontalAlignment="Left" FontSize="25" Height="43" Margin="169,146,0,0" VerticalAlignment="Top" Width="72" Foreground="#1963bf" FontWeight="DemiBold"/>

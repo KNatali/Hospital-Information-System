@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ProjekatSIMS"
         xmlns:fa="http://schemas.fontawesome.io/icons/" x:Class="ProjekatSIMS.KalendarPregledaSWindow"
         mc:Ignorable="d"
-        Title="KalendarPregledaSWindow" Height="568" Width="924" Background="#d1e3ff">
+        Title="KalendarPregledaSWindow" WindowStartupLocation="CenterScreen" Height="568" Width="924" Background="#d1e3ff">
     <Grid>
         <DataGrid x:Name="dataGridPregledi" ItemsSource="{Binding Pregledi}" IsReadOnly="True" BorderBrush="#1963bf" Foreground="#1963bf"
                   SelectionMode="Single" FontSize="20" AutoGenerateColumns="False" Margin="60,148,60,137">

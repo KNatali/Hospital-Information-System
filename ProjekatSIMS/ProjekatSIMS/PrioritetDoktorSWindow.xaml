@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ProjekatSIMS"
         xmlns:fa="http://schemas.fontawesome.io/icons/" x:Class="ProjekatSIMS.PrioritetDoktorSWindow"
         mc:Ignorable="d"
-        Title="PrioritetDoktorSWindow" Height="568" Width="924" Background="#d1e3ff">
+        Title="PrioritetDoktorSWindow" WindowStartupLocation="CenterScreen" Height="568" Width="924" Background="#d1e3ff">
     <Grid>
         <DataGrid x:Name="dataGridDoktori" ItemsSource="{Binding Doktori}" IsReadOnly="True" BorderBrush="#1963bf" Foreground="#1963bf"
                   SelectionMode="Single" FontSize="20" AutoGenerateColumns="False" Margin="60,195,330,0" Height="223" VerticalAlignment="Top">

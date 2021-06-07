@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ProjekatSIMS"
         xmlns:fa="http://schemas.fontawesome.io/icons/" x:Class="ProjekatSIMS.NoviAlergenSWindow"
         mc:Ignorable="d"
-        Title="NoviAlergenSWindow" Height="568" Width="924" Background="#d1e3ff">
+        Title="NoviAlergenSWindow" WindowStartupLocation="CenterScreen" Height="568" Width="924" Background="#d1e3ff">
     <Grid>
         <Button Content="Sačuvaj" Click="Sacuvaj_alergen" HorizontalAlignment="Left" Margin="684,440,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
         <Button Content="Otkaži" Click="Otkazi_dodavanje" HorizontalAlignment="Left" Margin="60,440,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>

@@ -8,7 +8,7 @@
         xmlns:fa="http://schemas.fontawesome.io/icons/" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="ProjekatSIMS.ZauzetostProstorijaSWindow"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance local:ZauzetostProstorijaSWindow}"
-        Title="ZauzetostProstorijaSWindow" Height="568" Width="924" Background="#d1e3ff">
+        Title="ZauzetostProstorijaSWindow" WindowStartupLocation="CenterScreen" Height="568" Width="924" Background="#d1e3ff">
     <Grid>
         <Label Margin="239,21,277,330">
             <StackPanel Orientation="Horizontal">
@@ -24,21 +24,22 @@
         </Label>
         <Label Content="ZDRAVO KORPORACIJA" FontSize="25" Margin="388,34,-16,327" Foreground="#1963bf" FontWeight="Bold"/>
         <Label Width="329" VerticalAlignment="Top" Margin="309,90,0,0" Height="50" HorizontalAlignment="Left" FontSize="22" Foreground="#1963bf" FontWeight="Bold" Content="Izveštaj o zauzetosti prostorija"/>
-        <Label Content="Za period:" Grid.Column="0" FontSize="25" HorizontalAlignment="Left" Height="40" Margin="120,130,0,0" VerticalAlignment="Top" Width="133" Foreground="#1963bf" FontWeight="DemiBold"/>
-        <Label Content="Od" Grid.Column="0" FontSize="25" HorizontalAlignment="Left" Height="40" Margin="40,180,0,0" VerticalAlignment="Top" Width="66" Foreground="#1963bf" FontWeight="DemiBold"/>
-        <Label Content="Do" Grid.Column="0" FontSize="25" HorizontalAlignment="Left" Height="40" Margin="40,240,0,0" VerticalAlignment="Top" Width="66" Foreground="#1963bf" FontWeight="DemiBold"/>
-        <DatePicker x:Name="DatumOD" HorizontalAlignment="Left" FontSize="25" Margin="120,180,0,0" VerticalAlignment="Top" Width="192" BorderBrush="#1963bf" Foreground="#1963bf"/>
-        <DatePicker x:Name="DatumDO" HorizontalAlignment="Left" FontSize="25" Margin="120,239,0,0" VerticalAlignment="Top" Width="192" BorderBrush="#1963bf" Foreground="#1963bf"/>
-        <Button Content="Štampaj izveštaj" Click="Stampaj" HorizontalAlignment="Left" Margin="60,380,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}" Width="234"/>
-        <Button Content="Nazad na početnu" Click="Nazad" HorizontalAlignment="Left" Margin="60,460,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}" Width="234"/>
-        <lvc:CartesianChart Series="{Binding SeriesCollection}" x:Name="Dijagram" LegendLocation="Left" Margin="317,150,40,30" Foreground="#1963bf" FontWeight="DemiBold" FontSize="15">
-            <lvc:CartesianChart.AxisX>
-                <lvc:Axis Title="Datumi" Labels="{Binding Datumi}" Foreground="#1963bf" FontWeight="DemiBold" FontSize="15"/>
-            </lvc:CartesianChart.AxisX>
-            <lvc:CartesianChart.AxisY>
-                <lvc:Axis Title="Zauzetost" LabelFormatter="{Binding Zauzetost}" Foreground="#1963bf" FontWeight="DemiBold" FontSize="15"/>
-            </lvc:CartesianChart.AxisY>
-        </lvc:CartesianChart>
-        <Button Content="Prikaži dijagram" Click="Prikazi" HorizontalAlignment="Left" Margin="60,300,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}" Width="234"/>
+        <Label Content="Za period:" Grid.Column="0" FontSize="25" HorizontalAlignment="Left" Height="40" Margin="120,150,0,0" VerticalAlignment="Top" Width="133" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <Label Content="Od" Grid.Column="0" FontSize="25" HorizontalAlignment="Left" Height="40" Margin="40,190,0,0" VerticalAlignment="Top" Width="66" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <Label Content="Do" Grid.Column="0" FontSize="25" HorizontalAlignment="Left" Height="40" Margin="40,280,0,0" VerticalAlignment="Top" Width="66" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <DatePicker x:Name="DatumOD" HorizontalAlignment="Left" FontSize="25" Margin="120,210,0,0" VerticalAlignment="Top" Width="192" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <DatePicker x:Name="DatumDO" HorizontalAlignment="Left" FontSize="25" Margin="120,279,0,0" VerticalAlignment="Top" Width="192" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <Button Content="Štampaj izveštaj" Click="Stampaj" HorizontalAlignment="Left" Margin="60,360,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}" Width="234"/>
+        <Button Content="Nazad na početnu" Click="Nazad" HorizontalAlignment="Left" Margin="60,450,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}" Width="234"/>
+        <lvc:PieChart LegendLocation="Bottom" Margin="317,170,40,50" Foreground="#1963bf" FontWeight="DemiBold" FontSize="15">
+            <lvc:PieChart.Series>
+                <lvc:PieSeries Title="Sala" DataLabels="True" Values="15" LabelPoint="{Binding PointLabel}" Foreground="#1963bf" FontWeight="DemiBold" FontSize="15"/>
+                <lvc:PieSeries Title="Soba" DataLabels="True" Values="25" LabelPoint="{Binding PointLabel}" Foreground="#1963bf" FontWeight="DemiBold" FontSize="15"/>
+                <lvc:PieSeries Title="Ordinacija" DataLabels="True" Values="20" LabelPoint="{Binding PointLabel}" Foreground="#1963bf" FontWeight="DemiBold" FontSize="15"/>
+                <lvc:PieSeries Title="Kancelarija" DataLabels="True" Values="10" LabelPoint="{Binding PointLabel}" Foreground="#1963bf" FontWeight="DemiBold" FontSize="15"/>
+                <lvc:PieSeries Title="Magacin" DataLabels="True" Values="5" LabelPoint="{Binding PointLabel}" Foreground="#1963bf" FontWeight="DemiBold" FontSize="15"/>
+                <lvc:PieSeries Title="Glavni magacin" DataLabels="True" Values="8" LabelPoint="{Binding PointLabel}" Foreground="#1963bf" FontWeight="DemiBold" FontSize="15"/>
+            </lvc:PieChart.Series>
+        </lvc:PieChart>
     </Grid>
 </Window>

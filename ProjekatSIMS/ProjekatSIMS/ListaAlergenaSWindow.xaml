@@ -6,18 +6,18 @@
         xmlns:local="clr-namespace:ProjekatSIMS"
         xmlns:fa="http://schemas.fontawesome.io/icons/" x:Class="ProjekatSIMS.ListaAlergenaSWindow"
         mc:Ignorable="d"
-        Title="ListaAlergenaSWindow" Height="568" Width="924" Background="#d1e3ff">
+        Title="ListaAlergenaSWindow" WindowStartupLocation="CenterScreen" Height="568" Width="924" Background="#d1e3ff">
     <Grid>
-        <DataGrid x:Name="dataGridAlergeni" ItemsSource="{Binding Alergeni}" IsReadOnly="True" FontSize="25"
-                  SelectionMode="Single" AutoGenerateColumns="False" Margin="60,142,60,161" BorderBrush="#1963bf" Foreground="#1963bf">
+        <!--<DataGrid x:Name="dataGridAlergeni" ItemsSource="{Binding Alergeni}" IsReadOnly="True" FontSize="25" AllowDrop="True" DragOver="ListView_DragOver" Drop="ListView_Drop"
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="494,160,60,140" BorderBrush="#1963bf" Foreground="#1963bf">
             <DataGrid.Columns>
 
                 <DataGridTextColumn Header="Naziv alergena" Binding="{Binding}" Width="*"/>
 
             </DataGrid.Columns>
-        </DataGrid>
-        <Button Content="Profil pacijenta" Click="Nazad" HorizontalAlignment="Left" Margin="60,440,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
-        <Button Content="Dodaj novi" Click="Novi_alergen" HorizontalAlignment="Left" Margin="684,440,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
+        </DataGrid> -->
+        <Button Content="Profil pacijenta" Click="Nazad" HorizontalAlignment="Center" Margin="0,440,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
+        <!-- <Button Content="Dodaj novi" Click="Novi_alergen" HorizontalAlignment="Left" Margin="684,440,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/> -->
 
         <Label Width="265" VerticalAlignment="Top" Margin="362,87,0,0" Height="50" HorizontalAlignment="Left" FontSize="22" Foreground="#1963bf" FontWeight="Bold" Content="Lista alergena pacijenta"/>
         <Label Margin="239,21,401,448">
@@ -33,7 +33,40 @@
             </StackPanel>
         </Label>
         <Label Content="ZDRAVO KORPORACIJA" FontSize="25" Margin="388,34,108,445" Foreground="#1963bf" FontWeight="Bold"/>
+        <!-- <DataGrid x:Name="dataGridSviAlergeni" ItemsSource="{Binding SviAlergeni}" IsReadOnly="True" FontSize="25" PreviewMouseLeftButtonDown="ListView_PreviewMouseLeftButtonDown" MouseMove="ListView_MouseMove"
+            SelectionMode="Single" AutoGenerateColumns="False" Margin="60,160,494,140" BorderBrush="#1963bf" Foreground="#1963bf">
+            <DataGrid.Columns>
 
+                <DataGridTextColumn Header="Naziv alergena" Binding="{Binding}" Width="*"/>
+
+            </DataGrid.Columns>
+        </DataGrid> -->
+        <Label Content="Lista svih alergena" HorizontalAlignment="Left" FontSize="25" Height="59" Margin="127,116,0,0" VerticalAlignment="Top" Width="236" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <Label Content="Lista alergena pacijenta" HorizontalAlignment="Left" FontSize="25" Height="59" Margin="534,116,0,0" VerticalAlignment="Top" Width="290" Foreground="#1963bf" FontWeight="DemiBold"/>
+
+
+
+        <ListView Margin="494,160,60,140" ItemsSource="{Binding Alergeni}" AllowDrop="True" DragOver="ListView_DragOver" Drop="ListView_Drop"
+                  FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+                        <TextBlock Text="{Binding}"/>
+                    </WrapPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <ListView Margin="60,160,494,140" ItemsSource="{Binding SviAlergeni}" PreviewMouseLeftButtonDown="ListView_PreviewMouseLeftButtonDown" MouseMove="ListView_MouseMove"
+                  FontSize="25" BorderBrush="#1963bf" Foreground="#1963bf">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+                        <TextBlock Text="{Binding}"/>
+                    </WrapPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 
 </Window>
