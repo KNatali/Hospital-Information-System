@@ -59,12 +59,11 @@ namespace ProjekatSIMS.WindowPacijent
 
             PregledController pregCont = new PregledController();
 
-            if (pregCont.ZakazivanjePregledaPacijent(ime, prezime, imeDoktora, prezimeDoktora, datum1, jmbg) == true)
+            if (pregCont.ZakazivanjePregledaPacijent(imeDoktora, prezimeDoktora, datum1, trenutniPacijent) == true)
             {
                 MessageBox.Show("Pregled je uspesno zakazan!");
                 PocetnaPacijent pocetna = new PocetnaPacijent(trenutniPacijent);
                 this.NavigationService.Navigate(pocetna);
-               // this.NavigationService.GoBack();
             }
             else if (pregCont.DaLiJeTerminZauzet(datum1) == true)
             {
@@ -72,15 +71,11 @@ namespace ProjekatSIMS.WindowPacijent
                 {
                     DoktorPrioritetWindow dp = new DoktorPrioritetWindow(imeDoktora, prezimeDoktora, trenutniPacijent);
                     dp.Show();
-                    //DoktorPrioritet dp = new DoktorPrioritet(imeDoktora, prezimeDoktora, trenutniPacijent);
-                    //this.NavigationService.Navigate(dp);
                 }
                 else if(prioritetVreme == 1)
                 {
                     VremePrioritetWindow vp = new VremePrioritetWindow(datum1, trenutniPacijent);
                     vp.Show();
-                    //VremePrioritet vp = new VremePrioritet(datum1, trenutniPacijent);
-                    //this.NavigationService.Navigate(vp);
                 }
             }
             else
@@ -88,7 +83,6 @@ namespace ProjekatSIMS.WindowPacijent
                 MessageBox.Show("Pregled nije zakazan.");
                 PocetnaPacijent pocetna = new PocetnaPacijent(trenutniPacijent);
                 this.NavigationService.Navigate(pocetna);
-                //this.NavigationService.GoBack();
 
             }
             
@@ -106,7 +100,6 @@ namespace ProjekatSIMS.WindowPacijent
         {
             PocetnaPacijent pocetna = new PocetnaPacijent(trenutniPacijent);
             this.NavigationService.Navigate(pocetna);
-            //this.NavigationService.GoBack();
         }
     }
 }

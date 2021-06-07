@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ProjekatSIMS"
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         mc:Ignorable="d"
-        Title="PacijentMainWindow" Height="600" Width="1100" KeyDown="Window_KeyDown"
+        Title="PacijentMainWindow" Height="600" Width="1100" 
         >
     <Window.Resources>
         <Style TargetType="Label">

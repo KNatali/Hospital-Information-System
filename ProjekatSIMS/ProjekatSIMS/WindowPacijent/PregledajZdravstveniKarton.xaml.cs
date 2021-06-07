@@ -1,4 +1,7 @@
 ﻿using Model;
+using ProjekatSIMS.Controller.AnamnezaPacijent;
+using ProjekatSIMS.Controller.ReceptPacijent;
+using ProjekatSIMS.Controller.UputiPacijent;
 using Repository;
 using System.Collections.Generic;
 using System.Windows.Controls;
@@ -29,6 +32,10 @@ namespace ProjekatSIMS.WindowPacijent
             set;
         }
         public Pacijent trenutniPacijent { get; set; }
+        public ReceptiPacijentController receptController = new ReceptiPacijentController();
+        public AnamnezaPacijentController anamnezaController = new AnamnezaPacijentController();
+        public UputController uputController = new UputController();
+        public UputBolnickoLecenjeController UputBolnickoLecenjeController = new UputBolnickoLecenjeController();
         public PregledajZdravstveniKarton(Pacijent pacijent)
         {
             InitializeComponent();
@@ -36,17 +43,10 @@ namespace ProjekatSIMS.WindowPacijent
 
             trenutniPacijent = pacijent;
 
-            ReceptRepository receptRepository = new ReceptRepository();
-            Recepti = receptRepository.DobaviSveRecepte();
-
-            AnamnezaRepository anamnezaRepository = new AnamnezaRepository();
-            Anamneze = anamnezaRepository.DobaviSve();
-
-            UputRepository uputRepository = new UputRepository();
-            Uputi = uputRepository.DobaviUpute();
-
-            UputBolnickoLijecenjeRepository uputBolnickoLijecenjeRepository = new UputBolnickoLijecenjeRepository();
-            UputiBolnickoLecenje = uputBolnickoLijecenjeRepository.DobaviSveUpute();
+            Recepti = receptController.DobaviSveRecepte();
+            Anamneze = anamnezaController.DobaviSve();
+            Uputi = uputController.DobaviUpute();
+            UputiBolnickoLecenje = UputBolnickoLecenjeController.DobaviSveUpute();
              
             
         }
@@ -55,7 +55,6 @@ namespace ProjekatSIMS.WindowPacijent
         {
             PocetnaPacijent pocetna = new PocetnaPacijent(trenutniPacijent);
             this.NavigationService.Navigate(pocetna);
-            //this.NavigationService.GoBack();
         }
 
        

@@ -27,7 +27,6 @@ namespace ProjekatSIMS.WindowPacijent
 
         private void Oceni(object sender, RoutedEventArgs e)
         {
-            OcenaLekara ol = new OcenaLekara();
             String imeLekara = Ime.Text;
             String prezimeLekara = Prezime.Text;
             String ocenaLekara = Ocena.Text;

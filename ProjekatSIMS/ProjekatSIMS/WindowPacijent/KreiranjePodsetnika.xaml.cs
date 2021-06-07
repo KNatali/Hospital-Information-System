@@ -36,7 +36,7 @@ namespace ProjekatSIMS.WindowPacijent
             datumKraja.AddMinutes(minuti);
 
             PodsetnikController podsetnikController = new PodsetnikController();
-            if (podsetnikController.KreiranjePodsetnika(naziv, opis, datumPocetka, datumKraja, trenutniPacijent.Jmbg) == true)
+            if (podsetnikController.KreiranjePodsetnika(naziv, opis, datumPocetka, datumKraja, trenutniPacijent) == true)
             {
                 MessageBox.Show("Uspesno ste kreirali svoj podsetnik");
                 

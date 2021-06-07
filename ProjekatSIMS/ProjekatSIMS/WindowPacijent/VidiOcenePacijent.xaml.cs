@@ -1,6 +1,6 @@
 ﻿using Model;
+using ProjekatSIMS.Controller;
 using ProjekatSIMS.Model;
-using ProjekatSIMS.Repository;
 using System.Collections.Generic;
 using System.Windows.Controls;
 
@@ -20,6 +20,7 @@ namespace ProjekatSIMS.WindowPacijent
             get;
             set;
         }
+        public OcenaController ocenaController = new OcenaController();
         public Pacijent trenutniPacijent { get; set; }
         public VidiOcenePacijent(Pacijent pacijent)
         {
@@ -27,11 +28,9 @@ namespace ProjekatSIMS.WindowPacijent
             this.DataContext = this;
             trenutniPacijent = pacijent;
             OceneLekara = new List<OcenaLekara>();
-            OcenaRepository fajl = new OcenaRepository(@"..\..\..\Fajlovi\OcenaLekara.txt");
-            OceneLekara = fajl.DobaviSveOceneLekara();
+            OceneLekara = ocenaController.DobaviSveOceneLekara();
             OceneBolnice = new List<OcenaBolnice>();
-            OcenaRepository file = new OcenaRepository(@"..\..\..\Fajlovi\OcenaBolnice.txt");
-            OceneBolnice = file.DobaviSveOceneBolnice();
+            OceneBolnice = ocenaController.DobaviSveOceneBolnice();
         }
 
         private void Zatvori(object sender, System.Windows.RoutedEventArgs e)

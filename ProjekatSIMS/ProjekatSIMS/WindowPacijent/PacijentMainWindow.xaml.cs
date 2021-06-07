@@ -2,6 +2,7 @@
 using Controller;
 using Microsoft.Toolkit.Uwp.Notifications;
 using Model;
+using ProjekatSIMS.Controller.ReceptPacijent;
 using ProjekatSIMS.Model;
 using ProjekatSIMS.Repository;
 using Repository;
@@ -17,10 +18,9 @@ namespace ProjekatSIMS.WindowPacijent
     public partial class PacijentMainWindow : Window
     {
         private NavigationService NavigationService { get; set; }
-        public PodsetnikRepository podsetnikRepository = new PodsetnikRepository();
         public PodsetnikController podsetnikController = new PodsetnikController();
-        public ReceptRepository receptRepository = new ReceptRepository(@"..\..\..\Fajlovi\Recept.txt");
-        public PregledRepository pregledRepository = new PregledRepository(@"..\..\..\Fajlovi\Pregled.txt");
+        public ReceptiPacijentController receptiController = new ReceptiPacijentController();
+        public PregledController pregledController = new PregledController();
         public Pacijent trenutniPacijent { get; set; }
         public String imePrezime { get; set; }
         
@@ -34,9 +34,9 @@ namespace ProjekatSIMS.WindowPacijent
             trenutniPacijent = pacijent;
             imePrezime = trenutniPacijent.Ime + " " + trenutniPacijent.Prezime;
             PacijentFrame.Content = new PocetnaPacijent(trenutniPacijent);
-            List<Podsetnik> podsetnici = podsetnikRepository.DobaviSvePodsetnike();
-            List<Pregled> pregledi = pregledRepository.DobaviPregledeZaPacijenta(trenutniPacijent);
-            List<Recept>Recepti = receptRepository.DobaviSveRecepte();
+            List<Podsetnik> podsetnici = podsetnikController.DobaviSvePodsetnike();
+            List<Pregled> pregledi = pregledController.DobaviPregledeZaPacijenta(trenutniPacijent);
+            List<Recept>Recepti = receptiController.DobaviSveRecepte();
 
             foreach(Pregled preg in pregledi)
             {
@@ -141,36 +141,11 @@ namespace ProjekatSIMS.WindowPacijent
 
         private void PregledajKarton(object sender, RoutedEventArgs e)
         {
-         //PacijentFrame.Content = new PregledajZdravstveniKartonView();
            PacijentFrame.Content = new PregledajZdravstveniKarton(trenutniPacijent);
         }
         private void PocetnaStranica(object sender, RoutedEventArgs e)
         {
             PacijentFrame.Content = new PocetnaPacijent(trenutniPacijent);
-        }
-
-        private void Window_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
-        {
-            /*if (e.Key == Key.A)
-                ButtonA.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-           else if (e.Key == Key.B)
-                ButtonB.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-            else if (e.Key == Key.C)
-                ButtonC.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-            else if (e.Key == Key.D)
-                ButtonD.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-            else if (e.Key == Key.E)
-                ButtonE.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-            else if (e.Key == Key.F)
-                ButtonF.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-            else if (e.Key == Key.G)
-                ButtonG.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-            else if (e.Key == Key.H)
-                ButtonH.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-            else if (e.Key == Key.I)
-                ButtonI.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-            else if (e.Key == Key.J)
-                ButtonJ.RaiseEvent(new RoutedEventArgs(Button.ClickEvent)); */
         }
 
         private void OdjaviSe(object sender, RoutedEventArgs e)
