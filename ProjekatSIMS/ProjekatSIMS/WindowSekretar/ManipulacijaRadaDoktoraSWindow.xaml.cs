@@ -19,6 +19,9 @@ namespace ProjekatSIMS
     public partial class ManipulacijaRadaDoktoraSWindow : Window
     {
         private NeradniDaniController neradniDaniController;
+        private PregledController pregledController;
+        private DateTime datumOd;
+        private DateTime datumDo;
         public Doktor doktor { get; set; }
         public List<NeradniDani> NeradniDani { get; set; }
         public ManipulacijaRadaDoktoraSWindow(Doktor d)
@@ -34,7 +37,9 @@ namespace ProjekatSIMS
             foreach (NeradniDani n in tabelaNeradnihDana)
             {
                 if (n.doktor == d.Jmbg)
+                {
                     NeradniDani.Add(n);
+                }
             }
         }
 
@@ -50,16 +55,49 @@ namespace ProjekatSIMS
             PopunjavanjePoljaZaGodisnjiOdmor(novoOdobrenje);
             if (neradniDaniController.OdobriNeradneDane(novoOdobrenje) == true)
             {
-                MessageBox.Show("Doktoru su odobreni neradni dani.");
+                ProveraZakazanihPregledaDoktora(novoOdobrenje);
                 this.Close();
             }
         }
         private void PopunjavanjePoljaZaGodisnjiOdmor(NeradniDani novoOdobrenje)
         {
-            novoOdobrenje.NeradnoOd = (DateTime)Od.SelectedDate;
-            novoOdobrenje.NeradnoDo = (DateTime)Do.SelectedDate;
+            datumOd = (DateTime)Od.SelectedDate;
+            datumDo = (DateTime)Do.SelectedDate;
+            novoOdobrenje.NeradnoOd = datumOd.Date;
+            novoOdobrenje.NeradnoDo = datumDo.Date;
             novoOdobrenje.Vrsta = (VrsteNeradnihDana)Obrazlozenje.SelectedIndex;
             novoOdobrenje.doktor = doktor.Jmbg;
+        }
+        private void ProveraZakazanihPregledaDoktora(NeradniDani novoOdobrenje)
+        {
+            List<Pregled> pregledi = new List<Pregled>();
+            pregledController = new PregledController();
+            pregledi = pregledController.DobaviSveSekretar();
+            foreach (Pregled p in pregledi)
+            {
+                ProveraDatumaZakazanogTermina(novoOdobrenje, p);
+            }
+        }
+        private void ProveraDatumaZakazanogTermina(NeradniDani novoOdobrenje, Pregled p)
+        {
+            if (DateTime.Compare(novoOdobrenje.NeradnoOd, p.Pocetak) <= 0 && DateTime.Compare(novoOdobrenje.NeradnoDo, p.Pocetak) >= 0)
+            {
+                ProveraDoktoraZakazanogTermina(novoOdobrenje, p);
+            }
+        }
+        private void ProveraDoktoraZakazanogTermina(NeradniDani novoOdobrenje, Pregled p)
+        {
+            if (novoOdobrenje.doktor == p.doktor.Jmbg)
+            {
+                OtkazivanjeZakazanogPregleda(p);
+            }
+        }
+        private void OtkazivanjeZakazanogPregleda(Pregled p)
+        {
+            if (pregledController.OtkazivanjeSekretar(p))
+            {
+                MessageBox.Show("Otkazani su pregledi koje je doktor imao u periodu odobrenog godišnjeg odmora.", "OBAVEŠTENJE");
+            }
         }
     }
 }

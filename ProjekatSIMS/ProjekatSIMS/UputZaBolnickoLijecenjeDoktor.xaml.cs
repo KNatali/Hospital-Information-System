@@ -8,7 +8,7 @@ using System.Windows.Controls;
 
 namespace ProjekatSIMS
 {
-   
+
     public partial class UputZaBolnickoLijecenjeDoktor : Page
     {
         private Pacijent pacijent { get; set; }
@@ -44,14 +44,14 @@ namespace ProjekatSIMS
                 SlobodneSobe.Visibility = Visibility.Visible;
 
             }
-           
+
 
 
         }
         private void KrevetiZaSobu(object sender, RoutedEventArgs e)
         {
             SlobodniKrevetDTO odabranaSoba = (SlobodniKrevetDTO)SlobodneSobe.SelectedItem;
-           
+
             foreach (SlobodniKrevetDTO s in sobeIKreveti)
             {
                 if (s.Soba == odabranaSoba.Soba)

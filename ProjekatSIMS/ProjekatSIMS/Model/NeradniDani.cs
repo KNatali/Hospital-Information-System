@@ -13,12 +13,13 @@ namespace Model
         public VrsteNeradnihDana Vrsta { get; set; }
         public NeradniDani()
         {
-
+            NeradnoOd = NeradnoOd.Date;
+            NeradnoDo = NeradnoDo.Date;
         }
         public NeradniDani(DateTime neradnoOd, DateTime neradnoDo)
         {
-            NeradnoOd = neradnoOd;
-            NeradnoDo = neradnoDo;
+            NeradnoOd = neradnoOd.Date;
+            NeradnoDo = neradnoDo.Date;
         }
     }
 }
