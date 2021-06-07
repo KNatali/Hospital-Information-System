@@ -8,7 +8,7 @@ using System.Windows.Controls;
 
 namespace ProjekatSIMS
 {
-   
+
     public partial class UputZaBolnickoLijecenjeDoktor : Page
     {
         private Pacijent pacijent { get; set; }
@@ -36,14 +36,14 @@ namespace ProjekatSIMS
                 sobeIKreveti = uputController.DobaviSlobodneSobe(termin);
                 SlobodneSobe.ItemsSource = sobeIKreveti;
             }
-           
+
 
 
         }
         private void KrevetiZaSobu(object sender, RoutedEventArgs e)
         {
             SlobodniKrevetDTO odabranaSoba = (SlobodniKrevetDTO)SlobodneSobe.SelectedItem;
-           
+
             foreach (SlobodniKrevetDTO s in sobeIKreveti)
             {
                 if (s.Soba == odabranaSoba.Soba)
@@ -64,7 +64,7 @@ namespace ProjekatSIMS
             SlobodniKrevetDTO odabranaSoba = (SlobodniKrevetDTO)SlobodneSobe.SelectedItem;
             String sobaId = odabranaSoba.Soba;
             int krevetId = (int)SlobodniKreveti.SelectedItem;
-            UputBolnickoLijecenjeDTO uput = new  UputBolnickoLijecenjeDTO(interval,sobaId,krevetId,pacijent.IdKartona);
+            UputBolnickoLijecenjeDTO uput = new UputBolnickoLijecenjeDTO(interval, sobaId, krevetId, pacijent.IdKartona);
             izdavanjeUputaBolnickoLijecenjeController.CuvanjeUputa(uput, pacijent);
 
             MessageBox.Show("Uput je uspjesno sacuvan");
