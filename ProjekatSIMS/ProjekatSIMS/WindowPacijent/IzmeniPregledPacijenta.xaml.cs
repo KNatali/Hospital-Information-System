@@ -17,6 +17,7 @@ namespace ProjekatSIMS.WindowPacijent
         public BrojacOtkazivanjaController brojacOtkazivanjaController = new BrojacOtkazivanjaController();
         public IzmenaPregledaController izmenaPregledaController = new IzmenaPregledaController();
         public List<Pregled> Pregledi { get; set; }
+        public List<Pregled> PreglediSvi { get; set; }
         public List<Pacijent> Pacijenti { get; set; }
         
         public int prioritetVreme = 0;
@@ -32,6 +33,7 @@ namespace ProjekatSIMS.WindowPacijent
 
             Pregledi = new List<Pregled>();
             PregledRepository fajl = new PregledRepository(@"..\..\..\Fajlovi\Pregled.txt");
+            PreglediSvi = fajl.DobaviSvePregledePacijent();
             Pregledi = fajl.DobaviPregledeZaPacijenta(trenutniPacijent);
 
             Pacijenti = new List<Pacijent>();
@@ -91,31 +93,37 @@ namespace ProjekatSIMS.WindowPacijent
                 {
                     if (prioritetVreme == 1)
                     {
-                        VremePrioritet vp = new VremePrioritet(datumNovi, trenutniPacijent);
-                        this.NavigationService.Navigate(vp);
+                        VremePrioritetWindow vp = new VremePrioritetWindow(datumNovi,trenutniPacijent);
+                        vp.Show();
+                       // VremePrioritet vp = new VremePrioritet(datumNovi, trenutniPacijent);
+                       // this.NavigationService.Navigate(vp);
                     }
                     else if (prioritetDoktor == 1)
                     {
-                        DoktorPrioritet dp = new DoktorPrioritet(imeDoktora, prezimeDoktora,trenutniPacijent);
-                        this.NavigationService.Navigate(dp);
+                        DoktorPrioritetWindow dp = new DoktorPrioritetWindow( imeDoktora,prezimeDoktora,trenutniPacijent);
+                        dp.Show();
+                        //DoktorPrioritet dp = new DoktorPrioritet(imeDoktora, prezimeDoktora,trenutniPacijent);
+                        //this.NavigationService.Navigate(dp);
+
                     }
                 }
 
             }else 
             {
-                Pregledi.Remove(p);
+                PreglediSvi.Remove(p);
                 Doktor doktor = new Doktor { Ime = imeDoktora, Prezime = prezimeDoktora };
-                p = new Pregled { Pocetak = datumNovi, doktor = doktor, };
-                Pregledi.Add(p);
-                string newJson = JsonConvert.SerializeObject(Pregledi);
+                p = new Pregled { Pocetak = datumNovi, doktor = doktor, pacijent = trenutniPacijent };
+
+                PreglediSvi.Add(p);
+                string newJson = JsonConvert.SerializeObject(PreglediSvi);
                 File.WriteAllText(@"..\..\..\Fajlovi\Pregled.txt", newJson);
                 MessageBox.Show("Pregled je uspesno izmenjen.");
             }
             string newJ = JsonConvert.SerializeObject(Pacijenti);
             File.WriteAllText(@"..\..\..\Fajlovi\Pacijent.txt", newJ);
+            IzmeniPregledPacijenta ip = new IzmeniPregledPacijenta(trenutniPacijent);
+            this.NavigationService.Navigate(ip);
 
-           
-           
         }
 
         private void Odustani(object sender, RoutedEventArgs e)

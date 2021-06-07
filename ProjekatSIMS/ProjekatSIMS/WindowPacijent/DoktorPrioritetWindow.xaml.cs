@@ -1,4 +1,5 @@
 ﻿using Model;
+using ProjekatSIMS.Controller.PregledPacijent;
 using ProjekatSIMS.Model;
 using ProjekatSIMS.Repository;
 using Repository;
@@ -19,16 +20,19 @@ namespace ProjekatSIMS.WindowPacijent
         private string prezimeDoktora { get; set; }
 
         public List<SlobodanTermin> Termini { get; set; }
-        public DoktorPrioritetWindow(String imeDoktora, String prezimeDoktora, String ime, String prezime)
+        public SlobodanTerminController slobodanTerminController = new SlobodanTerminController();
+
+        public Pacijent trenutniPacijent { get; set; }
+        public DoktorPrioritetWindow(String imeDoktora, String prezimeDoktora,Pacijent pacijent)
         {
             InitializeComponent();
+            this.DataContext = this;
+            this.trenutniPacijent = pacijent;
             this.imeDoktora = imeDoktora;
             this.prezimeDoktora = prezimeDoktora;
-            this.ime = ime;
-            this.prezime = prezime;
+            
             Termini = new List<SlobodanTermin>();
-            SlobodanTerminRepository fajl = new SlobodanTerminRepository(@"..\..\..\Fajlovi\SlobodniTermini.txt");
-            Termini = fajl.DobaviSveSlobodneTermineZaDoktora(imeDoktora, prezimeDoktora);
+            Termini = slobodanTerminController.DobaviSlobodneTermineZaLekara(imeDoktora, prezimeDoktora);
         }
         
         private void Odaberi_Click(object sender, RoutedEventArgs e)
@@ -37,7 +41,7 @@ namespace ProjekatSIMS.WindowPacijent
 
             //preuzimam sve zakazane preglede
             Pregledi = new List<Pregled>();
-            PregledRepository fajl = new PregledRepository(@"..\..\..\FajloviFajlovi\Pregled.txt");
+            PregledRepository fajl = new PregledRepository(@"..\..\..\Fajlovi\Pregled.txt");
             Pregledi = fajl.DobaviSvePregledePacijent();
 
             Pregled p = new Pregled();
@@ -70,7 +74,10 @@ namespace ProjekatSIMS.WindowPacijent
 
 
         }
-
+        private void Odustani(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
 
 
 

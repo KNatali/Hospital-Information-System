@@ -46,18 +46,29 @@
 
 
 
-        <Label Margin="350,27,-350,-27" FontFamily="Arial" FontSize="20" >Nedeljni raspored terapije</Label>
-        <DataGrid Margin="350,66,76,0" x:Name="DataGridTerapije" ItemsSource="{Binding Recepti}" IsReadOnly="True" 
-                  SelectionMode="Single" AutoGenerateColumns="False" Height="392" VerticalAlignment="Top" IsEnabled="True" IsSynchronizedWithCurrentItem="True" GridLinesVisibility="Vertical">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Naziv leka" Binding="{Binding NazivLeka}"/>
-                <DataGridTextColumn Header="Uputstvo" Binding="{Binding Uputstvo}"/>
+        <Label Margin="79,309,-79,115" FontFamily="Arial" FontSize="20" >
+
+        </Label>
+        <Button Content="Vidi lekare" HorizontalAlignment="Left" Margin="343,90,0,0" VerticalAlignment="Top" Style="{StaticResource RoundedButton}" Width="200" Height="50" Click="PregledLekara"  />
+        <Button Content="Kreiraj podsetnik" HorizontalAlignment="Left" Margin="590,90,0,0" VerticalAlignment="Top" Style="{StaticResource RoundedButton}" Width="200" Height="50" Click="KreirajPodsetnik"/>
+        <Button Content="Oceni lekara" HorizontalAlignment="Left" Margin="343,180,0,0" VerticalAlignment="Top" Style="{StaticResource RoundedButton}" Width="200" Height="50" Click="OceniLekara">
+
+        </Button>
+        <Button Content="Oceni bolnicu" HorizontalAlignment="Left" Margin="590,180,0,0" VerticalAlignment="Top" Style="{StaticResource RoundedButton}" Width="200" Height="50" Click="OceniBolnicu"/>
+        <Label FontFamily="Arial" FontSize="20" Margin="204,309,-204,-309">Nedeljni raspored terapije</Label>
+        <DataGrid Margin="49,354,163,0" x:Name="DataGridTerapije" ItemsSource="{Binding Terapija}" IsReadOnly="True" 
+                  SelectionMode="Single" AutoGenerateColumns="False" Height="168" VerticalAlignment="Top" IsEnabled="True" IsSynchronizedWithCurrentItem="True" GridLinesVisibility="Vertical">
+            <DataGrid.Columns >
+                <DataGridTextColumn Header="Ponedeljak" Binding="{Binding Ponedeljak}"/>
+                <DataGridTextColumn Header="Utorak" Binding="{Binding Utorak}"/>
+                <DataGridTextColumn Header="Sreda" Binding="{Binding Sreda}"/>
+                <DataGridTextColumn Header="Četvrtak" Binding="{Binding Cetvrtak}"/>
+                <DataGridTextColumn Header="Petak" Binding="{Binding Petak}"/>
+                <DataGridTextColumn Header="Subota" Binding="{Binding Subota}"/>
+                <DataGridTextColumn Header="Nedelja" Binding="{Binding Nedelja}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Vidi lekare" HorizontalAlignment="Left" Margin="49,317,0,0" VerticalAlignment="Top" Style="{StaticResource RoundedButton}" Width="100" Height="40" Click="PregledLekara"/>
-        <Button Content="Kreiraj podsetnik" HorizontalAlignment="Left" Margin="183,317,0,0" VerticalAlignment="Top" Style="{StaticResource RoundedButton}" Width="100" Height="40" Click="KreirajPodsetnik"/>
-        <Button Content="Oceni lekara" HorizontalAlignment="Left" Margin="49,398,0,0" VerticalAlignment="Top" Style="{StaticResource RoundedButton}" Width="100" Height="40" Click="OceniLekara"/>
-        <Button Content="Oceni bolnicu" HorizontalAlignment="Left" Margin="183,398,0,0" VerticalAlignment="Top" Style="{StaticResource RoundedButton}" Width="100" Height="40" Click="OceniBolnicu"/>
+       
 
 
 

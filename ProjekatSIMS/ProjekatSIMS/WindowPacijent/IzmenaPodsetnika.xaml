@@ -79,22 +79,22 @@
 
     <Grid Background="#CDFEBB">
         <DataGrid x:Name="dataGridPodsetnik" ItemsSource="{Binding Podsetnici}" IsReadOnly="True"
-                  SelectionMode="Single" AutoGenerateColumns="False" Margin="76,21,36,0" Height="230" VerticalAlignment="Top" Width="600" GridLinesVisibility="Vertical" >
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="76,21,36,0" Height="230" VerticalAlignment="Top" Width="600" GridLinesVisibility="Vertical" SelectedItem="{Binding podsetnik}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Naziv" Binding="{Binding nazivPodsetika}"/>
                 <DataGridTextColumn Header="Opis" Binding="{Binding opisPodsetnika}"/>
                 <DataGridTemplateColumn Header="Izaberi" Width="150*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Name="Izaberi" Content="Izaberi" Click="Izaberi_Click" IsDefault="True" Background="#A4E98A" Style="{StaticResource RoundedButton}" Width="50" Height="30"/>
+                            <Button Name="Izaberi" Content="Izaberi" Click="Izaberi_Click" IsDefault="True" Background="#A4E98A" Style="{StaticResource RoundedButtonRed}" Width="50" Height="30"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
 
-                <DataGridTemplateColumn Header="Obrisi" Width="150*">
+                <DataGridTemplateColumn Header="Obriši" Width="150*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Name="Obrisi" Content="Obrisi" IsDefault="True" Background="#A4E98A" Style="{StaticResource RoundedButton}" Width="50" Height="30"/>
+                            <Button Name="Obrisi" Content="Obriši" IsDefault="True" Background="#A4E98A" Style="{StaticResource RoundedButton}" Width="50" Height="30" Click="Obrisi"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -103,13 +103,16 @@
 
         <Label Content="Naziv:" HorizontalAlignment="Left" Margin="61,278,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.975,0.485" FontFamily="Arial"/>
         <Label Content="Opis:" HorizontalAlignment="Left" Margin="68,337,0,0" VerticalAlignment="Top" FontFamily="Arial"/>
-        <Label FontFamily="Arial" Content="Datum pocetka:" HorizontalAlignment="Left" Margin="351,278,0,0" VerticalAlignment="Top"/>
+        <Label FontFamily="Arial" Content="Datum početka:" HorizontalAlignment="Left" Margin="351,278,0,0" VerticalAlignment="Top"/>
         <Label FontFamily="Arial" Content="Datum kraja:" HorizontalAlignment="Left" Margin="362,323,0,0" VerticalAlignment="Top"/>
         <TextBox HorizontalAlignment="Left" Margin="120,278,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Name="Ime"/>
         <TextBox HorizontalAlignment="Left" Margin="120,330,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Name="Opis" Height="70"/>
         <DatePicker HorizontalAlignment="Left" Margin="491,278,0,0" VerticalAlignment="Top" Name="Pocetak" Width="200" />
         <DatePicker HorizontalAlignment="Left" Margin="491,330,0,0" VerticalAlignment="Top" Name="Kraj" Width="200" />
-        <Button Content="Izmeni" Click="Izmeni"  IsDefault="True" Background="#A4E98A" Style="{StaticResource RoundedButton}" Width="100" Height="40" Margin="545,393,155,17"/>
-        <Button Width="100" Height="40" Style="{StaticResource RoundedButton}" Click="Odustani" Margin="665,393,35,17">Odustani</Button>
+        <Button Content="Izmeni" Click="Izmeni"  IsDefault="True" Background="#A4E98A" Style="{StaticResource RoundedButton}" Width="100" Height="40" Margin="528,393,172,17"/>
+        <Button Width="100" Height="40" Style="{StaticResource RoundedButton}" Click="Odustani" Margin="659,393,41,17">Odustani</Button>
+        <Label Content="(mm/dd/yyyy)" Margin="358,293,327,105"/>
+        <Label Content="(mm/dd/yyyy)" Margin="358,341,327,57"/>
+        
     </Grid>
 </Page>

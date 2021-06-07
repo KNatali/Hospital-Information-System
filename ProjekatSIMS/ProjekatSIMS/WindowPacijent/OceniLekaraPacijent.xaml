@@ -63,15 +63,20 @@
     <Grid Background="#CDFEBB">
         <Label HorizontalAlignment="Center" Margin="0,10,0,-10">Ocenite lekara</Label>
         <Label Content="Upišite ime lekara: " HorizontalAlignment="Left" Margin="139,84,0,0" VerticalAlignment="Top"/>
-        <Label Content="Upišite prezime lekara: " HorizontalAlignment="Left" Margin="100,129,0,0" VerticalAlignment="Top"/>
-        <Label Content="Upišite ocenu lekara: " HorizontalAlignment="Left" Margin="117,181,0,0" VerticalAlignment="Top"/>
-        <Label Content="Upišite Vas komentar o lekaru: " HorizontalAlignment="Left" Margin="33,229,0,0" VerticalAlignment="Top"/>
-        <Button Content="Prosledite ocenu" HorizontalAlignment="Left" Margin="537,393,0,17"  Click="Oceni"  Background="#A4E98A" IsDefault="True" Style="{DynamicResource RoundedButton }" Height="40" Width="100"/>
-        <TextBox HorizontalAlignment="Left" Name="Ocena" Margin="340,181,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="200" />
-        <TextBox HorizontalAlignment="Left" Name="Komentar" Margin="340,225,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Height="135"/>
         <TextBox HorizontalAlignment="Left" Name="Ime" Margin="340,87,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
+        
+        <Label Content="Upišite prezime lekara: " HorizontalAlignment="Left" Margin="100,129,0,0" VerticalAlignment="Top"/>
         <TextBox HorizontalAlignment="Left" Name="Prezime" Margin="340,132,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
-        <Button Width="100" Height="40" Style="{StaticResource RoundedButton}" Click="Odustani" Margin="667,393,33,17">Odustani</Button>
+        
+        <Label Content="Upišite ocenu lekara: " HorizontalAlignment="Left" Margin="117,181,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Name="Ocena" Margin="340,181,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="200" />
+        
+        <Label Content="Upišite Vaš komentar o lekaru: " HorizontalAlignment="Left" Margin="33,229,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Name="Komentar" Margin="340,225,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Height="135"/>
+        
+        <Button Content="Prosledi ocenu" HorizontalAlignment="Left" Margin="554,393,0,17"  Click="Oceni"  Background="#A4E98A" IsDefault="True" Style="{DynamicResource RoundedButton }" Height="40" Width="100"/>
+        
+        <Button Width="100" Height="40" Style="{StaticResource RoundedButton}" Click="Odustani" Margin="659,393,41,17">Odustani</Button>
 
     </Grid>
 </Page>

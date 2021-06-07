@@ -105,9 +105,9 @@ namespace Controller
             return false;
 
         }
-        public Boolean DaLiJeTerminZauzet()
+        public Boolean DaLiJeTerminZauzet(DateTime datum)
         {
-            if(zakazivanjePregledaService.OdredjivanjePrioritetaPacijent() == true)
+            if(zakazivanjePregledaService.DaLiJeTerminZauzet(datum))
             {
                 return true;
             }

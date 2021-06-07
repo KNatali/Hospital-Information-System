@@ -1,1 +1,1 @@
-[{"Id":1,"NazivLeka":"Panadol","Kolicina":"1 kutija","DatumPropisivanjaLeka":"2021-05-15T00:00:00","Uputstvo":"Terapija traje 10 i lijek se uzima svaki dan","IdKartona":1}]
+[{"Id":1,"NazivLeka":"Panadol","Kolicina":"1 kutija","DatumPropisivanjaLeka":"2021-05-15T00:00:00","Uputstvo":"Terapija traje 10 dana i lijek se uzima svaki dan","IdKartona":1," TrajanjeTerapije":10}]

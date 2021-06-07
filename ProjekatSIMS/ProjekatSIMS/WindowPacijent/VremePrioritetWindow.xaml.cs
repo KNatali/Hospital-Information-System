@@ -1,4 +1,5 @@
 ﻿using Model;
+using ProjekatSIMS.Controller.PregledPacijent;
 using ProjekatSIMS.Model;
 using ProjekatSIMS.Repository;
 using Repository;
@@ -16,28 +17,26 @@ namespace ProjekatSIMS.WindowPacijent
 
         public List<SlobodanTermin> Termini { get; set; }
         public List<Pregled> Pregledi { get; set; }
+        public SlobodanTerminController slobodanTerminController = new SlobodanTerminController();
+        public Pacijent trenutniPacijent { get; set; }
 
-        
-    
 
-        public VremePrioritetWindow(DateTime datum1, String ime, String prezime)
+
+
+        public VremePrioritetWindow(DateTime datum1, Pacijent pacijent)
         {
-            this.datum1 = datum1;
-            this.ime = ime;
-            this.prezime = prezime;
 
             InitializeComponent();
             this.DataContext = this;
-
-
+            this.trenutniPacijent = pacijent;
+            this.datum1 = datum1;
+            
             Termini = new List<SlobodanTermin>();
-            SlobodanTerminRepository file = new SlobodanTerminRepository(@"..\..\..\Fajlovi\SlobodniTermini.txt");
-            Termini = file.DobaviSveSlobodneTermineZaDatum(datum1);
-
+            Termini = slobodanTerminController.DobaviSlobodneTermineZaDatum(datum1);
 
         }
 
-        private void Odaberi_Click(object sender, RoutedEventArgs e)
+        private void Odaberi(object sender, RoutedEventArgs e)
         {
             SlobodanTermin st = (SlobodanTermin)dataGridSlobodniTermini.SelectedItems[0]; //pregled koji je odabran kao alternativan
 
@@ -77,7 +76,10 @@ namespace ProjekatSIMS.WindowPacijent
 
         }
 
-
+        private void Odustani(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
 
     }
 }

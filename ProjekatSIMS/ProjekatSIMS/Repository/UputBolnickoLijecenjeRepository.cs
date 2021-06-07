@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Text;
 
@@ -18,6 +19,17 @@ namespace Repository
             {
                 string json = r.ReadToEnd();
                 uputi = JsonConvert.DeserializeObject<List<UputBolnickoLijecenje>>(json);
+            }
+            return uputi;
+        }
+
+        public ObservableCollection<UputBolnickoLijecenje> DobaviSveUputeOC()
+        {
+            ObservableCollection<UputBolnickoLijecenje> uputi = new ObservableCollection<UputBolnickoLijecenje>();
+            using (StreamReader r = new StreamReader(lokacijaFajla))
+            {
+                string json = r.ReadToEnd();
+                uputi = JsonConvert.DeserializeObject<ObservableCollection<UputBolnickoLijecenje>>(json);
             }
             return uputi;
         }

@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using Controller;
+using Model;
 using Newtonsoft.Json;
 using ProjekatSIMS.Service;
 using Repository;
@@ -13,6 +14,7 @@ namespace ProjekatSIMS.WindowPacijent
     public partial class VidiPreglede : Page
     {
         public OtkazivanjePregledaService otkazivanjePregledaService = new OtkazivanjePregledaService();
+        public PregledController pregledController = new PregledController();
         public List<Pregled> Pregledi
         {
             get;
@@ -31,15 +33,15 @@ namespace ProjekatSIMS.WindowPacijent
         {
             InitializeComponent();
             this.DataContext = this;
+            trenutniPacijent = pacijent;
 
             Pregledi = new List<Pregled>();
-            PregledRepository fajl = new PregledRepository(@"..\..\..\Fajlovi\Pregled.txt");
-            Pregledi = fajl.DobaviSvePregledePacijent();
+            Pregledi = pregledController.DobaviPregledeZaPacijenta(trenutniPacijent);
 
             Pacijenti = new List<Pacijent>();
             PacijentRepository file = new PacijentRepository(@"..\..\..\Fajlovi\Pacijent.txt");
             Pacijenti = file.DobaviSve();
-            trenutniPacijent = pacijent;
+            
             
     }
         private void Zatvori(object sender, RoutedEventArgs e)
@@ -71,6 +73,9 @@ namespace ProjekatSIMS.WindowPacijent
             string newJson = JsonConvert.SerializeObject(Pregledi);
             File.WriteAllText(@"..\..\..\Fajlovi\Pregled.txt", newJson);
             MessageBox.Show("Vas pregled je otkazan.");
+            VidiPreglede vp = new VidiPreglede(trenutniPacijent);
+            this.NavigationService.Navigate(vp);
+            //this.NavigationService.GoBack();
         }
     }
 }
