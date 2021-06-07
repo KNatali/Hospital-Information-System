@@ -48,7 +48,7 @@
         </Grid.ColumnDefinitions>
         <Image Grid.Row="1">
             <Image.Source>
-                <BitmapImage UriSource="../../ViewDoktor/Slike/Bez naslova.png"/>
+                <BitmapImage UriSource="../../ViewDoktor/Slike/tooltip.png"/>
             </Image.Source>
         </Image>
 

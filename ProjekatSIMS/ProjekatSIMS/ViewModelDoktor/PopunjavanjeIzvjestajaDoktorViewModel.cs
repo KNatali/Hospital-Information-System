@@ -27,6 +27,7 @@ namespace ProjekatSIMS.ViewModelDoktor
         private RelayCommand sacuvaj;
         private RelayCommand odustani;
         private RelayCommand ukloniIzvjestaj;
+        private String kolicinaError;
 
         public NavigationService NavService
         {
@@ -83,6 +84,15 @@ namespace ProjekatSIMS.ViewModelDoktor
 
             }
         }
+        public String KolicinaError
+        {
+            get { return kolicinaError; }
+            set
+            {
+                kolicinaError = value;
+                OnPropertyChanged("KolicinaError");
+            }
+        }
 
         public IzvjestajLijekDTO SelectedIzvjestaj
         {
@@ -93,6 +103,21 @@ namespace ProjekatSIMS.ViewModelDoktor
                
 
             }
+        }
+
+        private bool KolicinaValidacija()
+        {
+            if (Kolicina == 0)
+            {
+                KolicinaError = "Količina ne može da bude nula.";
+                    return false;
+            }
+            else if(Kolicina <0)
+            {
+                KolicinaError = "Količina ne može da bude negativan broj.";
+                return false;
+            }
+            return true;
         }
         public RelayCommand DodavanjeUListu
         {
@@ -136,6 +161,9 @@ namespace ProjekatSIMS.ViewModelDoktor
 
         public void Executed_DodavanjeUListu()
         {
+            KolicinaError = "";
+            if (KolicinaValidacija() == false)
+                return;
             IzvjestajLijekDTO noviRed = new IzvjestajLijekDTO(SelectedLijek.Id,SelectedLijek.NazivLeka, Kolicina);
             Izvjestaj.Add(noviRed);
         }

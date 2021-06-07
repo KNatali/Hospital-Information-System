@@ -183,6 +183,7 @@
 
         <Label Grid.Row="3" Grid.Column="0" Content="Potrošena količina:" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         <TextBox ToolTip="Unesite potrošenu koičinu izabranog lijeka" Grid.Column="1" Grid.Row="3"  Name="Kolicina" HorizontalAlignment="Stretch" Text="{Binding Kolicina}"  TextWrapping="Wrap" VerticalAlignment="Center"/>
+        <TextBlock FontSize="15" Foreground="#b31a0c"  HorizontalAlignment="Left" Height="25" Text="{Binding KolicinaError}" TextWrapping="Wrap" VerticalAlignment="Top" Width="279" Grid.ColumnSpan="2" Margin="0,40,0,0" Grid.RowSpan="2" Grid.Row="3" Grid.Column="1"/>
 
         <Label Content="Izaberite lijek:"  Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
         <ComboBox  Name="Lijek"   Grid.Row="2" Grid.Column="1" FontSize="16" FontFamily="Roboto" 

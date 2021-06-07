@@ -38,6 +38,7 @@
     <None Remove="ViewDoktor\Slike\patients1.png" />
     <None Remove="ViewDoktor\Slike\pocetna.png" />
     <None Remove="ViewDoktor\Slike\pomoc.png" />
+    <None Remove="ViewDoktor\Slike\tooltip.png" />
     <None Remove="ViewDoktor\Slike\zavrsi.png" />
   </ItemGroup>
 
@@ -96,6 +97,7 @@
     <Resource Include="ViewDoktor\Slike\patients1.png" />
     <Resource Include="ViewDoktor\Slike\pocetna.png" />
     <Resource Include="ViewDoktor\Slike\pomoc.png" />
+    <Resource Include="ViewDoktor\Slike\tooltip.png" />
     <Resource Include="ViewDoktor\Slike\zavrsi.png" />
   </ItemGroup>
 

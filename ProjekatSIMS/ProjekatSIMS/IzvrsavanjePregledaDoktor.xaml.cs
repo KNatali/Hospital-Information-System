@@ -84,9 +84,13 @@ namespace ProjekatSIMS
 
         private void IzdavanjeRecepta(object sender, RoutedEventArgs e)
         {
-            IzdajReceptDoktor z = new IzdajReceptDoktor(Pacijent);
+
+            IzdajReceptDoktorViewModel iz = new IzdajReceptDoktorViewModel(this.NavigationService, Pacijent);
+            IzdajReceptDoktorView d = new IzdajReceptDoktorView(iz);
+            this.NavigationService.Navigate(d);
+           /* IzdajReceptDoktor z = new IzdajReceptDoktor(Pacijent);
         
-            this.NavigationService.Navigate(z);
+            this.NavigationService.Navigate(z);*/
         }
 
         private void KreiranjeAnamneze(object sender, RoutedEventArgs e)

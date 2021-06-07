@@ -37,6 +37,7 @@ namespace ProjekatSIMS.ViewModelDoktor
         private RelayCommand odustani;
         private RelayCommand ukloniSastojak;
         private RelayCommand ukloniAlternativiLijek;
+        private Lijek selectedLijek;
 
         public StringWrapper SelectedSastojak
         {
@@ -45,6 +46,17 @@ namespace ProjekatSIMS.ViewModelDoktor
             {
                 selectedSastojak = value;
                 //ukloniSastojak.RaiseCanExecuteChanged();
+            }
+        }
+
+        public Lijek SelectedLijek
+        {
+            get { return selectedLijek; }
+            set
+            {
+                selectedLijek = value;
+                Sacuvaj.RaiseCanExecuteChanged();
+
             }
         }
 
