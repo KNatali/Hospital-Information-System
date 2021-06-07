@@ -1,4 +1,6 @@
 ﻿using Model;
+using ProjekatSIMS.ViewDoktor;
+using ProjekatSIMS.ViewModelDoktor;
 using Repository;
 using System;
 using System.Collections.Generic;
@@ -75,7 +77,9 @@ namespace ProjekatSIMS
         private void Nazad(object sender, RoutedEventArgs e)
         {
 
-            this.NavigationService.GoBack();
+            PrikazPregledaDoktorViewModel vm1 = new PrikazPregledaDoktorViewModel(this.NavigationService);
+            PrikazPregledaDoktorView kalendar = new PrikazPregledaDoktorView(vm1);
+            this.NavigationService.Navigate(kalendar);
         }
     }
 }

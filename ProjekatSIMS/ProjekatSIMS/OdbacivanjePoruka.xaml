@@ -38,7 +38,7 @@
             
         </Grid.RowDefinitions>
         <TextBox Grid.Row="1" Name="UnijetaPoruka" Text=" " TextWrapping="Wrap"/>
-        <Label Grid.Row="0" Content="Poruka zbog cega ste odbacili lijek:" HorizontalAlignment="Center" />
+        <Label Grid.Row="0" Content="Poruka zbog čega ste odbacili lijek:" HorizontalAlignment="Center" />
         <Button Grid.Row="2" Content="Potvrdi"  Click="PotvrdiPoruku"  Style="{StaticResource btnStandard}"  Width="100" HorizontalAlignment="Right"/>
 
     </Grid>

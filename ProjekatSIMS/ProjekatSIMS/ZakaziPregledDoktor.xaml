@@ -155,20 +155,21 @@
 
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1.5*"/>
-            <ColumnDefinition Width="1.3*"/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="0.5*" />
+            <ColumnDefinition Width="0.8*"/>
+            <ColumnDefinition Width="0.8*"/>
+            <ColumnDefinition Width="0.5*"/>
 
         </Grid.ColumnDefinitions>
 
 
-        <Label FontSize="17" FontWeight="SemiBold" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Content="Zakazivanje pregleda:" HorizontalAlignment="Center"/>
+        <Label FontSize="17" FontWeight="SemiBold" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Content="Zakazivanje pregleda:" HorizontalAlignment="Center"/>
 
 
 
 
-        <Label Grid.Row="1" Grid.Column="0" Content="Izaberi pacijenta:" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-        <ComboBox  Name="Pacijent"   Grid.Row="1" Grid.Column="1" FontSize="16" FontFamily="Roboto" 
+        <Label Grid.Row="1" Grid.Column="1" Content="Izaberi pacijenta:" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <ComboBox  Name="Pacijent"   Grid.Row="1" Grid.Column="2" FontSize="16" FontFamily="Roboto" 
                 Style="{StaticResource ComboBoxFlatStyle}"
                   VerticalAlignment="Center"   
                    HorizontalAlignment="Stretch" 
@@ -189,12 +190,12 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        <Label Grid.Row="3" Grid.Column="0" Content="Datum operacije:" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-        <DatePicker CalendarStyle="{StaticResource styleCalendar}" Grid.Row="3" Grid.Column="1" Name="Date" HorizontalAlignment="Stretch" VerticalAlignment="Center"  />
+        <Label Grid.Row="3" Grid.Column="1" Content="Datum operacije:" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <DatePicker ToolTip="Klikite na kalendar za odabir datuma"  CalendarStyle="{StaticResource styleCalendar}" Grid.Row="3" Grid.Column="2" Name="Date" HorizontalAlignment="Stretch" VerticalAlignment="Center"  />
 
-        <Label Content="Ordinacija:"  Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
+        <Label Content="Ordinacija:"  Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
 
-        <ComboBox Height="30" Grid.Row="2" Style="{StaticResource ComboBoxFlatStyle}" FontSize="16" FontFamily="Roboto" Grid.Column="1"  Name="Ordinacija" HorizontalAlignment="Stretch"  VerticalAlignment="Center"  ItemsSource="{Binding Path=Ordinacije}"   
+        <ComboBox Height="30" Grid.Row="2" Style="{StaticResource ComboBoxFlatStyle}" FontSize="16" FontFamily="Roboto" Grid.Column="2"  Name="Ordinacija" HorizontalAlignment="Stretch"  VerticalAlignment="Center"  ItemsSource="{Binding Path=Ordinacije}"   
           >
 
             <ComboBox.ItemTemplate>
@@ -207,19 +208,19 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        <Label  Grid.Row="4" Grid.Column="0" Content="Vrijeme(Sati i minuti):" HorizontalAlignment="Left"  VerticalAlignment="Center" />
+        <Label  Grid.Row="4" Grid.Column="1" Content="Vrijeme(Sati i minuti):" HorizontalAlignment="Left"  VerticalAlignment="Center" />
 
         
-            <Grid Grid.Row="4" Grid.Column="1">
+            <Grid Grid.Row="4" Grid.Column="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
 
                 </Grid.ColumnDefinitions>
-                <TextBox  Grid.Column="0"  Name="Sat" HorizontalAlignment="Stretch"  Text="" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                <TextBox ToolTip="Uneiste sate za termin" Grid.Column="0"  Name="Sat" HorizontalAlignment="Stretch"  Text="" TextWrapping="Wrap" VerticalAlignment="Center"/>
                 <Label   Grid.Column="1" VerticalAlignment="Center" HorizontalContentAlignment="Center">:</Label>
-                <TextBox  Grid.Column="2"  Name="Minut" HorizontalAlignment="Stretch"  Text="" TextWrapping="Wrap" VerticalAlignment="Center" />
+                <TextBox  ToolTip="Uneiste minute za termin" Grid.Column="2"  Name="Minut" HorizontalAlignment="Stretch"  Text="" TextWrapping="Wrap" VerticalAlignment="Center" />
 
             </Grid>
             
@@ -239,9 +240,9 @@
         </ComboBox>
         <Label Visibility="Hidden" Name="Izbor" Grid.Row="5" Grid.Column="0" Content="Izaberi jedan od ponudjenih termina:" HorizontalAlignment="Left" VerticalAlignment="Center"/>
 
-        <StackPanel  Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2"  HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
-            <Button Content="Zakazi" Width="100" Margin="0,5,20,5" Click="ZakazivanjePregleda" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnStandard}"/>
-            <Button Content="Odustani" Width="100" Click="ZakazivanjePregleda" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnStandard}"/>
+        <StackPanel  Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="4"  HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
+            <Button ToolTip="Zakažite pregled u uneseno terminu" Content="Zakaži" Width="100" Margin="0,0,20,0" Click="ZakazivanjePregleda" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnStandard}"/>
+            <Button Content="Odustani" Width="100" Click="Odustani" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnNazad}"/>
 
         </StackPanel>
     </Grid>

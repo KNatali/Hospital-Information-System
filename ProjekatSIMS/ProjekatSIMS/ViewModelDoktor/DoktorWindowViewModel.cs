@@ -5,6 +5,7 @@ using ProjekatSIMS.ViewDoktor;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows;
 using System.Windows.Navigation;
 
 namespace ProjekatSIMS.ViewModelDoktor
@@ -13,7 +14,7 @@ namespace ProjekatSIMS.ViewModelDoktor
     {
 
         public RelayCommand<string> NavCommand { get; private set; }
-    
+        private RelayCommand<Window> odjavljivanje;
 
         private BindableBase currentViewModel;
         private NavigationService navService;
@@ -27,7 +28,26 @@ namespace ProjekatSIMS.ViewModelDoktor
             {
                 navService = value;
             }
+
+        public RelayCommand<Window> Odjavljivanje
+        {
+            get { return odjavljivanje; }
+            set
+            {
+                odjavljivanje = value;
+            }
         }
+
+        public void Executed_Odjavljivanje(Window window)
+        {
+
+            var myWindow = Window.GetWindow(window);
+            myWindow.Close();
+
+
+        }
+
+
         public void Prikaz()
         {
             PocetnaStranicaDoktorViewModel vm = new PocetnaStranicaDoktorViewModel(this.NavService);
@@ -43,6 +63,7 @@ namespace ProjekatSIMS.ViewModelDoktor
 
             // CurrentViewModel = pocetnaViewModel;
             this.navService = navService;
+            this.Odjavljivanje = new RelayCommand<Window>(Executed_Odjavljivanje);
             Prikaz();
 
         }
@@ -76,20 +97,24 @@ namespace ProjekatSIMS.ViewModelDoktor
                     PretragaPacijentaDoktorView pretraga = new PretragaPacijentaDoktorView(pp);
                     this.NavService.Navigate(pretraga);
                     break;
-                /* case "zakazivanjePregleda":
-                     this.NavService.Navigate(
-                new Uri("Views/PrikazPregledaDoktorView.xaml", UriKind.Relative));
+                case "zakazivanjePregleda":
+                    ZakaziPregledDoktor pregled = new ZakaziPregledDoktor();
+                    this.NavService.Navigate(pregled);
                      break;
                  case "zakazivanjeOperacije":
-                     this.NavService.Navigate(
-                new Uri("Views/PrikazPregledaDoktorView.xaml", UriKind.Relative));
-                     break;*/
+                    ZakaziOperacijuDoktor operacija = new ZakaziOperacijuDoktor();
+                    this.NavService.Navigate(operacija);
+                    break;
                 case "mojProfil":
-                    Doktor doktor = new Doktor();
-                    ProfilDoktorViewModel pr = new ProfilDoktorViewModel(this.NavService,doktor);
+                    ProfilDoktorViewModel pr = new ProfilDoktorViewModel(this.NavService);
                     ProfilDoktorView d = new ProfilDoktorView(pr);
                     this.NavService.Navigate(d);
                     break;
+                case "pomoc":
+                    PomocDoktor p = new PomocDoktor();
+                    this.NavService.Navigate(p);
+                    break;
+                
 
             }
         }

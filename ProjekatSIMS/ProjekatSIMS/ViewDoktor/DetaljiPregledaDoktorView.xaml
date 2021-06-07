@@ -37,15 +37,15 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Column="1" Grid.Row="0"   VerticalAlignment="Center" Margin="20">
-            <Button   Style="{StaticResource btnIstakni}" Content="Započni pregled" Command="{Binding Path=ZapocniPregled}" CommandParameter="{Binding ElementName=DetaljiWindow}"/>
+            <Button  ToolTip="Kliknite za izvršaavanje pregleda" Style="{StaticResource btnIstakni}" Content="Započni pregled" Command="{Binding Path=ZapocniPregled}" CommandParameter="{Binding ElementName=DetaljiWindow}"/>
             <Button    Style="{StaticResource btnStandard}" Content="Otkaži pregled"  Command="{Binding Path=OtkaziPregled}" CommandParameter="{Binding ElementName=DetaljiWindow}"/>
             <Button    Style="{StaticResource btnStandard}" Content="Pomjeri pregled"  Command="{Binding Path=PomjeriPregled}" CommandParameter="{Binding ElementName=DetaljiWindow}"/>
 
         </StackPanel>
 
         <StackPanel Grid.Column="0" Grid.Row="1"  Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20" Orientation="Horizontal">
-            <Button   Style="{StaticResource btnStandard}"  Command="{Binding Path=ZdravstveniKarton}" CommandParameter="{Binding ElementName=DetaljiWindow}" Content="Zdravstveni karton" MinWidth="150"/>
-            <Button    Style="{StaticResource btnStandard}" Content="Nazad" Command="{Binding ZatvoriProzor, Mode=OneWay}" 
+            <Button  ToolTip="Klikite za pregled kartona pacijenta" Style="{StaticResource btnStandard}"  Command="{Binding Path=ZdravstveniKarton}" CommandParameter="{Binding ElementName=DetaljiWindow}" Content="Zdravstveni karton" MinWidth="150"/>
+            <Button    Style="{StaticResource btnNazad}" Content="Nazad" Command="{Binding ZatvoriProzor, Mode=OneWay}" 
 CommandParameter="{Binding ElementName=DetaljiWindow}"  MinWidth="150" />
 
 

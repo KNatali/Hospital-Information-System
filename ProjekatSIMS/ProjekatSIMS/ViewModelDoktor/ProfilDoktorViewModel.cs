@@ -1,4 +1,7 @@
 ﻿using Model;
+using ProjekatSIMS.Commands;
+using ProjekatSIMS.Model;
+using Repository;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,21 +11,28 @@ namespace ProjekatSIMS.ViewModelDoktor
 {
     public class ProfilDoktorViewModel:BindableBase
     {
+
+        private DoktorRepository doktorRepository = new DoktorRepository();
         private NavigationService navService;
         private Doktor doktor;
-        public Doktor Doktor
+        private RelayCommand zahtjevZaOdmor;
+       
+
+        public RelayCommand ZahtjevZaOdmor
         {
-            get { return doktor; }
+            get { return zahtjevZaOdmor; }
             set
             {
-                if (doktor != value)
-                {
-                    doktor = value;
-                    OnPropertyChanged("Doktor");
-                }
+                zahtjevZaOdmor = value;
             }
         }
-        /* private String jmbg;
+
+        public void Executed_ZahtjevZaOdmor()
+        {
+            ZahtjevZaGodisnjiOdmor zahtjev = new ZahtjevZaGodisnjiOdmor();
+            this.navService.Navigate(zahtjev);
+        }
+        private String jmbg;
          private String ime;
          private String prezime;
          private DateTime datumRodjenja;
@@ -117,7 +127,20 @@ namespace ProjekatSIMS.ViewModelDoktor
                  }
              }
          }
-         public int BrojSlobodnihDana
+
+        public DateTime DatumRodjenja
+        {
+            get { return datumRodjenja; }
+            set
+            {
+                if (datumRodjenja != value)
+                {
+                    datumRodjenja = value;
+                    OnPropertyChanged("DatumRodjenja");
+                }
+            }
+        }
+        public int BrojSlobodnihDana
          {
              get { return brojSlobodnihDana; }
              set
@@ -129,15 +152,30 @@ namespace ProjekatSIMS.ViewModelDoktor
                  }
              }
          }
-        */
+        
+
+        public void Prikazi()
+        {
+            Doktor dr = doktorRepository.DobaviByRegistracija(UlogovaniKorisnik.KorisnickoIme, UlogovaniKorisnik.Lozinka);
+
+            Jmbg = dr.Jmbg;
+            Ime = dr.Ime;
+            Prezime = dr.Prezime;
+            Adresa = dr.Adresa;
+            BrojTelefona = dr.BrojTelefona;
+            DatumRodjenja = dr.DatumRodjenja;
+            BrojSlobodnihDana = dr.BrojSlobodnihDana;
+            Email = dr.Email;
+        }
 
 
 
 
-        public ProfilDoktorViewModel(NavigationService service,Doktor doktor)
+        public ProfilDoktorViewModel(NavigationService service)
         {
             this.navService = service;
-            this.Doktor = doktor;
+            Prikazi();
+            this.ZahtjevZaOdmor = new RelayCommand(Executed_ZahtjevZaOdmor);
             
 
         }

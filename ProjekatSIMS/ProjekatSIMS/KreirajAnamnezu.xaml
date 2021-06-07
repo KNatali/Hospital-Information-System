@@ -109,14 +109,14 @@
 
         <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Stretch">
             <Label Content="Datum:" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
-            <DatePicker Name="Datum"  VerticalAlignment="Center" Margin="30,0,0,0" Width="157"/>
+            <DatePicker ToolTip="Klikite na kalendar za odabir datuma"  Name="Datum"  VerticalAlignment="Center" Margin="30,0,0,0" Width="157"/>
 
 
         </StackPanel>
-        <Label Content="Zapazanja nakon pregleda:"  Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left"  VerticalAlignment="Bottom"/>
+        <Label Content="Zapažanja nakon pregleda:"  Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left"  VerticalAlignment="Bottom"/>
         <StackPanel  Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2"  HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
-            <Button Content="Sacuvaj" Click="KreiranjeAnamneze"  Width="100" Margin="0,0,20,0" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnStandard}"/>
-            <Button Content="Odustani" Click="Odustani" Width="100"  HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnStandard}"/>
+            <Button Content="Sačuvaj" Click="KreiranjeAnamneze"  Width="100" Margin="0,0,20,0" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnStandard}"/>
+            <Button Content="Odustani" Click="Odustani" Width="100"  HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnNazad}"/>
 
         </StackPanel>
         <TextBox Name="Opis" Grid.Row="3" Grid.ColumnSpan="3"  HorizontalAlignment="Stretch" MinHeight="200" Text="" TextWrapping="Wrap" VerticalAlignment="Top" />

@@ -46,13 +46,18 @@
 
 
         </Grid.ColumnDefinitions>
+        <Image Grid.Row="1">
+            <Image.Source>
+                <BitmapImage UriSource="../../ViewDoktor/Slike/pocetna.png"/>
+            </Image.Source>
+        </Image>
 
         <StackPanel Grid.Row="0" Grid.Column="1" Margin="30,30,30,0">
 
 
 
             <TextBox TextWrapping="Wrap" >-Na slici ispod je prikazana početna stranica.Sva obavještenja
-            koja se tiču ustanove i upućena su Vama. biće prikazana u dijelu "Obavještenja"(Strelica).</TextBox>
+            koja se tiču ustanove i upućena su Vama. biće prikazana u dijelu "Obavještenja".</TextBox>
             <TextBox TextWrapping="Wrap" >-Nazivi opcija sa strane se poklapaju sa njihovim funkcijama.Ukoliko želite 
                 više pomoći o tome kako rade trebate uklučiti opciju "Pomoć" koja je bila prikazana u prethodnom koraku
             </TextBox>

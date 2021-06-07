@@ -14,6 +14,8 @@ namespace ProjekatSIMS.ViewModelDoktor
         private NavigationService navService;
 
         private RelayCommand prikazLijekova;
+        private RelayCommand modifikacijaInventara;
+        private RelayCommand izvjestajLijekova;
 
         public RelayCommand PrikazLijekova
         {
@@ -21,6 +23,24 @@ namespace ProjekatSIMS.ViewModelDoktor
             set
             {
                 prikazLijekova = value;
+            }
+        }
+
+        public RelayCommand ModifikacijaInventara
+        {
+            get { return modifikacijaInventara; }
+            set
+            {
+                modifikacijaInventara = value;
+            }
+        }
+
+        public RelayCommand IzvjestajLijekova
+        {
+            get { return izvjestajLijekova; }
+            set
+            {
+                izvjestajLijekova = value;
             }
         }
 
@@ -36,11 +56,19 @@ namespace ProjekatSIMS.ViewModelDoktor
 
         public void Executed_PrikazLijekova()
         {
-
-            EvidencijaLijekovaViewModel e = new EvidencijaLijekovaViewModel(this.NavService,TipLijekaPremaPrikazu.Neverifikovan);
+            EvidencijaLijekovaNovoViewModel e = new EvidencijaLijekovaNovoViewModel(this.NavService, TipLijekaPremaPrikazu.Neverifikovan);
+            EvidencijaLIjekovaNovo evi = new EvidencijaLIjekovaNovo(e);
+            this.NavService.Navigate(evi);
+           /* EvidencijaLijekovaViewModel e = new EvidencijaLijekovaViewModel(this.NavService,TipLijekaPremaPrikazu.Neverifikovan);
             EvidencijaLijekovaView lijekovi = new EvidencijaLijekovaView(e);
-            this.NavService.Navigate(lijekovi);
+            this.NavService.Navigate(lijekovi);*/
 
+        }
+
+        public void Executed_ModifikacijaInventara()
+        {
+            ModifikacijaInventaraDoktor modifikacija = new ModifikacijaInventaraDoktor();
+            this.navService.Navigate(modifikacija);
         }
         public void Proba()
         {
@@ -52,13 +80,21 @@ namespace ProjekatSIMS.ViewModelDoktor
             return true;
         }
 
+        public void Executed_IzvjestajLijekova()
+        {
+            PopunjavanjeIzvjestajaDoktorViewModel e = new PopunjavanjeIzvjestajaDoktorViewModel(this.NavService);
+            PopunjavanjeIzvjestajaDoktorView izvjestaj = new PopunjavanjeIzvjestajaDoktorView(e);
+            this.NavService.Navigate(izvjestaj);
+        }
+
 
         public PocetnaStranicaDoktorViewModel(NavigationService service)
         {
             this.navService = service;
 
             this.PrikazLijekova = new RelayCommand(Executed_PrikazLijekova, CanExecute_PrikazLijekova);
-
+            this.ModifikacijaInventara = new RelayCommand(Executed_ModifikacijaInventara);
+            this.IzvjestajLijekova = new RelayCommand(Executed_IzvjestajLijekova);
         }
     }
 }

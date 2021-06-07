@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Windows;
 
 namespace ProjekatSIMS.Repository
 {
@@ -33,16 +34,26 @@ namespace ProjekatSIMS.Repository
                 SacuvajSve(nova);
                 return false;
             }
-            nova = logovanja;   
+            nova = logovanja;
+
+            int br = 0;
             foreach(RegistrovaniKorisnik r in logovanja)
             {
-                if (!(r.KorisnickoIme == korisnik.KorisnickoIme && r.Lozinka == korisnik.Lozinka))
+                
+                if (r.KorisnickoIme == korisnik.KorisnickoIme && r.Lozinka == korisnik.Lozinka)
                 {
-                    nova.Add(korisnik);
-                    SacuvajSve(nova);
-                    return false;
+                  
+                    br++;
+                    break;
+                   
                 }
                     
+            }
+            if (br == 0)
+            {
+                nova.Add(korisnik);
+                SacuvajSve(nova);
+                return false;
             }
            
             return true;

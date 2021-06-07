@@ -72,7 +72,7 @@
             <Label Grid.Row="0" Content="Jmbg:" HorizontalAlignment="Stretch" />
             <Label Grid.Row="1" Content="Ime:" HorizontalAlignment="Stretch"/>
             <Label Grid.Row="2" Content="Prezime:" HorizontalAlignment="Stretch"/>
-            <Label Grid.Row="3" Content="Datum rodjenja:" HorizontalAlignment="Stretch"/>
+            <Label Grid.Row="3" Content="Datum rođenja:" HorizontalAlignment="Stretch"/>
             <Label Grid.Row="4" Content="Adresa stanovanja:" HorizontalAlignment="Stretch"/>
             <Label Grid.Row="5" Content="Email:" HorizontalAlignment="Stretch"/>
             <Label Grid.Row="6" Content="Broj telefona:" HorizontalAlignment="Stretch"/>
@@ -90,7 +90,7 @@
 
 
         <Button Grid.Column="2" Grid.Row="2" Click="PrikazUputa"  Style="{StaticResource btnStandard}">
-            <TextBlock>Pregled uputa za <LineBreak/>bolnicko lijecenje</TextBlock>
+            <TextBlock>Pregled uputa za <LineBreak/>bolničko liječenje</TextBlock>
         </Button>
         <Button Content="Pregled izdatih recepata" Grid.Column="2" Grid.Row="1" Click="PrikazRecepata"  Style="{StaticResource btnStandard}"/>
 
@@ -100,7 +100,7 @@
         
         <Label Content="Zdravstveni karton" Grid.Row="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="17" FontWeight="SemiBold"/>
 
-        <Button Content="Nazad" Click="Nazad" Grid.Column="2" Grid.Row="6" Style="{StaticResource btnStandard}" Width="100" HorizontalAlignment="Right"/>
+        <Button Content="Nazad" Click="Nazad" Grid.Column="2" Grid.Row="6" Style="{StaticResource btnNazad}" Width="100" HorizontalAlignment="Right"/>
 
 
 

@@ -48,27 +48,34 @@ namespace ProjekatSIMS
 
         private void ZakazivanjePregleda(object sender, RoutedEventArgs e)
         {
-
-            pregled = new Pregled();
-            DateTime datum = (DateTime)Date.SelectedDate;
-            double sat;
-            double minut;
-            if (Termin.Visibility == Visibility.Visible)
+            try
             {
-                sat = Convert.ToDouble(Termin.Text.Split(":")[0]);
-                minut = Convert.ToDouble(Termin.Text.Split(":")[1]);
+                pregled = new Pregled();
+                DateTime datum = (DateTime)Date.SelectedDate;
+                double sat;
+                double minut;
+                if (Termin.Visibility == Visibility.Visible)
+                {
+                    sat = Convert.ToDouble(Termin.Text.Split(":")[0]);
+                    minut = Convert.ToDouble(Termin.Text.Split(":")[1]);
+                }
+                else
+                {
+                    sat = Convert.ToDouble(Sat.Text);
+                    minut = Convert.ToDouble(Minut.Text);
+                }
+                DateTime datum1 = datum.AddHours(sat).AddMinutes(minut);
+                DateTime datum2 = datum1.AddMinutes(20);
+                IntervalDatuma termin = new IntervalDatuma(datum1, datum2);
+                Doktor dr = doktorRepository.DobaviByRegistracija(UlogovaniKorisnik.KorisnickoIme, UlogovaniKorisnik.Lozinka);
+                KreiranjePregleda(datum1, termin, dr);
+                ZauzetiTermini(datum1, termin);
             }
-            else
+            catch(Exception ex)
             {
-                sat = Convert.ToDouble(Sat.Text);
-                minut = Convert.ToDouble(Minut.Text);
+                MessageBox.Show("Popunite sve podatke");
             }
-            DateTime datum1 = datum.AddHours(sat).AddMinutes(minut);
-            DateTime datum2 = datum1.AddMinutes(20);
-            IntervalDatuma termin = new IntervalDatuma(datum1, datum2);
-            Doktor dr = doktorRepository.DobaviByRegistracija(UlogovaniKorisnik.KorisnickoIme, UlogovaniKorisnik.Lozinka);
-            KreiranjePregleda( datum1, termin, dr);
-            ZauzetiTermini(datum1, termin);
+           
         }
 
         private void KreiranjePregleda( DateTime datum1, IntervalDatuma termin, Doktor dr)
@@ -103,6 +110,12 @@ namespace ProjekatSIMS
                 this.NavigationService.Navigate(kalendar);
 
             }
+        }
+        private void Odustani(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
+
+
         }
 
     }
