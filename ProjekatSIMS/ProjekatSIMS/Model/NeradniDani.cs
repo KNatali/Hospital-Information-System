@@ -13,7 +13,8 @@ namespace Model
         public VrsteNeradnihDana Vrsta { get; set; }
         public NeradniDani()
         {
-
+            NeradnoOd = NeradnoOd.Date;
+            NeradnoDo = NeradnoDo.Date;
         }
         public NeradniDani(DateTime neradnoOd, DateTime neradnoDo)
         {

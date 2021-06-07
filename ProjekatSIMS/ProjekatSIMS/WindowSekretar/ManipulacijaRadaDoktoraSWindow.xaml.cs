@@ -20,6 +20,8 @@ namespace ProjekatSIMS
     {
         private NeradniDaniController neradniDaniController;
         private PregledController pregledController;
+        private DateTime datumOd;
+        private DateTime datumDo;
         public Doktor doktor { get; set; }
         public List<NeradniDani> NeradniDani { get; set; }
         public ManipulacijaRadaDoktoraSWindow(Doktor d)
@@ -59,8 +61,8 @@ namespace ProjekatSIMS
         }
         private void PopunjavanjePoljaZaGodisnjiOdmor(NeradniDani novoOdobrenje)
         {
-            DateTime datumOd = (DateTime)Od.SelectedDate;
-            DateTime datumDo = (DateTime)Do.SelectedDate;
+            datumOd = (DateTime)Od.SelectedDate;
+            datumDo = (DateTime)Do.SelectedDate;
             novoOdobrenje.NeradnoOd = datumOd.Date;
             novoOdobrenje.NeradnoDo = datumDo.Date;
             novoOdobrenje.Vrsta = (VrsteNeradnihDana)Obrazlozenje.SelectedIndex;
