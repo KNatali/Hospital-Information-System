@@ -14,7 +14,7 @@ namespace ProjekatSIMS.ViewModelDoktor
     {
         private NavigationService navService;
 
-        private OtkazivanjePregledaDoktorController otkazivanjePregledaDoktorController = new OtkazivanjePregledaDoktorController();
+        private ManipulacijaPregledomController manipulacijaPregledomController = new ManipulacijaPregledomController();
         private Pregled pregled;
         private String vrijeme;
         private String pacijent;
@@ -144,7 +144,7 @@ namespace ProjekatSIMS.ViewModelDoktor
         public void Executed_OtkaziPregled(Window window)
         {
 
-            otkazivanjePregledaDoktorController.OtkazivanjePregleda(pregled);
+            manipulacijaPregledomController.OtkazivanjePregleda(pregled);
             MessageBox.Show("Uspjesno ste otkazali pregled");
             if (window != null)
             {

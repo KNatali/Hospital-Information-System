@@ -2,6 +2,7 @@
 using Repository;
 using System;
 using System.Collections.Generic;
+using System.Windows;
 
 namespace Service
 {
@@ -25,11 +26,17 @@ namespace Service
 
         public Boolean PreklapanjeTermina(Pregled pregled, Pregled zakazanPregled, IntervalDatuma termin)
         {
+
             if ((pregled.doktor.Jmbg == zakazanPregled.doktor.Jmbg || zakazanPregled.prostorija == pregled.prostorija) && zakazanPregled.Pocetak.Date.CompareTo(termin.PocetnoVrijeme.Date) == 0)
             {
-                IntervalDatuma termin2 = new IntervalDatuma(pregled.Pocetak, pregled.Pocetak.AddMinutes(pregled.Trajanje));
+               
+                IntervalDatuma termin2 = new IntervalDatuma(zakazanPregled.Pocetak, zakazanPregled.Pocetak.AddMinutes(zakazanPregled.Trajanje));
                 if (termin.DaLiSeTerminiPoklapaju(termin2))
+                {
+                   
                     return true;
+                }
+                   
             }
             return false;
         }

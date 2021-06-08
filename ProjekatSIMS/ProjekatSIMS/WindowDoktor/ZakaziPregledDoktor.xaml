@@ -12,7 +12,7 @@
             <Setter Property="FontFamily" Value="Roboto"/>
             <Setter Property="FontSize" Value="16"/>
         </Style>
-     
+
         <Style  TargetType="TextBox">
             <Setter Property="FontFamily" Value="Roboto"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -24,10 +24,10 @@
             <Style.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10" />
-                    
+
                 </Style>
-             </Style.Resources>
-</Style>
+            </Style.Resources>
+        </Style>
 
         <Style TargetType="{x:Type DatePickerTextBox}">
             <Setter Property="Background" Value="Transparent"></Setter>
@@ -52,10 +52,10 @@
             <Setter Property="Background" Value="white"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Style.Resources>
-               
+
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10" />
-                    
+
                 </Style>
             </Style.Resources>
         </Style>
@@ -76,9 +76,9 @@
             </Setter>
         </Style>
 
-       
 
-       
+
+
 
         <SolidColorBrush x:Key="ComboBoxNormalBorderBrush" Color="#e3e9ef" />
         <SolidColorBrush x:Key="ComboBoxNormalBackgroundBrush" Color="#fff" />
@@ -108,7 +108,7 @@
             <ControlTemplate.Triggers>
                 <Trigger Property="UIElement.IsMouseOver" Value="True">
                     <Setter Property="Panel.Background" TargetName="ButtonBorder" Value="WhiteSmoke"/>
-                   
+
                 </Trigger>
                 <Trigger Property="ToggleButton.IsChecked" Value="True">
                     <Setter Property="Panel.Background" TargetName="ButtonBorder" Value="WhiteSmoke"/>
@@ -124,7 +124,7 @@
             </ControlTemplate.Triggers>
         </ControlTemplate>
 
-        
+
 
 
 
@@ -210,35 +210,35 @@
         </ComboBox>
         <Label  Grid.Row="4" Grid.Column="1" Content="Vrijeme(Sati i minuti):" HorizontalAlignment="Left"  VerticalAlignment="Center" />
 
-        
-            <Grid Grid.Row="4" Grid.Column="2">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
 
-                </Grid.ColumnDefinitions>
-                <TextBox ToolTip="Uneiste sate za termin" Grid.Column="0"  Name="Sat" HorizontalAlignment="Stretch"  Text="" TextWrapping="Wrap" VerticalAlignment="Center"/>
-                <Label   Grid.Column="1" VerticalAlignment="Center" HorizontalContentAlignment="Center">:</Label>
-                <TextBox  ToolTip="Uneiste minute za termin" Grid.Column="2"  Name="Minut" HorizontalAlignment="Stretch"  Text="" TextWrapping="Wrap" VerticalAlignment="Center" />
+        <Grid Grid.Row="4" Grid.Column="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
 
-            </Grid>
-            
-       
+            </Grid.ColumnDefinitions>
+            <TextBox ToolTip="Uneiste sate za termin" Grid.Column="0"  Name="Sat" HorizontalAlignment="Stretch"  Text="" TextWrapping="Wrap" VerticalAlignment="Center"/>
+            <Label   Grid.Column="1" VerticalAlignment="Center" HorizontalContentAlignment="Center">:</Label>
+            <TextBox  ToolTip="Uneiste minute za termin" Grid.Column="2"  Name="Minut" HorizontalAlignment="Stretch"  Text="" TextWrapping="Wrap" VerticalAlignment="Center" />
+
+        </Grid>
 
 
 
 
-        <ComboBox  Grid.Row="5" Grid.Column="1" Name="Termin" 
+
+
+        <ComboBox  Grid.Row="5" Grid.Column="2" Name="Termin"  Visibility="Hidden" 
                   Style="{StaticResource ComboBoxFlatStyle}"
                 HorizontalAlignment="Stretch"  VerticalAlignment="Center" 
-                  Visibility="Hidden"
+                 
                   
                    >
 
 
         </ComboBox>
-        <Label Visibility="Hidden" Name="Izbor" Grid.Row="5" Grid.Column="0" Content="Izaberi jedan od ponudjenih termina:" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Label Visibility="Hidden"  Name="Izbor" Grid.Row="5" Content="Izaberi jedan od ponudjenih termina:" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.ColumnSpan="2" Height="36" Margin="71,0,0,0" Width="299"/>
 
         <StackPanel  Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="4"  HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
             <Button ToolTip="Zakažite pregled u uneseno terminu" Content="Zakaži" Width="100" Margin="0,0,20,0" Click="ZakazivanjePregleda" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource btnStandard}"/>

@@ -41,10 +41,10 @@
                   VerticalAlignment="Top" BorderBrush="#1963bf" Foreground="#1963bf"
                   Width="201" FontSize="25">
         </ComboBox>
-        <ComboBox  Name="Termin" HorizontalAlignment="Left"   
-                  Margin="545,301,0,0" Visibility="Hidden"
+        <ComboBox  Name="Termin" HorizontalAlignment="Left" Visibility="Hidden"  
+                  Margin="402,435,0,0" 
                   VerticalAlignment="Top" FontSize="20"
-                  Width="155">
+                  Width="200" Height="40">
         </ComboBox>
         <Label Margin="239,21,401,342">
             <StackPanel Orientation="Horizontal">

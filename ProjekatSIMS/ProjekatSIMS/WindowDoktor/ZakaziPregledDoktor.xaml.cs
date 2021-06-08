@@ -2,6 +2,7 @@
 using Model;
 using Newtonsoft.Json;
 using ProjekatSIMS.Model;
+using ProjekatSIMS.Service;
 using ProjekatSIMS.ViewDoktor;
 using ProjekatSIMS.ViewModelDoktor;
 using Repository;
@@ -38,10 +39,8 @@ namespace ProjekatSIMS
             InitializeComponent();
             this.DataContext = this;
 
-            List<Prostorija> ordinacije = new List<Prostorija>();
-            ordinacije = prostorijaRepository.DobaviPoVrsti(VrstaProstorije.Ordinacija);
-            List<Pacijent> pacijenti = new List<Pacijent>();
-            pacijenti = pacijentRepository.DobaviSve();
+           List<Prostorija>  ordinacije = prostorijaRepository.DobaviPoVrsti(VrstaProstorije.Ordinacija);
+           List<Pacijent>  pacijenti = pacijentRepository.DobaviSve();
             Ordinacija.ItemsSource = ordinacije;
             Pacijent.ItemsSource = pacijenti;
         }
@@ -50,8 +49,6 @@ namespace ProjekatSIMS
         {
             try
             {
-                pregled = new Pregled();
-                DateTime datum = (DateTime)Date.SelectedDate;
                 double sat;
                 double minut;
                 if (Termin.Visibility == Visibility.Visible)
@@ -64,12 +61,27 @@ namespace ProjekatSIMS
                     sat = Convert.ToDouble(Sat.Text);
                     minut = Convert.ToDouble(Minut.Text);
                 }
-                DateTime datum1 = datum.AddHours(sat).AddMinutes(minut);
+                DateTime datum1 = ((DateTime)Date.SelectedDate).AddHours(sat).AddMinutes(minut);
                 DateTime datum2 = datum1.AddMinutes(20);
                 IntervalDatuma termin = new IntervalDatuma(datum1, datum2);
-                Doktor dr = doktorRepository.DobaviByRegistracija(UlogovaniKorisnik.KorisnickoIme, UlogovaniKorisnik.Lozinka);
-                KreiranjePregleda(datum1, termin, dr);
-                ZauzetiTermini(datum1, termin);
+                ZakazivanjeStandardnogPregleda zakazivanjeStandardnogPregleda = new ZakazivanjeStandardnogPregleda();
+                Doktor doktor = new Doktor();
+                pregled=zakazivanjeStandardnogPregleda.KreiranjePregleda(termin,(Prostorija)Ordinacija.SelectedItem, (Pacijent)Pacijent.SelectedItem,doktor);
+                List<String> termini= zakazivanjeStandardnogPregleda.ZauzetiTermini(termin,pregled);
+                if (termini != null)
+                {
+                    Termin.Visibility = Visibility.Visible;
+                    Izbor.Visibility = Visibility.Visible;
+                    Termin.ItemsSource = termini;
+                }
+                else
+                {
+                    PrikazPregledaDoktorViewModel vm1 = new PrikazPregledaDoktorViewModel(this.NavigationService);
+                    PrikazPregledaDoktorView kalendar = new PrikazPregledaDoktorView(vm1);
+                    this.NavigationService.Navigate(kalendar);
+                }
+              
+
             }
             catch(Exception ex)
             {
@@ -78,39 +90,9 @@ namespace ProjekatSIMS
            
         }
 
-        private void KreiranjePregleda( DateTime datum1, IntervalDatuma termin, Doktor dr)
-        {
-            pregled.Pocetak = datum1;
-            pregled.Trajanje = 20;
-            pregled.Tip = TipPregleda.Operacija;
-            pregled.StatusPregleda = StatusPregleda.Zakazan;
-            pregled.prostorija = (Prostorija)Ordinacija.SelectedItem;
-            pregled.doktor = dr;
-            pregled.pacijent = (Pacijent)Pacijent.SelectedItem;
+     
 
-        }
-
-        public void ZauzetiTermini(DateTime datum1, IntervalDatuma termin)
-        {
-            if (zauzetostTerminaPregledaController.ProvjeraZauzetostiTermina(pregled, termin))
-            {
-                List<String> termini = new List<String>();
-                termini = prikazSlobodnihTerminaController.PrikazTermina(pregled, termin);
-                MessageBox.Show("Dati termin je zauzet");
-                Termin.Visibility = Visibility.Visible;
-                Izbor.Visibility = Visibility.Visible;
-                Termin.ItemsSource = termini;
-            }
-            else
-            {
-                zakaziPregled.ZakaziPregled(pregled);
-                MessageBox.Show("Pregled je uspjesno zakazan");
-                PrikazPregledaDoktorViewModel vm1 = new PrikazPregledaDoktorViewModel(this.NavigationService);
-                PrikazPregledaDoktorView kalendar = new PrikazPregledaDoktorView(vm1);
-                this.NavigationService.Navigate(kalendar);
-
-            }
-        }
+       
         private void Odustani(object sender, RoutedEventArgs e)
         {
             this.NavigationService.GoBack();

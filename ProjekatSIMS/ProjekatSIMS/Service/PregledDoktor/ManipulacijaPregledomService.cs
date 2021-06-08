@@ -9,7 +9,7 @@ namespace Service
     {
         private PregledRepository pregledRepository = new PregledRepository();
 
-        public void ZakaziPregled(Pregled pregled)
+        public void CuvanjePregleda(Pregled pregled)
         {
             List<Pregled> sviPregledi = pregledRepository.DobaviSvePregledeDoktor();
             if (sviPregledi == null)
@@ -40,6 +40,20 @@ namespace Service
 
 
 
+        }
+
+        public void OtkazivanjePregleda(Pregled pregled)
+        {
+            List<Pregled> pregledi = pregledRepository.DobaviSvePregledeDoktor();
+            foreach (Pregled p in pregledi)
+            {
+                if (p.Id == pregled.Id)
+                {
+                    pregledi.Remove(p);
+                    break;
+                }
+            }
+            pregledRepository.SacuvajPregledeDoktor(pregledi);
         }
     }
 }
