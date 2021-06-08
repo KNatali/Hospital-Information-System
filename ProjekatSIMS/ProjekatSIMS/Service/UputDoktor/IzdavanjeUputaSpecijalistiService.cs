@@ -66,7 +66,8 @@ namespace Service
 
             foreach (Pregled p in zakazaniPregledi)
             {
-                if (DaLiSeTerminPoklapa(p, termin))
+                IntervalDatuma termin2 = new IntervalDatuma(p.Pocetak, p.Pocetak.AddMinutes(p.Trajanje));
+                if (termin.DaLiSeTerminiPoklapaju(termin2))
                     AzuriranjeSlobodnihOrdinacija(ordinacije, slobodneOrdinacije, p);
 
             }
@@ -83,15 +84,7 @@ namespace Service
             }
         }
 
-        public Boolean DaLiSeTerminPoklapa(Pregled p, IntervalDatuma termin)
-        {
-            if (DateTime.Compare(termin.PocetnoVrijeme, p.Pocetak) >= 0 && DateTime.Compare(termin.PocetnoVrijeme, p.Pocetak.AddMinutes(p.Trajanje)) < 0 ||
-                   DateTime.Compare(termin.KrajnjeVrijeme, p.Pocetak) > 0 && DateTime.Compare(termin.KrajnjeVrijeme, p.Pocetak.AddMinutes(p.Trajanje)) <= 0)
-                return true;
-            return false;
-
-
-        }
+       
 
         public Pregled KreiranjePregleda(Pacijent pacijent, Doktor doktor, DateTime izabraniTermin, Prostorija slobodnaOrdinacija)
         {

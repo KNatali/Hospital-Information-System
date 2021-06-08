@@ -11,15 +11,12 @@ namespace Service
         public Boolean ProvjeraZauzetostiTermina(Pregled pregled, IntervalDatuma termin)
         {
             List<Pregled> pregledi = new List<Pregled>();
-            pregledi = pregledRepository.DobaviSvePregledeDoktor();
+            pregledi = pregledRepository.DobaviZakazanePreglede();
             foreach (Pregled p in pregledi)
             {
+                if (PreklapanjeTermina(pregled, p, termin))
+                    return true;
 
-                if (p.StatusPregleda == StatusPregleda.Zakazan)
-                {
-                    if (PreklapanjeTermina(pregled, p, termin))
-                        return true;
-                }
             }
 
             return false;
@@ -30,19 +27,14 @@ namespace Service
         {
             if ((pregled.doktor.Jmbg == zakazanPregled.doktor.Jmbg || zakazanPregled.prostorija == pregled.prostorija) && zakazanPregled.Pocetak.Date.CompareTo(termin.PocetnoVrijeme.Date) == 0)
             {
-                if (IsIspunjenoPreklapanje(zakazanPregled, termin))
+                IntervalDatuma termin2 = new IntervalDatuma(pregled.Pocetak, pregled.Pocetak.AddMinutes(pregled.Trajanje));
+                if (termin.DaLiSeTerminiPoklapaju(termin2))
                     return true;
             }
             return false;
         }
 
-        private static bool IsIspunjenoPreklapanje(Pregled zakazanPregled, IntervalDatuma termin)
-        {
-            return (DateTime.Compare(termin.PocetnoVrijeme, zakazanPregled.Pocetak) >= 0 && DateTime.Compare(termin.PocetnoVrijeme, zakazanPregled.Pocetak.AddMinutes(zakazanPregled.Trajanje)) < 0 ||
-                    DateTime.Compare(termin.KrajnjeVrijeme, zakazanPregled.Pocetak) > 0 && DateTime.Compare(termin.KrajnjeVrijeme, zakazanPregled.Pocetak.AddMinutes(zakazanPregled.Trajanje)) <= 0 ||
-                    DateTime.Compare(termin.PocetnoVrijeme, zakazanPregled.Pocetak) <= 0 && DateTime.Compare(termin.KrajnjeVrijeme, zakazanPregled.Pocetak.AddMinutes(zakazanPregled.Trajanje)) >= 0 );
-        }
-
        
+
     }
 }

@@ -10,17 +10,16 @@ namespace Service
     {
 
          private UputBolnickoLijecenjeRepository uputRepository = new UputBolnickoLijecenjeRepository();
-        private ZdravstveniKartonRepository zdravstveniKartonRepository = new ZdravstveniKartonRepository();
+       
 
         public bool IsProduzavanjeMoguce(UputBolnickoLijecenje uput, DateTime krajIntervala)
         {
             List<UputBolnickoLijecenje> sviUputi = uputRepository.DobaviSveUpute();
-
+            IntervalDatuma termin1 = new IntervalDatuma(uput.Interval.PocetnoVrijeme, krajIntervala);
             foreach (UputBolnickoLijecenje u in sviUputi)
             {
-                if ((DateTime.Compare(uput.Interval.PocetnoVrijeme, u.Interval.PocetnoVrijeme) >= 0 && DateTime.Compare(uput.Interval.PocetnoVrijeme, u.Interval.KrajnjeVrijeme) < 0 ||
-                     DateTime.Compare(krajIntervala, u.Interval.PocetnoVrijeme) > 0 && DateTime.Compare(krajIntervala, u.Interval.KrajnjeVrijeme) <= 0 ||
-                     DateTime.Compare(uput.Interval.PocetnoVrijeme, u.Interval.PocetnoVrijeme) <= 0 && DateTime.Compare(krajIntervala, u.Interval.KrajnjeVrijeme) >= 0) && u.KrevetId == uput.KrevetId)
+                IntervalDatuma termin2 = new IntervalDatuma(u.Interval.PocetnoVrijeme, u.Interval.KrajnjeVrijeme);
+                if (termin1.DaLiSeTerminiPoklapaju(termin2))
                 {
                     if (!(uput.Interval.PocetnoVrijeme == u.Interval.PocetnoVrijeme && uput.Interval.KrajnjeVrijeme == u.Interval.KrajnjeVrijeme && uput.KrevetId == u.KrevetId))
                         return false;
@@ -36,19 +35,14 @@ namespace Service
             List<UputBolnickoLijecenje> sviUputi = uputRepository.DobaviSveUpute();
             sviUputi = AzuriranjeUputa(sviUputi, uput, krajIntervala);
             uputRepository.SacuvajUpute(sviUputi);
-
-           /* ZdravsteniKarton karton = zdravstveniKartonRepository.DobaviZdravstveniKartonZaPacijenta(pacijent);
-            karton.UputiZaBolnickoLijecenje = AzuriranjeUputa(karton.UputiZaBolnickoLijecenje, uput, krajIntervala);
-            zdravstveniKartonRepository.AzurirajKarton(karton);*/
-
-         }
+   }
 
         public List<UputBolnickoLijecenje> AzuriranjeUputa(List<UputBolnickoLijecenje> uputi, UputBolnickoLijecenje uput, DateTime krajIntervala)
         {
 
             foreach (UputBolnickoLijecenje u in uputi)
             {
-                if (u.Interval.PocetnoVrijeme == uput.Interval.PocetnoVrijeme && u.Interval.KrajnjeVrijeme == uput.Interval.KrajnjeVrijeme && u.KrevetId == uput.KrevetId)
+                if (u.Id==uput.Id)
                 {
                     u.Interval.KrajnjeVrijeme = krajIntervala;
                     break;

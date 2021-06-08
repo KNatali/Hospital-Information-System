@@ -26,9 +26,21 @@ namespace ProjekatSIMS
             Krevet.Text = uput.KrevetId.ToString();
 
         }
+
+        public bool Validacija()
+        {
+            if(DateTime.Compare((DateTime)KrajInterval.SelectedDate,DateTime.Now)<0 )
+            {
+                MessageBox.Show("Ne mozete izabrati datum u proslosti");
+                return false;
+            }
+
+            return true;
+        }
         private void ProduziUput(object sender, RoutedEventArgs e)
         {
-
+            if (!Validacija())
+                return;
             if (produzenjeUputaController.IsProduzenjeMoguce(uputStari, (DateTime)KrajInterval.SelectedDate))
             {
                 produzenjeUputaController.ProduzavanjeUputa(uputStari, (DateTime)KrajInterval.SelectedDate, pacijent);
