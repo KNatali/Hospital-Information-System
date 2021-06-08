@@ -36,8 +36,8 @@
         <DataGrid x:Name="dataGridNeradniDani" ItemsSource="{Binding NeradniDani}" IsReadOnly="True" FontSize="25"
             SelectionMode="Single" AutoGenerateColumns="False" Margin="60,142,60,260" BorderBrush="#1963bf" Foreground="#1963bf">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Od" Binding="{Binding interval.PocetnoVrijeme}" Width="130"/>
-                <DataGridTextColumn Header="Do" Binding="{Binding interval.KrajnjeVrijeme}" Width="130"/>
+                <DataGridTextColumn Header="Od" Binding="{Binding NeradnoOd}" Width="130"/>
+                <DataGridTextColumn Header="Do" Binding="{Binding NeradnoDo}" Width="130"/>
                 <DataGridTextColumn Header="Obrazloženje" Binding="{Binding Vrsta}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>

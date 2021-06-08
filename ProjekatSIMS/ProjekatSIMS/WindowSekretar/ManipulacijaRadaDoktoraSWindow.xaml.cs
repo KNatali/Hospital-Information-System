@@ -63,8 +63,8 @@ namespace ProjekatSIMS
         {
             datumOd = (DateTime)Od.SelectedDate;
             datumDo = (DateTime)Do.SelectedDate;
-            novoOdobrenje.interval.PocetnoVrijeme = datumOd.Date;
-            novoOdobrenje.interval.KrajnjeVrijeme = datumDo.Date;
+            novoOdobrenje.NeradnoOd = datumOd.Date;
+            novoOdobrenje.NeradnoDo = datumDo.Date;
             novoOdobrenje.Vrsta = (VrsteNeradnihDana)Obrazlozenje.SelectedIndex;
             novoOdobrenje.doktor = doktor.Jmbg;
         }
@@ -80,7 +80,7 @@ namespace ProjekatSIMS
         }
         private void ProveraDatumaZakazanogTermina(NeradniDani novoOdobrenje, Pregled p)
         {
-            if (DateTime.Compare(novoOdobrenje.interval.PocetnoVrijeme, p.Pocetak) <= 0 && DateTime.Compare(novoOdobrenje.interval.KrajnjeVrijeme, p.Pocetak) >= 0)
+            if (DateTime.Compare(novoOdobrenje.NeradnoOd, p.Pocetak) <= 0 && DateTime.Compare(novoOdobrenje.NeradnoDo, p.Pocetak) >= 0)
             {
                 ProveraDoktoraZakazanogTermina(novoOdobrenje, p);
             }
@@ -96,10 +96,10 @@ namespace ProjekatSIMS
         {
             //if (pregledController.OtkazivanjeSekretar(p))
             //{
-                if(pregledController.IzmenaPregledaSekretar(p, p.Pocetak.AddDays(1)))
-                {
-                    MessageBox.Show("Pomereni su pregledi koje je doktor imao u periodu odobrenog godišnjeg odmora.", "OBAVEŠTENJE");
-                }
+            if (pregledController.IzmenaPregledaSekretar(p, p.Pocetak.AddDays(1)))
+            {
+                MessageBox.Show("Pomereni su pregledi koje je doktor imao u periodu odobrenog godišnjeg odmora.", "OBAVEŠTENJE");
+            }
             //}
         }
     }

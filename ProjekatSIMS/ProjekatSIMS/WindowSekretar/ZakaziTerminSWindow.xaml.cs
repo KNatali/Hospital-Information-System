@@ -175,7 +175,7 @@ namespace ProjekatSIMS
 
         private void PoredjenjeDatumaPregledaSaGodisnjimOdmoromDoktora(DateTime datum, NeradniDani neradniDani)
         {
-            if (DateTime.Compare(datum, neradniDani.interval.PocetnoVrijeme) >= 0 && DateTime.Compare(datum, neradniDani.interval.KrajnjeVrijeme) <= 0)
+            if (DateTime.Compare(datum, neradniDani.NeradnoOd) >= 0 && DateTime.Compare(datum, neradniDani.NeradnoDo) <= 0)
                 PorukaOGodisnjemOdmoruDoktora();
         }
 
