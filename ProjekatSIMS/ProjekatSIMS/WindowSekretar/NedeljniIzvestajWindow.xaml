@@ -1,0 +1,51 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjekatSIMS.WindowSekretar"
+        xmlns:fa="http://schemas.fontawesome.io/icons/" x:Class="ProjekatSIMS.WindowSekretar.NedeljniIzvestajWindow"
+        mc:Ignorable="d"
+        Title="NedeljniIzvestajWindow" WindowStartupLocation="CenterScreen" Height="568" Width="924" Background="#d1e3ff">
+    <Grid>
+
+        <Label Margin="239,21,401,448">
+            <StackPanel Orientation="Horizontal">
+                <fa:ImageAwesome Icon="Globe" Width="60" Foreground="#1963bf"/>
+                <fa:ImageAwesome Icon="HSquare" Width="37" Foreground="#b31a0c"/>
+                <fa:ImageAwesome Icon="UserMd" Width="37" Foreground="#1963bf"/>
+            </StackPanel>
+        </Label>
+        <Label Margin="255,37,381,475">
+            <StackPanel Orientation="Horizontal">
+                <fa:ImageAwesome Icon="Heart" Width="15" Foreground="#b31a0c"/>
+            </StackPanel>
+        </Label>
+        <Label Content="ZDRAVO KORPORACIJA" FontSize="25" Margin="388,34,108,445" Foreground="#1963bf" FontWeight="Bold"/>
+        <Label Content="Izveštaj od" HorizontalAlignment="Left" FontSize="25"  Height="45" Margin="60,160,0,0" VerticalAlignment="Top" Width="145" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <Label Content="Izveštaj do" HorizontalAlignment="Left" FontSize="25"  Height="45" Margin="502,160,0,0" VerticalAlignment="Top" Width="144" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <Label Content="Izveštaj zakazanih pregleda i operacija" FontSize="22" HorizontalAlignment="Left" Height="50" Margin="289,86,0,0" VerticalAlignment="Top" Width="425" FontWeight="Bold" Foreground="#1963bf"/>
+        <DatePicker x:Name="Od" HorizontalAlignment="Left" FontSize="25" Margin="239,162,0,0" VerticalAlignment="Top" Width="192" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <DatePicker x:Name="Do" HorizontalAlignment="Left" FontSize="25" Margin="672,162,0,0" VerticalAlignment="Top" Width="192" BorderBrush="#1963bf" Foreground="#1963bf"/>
+        <ComboBox x:Name="Tip" HorizontalAlignment="Left"   
+            Margin="440,222,0,0"   
+            VerticalAlignment="Top" BorderBrush="#1963bf" Foreground="#1963bf"
+            Width="192" FontSize="25" SelectionChanged="Prikazi"/>
+        <Label Content="Tip pregleda" HorizontalAlignment="Left" FontSize="25"  Height="45" Margin="261,220,0,0" VerticalAlignment="Top" Width="170" Foreground="#1963bf" FontWeight="DemiBold"/>
+        <DataGrid x:Name="dataGridPregledi" ItemsSource="{Binding Pregledi}" IsReadOnly="True" BorderBrush="#1963bf" Foreground="#1963bf" Visibility="Hidden"
+            SelectionMode="Single" FontSize="20" AutoGenerateColumns="False" Margin="60,280,60,82">
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="40"/>
+                <DataGridTextColumn Header="Početak" Binding="{Binding Pocetak}" Width="*"/>
+                <DataGridTextColumn Header="Trajanje" Binding="{Binding Trajanje}" Width="90"/>
+                <DataGridTextColumn Header="Prostorija" Binding="{Binding prostorija.id}" Width="100"/>
+                <DataGridTextColumn Header="Doktor" Binding="{Binding doktor.Jmbg}" Width="*"/>
+                <DataGridTextColumn Header="Ime pacijenta" Binding="{Binding pacijent.Ime}" Width="*"/>
+                <DataGridTextColumn Header="Prezime pacijenta" Binding="{Binding pacijent.Prezime}" Width="*"/>
+
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Window>
