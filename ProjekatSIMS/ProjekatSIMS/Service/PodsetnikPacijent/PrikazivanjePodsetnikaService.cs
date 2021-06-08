@@ -10,9 +10,12 @@ namespace ProjekatSIMS.Service
         {
             int porediKrajSaSadasnjim = DateTime.Compare(krajObavestenja, DateTime.UtcNow);
             int porediPocetakSaSadasnjim = DateTime.Compare(pocetakObavestenja, DateTime.UtcNow);
-            if ((porediKrajSaSadasnjim >= 0) && (porediPocetakSaSadasnjim <= 0))
+            if ((porediKrajSaSadasnjim >= 0) && (porediPocetakSaSadasnjim <= 0) )
             {
-                return true;
+               
+                    return true;
+              
+                
             }
             return false;
         }

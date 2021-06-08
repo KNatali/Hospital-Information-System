@@ -14,7 +14,7 @@ namespace ProjekatSIMS.WindowPacijent
 {
     public partial class VidiPreglede : Page
     {
-        public PregledController pregledController = new PregledController();
+        public ZakazivanjePregledaController zakazivanjePregledaController = new ZakazivanjePregledaController();
         public List<Pregled> Pregledi
         {
             get;
@@ -37,7 +37,7 @@ namespace ProjekatSIMS.WindowPacijent
             trenutniPacijent = pacijent;
 
             Pregledi = new List<Pregled>();
-            Pregledi = pregledController.DobaviPregledeZaPacijenta(trenutniPacijent);
+            Pregledi = zakazivanjePregledaController.DobaviPregledeZaPacijenta(trenutniPacijent);
 
             Pacijenti = new List<Pacijent>();
             PacijentRepository file = new PacijentRepository(@"..\..\..\Fajlovi\Pacijent.txt");

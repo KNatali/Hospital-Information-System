@@ -83,52 +83,13 @@ namespace Controller
          return true;
       }
       
-      public Model.Pregled IzmenaPregledaPacijent(Model.Pregled pregled)
-      {
-         // TODO: implement
-         return null;
-      }
-      
-      public Boolean SlobodanTerminPacijent()
-      {
-         // TODO: implement
-         return true;
-      }
+    
+     
 
-       /* public Boolean ZakazivanjePregledaPacijent(String ime, String prezime, String imeDoktora, String prezimeDoktora, DateTime datum, String jmbg)
-        {
+     
+    
 
-            if (pregledService.ZakazivanjePregledaPacijent(ime, prezime, imeDoktora,prezimeDoktora,datum,jmbg))
-                return true;
-
-            return false;
-
-        } */
-        public Boolean ZakazivanjePregledaPacijent( String imeDoktora, String prezimeDoktora, DateTime datum, Pacijent pac)
-        {
-
-            if (zakazivanjePregledaService.ZakazivanjePregledaPacijent(imeDoktora, prezimeDoktora, datum, pac))
-                return true;
-
-            return false;
-
-        }
-        public Boolean DaLiJeTerminZauzet(DateTime datum)
-        {
-            if(zauzetiTermini.DaLiJeTerminZauzet(datum))
-            {
-                return true;
-            }
-            return false;
-        }
-
-        public List<Pregled> DobaviPregledeZaPacijenta(Pacijent pacijent)
-        {
-            return pregledRepository.DobaviPregledeZaPacijenta(pacijent);
-        }
-        public ObservableCollection<Pregled> DobaviPregledeZaPacijentaOC(Pacijent pacijent)
-        {
-            return pregledRepository.DobaviPregledeZaPacijentaOC(pacijent);
-        }
+       
+        
     }
 }
