@@ -12,6 +12,5 @@ namespace Model
       public Specijalizacija Specijalizacija { get; set; }
 
         public RegistrovaniKorisnik registrovaniKorisnik { get; set; }
-        public Uloga Uloga { get; set; }
    }
 }
