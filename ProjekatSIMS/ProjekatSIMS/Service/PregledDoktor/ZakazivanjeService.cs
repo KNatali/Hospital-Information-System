@@ -63,17 +63,7 @@ namespace ProjekatSIMS.Service
         }
 
        
-        public Boolean PreklapanjeTermina(Pregled pregled, Pregled zakazanPregled, IntervalDatuma termin)
-        {
-            if ((pregled.doktor.Jmbg == zakazanPregled.doktor.Jmbg || zakazanPregled.prostorija == pregled.prostorija) && zakazanPregled.Pocetak.Date.CompareTo(termin.PocetnoVrijeme.Date) == 0)
-            {
-                IntervalDatuma termin2 = new IntervalDatuma(pregled.Pocetak, pregled.Pocetak.AddMinutes(pregled.Trajanje));
-                if (termin.DaLiSeTerminiPoklapaju(termin2))
-                    return true;
-            }
-            return false;
-        }
-
+       
        
 
        
