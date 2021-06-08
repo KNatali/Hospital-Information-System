@@ -13,8 +13,7 @@ namespace ProjekatSIMS.Service.PregledDoktor
         private PregledRepository pregledRepository = new PregledRepository();
         public List<Pregled> PrikazPregleda()
         {
-            List<Doktor> doktori = doktorRepository.DobaviSve();
-            Doktor doktor = doktorRepository.DobaviByRegistracija(UlogovaniKorisnik.KorisnickoIme, UlogovaniKorisnik.Lozinka);
+             Doktor doktor = doktorRepository.DobaviByRegistracija(UlogovaniKorisnik.KorisnickoIme, UlogovaniKorisnik.Lozinka);
              return pregledRepository.DobaviZakazanePregledeDoktora(doktor);
         }
     }

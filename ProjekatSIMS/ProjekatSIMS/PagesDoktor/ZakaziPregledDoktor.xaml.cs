@@ -30,7 +30,7 @@ namespace ProjekatSIMS
         private DoktorRepository doktorRepository = new DoktorRepository();
         private ZauzetostTerminaPregledaController zauzetostTerminaPregledaController = new ZauzetostTerminaPregledaController();
         private PrikazSlobodnihTerminaController prikazSlobodnihTerminaController = new PrikazSlobodnihTerminaController();
-        private ZakaziPregledDoktorController zakaziPregled = new ZakaziPregledDoktorController();
+        private ManipulacijaPregledomController zakaziPregled = new ManipulacijaPregledomController();
 
         private Pregled pregled { get; set; }
         public ZakaziPregledDoktor()

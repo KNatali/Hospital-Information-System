@@ -23,13 +23,25 @@ namespace ProjekatSIMS
             Prezime.Text = p.Prezime;
         }
 
-        private void PrikazSlobodnihSoba(object sender, RoutedEventArgs e)
+        public bool ValidacijaUnosa()
         {
-            if(DatumPocetak.SelectedDate==null || DatumKraj.SelectedDate == null)
+            if (DatumPocetak.SelectedDate == null || DatumKraj.SelectedDate == null)
             {
                 MessageBox.Show("Prvo morate izabrati pocetni i krajnji datum");
-                return;
+                return false;
             }
+            if (DateTime.Compare((DateTime)DatumPocetak.SelectedDate, DateTime.Now) < 0 || DateTime.Compare((DateTime)DatumKraj.SelectedDate, DateTime.Now) < 0)
+            {
+                MessageBox.Show("Mozete odabrati samo datume u buducnosti");
+                return false;
+            }
+            return true;
+        }
+
+        private void PrikazSlobodnihSoba(object sender, RoutedEventArgs e)
+        {
+            if (!ValidacijaUnosa())
+                return;
             DateTime pocetakIntervala = (DateTime)DatumPocetak.SelectedDate;
             DateTime krajIntervala = (DateTime)DatumKraj.SelectedDate;
            

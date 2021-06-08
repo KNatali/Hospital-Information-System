@@ -104,6 +104,18 @@ namespace Repository
             
         }
 
+        public List<int> DobaviKreveteZaSobu(Prostorija soba)
+        {
+            List<int> krevetiId = new List<int>();
+            foreach (Inventar i in soba.inventar)
+            {
+                if (i.ime == "krevet")
+                    krevetiId.Add(i.id);
+            }
+            return krevetiId;
+
+        }
+
       
 
         

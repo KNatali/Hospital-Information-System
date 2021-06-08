@@ -16,37 +16,30 @@ namespace Service
         {
 
             List<Prostorija> sobe = prostorijaRepository.DobaviPoVrsti(VrstaProstorije.Soba);
-            return SlobodneSobeISlobodniKreveti(termin, sobe);
+            List<int> zauzetiKreveti = ZauzetiKrevetiZaInterval(termin);
+            return SlobodneSobeISlobodniKreveti(zauzetiKreveti, sobe);
 
         }
 
-        private List<SlobodniKrevetDTO> SlobodneSobeISlobodniKreveti(IntervalDatuma termin, List<Prostorija> sobe)
+        private List<SlobodniKrevetDTO> SlobodneSobeISlobodniKreveti(List<int> zauzetiKreveti, List<Prostorija> sobe)
         {
-            List<SlobodniKrevetDTO> slobodneSobeIKreveti = new List<SlobodniKrevetDTO>();
-            List<int> krevetiId = new List<int>();
-            foreach (Prostorija s in sobe)
+           List<SlobodniKrevetDTO> slobodneSobeIKreveti = new List<SlobodniKrevetDTO>();
+           foreach (Prostorija s in sobe)
             {
-                krevetiId = DodavanjeSlobodnihKreveta(termin, slobodneSobeIKreveti, s);
+                List<int> krevetiId = prostorijaRepository.DobaviKreveteZaSobu(s);
+                List<int> slobodniKreveti = RedukovanjeSlobodnihKreveta(krevetiId, zauzetiKreveti);
+
+                if (slobodniKreveti.Count != 0)
+                {
+                    SlobodniKrevetDTO sk = new SlobodniKrevetDTO(s.id, slobodniKreveti);
+                    slobodneSobeIKreveti.Add(sk);
+                }
 
             }
             return slobodneSobeIKreveti;
         }
 
-        private List<int> DodavanjeSlobodnihKreveta(IntervalDatuma termin, List<SlobodniKrevetDTO> slobodneSobeIKreveti, Prostorija s)
-        {
-            List<int> krevetiId = DobaviKrevete(s);
-            List<int> zauzetiKreveti = ZauzetiKrevetiZaInterval(termin);
-            List<int> slobodniKreveti = new List<int>();
-            slobodniKreveti = RedukovanjeSlobodnihKreveta(krevetiId, zauzetiKreveti);
-
-            if (slobodniKreveti.Count != 0)
-            {
-                SlobodniKrevetDTO sk = new SlobodniKrevetDTO(s.id, slobodniKreveti);
-                slobodneSobeIKreveti.Add(sk);
-            }
-
-            return krevetiId;
-        }
+      
 
         public List<int> RedukovanjeSlobodnihKreveta(List<int> krevetiId, List<int> zauzetiKreveti)
         {
@@ -60,17 +53,7 @@ namespace Service
             return slobodniKreveti;
         }
 
-        public List<int> DobaviKrevete(Prostorija soba)
-        {
-            List<int> krevetiId = new List<int>();
-            foreach (Inventar i in soba.inventar)
-            {
-                if (i.ime == "krevet")
-                    krevetiId.Add(i.id);
-            }
-            return krevetiId;
-
-        }
+      
 
         private List<int> ZauzetiKrevetiZaInterval(IntervalDatuma termin)
         {
@@ -80,7 +63,7 @@ namespace Service
             {
                 foreach (UputBolnickoLijecenje u in uputi)
                 {
-                    if (DaLiSeTerminiPoklapaju(termin, u))
+                    if (termin.DaLiSeTerminiPoklapaju( u.Interval))
                         zauzetiKreveti.Add(u.KrevetId);
 
                 }
@@ -89,13 +72,7 @@ namespace Service
 
         }
 
-        private static bool DaLiSeTerminiPoklapaju(IntervalDatuma termin, UputBolnickoLijecenje u)
-        {
-            return (DateTime.Compare(termin.PocetnoVrijeme, u.Interval.PocetnoVrijeme) >= 0 && DateTime.Compare(termin.PocetnoVrijeme, u.Interval.KrajnjeVrijeme) < 0 ||
-                   DateTime.Compare(termin.KrajnjeVrijeme, u.Interval.PocetnoVrijeme) > 0 && DateTime.Compare(termin.KrajnjeVrijeme, u.Interval.KrajnjeVrijeme) <= 0 ||
-                   DateTime.Compare(termin.PocetnoVrijeme, u.Interval.PocetnoVrijeme) <= 0 && DateTime.Compare(termin.KrajnjeVrijeme, u.Interval.KrajnjeVrijeme) >= 0);
-        }
-
+       
 
     }
 }

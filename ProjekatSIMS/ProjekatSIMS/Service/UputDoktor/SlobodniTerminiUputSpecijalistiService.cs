@@ -16,7 +16,7 @@ namespace Service
         public const int KRAJ_RADNOG_VREMENA = 20;
         public int MAKSIMALNO_OTKAZIVANJA = 10;
         public Repository.PregledRepository pregledRepository = new PregledRepository();
-        
+
         public UputRepository uputRepository = new UputRepository();
         public List<DateTime> PrikazSlobodnihTermina(SlobodniTerminiUputSpecijalistiDTO podaci)
         {
@@ -61,29 +61,24 @@ namespace Service
             {
                 int zauzet = 0;
                 IntervalDatuma termin = new IntervalDatuma(terminPocetak, terminPocetak.AddMinutes(TRAJANJE_PREGLEDA));
-                //  DateTime terminKraj = terminPocetak.AddMinutes(TRAJANJE_PREGLEDA);
-                zauzet = ProvjeravanjeZauzetostiTermina(zauzetiPregledi, zauzet, termin);
-
+                zauzet = ProvjeravanjeZauzetostiTermina(zauzetiPregledi, termin);
                 if (zauzet == 0)
                     slobodniTermini.Add(terminPocetak);
             }
             return slobodniTermini;
         }
 
-        private static int ProvjeravanjeZauzetostiTermina(List<Pregled> zauzetiPregledi, int zauzet, IntervalDatuma termin)
+        private static int ProvjeravanjeZauzetostiTermina(List<Pregled> zauzetiPregledi, IntervalDatuma termin)
         {
+            int zauzet = 0;
             foreach (Pregled p in zauzetiPregledi)
             {
-                zauzet = ProvjeravanjePodudaranjaTerminaSaPregledom(zauzet, p, termin);
+                IntervalDatuma termin2 = new IntervalDatuma(p.Pocetak, p.Pocetak.AddMinutes(p.Trajanje));
+                if (termin.DaLiSeTerminiPoklapaju(termin2))
+                    zauzet++;
+
             }
 
-            return zauzet;
-        }
-        private static int ProvjeravanjePodudaranjaTerminaSaPregledom(int zauzet, Pregled p, IntervalDatuma termin)
-        {
-            if (DateTime.Compare(termin.PocetnoVrijeme, p.Pocetak) >= 0 && DateTime.Compare(termin.PocetnoVrijeme, p.Pocetak.AddMinutes(p.Trajanje)) < 0 ||
-                DateTime.Compare(termin.KrajnjeVrijeme, p.Pocetak) > 0 && DateTime.Compare(termin.KrajnjeVrijeme, p.Pocetak.AddMinutes(p.Trajanje)) <= 0)
-                zauzet++;
             return zauzet;
         }
 
@@ -105,37 +100,20 @@ namespace Service
             List<Pregled> ZakazaniPreglediDoktora = pregledRepository.DobaviZakazanePregledeDoktora(podaci.IzabraniDoktor);
             List<Pregled> zauzetiPreglediZaInterval = ZauzetostPregledaZaInterval(podaci.Datumi, ZakazaniPreglediDoktora);
 
-            IntervalDatuma inetrvalPrije=RacunanjeVremenaOkoIntervalaPrije(podaci.Datumi);
-            IntervalDatuma inetrvalPoslije= RacunanjeVremenaOkoIntervalaPoslije(podaci.Datumi);
-            
+            IntervalDatuma inetrvalPrije = podaci.Datumi.RacunanjeVremenaOkoIntervalaPrije();
+            IntervalDatuma inetrvalPoslije = podaci.Datumi.RacunanjeVremenaOkoIntervalaPoslije();
+
             List<DateTime> slobodniTermini = RacunanjeSlobodnihTermina(zauzetiPreglediZaInterval, new SlobodniTerminiUputSpecijalistiDTO(podaci.IzabraniDoktor, inetrvalPrije, podaci.Sati));
             slobodniTermini.AddRange(RacunanjeSlobodnihTermina(zauzetiPreglediZaInterval, new SlobodniTerminiUputSpecijalistiDTO(podaci.IzabraniDoktor, inetrvalPoslije, podaci.Sati)));
-           
+
             List<KeyValuePair<int, DateTime>> parUdaljenostTermin = new List<KeyValuePair<int, DateTime>>();
             parUdaljenostTermin = UdaljenostiOdZadatogVremena(parUdaljenostTermin, podaci.Datumi.PocetnoVrijeme, slobodniTermini);
-          
+
             return IzlistavanjeNajblizihTermina(parUdaljenostTermin);
 
         }
 
-        private static IntervalDatuma RacunanjeVremenaOkoIntervalaPrije(IntervalDatuma interval)
-        {
 
-            DateTime pocetnoVrijeme = interval.PocetnoVrijeme.AddDays(-2);
-            DateTime krajnjeVrijeme = interval.PocetnoVrijeme.AddDays(-1);
-            IntervalDatuma noviInterval = new IntervalDatuma(interval.PocetnoVrijeme, interval.KrajnjeVrijeme);
-            return noviInterval;
-
-
-        }
-
-        private static IntervalDatuma RacunanjeVremenaOkoIntervalaPoslije(IntervalDatuma interval)
-        {
-            DateTime pocetnoVrijeme = interval.PocetnoVrijeme.AddDays(1);
-            DateTime krajnjeVrijeme = interval.PocetnoVrijeme.AddDays(2);
-            IntervalDatuma noviInterval = new IntervalDatuma(interval.PocetnoVrijeme, interval.KrajnjeVrijeme);
-            return noviInterval;
-        }
 
         private static List<DateTime> IzlistavanjeNajblizihTermina(List<KeyValuePair<int, DateTime>> parUdaljenostTermin)
         {
@@ -148,7 +126,6 @@ namespace Service
                     break;
                 slobodniTermini.Add(parUdaljenostTermin[i].Value);
             }
-
             List<DateTime> sortiraniSlobodniTermini = slobodniTermini.OrderBy(o => o).ToList();
 
             return sortiraniSlobodniTermini;
@@ -160,7 +137,6 @@ namespace Service
             foreach (DateTime t in slobodniTermini)
             {
                 int distanca = (int)((t - pocetnoVrijeme.AddHours(2)).Duration()).TotalSeconds;
-
                 parUdaljenostTermin.Add(new KeyValuePair<int, DateTime>(distanca, t));
             }
 
