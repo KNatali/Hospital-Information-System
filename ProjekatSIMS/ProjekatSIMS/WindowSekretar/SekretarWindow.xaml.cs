@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjekatSIMS.WindowSekretar;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -46,8 +47,10 @@ namespace ProjekatSIMS
 
         private void Zauzetost(object sender, RoutedEventArgs e)
         {
-            ZauzetostProstorijaSWindow zp = new ZauzetostProstorijaSWindow();
-            zp.Show();
+            /*ZauzetostProstorijaSWindow zp = new ZauzetostProstorijaSWindow();
+            zp.Show();*/
+            NedeljniIzvestajWindow ni = new NedeljniIzvestajWindow();
+            ni.Show();
         }
 
         private void Oglasi(object sender, RoutedEventArgs e)
