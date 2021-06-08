@@ -65,8 +65,9 @@ namespace ProjekatSIMS
                 DateTime datum2 = datum1.AddMinutes(20);
                 IntervalDatuma termin = new IntervalDatuma(datum1, datum2);
                 ZakazivanjeStandardnogPregleda zakazivanjeStandardnogPregleda = new ZakazivanjeStandardnogPregleda();
-                Doktor doktor = new Doktor();
-                pregled=zakazivanjeStandardnogPregleda.KreiranjePregleda(termin,(Prostorija)Ordinacija.SelectedItem, (Pacijent)Pacijent.SelectedItem,doktor);
+                Doktor doktor =doktorRepository.DobaviByRegistracija(UlogovaniKorisnik.KorisnickoIme, UlogovaniKorisnik.Lozinka);
+
+                pregled = zakazivanjeStandardnogPregleda.KreiranjePregleda(termin,(Prostorija)Ordinacija.SelectedItem, (Pacijent)Pacijent.SelectedItem,doktor);
                 List<String> termini= zakazivanjeStandardnogPregleda.ZauzetiTermini(termin,pregled);
                 if (termini != null)
                 {

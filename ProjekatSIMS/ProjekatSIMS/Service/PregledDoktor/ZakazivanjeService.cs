@@ -22,18 +22,14 @@ namespace ProjekatSIMS.Service
        
         public Pregled KreiranjePregleda(IntervalDatuma termin, Prostorija prostorija, Pacijent pacijent,Doktor doktor)
         {
-            Doktor dr = new Doktor();
-            if (doktor == null)
-                dr = doktorRepository.DobaviByRegistracija(UlogovaniKorisnik.KorisnickoIme, UlogovaniKorisnik.Lozinka);
-            else
-                dr = doktor;
+            
             Pregled pregled = new Pregled();
             pregled.Pocetak = termin.PocetnoVrijeme;
             pregled.Trajanje = termin.KrajnjeVrijeme.Subtract(termin.PocetnoVrijeme).Minutes;
             DopujavanjePregleda(pregled);
             pregled.StatusPregleda = StatusPregleda.Zakazan;
             pregled.prostorija = prostorija;
-            pregled.doktor = dr;
+            pregled.doktor = doktor;
             pregled.pacijent = pacijent;
             return pregled;
         }

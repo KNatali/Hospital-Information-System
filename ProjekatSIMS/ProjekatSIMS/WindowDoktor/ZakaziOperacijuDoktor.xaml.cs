@@ -59,7 +59,7 @@ namespace ProjekatSIMS
                 IntervalDatuma termin = new IntervalDatuma(datum1, datum2);
                
                 ZakazivanjeOperacije zakazivanjeOperacije= new ZakazivanjeOperacije();
-                Doktor doktor = new Doktor();
+                Doktor doktor = doktorRepository.DobaviByRegistracija(UlogovaniKorisnik.KorisnickoIme, UlogovaniKorisnik.Lozinka);
                 pregled = zakazivanjeOperacije.KreiranjePregleda(termin, (Prostorija)Sala.SelectedItem, (Pacijent)Pacijent.SelectedItem,doktor);
                 List<String> termini = zakazivanjeOperacije.ZauzetiTermini(termin, pregled);
                 if (termini != null)
