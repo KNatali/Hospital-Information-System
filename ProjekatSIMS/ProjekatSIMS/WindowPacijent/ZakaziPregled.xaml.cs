@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Windows.Controls;
 using System.Windows;
 using System.Windows.Media;
-
+using ProjekatSIMS.Controller.PregledPacijent;
 
 namespace ProjekatSIMS.WindowPacijent
 {
@@ -17,6 +17,7 @@ namespace ProjekatSIMS.WindowPacijent
         public int MAKSIMAMLNO_OTKAZIVANJA = 10;
         public List<Pacijent> Pacijenti { get; set; }
         public Pacijent trenutniPacijent { get; set; }
+        public ZakazivanjePregledaController zakazivanjePregledaController = new ZakazivanjePregledaController();
         public ZakaziPregled(Pacijent pacijent)
         {
             InitializeComponent();
@@ -59,13 +60,13 @@ namespace ProjekatSIMS.WindowPacijent
 
             PregledController pregCont = new PregledController();
 
-            if (pregCont.ZakazivanjePregledaPacijent(imeDoktora, prezimeDoktora, datum1, trenutniPacijent) == true)
+            if (zakazivanjePregledaController.ZakazivanjePregledaPacijent(imeDoktora, prezimeDoktora, datum1, trenutniPacijent) == true)
             {
                 MessageBox.Show("Pregled je uspesno zakazan!");
                 PocetnaPacijent pocetna = new PocetnaPacijent(trenutniPacijent);
                 this.NavigationService.Navigate(pocetna);
             }
-            else if (pregCont.DaLiJeTerminZauzet(datum1) == true)
+            else if (zakazivanjePregledaController.DaLiJeTerminZauzet(datum1) == true)
             {
                 if (prioritetDoktor == 1)
                 {
