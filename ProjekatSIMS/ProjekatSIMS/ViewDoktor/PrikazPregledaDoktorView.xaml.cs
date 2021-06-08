@@ -13,7 +13,7 @@ namespace ProjekatSIMS.ViewDoktor
     {
         private DoktorRepository doktorRepository = new DoktorRepository();
         private PregledRepository pregledRepository = new PregledRepository();
-        private OtkazivanjePregledaDoktorController otkazivanjePregledaDoktorController = new OtkazivanjePregledaDoktorController();
+        private ManipulacijaPregledomController manipulacijaPregledomController = new ManipulacijaPregledomController();
         public List<Pregled> Pregledi
         {
             get;
@@ -51,7 +51,7 @@ namespace ProjekatSIMS.ViewDoktor
         private void OtkaziPregled(object sender, RoutedEventArgs e)
         {
             Pregled p = (Pregled)dataGridPregledi.SelectedItems[0];
-            otkazivanjePregledaDoktorController.OtkazivanjePregleda(p);
+            manipulacijaPregledomController.OtkazivanjePregleda(p);
              MessageBox.Show("Uspjesno ste otkazali pregled");
            
 

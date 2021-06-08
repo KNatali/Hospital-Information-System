@@ -1,6 +1,7 @@
 ﻿using Controller;
 using Model;
 using ProjekatSIMS.Model;
+using ProjekatSIMS.Service;
 using ProjekatSIMS.ViewDoktor;
 using ProjekatSIMS.ViewModelDoktor;
 using Repository;
@@ -39,8 +40,7 @@ namespace ProjekatSIMS
         {
             try
             {
-                pregled = new Pregled();
-                DateTime datum = (DateTime)Date.SelectedDate;
+            
                 double sat;
                 double minut;
                 if (Termin.Visibility == Visibility.Visible)
@@ -53,15 +53,30 @@ namespace ProjekatSIMS
                     sat = Convert.ToDouble(Sat.Text);
                     minut = Convert.ToDouble(Minut.Text);
                 }
-                int trajanje = Convert.ToInt32(Trajanje.Text);
-                DateTime datum1 = datum.AddHours(sat).AddMinutes(minut);
-                DateTime datum2 = datum1.AddMinutes(trajanje);
+               
+                DateTime datum1 = ((DateTime)Date.SelectedDate).AddHours(sat).AddMinutes(minut);
+                DateTime datum2 = datum1.AddMinutes(Convert.ToInt32(Trajanje.Text));
                 IntervalDatuma termin = new IntervalDatuma(datum1, datum2);
-                Doktor dr = doktorRepository.DobaviByRegistracija(UlogovaniKorisnik.KorisnickoIme, UlogovaniKorisnik.Lozinka);
-                KreiranjePregleda(trajanje, datum1, termin, dr);
-                ZauzetiTermini(datum1, termin);
+               
+                ZakazivanjeOperacije zakazivanjeOperacije= new ZakazivanjeOperacije();
+                Doktor doktor = new Doktor();
+                pregled = zakazivanjeOperacije.KreiranjePregleda(termin, (Prostorija)Sala.SelectedItem, (Pacijent)Pacijent.SelectedItem,doktor);
+                List<String> termini = zakazivanjeOperacije.ZauzetiTermini(termin, pregled);
+                if (termini != null)
+                {
+                    Termin.Visibility = Visibility.Visible;
+                    Izbor.Visibility = Visibility.Visible;
+                    Termin.ItemsSource = termini;
+                }
+                else
+                {
+                    PrikazPregledaDoktorViewModel vm1 = new PrikazPregledaDoktorViewModel(this.NavigationService);
+                    PrikazPregledaDoktorView kalendar = new PrikazPregledaDoktorView(vm1);
+                    this.NavigationService.Navigate(kalendar);
+                }
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Popunite sve podatke");
             }

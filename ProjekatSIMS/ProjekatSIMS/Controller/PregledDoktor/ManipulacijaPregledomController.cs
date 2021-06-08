@@ -8,16 +8,21 @@ namespace Controller
 {
    public  class ManipulacijaPregledomController
     {
-        private ManipulacijaPregledomService zakaziPregledService = new ManipulacijaPregledomService();
+        private ManipulacijaPregledomService manipulacijaPregledomService = new ManipulacijaPregledomService();
 
         public void ZakaziPregled(Pregled pregled)
         {
-            zakaziPregledService.ZakaziPregled(pregled);
+            manipulacijaPregledomService.CuvanjePregleda(pregled);
         }
 
         public void IzmjeniPregled(Pregled stariPregled, DateTime noviTermin)
         {
-            zakaziPregledService.IzmjeniPregled(stariPregled, noviTermin);
+            manipulacijaPregledomService.IzmjeniPregled(stariPregled, noviTermin);
+        }
+
+        public void OtkazivanjePregleda(Pregled pregled)
+        {
+            manipulacijaPregledomService.OtkazivanjePregleda(pregled);
         }
     }
 }

@@ -20,18 +20,7 @@ namespace Controller
         public PregledRepository pregledRepository = new PregledRepository();
 
         public ZauzetiTerminiService zauzetiTermini = new ZauzetiTerminiService();
-        public Model.Pregled ZakaziGuestPregledController(DateTime datumPregleda, Model.Pacijent pacijent)
-      {
-         // TODO: implement
-         return null;
-      }
       
-      public Model.Pregled ZakazivanjeOperacije()
-      {
-         // TODO: implement
-         return null;
-      }
-
         public Boolean ZakazivanjePregledaSekretar(ComboBox Termin, String jmbg, String jmbgdoktor,Prostorija prostorija, DateTime datum1, DateTime datum2)
         {
 
@@ -65,6 +54,35 @@ namespace Controller
          return pregledService.DobaviSveSekretar();
      }
       
+
+   
+        public Boolean ZakazivanjePregledaPacijent( String imeDoktora, String prezimeDoktora, DateTime datum, Pacijent pac)
+        {
+
+            if (zakazivanjePregledaService.ZakazivanjePregledaPacijent(imeDoktora, prezimeDoktora, datum, pac))
+                return true;
+
+            return false;
+
+        }
+        public Boolean DaLiJeTerminZauzet(DateTime datum)
+        {
+            if(zauzetiTermini.DaLiJeTerminZauzet(datum))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public List<Pregled> DobaviPregledeZaPacijenta(Pacijent pacijent)
+        {
+            return pregledRepository.DobaviPregledeZaPacijenta(pacijent);
+        }
+        public ObservableCollection<Pregled> DobaviPregledeZaPacijentaOC(Pacijent pacijent)
+        {
+            return pregledRepository.DobaviPregledeZaPacijentaOC(pacijent);
+        }
+
       public List<Pregled> GetListaPregledaController(DateTime zaDan)
       {
          // TODO: implement
@@ -91,5 +109,6 @@ namespace Controller
 
        
         
+
     }
 }

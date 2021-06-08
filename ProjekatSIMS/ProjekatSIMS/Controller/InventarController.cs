@@ -1,15 +1,15 @@
-using Service;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace Controller
+using Service;
+
+namespace ProjekatSIMS.Controller
 {
-   public class InventarController
-   {
-      
-   
-      public InventarService InventarService = new InventarService();
+    public class InventarController
+    {
+        public InventarService InventarService;
 
         
-   
-   }
+    }
 }

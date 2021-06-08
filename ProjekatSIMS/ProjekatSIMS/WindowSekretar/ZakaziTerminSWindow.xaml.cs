@@ -17,15 +17,19 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Tulpep.NotificationWindow;
 using ProjekatSIMS.Controller;
+using ProjekatSIMS.Controller.UputDoktor;
+using ProjekatSIMS.Service;
 
 namespace ProjekatSIMS
 {
     public partial class ZakaziTerminSWindow : Window
     {
         public Pacijent pac { get; set; }
+        private Pregled pregled { get; set; }
         public List<Doktor> Doktori { get; set; }
         public List<Prostorija> Ordinacije { get; set; }
         public NeradniDani neradniDani { get; set; }
+        private NadjiSlobodnuOrdinacijuController nadjiSlobodnuOrdinacijuController = new NadjiSlobodnuOrdinacijuController();
         public ZakaziTerminSWindow(Pacijent p)
         {
             InitializeComponent();
@@ -72,23 +76,14 @@ namespace ProjekatSIMS
         {
             Pregled p = new Pregled();
             p.doktor = (Doktor)Doktor.SelectedItem;
-            //Prostorija prostorija = (Prostorija)Ordinacija.SelectedItem;
-            Prostorija prostorija = new Prostorija();
-            DateTime datum = (DateTime)Datum.SelectedDate;
+          
+             DateTime datum = (DateTime)Datum.SelectedDate;
 
             DaLiJeDoktorNaGodisnjemOdmoru(p, datum); // radi samo sto zakaze iako je na godisnjem odmoru
+            
+           
             double sat;
             double minut;
-            TipPregleda tippregleda = (TipPregleda)Pregledi.SelectedIndex;
-            if (tippregleda.ToString() == "Standardni")
-            {
-                p.Tip = TipPregleda.Standardni;
-            }
-            else
-            {
-                p.Tip = TipPregleda.Operacija;
-            }
-
             if (Termin.Visibility == Visibility.Visible)
             {
                 sat = Convert.ToDouble(Termin.Text.Split(":")[0]);
@@ -100,12 +95,34 @@ namespace ProjekatSIMS
                 minut = Convert.ToDouble(Minut.Text);
             }
 
-            DateTime datum1 = new DateTime();
-            datum1 = datum.AddHours(sat);
+          
+            DateTime datum1 = datum.AddHours(sat);
             datum1 = datum1.AddMinutes(minut);
             DateTime datum2 = datum1.AddMinutes(20);
-            PregledController pc = new PregledController();
-            if (pc.ZakazivanjePregledaSekretar(Termin, pac.Jmbg, p.doktor.Jmbg, prostorija, datum1, datum2) == true)
+            IntervalDatuma termin = new IntervalDatuma(datum1, datum2);
+            Prostorija prostorija = nadjiSlobodnuOrdinacijuController.NadjiSlobodnuOrdinaciju(datum1);
+            TipPregleda tippregleda = (TipPregleda)Pregledi.SelectedIndex;
+            List<String> termini = new List<String>();
+            if (tippregleda.ToString() == "Standardni")
+            {
+                ZakazivanjeStandardnogPregleda zakazivanjeStandardnogPregleda = new ZakazivanjeStandardnogPregleda();
+                pregled = zakazivanjeStandardnogPregleda.KreiranjePregleda(termin, prostorija, pac, (Doktor)Doktor.SelectedItem);
+                termini = zakazivanjeStandardnogPregleda.ZauzetiTermini(termin, pregled);
+            }
+            else
+            {
+                ZakazivanjeOperacije zakazivanjeOperacije = new ZakazivanjeOperacije();
+                pregled = zakazivanjeOperacije.KreiranjePregleda(termin, prostorija, pac, (Doktor)Doktor.SelectedItem);
+                termini = zakazivanjeOperacije.ZauzetiTermini(termin, pregled);
+            }
+          
+            if (termini != null)
+            {
+                Termin.Visibility = Visibility.Visible;
+               
+                Termin.ItemsSource = termini;
+            }
+            else
             {
                 PopupNotifier popup = new PopupNotifier();
                 popup.Image = Properties.Resources.informacija;
@@ -115,10 +132,7 @@ namespace ProjekatSIMS
                 popup.Popup();
                 this.Close();
             }
-            else
-            {
-                MessageBox.Show("Niste uspeli da zakažete pregled.");
-            }
+          
             /*DateTime neradnoOD = new DateTime(); 
             neradnoOD = neradniDani.NeradnoOd;
             DateTime neradnoDO = new DateTime(); 
