@@ -10,7 +10,7 @@ namespace Service
         private PregledRepository pregledRepository = new PregledRepository();
         public List<String> PrikazTermina(Pregled pregled, IntervalDatuma termin)
         {
-            List<Pregled> pregledi = pregledRepository.DobaviSvePregledeDoktor();
+            List<Pregled> pregledi = pregledRepository.DobaviZakazanePreglede();
             List<Pregled> preglediUIstoVrijeme = PreglediUIstiDan(pregled, pregledi, termin);
             List<DateTime> slobodniTermini = DobavljanjeSLobodnihTermina(termin, preglediUIstoVrijeme, pregled);
             List<KeyValuePair<int, DateTime>> parovi = RacunanjeUdaljenostiTermina(slobodniTermini, termin);
@@ -22,7 +22,6 @@ namespace Service
         private static List<string> NajbliziTermini(List<KeyValuePair<int, DateTime>> parovi)
         {
             List<String> konacniTermini = new List<String>();
-            //izlistavam 4 najbliza termina izabranom
             for (int i = 1; i < 5; i++)
             {
                 if (parovi.Count < i + 1)
@@ -52,7 +51,8 @@ namespace Service
 
             for (DateTime datum = pocetni; datum < krajnji; datum = datum.AddMinutes(pregled.Trajanje))
             {
-                int znak = ZauzetiTermini(preglediUIstoVrijeme, pregled, datum);
+                IntervalDatuma interval = new IntervalDatuma(datum, datum.AddMinutes(pregled.Trajanje));
+                int znak = ZauzetiTermini(preglediUIstoVrijeme, interval);
                 if (znak == 0)
                     termini.Add(datum);
 
@@ -62,17 +62,14 @@ namespace Service
             return termini;
         }
 
-        private static int ZauzetiTermini(List<Pregled> preglediUIstoVrijeme, Pregled pregled, DateTime i1)
+        private static int ZauzetiTermini(List<Pregled> preglediUIstoVrijeme,IntervalDatuma interval)
         {
             int znak = 0;
-            DateTime i2 = i1.AddMinutes(pregled.Trajanje);
-            foreach (Pregled p in preglediUIstoVrijeme)
+          foreach (Pregled p in preglediUIstoVrijeme)
             {
-                DateTime datum11 = p.Pocetak;
-                DateTime datum22 = p.Pocetak.AddMinutes(p.Trajanje);
-                if (DateTime.Compare(i1, datum11) >= 0 && DateTime.Compare(i1, datum22) < 0 ||
-                    DateTime.Compare(i2, datum11) > 0 && DateTime.Compare(i2, datum22) <= 0)
-                    znak++;
+                IntervalDatuma termin2 = new IntervalDatuma(p.Pocetak, p.Pocetak.AddMinutes(p.Trajanje));
+                if(interval.DaLiSeTerminiPoklapaju(termin2))
+                        znak++;
 
             }
 
@@ -84,15 +81,14 @@ namespace Service
             List<Pregled> preglediUIstoVrijeme = new List<Pregled>();
             foreach (Pregled p in pregledi)
             {
-                if (p.StatusPregleda == StatusPregleda.Zakazan)
-                {
-                    if (pregled.doktor.Jmbg == p.doktor.Jmbg || p.prostorija == pregled.prostorija)
-                    {
-                        if (p.Pocetak.Date.CompareTo(termin.PocetnoVrijeme.Date) == 0)
-                            preglediUIstoVrijeme.Add(p);
 
-                    }
+                if (pregled.doktor.Jmbg == p.doktor.Jmbg || p.prostorija == pregled.prostorija)
+                {
+                    if (p.Pocetak.Date.CompareTo(termin.PocetnoVrijeme.Date) == 0)
+                        preglediUIstoVrijeme.Add(p);
+
                 }
+
             }
             return preglediUIstoVrijeme;
         }
