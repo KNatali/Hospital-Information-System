@@ -6,16 +6,19 @@ namespace ProjekatSIMS.Service
 {
     public class PrikazivanjePodsetnikaService
     {
+      
         public Boolean DaLiTrebaPoslatiObavestenje(DateTime krajObavestenja, DateTime pocetakObavestenja)
         {
+            DateTime vreme = new DateTime();
+            vreme = DateTime.UtcNow;
             int porediKrajSaSadasnjim = DateTime.Compare(krajObavestenja, DateTime.UtcNow);
             int porediPocetakSaSadasnjim = DateTime.Compare(pocetakObavestenja, DateTime.UtcNow);
-            if ((porediKrajSaSadasnjim >= 0) && (porediPocetakSaSadasnjim <= 0) )
+
+
+
+            if ((porediKrajSaSadasnjim >= 0) && (porediPocetakSaSadasnjim <= 0))
             {
-               
-                    return true;
-              
-                
+                        return true;
             }
             return false;
         }

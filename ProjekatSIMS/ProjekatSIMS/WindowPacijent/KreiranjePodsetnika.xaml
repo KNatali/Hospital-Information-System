@@ -90,16 +90,16 @@
         <Label Content="Unesite datum početka:" HorizontalAlignment="Left" Margin="98,259,0,0" VerticalAlignment="Top" FontSize="20"/>
         <Label Content="(mm/dd/yyyy)" Margin="137,284,502,114" FontFamily="Arial" FontSize="20"/>
         <Label Content="(mm/dd/yyyy)" Margin="137,339,502,59" FontFamily="Arial" FontSize="20"/>
-        <DatePicker   Margin="365,263,235,0"  Name="DatumPocetka" Width="200" VerticalAlignment="Top" />
+        <DatePicker   Margin="365,278,235,0"  Name="DatumPocetka" Width="200" VerticalAlignment="Top" />
         <DatePicker    Margin="365,319,235,0"  Name="DatumKraja" Width="200" VerticalAlignment="Top" />
 
 
         <Label Content="Unesite datum kraja:" HorizontalAlignment="Left" Margin="122,319,0,0" VerticalAlignment="Top" FontSize="20"/>
         <Button Content="Kreiraj" Margin="528,393,172,17"  Click="Kreiraj"  Background="#A4E98A" Style="{DynamicResource RoundedButton}" Height="40" Width="100"/>
         <Button Height="40" Width="100" Style="{StaticResource RoundedButton}" Click="Odustani" Margin="659,393,41,17">Odustani</Button>
-        <Label Content="Unesite vreme:" FontFamily="Arial" FontSize="20" Margin="170,212,413,142"/>
-        <TextBox Width="90" Margin="365,212,345,208" Name="Sati"></TextBox>
-        <TextBox Width="90" Margin="475,212,235,208" Name="Minuti"></TextBox>
+        <Label Content="Unesite vreme:" FontFamily="Arial" FontSize="20" Margin="623,197,-40,157"/>
+        <TextBox Width="90"  Name="Sati" Margin="578,230,132,190"></TextBox>
+        <TextBox Width="90"  Name="Minuti" Margin="700,230,10,190"></TextBox>
 
     </Grid>
 </Page>
