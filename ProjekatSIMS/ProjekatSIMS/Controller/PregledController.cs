@@ -39,16 +39,22 @@ namespace Controller
                 return true;
             return false;
         }
-      
 
-       
+        public Boolean IzmenaPregledaSekretar(Pregled p, DateTime datum)
+        {
+            if (pregledService.IzmenaPregledaSekretar(p, datum))
+                return true;
+            return false;
+        }
 
-      
-     public List<Pregled> DobaviSveSekretar()
+
+
+        public List<Pregled> DobaviSveSekretar()
      {
          return pregledService.DobaviSveSekretar();
      }
       
+
    
         public Boolean ZakazivanjePregledaPacijent( String imeDoktora, String prezimeDoktora, DateTime datum, Pacijent pac)
         {
@@ -76,5 +82,33 @@ namespace Controller
         {
             return pregledRepository.DobaviPregledeZaPacijentaOC(pacijent);
         }
+
+      public List<Pregled> GetListaPregledaController(DateTime zaDan)
+      {
+         // TODO: implement
+         return null;
+      }
+      
+      public List<Pregled> GetListaPregledaController(String jmbg)
+      {
+         // TODO: implement
+         return null;
+      }
+      
+      public Boolean ProveraTerminaController(DateTime datumVreme)
+      {
+         // TODO: implement
+         return true;
+      }
+      
+    
+     
+
+     
+    
+
+       
+        
+
     }
 }

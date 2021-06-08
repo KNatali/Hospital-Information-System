@@ -2,6 +2,7 @@
 using Controller;
 using Microsoft.Toolkit.Uwp.Notifications;
 using Model;
+using ProjekatSIMS.Controller.PregledPacijent;
 using ProjekatSIMS.Controller.ReceptPacijent;
 using ProjekatSIMS.Model;
 using ProjekatSIMS.Repository;
@@ -20,7 +21,7 @@ namespace ProjekatSIMS.WindowPacijent
         private NavigationService NavigationService { get; set; }
         public PodsetnikController podsetnikController = new PodsetnikController();
         public ReceptiPacijentController receptiController = new ReceptiPacijentController();
-        public PregledController pregledController = new PregledController();
+        public ZakazivanjePregledaController zakazivanjePregledaController = new ZakazivanjePregledaController();
         public Pacijent trenutniPacijent { get; set; }
         public String imePrezime { get; set; }
         
@@ -35,7 +36,7 @@ namespace ProjekatSIMS.WindowPacijent
             imePrezime = trenutniPacijent.Ime + " " + trenutniPacijent.Prezime;
             PacijentFrame.Content = new PocetnaPacijent(trenutniPacijent);
             List<Podsetnik> podsetnici = podsetnikController.DobaviSvePodsetnike();
-            List<Pregled> pregledi = pregledController.DobaviPregledeZaPacijenta(trenutniPacijent);
+            List<Pregled> pregledi = zakazivanjePregledaController.DobaviPregledeZaPacijenta(trenutniPacijent);
             List<Recept>Recepti = receptiController.DobaviSveRecepte();
 
             foreach(Pregled preg in pregledi)
