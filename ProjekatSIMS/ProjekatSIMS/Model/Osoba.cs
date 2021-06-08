@@ -1,3 +1,4 @@
+using ProjekatSIMS.Model;
 using System;
 
 namespace Model

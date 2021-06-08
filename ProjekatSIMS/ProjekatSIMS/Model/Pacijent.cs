@@ -1,3 +1,4 @@
+using ProjekatSIMS.Model;
 using System;
 using System.Collections.Generic;
 
@@ -10,7 +11,7 @@ namespace Model
         public int zakazaoPregled = 0;
         public DateTime datumPrvogZakazivanjaPregleda;
         public int IdKartona { get; set; }
-
+        public Uloga Uloga { get; set; }
     }
 
 }
