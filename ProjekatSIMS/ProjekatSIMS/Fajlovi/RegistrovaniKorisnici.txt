@@ -1,5 +1,0 @@
-[{"KorisnickoIme":"0205999855092", "Lozinka":"pacijent1","Uloga":"Pacijent"},{"KorisnickoIme":"5555", "Lozinka":"pacijent2","Uloga":"Pacijent"},{"KorisnickoIme":"1702999885002", "Lozinka":"sekretar","Uloga":"Sekretar"},
-{"KorisnickoIme":"0909982172849", "Lozinka":"doktor2","Uloga":"Doktor"},
-{"KorisnickoIme":"1511990855023", "Lozinka":"doktor1","Uloga":"Doktor"},
-{"KorisnickoIme":"125466541254", "Lozinka":"anja","Uloga":"Doktor"},
-{"KorisnickoIme":"0112998", "Lozinka":"ftn123","Uloga":"Upravnik"}]

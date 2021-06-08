@@ -1,1 +1,0 @@
-[{"Id":1,"IdKartona":1,"OpisAnamneze":"Tegobe u stomaku","Datum":"2021-05-14T00:00:00"},{"Id":2,"IdKartona":1,"OpisAnamneze":"Sve u redu.","Datum":"2021-06-03T00:00:00"},{"Id":3,"IdKartona":1,"OpisAnamneze":"Terapija tece u redu.","Datum":"2021-06-03T00:00:00"},{"Id":4,"IdKartona":3,"OpisAnamneze":"Redovni pregled odradjen. Sve u redu .","Datum":"2021-06-03T00:00:00"}]

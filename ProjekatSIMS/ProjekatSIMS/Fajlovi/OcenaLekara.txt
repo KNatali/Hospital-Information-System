@@ -1,1 +1,0 @@
-[{"ImeLekara":"Marijana","PrezimeLekara":"Peric","Ocena":"5","Komentar":"Najbolji lekar ikada","pacijent":"5555"},{"ImeLekara":"Jovanka","PrezimeLekara":"Macura","Ocena":"5","Komentar":"super je","pacijent":null},{"ImeLekara":"Jovanka","PrezimeLekara":"Macura","Ocena":"4","Komentar":"korektno","pacijent":null}]

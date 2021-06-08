@@ -1,4 +1,5 @@
-﻿using ProjekatSIMS.Model;
+﻿using Model;
+using ProjekatSIMS.Model;
 using System;
 using System.Collections.Generic;
 using System.Text;

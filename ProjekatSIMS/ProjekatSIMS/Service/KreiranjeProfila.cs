@@ -19,49 +19,46 @@ namespace ProjekatSIMS.Service
         {
             return doktorRepository.DobaviSve();
         }
-        public Boolean KreirajProfil(Uloga uloga)
+        public Boolean KreirajProfil(Uloga uloga, Osoba osoba)
         {
             if(uloga==Uloga.Doktor)
             {
                 Doktor doktor = new Doktor();
                 List<Doktor> sviDoktori = doktorRepository.DobaviSve();
-                sviDoktori.Add(NoviDoktor(doktor));
+                sviDoktori.Add(NoviDoktor(osoba));
                 doktorRepository.Sacuvaj(sviDoktori);
             }
             else if(uloga==Uloga.Pacijent)
             {
                 Pacijent pacijent = new Pacijent();
                 List<Pacijent> sviPacijenti = pacijentRepository.DobaviSve();
-                sviPacijenti.Add(NoviPacijent(pacijent));
+                sviPacijenti.Add(NoviPacijent(osoba));
                 pacijentRepository.Sacuvaj(sviPacijenti);
             }
             return true;
         }
-        private Pacijent NoviPacijent(Pacijent poljePacijenta)
+        private Pacijent NoviPacijent(Osoba osoba)
         {
             Pacijent pacijent = new Pacijent();
-            pacijent.Jmbg = poljePacijenta.Jmbg;
-            pacijent.Ime = poljePacijenta.Ime;
-            pacijent.Prezime = poljePacijenta.Prezime;
-            pacijent.DatumRodjenja = poljePacijenta.DatumRodjenja;
-            pacijent.BrojTelefona = poljePacijenta.BrojTelefona;
-            pacijent.Email = poljePacijenta.Email;
-            pacijent.Adresa = poljePacijenta.Adresa;
+            pacijent.Jmbg = osoba.Jmbg;
+            pacijent.Ime = osoba.Ime;
+            pacijent.Prezime = osoba.Prezime;
+            pacijent.DatumRodjenja = osoba.DatumRodjenja;
+            pacijent.BrojTelefona = osoba.BrojTelefona;
+            pacijent.Email = osoba.Email;
+            pacijent.Adresa = osoba.Adresa;
             return pacijent;
         }
-        private Doktor NoviDoktor(Doktor poljeDoktora)
+        private Doktor NoviDoktor(Osoba osoba)
         {
             Doktor doktor = new Doktor();
-            doktor.Jmbg = poljeDoktora.Jmbg;
-            doktor.Ime = poljeDoktora.Ime;
-            doktor.Prezime = poljeDoktora.Prezime;
-            doktor.DatumRodjenja = poljeDoktora.DatumRodjenja;
-            doktor.BrojTelefona = poljeDoktora.BrojTelefona;
-            doktor.Email = poljeDoktora.Email;
-            doktor.Adresa = poljeDoktora.Adresa;
-            //doktor.Specijalizacija = poljeDoktora.Specijalizacija;
-            //doktor.PocetakRadnogVremena = poljeDoktora.PocetakRadnogVremena;
-            //doktor.KrajRadnogVremena = poljeDoktora.KrajRadnogVremena;
+            doktor.Jmbg = osoba.Jmbg;
+            doktor.Ime = osoba.Ime;
+            doktor.Prezime = osoba.Prezime;
+            doktor.DatumRodjenja = osoba.DatumRodjenja;
+            doktor.BrojTelefona = osoba.BrojTelefona;
+            doktor.Email = osoba.Email;
+            doktor.Adresa = osoba.Adresa;
             return doktor;
         }
     }

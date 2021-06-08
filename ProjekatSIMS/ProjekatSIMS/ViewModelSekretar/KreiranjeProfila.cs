@@ -24,8 +24,6 @@ namespace ProjekatSIMS.ViewModelSekretar
         private String mail;
         private String adresa;
         private Uloga uloga;
-        //private String radiOd;
-        //private String radiDo;
         private Window thisWindow;
         private string imeError;
         private string prezimeError;
@@ -34,7 +32,6 @@ namespace ProjekatSIMS.ViewModelSekretar
         private string telefonError;
         private string mailError;
         private string adresaError;
-        //private string radnoVremeError;
         private Controller.KreiranjeProfila kreiranjeProfila = new Controller.KreiranjeProfila();
         public RelayCommand<string> NavCommand { get; private set; }
         public NavigationService NavService
@@ -157,30 +154,6 @@ namespace ProjekatSIMS.ViewModelSekretar
                 }
             }
         }
-        /*public string RadiOd
-        {
-            get { return radiOd; }
-            set
-            {
-                if (radiOd != value)
-                {
-                    radiOd = value;
-                    OnPropertyChanged("RadiOd");
-                }
-            }
-        }
-        public string RadiDo
-        {
-            get { return radiDo; }
-            set
-            {
-                if (radiDo != value)
-                {
-                    radiDo = value;
-                    OnPropertyChanged("RadiDo");
-                }
-            }
-        }*/
         public string ImeError
         {
             get { return imeError; }
@@ -244,15 +217,6 @@ namespace ProjekatSIMS.ViewModelSekretar
                 OnPropertyChanged("AdresaError");
             }
         }
-        /*public string RadnoVremeError
-        {
-            get { return radnoVremeError; }
-            set
-            {
-                radnoVremeError = value;
-                OnPropertyChanged("RadnoVremeError");
-            }
-        }*/
         public KreiranjeProfila()
         {
 
@@ -267,46 +231,34 @@ namespace ProjekatSIMS.ViewModelSekretar
         {
             BrisiTextBlokove();
             if (Validacije() == false) return;
+            Osoba o = new Osoba();
             if (Uloga.Doktor == Uloga)
             {
-                Doktor d = new Doktor();
-                d.Jmbg = Jmbg;
-                d.Ime = Ime;
-                d.Prezime = Prezime;
-                d.DatumRodjenja = Datum;
-                d.BrojTelefona = Telefon;
-                d.Email = Mail;
-                d.Adresa = Adresa;
-                d.Uloga = Uloga;
+                o.Jmbg = Jmbg;
+                o.Ime = Ime;
+                o.Prezime = Prezime;
+                o.DatumRodjenja = Datum;
+                o.BrojTelefona = Telefon;
+                o.Email = Mail;
+                o.Adresa = Adresa;
+                kreiranjeProfila.KreirajProfil(Uloga, o);
+                MessageBoxResult ret = MessageBox.Show("Profil doktora je uspešno kreiran.", "OBAVEŠTENJE");
             }
             else if (Uloga.Pacijent == Uloga)
             {
-                Pacijent p = new Pacijent();
-                p.Jmbg = Jmbg;
-                p.Ime = Ime;
-                p.Prezime = Prezime;
-                p.DatumRodjenja = Datum;
-                p.BrojTelefona = Telefon;
-                p.Email = Mail;
-                p.Adresa = Adresa;
-                p.Uloga = Uloga;
+                o.Jmbg = Jmbg;
+                o.Ime = Ime;
+                o.Prezime = Prezime;
+                o.DatumRodjenja = Datum;
+                o.BrojTelefona = Telefon;
+                o.Email = Mail;
+                o.Adresa = Adresa;
+                kreiranjeProfila.KreirajProfil(Uloga, o);
+                MessageBoxResult ret = MessageBox.Show("Profil pacijenta je uspešno kreiran.", "OBAVEŠTENJE");
             }
             else
                 MessageBox.Show("Možete kreirati samo pacijenta i doktora");
-            //d.Specijalizacija = (Specijalizacija)Oblasti;
-            //d.PocetakRadnogVremena = RadiOd;
-            //d.KrajRadnogVremena = RadiDo;
-
-            kreiranjeProfila.KreirajProfil(Uloga);
-            /*MessageBoxResult ret = MessageBox.Show("Profil je uspešno kreiran. Da li želite da pregledate njegov profil", "OBAVEŠTENJE", MessageBoxButton.YesNo);
-            if (ret == MessageBoxResult.Yes)
-            {
-                Window window = new ViewSekretar.ProfilDoktoraView(d);
-                window.Show();
-                thisWindow.Close();
-            }
-            else*/
-                thisWindow.Close();
+            thisWindow.Close();
         }
 
         private void BrisiTextBlokove()
@@ -318,7 +270,6 @@ namespace ProjekatSIMS.ViewModelSekretar
             this.TelefonError = "";
             this.MailError = "";
             this.AdresaError = "";
-            //this.RadnoVremeError = "";
         }
 
         private bool Validacije()
@@ -330,7 +281,6 @@ namespace ProjekatSIMS.ViewModelSekretar
             if (TelefonValidacija() == false) return false;
             if (AdresaValidacija() == false) return false;
             if (MailValidacija() == false) return false;
-            //if (RadnoVremeValidacija() == false) return false;
             return true;
         }
         private bool ImeValidacija()
@@ -411,15 +361,6 @@ namespace ProjekatSIMS.ViewModelSekretar
             }
             return true;
         }
-        /*private bool RadnoVremeValidacija()
-        {
-            if (RadiOd == null || RadiDo == null)
-            {
-                this.RadnoVremeError = "Morate da unesete početak i kraj radnog vremena doktora.";
-                return false;
-            }
-            return true;
-        }*/
         public void Executed_Odustani()
         {
             thisWindow.Close();

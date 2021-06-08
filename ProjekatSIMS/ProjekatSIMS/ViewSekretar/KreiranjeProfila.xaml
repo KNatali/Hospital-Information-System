@@ -27,8 +27,8 @@
             </StackPanel>
         </Label>
         <Label Content="ZDRAVO KORPORACIJA" FontSize="25" Margin="388,34,-16,434" Foreground="#1963bf" FontWeight="Bold"/>
-        <Button Content="Otkaži" Command="{Binding Otkazi_kreiranje}" Click="Otkazi_kreiranje" HorizontalAlignment="Left" Margin="60,466,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
-        <Button Content="Potvrdi" Command="{Binding Kreiraj_profil}" Click="Kreiraj_profil" HorizontalAlignment="Left" Margin="683,466,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
+        <Button Content="Otkaži" Command="{Binding Otkazi_kreiranje}" Click="Otkazi_kreiranje" HorizontalAlignment="Left" Margin="60,480,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
+        <Button Content="Potvrdi" Command="{Binding Kreiraj_profil}" Click="Kreiraj_profil" HorizontalAlignment="Left" Margin="683,480,0,0" VerticalAlignment="Top" Style="{StaticResource Dugme}"/>
         <Label Content="JMBG" HorizontalAlignment="Left" FontSize="25" Height="43" Margin="60,285,0,0" VerticalAlignment="Top" Width="85" Foreground="#1963bf" FontWeight="DemiBold"/>
         <TextBox HorizontalAlignment="Left" Text="{Binding Jmbg}" FontSize="25" Margin="255,290,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="191" BorderBrush="#1963bf" Foreground="#1963bf"/>
         <Label Content="Ime" HorizontalAlignment="Left" FontSize="25" Height="40" Margin="60,147,0,0" VerticalAlignment="Top" Width="73" Foreground="#1963bf" FontWeight="DemiBold"/>
@@ -50,6 +50,5 @@
         <TextBlock FontSize="18" Foreground="#b31a0c" HorizontalAlignment="Left" Height="28" Margin="65,328,0,0" Text="{Binding DatumError}" TextWrapping="Wrap" VerticalAlignment="Top" Width="386"/>
         <Label Content="Uloga" Grid.Column="0" FontSize="25" HorizontalAlignment="Left" Height="48" Margin="469,350,0,0" VerticalAlignment="Top" Width="118" Foreground="#1963bf" FontWeight="DemiBold"/>
         <ComboBox HorizontalAlignment="Left" x:Name="Uloga" Text="{Binding Uloga}" FontSize="25" Margin="672,356,0,0" VerticalAlignment="Top" Width="191" Height="38" BorderBrush="#1963bf" Foreground="#1963bf"/>
-
     </Grid>
 </Window>

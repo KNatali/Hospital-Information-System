@@ -47,11 +47,11 @@ namespace ProjekatSIMS.ViewModelSekretar
                     ViewSekretar.KreiranjeProfila kreiranjeProfila = new ViewSekretar.KreiranjeProfila();
                     kreiranjeProfila.Show();
                     break;
-                case "kreiranjeDoktora":
+                /*case "kreiranjeDoktora":
                     KreiranjeDoktoraViewModel kd = new KreiranjeDoktoraViewModel(this.NavService);
                     KreiranjeDoktoraView kreiranjeDoktora = new KreiranjeDoktoraView();
                     kreiranjeDoktora.Show();
-                    break;
+                    break;*/
                 case "pretragaPacijenta":
                     /*PretragaPacijenataViewModel pp = new PretragaPacijenataViewModel(this.NavService);
                     PretragaPacijenataView pretragaPacijenata = new PretragaPacijenataView(pp);
