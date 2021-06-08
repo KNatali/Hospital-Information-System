@@ -63,8 +63,8 @@ namespace ProjekatSIMS
         {
             datumOd = (DateTime)Od.SelectedDate;
             datumDo = (DateTime)Do.SelectedDate;
-            novoOdobrenje.NeradnoOd = datumOd.Date;
-            novoOdobrenje.NeradnoDo = datumDo.Date;
+            novoOdobrenje.interval.PocetnoVrijeme = datumOd.Date;
+            novoOdobrenje.interval.KrajnjeVrijeme = datumDo.Date;
             novoOdobrenje.Vrsta = (VrsteNeradnihDana)Obrazlozenje.SelectedIndex;
             novoOdobrenje.doktor = doktor.Jmbg;
         }
@@ -80,7 +80,7 @@ namespace ProjekatSIMS
         }
         private void ProveraDatumaZakazanogTermina(NeradniDani novoOdobrenje, Pregled p)
         {
-            if (DateTime.Compare(novoOdobrenje.NeradnoOd, p.Pocetak) <= 0 && DateTime.Compare(novoOdobrenje.NeradnoDo, p.Pocetak) >= 0)
+            if (DateTime.Compare(novoOdobrenje.interval.PocetnoVrijeme, p.Pocetak) <= 0 && DateTime.Compare(novoOdobrenje.interval.KrajnjeVrijeme, p.Pocetak) >= 0)
             {
                 ProveraDoktoraZakazanogTermina(novoOdobrenje, p);
             }

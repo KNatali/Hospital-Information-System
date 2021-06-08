@@ -25,8 +25,8 @@ namespace ProjekatSIMS.Service
         private NeradniDani Odobri(NeradniDani polje)
         {
             NeradniDani neradniDani = new NeradniDani();
-            neradniDani.NeradnoOd = polje.NeradnoOd;
-            neradniDani.NeradnoDo = polje.NeradnoDo;
+            neradniDani.interval.PocetnoVrijeme = polje.interval.PocetnoVrijeme;
+            neradniDani.interval.KrajnjeVrijeme = polje.interval.KrajnjeVrijeme;
             neradniDani.Vrsta = polje.Vrsta;
             neradniDani.doktor = polje.doktor;
             return neradniDani;
